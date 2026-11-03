@@ -185,12 +185,14 @@ export async function buildExample(example, { capture = false } = {}) {
             return
         }
         if (draft) return
+        const portName = rest.name ?? meta.name
+        const portDescription = rest.description ?? meta.description
         const port = packPort({
             id: example.id,
             target,
             files: portFiles,
-            name: rest.name ?? meta.name,
-            description: rest.description ?? meta.description,
+            name: portName,
+            description: portDescription,
             project,
             compilations: compilations[target.folder] ?? [],
             buildOutputs,
@@ -198,6 +200,9 @@ export async function buildExample(example, { capture = false } = {}) {
         })
         if (packed.some((other) => other.archivePath === port.archivePath))
             throw new ExampleError([`two archives are ${port.archivePath}: give one a variant`])
+        //a port named or described apart from its example says so in the index too
+        if (portName !== meta.name) port.port.name = portName
+        if (portDescription !== meta.description) port.port.description = portDescription
         packed.push(port)
         return port
     }

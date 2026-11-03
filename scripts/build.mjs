@@ -30,6 +30,19 @@ for (const example of examples) {
         problems.push(...found.map((problem) => `${example.path}: ${problem}`))
     }
 }
+//The editor links to a port by its archive's path with a - for the /: risc-v/64-x and
+//risc-v-64/x, or an example a-b and an example a's variant b, would share one link
+const linked = new Map()
+for (const [id, entry] of Object.entries(index.examples))
+    for (const port of entry.ports) {
+        const link = port.archive.replace(/\.asmproj$/, '').replace('/', '-')
+        const other = linked.get(link)
+        if (other)
+            problems.push(
+                `${entry.path}: ${port.archive} and ${other} would have the same link in the editor, ${link}; rename one`
+            )
+        else linked.set(link, `${port.archive} (${index.examples[id].path})`)
+    }
 for (const target of TARGETS) {
     const ids = Object.keys(index.examples).filter((id) =>
         index.examples[id].ports.some((port) => port.target === target.name)

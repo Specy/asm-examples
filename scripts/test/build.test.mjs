@@ -177,6 +177,15 @@ describe('a shared example', () => {
             ['M68K', 'RISC-V', 'Z80']
         )
         assert.deepEqual(index.examples['bouncing-ball'].tags, ['screen'])
+        //the editor shows a port's own name, which only the index can tell it
+        assert.equal(
+            index.examples['bouncing-ball'].ports.find((port) => port.target === 'Z80').name,
+            'Bouncing ball on the Z80'
+        )
+        assert.equal(
+            index.examples['bouncing-ball'].ports.find((port) => port.target === 'M68K').name,
+            undefined
+        )
         assert.deepEqual(index.targets, {
             M68K: ['bouncing-ball'],
             'RISC-V': ['bouncing-ball'],
@@ -283,7 +292,9 @@ describe('build.mjs', () => {
     it('keeps draft ports available to compilation tools without publishing an unfinished Project', async () => {
         const repo = fixture({
             ...tree,
-            'shared/os/compilations.json': { 'risc-v': [{ sourcePath: 'os/main.c', outputPath: 'os/main.c.riscv' }] },
+            'shared/os/compilations.json': {
+                'risc-v': [{ sourcePath: 'os/main.c', outputPath: 'os/main.c.riscv' }]
+            },
             'shared/os/build.mjs': `export default function build({ files, pack }) {
                 pack({ target: 'X86', files: files({ include: ['os/main.c.asm'] }) })
                 pack({ target: 'RISC-V', files: files({ include: ['os/main.c'] }), draft: true,
@@ -292,7 +303,10 @@ describe('build.mjs', () => {
         })
         const result = repo.run('build.mjs')
         assert.equal(result.status, 0, result.output)
-        assert.deepEqual(repo.index().examples.os.ports.map((port) => port.target), ['X86'])
+        assert.deepEqual(
+            repo.index().examples.os.ports.map((port) => port.target),
+            ['X86']
+        )
         assert.equal(repo.exists('dist/risc-v/os.asmproj'), false)
         const example = findExamples(repo.root).examples[0]
         const { captured, compilations } = await buildExample(example, { capture: true })
@@ -410,6 +424,28 @@ describe('the repository', () => {
             /m68k\/apache: its license is Apache-2\.0, not the repository's MIT, so it needs a LICENSE File/
         )
         assert.match(output, /m68k\/latin: latin\.x68 is not UTF-8 text/)
+    })
+
+    it('fails when two archives would share a link in the editor', () => {
+        const repo = fixture({
+            'risc-v/64-ball/example.json': example('Ball'),
+            'risc-v/64-ball/ball.s': 'nop\n',
+            'risc-v-64/ball/example.json': example('Ball, 64 bits'),
+            'risc-v-64/ball/ball.s': 'nop\n',
+            'x86/os-lite/example.json': example('A small OS'),
+            'x86/os-lite/main.asm': 'ret\n',
+            'shared/os/example.json': example('OS'),
+            'shared/os/main.asm': 'ret\n',
+            'shared/os/build.mjs': `export default ({ files, pack }) => {
+                pack({ target: 'X86', files: files() })
+                pack({ target: 'X86', variant: 'lite', files: files() })
+            }`
+        })
+        const { status, output } = repo.run('build.mjs')
+        assert.equal(status, 1)
+        assert.match(output, /would have the same link in the editor, risc-v-64-ball/)
+        assert.match(output, /would have the same link in the editor, x86-os-lite/)
+        assert.equal(repo.exists('dist'), false)
     })
 
     it('keeps the README’s table of examples up to date, and --check fails while it is not', () => {
