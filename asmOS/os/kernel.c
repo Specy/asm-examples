@@ -4,46 +4,27 @@
  *
  * Every application runs as a process with a stack of its own. Process 0 is the system: the main
  * loop of main.c, which reads the keyboard and the pointer, delivers messages and composes the
- * screen. The others are applications. One of them runs at a time, and the kernel switches
- * between them in a signal handler. A process gives the processor up when it waits for a message
- * or sleeps: it sends itself SIGUSR2. And the interval timer sends SIGALRM every 10 ms while
- * applications are ready to run, which takes the processor from one that does not give it up:
- * preemption. Either way the handler saves the registers the signal frame holds, the
- * general-purpose ones and the 512 bytes of x87 and SSE state, into the process, and writes the
- * next process's into the frame, so the return from the handler resumes the next process where it
- * was stopped. A process's first turn starts it at process_start on its new stack.
+ * screen. The others are applications. One of them runs at a time. A process gives the processor
+ * up when it waits for a message or sleeps, and on a machine with a timer (PLATFORM_PREEMPTIVE)
+ * the timer ticks every 10 ms while applications are ready to run, and takes the processor from
+ * one that does not give it up: preemption. The platform layer does the switch itself, its own
+ * way (os/platform/): on x86 a signal handler rewrites the registers the signal frame holds, and
+ * on a machine without a timer a call keeps the callee-saved registers. The kernel only says which
+ * process runs next, in switch_to_next.
  *
  * A process may be stopped at any instruction, so the kernel's own data is changed only under the
  * kernel lock: an os_ call takes it, and the timer leaves a process holding it alone until it lets
  * go. The system process is never preempted: it gives the processor up itself, between two passes
- * of its loop, when an application is ready.
+ * of its loop, when an application is ready. Without a timer, every process does so: when it
+ * waits, and at the yield points of its long loops (os_yield_point), once it has had its turn.
  */
 
-enum { MAX_PROCESSES = 32, STACK_SIZE = 256 * 1024, QUEUE_SIZE = 128, MAX_TIMERS = 64 };
+enum { MAX_PROCESSES = PLATFORM_MAX_PROCESSES, QUEUE_SIZE = PLATFORM_QUEUE_SIZE, MAX_TIMERS = 64 };
+enum { TURN_MS = 10 };                /* a turn, between two ticks of the timer */
 enum { WAIT_NONE, WAIT_MESSAGE, WAIT_ANSWER };
-/* The registers of the signal frame, in Linux's order for x86-64. */
-enum { R8, R9, R10, R11, R12, R13, R14, R15, RDI, RSI, RBP, RBX, RDX, RAX, RCX, RSP, RIP, EFL,
-       GREGS = 23 };
 
-/* The signal frame's context, as Linux lays it out (sys/ucontext.h, which the headers here do not
- * have): what the handler reads the stopped process from and writes the next one into. */
-typedef struct {
-    uint64_t gregs[GREGS];
-    void *fpregs;          /* 512 bytes in FXSAVE's layout */
-    uint64_t reserved[8];
-} MachineContext;
-typedef struct {
-    uint64_t flags;
-    void *link;
-    struct {
-        void *sp;
-        int flags;
-        size_t size;
-    } stack;
-    MachineContext machine;
-} SignalContext;
-
-/* What os_alloc puts before the memory it hands out: 32 bytes, so the memory stays 16-aligned. */
+/* What os_alloc puts before the memory it hands out: 32 bytes on x86-64, 16 on a 32-bit machine,
+ * so the memory keeps the 16-byte alignment malloc gave the block. */
 typedef struct Allocation {
     struct Allocation *next, *prev;
     size_t size;
@@ -56,9 +37,7 @@ typedef struct {
     char argument[128];
     int has_argument;
     uint8_t *stack;
-    uint64_t gregs[GREGS];
-    uint8_t fx[512] __attribute__((aligned(16)));
-    int started;
+    PlatformContext context;         /* its registers, while it does not run */
     Message queue[QUEUE_SIZE];
     int head, count;
     int waiting;
@@ -67,7 +46,8 @@ typedef struct {
     long wake_at;
     Allocation allocations;          /* a ring: its own memory, freed when the process ends */
     long memory;
-    long cpu, cpu_mark, cpu_rate;    /* instructions run: all, at the last second, in it */
+    uint64_t cpu, cpu_mark;          /* instructions run: all, and all at the last second */
+    long cpu_rate;                   /* in the last second */
     GfxContext gfx;
 } Process;
 
@@ -76,7 +56,8 @@ static Process *volatile current = &processes[0];
 #define SYSTEM (&processes[0])
 static int next_pid = 1;
 static volatile int kernel_lock, need_resched;
-static long switched_at;              /* the instruction count at the last switch */
+static uint64_t switched_at;          /* the instruction count at the last switch */
+static long turn_started;             /* the clock when the current process got the processor */
 static int timer_on;
 static long boot_ms;
 
@@ -93,28 +74,18 @@ int wm_window_count(int pid);
 
 /* ------------------------------------------------------------------ the clock */
 
-long os_now_ms(void) {
-    struct timespec now;
-    clock_gettime(CLOCK_MONOTONIC, &now);
-    return now.tv_sec * 1000L + now.tv_nsec / 1000000 - boot_ms;
-}
-
-/* Instructions this program has run, which is what the CPU clock counts (at 100 MHz). */
-static long instructions_now(void) {
-    struct timespec now;
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &now);
-    return now.tv_sec * 100000000L + now.tv_nsec / 10;
-}
+long os_now_ms(void) { return platform_now_ms() - boot_ms; }
 
 /* ------------------------------------------------------------------ switching */
 
-/* The profiler's samples: where the timer found the process os_profile was called by. */
-enum { PROFILE_MAX = 4096 };
+/* The profiler's samples: where the timer found the process os_profile was called by. A machine
+ * with no timer takes none, and keeps no room for them. */
+enum { PROFILE_MAX = PLATFORM_PREEMPTIVE ? 4096 : 1 };
 static uint64_t profile_samples[PROFILE_MAX];
 static int profile_count, profile_pid = -1;
 
 static void lock(void) { kernel_lock++; }
-static void yield(void) { kill(getpid(), SIGUSR2); }
+static void yield(void);
 
 /* Lets go of the kernel lock, and gives the processor up if the timer asked for it meanwhile. */
 static void unlock(void) {
@@ -124,13 +95,14 @@ static void unlock(void) {
     }
 }
 
-/* Starts the interval timer while applications are ready to run, and stops it while none is, so
- * that a desktop with nothing to do does nothing. */
+/* Starts the timer while applications are ready to run, and stops it while none is, so that a
+ * desktop with nothing to do does nothing. A machine without one has nothing to start. */
 static void timer_set(int on) {
     if (on == timer_on) return;
     timer_on = on;
-    struct itimerval interval = { { 0, on ? 10000 : 0 }, { 0, on ? 10000 : 0 } };
-    setitimer(ITIMER_REAL, &interval, NULL);
+#if PLATFORM_PREEMPTIVE
+    platform_timer(on ? TURN_MS : 0);
+#endif
 }
 
 /* The application's code runs from here on its own stack, the first time it is switched to. */
@@ -150,51 +122,86 @@ static Process *next_ready(void) {
     return NULL;
 }
 
-static void switch_process(SignalContext *context) {
+/* Picks the process that runs next, round the table, and makes it the current one: answers it,
+ * or NULL when the current one goes on. Both kinds of switch below come here. */
+static Process *switch_to_next(void) {
     Process *from = current;
     if (from->state == PROC_RUNNING) from->state = PROC_READY;
     Process *to = next_ready();
     if (!to) to = from->state == PROC_READY ? from : SYSTEM;
     if (to == from) {
         from->state = PROC_RUNNING;
-        return;
+        return NULL;
     }
-    long now = instructions_now();
+    uint64_t now = platform_instructions();
     from->cpu += now - switched_at;
     switched_at = now;
-    uint64_t *gregs = context->machine.gregs;
-    memcpy(from->gregs, gregs, sizeof from->gregs);
-    if (context->machine.fpregs) memcpy(from->fx, context->machine.fpregs, sizeof from->fx);
-    from->started = 1;
-    if (to->started) {
-        for (int r = R8; r <= EFL; r++) gregs[r] = to->gregs[r];
-        if (context->machine.fpregs) memcpy(context->machine.fpregs, to->fx, sizeof to->fx);
-    } else {
-        /* a stack as a call leaves it: 16-aligned, less the return address */
-        uint64_t top = ((uint64_t)(to->stack + STACK_SIZE) & ~(uint64_t)15) - 8;
-        gregs[RSP] = top;
-        gregs[RBP] = 0;
-        gregs[RIP] = (uint64_t)process_start;
-        to->started = 1;
-    }
     to->state = PROC_RUNNING;
     current = to;
     gfx = to == SYSTEM ? &gfx_system : &to->gfx;
+#if !PLATFORM_PREEMPTIVE
+    turn_started = os_now_ms();
+#endif
+    return to;
 }
 
-/* SIGUSR2 is a process giving the processor up; SIGALRM is the timer taking it. */
-static void on_switch_signal(int signal, siginfo_t *info, void *context) {
-    (void)info;
-    if (signal == SIGALRM && current->pid == profile_pid && profile_count < PROFILE_MAX)
-        profile_samples[profile_count++] = ((SignalContext *)context)->machine.gregs[RIP];
-    if (signal == SIGALRM) {
-        if (current == SYSTEM) return;
+#if PLATFORM_PREEMPTIVE
+
+/* The platform's trap handler asks here: the timer's tick (by_timer), or a process giving the
+ * processor up. The tick leaves the system process alone, and one holding the kernel lock until it
+ * lets go (unlock). The profiler notes where the tick found the process it watches. */
+int kernel_switch(int by_timer, uintptr_t pc, PlatformContext **from, PlatformContext **to) {
+    if (by_timer && current->pid == profile_pid && profile_count < PROFILE_MAX)
+        profile_samples[profile_count++] = pc;
+    if (by_timer) {
+        if (current == SYSTEM) return 0;
         if (kernel_lock) {
             need_resched = 1;
-            return;
+            return 0;
         }
     }
-    switch_process(context);
+    Process *was = current, *next = switch_to_next();
+    if (!next) return 0;
+    *from = &was->context;
+    *to = &next->context;
+    return 1;
+}
+
+/* Giving the processor up is a trap into the platform's handler, as the timer's tick is. */
+static void yield(void) { platform_trap(); }
+
+#else
+
+/* Giving the processor up is a call, which returns once the kernel switches back. */
+static void yield(void) {
+    Process *was = current, *next = switch_to_next();
+    if (next) platform_switch(&was->context, &next->context);
+}
+
+#endif
+
+void os_yield_point(void) {
+#if !PLATFORM_PREEMPTIVE
+    if (current != SYSTEM && !kernel_lock && os_now_ms() - turn_started >= TURN_MS) yield();
+#endif
+}
+
+/* Whether the heap holds what asmOS needs before it can show anything: `screen_bytes` for the back
+ * buffer, and room for the first applications' stacks and memory. Where the heap is small, as on
+ * MARS and RARS, which give static data and the heap 4 MB together, asmOS says what it needs and
+ * stops rather than run out half way. The kernel's own tables are static data, already there. */
+static int kernel_memory_check(size_t screen_bytes) {
+    size_t left = platform_memory_left();
+    size_t need = screen_bytes + 2 * PLATFORM_STACK_SIZE + 256 * 1024;
+    if (left >= need) return 1;
+    char line[200];
+    snprintf(line, sizeof line,
+             "asmOS needs %lu KB of memory to start, %lu KB of it for the screen; %lu KB are left "
+             "(the process table takes %lu KB)\n",
+             (unsigned long)(need / 1024), (unsigned long)(screen_bytes / 1024),
+             (unsigned long)(left / 1024), (unsigned long)(sizeof processes / 1024));
+    platform_print(line);
+    return 0;
 }
 
 static void kernel_start(void) {
@@ -204,19 +211,12 @@ static void kernel_start(void) {
     system->used = 1;
     system->pid = 0;
     system->state = PROC_RUNNING;
-    system->started = 1;
     snprintf(system->name, sizeof system->name, "System");
     system->allocations.next = system->allocations.prev = &system->allocations;
-    struct sigaction action;
-    memset(&action, 0, sizeof action);
-    action.sa_sigaction = on_switch_signal;
-    action.sa_flags = SA_SIGINFO | SA_RESTART;
-    sigemptyset(&action.sa_mask);
-    sigaddset(&action.sa_mask, SIGALRM);
-    sigaddset(&action.sa_mask, SIGUSR2);
-    sigaction(SIGALRM, &action, NULL);
-    sigaction(SIGUSR2, &action, NULL);
-    switched_at = instructions_now();
+#if PLATFORM_PREEMPTIVE
+    platform_scheduler_start();
+#endif
+    switched_at = platform_instructions();
 }
 
 /* ------------------------------------------------------------------ processes */
@@ -236,9 +236,9 @@ int os_spawn(int app, const char *argument) {
     Process *process = NULL;
     for (int i = 1; i < MAX_PROCESSES && !process; i++)
         if (!processes[i].used) process = &processes[i];
-    uint8_t *stack = process ? malloc(STACK_SIZE) : NULL;
+    uint8_t *stack = process ? platform_stack_alloc(PLATFORM_STACK_SIZE) : NULL;
     if (!process || !stack) {
-        free(stack);
+        if (stack) platform_stack_free(stack);
         unlock();
         os_beep();
         return -1;
@@ -248,6 +248,7 @@ int os_spawn(int app, const char *argument) {
     process->pid = next_pid++;
     process->app = app;
     process->stack = stack;
+    platform_context_init(&process->context, stack, PLATFORM_STACK_SIZE, process_start);
     process->state = PROC_READY;
     snprintf(process->name, sizeof process->name, "%s", APPS[app].name);
     if (argument) {
@@ -321,7 +322,7 @@ static long schedule_pass(void) {
         Process *process = &processes[i];
         if (!process->used) continue;
         if (process->state == PROC_ENDED) {
-            free(process->stack);
+            platform_stack_free(process->stack);
             process->used = 0;
         } else if (process->state == PROC_SLEEPING) {
             if (process->wake_at <= now) process->state = PROC_READY;
@@ -390,23 +391,23 @@ int os_profile_take(uint64_t *addresses, int max) {
     return count;
 }
 
-long os_instructions(void) {
+uint64_t os_instructions(void) {
     lock();     /* no switch between reading the two */
-    long count = current->cpu + instructions_now() - switched_at;
+    uint64_t count = current->cpu + platform_instructions() - switched_at;
     unlock();
     return count;
 }
 
 /* Once a second: what each process ran in the second gone, and how busy the processor was. */
 static void measure_load(long elapsed_ms) {
-    long now = instructions_now();
+    uint64_t now = platform_instructions();
     current->cpu += now - switched_at;
     switched_at = now;
     load_total = 0;
     for (int i = 0; i < MAX_PROCESSES; i++) {
         Process *process = &processes[i];
         if (!process->used) continue;
-        process->cpu_rate = process->cpu - process->cpu_mark;
+        process->cpu_rate = (long)(process->cpu - process->cpu_mark);
         process->cpu_mark = process->cpu;
         load_total += process->cpu_rate;
     }
@@ -457,35 +458,35 @@ void *os_realloc(void *memory, size_t size) {
 
 /* ------------------------------------------------------------------ files */
 
+/* A whole file in memory from `allocate`, with a 0 after it; NULL if it cannot be read. */
+static char *read_file_with(const char *path, long *size, void *(*allocate)(size_t),
+                            void (*release)(void *)) {
+    long length = platform_file_size(path);
+    char *data = length >= 0 ? allocate(length + 1) : NULL;
+    if (data && platform_file_read(path, data, length) != length) {
+        release(data);
+        data = NULL;
+    }
+    if (data) data[length] = 0;
+    if (size) *size = data ? length : 0;
+    return data;
+}
+
 char *os_read_file(const char *path, long *size) {
     lock();
-    FILE *file = fopen(path, "rb");
-    char *data = NULL;
-    long length = 0;
-    if (file) {
-        fseek(file, 0, SEEK_END);
-        length = ftell(file);
-        fseek(file, 0, SEEK_SET);
-        data = length >= 0 ? os_alloc(length + 1) : NULL;
-        if (data && fread(data, 1, length, file) != (size_t)length) {
-            os_free(data);
-            data = NULL;
-        }
-        fclose(file);
-    }
-    if (size) *size = data ? length : 0;
+    char *data = read_file_with(path, size, os_alloc, os_free);
     unlock();
     return data;
 }
 
 int os_write_file(const char *path, const void *data, long size) {
     lock();
-    FILE *file = fopen(path, "wb");
-    int ok = file && fwrite(data, 1, size, file) == (size_t)size;
-    if (file && fclose(file) != 0) ok = 0;
+    int result = platform_file_write(path, data, size);
     unlock();
-    return ok ? 0 : -1;
+    return result;
 }
+
+int os_file_system(void) { return PLATFORM_FILE_SYSTEM; }
 
 static int entry_order(const void *a, const void *b) {
     const DirEntry *x = a, *y = b;
@@ -494,72 +495,43 @@ static int entry_order(const void *a, const void *b) {
 }
 
 int os_list_dir(const char *path, DirEntry *entries, int max) {
+    if (!(PLATFORM_FILE_SYSTEM & FS_LIST)) return -1;
     lock();
-    DIR *dir = opendir(path && path[0] ? path : ".");
-    if (!dir) {
-        unlock();
-        return -1;
-    }
-    int count = 0;
-    struct dirent *entry;
-    while ((entry = readdir(dir)) && count < max) {
-        if (entry->d_name[0] == '.') continue;
-        DirEntry *item = &entries[count++];
-        snprintf(item->name, sizeof item->name, "%.63s", entry->d_name);
-        char full[256];
-        snprintf(full, sizeof full, "%s%s%s", path && path[0] ? path : "", path && path[0] ? "/" : "",
-                 item->name);
-        struct stat info = { 0 };
-        item->is_dir = stat(full, &info) == 0 && S_ISDIR(info.st_mode);
-        item->size = item->is_dir ? 0 : (long)info.st_size;
-    }
-    closedir(dir);
-    qsort(entries, count, sizeof entries[0], entry_order);
+    int count = platform_list_dir(path, entries, max);
+    if (count > 0) qsort(entries, count, sizeof entries[0], entry_order);
     unlock();
     return count;
 }
 
 int os_stat(const char *path, long *size) {
     lock();
-    struct stat info = { 0 };
-    int found = stat(path, &info) == 0;
+    int kind = platform_stat(path, size);
     unlock();
-    if (size) *size = found ? (long)info.st_size : 0;
-    return !found ? 0 : S_ISDIR(info.st_mode) ? 2 : 1;
+    return kind;
 }
 
-/* A folder the Project keeps only while a file is in it, so os_make_dir puts a hidden one, .keep, in
- * a new folder, and os_delete takes it out of a folder with nothing else in it. */
 int os_delete(const char *path) {
+    if (!(PLATFORM_FILE_SYSTEM & FS_DELETE)) return -1;
     lock();
-    int result = unlink(path);
-    if (result < 0) {
-        DirEntry entry;
-        char keep[300];
-        snprintf(keep, sizeof keep, "%s/.keep", path);
-        if (os_list_dir(path, &entry, 1) == 0) unlink(keep);
-        rmdir(path);
-        result = os_stat(path, NULL) ? -1 : 0;
-    }
+    int result = platform_delete(path);
     unlock();
-    return result < 0 ? -1 : 0;
+    return result;
 }
 
 int os_rename(const char *from, const char *to) {
+    if (!(PLATFORM_FILE_SYSTEM & FS_RENAME)) return -1;
     lock();
-    int result = rename(from, to);
+    int result = platform_rename(from, to);
     unlock();
-    return result < 0 ? -1 : 0;
+    return result;
 }
 
 int os_make_dir(const char *path) {
-    char keep[300];
+    if (!(PLATFORM_FILE_SYSTEM & FS_MAKE_DIR)) return -1;
     lock();
-    int result = mkdir(path, 0777);
-    snprintf(keep, sizeof keep, "%s/.keep", path);
-    if (result == 0) result = os_write_file(keep, "", 0);
+    int result = platform_make_dir(path);
     unlock();
-    return result < 0 ? -1 : 0;
+    return result;
 }
 
 int os_copy_file(const char *from, const char *to) {
@@ -610,17 +582,33 @@ int os_app_named(const char *name) {
 
 /* ------------------------------------------------------------------ time */
 
+/* The calendar date of a time in seconds since 1970 began, in UTC. The days are counted in eras
+ * of 400 years from 1 March of year 0, since every era has the same 146,097 days and a year that
+ * starts in March has its leap day at its end (Howard Hinnant's days_from_civil, backwards). */
+static void date_from_seconds(int64_t seconds, DateTime *date) {
+    long days = (long)(seconds / 86400), second = (long)(seconds % 86400);
+    if (second < 0) {
+        second += 86400;
+        days--;
+    }
+    date->hour = (int)(second / 3600);
+    date->minute = (int)(second / 60 % 60);
+    date->second = (int)(second % 60);
+    date->weekday = (int)((days % 7 + 11) % 7);             /* 1 January 1970 was a Thursday */
+    days += 719468;                                         /* days since 1 March of year 0 */
+    long era = (days >= 0 ? days : days - 146096) / 146097;
+    long day_of_era = days - era * 146097;                  /* 0 to 146,096 */
+    long year_of_era = (day_of_era - day_of_era / 1460 + day_of_era / 36524 - day_of_era / 146096) / 365;
+    long day_of_year = day_of_era - (365 * year_of_era + year_of_era / 4 - year_of_era / 100);
+    long month = (5 * day_of_year + 2) / 153;               /* 0 is March */
+    date->day = (int)(day_of_year - (153 * month + 2) / 5 + 1);
+    date->month = (int)(month < 10 ? month + 3 : month - 9);
+    date->year = (int)(year_of_era + era * 400 + (date->month <= 2));
+}
+
 void os_time(DateTime *now) {
     lock();
-    time_t seconds = time(NULL);
-    struct tm *parts = gmtime(&seconds);
-    now->year = parts->tm_year + 1900;
-    now->month = parts->tm_mon + 1;
-    now->day = parts->tm_mday;
-    now->weekday = parts->tm_wday;
-    now->hour = parts->tm_hour;
-    now->minute = parts->tm_min;
-    now->second = parts->tm_sec;
+    date_from_seconds(platform_time(), now);
     unlock();
 }
 
@@ -651,6 +639,9 @@ static void post_message(int pid, const Message *message) {
 void wm_take_retired(Window *win);   /* wm.c: frees pictures a resize replaced */
 
 void os_get_message(Message *message) {
+#if !PLATFORM_PREEMPTIVE
+    os_yield_point();                 /* a process whose messages keep coming waits for none */
+#endif
     Process *process = current;
     for (;;) {
         lock();
@@ -670,6 +661,9 @@ void os_get_message(Message *message) {
 }
 
 int os_peek_message(Message *message) {
+#if !PLATFORM_PREEMPTIVE
+    os_yield_point();                 /* a frame loop's: it peeks every frame */
+#endif
     Process *process = current;
     lock();
     int got = process->count > 0;
@@ -838,10 +832,11 @@ static const uint32_t THEMES[THEME_COUNT][5] = {
 uint32_t os_theme_colour(int which) { return THEMES[settings.theme][which]; }
 
 static void settings_load(void) {
-    FILE *file = fopen(SETTINGS_FILE, "r");
-    if (!file) return;
-    char line[128];
-    while (fgets(line, sizeof line, file)) {
+    char *text = read_file_with(SETTINGS_FILE, NULL, malloc, free);
+    if (!text) return;
+    for (char *line = text, *next; *line; line = next) {
+        next = line + strcspn(line, "\n");
+        if (*next) *next++ = 0;
         char key[32], value[96];
         if (sscanf(line, "%31[^=]=%95[^\n]", key, value) != 2) continue;
         if (!strcmp(key, "wallpaper")) settings.wallpaper = clamp_int(atoi(value), 0, WALLPAPER_COUNT - 1);
@@ -851,7 +846,7 @@ static void settings_load(void) {
         else if (!strcmp(key, "clock_24h")) settings.clock_24h = atoi(value) != 0;
         else if (!strcmp(key, "sounds")) settings.sounds = atoi(value) != 0;
     }
-    fclose(file);
+    free(text);
 }
 
 void wm_settings_changed(void);
@@ -859,13 +854,12 @@ void wm_settings_changed(void);
 void os_apply_settings(const Settings *changed) {
     lock();
     settings = *changed;
-    FILE *file = fopen(SETTINGS_FILE, "w");
-    if (file) {
-        fprintf(file, "wallpaper=%d\npicture=%s\ntheme=%d\ndouble_click_ms=%d\nclock_24h=%d\nsounds=%d\n",
-                settings.wallpaper, settings.picture, settings.theme, settings.double_click_ms,
-                settings.clock_24h, settings.sounds);
-        fclose(file);
-    }
+    char text[256];
+    int length = snprintf(text, sizeof text,
+                          "wallpaper=%d\npicture=%s\ntheme=%d\ndouble_click_ms=%d\nclock_24h=%d\nsounds=%d\n",
+                          settings.wallpaper, settings.picture, settings.theme, settings.double_click_ms,
+                          settings.clock_24h, settings.sounds);
+    platform_file_write(SETTINGS_FILE, text, length);
     wm_settings_changed();
     Message message = { 0 };
     message.type = MSG_SETTINGS;
@@ -877,29 +871,19 @@ void os_apply_settings(const Settings *changed) {
 
 /* ------------------------------------------------------------------ sampled sound */
 
-static int pcm_fd = -1, pcm_owner = -1;
+static int pcm_owner = -1;            /* the process that has the platform's sampled sound */
 
 int os_pcm_open(int rate) {
     lock();
-    if (pcm_fd >= 0) {
+    if (pcm_owner >= 0) {
         int busy = pcm_owner != current->pid;
         unlock();
         return busy ? -1 : 0;
     }
-    pcm_fd = open("/dev/dsp", O_WRONLY);
-    if (pcm_fd < 0) {
+    if (platform_pcm_open(rate) < 0) {
         unlock();
         return -1;
     }
-    int format = AFMT_S16_LE, channels = 1, speed = rate;
-    /* six fragments, asked for in the device's starting format, which the 16-bit format and the
-     * rate below then scale to 2 KB each: 1,024 samples, under a twentieth of a second at 22 kHz,
-     * since /dev/dsp plays whole fragments and a larger one only makes the sound later */
-    int fragments = 6 << 16 | 10;
-    ioctl(pcm_fd, SNDCTL_DSP_SETFRAGMENT, &fragments);
-    ioctl(pcm_fd, SNDCTL_DSP_SETFMT, &format);
-    ioctl(pcm_fd, SNDCTL_DSP_CHANNELS, &channels);
-    ioctl(pcm_fd, SNDCTL_DSP_SPEED, &speed);
     pcm_owner = current->pid;
     unlock();
     return 0;
@@ -907,11 +891,7 @@ int os_pcm_open(int rate) {
 
 int os_pcm_space(void) {
     lock();
-    audio_buf_info room = { 0 };
-    int space = pcm_fd >= 0 && pcm_owner == current->pid &&
-                        ioctl(pcm_fd, SNDCTL_DSP_GETOSPACE, &room) == 0
-                    ? room.bytes / 2
-                    : 0;
+    int space = pcm_owner >= 0 && pcm_owner == current->pid ? platform_pcm_space() : 0;
     unlock();
     return space;
 }
@@ -921,17 +901,14 @@ int os_pcm_write(const int16_t *samples, int count) {
     if (count > space) count = space;
     if (count <= 0) return 0;
     lock();
-    ssize_t written = write(pcm_fd, samples, (size_t)count * 2);
+    int written = platform_pcm_write(samples, count);
     unlock();
-    return written > 0 ? (int)(written / 2) : 0;
+    return written;
 }
 
 void pcm_release(int pid) {
-    if (pcm_fd >= 0 && pcm_owner == pid) {
-        /* what is still buffered is dropped: close would wait for it to play */
-        ioctl(pcm_fd, SNDCTL_DSP_RESET, NULL);
-        close(pcm_fd);
-        pcm_fd = -1;
+    if (pcm_owner >= 0 && pcm_owner == pid) {
+        platform_pcm_close();
         pcm_owner = -1;
     }
 }
@@ -940,6 +917,13 @@ void os_pcm_close(void) {
     lock();
     pcm_release(current->pid);
     unlock();
+}
+
+/* ------------------------------------------------------------------ the machine */
+
+const char *os_machine(int what) {
+    static const char *const words[MACHINE_LINES] = PLATFORM_MACHINE;
+    return what >= 0 && what < MACHINE_LINES ? words[what] : "";
 }
 
 void os_default_message(Message *message) {

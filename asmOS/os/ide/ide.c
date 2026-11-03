@@ -23,7 +23,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <linux/input-event-codes.h>
+#include "../keys.h"
 
 #include "../os.h"
 
@@ -1449,7 +1449,7 @@ static void ide_paint_grid(Ide *I, uint32_t *to, int stride, int w, int h, int s
                     tag = at >> RV_PAGE_BITS;
                     page = rv_page(&I->machine, at);
                 }
-                if (page) memcpy(&word, page + (at & (RV_PAGE_SIZE - 1)), 4);
+                if (page) word = read_le32(page + (at & (RV_PAGE_SIZE - 1)));
                 colour = word & 0xffffff;
                 last = c;
             }
@@ -2222,6 +2222,7 @@ void ide_main(const char *argument) {
             I->wake_at = 0;
             ide_slice(I);
             if (I->running) ide_refresh(I);
+            os_yield_point();   /* a slice is about IDE_SLICE_MS: then the others' turn */
             continue;
         }
         os_get_message(&m);

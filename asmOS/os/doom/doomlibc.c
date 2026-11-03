@@ -131,6 +131,7 @@ size_t doom_fread(void *buffer, size_t size, size_t count, DoomFile *file) {
     }
     memcpy(buffer, file->data + file->position, count * size);
     file->position += (long)(count * size);
+    os_yield_point();       /* DOOM reads its lumps as it loads a level, a long while in all */
     return count;
 }
 

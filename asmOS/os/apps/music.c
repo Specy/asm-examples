@@ -93,11 +93,6 @@ typedef struct {
     char title[64], text[64];
 } MusicReader;
 
-static long music_big_endian(const unsigned char *bytes, int count) {
-    long value = 0;
-    for (int i = 0; i < count; i++) value = value << 8 | bytes[i];
-    return value;
-}
 
 /* A variable-length number: seven bits a byte, the high bit set on all but the last. */
 static long music_number(const unsigned char *data, long end, long *at) {
@@ -141,6 +136,7 @@ static void music_read_track(MusicReader *r, const unsigned char *data, long at,
     long tick = 0;
     unsigned char status = 0;
     while (at < end) {
+        os_yield_point();       /* an event at a time: a long song takes a while to read */
         tick += music_number(data, end, &at);
         if (at >= end) break;
         unsigned char byte = data[at];
@@ -154,8 +150,9 @@ static void music_read_track(MusicReader *r, const unsigned char *data, long at,
             const unsigned char *meta = data + at;
             at += length;
             if (type == 0x2f) break;
-            if (type == 0x51 && length >= 3 && music_big_endian(meta, 3) > 0)
-                music_push(r, tick, music_big_endian(meta, 3), NULL, 0);
+            /* the tempo: 3 bytes, big-endian */
+            long tempo = type == 0x51 && length >= 3 ? (long)read_be16(meta) << 8 | meta[2] : 0;
+            if (tempo > 0) music_push(r, tick, tempo, NULL, 0);
             else if (type == 0x03 && track == 0 && !r->title[0])
                 music_meta_text(r->title, sizeof r->title, meta, length);
             else if (type == 0x01 && !r->text[0])
@@ -201,15 +198,15 @@ static int music_raw_order(const void *a, const void *b) {
 /* Reads a whole file into `p`'s piece; answers 0, leaving the piece as it was, if it is not one. */
 static int music_parse(MusicPlayer *p, const unsigned char *data, long size, const char *path) {
     if (size < 14 || memcmp(data, "MThd", 4) != 0) return 0;
-    long header = music_big_endian(data + 4, 4);
-    int format = (int)music_big_endian(data + 8, 2), tracks = (int)music_big_endian(data + 10, 2);
-    int division = (int)music_big_endian(data + 12, 2);
+    long header = (long)read_be32(data + 4);
+    int format = (int)read_be16(data + 8), tracks = (int)read_be16(data + 10);
+    int division = (int)read_be16(data + 12);
     if (header < 6 || format > 2 || division == 0) return 0;
     MusicReader reader = { 0 };
     long at = 8 + header;
     int track = 0;
     while (at + 8 <= size && track < tracks) {
-        long length = music_big_endian(data + at + 4, 4), end = at + 8 + length;
+        long length = (long)read_be32(data + at + 4), end = at + 8 + length;
         if (end > size) end = size;
         if (!memcmp(data + at, "MTrk", 4)) music_read_track(&reader, data, at + 8, end, track++);
         at += 8 + length;

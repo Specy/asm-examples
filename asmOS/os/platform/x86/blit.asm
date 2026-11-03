@@ -3,7 +3,8 @@
 ; a single `rep` instruction, which the emulator runs as one, many times faster than the same loop in
 ; C; and `rep movsb` the fastest of them by far (asmOS DOOM's Game > Benchmark CPU: 3440 MB/s, where
 ; `rep movsd` copied 202 and `rep stosd` filled 336), so rows are copied by bytes, and a fill
-; copies its first row into the rest. The C code declares them in os.h.
+; copies its first row into the rest. The C code declares them in os.h; a machine whose platform
+; has no such instructions uses the C loops of os/blit.c instead (PLATFORM_BLIT).
 ;
 ; Arguments follow the System V calling convention: rdi, rsi, rdx, rcx, r8, r9. A stride is the
 ; distance in bytes from the start of one row to the start of the next.

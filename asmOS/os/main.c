@@ -1,39 +1,31 @@
 // @screen width=640 height=480
 /*
- * asmOS, a small operating system for the emulated x86 machine: a kernel that runs applications
- * as processes and switches between them, a compositing window manager with menus and dialogs,
- * a desktop with a Start menu, and eighteen applications.
+ * asmOS, a small operating system: a kernel that runs applications as processes and switches
+ * between them, a compositing window manager with menus and dialogs, a desktop with a Start menu,
+ * and eighteen applications.
  *
- * It runs as one ordinary Linux program. It draws on the framebuffer, /dev/fb0, reads the keyboard
- * and the pointer from /dev/input, plays sound on the MIDI port and /dev/dsp, and keeps its files
- * in the Project, which is the program's working directory.
+ * It runs as one ordinary program of the machine. What it needs of the machine, a screen, the
+ * keyboard and the pointer, clocks, a way to switch processes, sound and files, the platform
+ * layer gives it: os/platform/platform.h says what, and os/platform/<machine>/ how. On x86 that is
+ * a Linux program drawing on /dev/fb0 and keeping its files in the Project, the program's working
+ * directory.
  *
  * This File and the Files it includes are the kernel's half; os/apps/apps.c and its Files are the
  * applications'. Each half is compiled on its own into its own Generated assembly, and the Build
- * links the two by the names os.h declares. blit.asm holds the hand-written assembly.
+ * links the two by the names os.h declares.
  */
-#include <dirent.h>
-#include <fcntl.h>
 #include <math.h>
-#include <poll.h>
-#include <signal.h>
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <time.h>
-#include <unistd.h>
-#include <sys/ioctl.h>
-#include <sys/mman.h>
-#include <sys/soundcard.h>
-#include <sys/stat.h>
-#include <sys/time.h>
-#include <linux/fb.h>
-#include <linux/input.h>
 
 #include "os.h"
+#include "keys.h"
+#include "platform/platform.h"
 #include "font.c"
 #include "gfx.c"
+#include "blit.c"
 #include "icons.c"
 #include "kernel.c"
 #include "bmp.c"
@@ -41,20 +33,21 @@
 #include "sound.c"
 #include "wm.c"
 #include "dialogs.c"
+#include "platform/platform.c"
 
 static uint32_t *fb_pixels;
 static int fb_stride;
 static long shutdown_deadline;
 
-/* Shows the whole back buffer at once. */
-static void show_all(void) {
-    copy_rect32(fb_pixels, fb_stride * 4, back_buffer, screen_w * 4, screen_w, screen_h);
+/* Shows a rectangle of the back buffer. */
+static void show_rect(Rect r) {
+    copy_rect32(fb_pixels + r.y * fb_stride + r.x, fb_stride * 4, back_buffer + r.y * screen_w + r.x,
+                screen_w * 4, r.w, r.h);
+    platform_screen_present(r.x, r.y, r.w, r.h);
 }
 
-static void sleep_ms(int ms) {
-    struct timespec pause = { ms / 1000, ms % 1000 * 1000000L };
-    while (nanosleep(&pause, &pause) != 0) {}
-}
+/* Shows the whole back buffer at once. */
+static void show_all(void) { show_rect(rect(0, 0, screen_w, screen_h)); }
 
 /* Large text, each pixel of the font drawn as a square of `scale` pixels. */
 static void draw_text_scaled(int x, int y, const char *text, int scale, uint32_t colour) {
@@ -91,11 +84,9 @@ static void boot_splash(void) {
             fill_rect(bar.x + x, bar.y + 2, 10, bar.h - 4, block == 1 ? 0x4040ff : 0x2020a0);
         }
         gfx_clip(rect(0, 0, screen_w, screen_h));
-        Rect shown = rect(bar.x - 2, bar.y - 2, bar.w + 4, bar.h + 4);
-        copy_rect32(fb_pixels + shown.y * fb_stride + shown.x, fb_stride * 4,
-                    back_buffer + shown.y * screen_w + shown.x, screen_w * 4, shown.w, shown.h);
+        show_rect(rect(bar.x - 2, bar.y - 2, bar.w + 4, bar.h + 4));
         sound_run();
-        sleep_ms(30);
+        platform_sleep_ms(30);
     }
 }
 
@@ -110,7 +101,7 @@ static void shutdown_screen(void) {
     show_all();
     for (int i = 0; i < 50; i++) {
         sound_run();
-        sleep_ms(30);
+        platform_sleep_ms(30);
     }
     fill_rect(0, 0, screen_w, screen_h, BLACK);
     const char *lines[] = { "It is now safe to turn off", "your computer." };
@@ -118,7 +109,7 @@ static void shutdown_screen(void) {
         draw_text_scaled((screen_w - text_width(lines[l]) * 2) / 2, screen_h / 2 - 30 + l * 32, lines[l], 2,
                          0xf0a020);
     show_all();
-    while (sound_run() >= 0) sleep_ms(30);
+    while (sound_run() >= 0) platform_sleep_ms(30);
 }
 
 void os_shutdown(void) {
@@ -138,37 +129,26 @@ void os_shutdown(void) {
 /* The applications autostart.txt lists, one a line: the name the Terminal's `open` takes, then
  * an argument for it, such as a file to open. */
 static void autostart(void) {
-    FILE *file = fopen("autostart.txt", "r");
-    if (!file) return;
-    char line[160];
-    while (fgets(line, sizeof line, file)) {
-        line[strcspn(line, "\r\n")] = 0;
+    char *text = read_file_with("autostart.txt", NULL, malloc, free);
+    if (!text) return;
+    for (char *line = text, *next; *line; line = next) {
+        next = line + strcspn(line, "\n");
+        if (*next) *next++ = 0;
+        line[strcspn(line, "\r")] = 0;
         char *argument = strchr(line, ' ');
         if (argument) *argument++ = 0;
         int app = os_app_named(line);
         if (app >= 0) os_spawn(app, argument && *argument ? argument : NULL);
     }
-    fclose(file);
+    free(text);
 }
 
 /* The shortest of the waits, ignoring the -1 of "nothing due". */
 static long sooner(long a, long b) { return a < 0 ? b : b < 0 ? a : a < b ? a : b; }
 
 int main(void) {
-    int fb = open("/dev/fb0", O_RDWR);
-    if (fb < 0) {
-        printf("asmOS needs the framebuffer, /dev/fb0\n");
-        return 1;
-    }
-    struct fb_var_screeninfo var;
-    struct fb_fix_screeninfo fix;
-    ioctl(fb, FBIOGET_VSCREENINFO, &var);
-    ioctl(fb, FBIOGET_FSCREENINFO, &fix);
-    fb_pixels = mmap(NULL, fix.smem_len, PROT_READ | PROT_WRITE, MAP_SHARED, fb, 0);
-    if (fb_pixels == MAP_FAILED) return 1;
-    screen_w = var.xres;
-    screen_h = var.yres;
-    fb_stride = fix.line_length / 4;
+    if (platform_screen_open(&fb_pixels, &screen_w, &screen_h, &fb_stride) < 0) return 1;
+    if (!kernel_memory_check((size_t)screen_w * screen_h * 4)) return 1;
     uint32_t *back = malloc((size_t)screen_w * screen_h * 4);
     if (!back) return 1;
     back_buffer = back;
@@ -176,8 +156,11 @@ int main(void) {
     kernel_start();
     settings_load();
     sound_init();
-    if (!input_open()) printf("No keyboard or pointer found under /dev/input\n");
-    printf("asmOS: %d x %d. Click the Screen to use the keyboard and the mouse.\n", screen_w, screen_h);
+    platform_input_open();
+    char line[80];
+    snprintf(line, sizeof line, "asmOS: %d x %d. Click the Screen to use the keyboard and the mouse.\n",
+             screen_w, screen_h);
+    platform_print(line);
     boot_splash();
     wm_start(fb_pixels, fb_stride, back);
     autostart();

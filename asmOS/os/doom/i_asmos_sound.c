@@ -51,9 +51,9 @@ static boolean doom_sfx_samples(sfxinfo_t *sfx, const byte **samples, unsigned *
     int size = W_LumpLength(sfx->lumpnum);
     const byte *data = W_CacheLumpNum(sfx->lumpnum, PU_STATIC);
     if (size < 8 || data[0] != 3 || data[1] != 0) return false;
-    unsigned count = data[4] | data[5] << 8 | data[6] << 16 | (unsigned)data[7] << 24;
+    unsigned count = read_le32(data + 4);
     if (count > (unsigned)size - 8 || count <= 48) return false;
-    *rate = data[2] | data[3] << 8;
+    *rate = read_le16(data + 2);
     *samples = data + 8 + 16;
     *length = count - 32;
     return *rate > 0;
@@ -225,7 +225,7 @@ static int doom_mus_byte(const byte *data, int length, int *at) {
 /* A MUS lump read into notes and messages at their times: NULL for anything else, MIDI too. */
 static DoomSong *doom_read_mus(const byte *data, int length) {
     if (length < 16 || memcmp(data, "MUS\x1a", 4) != 0) return NULL;
-    int at = data[6] | data[7] << 8, capacity = 256, count = 0;
+    int at = (int)read_le16(data + 6), capacity = 256, count = 0;
     DoomEvent *events = malloc(capacity * sizeof *events);
     int open[16][128];          /* each sounding note's event, or -1 */
     byte velocity[16];

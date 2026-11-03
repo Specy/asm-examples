@@ -116,6 +116,7 @@ static void video_sound_open(VideoPlayer *v, long from) {
         vid_sound_seek(&v->sound, chunk);
         v->made = chunk * video_samples_per_chunk(v);
         while (v->made < from) {
+            os_yield_point();   /* up to a chunk's sound, made again: seconds of it */
             int at = (int)(v->made % VIDEO_RING);
             int count = min_int(min_int((int)(from - v->made), VIDEO_BLOCK), VIDEO_RING - at);
             int got = vid_sound_read(&v->sound, v->ring + at, count);
@@ -306,7 +307,10 @@ static void video_catch_up(VideoPlayer *v) {
         v->all_rows = 1;
     }
     int made = 0;
-    while (v->picture.frame <= target && made < VIDEO_MOST_FRAMES && vid_picture_next(&v->picture)) made++;
+    while (v->picture.frame <= target && made < VIDEO_MOST_FRAMES && vid_picture_next(&v->picture)) {
+        made++;
+        os_yield_point();       /* a frame decoded */
+    }
     if (made) video_draw_rows(v);
 }
 

@@ -8,7 +8,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <linux/input-event-codes.h>
+#include "../keys.h"
 
 #include "../os.h"
 #include "widgets.c"

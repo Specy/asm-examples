@@ -1,12 +1,12 @@
 /*
- * Sound, through the raw MIDI port of the machine's General MIDI synthesizer. A note is three
- * bytes written to the port; the synthesizer plays it at once. Notes that should start or stop
- * later wait in a queue, which the system process empties when their time comes, so a jingle
+ * Sound, through the MIDI port of the machine's General MIDI synthesizer, the platform's. A note
+ * is three bytes sent to the port; the synthesizer plays it at once. Notes that should start or
+ * stop later wait in a queue, which the system process empties when their time comes, so a jingle
  * never holds anything up. Any process may queue notes: the queue is the kernel's, changed under
  * its lock.
  */
 
-static int midi_fd = -1;
+static int midi_open;             /* the machine has a MIDI port */
 
 typedef struct {
     long due;
@@ -19,10 +19,10 @@ enum { MIDI_QUEUE = 256 };
 static MidiLater midi_queue[MIDI_QUEUE];
 static int midi_queued;
 
-static void sound_init(void) { midi_fd = open("/dev/snd/midiC1D0", O_WRONLY); }
+static void sound_init(void) { midi_open = platform_midi_open() == 0; }
 
 static void midi_write(const unsigned char *bytes, int length) {
-    if (midi_fd >= 0) write(midi_fd, bytes, length);
+    if (midi_open) platform_midi_write(bytes, length);
 }
 
 static void midi_later(long delay, int status, int data1, int data2, int length) {
@@ -31,7 +31,7 @@ static void midi_later(long delay, int status, int data1, int data2, int length)
         midi_write(bytes, length);
         return;
     }
-    if (midi_queued == MIDI_QUEUE || midi_fd < 0) return;
+    if (midi_queued == MIDI_QUEUE || !midi_open) return;
     MidiLater *later = &midi_queue[midi_queued++];
     later->pid = current->pid;
     later->due = os_now_ms() + delay;

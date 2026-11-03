@@ -132,6 +132,7 @@ static void term_capture_bytes(Terminal *t, const char *bytes, int count) {
 /* Writes text, a line for each of its lines, with its first `split` characters in `head`: onto
  * the screen, or into the file the output goes to. */
 static void term_write_split(Terminal *t, int split, uint32_t head, uint32_t colour, const char *text) {
+    os_yield_point();       /* a command writes as it goes: a long one gets here often */
     if (t->capture) {
         term_capture_bytes(t, text, (int)strlen(text));
         term_capture_bytes(t, "\n", 1);
@@ -150,6 +151,7 @@ static void term_write_split(Terminal *t, int split, uint32_t head, uint32_t col
         if (!end) break;
         text = end + 1;
         split = 0;
+        os_yield_point();
     }
 }
 
@@ -393,7 +395,10 @@ static int term_read_lines(Terminal *t, const char *command, const char *name, c
     *data = term_read_input(t, command, name, &size);
     if (!*data) return -1;
     int count = 0;
-    for (long i = 0; i < size; i++) count += (*data)[i] == '\n';
+    for (const char *at = *data, *end = *data + size; (at = memchr(at, '\n', end - at)); at++) {
+        count++;
+        os_yield_point();
+    }
     count += size > 0 && (*data)[size - 1] != '\n';
     *lines = os_alloc((count + 1) * sizeof **lines);
     if (!*lines) {
@@ -408,6 +413,7 @@ static int term_read_lines(Terminal *t, const char *command, const char *name, c
         if (end > at && end[-1] == '\r') end[-1] = 0;
         *end = 0;
         at = end + 1;
+        os_yield_point();
     }
     return count;
 }
@@ -549,6 +555,14 @@ static double term_sum(TermParser *p) {
 
 /* ------------------------------------------------------------------ the commands */
 
+/* Whether this machine's file system can do what a command needs (FS_ of os.h): not every one
+ * lists folders, makes them, deletes or renames. If not, the command says so and does nothing. */
+static int term_can(Terminal *t, int feature, const char *command, const char *what) {
+    if (os_file_system() & feature) return 1;
+    term_fail(t, "%s: this machine cannot %s", command, what);
+    return 0;
+}
+
 static void term_clear(Terminal *t) {
     t->count = 0;
     t->first = 0;
@@ -575,6 +589,7 @@ static void term_cmd_ls(Terminal *t, int argc, char **argv) {
         else term_write(t, TERM_TEXT, name);
         return;
     }
+    if (!term_can(t, FS_LIST, "ls", "list a folder")) return;
     DirEntry *entries = os_alloc(TERM_DIR_MAX * sizeof *entries);
     int count = entries ? os_list_dir(path, entries, TERM_DIR_MAX) : -1;
     if (count < 0) {
@@ -673,6 +688,7 @@ static int term_remove_tree(const char *path, int depth) {
         DirEntry *entries = os_alloc(TERM_DIR_MAX * sizeof *entries);
         int count = entries ? os_list_dir(path, entries, TERM_DIR_MAX) : 0;
         for (int i = 0; i < count; i++) {
+            os_yield_point();
             term_join(inner, sizeof inner, path, entries[i].name);
             term_remove_tree(inner, depth + 1);
         }
@@ -690,6 +706,7 @@ static int term_move_tree(const char *from, const char *to, int depth) {
     DirEntry *entries = os_alloc(TERM_DIR_MAX * sizeof *entries);
     int count = entries ? os_list_dir(from, entries, TERM_DIR_MAX) : 0;
     for (int i = 0; i < count; i++) {
+        os_yield_point();
         term_join(inner_from, sizeof inner_from, from, entries[i].name);
         term_join(inner_to, sizeof inner_to, to, entries[i].name);
         term_move_tree(inner_from, inner_to, depth + 1);
@@ -729,6 +746,7 @@ static void term_cmd_mv(Terminal *t, int argc, char **argv) {
         term_fail(t, "mv: %s: no such file or folder", argv[1]);
         return;
     }
+    if (!term_can(t, FS_RENAME, "mv", "rename files")) return;
     term_target(t, from, argv[2], to, sizeof to);
     size_t length = strlen(from);
     if (os_stat(to, NULL)) term_fail(t, "mv: %s is there already", to);
@@ -738,6 +756,7 @@ static void term_cmd_mv(Terminal *t, int argc, char **argv) {
 }
 
 static void term_cmd_rm(Terminal *t, int argc, char **argv) {
+    if (!term_can(t, FS_DELETE, "rm", "delete files")) return;
     int recursive = 0, any = 0;
     for (int i = 1; i < argc; i++) recursive |= !strcmp(argv[i], "-r") || !strcmp(argv[i], "-rf");
     for (int i = 1; i < argc; i++) {
@@ -754,6 +773,7 @@ static void term_cmd_rm(Terminal *t, int argc, char **argv) {
 }
 
 static void term_cmd_rmdir(Terminal *t, int argc, char **argv) {
+    if (!term_can(t, FS_DELETE | FS_LIST, "rmdir", "delete folders")) return;
     if (argc < 2) term_fail(t, "rmdir: which folder?");
     for (int i = 1; i < argc; i++) {
         char path[160];
@@ -766,6 +786,7 @@ static void term_cmd_rmdir(Terminal *t, int argc, char **argv) {
 }
 
 static void term_cmd_mkdir(Terminal *t, int argc, char **argv) {
+    if (!term_can(t, FS_MAKE_DIR, "mkdir", "make folders")) return;
     if (argc < 2) term_fail(t, "mkdir: which folder?");
     for (int i = 1; i < argc; i++) {
         char path[160];
@@ -914,8 +935,8 @@ static void term_cmd_whoami(Terminal *t, int argc, char **argv) {
 
 static void term_cmd_uname(Terminal *t, int argc, char **argv) {
     (void)argv;
-    term_write(t, TERM_TEXT, argc > 1 ? "asmOS 1.0 x86_64 (a Linux program on the emulated x86 machine)"
-                                      : "asmOS");
+    if (argc > 1) term_printf(t, TERM_TEXT, "asmOS 1.0 %s", os_machine(MACHINE_UNAME));
+    else term_write(t, TERM_TEXT, "asmOS");
 }
 
 static void term_cmd_fortune(Terminal *t, int argc, char **argv) {
@@ -971,9 +992,12 @@ static void term_cmd_wc(Terminal *t, int argc, char **argv) {
         char *data = term_read_input(t, "wc", name ? argv[i] : NULL, &size);
         if (!data) continue;
         long lines = 0, words = 0;
-        for (long k = 0; k < size; k++) {
-            lines += data[k] == '\n';
-            words += !isspace((unsigned char)data[k]) && (k == 0 || isspace((unsigned char)data[k - 1]));
+        for (long block = 0; block < size; block += 65536) {
+            os_yield_point();       /* every 64 KB of a large file */
+            for (long k = block; k < size && k < block + 65536; k++) {
+                lines += data[k] == '\n';
+                words += !isspace((unsigned char)data[k]) && (k == 0 || isspace((unsigned char)data[k - 1]));
+            }
         }
         os_free(data);
         term_printf(t, TERM_TEXT, "%6ld %6ld %7ld  %s", lines, words, size, name ? argv[i] : "");
@@ -1004,6 +1028,7 @@ static void term_cmd_grep(Terminal *t, int argc, char **argv) {
         char *data, **lines;
         int total = term_read_lines(t, "grep", piped ? NULL : argv[index], &data, &lines);
         for (int i = 0; i < total; i++) {
+            os_yield_point();
             if (!term_contains(lines[i], pattern, ignore_case)) continue;
             char where[96], text[TERM_LINE_MAX + 100];
             if (several) snprintf(where, sizeof where, "%s:%d: ", argv[index], i + 1);
@@ -1029,6 +1054,7 @@ static long term_walk(Terminal *t, int mode, const char *path, const char *shown
     int count = entries ? os_list_dir(term_fs(path), entries, TERM_DIR_MAX) : 0;
     long bytes = 0;
     for (int i = 0; i < count; i++) {
+        os_yield_point();
         DirEntry *entry = &entries[i];
         char inner[256], inner_shown[256], text[TERM_LINE_MAX + 1] = "";
         term_join(inner, sizeof inner, path, entry->name);
@@ -1075,6 +1101,7 @@ static void term_cmd_walk(Terminal *t, int argc, char **argv) {
         term_fail(t, "%s: %s: no such folder", argv[0], name);
         return;
     }
+    if (!term_can(t, FS_LIST, argv[0], "list folders")) return;
     if (mode == TERM_TREE) term_write(t, TERM_BLUE, name);
     int files = 0, folders = 0;
     long bytes = term_walk(t, mode, path, name, "", part, 0, &files, &folders);
@@ -1379,6 +1406,7 @@ static void term_run(Terminal *t, const char *line) {
         int out_length = 0;
         t->piped = i ? (piped ? piped : "") : NULL;
         t->piped_length = piped_length;
+        os_yield_point();   /* between the commands of a pipe */
         int ran = term_run_one(t, parts[i], i + 1 < count ? &out : NULL, &out_length);
         os_free(piped);
         piped = out;

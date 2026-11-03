@@ -151,6 +151,7 @@ static void viewer_blit_scaled(Viewer *v, Rect place, Rect area) {
         for (int i = 0; i < width; i++) row[i] = from[columns[i]];
         blit(row, 0, r.x, y, width, rows);
         y += rows;
+        os_yield_point();
     }
 }
 

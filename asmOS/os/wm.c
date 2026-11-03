@@ -7,7 +7,9 @@
  * the screen is marked dirty, and wm_render repaints the dirty rectangles into the back buffer,
  * from the desktop up through the windows (their frames, and their pictures copied) to the
  * taskbar and the menus, then copies them onto the framebuffer. The pointer, a dragged file and a
- * resize outline are drawn on the framebuffer alone, over what the compositor put there.
+ * resize outline are drawn on the framebuffer alone, over what the compositor put there. Whatever
+ * reaches the framebuffer is then shown (show), which most machines need not do: their
+ * framebuffer is the screen.
  *
  * The system process runs all of this, never preempted. A process reaches it through the os_
  * calls, which hold the kernel lock while they change anything here.
@@ -124,11 +126,18 @@ static Rect cursor_rect(void) {
     return rect(cursor_x, cursor_y, drag_active ? 32 : ARROW_W, drag_active ? 36 : ARROW_H);
 }
 
+/* Shows what was drawn into the framebuffer in a rectangle of it, on a machine that has to. */
+static void show(Rect r) {
+    r = rect_intersect(r, rect(0, 0, screen_w, screen_h));
+    if (!rect_empty(r)) platform_screen_present(r.x, r.y, r.w, r.h);
+}
+
 static void present(Rect r) {
     r = rect_intersect(r, rect(0, 0, screen_w, screen_h));
     if (rect_empty(r)) return;
     copy_rect32(framebuffer + r.y * framebuffer_stride + r.x, framebuffer_stride * 4,
                 back_buffer + r.y * screen_w + r.x, screen_w * 4, r.w, r.h);
+    show(r);
 }
 
 /* asmOS DOOM: the back buffer brought up to date where a picture went straight to the
@@ -155,6 +164,7 @@ static void cursor_draw(void) {
         }
     }
     cursor_shown = 1;
+    show(cursor_rect());
 }
 
 static void cursor_hide(void) {
@@ -189,6 +199,7 @@ static void outline_draw(void) {
         for (int y = s.y; y < s.y + s.h; y++)
             for (int x = s.x; x < s.x + s.w; x++)
                 if ((x + y) & 1) framebuffer[y * framebuffer_stride + x] ^= 0xffffff;
+        show(s);
     }
     outline_shown = 1;
 }
@@ -706,16 +717,11 @@ static void wallpaper_load(void) {
     free(wallpaper_picture);
     wallpaper_picture = NULL;
     if (os_settings()->wallpaper != WALLPAPER_PICTURE) return;
-    FILE *file = fopen(os_settings()->picture, "rb");
-    if (!file) return;
-    fseek(file, 0, SEEK_END);
-    long size = ftell(file);
-    fseek(file, 0, SEEK_SET);
-    char *data = malloc(size > 0 ? size : 1);
-    int ok = data && fread(data, 1, size, file) == (size_t)size;
-    fclose(file);
+    long size;
+    char *data = read_file_with(os_settings()->picture, &size, malloc, free);
+    if (!data) return;
     int w, h;
-    uint32_t *picture = ok ? bmp_decode(data, size, &w, &h) : NULL;
+    uint32_t *picture = bmp_decode(data, size, &w, &h);
     free(data);
     if (!picture) return;
     int sh = screen_h - TASKBAR_H;
@@ -1264,6 +1270,7 @@ static int present_direct(Rect r) {
     if (inside.w != r.w || inside.h != r.h || rect_empty(r)) return 0;
     copy_rect32(framebuffer + r.y * framebuffer_stride + r.x, framebuffer_stride * 4,
                 top->pixels + (r.y - client.y) * top->pw + (r.x - client.x), top->pw * 4, r.w, r.h);
+    show(r);
     stale = rect_empty(stale) ? r : rect_union(stale, r);
     return 1;
 }

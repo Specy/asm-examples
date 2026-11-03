@@ -50,8 +50,40 @@ static inline Rect rect_union(Rect a, Rect b) {
 }
 static inline int rect_overlaps(Rect a, Rect b) { return !rect_empty(rect_intersect(a, b)); }
 
-/* ------------------------------------------------------------------ blit.asm */
+/* ------------------------------------------------------------------ numbers in bytes */
 
+/* Numbers in a file's bytes, read a byte at a time so that the processor's own byte order never
+ * matters: BMP files and the videos keep theirs little-endian, MIDI files big-endian. */
+static inline uint32_t read_le16(const void *at) {
+    const uint8_t *b = at;
+    return (uint32_t)b[0] | (uint32_t)b[1] << 8;
+}
+static inline uint32_t read_le32(const void *at) {
+    const uint8_t *b = at;
+    return (uint32_t)b[0] | (uint32_t)b[1] << 8 | (uint32_t)b[2] << 16 | (uint32_t)b[3] << 24;
+}
+static inline uint32_t read_be16(const void *at) {
+    const uint8_t *b = at;
+    return (uint32_t)b[0] << 8 | (uint32_t)b[1];
+}
+static inline uint32_t read_be32(const void *at) {
+    const uint8_t *b = at;
+    return (uint32_t)b[0] << 24 | (uint32_t)b[1] << 16 | (uint32_t)b[2] << 8 | (uint32_t)b[3];
+}
+static inline void write_le16(void *at, uint32_t value) {
+    uint8_t *b = at;
+    b[0] = (uint8_t)value;
+    b[1] = (uint8_t)(value >> 8);
+}
+static inline void write_le32(void *at, uint32_t value) {
+    uint8_t *b = at;
+    for (int i = 0; i < 4; i++) b[i] = (uint8_t)(value >> 8 * i);
+}
+
+/* ------------------------------------------------------------------ fast pixel loops */
+
+/* The platform's own where it has faster ones, as x86's `rep` instructions are
+ * (os/platform/x86/blit.asm); os/blit.c's C loops elsewhere. */
 void fill_rect32(uint32_t *to, size_t stride, size_t width, size_t height, uint32_t colour);
 void copy_rect32(uint32_t *to, size_t to_stride, const uint32_t *from, size_t from_stride,
                  size_t width, size_t height);
@@ -165,6 +197,14 @@ int os_kill(int pid);
 int os_getpid(void);
 /* Gives the processor to the other processes until the next turn. */
 void os_yield(void);
+/*
+ * A point in a long loop where the process lets the others run if its turn is over. A machine
+ * whose timer preempts processes takes the processor from them anyway, and this does nothing; on
+ * one without (a cooperative machine), a process that never gets to a yield point, a wait for a
+ * message or a sleep holds the desktop up, the pointer included. os_peek_message and
+ * os_get_message are yield points too.
+ */
+void os_yield_point(void);
 /* Waits `ms` milliseconds; messages keep arriving meanwhile and wait in the queue. */
 void os_sleep(int ms);
 /* Milliseconds since asmOS started, and the calendar time (UTC). */
@@ -191,7 +231,7 @@ int os_processes(ProcessInfo *list, int max);
 void os_cpu_load(int *busy_percent, long *instructions);
 /* The instructions the calling process has run since it started, to the moment: the emulator's
  * own count, so the difference of two is what the code between them cost. */
-long os_instructions(void);
+uint64_t os_instructions(void);
 /* A profiler: while on, every tick of the timer that finds the calling process running notes the
  * address of the instruction it was at; os_profile_take hands over the addresses noted since it
  * was last called, up to `max`, and answers how many. */
@@ -226,6 +266,10 @@ int os_delete(const char *path);              /* a file, or an empty folder */
 int os_rename(const char *from, const char *to);
 int os_make_dir(const char *path);
 int os_copy_file(const char *from, const char *to);
+/* What this machine's file system can do besides reading and writing whole files: not every one
+ * can list a folder, make one, delete or rename. The calls it cannot answer -1. */
+enum { FS_LIST = 1, FS_MAKE_DIR = 2, FS_DELETE = 4, FS_RENAME = 8 };
+int os_file_system(void);
 /* The name after the last slash. */
 const char *os_base_name(const char *path);
 /* An uncompressed 24- or 32-bit BMP file's picture, top row first, in os_alloc'd memory; NULL
@@ -317,7 +361,7 @@ typedef struct {
     int buttons;          /* the buttons held */
     int clicks;           /* 2 for the second press of a double click */
     int wheel;            /* +1 a notch away from the user, -1 towards */
-    int key;              /* Linux's KEY_ code, from <linux/input.h> */
+    int key;              /* asmOS's KEY_ code, keys.h */
     int ch;               /* the character the key types, or 0 */
     int mods;             /* MOD_ held */
     int id;               /* of the command or the timer */
@@ -334,7 +378,7 @@ int os_peek_message(Message *message);
 void os_default_message(Message *message);
 /* A MSG_TIMER with this id every `ms` milliseconds for the window; 0 stops it. */
 void os_set_timer(Window *win, int id, int ms);
-/* Whether a key (KEY_ code) is held now, for games. */
+/* Whether a key (KEY_ code, keys.h) is held now, for games. */
 int os_key_down(int key);
 
 /* ------------------------------------------------------------------ dialogs */
@@ -452,5 +496,10 @@ void about_main(const char *argument);
 
 /* Shuts asmOS down, after asking every process to end. */
 void os_shutdown(void);
+
+/* The machine asmOS runs on, in words, as its platform puts them: About asmOS's Processor line,
+ * the Terminal's uname -a, and About's lines on how asmOS runs there. */
+enum { MACHINE_PROCESSOR, MACHINE_UNAME, MACHINE_CODE, MACHINE_RUNS, MACHINE_FILES, MACHINE_LINES };
+const char *os_machine(int what);
 
 #endif

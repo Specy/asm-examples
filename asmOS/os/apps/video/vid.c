@@ -34,6 +34,7 @@
 
 #include <stdint.h>
 #include <string.h>
+#include "../../os.h"                   /* read_le16 and read_le32 */
 
 #define VID_INLINE static inline __attribute__((always_inline))
 
@@ -54,8 +55,8 @@ typedef struct {
     char title[65];
 } VidFile;
 
-static uint32_t vid_u16(const uint8_t *at) { return at[0] | at[1] << 8; }
-static uint32_t vid_u32(const uint8_t *at) { return at[0] | at[1] << 8 | at[2] << 16 | (uint32_t)at[3] << 24; }
+static uint32_t vid_u16(const uint8_t *at) { return read_le16(at); }
+static uint32_t vid_u32(const uint8_t *at) { return read_le32(at); }
 
 /* Where chunk `chunk`'s picture (sound 0) or sound (sound 1) starts; the chunk after the last is
  * where they end. */

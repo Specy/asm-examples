@@ -42,7 +42,7 @@ static void about_draw_info(About *about) {
     snprintf(values[1], sizeof values[1], "%s held by the processes", amount);
     snprintf(values[2], sizeof values[2], "%ld:%02ld:%02ld", seconds / 3600, seconds / 60 % 60, seconds % 60);
     snprintf(values[3], sizeof values[3], "%d x %d pixels, 32-bit colour", screen_w, screen_h);
-    snprintf(values[4], sizeof values[4], "x86-64, emulated by Blink");
+    snprintf(values[4], sizeof values[4], "%s", os_machine(MACHINE_PROCESSOR));
     snprintf(values[5], sizeof values[5], "%d%% busy, %ld.%ld million instructions/s", busy, instructions / 1000000,
              instructions / 100000 % 10);
     static const char *const labels[ABOUT_ROWS] = { "Processes:", "Memory:", "Uptime:", "Screen:", "Processor:",
@@ -66,9 +66,9 @@ static void about_draw_all(About *about) {
     fill_rect(0, 0, ABOUT_W, ABOUT_H, FACE);
     draw_icon(&ICON_CHIP, 10, 6, 4);
     draw_text_bold(86, 14, "asmOS 2.0", NAVY);
-    static const char *const description[] = {
+    const char *const description[] = {
         "A small desktop operating system in C,",
-        "with its pixel loops in x86 assembly.",
+        os_machine(MACHINE_CODE),
         "Each application is its own process.",
     };
     for (int i = 0; i < 3; i++) draw_text(86, 34 + i * 14, description[i], BLACK);
@@ -77,8 +77,8 @@ static void about_draw_all(About *about) {
     about_draw_info(about);
     hline(12, ABOUT_INFO_Y + ABOUT_ROWS * ABOUT_INFO_ROW + 4, ABOUT_W - 24, SHADOW);
     hline(12, ABOUT_INFO_Y + ABOUT_ROWS * ABOUT_INFO_ROW + 5, ABOUT_W - 24, WHITE);
-    draw_text(16, ABOUT_H - 36, "One Linux program on the emulated", SHADOW);
-    draw_text(16, ABOUT_H - 22, "machine; its files are the Project's.", SHADOW);
+    draw_text(16, ABOUT_H - 36, os_machine(MACHINE_RUNS), SHADOW);
+    draw_text(16, ABOUT_H - 22, os_machine(MACHINE_FILES), SHADOW);
     about_draw_ok(about);
     os_window_update_all(about->win);
 }

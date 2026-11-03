@@ -97,7 +97,7 @@ typedef struct {
     long score, high;
     int lines, level, new_high;
     int fall_ms, lock_ms, lock_moves, clear_ms;
-    unsigned char held[(KEY_MAX + 8) / 8];              /* the keys held, a bit each, to tell repeats */
+    unsigned char held[KEY_COUNT / 8];              /* the keys held, a bit each, to tell repeats */
     int slide, slide_ms;                                /* slide: -1 or 1 while a side arrow is held */
     long last_ms;
     int changed;
@@ -646,7 +646,7 @@ static void blocks_pause(BlocksGame *b) {
 /* A key pressed. A key already held is the keyboard repeating it, which does nothing: the side
  * arrows slide by their own timing, and Down is followed while held. */
 static void blocks_key(BlocksGame *b, const Message *m) {
-    if (m->key < 0 || m->key > KEY_MAX) return;
+    if (m->key < 0 || m->key >= KEY_COUNT) return;
     unsigned char *byte = &b->held[m->key / 8], bit = (unsigned char)(1 << m->key % 8);
     int repeat = *byte & bit;
     *byte |= bit;
@@ -681,7 +681,7 @@ static void blocks_key(BlocksGame *b, const Message *m) {
 }
 
 static void blocks_key_up(BlocksGame *b, const Message *m) {
-    if (m->key < 0 || m->key > KEY_MAX) return;
+    if (m->key < 0 || m->key >= KEY_COUNT) return;
     b->held[m->key / 8] &= (unsigned char)~(1 << m->key % 8);
     if ((m->key == KEY_LEFT && b->slide < 0) || (m->key == KEY_RIGHT && b->slide > 0)) {
         /* the other arrow, if still held, takes over */

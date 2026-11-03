@@ -27,8 +27,8 @@
 /* r_draw.c's: where the 3D view is in DOOM's picture */
 extern int viewwindowy, viewheight;
 
-/* Linux's KEY_ codes of the keys DOOM uses: <linux/input-event-codes.h> would clash with
- * doomkeys.h, which names DOOM's own codes KEY_ too. */
+/* asmOS's key codes (os/keys.h, which are Linux's numbers) of the keys DOOM uses, under names of
+ * their own: keys.h would clash with doomkeys.h, which names DOOM's own codes KEY_ too. */
 enum {
     LK_ESC = 1, LK_1 = 2, LK_0 = 11, LK_MINUS = 12, LK_EQUAL = 13, LK_BACKSPACE = 14, LK_TAB = 15,
     LK_ENTER = 28, LK_LEFTCTRL = 29, LK_LEFTSHIFT = 42, LK_COMMA = 51, LK_DOT = 52,
@@ -411,10 +411,12 @@ static int doom_read_symbols(void) {
     uint64_t at = 0;
     uint16_t entry_size = 0, count = 0;
     if (size >= 64 && !memcmp(elf, "\177ELF", 4)) {
-        memcpy(&at, elf + 0x28, 8);
-        memcpy(&entry_size, elf + 0x3a, 2);
-        memcpy(&count, elf + 0x3c, 2);
+        at = read_le32(elf + 0x28) | (uint64_t)read_le32(elf + 0x2c) << 32;
+        entry_size = (uint16_t)read_le16(elf + 0x3a);
+        count = (uint16_t)read_le16(elf + 0x3c);
     }
+    /* the tables are read where they lie: the x86-64 program this profiles is little-endian, as
+     * the x86 processor reading it is */
     const DoomElfSection *sections = (const DoomElfSection *)(elf + at), *table = NULL;
     if (entry_size == sizeof *sections && at + (uint64_t)count * entry_size <= (uint64_t)size)
         for (int i = 0; i < count && !table; i++)
@@ -690,6 +692,7 @@ void I_FinishUpdate(void) {
     if (doom_show_times) doom_in_show += os_instructions() - counted;
     doom_count_frame();
     I_SoundPump();
+    os_yield_point();       /* a frame shown: the others' turn, on a machine with no timer */
 }
 
 void I_UpdateNoBlit(void) {
@@ -740,7 +743,7 @@ void I_InitWindowIcon(void) {
 int vanilla_keyboard_mapping = 1;
 
 static boolean doom_held[256];     /* DOOM's keys down, to let go of when the window loses them */
-static byte doom_pressed[256];     /* DOOM's key each Linux key went down as, to let go of the same */
+static byte doom_pressed[256];     /* DOOM's key each asmOS key went down as, to let go of the same */
 
 /*
  * W, A, S and D move and strafe, E opens and F fires, but only while playing: in DOOM's menu they
@@ -760,7 +763,7 @@ static int doom_play_key(int ch) {
     return 0;
 }
 
-/* DOOM's code for a Linux key, or 0 for one DOOM has no use for. */
+/* DOOM's code for an asmOS key, or 0 for one DOOM has no use for. */
 static int doom_key(int key, int ch) {
     int play = ch > 0 && ch < 127 ? doom_play_key(ch) : 0;
     if (play) return play;

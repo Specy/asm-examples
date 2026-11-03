@@ -278,6 +278,14 @@ static void files_note(FileBrowser *f, const char *format, const char *name) {
     snprintf(f->note, sizeof f->note, format, name);
 }
 
+/* Whether this machine's file system can do something (FS_ of os.h): if not, the status bar says
+ * so, and nothing is tried. */
+static int files_can(FileBrowser *f, int feature, const char *what) {
+    if (os_file_system() & feature) return 1;
+    files_note(f, "This machine cannot %s", what);
+    return 0;
+}
+
 static void files_select(FileBrowser *f, int index) {
     f->selected = index;
     if (index >= 0) {
@@ -294,7 +302,7 @@ static void files_read(FileBrowser *f, const char *name) {
     f->count = os_list_dir(f->dir, f->entries, FILES_MAX);
     if (f->count < 0) {
         f->count = 0;
-        files_note(f, "Cannot read %.100s", f->dir);
+        if (files_can(f, FS_LIST, "list folders")) files_note(f, "Cannot read %.100s", f->dir);
     }
     int index = -1;
     for (int i = 0; name && i < f->count && index < 0; i++)
@@ -352,6 +360,7 @@ static int files_remove_tree(const char *path, int depth) {
         DirEntry *entries = os_alloc(FILES_MAX * sizeof *entries);
         int count = entries ? os_list_dir(path, entries, FILES_MAX) : 0;
         for (int i = 0; i < count; i++) {
+            os_yield_point();
             files_join(inner, sizeof inner, path, entries[i].name);
             files_remove_tree(inner, depth + 1);
         }
@@ -372,6 +381,7 @@ static int files_transfer(const char *from, const char *to, int copy, int depth)
     int count = entries ? os_list_dir(from, entries, FILES_MAX) : 0, failed = 0;
     failed |= os_make_dir(to) != 0;
     for (int i = 0; i < count; i++) {
+        os_yield_point();
         files_join(inner_from, sizeof inner_from, from, entries[i].name);
         files_join(inner_to, sizeof inner_to, to, entries[i].name);
         failed |= files_transfer(inner_from, inner_to, copy, depth + 1) != 0;
@@ -495,9 +505,18 @@ static void files_command(FileBrowser *f, int id) {
     }
     switch (id) {
     case FILES_OPEN: files_open(f, f->selected, -1); break;
-    case FILES_NEW_FOLDER: files_new_folder(f); break;
-    case FILES_RENAME: files_rename(f); break;
-    case FILES_DELETE: files_delete(f); break;
+    case FILES_NEW_FOLDER:
+        if (files_can(f, FS_MAKE_DIR, "make folders")) files_new_folder(f);
+        else files_draw_all(f);
+        break;
+    case FILES_RENAME:
+        if (files_can(f, FS_RENAME, "rename files")) files_rename(f);
+        else files_draw_all(f);
+        break;
+    case FILES_DELETE:
+        if (files_can(f, FS_DELETE, "delete files")) files_delete(f);
+        else files_draw_all(f);
+        break;
     case FILES_TERMINAL: {
         char path[200];
         if (f->selected >= 0 && f->entries[f->selected].is_dir)
@@ -632,6 +651,11 @@ void files_main(const char *argument) {
     if (!f) os_exit(1);
     f->win = os_window_create("Files", &ICON_FOLDER, 440, 300, WIN_RESIZABLE);
     if (!f->win) os_exit(1);
+    /* what this machine's file system cannot do is greyed out */
+    int can = os_file_system();
+    if (!(can & FS_MAKE_DIR)) files_file_menu[1].flags |= MENU_DISABLED;
+    if (!(can & FS_RENAME)) files_file_menu[2].flags |= MENU_DISABLED;
+    if (!(can & FS_DELETE)) files_file_menu[3].flags |= MENU_DISABLED;
     os_window_set_menu(f->win, files_menus);
     os_window_min_size(f->win, 260, 160);
     f->buttons.pressed = f->pressed = f->selected = -1;

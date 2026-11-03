@@ -157,6 +157,7 @@ void blit_scaled(const uint32_t *pixels, int stride, int w, int h, int x, int y,
         uint32_t *to = gfx->pixels + row * gfx->stride;
         for (int column = r.x; column < r.x + r.w; column++)
             to[column] = source[(long)(column - whole.x) * w / dw];
+        os_yield_point();       /* a pixel at a time, a large picture takes a while */
     }
 }
 

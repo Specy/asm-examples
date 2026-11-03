@@ -1,8 +1,7 @@
 /*
- * The keyboard and the pointer, read as Linux input events from /dev/input. The keyboard is the
- * device that has a key A; the pointer is the USB tablet, the device that reports an absolute
- * position. Key codes become characters with a US layout, and the tablet's positions become
- * pixels. Events go to the window manager as MouseEvent and KeyEvent.
+ * The keyboard and the pointer, as the platform reads them (platform_input_read): key codes become
+ * characters with a US layout, the keys held are kept for os_key_down, two quick presses make a
+ * double click, and events go to the window manager as MouseEvent and KeyEvent.
  */
 
 /* What the pointer and the keyboard did, as the window manager takes them. */
@@ -16,7 +15,7 @@ typedef struct {
     int wheel;
 } MouseEvent;
 typedef struct {
-    int code;       /* Linux's KEY_ code */
+    int code;       /* asmOS's KEY_ code, keys.h */
     int ch;         /* the character it types, or 0 */
     int mods;
 } KeyEvent;
@@ -24,53 +23,17 @@ typedef struct {
 void wm_mouse_event(const MouseEvent *event);
 void wm_key_event(const KeyEvent *event, int released);
 
-static int keyboard_fd = -1, tablet_fd = -1;
-static struct input_absinfo axis_x, axis_y;
 static int modifiers, caps_lock;
-static unsigned char keys_held[KEY_MAX / 8 + 1];
+static unsigned char keys_held[KEY_COUNT / 8];
 
-int os_key_down(int key) { return key >= 0 && key <= KEY_MAX && keys_held[key / 8] >> (key % 8) & 1; }
+int os_key_down(int key) { return key >= 0 && key < KEY_COUNT && keys_held[key / 8] >> (key % 8) & 1; }
 static int key_modifiers(void) { return modifiers; }
 
-/* What each key types, by its Linux code: unshifted, then shifted. */
+/* What each key types, by its code: unshifted, then shifted. */
 static const char KEYMAP[] =
     "\0\0331234567890-=\b\tqwertyuiop[]\n\0asdfghjkl;'`\0\\zxcvbnm,./\0*\0 ";
 static const char KEYMAP_SHIFT[] =
     "\0\033!@#$%^&*()_+\b\tQWERTYUIOP{}\n\0ASDFGHJKL:\"~\0|ZXCVBNM<>?\0*\0 ";
-
-static int has_bit(const unsigned char *bits, int bit) { return bits[bit / 8] >> (bit % 8) & 1; }
-
-/* The first event device that sends the event type `type` and, for EV_KEY, has the key `key`. */
-static int find_device(int type, int key) {
-    for (int number = 0; number < 32; number++) {
-        char path[32];
-        snprintf(path, sizeof path, "/dev/input/event%d", number);
-        int fd = open(path, O_RDONLY | O_NONBLOCK);
-        if (fd < 0) continue;
-        unsigned char types[EV_MAX / 8 + 1] = { 0 };
-        unsigned char keys[KEY_MAX / 8 + 1] = { 0 };
-        ioctl(fd, EVIOCGBIT(0, sizeof types), types);
-        ioctl(fd, EVIOCGBIT(EV_KEY, sizeof keys), keys);
-        if (has_bit(types, type) && (key < 0 || has_bit(keys, key))) return fd;
-        close(fd);
-    }
-    return -1;
-}
-
-static int input_open(void) {
-    keyboard_fd = find_device(EV_KEY, KEY_A);
-    tablet_fd = find_device(EV_ABS, -1);
-    if (tablet_fd >= 0) {
-        ioctl(tablet_fd, EVIOCGABS(ABS_X), &axis_x);
-        ioctl(tablet_fd, EVIOCGABS(ABS_Y), &axis_y);
-    }
-    return keyboard_fd >= 0 && tablet_fd >= 0;
-}
-
-static int to_pixel(int value, int size, const struct input_absinfo *axis) {
-    int maximum = axis->maximum > 0 ? axis->maximum : 32767;
-    return clamp_int((int)(((long)value * size + maximum - 1) / maximum), 0, size - 1);
-}
 
 /* ------------------------------------------------------------------ the keyboard */
 
@@ -98,26 +61,27 @@ static int modifier_of(int code) {
     return 0;
 }
 
-static void keyboard_event(const struct input_event *event) {
-    if (event->type != EV_KEY || event->code >= BTN_MISC) return;
-    if (event->value) keys_held[event->code / 8] |= (unsigned char)(1 << (event->code % 8));
-    else keys_held[event->code / 8] &= (unsigned char)~(1 << (event->code % 8));
-    int modifier = modifier_of(event->code);
+static void keyboard_event(const InputEvent *event) {
+    int code = event->code, down = event->kind != INPUT_KEY_UP;
+    if (code < 0 || code >= KEY_COUNT) return;
+    if (down) keys_held[code / 8] |= (unsigned char)(1 << (code % 8));
+    else keys_held[code / 8] &= (unsigned char)~(1 << (code % 8));
+    int modifier = modifier_of(code);
     if (modifier) {
-        if (event->value) modifiers |= modifier;
+        if (down) modifiers |= modifier;
         else modifiers &= ~modifier;
         return;
     }
-    if (event->value == 0) {
-        KeyEvent key = { event->code, 0, modifiers };
+    if (!down) {
+        KeyEvent key = { code, 0, modifiers };
         wm_key_event(&key, 1);
         return;
     }
-    if (event->code == KEY_CAPSLOCK) {
+    if (code == KEY_CAPSLOCK) {
         caps_lock = !caps_lock;
         return;
     }
-    KeyEvent key = { event->code, key_character(event->code), modifiers };
+    KeyEvent key = { code, key_character(code), modifiers };
     if (modifiers & (MOD_CTRL | MOD_ALT)) key.ch = 0;
     wm_key_event(&key, 0);
 }
@@ -156,43 +120,31 @@ static void flush_move(void) {
     }
 }
 
-static void tablet_event(const struct input_event *event) {
-    if (event->type == EV_ABS && event->code == ABS_X) {
-        pointer_x = to_pixel(event->value, screen_w, &axis_x);
+static void pointer_event(const InputEvent *event) {
+    pointer_x = clamp_int(event->x, 0, screen_w - 1);
+    pointer_y = clamp_int(event->y, 0, screen_h - 1);
+    if (event->kind == INPUT_MOVE) {
         moved = 1;
-    } else if (event->type == EV_ABS && event->code == ABS_Y) {
-        pointer_y = to_pixel(event->value, screen_h, &axis_y);
-        moved = 1;
-    } else if (event->type == EV_KEY) {
-        int button = event->code == BTN_LEFT ? BUTTON_LEFT
-                     : event->code == BTN_RIGHT ? BUTTON_RIGHT
-                     : event->code == BTN_MIDDLE ? BUTTON_MIDDLE : 0;
-        if (!button) return;
+    } else if (event->kind == INPUT_WHEEL) {
         flush_move();
-        if (event->value) pointer_buttons |= button;
-        else pointer_buttons &= ~button;
-        send_pointer(event->value ? MOUSE_DOWN : MOUSE_UP, button, 0);
-    } else if (event->type == EV_REL && event->code == REL_WHEEL) {
+        send_pointer(MOUSE_WHEEL, 0, event->code);
+    } else {
         flush_move();
-        send_pointer(MOUSE_WHEEL, 0, event->value);
+        if (event->kind == INPUT_BUTTON_DOWN) pointer_buttons |= event->code;
+        else pointer_buttons &= ~event->code;
+        send_pointer(event->kind == INPUT_BUTTON_DOWN ? MOUSE_DOWN : MOUSE_UP, event->code, 0);
     }
 }
 
 /* Waits up to timeout milliseconds (-1: for ever) for input, then hands over every event that
  * arrived. */
 static void input_wait(int timeout) {
-    struct pollfd waiting[2] = { { keyboard_fd, POLLIN, 0 }, { tablet_fd, POLLIN, 0 } };
-    if (poll(waiting, 2, timeout) <= 0) return;
-    struct input_event events[64];
-    for (;;) {
-        int got = 0;
-        ssize_t bytes = read(keyboard_fd, events, sizeof events);
-        for (int i = 0; i < bytes / (ssize_t)sizeof events[0]; i++) keyboard_event(&events[i]);
-        got += bytes > 0;
-        bytes = read(tablet_fd, events, sizeof events);
-        for (int i = 0; i < bytes / (ssize_t)sizeof events[0]; i++) tablet_event(&events[i]);
-        got += bytes > 0;
-        if (!got) break;
-    }
+    InputEvent events[128];
+    for (int count = platform_input_read(events, 128, timeout); count > 0;
+         count = platform_input_read(events, 128, 0))
+        for (int i = 0; i < count; i++) {
+            if (events[i].kind <= INPUT_KEY_REPEAT) keyboard_event(&events[i]);
+            else pointer_event(&events[i]);
+        }
     flush_move();
 }

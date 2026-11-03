@@ -785,6 +785,7 @@ static void paint_paste(Paint *p) {
 
 static void paint_flip_h(uint32_t *pixels, int w, int h) {
     for (int y = 0; y < h; y++) {
+        os_yield_point();
         uint32_t *row = pixels + (long)y * w;
         for (int a = 0, b = w - 1; a < b; a++, b--) {
             uint32_t pixel = row[a];
@@ -807,7 +808,10 @@ static void paint_flip_v(uint32_t *pixels, int w, int h) {
 }
 
 static void paint_invert(uint32_t *pixels, long count) {
-    for (long i = 0; i < count; i++) pixels[i] ^= 0xffffff;
+    for (long block = 0; block < count; block += 4096) {
+        os_yield_point();
+        for (long i = block; i < count && i < block + 4096; i++) pixels[i] ^= 0xffffff;
+    }
 }
 
 /* Flips or inverts the selection, or the whole picture when nothing is selected. */
@@ -1148,6 +1152,7 @@ static void paint_flood(Paint *p, int x, int y, uint32_t colour) {
                 if (next[i] == old && (i == left || next[i - 1] != old) && depth < capacity)
                     stack[depth++] = ny * w + i;
         }
+        os_yield_point();       /* a run at a time: a large area takes a while */
     }
     os_free(stack);
 }
