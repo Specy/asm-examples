@@ -44,7 +44,9 @@ static const MenuItem files_with_menu[] = {
     { "Image Viewer", FILES_WITH + APP_VIEWER, 0, NULL, NULL },
     { "Paint", FILES_WITH + APP_PAINT, 0, NULL, NULL },
     { "Music Player", FILES_WITH + APP_MUSIC, 0, NULL, NULL },
+#if PLATFORM_VIDEO
     { "Video Player", FILES_WITH + APP_VIDEO, 0, NULL, NULL },
+#endif
     { NULL, 0, 0, NULL, NULL },
 };
 static const MenuItem files_file_context[] = {

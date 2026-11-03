@@ -1,0 +1,4 @@
+[{"wait":5000},{"shot":"sim-desktop"},{"stats":"boot"},
+ {"click":[30,467]},{"wait":1200},{"move":[80,333]},{"wait":1200},{"move":[200,340]},{"wait":1500},{"shot":"sim-start-menu"},{"stats":"start menu"},
+ {"key":"Escape"},{"key":"Escape"},{"key":"Escape"},{"wait":1200},
+ {"dblclick":[48,362]},{"wait":5000},{"shot":"sim-desktop-launch"},{"stats":"launch"}]

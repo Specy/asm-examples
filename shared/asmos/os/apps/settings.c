@@ -15,6 +15,9 @@ enum { SETTINGS_PREVIEW_W = 84, SETTINGS_PREVIEW_H = 63 };
 static const char *const settings_wallpapers[WALLPAPER_COUNT] = {
     "Teal", "Blue", "Green", "Plum", "Gradient", "Pattern", "Picture"
 };
+/* The wallpapers offered: a machine with no room for a picture the size of the screen offers none
+ * (PLATFORM_WALLPAPER_PICTURE), nor its file and Browse. */
+enum { SETTINGS_WALLPAPERS = PLATFORM_WALLPAPER_PICTURE ? WALLPAPER_COUNT : WALLPAPER_PICTURE };
 static const char *const settings_themes[THEME_COUNT] = { "Classic", "Olive", "Plum", "Slate" };
 /* The same colours the kernel's themes have, for the preview of a theme not yet applied: the
  * active title bar's two ends, the inactive one's, and the selection. */
@@ -44,7 +47,7 @@ static Rect settings_button_rect(int which) {
     case SETTINGS_OK: return rect(SETTINGS_W - 3 * 84 - 4, SETTINGS_H - 32, 78, 24);
     case SETTINGS_CANCEL: return rect(SETTINGS_W - 2 * 84 - 4, SETTINGS_H - 32, 78, 24);
     case SETTINGS_APPLY: return rect(SETTINGS_W - 84 - 4, SETTINGS_H - 32, 78, 24);
-    default: return rect(224, 104, 72, 22);
+    default: return PLATFORM_WALLPAPER_PICTURE ? rect(224, 104, 72, 22) : rect(0, 0, 0, 0);
     }
 }
 static Rect settings_wallpaper_rect(int which) {
@@ -181,6 +184,7 @@ static void settings_draw_slider(SettingsApp *s) {
 static void settings_draw_button(SettingsApp *s, int which) {
     static const char *const labels[SETTINGS_BUTTONS] = { "OK", "Cancel", "Apply", "Browse..." };
     Rect r = settings_button_rect(which);
+    if (rect_empty(r)) return;
     int down = button_down(&s->buttons, which);
     fill_rect(r.x - 1, r.y - 1, r.w + 2, r.h + 2, FACE);
     draw_button(r.x, r.y, r.w, r.h, "", down);
@@ -195,14 +199,18 @@ static void settings_draw_all(SettingsApp *s) {
     os_window_draw(s->win);
     fill_rect(0, 0, SETTINGS_W, SETTINGS_H, FACE);
     settings_group(8, 10, SETTINGS_W - 16, 126, "Desktop wallpaper");
-    for (int i = 0; i < WALLPAPER_COUNT; i++) {
+    for (int i = 0; i < SETTINGS_WALLPAPERS; i++) {
         Rect r = settings_wallpaper_rect(i);
         draw_radio(r.x, r.y + 1, settings_wallpapers[i], s->chosen.wallpaper == i);
     }
-    draw_field(22, 104, 198, 22, WHITE);
-    gfx_clip(rect(24, 106, 194, 18));
-    draw_text(27, 109, s->chosen.picture, s->chosen.wallpaper == WALLPAPER_PICTURE ? BLACK : SHADOW);
-    gfx_clip(rect(0, 0, SETTINGS_W, SETTINGS_H));
+    if (PLATFORM_WALLPAPER_PICTURE) {
+        draw_field(22, 104, 198, 22, WHITE);
+        gfx_clip(rect(24, 106, 194, 18));
+        draw_text(27, 109, s->chosen.picture, s->chosen.wallpaper == WALLPAPER_PICTURE ? BLACK : SHADOW);
+        gfx_clip(rect(0, 0, SETTINGS_W, SETTINGS_H));
+    } else {
+        draw_text(22, 109, "No room for a picture here.", SHADOW);
+    }
     settings_draw_monitor(s, SETTINGS_W - 16 - 104, 18);
     settings_group(8, 146, SETTINGS_W - 16, 100, "Window theme");
     for (int i = 0; i < THEME_COUNT; i++) {
@@ -297,7 +305,7 @@ static void settings_mouse(SettingsApp *s, const Message *m) {
         return;
     }
     Settings before = s->chosen;
-    for (int i = 0; i < WALLPAPER_COUNT; i++)
+    for (int i = 0; i < SETTINGS_WALLPAPERS; i++)
         if (rect_contains(settings_wallpaper_rect(i), m->x, m->y)) s->chosen.wallpaper = i;
     for (int i = 0; i < THEME_COUNT; i++)
         if (rect_contains(settings_theme_rect(i), m->x, m->y)) s->chosen.theme = i;

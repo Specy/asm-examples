@@ -3,7 +3,7 @@
 # scripts/<name>.json; AUTOSTART="app arg;app arg" starts applications.
 B=$1; S=${S:-$(cd "$(dirname "$0")" && pwd)}
 mkdir -p $3
-cd "${ASM_EDITOR:-$(cd "$(dirname "$0")/../../../../asm-editor" && pwd)}/packages/asm-editor" && \
+cd "$(. "$(dirname "$0")/../editor.sh")/packages/asm-editor" && \
 OS_DIR=$B/proj OS_ENTRY=os/main.c OS_USE_ASM=1 OS_AUTOSTART="$AUTOSTART" \
 OS_SOURCES=os/main.c,os/apps/apps.c,os/ide/ide.c,os/doom/doom_game.c,os/doom/doom_play.c,os/doom/doom_render.c,os/doom/doom_world.c \
 OS_SCRIPT=$S/scripts/$2.json OS_OUT=$3 \

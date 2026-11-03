@@ -90,6 +90,7 @@
     extern M_BindVariable
     extern M_snprintf
     extern os_write_file
+    extern os_yield_point
     extern memmove
     extern vsnprintf
     extern vsscanf
@@ -308,7 +309,7 @@
     ; compiler-symbol L121 .L121
     ; compiler-symbol L118 .L118
     ; compiler-symbol L119 .L119
-    ; compiler-symbol LFSB365 .LFSB365
+    ; compiler-symbol LFSB371 .LFSB371
     ; compiler-symbol LCOLDE20 .LCOLDE20
     ; compiler-symbol LHOTE20 .LHOTE20
     ; compiler-symbol L156 .L156
@@ -4639,7 +4640,7 @@ L115:
     jmp L88
     section .text
 doom_read_mus.cold:
-LFSB365:
+LFSB371:
 L111:
     mov ebx, ecx
     jmp L79
@@ -10815,14 +10816,14 @@ L1282:
     movdqa xmm0, oword [rel LC114]
     lea rdi, [rsp+256]
     movabs rax, 2941396580114542
-    mov dword [rsp+8], 70
+    mov dword [rsp+16], 70
     movabs r12, 1099511627776
     movaps oword [rsp+256], xmm0
     movdqa xmm0, oword [rel LC115]
-    mov dword [rsp], 0
+    mov dword [rsp+8], 0
     movaps oword [rsp+272], xmm0
     movdqa xmm0, oword [rel LC116]
-    mov qword [rsp+16], rdi
+    mov qword [rsp+24], rdi
     movaps oword [rsp+288], xmm0
     movdqa xmm0, oword [rel LC117]
     movaps oword [rsp+304], xmm0
@@ -10856,11 +10857,12 @@ L1283:
     jne L1403
     mov dword [rel doom_game_menu+172], 2
     mov eax, doom_profile_text
+    mov edx, doom_profile_text+768
 L1291:
     mov byte [rax], 0
     sub rax, -128
     mov byte [rax-64], 0
-    cmp rax, doom_profile_text+768
+    cmp rdx, rax
     jne L1291
     mov r13, qword [rel doom_profile_hits]
     test r13, r13
@@ -10936,7 +10938,7 @@ L1322:
     jmp L1320
 L1321:
     imul rax, rcx, 1000000
-    movsx rdi, dword [rsp+8]
+    movsx rdi, dword [rsp+16]
     mov ecx, dword [r13+16]
     mov r9d, LC101
     cqo
@@ -10945,7 +10947,7 @@ L1321:
     mov rbx, rdi
     test rax, rax
     cmovg rdx, rax
-    mov eax, dword [rsp]
+    mov eax, dword [rsp+8]
     and eax, 1
     mov r8, rdx
     test eax, eax
@@ -10959,24 +10961,24 @@ L1321:
     cqo
     sub rsi, rdi
     idiv r8
-    mov rdx, qword [rsp+16]
+    mov rdx, qword [rsp+24]
     add rdi, rdx
     mov edx, LC107
     mov r8, rax
     xor eax, eax
     call snprintf
     add ebx, eax
-    mov dword [rsp+8], ebx
+    mov dword [rsp+16], ebx
 L1326:
-    cmp dword [rsp+8], 1599
+    cmp dword [rsp+16], 1599
     jg L1328
-    add dword [rsp], 1
-    mov eax, dword [rsp]
+    add dword [rsp+8], 1
+    mov eax, dword [rsp+8]
     add r13, 24
     cmp eax, 16
     jne L1329
 L1328:
-    mov rdi, qword [rsp+16]
+    mov rdi, qword [rsp+24]
     xor r8d, r8d
     xor ecx, ecx
     mov esi, LC109
@@ -10986,7 +10988,7 @@ L1328:
     call os_message_box
     jmp L1213
 L1324:
-    mov rax, qword [rsp+16]
+    mov rax, qword [rsp+24]
     mov rcx, qword [r13+0]
     mov esi, 1600
     mov edx, LC108
@@ -10995,7 +10997,7 @@ L1324:
     xor eax, eax
     call snprintf
     add ebx, eax
-    mov dword [rsp+8], ebx
+    mov dword [rsp+16], ebx
     jmp L1326
 L1232:
     lea ebx, [rax+128]
@@ -11021,7 +11023,7 @@ L1271:
     lea rdi, [rsp+256]
     mov dword [rsp+260], edx
     movsx rdx, edx
-    mov qword [rsp], rdi
+    mov qword [rsp+8], rdi
     mov qword [rsp+268], 0
     mov dword [rsp+256], 1
     mov dword [rsp+264], 0
@@ -11030,7 +11032,7 @@ L1271:
     movzx eax, byte [rsp+104]
     test ebx, ebx
     mov ecx, dword [rsp+108]
-    mov rdi, qword [rsp]
+    mov rdi, qword [rsp+8]
     mov byte [doom_pressed+rax], bpl
     je L1213
     lea r8d, [rcx-1]
@@ -11275,8 +11277,8 @@ L1294:
     mov dword [rsp+60], ebx
     mov ebp, r8d
     lea rdx, [r13+0+rax*8]
-    mov r8, r15
     mov rbx, rdi
+    mov r8, r15
 L1313:
     movzx eax, word [r13+6]
     test ax, ax
@@ -11300,33 +11302,32 @@ L1313:
 L1304:
     mov esi, 46
     mov rdi, r15
-    mov qword [rsp+16], r8
-    mov qword [rsp+8], rcx
-    mov qword [rsp], rdx
-    call strchr
-    mov rdx, qword [rsp]
-    mov rcx, qword [rsp+8]
-    test rax, rax
-    mov r8, qword [rsp+16]
-    je L1306
-    mov dword [rsp], ebp
+    mov qword [rsp+24], r8
+    mov qword [rsp+16], rcx
     mov qword [rsp+8], rdx
-    mov word [rsp+16], r12w
+    call strchr
+    mov rdx, qword [rsp+8]
+    mov rcx, qword [rsp+16]
+    test rax, rax
+    mov r8, qword [rsp+24]
+    je L1306
+    mov qword [rsp+16], r13
     mov qword [rsp+24], rcx
     mov qword [rsp+32], r8
     mov qword [rsp+40], rbx
+    mov dword [rsp+56], ebp
 L1312:
-    lea rbp, [rax+1]
+    lea r13, [rax+1]
     mov esi, LC104
-    mov rdi, rbp
+    mov rdi, r13
     call strcspn
-    mov r12, rax
+    mov rbp, rax
     test rax, rax
     je L1346
     mov esi, LC105
-    mov rdi, rbp
+    mov rdi, r13
     call strspn
-    cmp r12, rax
+    cmp rbp, rax
     je L1308
     mov eax, 4
     xor ebx, ebx
@@ -11339,11 +11340,11 @@ L1410:
 L1311:
     xor esi, esi
     mov edx, 1
-    cmp r12, rax
+    cmp rbp, rax
     jne L1309
     mov rsi, qword [gcc.8+rbx*8]
-    mov rdx, r12
-    mov rdi, rbp
+    mov rdx, rbp
+    mov rdi, r13
     call strncmp
     xor esi, esi
     test eax, eax
@@ -11358,16 +11359,16 @@ L1310:
     je L1397
 L1308:
     mov esi, 46
-    mov rdi, rbp
+    mov rdi, r13
     call strchr
     test rax, rax
     jne L1312
-    mov ebp, dword [rsp]
     mov rdx, qword [rsp+8]
-    movzx r12d, word [rsp+16]
+    mov r13, qword [rsp+16]
     mov rcx, qword [rsp+24]
     mov r8, qword [rsp+32]
     mov rbx, qword [rsp+40]
+    mov ebp, dword [rsp+56]
 L1306:
     movsx rax, ebp
     mov rdi, qword [r13+8]
@@ -11448,12 +11449,12 @@ L1293:
     call snprintf
     jmp L1290
 L1397:
-    mov ebp, dword [rsp]
     mov rdx, qword [rsp+8]
-    movzx r12d, word [rsp+16]
+    mov r13, qword [rsp+16]
     mov rcx, qword [rsp+24]
     mov r8, qword [rsp+32]
     mov rbx, qword [rsp+40]
+    mov ebp, dword [rsp+56]
     jmp L1303
 L1409:
     movzx eax, byte [r15+1]
@@ -11481,23 +11482,23 @@ L1408:
     add rax, rsi
     cmp r8, rax
     jb L1294
-    test r12w, r12w
+    movzx edi, r12w
+    test edi, edi
     je L1294
-    movzx edx, r12w
+    lea eax, [rdi-1]
     mov rsi, rcx
-    lea eax, [rdx-1]
     sal rax, 6
-    lea rdi, [rcx+64+rax]
+    lea rdx, [rcx+64+rax]
     jmp L1298
 L1295:
     add rsi, 64
-    cmp rdi, rsi
+    cmp rdx, rsi
     je L1411
 L1298:
     cmp dword [rsi+4], 2
     jne L1295
     mov eax, dword [rsi+40]
-    cmp eax, edx
+    cmp eax, edi
     jnb L1295
     mov r9, qword [rsi+32]
     mov r15d, eax
@@ -11524,11 +11525,11 @@ L1297:
 L1299:
     movsx r13, edi
     mov eax, 1
-    mov dword [rsp+16], edx
+    mov dword [rsp+24], edx
     mov rdi, r13
-    mov qword [rsp+8], rcx
+    mov qword [rsp+16], rcx
     sal rdi, 4
-    mov qword [rsp], rsi
+    mov qword [rsp+8], rsi
     cmove rdi, rax
     call os_alloc
     lea rdi, [0+r13*4]
@@ -11537,10 +11538,10 @@ L1299:
     mov eax, 1
     cmove rdi, rax
     call os_alloc
-    mov rsi, qword [rsp]
-    mov rcx, qword [rsp+8]
+    mov rsi, qword [rsp+8]
+    mov rcx, qword [rsp+16]
     mov qword [rel doom_profile_hits], rax
-    movsx rdx, dword [rsp+16]
+    movsx rdx, dword [rsp+24]
     jmp L1297
 L1348:
     xor edx, edx
@@ -12627,6 +12628,7 @@ L1641:
     mov rdx, rbx
     call memcpy
     add qword [rbp+24], rbx
+    call os_yield_point
 L1638:
     mov rax, r12
     pop rbx
@@ -20449,6 +20451,7 @@ L3269:
 L3273:
     call doom_reset_counts
 L3271:
+    call I_SoundPump
     add rsp, 168
     pop rbx
     pop rbp
@@ -20456,7 +20459,7 @@ L3271:
     pop r13
     pop r14
     pop r15
-    jmp I_SoundPump
+    jmp os_yield_point
 L3313:
     mov r8d, ebx
     jmp L3264
@@ -20501,14 +20504,17 @@ L3377:
 L3387:
     call os_instructions
     mov rdi, qword [rsp+104]
+    mov rdx, rax
+    mov rax, qword [rel doom_in_show]
     sub rax, rdi
-    add qword [rel doom_in_show], rax
+    add rax, rdx
+    mov qword [rel doom_in_show], rax
     jmp L3261
 L3232:
     call os_now_ms
-    mov qword [rsp], rax
-    call os_instructions
     mov r14, rax
+    call os_instructions
+    mov qword [rsp], rax
     movsx rax, ebp
     sal rax, 4
     lea r13, [bands.10+rax]
@@ -20532,12 +20538,15 @@ L3237:
     jne L3237
 L3236:
     call os_now_ms
-    mov rdi, qword [rsp]
-    sub rax, rdi
+    sub rax, r14
     add qword [rel doom_prof+64], rax
     call os_instructions
-    sub rax, r14
-    add qword [rel doom_prof_instructions+64], rax
+    mov rdi, qword [rsp]
+    mov rdx, rax
+    mov rax, qword [rel doom_prof_instructions+64]
+    sub rax, rdi
+    add rax, rdx
+    mov qword [rel doom_prof_instructions+64], rax
     mov eax, dword [rel doom_show_times]
     test eax, eax
     jne L3390
@@ -20555,9 +20564,9 @@ L3300:
     jmp L3249
 L3384:
     call os_now_ms
-    mov qword [rsp+8], rax
-    call os_instructions
     mov r14, rax
+    call os_instructions
+    mov qword [rsp+8], rax
 L3245:
     movsx rax, dword [rsp+60]
     movsx r10, ebp
@@ -20591,12 +20600,15 @@ L3247:
     jne L3247
 L3248:
     call os_now_ms
-    mov rdi, qword [rsp+8]
-    sub rax, rdi
+    sub rax, r14
     add qword [rel doom_prof+72], rax
     call os_instructions
-    sub rax, r14
-    add qword [rel doom_prof_instructions+72], rax
+    mov rdi, qword [rsp+8]
+    mov rdx, rax
+    mov rax, qword [rel doom_prof_instructions+72]
+    sub rax, rdi
+    add rax, rdx
+    mov qword [rel doom_prof_instructions+72], rax
     jmp L3244
 L3388:
     mov rdi, rbx
@@ -20811,18 +20823,18 @@ L3370:
     jmp L3251
 L3390:
     call os_now_ms
-    mov qword [rsp+8], rax
-    call os_instructions
     mov r14, rax
+    call os_instructions
+    mov qword [rsp+8], rax
     test ebp, ebp
     jne L3245
     jmp L3248
 L3302:
     call os_now_ms
     xor ebp, ebp
-    mov qword [rsp], rax
-    call os_instructions
     mov r14, rax
+    call os_instructions
+    mov qword [rsp], rax
     jmp L3236
 L3376:
     mov dword [rel doom_overlay_rows], 0
@@ -21092,8 +21104,11 @@ L3425:
     sub rax, r13
     add qword [rel doom_in_logic], rax
     call os_instructions
+    mov rdx, rax
+    mov rax, qword [rel doom_in_draw]
     sub rax, r12
-    add qword [rel doom_in_draw], rax
+    add rax, rdx
+    mov qword [rel doom_in_draw], rax
     jmp L3422
 L3439:
     call D_Display

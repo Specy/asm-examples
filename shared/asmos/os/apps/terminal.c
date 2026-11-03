@@ -827,6 +827,7 @@ static void term_cmd_asm(Terminal *t, int argc, char **argv) {
 static int term_app_named(const char *name) {
     int app = os_app_named(name);
     for (int i = 0; i < APP_COUNT && app < 0; i++) {
+        if (!APPS[i].main) continue;      /* one this machine leaves out */
         const char *a = name, *b = APPS[i].name;
         while (*a && *b && tolower((unsigned char)*a) == tolower((unsigned char)*b)) a++, b++;
         if (!*a && !*b) app = i;

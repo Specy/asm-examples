@@ -19,8 +19,15 @@ import { spawnSync } from 'node:child_process'
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { basename, dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
+//the editor: ASM_EDITOR, else the one asm-examples is a submodule of, else ../asm-editor beside it
+const repository = fileURLToPath(new URL('../../../..', import.meta.url))
+const editor =
+    process.env.ASM_EDITOR ??
+    (existsSync(join(repository, '../../packages/asm-editor'))
+        ? join(repository, '../..')
+        : join(repository, '../asm-editor'))
 const { isRuntimeError, makeRiscVFromFiles, StopReason } = await import(
-    (process.env.ASM_EDITOR ?? new URL('../../../../asm-editor', import.meta.url).pathname) + '/packages/risc-v/rarsjs/ts/dist/index.mjs'
+    editor + '/packages/risc-v/rarsjs/ts/dist/index.mjs'
 )
 
 const here = dirname(fileURLToPath(import.meta.url))

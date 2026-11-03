@@ -8,7 +8,7 @@
  * keyboard and the pointer, clocks, a way to switch processes, sound and files, the platform
  * layer gives it: os/platform/platform.h says what, and os/platform/<machine>/ how. On x86 that is
  * a Linux program drawing on /dev/fb0 and keeping its files in the Project, the program's working
- * directory.
+ * directory; on MIPS and RISC-V one program of MARS or RARS, drawing on their bitmap display.
  *
  * This File and the Files it includes are the kernel's half; os/apps/apps.c and its Files are the
  * applications'. Each half is compiled on its own into its own Generated assembly, and the Build
@@ -39,10 +39,11 @@ static uint32_t *fb_pixels;
 static int fb_stride;
 static long shutdown_deadline;
 
-/* Shows a rectangle of the back buffer. */
+/* Shows a rectangle of the back buffer: nothing to copy where the back buffer is the screen. */
 static void show_rect(Rect r) {
-    copy_rect32(fb_pixels + r.y * fb_stride + r.x, fb_stride * 4, back_buffer + r.y * screen_w + r.x,
-                screen_w * 4, r.w, r.h);
+    if (back_buffer != fb_pixels)
+        copy_rect32(fb_pixels + r.y * fb_stride + r.x, fb_stride * 4, back_buffer + r.y * screen_w + r.x,
+                    screen_w * 4, r.w, r.h);
     platform_screen_present(r.x, r.y, r.w, r.h);
 }
 
@@ -70,7 +71,7 @@ static void boot_splash(void) {
     draw_icon(&ICON_CHIP, cx - 64, cy - 72, 8);
     draw_text_scaled(cx - 60, cy + 64, "asm", 3, 0x8080ff);
     draw_text_scaled(cx - 60 + 3 * FONT_W * 3, cy + 64, "OS", 3, WHITE);
-    const char *line = "A small operating system in C and x86 assembly";
+    const char *line = "A small operating system in " PLATFORM_LANGUAGES;
     draw_text(cx - text_width(line) / 2, cy + 112, line, SHADOW);
     show_all();
     sound_chime(0);
@@ -148,8 +149,11 @@ static long sooner(long a, long b) { return a < 0 ? b : b < 0 ? a : a < b ? a : 
 
 int main(void) {
     if (platform_screen_open(&fb_pixels, &screen_w, &screen_h, &fb_stride) < 0) return 1;
-    if (!kernel_memory_check((size_t)screen_w * screen_h * 4)) return 1;
-    uint32_t *back = malloc((size_t)screen_w * screen_h * 4);
+    /* the window manager composes in a back buffer, or, where there is no memory for one, straight
+     * on the screen, whose rows must then be as long as the screen is wide */
+    size_t back_bytes = PLATFORM_BACK_BUFFER ? (size_t)screen_w * screen_h * 4 : 0;
+    if (!kernel_memory_check(back_bytes)) return 1;
+    uint32_t *back = PLATFORM_BACK_BUFFER ? malloc(back_bytes) : fb_stride == screen_w ? fb_pixels : NULL;
     if (!back) return 1;
     back_buffer = back;
     gfx_target(back, screen_w, screen_h, screen_w);

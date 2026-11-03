@@ -3,9 +3,15 @@
  * kernel, the window manager and the applications, is the same C on every machine; each machine
  * has a folder here, os/platform/<machine>/, that does these few things its own way:
  *
- *   x86/   a Linux program: the framebuffer /dev/fb0, the keyboard and the tablet in /dev/input,
- *          sound on /dev/dsp and a MIDI port, a timer signal whose handler switches processes,
- *          and the Project's folders as Linux files.
+ *   x86/    a Linux program: the framebuffer /dev/fb0, the keyboard and the tablet in /dev/input,
+ *           sound on /dev/dsp and a MIDI port, a timer signal whose handler switches processes,
+ *           and the Project's folders as Linux files.
+ *   riscv/  one program on RARS, and mips/ one on MARS: a bitmap display in memory, the editor's
+ *           Input controller, no sound, processes that give the processor up themselves, and the
+ *           Project's folders through MARS's and RARS's file and folder calls. What the two share,
+ *           all but the processor's own switch and counter, is in sim/.
+ *
+ * files.c, the Project's files and folders through the POSIX calls, serves every machine.
  *
  * The compiler says which machine it compiles for, and this header includes that machine's own,
  * which sets the PLATFORM_ constants below and the PlatformContext a process's registers are
@@ -21,6 +27,10 @@
 
 #if defined(__x86_64__)
 #include "x86/x86.h"
+#elif defined(__riscv) && __riscv_xlen == 32
+#include "riscv/riscv.h"
+#elif defined(__mips__)
+#include "mips/mips.h"
 #else
 #error "asmOS has no platform layer for this machine yet"
 #endif
@@ -29,6 +39,7 @@
  * What the machine's header sets:
  *
  *   PLATFORM_MACHINE      the machine in words, os_machine's (os.h)
+ *   PLATFORM_LANGUAGES    what the boot screen says asmOS is written in
  *   PLATFORM_PREEMPTIVE   1 when a timer can take the processor from a process, 0 when every
  *                         process must give it up itself: then the kernel switches in a plain
  *                         function call, platform_switch, and os_yield_point counts
@@ -39,6 +50,13 @@
  *   PLATFORM_FILE_SYSTEM  what the file system can do beyond whole files: FS_ bits of os.h
  *   PLATFORM_BLIT         1 when the machine has its own fill_rect32, copy_rect32 and move_rect32
  *                         (os.h); 0 for the C ones of os/blit.c
+ *   PLATFORM_BACK_BUFFER  1 when there is memory for a back buffer the size of the screen, which the
+ *                         window manager composes in; 0 when it draws straight onto the screen
+ *   PLATFORM_WALLPAPER_PICTURE  1 when a picture the size of the screen fits as the wallpaper
+ *   PLATFORM_DOOM, PLATFORM_VIDEO  1 when DOOM, and the Video Player, have the memory they need;
+ *                         an application the machine leaves out is not in its APPS (apps.c)
+ *   PLATFORM_SMALL_MEMORY 1 where all of static data and the heap is a few megabytes, as on MARS
+ *                         and RARS: the applications that keep large buffers keep smaller ones
  */
 
 /* ------------------------------------------------------------------ the screen and the console */

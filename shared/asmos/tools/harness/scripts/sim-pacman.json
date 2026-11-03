@@ -1,0 +1,2 @@
+[{"wait":6000},{"shot":"sim-pac-1"},{"stats":"title"},{"key":"Space"},{"wait":5000},{"shot":"sim-pac-2"},{"stats":"start"},
+ {"hold":"ArrowLeft","ms":2500},{"shot":"sim-pac-3"},{"stats":"play"},{"hold":"ArrowUp","ms":2000},{"shot":"sim-pac-4"},{"stats":"play2"}]

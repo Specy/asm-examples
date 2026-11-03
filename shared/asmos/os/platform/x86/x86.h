@@ -9,8 +9,10 @@
  *   switch.c    processes switched in a signal handler, preempted by an interval timer
  *   switch.asm  or, built cooperative, switched by a call
  *   sound.c     /dev/dsp and the MIDI port /dev/snd/midiC1D0
- *   files.c     the Project's files and folders, the program's working directory
  *   blit.asm    the pixel loops, as `rep` instructions
+ *
+ * The files are the Project's folders, the program's working directory, through the POSIX calls
+ * os/platform/files.c makes on every machine that has them.
  */
 #ifndef ASMOS_X86_H
 #define ASMOS_X86_H
@@ -18,8 +20,10 @@
 /* About asmOS's Processor line, the Terminal's uname -a, and About's lines on how asmOS runs. */
 #define PLATFORM_MACHINE                                                                           \
     { "x86-64, emulated by Blink", "x86_64 (a Linux program on the emulated x86 machine)",        \
-      "with its pixel loops in x86 assembly.", "One Linux program on the emulated",             \
+      "with its pixel loops in x86 assembly.", "One Linux program on the emulated",                \
       "machine; its files are the Project's." }
+/* What the boot screen says asmOS is written in. */
+#define PLATFORM_LANGUAGES "C and x86 assembly"
 
 /* Linux's interval timer interrupts a process anywhere, so asmOS preempts. Building with
  * -DASMOS_COOPERATIVE, or defining it here, tries what a machine without a timer does instead:
@@ -43,6 +47,16 @@
 #ifndef PLATFORM_BLIT
 #define PLATFORM_BLIT 1
 #endif
+/* a back buffer the window manager composes in, and a picture as the wallpaper;
+ * -DPLATFORM_BACK_BUFFER=0 tries drawing straight onto the screen, as smaller machines do */
+#ifndef PLATFORM_BACK_BUFFER
+#define PLATFORM_BACK_BUFFER 1
+#endif
+#define PLATFORM_WALLPAPER_PICTURE PLATFORM_BACK_BUFFER
+/* room for DOOM and the Video Player, and for every application's buffers */
+#define PLATFORM_DOOM 1
+#define PLATFORM_VIDEO 1
+#define PLATFORM_SMALL_MEMORY 0
 
 #if PLATFORM_PREEMPTIVE
 /* What the signal frame holds of a process: its general-purpose registers, in Linux's order, and

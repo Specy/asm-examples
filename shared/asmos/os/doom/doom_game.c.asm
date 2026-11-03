@@ -4845,7 +4845,7 @@ D_GameMissionString:
     cmp edi, 8
     ja L681
     mov edi, edi
-    mov rax, qword [CSWTCH.1022+rdi*8]
+    mov rax, qword [CSWTCH.1024+rdi*8]
 L681:
     ret
     align 16
@@ -11217,7 +11217,7 @@ L1833:
     mov eax, 107
     jmp L1811
 L1854:
-    mov rcx, qword [CSWTCH.1136+rax*8]
+    mov rcx, qword [CSWTCH.1138+rax*8]
     jmp L1819
 L1821:
     xor edx, edx
@@ -13403,7 +13403,7 @@ LC362:
     db `v1.9`, 0
     section .rodata
     align 32, db 0
-CSWTCH.1136:
+CSWTCH.1138:
     dq LC357
     dq LC358
     dq LC359
@@ -13425,7 +13425,7 @@ LC368:
     db `strife`, 0
     section .rodata
     align 32, db 0
-CSWTCH.1022:
+CSWTCH.1024:
     dq LC363
     dq LC44
     dq LC41

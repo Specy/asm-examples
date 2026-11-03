@@ -1,0 +1,5 @@
+[{"mark":"boot to desktop"},{"untilPixel":[320,470,"c0c0c0"]},{"wait":3000},
+ {"mark":"Start menu"},{"click":[30,467]},{"untilPixel":[40,440,"c0c0c0"]},{"wait":1500},{"key":"Escape"},{"wait":2500},
+ {"mark":"Notepad opens"},{"dblclick":[48,22]},{"untilPixel":[300,200,"ffffff"]},{"wait":3000},
+ {"move":[200,30]},{"wait":300},{"mark":"one drag step of the window"},{"drag":[200,30,330,120],"steps":1},{"untilPixel":[600,400,"ffffff"]},{"wait":3000},
+ {"mark":"drag back in 8 steps"},{"drag":[330,120,200,30],"steps":8},{"untilPixel":[600,400,"008080"]},{"wait":2000},{"stats":"end"}]

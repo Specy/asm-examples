@@ -10,5 +10,18 @@
 #include "x86/memory.c"
 #include "x86/switch.c"
 #include "x86/sound.c"
-#include "x86/files.c"
+#elif defined(__riscv) || defined(__mips__)
+#include "sim/screen.c"
+#include "sim/input.c"
+#include "sim/time.c"
+#include "sim/memory.c"
+#include "sim/sound.c"
+#if defined(__riscv)
+#include "riscv/switch.c"
+#include "riscv/counter.c"
+#else
+#include "mips/switch.c"
+#include "mips/counter.c"
 #endif
+#endif
+#include "files.c"

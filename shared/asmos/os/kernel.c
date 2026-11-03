@@ -204,6 +204,8 @@ static int kernel_memory_check(size_t screen_bytes) {
     return 0;
 }
 
+static void system_reserve_refill(void);   /* below, with the memory */
+
 static void kernel_start(void) {
     boot_ms = 0;
     boot_ms = os_now_ms();
@@ -217,6 +219,7 @@ static void kernel_start(void) {
     platform_scheduler_start();
 #endif
     switched_at = platform_instructions();
+    system_reserve_refill();
 }
 
 /* ------------------------------------------------------------------ processes */
@@ -231,7 +234,8 @@ static Process *process_of(int pid) {
 int os_getpid(void) { return current->pid; }
 
 int os_spawn(int app, const char *argument) {
-    if (app < 0 || app >= APP_COUNT) return -1;
+    /* an application the machine leaves out has no main (apps.c) */
+    if (app < 0 || app >= APP_COUNT || !APPS[app].main) return -1;
     lock();
     Process *process = NULL;
     for (int i = 1; i < MAX_PROCESSES && !process; i++)
@@ -413,9 +417,32 @@ static void measure_load(long elapsed_ms) {
     }
     load_busy = elapsed_ms > 0 ? clamp_int((int)(100 - idle_ms * 100 / elapsed_ms), 0, 100) : 0;
     idle_ms = 0;
+    system_reserve_refill();
 }
 
 /* ------------------------------------------------------------------ memory */
+
+/* Where all of the heap is a few megabytes (PLATFORM_SMALL_MEMORY), the applications can use it
+ * up, and then the system could not even show a message box saying so. So the kernel keeps a
+ * reserve, enough for one, which the system's own windows take when nothing else is left and which
+ * it takes back once a second, when memory is free again. */
+enum { SYSTEM_RESERVE = PLATFORM_SMALL_MEMORY ? 224 * 1024 : 0 };
+static void *system_reserve;
+
+static void system_reserve_refill(void) {
+    if (SYSTEM_RESERVE && !system_reserve) system_reserve = malloc(SYSTEM_RESERVE);
+}
+
+/* malloc for the system's own windows: the reserve goes when nothing else is left. */
+static void *system_alloc(size_t size) {
+    void *memory = malloc(size);
+    if (!memory && system_reserve) {
+        free(system_reserve);
+        system_reserve = NULL;
+        memory = malloc(size);
+    }
+    return memory;
+}
 
 void *os_alloc(size_t size) {
     lock();
@@ -564,8 +591,8 @@ int os_app_for_file(const char *path) {
                                         ".log", ".ini", ".cfg" };
     if (has_extension(path, ".bmp")) return APP_VIEWER;
     if (has_extension(path, ".mid") || has_extension(path, ".midi")) return APP_MUSIC;
-    if (has_extension(path, ".vid")) return APP_VIDEO;
-    if (has_extension(path, ".wad")) return APP_DOOM;
+    if (has_extension(path, ".vid")) return APPS[APP_VIDEO].main ? APP_VIDEO : APP_HEX;
+    if (has_extension(path, ".wad")) return APPS[APP_DOOM].main ? APP_DOOM : APP_HEX;
     if (has_extension(path, ".riscv")) return APP_IDE;
     for (size_t i = 0; i < sizeof text / sizeof text[0]; i++)
         if (has_extension(path, text[i])) return APP_NOTEPAD;
@@ -574,6 +601,7 @@ int os_app_for_file(const char *path) {
 
 int os_app_named(const char *name) {
     for (int i = 0; i < APP_COUNT; i++) {
+        if (!APPS[i].main) continue;
         if (APPS[i].command && strcmp(name, APPS[i].command) == 0) return i;
         if (strcmp(name, APPS[i].name) == 0) return i;
     }

@@ -11,6 +11,11 @@
  * reaches the framebuffer is then shown (show), which most machines need not do: their
  * framebuffer is the screen.
  *
+ * A machine with no memory for a back buffer (PLATFORM_BACK_BUFFER, os/platform/) gives the
+ * framebuffer as the back buffer too, and the compositor paints the dirty rectangles straight onto
+ * the screen. Nothing is then copied, and what is drawn over the screen alone, the pointer and a
+ * resize outline, is taken away by painting again what lies under it.
+ *
  * The system process runs all of this, never preempted. A process reaches it through the os_
  * calls, which hold the kernel lock while they change anything here.
  */
@@ -132,17 +137,41 @@ static void show(Rect r) {
     if (!rect_empty(r)) platform_screen_present(r.x, r.y, r.w, r.h);
 }
 
+/* Whether the compositor paints straight onto the screen, with no back buffer. */
+static int single_buffer(void) { return back_buffer == framebuffer; }
+
 static void present(Rect r) {
     r = rect_intersect(r, rect(0, 0, screen_w, screen_h));
     if (rect_empty(r)) return;
-    copy_rect32(framebuffer + r.y * framebuffer_stride + r.x, framebuffer_stride * 4,
-                back_buffer + r.y * screen_w + r.x, screen_w * 4, r.w, r.h);
+    if (!single_buffer())
+        copy_rect32(framebuffer + r.y * framebuffer_stride + r.x, framebuffer_stride * 4,
+                    back_buffer + r.y * screen_w + r.x, screen_w * 4, r.w, r.h);
     show(r);
 }
 
 /* asmOS DOOM: the back buffer brought up to date where a picture went straight to the
  * framebuffer, before anything reads it there (wm_render's present_direct) */
 static void back_refresh(Rect r);
+
+static void paint_region(Rect region);
+
+/* Takes away what was drawn over the screen in a rectangle: the back buffer's pixels shown again,
+ * or, with no back buffer, the rectangle painted again. */
+static void uncover(Rect r) {
+    if (single_buffer()) {
+        r = rect_intersect(r, rect(0, 0, screen_w, screen_h));
+        if (rect_empty(r)) return;
+        /* a process dragging a file comes here too: the painting goes through the system's own
+         * drawing context, not the process's */
+        GfxContext saved = gfx_save();
+        gfx_target(back_buffer, screen_w, screen_h, screen_w);
+        paint_region(r);
+        gfx_restore(saved);
+    } else {
+        back_refresh(r);
+    }
+    present(r);
+}
 
 static void cursor_draw(void) {
     if (drag_active) {
@@ -168,10 +197,7 @@ static void cursor_draw(void) {
 }
 
 static void cursor_hide(void) {
-    if (cursor_shown) {
-        back_refresh(cursor_rect());
-        present(cursor_rect());
-    }
+    if (cursor_shown) uncover(cursor_rect());
     cursor_shown = 0;
 }
 
@@ -208,10 +234,7 @@ static void outline_hide(void) {
     if (!outline_shown) return;
     Rect strips[4];
     outline_strips(outline, strips);
-    for (int i = 0; i < 4; i++) {
-        back_refresh(strips[i]);
-        present(strips[i]);
-    }
+    for (int i = 0; i < 4; i++) uncover(strips[i]);
     outline_shown = 0;
 }
 
@@ -315,7 +338,8 @@ static void window_set_picture_size(Window *win, int w, int h) {
     w = max_int(1, w);
     h = max_int(1, h);
     if (w == win->pw && h == win->ph) return;
-    uint32_t *pixels = malloc((size_t)w * h * 4);
+    /* a dialog of the system's may take the kernel's reserve, an application's window may not */
+    uint32_t *pixels = win->pid > 0 ? malloc((size_t)w * h * 4) : system_alloc((size_t)w * h * 4);
     if (!pixels) return;
     fill_rect32(pixels, w * 4, w, h, FACE);
     if (win->pixels) {
@@ -439,6 +463,11 @@ static Window *window_new(int pid, const char *title, const Icon *icon, int w, i
         cascade = (cascade + 1) % 9;
     }
     window_set_picture_size(win, w, h);
+    if (!win->pixels) {
+        /* no memory for its picture */
+        memset(win, 0, sizeof *win);
+        return NULL;
+    }
     Window *before = top_window();
     stack[window_count++] = win;
     invalidate(window_frame(win));
@@ -454,6 +483,15 @@ Window *os_window_create(const char *title, const Icon *icon, int w, int h, int 
     lock();
     Window *win = window_new(current->pid, title, icon ? icon : APPS[current->app].icon, w, h, flags);
     unlock();
+    if (!win) {
+        /* no slot, or no memory for its picture, as on a machine of 4 MB with several windows open:
+         * the application ends, saying why, rather than draw into a window it does not have */
+        char text[96];
+        snprintf(text, sizeof text, "There is not enough memory to open %s. Close a window and try again.",
+                 title);
+        os_message_box(NULL, APPS[current->app].name, text, MB_OK, MB_WARNING);
+        os_exit(1);
+    }
     return win;
 }
 
@@ -716,7 +754,8 @@ uint32_t *bmp_decode(const char *data, long size, int *w, int *h);   /* bmp.c */
 static void wallpaper_load(void) {
     free(wallpaper_picture);
     wallpaper_picture = NULL;
-    if (os_settings()->wallpaper != WALLPAPER_PICTURE) return;
+    /* a machine with no room for it shows the colour and the logo instead */
+    if (os_settings()->wallpaper != WALLPAPER_PICTURE || !PLATFORM_WALLPAPER_PICTURE) return;
     long size;
     char *data = read_file_with(os_settings()->picture, &size, malloc, free);
     if (!data) return;
@@ -1166,6 +1205,7 @@ static MenuItem desktop_items[] = {
 static void start_menu_build(void) {
     int counts[3] = { 0, 0, 0 };
     for (int i = 0; i < APP_COUNT; i++) {
+        if (!APPS[i].main) continue;      /* one the machine leaves out */
         int group = APPS[i].group;
         MenuItem *item = &group_items[group][counts[group]++];
         item->label = APPS[i].name;
@@ -1271,7 +1311,7 @@ static int present_direct(Rect r) {
     copy_rect32(framebuffer + r.y * framebuffer_stride + r.x, framebuffer_stride * 4,
                 top->pixels + (r.y - client.y) * top->pw + (r.x - client.x), top->pw * 4, r.w, r.h);
     show(r);
-    stale = rect_empty(stale) ? r : rect_union(stale, r);
+    if (!single_buffer()) stale = rect_empty(stale) ? r : rect_union(stale, r);
     return 1;
 }
 
@@ -1329,6 +1369,9 @@ static void window_move(Window *win, int x, int y) {
     Rect to = rect_intersect(rect(before.x + dx, before.y + dy, before.w, before.h), screen_rect());
     Rect from = rect_intersect(rect(to.x - dx, to.y - dy, to.w, to.h), screen_rect());
     to = rect(from.x + dx, from.y + dy, from.w, from.h);
+    /* with no back buffer the pointer is among the pixels that move: it goes first */
+    int pointer = single_buffer() && cursor_shown;
+    if (pointer) cursor_hide();
     win->x = x;
     win->y = y;
     Rect after = window_frame(win);
@@ -1338,6 +1381,7 @@ static void window_move(Window *win, int x, int y) {
         present(to);
         if (rect_overlaps(to, cursor_rect())) cursor_draw();
     }
+    if (pointer && !cursor_shown) cursor_draw();
     invalidate_outside(after, to);
     invalidate_outside(before, after);
 }

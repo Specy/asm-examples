@@ -1,0 +1,5 @@
+[{"wait":5000},{"dblclick":[48,22]},{"wait":3500},{"shot":"sim-np-1-open"},
+ {"type":"Hello from asmOS!\nA second line, typed."},{"wait":1500},{"shot":"sim-np-2-typed"},{"stats":"typed"},
+ {"key":"Home"},{"key":"ArrowUp"},{"key":"End","shift":true},{"wait":1200},{"shot":"sim-np-3-selected"},
+ {"key":"ArrowDown"},{"key":"ArrowLeft"},{"key":"ArrowLeft"},{"key":"Backspace"},{"wait":800},
+ {"click":[68,48]},{"wait":1200},{"shot":"sim-np-4-menu"},{"key":"Escape"},{"wait":1200},{"shot":"sim-np-5-escape"},{"stats":"end"}]

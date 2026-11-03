@@ -1,0 +1,2 @@
+[{"wait":6000},{"click":[129,188]},{"wait":2500},{"shot":"sim-mines-1"},
+ {"click":[161,140],"button":"right"},{"wait":1000},{"click":[81,236]},{"wait":2500},{"shot":"sim-mines-2"},{"stats":"mines"}]

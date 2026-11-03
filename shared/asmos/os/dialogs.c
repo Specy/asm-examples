@@ -45,11 +45,12 @@ static Window *dialog_create(int pid, const char *title, int w, int h, void (*pa
     win->paint = paint;
     win->on_mouse = on_mouse;
     win->on_key = on_key;
-    win->data = calloc(1, sizeof(Dialog));
+    win->data = system_alloc(sizeof(Dialog));
     if (!win->data) {
         window_destroy(win);
         return NULL;
     }
+    memset(win->data, 0, sizeof(Dialog));
     return win;
 }
 
@@ -308,6 +309,7 @@ static void run_command(const char *text) {
     int app = os_app_named(text);
     if (app < 0)
         for (int i = 0; i < APP_COUNT && app < 0; i++) {
+            if (!APPS[i].main) continue;
             const char *a = text, *b = APPS[i].name;
             while (*a && *b && (*a | 32) == (*b | 32)) a++, b++;
             if (!*a && !*b) app = i;

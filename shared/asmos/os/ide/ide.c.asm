@@ -73,6 +73,7 @@
     extern os_get_message
     extern os_peek_message
     extern os_sleep
+    extern os_yield_point
     ; compiler-symbol L2 .L2
     ; compiler-symbol L3 .L3
     ; compiler-symbol L1 .L1
@@ -1617,7 +1618,7 @@
     ; compiler-symbol L2682 .L2682
     ; compiler-symbol L3110 .L3110
     ; compiler-symbol L2603 .L2603
-    ; compiler-symbol LFSB251 .LFSB251
+    ; compiler-symbol LFSB257 .LFSB257
     ; compiler-symbol LCOLDE142 .LCOLDE142
     ; compiler-symbol LHOTE142 .LHOTE142
     ; compiler-symbol LC143 .LC143
@@ -2132,7 +2133,6 @@
     ; compiler-symbol LC202 .LC202
     ; compiler-symbol LC203 .LC203
     ; compiler-symbol LC204 .LC204
-    ; compiler-symbol LC205 .LC205
     ; compiler-symbol LC206 .LC206
     ; compiler-symbol LC207 .LC207
     ; compiler-symbol LC208 .LC208
@@ -2141,6 +2141,7 @@
     ; compiler-symbol LC211 .LC211
     ; compiler-symbol LC212 .LC212
     ; compiler-symbol LC213 .LC213
+    ; compiler-symbol LC214 .LC214
     ; compiler-symbol L4251 .L4251
     ; compiler-symbol L4142 .L4142
     ; compiler-symbol L4144 .L4144
@@ -2188,9 +2189,9 @@
     ; compiler-symbol L4201 .L4201
     ; compiler-symbol L4203 .L4203
     ; compiler-symbol L4206 .L4206
-    ; compiler-symbol LC217 .LC217
     ; compiler-symbol LC218 .LC218
     ; compiler-symbol LC219 .LC219
+    ; compiler-symbol LC220 .LC220
     ; compiler-symbol L4205 .L4205
     ; compiler-symbol L4215 .L4215
     ; compiler-symbol L4216 .L4216
@@ -2205,6 +2206,7 @@
     ; compiler-symbol L4195 .L4195
     ; compiler-symbol L4196 .L4196
     ; compiler-symbol L4197 .L4197
+    ; compiler-symbol LC205 .LC205
     ; compiler-symbol L4198 .L4198
     ; compiler-symbol L4188 .L4188
     ; compiler-symbol L4190 .L4190
@@ -2224,9 +2226,9 @@
     ; compiler-symbol L4171 .L4171
     ; compiler-symbol L4249 .L4249
     ; compiler-symbol L4229 .L4229
-    ; compiler-symbol LC214 .LC214
     ; compiler-symbol LC215 .LC215
     ; compiler-symbol LC216 .LC216
+    ; compiler-symbol LC217 .LC217
     ; compiler-symbol L4223 .L4223
     ; compiler-symbol L4222 .L4222
     ; compiler-symbol L4214 .L4214
@@ -2249,9 +2251,9 @@
     ; compiler-symbol L4270 .L4270
     ; compiler-symbol L4274 .L4274
     ; compiler-symbol L4283 .L4283
-    ; compiler-symbol LC220 .LC220
     ; compiler-symbol LC221 .LC221
     ; compiler-symbol LC222 .LC222
+    ; compiler-symbol LC223 .LC223
     ; compiler-symbol L4286 .L4286
     ; compiler-symbol L4726 .L4726
     ; compiler-symbol L4287 .L4287
@@ -2454,14 +2456,14 @@
     ; compiler-symbol L4461 .L4461
     ; compiler-symbol L4462 .L4462
     ; compiler-symbol L4405 .L4405
-    ; compiler-symbol LC223 .LC223
     ; compiler-symbol LC224 .LC224
     ; compiler-symbol LC225 .LC225
     ; compiler-symbol LC226 .LC226
     ; compiler-symbol LC227 .LC227
     ; compiler-symbol LC228 .LC228
+    ; compiler-symbol LC229 .LC229
     ; compiler-symbol L4772 .L4772
-    ; compiler-symbol L4839 .L4839
+    ; compiler-symbol L4842 .L4842
     ; compiler-symbol L4774 .L4774
     ; compiler-symbol L4775 .L4775
     ; compiler-symbol L4784 .L4784
@@ -2469,38 +2471,40 @@
     ; compiler-symbol L4778 .L4778
     ; compiler-symbol L4779 .L4779
     ; compiler-symbol L4780 .L4780
-    ; compiler-symbol L4814 .L4814
+    ; compiler-symbol L4817 .L4817
     ; compiler-symbol L4777 .L4777
     ; compiler-symbol L4785 .L4785
-    ; compiler-symbol L4840 .L4840
+    ; compiler-symbol L4843 .L4843
     ; compiler-symbol L4786 .L4786
-    ; compiler-symbol L4841 .L4841
-    ; compiler-symbol L4808 .L4808
-    ; compiler-symbol LC232 .LC232
+    ; compiler-symbol L4844 .L4844
+    ; compiler-symbol L4811 .L4811
     ; compiler-symbol LC233 .LC233
+    ; compiler-symbol LC234 .LC234
     ; compiler-symbol L4787 .L4787
     ; compiler-symbol L4791 .L4791
     ; compiler-symbol L4792 .L4792
-    ; compiler-symbol L4842 .L4842
+    ; compiler-symbol L4845 .L4845
     ; compiler-symbol L4793 .L4793
     ; compiler-symbol L4795 .L4795
     ; compiler-symbol L4796 .L4796
-    ; compiler-symbol L4811 .L4811
-    ; compiler-symbol L4812 .L4812
-    ; compiler-symbol L4813 .L4813
-    ; compiler-symbol L4843 .L4843
-    ; compiler-symbol L4807 .L4807
+    ; compiler-symbol L4797 .L4797
+    ; compiler-symbol L4814 .L4814
+    ; compiler-symbol L4815 .L4815
+    ; compiler-symbol L4816 .L4816
+    ; compiler-symbol L4846 .L4846
+    ; compiler-symbol L4801 .L4801
     ; compiler-symbol L4800 .L4800
     ; compiler-symbol L4802 .L4802
-    ; compiler-symbol L4844 .L4844
     ; compiler-symbol L4803 .L4803
-    ; compiler-symbol L4801 .L4801
     ; compiler-symbol L4804 .L4804
-    ; compiler-symbol L4805 .L4805
+    ; compiler-symbol L4809 .L4809
     ; compiler-symbol L4798 .L4798
+    ; compiler-symbol L4805 .L4805
+    ; compiler-symbol L4807 .L4807
+    ; compiler-symbol L4806 .L4806
+    ; compiler-symbol L4810 .L4810
     ; compiler-symbol L4788 .L4788
     ; compiler-symbol L4789 .L4789
-    ; compiler-symbol LC234 .LC234
     ; compiler-symbol LC235 .LC235
     ; compiler-symbol LC236 .LC236
     ; compiler-symbol LC237 .LC237
@@ -2902,6 +2906,7 @@
     ; compiler-symbol LC633 .LC633
     ; compiler-symbol LC634 .LC634
     ; compiler-symbol LC635 .LC635
+    ; compiler-symbol LC636 .LC636
     ; compiler-symbol Letext_cold0 .Letext_cold0
     section .text
     align 16
@@ -3189,23 +3194,23 @@ L62:
     ret
     align 16
 ide_host_rewind:
-    mov rax, qword [rdi+19960]
+    mov rax, qword [rdi+19976]
     cmp rax, rsi
     jb L65
-    mov dword [rdi+19952], 0
-    mov qword [rdi+19960], rsi
+    mov dword [rdi+19968], 0
+    mov qword [rdi+19976], rsi
 L66:
-    mov dword [rdi+19972], 1
+    mov dword [rdi+19988], 1
     ret
 L65:
     mov rcx, rsi
-    movsx rdx, dword [rdi+19952]
+    movsx rdx, dword [rdi+19968]
     sub rcx, rax
     cmp rcx, rdx
     jnb L66
-    mov dword [rdi+19972], 1
+    mov dword [rdi+19988], 1
     sub esi, eax
-    mov dword [rdi+19952], esi
+    mov dword [rdi+19968], esi
     ret
     align 16
 ide_button_enabled:
@@ -4136,9 +4141,9 @@ ide_host_time:
     push rbx
     mov rbx, rdi
     sub rsp, 8
-    mov rbp, qword [rdi+19928]
+    mov rbp, qword [rdi+19944]
     call os_now_ms
-    sub rax, qword [rbx+19936]
+    sub rax, qword [rbx+19952]
     add rsp, 8
     add rax, rbp
     pop rbx
@@ -4169,78 +4174,78 @@ ide_layout:
     lea r8d, [rax-18]
 L235:
     lea edx, [rsi-26]
-    mov dword [rbx+20408], eax
+    mov dword [rbx+20424], eax
     movabs r10, 171798691868
     movabs r11, 120259084330
     sub edx, eax
-    mov dword [rbx+20356], edi
+    mov dword [rbx+20372], edi
     lea r9d, [rdx-2]
     sub edx, 6
-    mov qword [rbx+20368], r10
+    mov qword [rbx+20384], r10
     movabs r10, 68719476764
-    mov dword [rbx+20376], edx
     mov dword [rbx+20392], edx
-    mov dword [rbx+20708], edx
+    mov dword [rbx+20408], edx
+    mov dword [rbx+20724], edx
     mov edx, esi
     sub esi, 285
     sub edx, eax
-    mov dword [rbx+20360], r9d
+    mov dword [rbx+20376], r9d
     lea r9d, [rcx-278]
     lea eax, [rdx+18]
-    mov dword [rbx+20388], r9d
+    mov dword [rbx+20404], r9d
     lea r9d, [rcx-236]
-    mov dword [rbx+20416], eax
+    mov dword [rbx+20432], eax
     movabs rax, 455266533393
-    mov qword [rbx+20584], rax
+    mov qword [rbx+20600], rax
     movabs rax, 73014444134
-    mov dword [rbx+20400], edx
+    mov dword [rbx+20416], edx
     add edx, 1
-    mov dword [rbx+20404], edi
     mov dword [rbx+20420], edi
+    mov dword [rbx+20436], edi
     lea edi, [rcx-216]
-    mov qword [rbx+20596], rax
+    mov qword [rbx+20612], rax
     movd xmm2, edi
     movabs rax, 927712935962
-    mov dword [rbx+20576], edx
-    pshufd xmm0, xmm2, 0xe0
     mov dword [rbx+20592], edx
+    pshufd xmm0, xmm2, 0xe0
+    mov dword [rbx+20608], edx
     mov edx, 4
-    mov qword [rbx+20432], rax
-    add rax, 259
-    mov qword [rbx+20332], 0
-    mov dword [rbx+20340], ecx
-    mov qword [rbx+20344], 26
-    mov dword [rbx+20352], 26
-    mov dword [rbx+20364], 2
-    mov qword [rbx+20380], r11
-    mov dword [rbx+20696], r9d
-    mov qword [rbx+20700], r10
-    mov dword [rbx+20396], 0
-    mov dword [rbx+20412], 0
-    mov dword [rbx+20424], r8d
-    mov dword [rbx+20572], 2
-    mov dword [rbx+20580], 102
-    mov dword [rbx+20428], edi
-    mov dword [rbx+20440], 257
-    mov dword [rbx+20444], edi
-    movq xmm1, qword [rel LC9]
     mov qword [rbx+20448], rax
+    add rax, 259
+    mov qword [rbx+20348], 0
+    mov dword [rbx+20356], ecx
+    mov qword [rbx+20360], 26
+    mov dword [rbx+20368], 26
+    mov dword [rbx+20380], 2
+    mov qword [rbx+20396], r11
+    mov dword [rbx+20712], r9d
+    mov qword [rbx+20716], r10
+    mov dword [rbx+20412], 0
+    mov dword [rbx+20428], 0
+    mov dword [rbx+20440], r8d
+    mov dword [rbx+20588], 2
+    mov dword [rbx+20596], 102
+    mov dword [rbx+20444], edi
+    mov dword [rbx+20456], 257
+    mov dword [rbx+20460], edi
+    movq xmm1, qword [rel LC9]
+    mov qword [rbx+20464], rax
     lea eax, [rcx-158]
     paddd xmm0, xmm1
-    mov dword [rbx+20604], eax
+    mov dword [rbx+20620], eax
     movabs rax, 214748365086
-    mov qword [rbx+20608], rax
+    mov qword [rbx+20624], rax
     mov rax, qword [rel LC10]
-    mov dword [rbx+20456], esi
-    mov dword [rbx+20616], 15
+    mov dword [rbx+20472], esi
+    mov dword [rbx+20632], 15
     pshufd xmm3, xmm0, 0xe5
-    mov dword [rbx+20624], 286
     mov dword [rbx+20640], 286
-    mov qword [rbx+20628], rax
+    mov dword [rbx+20656], 286
     mov qword [rbx+20644], rax
-    lea rax, [rbx+20476]
-    movd dword [rbx+20620], xmm0
-    movd dword [rbx+20636], xmm3
+    mov qword [rbx+20660], rax
+    lea rax, [rbx+20492]
+    movd dword [rbx+20636], xmm0
+    movd dword [rbx+20652], xmm3
 L236:
     mov dword [rax], edx
     add edx, 52
@@ -4251,20 +4256,20 @@ L236:
     cmp edx, 316
     jne L236
     mov eax, dword [rbx+20]
-    mov dword [rbx+20460], edi
+    mov dword [rbx+20476], edi
     movabs rsi, 927712935962
-    mov qword [rbx+20464], rsi
-    mov dword [rbx+20664], 16
+    mov qword [rbx+20480], rsi
+    mov dword [rbx+20680], 16
     sub eax, 26
-    mov dword [rbx+20472], eax
+    mov dword [rbx+20488], eax
     lea eax, [rcx-214]
     sub ecx, 124
-    mov dword [rbx+20652], eax
+    mov dword [rbx+20668], eax
     movabs rax, 377957122075
-    mov qword [rbx+20656], rax
-    mov dword [rbx+20668], ecx
     mov qword [rbx+20672], rax
-    mov dword [rbx+20680], 16
+    mov dword [rbx+20684], ecx
+    mov qword [rbx+20688], rax
+    mov dword [rbx+20696], 16
     pop rbx
     ret
 L237:
@@ -4324,7 +4329,7 @@ ide_draw_toolbar:
     mov r15, rdi
     push r14
     push r13
-    lea r13, [r15+20476]
+    lea r13, [r15+20492]
     push r12
     xor r12d, r12d
     push rbp
@@ -4332,11 +4337,11 @@ ide_draw_toolbar:
     sub rsp, 40
     mov rdi, qword [rdi]
     call os_window_draw
-    mov r14d, dword [r15+20340]
-    mov ebx, dword [r15+20344]
+    mov r14d, dword [r15+20356]
+    mov ebx, dword [r15+20360]
     mov r8d, 12632256
-    mov ebp, dword [r15+20332]
-    mov esi, dword [r15+20336]
+    mov ebp, dword [r15+20348]
+    mov esi, dword [r15+20352]
     mov ecx, ebx
     mov edx, r14d
     mov dword [rsp+16], ebx
@@ -4354,9 +4359,9 @@ ide_draw_toolbar:
     mov dword [rsp+28], ebp
     jmp L251
 L260:
-    cmp dword [rdi+20688], r12d
+    cmp dword [rdi+20704], r12d
     jne L250
-    mov eax, dword [rdi+20692]
+    mov eax, dword [rdi+20708]
     xor r9d, r9d
     test eax, eax
     setne r9b
@@ -4437,7 +4442,7 @@ L259:
     mov esi, 3
     mov eax, dword [rsp+16]
     mov ebp, dword [rsp+28]
-    mov ebx, dword [r15+20556]
+    mov ebx, dword [r15+20572]
     mov r8d, r14d
     lea r12d, [rax-7]
     lea edi, [rbx+58]
@@ -4466,11 +4471,11 @@ L259:
     mov rdi, rax
     mov ecx, ecx
     or rcx, r12
-    lea r12, [r15+19552]
+    lea r12, [r15+19572]
     mov rsi, rcx
     call gfx_clip
     xor ecx, ecx
-    cmp byte [r15+19552], 69
+    cmp byte [r15+19572], 69
     jne L252
     mov edx, 5
     mov esi, LC15
@@ -4693,9 +4698,9 @@ L298:
     jne L295
     mov eax, dword [rbx+40]
 L296:
-    mov qword [rbp+20188], 2
+    mov qword [rbp+20204], 2
     and eax, -8
-    mov dword [rbp+20196], eax
+    mov dword [rbp+20212], eax
     add rsp, 88
     pop rbx
     pop rbp
@@ -4714,18 +4719,18 @@ L306:
     mov edx, LC18
     mov esi, 120
     xor eax, eax
-    lea rdi, [rbp+19552]
+    lea rdi, [rbp+19572]
     call snprintf
     jmp L291
     align 16
 ide_host_seed:
     push r12
-    mov r12, qword [rdi+19928]
+    mov r12, qword [rdi+19944]
     push rbp
     mov rbp, rdi
     push rbx
     call os_now_ms
-    sub rax, qword [rbp+19936]
+    sub rax, qword [rbp+19952]
     mov rbx, rax
     movabs rax, 6364136223846793005
     add rbx, r12
@@ -5172,39 +5177,39 @@ L457:
     je L467
 L459:
     lea ecx, [rax+1]
-    mov rdx, qword [rbp+19944]
+    mov rdx, qword [rbp+19960]
     cdqe
     add rbx, 1
-    mov dword [rbp+19952], ecx
+    mov dword [rbp+19968], ecx
     movzx ecx, byte [rbx-1]
     mov byte [rdx+rax], cl
     cmp r12, rbx
     je L461
 L460:
     cmp byte [rbx], 12
-    movsx rax, dword [rbp+19952]
+    movsx rax, dword [rbp+19968]
     jne L457
-    mov rdx, qword [rbp+19960]
+    mov rdx, qword [rbp+19976]
     add rbx, 1
-    mov dword [rbp+19952], 0
+    mov dword [rbp+19968], 0
     lea rax, [rdx+1+rax]
-    mov qword [rbp+19960], rax
+    mov qword [rbp+19976], rax
     cmp r12, rbx
     jne L460
 L461:
     mov rax, qword [rel LC21]
-    mov qword [rbp+19968], rax
+    mov qword [rbp+19984], rax
     pop rbx
     pop rbp
     pop r12
     ret
 L467:
-    mov rdi, qword [rbp+19944]
+    mov rdi, qword [rbp+19960]
     mov edx, 16384
     lea rsi, [rdi+16384]
     call memcpy
-    mov eax, dword [rbp+19952]
-    add qword [rbp+19960], 16384
+    mov eax, dword [rbp+19968]
+    add qword [rbp+19976], 16384
     sub eax, 16384
     jmp L459
     align 16
@@ -7237,20 +7242,20 @@ con_line:
     mov r15d, r9d
     add r13, rbx
 L815:
-    mov esi, dword [rbp+19952]
+    mov esi, dword [rbp+19968]
     mov ecx, ebx
     cmp esi, ebx
     jg L861
     mov edx, ebx
     sub edx, esi
-    mov esi, dword [rbp+20176]
+    mov esi, dword [rbp+20192]
     cmp edx, esi
     jl L862
     sub edx, esi
     je L818
     sub edx, 1
     movsx rdx, edx
-    movsx edx, byte [rbp+19672+rdx]
+    movsx edx, byte [rbp+19692+rdx]
 L802:
     cmp dl, 13
     je L805
@@ -7276,15 +7281,15 @@ L810:
     jge L805
     cmp dl, 9
     je L805
-    mov r11d, dword [rbp+19952]
+    mov r11d, dword [rbp+19968]
     xor r9d, r9d
     cmp r11d, ecx
     jg L813
-    add r11d, dword [rbp+20176]
+    add r11d, dword [rbp+20192]
     mov r9d, 192
     cmp r11d, ecx
     jg L813
-    cmp dword [rbp+19872], 1
+    cmp dword [rbp+19892], 1
     mov r9d, 12582912
     je L813
     mov r9d, 128
@@ -7324,7 +7329,7 @@ L799:
     pop r15
     ret
 L861:
-    mov rdx, qword [rbp+19944]
+    mov rdx, qword [rbp+19960]
     movsx edx, byte [rdx+rbx]
     jmp L802
 L863:
@@ -7356,7 +7361,7 @@ L864:
     jmp L809
 L862:
     movsx rdx, edx
-    movsx edx, byte [rbp+19976+rdx]
+    movsx edx, byte [rbp+19992+rdx]
     jmp L802
 L818:
     mov edx, 10
@@ -7400,11 +7405,11 @@ ide_draw_bottom:
     sub rsp, 280
     mov rdi, qword [rdi]
     call os_window_draw
-    mov eax, dword [rbx+20396]
+    mov eax, dword [rbx+20412]
     mov ecx, 2
-    mov r15d, dword [rbx+20404]
-    mov ebp, dword [rbx+20400]
-    mov edx, dword [rbx+20408]
+    mov r15d, dword [rbx+20420]
+    mov ebp, dword [rbx+20416]
+    mov edx, dword [rbx+20424]
     mov r8d, 12632256
     mov r14d, eax
     mov edi, eax
@@ -7424,12 +7429,12 @@ ide_draw_bottom:
     mov edx, r15d
     lea esi, [rbp+17]
     mov edi, r14d
-    lea r15, [rbx+20572]
+    lea r15, [rbx+20588]
     mov ecx, 16777215
     xor r14d, r14d
     call hline
     mov eax, dword [r15+12]
-    mov ebp, dword [rbx+20572]
+    mov ebp, dword [rbx+20588]
     mov r13d, dword [r15+4]
     mov r12d, dword [r15+8]
     mov dword [rsp], eax
@@ -7440,7 +7445,7 @@ L867:
     mov dword [rsp+24], eax
     lea eax, [rbp+0+r12]
     mov dword [rsp+28], eax
-    cmp dword [rbx+20180], r14d
+    cmp dword [rbx+20196], r14d
     je L963
     lea edx, [r12-4]
     lea esi, [r13+2]
@@ -7544,7 +7549,7 @@ L873:
     add edi, ebp
     call draw_text
 L918:
-    movdqu xmm0, oword [rbx+20412]
+    movdqu xmm0, oword [rbx+20428]
     movdqa xmm2, oword [rel LC38]
     mov r8d, 16777215
     paddd xmm2, xmm0
@@ -7566,7 +7571,7 @@ L918:
     mov edx, r12d
     mov esi, r14d
     call draw_field
-    mov r10d, dword [rbx+20180]
+    mov r10d, dword [rbx+20196]
     test r10d, r10d
     jne L876
     cmp dword [rbx+84], 1
@@ -7577,7 +7582,7 @@ L876:
     add r14d, 4
     call gfx_clip
     mov eax, dword [rsp+36]
-    mov r9d, dword [rbx+20180]
+    mov r9d, dword [rbx+20196]
     lea eax, [rax-2+r13]
     mov dword [rsp], eax
     test r9d, r9d
@@ -7598,18 +7603,18 @@ L876:
     test edi, edi
     mov r15d, edi
     cmovle r15d, eax
-    mov eax, dword [rbx+20176]
-    add eax, dword [rbx+19952]
-    cmp byte [rbx+19672], 0
+    mov eax, dword [rbx+20192]
+    add eax, dword [rbx+19968]
+    cmp byte [rbx+19692], 0
     mov dword [rsp+32], eax
     mov ebp, eax
     mov r12d, eax
     je L879
-    lea rdi, [rbx+19672]
+    lea rdi, [rbx+19692]
     call strlen
     lea r12d, [rbp+1+rax]
 L879:
-    mov edi, dword [rbx+19968]
+    mov edi, dword [rbx+19984]
     mov dword [rsp+28], r12d
     mov edx, r12d
     mov r12, rbx
@@ -7623,20 +7628,20 @@ L886:
     test ebx, ebx
     jle L880
 L968:
-    mov edi, dword [r12+19952]
+    mov edi, dword [r12+19968]
     lea ecx, [rbx-1]
     cmp ecx, edi
     jl L966
     mov eax, ecx
     sub eax, edi
-    mov edi, dword [r12+20176]
+    mov edi, dword [r12+20192]
     cmp eax, edi
     jl L967
     sub eax, edi
     je L880
     sub eax, 1
     cdqe
-    movzx eax, byte [r12+19672+rax]
+    movzx eax, byte [r12+19692+rax]
 L882:
     sub rsi, 1
     cmp al, 10
@@ -7664,12 +7669,12 @@ L880:
     lea edx, [rbx-1]
     jmp L886
 L966:
-    mov rax, qword [r12+19944]
+    mov rax, qword [r12+19960]
     movzx eax, byte [rax+rsi]
     jmp L882
 L967:
     cdqe
-    movzx eax, byte [r12+19976+rax]
+    movzx eax, byte [r12+19992+rax]
     jmp L882
 L878:
     mov esi, dword [rbx+10144]
@@ -7686,7 +7691,7 @@ L878:
     setg al
     add esi, eax
     je L970
-    mov r15d, dword [rbx+20184]
+    mov r15d, dword [rbx+20200]
     cmp esi, r15d
     jle L907
     lea eax, [r12-17]
@@ -7791,7 +7796,7 @@ L907:
     call gfx_clip
     mov eax, dword [rsp+48]
     mov rdi, qword [rbx]
-    mov dword [rbx+19972], 0
+    mov dword [rbx+19988], 0
     mov ecx, dword [rsp+44]
     mov edx, dword [rsp+40]
     mov esi, dword [rsp+52]
@@ -7839,13 +7844,13 @@ L887:
     jge L960
     cmp r13d, r12d
     jge L927
-    mov r8d, dword [rbx+19952]
+    mov r8d, dword [rbx+19968]
     mov edx, r13d
     movsx rax, r13d
     sub edx, r8d
     jmp L889
 L891:
-    mov ecx, dword [rbx+20176]
+    mov ecx, dword [rbx+20192]
     cmp edx, ecx
     jl L973
     mov esi, edx
@@ -7853,7 +7858,7 @@ L891:
     je L890
     sub esi, 1
     movsx rsi, esi
-    movzx ecx, byte [rbx+19672+rsi]
+    movzx ecx, byte [rbx+19692+rsi]
 L892:
     cmp cl, 10
     je L890
@@ -7867,7 +7872,7 @@ L889:
     mov ebp, eax
     cmp r8d, eax
     jle L891
-    mov rcx, qword [rbx+19944]
+    mov rcx, qword [rbx+19960]
     movzx ecx, byte [rcx+rax]
     cmp cl, 10
     jne L894
@@ -7906,7 +7911,7 @@ L895:
     jmp L887
 L973:
     movsx rcx, edx
-    movzx ecx, byte [rbx+19976+rcx]
+    movzx ecx, byte [rbx+19992+rcx]
     jmp L892
 L974:
     lea ebp, [rax+1]
@@ -7914,7 +7919,7 @@ L974:
 L975:
     cmp r13d, r9d
     jge L924
-    mov r8d, dword [rbx+19952]
+    mov r8d, dword [rbx+19968]
     mov eax, r13d
     movsx rsi, r13d
     xor r10d, r10d
@@ -7934,7 +7939,7 @@ L903:
 L904:
     cmp r8d, esi
     jg L977
-    mov edi, dword [rbx+20176]
+    mov edi, dword [rbx+20192]
     cmp eax, edi
     jl L978
     mov r13d, eax
@@ -7942,7 +7947,7 @@ L904:
     je L900
     sub r13d, 1
     movsx r13, r13d
-    movzx edi, byte [rbx+19672+r13]
+    movzx edi, byte [rbx+19692+r13]
 L898:
     cmp dil, 9
     jne L900
@@ -7985,7 +7990,7 @@ L902:
     add r10d, 1
     jmp L903
 L977:
-    mov rdi, qword [rbx+19944]
+    mov rdi, qword [rbx+19960]
     movzx edi, byte [rdi+rsi]
     jmp L898
 L925:
@@ -7993,7 +7998,7 @@ L925:
     jmp L902
 L978:
     movsx rdi, eax
-    movzx edi, byte [rbx+19976+rdi]
+    movzx edi, byte [rbx+19992+rdi]
     jmp L898
 L927:
     mov ebp, r13d
@@ -8850,7 +8855,7 @@ L1197:
     mov r12d, dword [rbx+32]
     mov rdi, rbp
     call os_base_name
-    lea rdi, [rbx+19552]
+    lea rdi, [rbx+19572]
     mov r8d, r12d
     mov edx, LC50
     mov rcx, rax
@@ -8968,7 +8973,7 @@ ide_update_menus:
     mov r10d, dword [rdi+19392]
     test r9d, r9d
     sete al
-    mov dword [rdi+25388], eax
+    mov dword [rdi+25404], eax
     test r10d, r10d
     je L1238
     mov edx, dword [rdi+10148]
@@ -8981,21 +8986,21 @@ L1236:
     xor ecx, ecx
     movzx edx, dl
 L1235:
-    mov dword [rdi+25516], edx
+    mov dword [rdi+25532], edx
     mov edx, dword [rdi+19400]
-    mov dword [rdi+25452], eax
+    mov dword [rdi+25468], eax
     xor eax, eax
     test edx, edx
-    mov dword [rdi+25484], ecx
+    mov dword [rdi+25500], ecx
     setne al
     add eax, eax
-    mov dword [rdi+25676], eax
+    mov dword [rdi+25692], eax
     xor eax, eax
     cmp qword [rdi+8], 0
     setne al
     add eax, eax
-    mov dword [rdi+25740], eax
-    mov eax, dword [rdi+20188]
+    mov dword [rdi+25756], eax
+    mov eax, dword [rdi+20204]
     test eax, eax
     je L1242
     cmp eax, 1
@@ -9007,9 +9012,9 @@ L1235:
     movzx eax, al
     add eax, eax
 L1237:
-    mov dword [rdi+25804], ecx
-    mov dword [rdi+25836], edx
-    mov dword [rdi+25868], eax
+    mov dword [rdi+25820], ecx
+    mov dword [rdi+25852], edx
+    mov dword [rdi+25884], eax
     ret
 L1238:
     mov eax, 1
@@ -9095,7 +9100,7 @@ L1249:
     mov r12d, dword [rbx+19392]
     test r12d, r12d
     je L1303
-    lea rax, [rbx+20732]
+    lea rax, [rbx+20748]
     xor r15d, r15d
     mov qword [rsp], rax
     test r13d, r13d
@@ -9170,14 +9175,14 @@ L1260:
     lea r12d, [rax+rcx*4]
     test ebp, ebp
     jle L1271
-    mov dword [rsp+12], r15d
+    mov dword [rsp+12], edi
     mov ecx, -1
     xor esi, esi
     xor r9d, r9d
-    mov dword [rsp+16], edi
+    mov dword [rsp+16], r8d
     mov r10d, -1
     mov r11d, r13d
-    mov dword [rsp+20], r8d
+    mov dword [rsp+20], r15d
     test r13d, r13d
     je L1264
 L1307:
@@ -9220,14 +9225,14 @@ L1267:
     sub r15, rdx
     and r15d, 4
     je L1270
-    mov dword [rdx+20732], ecx
+    mov dword [rdx+20748], ecx
     add rdx, 4
     cmp rdx, rdi
     je L1297
 L1270:
-    mov dword [rdx+20732], ecx
+    mov dword [rdx+20748], ecx
     add rdx, 8
-    mov dword [rdx+20728], ecx
+    mov dword [rdx+20744], ecx
     cmp rdx, rdi
     jne L1270
 L1297:
@@ -9259,9 +9264,9 @@ L1305:
     mov ecx, dword [rdi+rdx*4]
     jmp L1267
 L1306:
-    mov r15d, dword [rsp+12]
-    mov edi, dword [rsp+16]
-    mov r8d, dword [rsp+20]
+    mov edi, dword [rsp+12]
+    mov r8d, dword [rsp+16]
+    mov r15d, dword [rsp+20]
 L1271:
     mov rsi, qword [rsp+32]
     movsx rax, r8d
@@ -9274,9 +9279,8 @@ L1271:
     xor ecx, ecx
     mov rdi, rax
     call copy_rect32
-    mov eax, dword [rsp+8]
-    cmp r15d, eax
-    jl L1263
+    cmp dword [rsp+8], r15d
+    jg L1263
 L1245:
     add rsp, 72
     pop rbx
@@ -9400,19 +9404,19 @@ ide_paint_side_bitmap:
     mov rbp, rdi
     push rbx
     sub rsp, 168
-    mov eax, dword [rdi+20460]
-    movdqu xmm1, oword [rdi+20460]
-    movd xmm2, dword [rdi+20464]
+    mov eax, dword [rdi+20476]
+    movdqu xmm1, oword [rdi+20476]
+    movd xmm2, dword [rdi+20480]
     mov dword [rsp], edx
     lea rsi, [rsp+64]
     lea rdx, [rsp+68]
     add eax, 2
     movaps oword [rsp+32], xmm1
     mov dword [rsp+24], eax
-    mov eax, dword [rdi+20468]
+    mov eax, dword [rdi+20484]
     movd dword [rsp+20], xmm2
     lea r13d, [rax-4]
-    mov eax, dword [rdi+20472]
+    mov eax, dword [rdi+20488]
     lea r15d, [rax-47]
     call ide_grid
     mov r11d, dword [rbp+10144]
@@ -9682,7 +9686,7 @@ ide_paused_status:
 L1329:
     xor r8d, r8d
 L1328:
-    add rdi, 19552
+    add rdi, 19572
     mov edx, LC57
     mov esi, 120
     xor eax, eax
@@ -9736,7 +9740,7 @@ ide_bitmap_draw_rows:
     call ide_grid
     test ebp, ebp
     je L1337
-    cmp dword [rbx+20684], 1
+    cmp dword [rbx+20700], 1
     je L1338
     mov r13d, 2147483647
     xor r12d, r12d
@@ -9824,7 +9828,7 @@ L1343:
     cmp eax, r12d
     cmovle r12d, eax
 L1344:
-    mov edi, dword [rbx+20684]
+    mov edi, dword [rbx+20700]
     cmp r13d, esi
     jnb L1345
     mov r13d, -1
@@ -9832,19 +9836,19 @@ L1344:
     jne L1339
     jmp L1346
 L1368:
-    cmp dword [rbx+20684], 1
+    cmp dword [rbx+20700], 1
     mov r13d, 2147483647
     jne L1339
     jmp L1341
 L1338:
     mov rdi, qword [rbx]
     call os_window_draw
-    mov eax, dword [rbx+20472]
-    mov edx, dword [rbx+20468]
+    mov eax, dword [rbx+20488]
+    mov edx, dword [rbx+20484]
     xor r8d, r8d
-    mov edi, dword [rbx+20460]
+    mov edi, dword [rbx+20476]
     lea ecx, [rax-17]
-    mov eax, dword [rbx+20464]
+    mov eax, dword [rbx+20480]
     lea esi, [rax+17]
     call draw_field
 L1341:
@@ -9993,7 +9997,7 @@ L1374:
     je L1377
     mov esi, dword [rel screen_w]
     mov edx, 40
-    mov dword [rbx+25740], 2
+    mov dword [rbx+25756], 2
     sub esi, ebp
     sub esi, 8
     call os_window_move
@@ -10010,7 +10014,7 @@ L1388:
     mov eax, dword [rbx+844]
     jmp L1371
 L1377:
-    mov dword [rbx+25740], 0
+    mov dword [rbx+25756], 0
     jmp L1378
 L1389:
     mov rdi, rbx
@@ -10866,16 +10870,16 @@ L1604:
     mov byte [rbx+88+rax], 0
     mov rax, qword [rel LC21]
     mov rdi, rbp
-    mov dword [rbx+19952], 0
-    mov qword [rbx+19960], 0
-    mov dword [rbx+20176], 0
-    mov byte [rbx+19672], 0
-    mov qword [rbx+19968], rax
+    mov dword [rbx+19968], 0
+    mov qword [rbx+19976], 0
+    mov dword [rbx+20192], 0
+    mov byte [rbx+19692], 0
+    mov qword [rbx+19984], rax
     mov dword [rbx+84], 0
     call os_base_name
     mov edx, LC72
     mov esi, 120
-    lea rdi, [rbx+19552]
+    lea rdi, [rbx+19572]
     mov rcx, rax
     xor eax, eax
     call snprintf
@@ -10903,7 +10907,7 @@ L1611:
     call os_base_name
     mov edx, LC71
     mov esi, 120
-    lea rdi, [rbx+19552]
+    lea rdi, [rbx+19572]
     mov rcx, rax
     xor eax, eax
     call snprintf
@@ -10976,7 +10980,7 @@ L1633:
     mov ecx, dword [r10+64]
     mov esi, dword [r10+68]
     sub r8d, dword [rdi+rax*4]
-    mov edi, dword [r10+20388]
+    mov edi, dword [r10+20404]
     lea eax, [rdi+3]
     sub edi, 4
     cmovns eax, edi
@@ -10986,7 +10990,7 @@ L1633:
     cmovg edi, eax
     cmp ecx, edx
     jg L1635
-    movsx rax, dword [r10+20392]
+    movsx rax, dword [r10+20408]
     mov r11, rax
     imul rax, rax, -1840700269
     shr rax, 32
@@ -11298,8 +11302,8 @@ ide_draw_gutter_row:
     mov ebx, esi
     mov esi, ebp
     sub rsp, 40
-    mov r14d, dword [rdi+20372]
-    mov r13d, dword [rdi+20364]
+    mov r14d, dword [rdi+20388]
+    mov r13d, dword [rdi+20380]
     mov edx, r14d
     mov edi, r13d
     call fill_rect
@@ -11471,8 +11475,8 @@ ide_draw_text_row:
     push rbx
     movd xmm1, esi
     sub rsp, 616
-    mov r12d, dword [rdi+20388]
-    mov ebx, dword [rdi+20380]
+    mov r12d, dword [rdi+20404]
+    mov ebx, dword [rdi+20396]
     mov dword [rsp+52], edx
     xor edx, edx
     mov qword [rsp], rdi
@@ -11550,7 +11554,7 @@ L1727:
 L1730:
     mov rdi, qword [rsp]
     mov eax, dword [rsp+60]
-    mov ecx, dword [rdi+20388]
+    mov ecx, dword [rdi+20404]
     sub eax, r13d
     mov dword [rsp+56], eax
     lea eax, [rcx+3]
@@ -12156,28 +12160,28 @@ ide_draw_editor:
     sub rsp, 56
     mov rdi, qword [rdi]
     call os_window_draw
-    mov eax, dword [r12+20380]
-    mov r15d, dword [r12+20360]
-    mov edi, dword [r12+20348]
-    mov esi, dword [r12+20352]
+    mov eax, dword [r12+20396]
+    mov r15d, dword [r12+20376]
+    mov edi, dword [r12+20364]
+    mov esi, dword [r12+20368]
     mov dword [rsp+28], eax
-    mov eax, dword [r12+20388]
+    mov eax, dword [r12+20404]
     mov ecx, r15d
-    mov edx, dword [r12+20356]
-    mov ebx, dword [r12+20384]
+    mov edx, dword [r12+20372]
+    mov ebx, dword [r12+20400]
     mov dword [rsp+20], edi
     mov dword [rsp+36], eax
-    mov eax, dword [r12+20392]
+    mov eax, dword [r12+20408]
     mov dword [rsp+12], esi
     mov dword [rsp+24], eax
-    mov eax, dword [r12+20364]
+    mov eax, dword [r12+20380]
     mov dword [rsp+16], edx
     mov dword [rsp+40], eax
-    mov eax, dword [r12+20372]
+    mov eax, dword [r12+20388]
     mov dword [rsp+32], ebx
     mov dword [rsp+44], eax
     call bevel_sunken
-    movsx r10, dword [r12+20392]
+    movsx r10, dword [r12+20408]
     mov rdi, r12
     mov rax, r10
     imul r10, r10, -1840700269
@@ -12230,9 +12234,9 @@ L1901:
     mov esi, ebx
     call fill_rect
 L1902:
-    movsx rax, dword [r12+20392]
+    movsx rax, dword [r12+20408]
     mov edx, dword [r12+48]
-    lea rdi, [r12+20696]
+    lea rdi, [r12+20712]
     mov rcx, rax
     imul rax, rax, -1840700269
     shr rax, 32
@@ -12244,14 +12248,14 @@ L1902:
     test eax, eax
     cmovle eax, ecx
     mov ecx, eax
-    mov dword [r12+20716], eax
+    mov dword [r12+20732], eax
     sar ecx, 1
     add ecx, edx
     cmp edx, eax
     mov eax, dword [r12+64]
     cmovg edx, ecx
-    mov dword [r12+20720], eax
-    mov dword [r12+20712], edx
+    mov dword [r12+20736], eax
+    mov dword [r12+20728], edx
     call draw_scroll_bar
     mov rdi, qword [r12]
     mov ecx, dword [rsp+16]
@@ -12276,7 +12280,7 @@ ide_draw_line:
     sub rsp, 8
     sub r12d, dword [rdi+64]
     js L1906
-    movsx rax, dword [rdi+20392]
+    movsx rax, dword [rdi+20408]
     mov rbx, rdi
     mov rdx, rax
     imul rax, rax, -1840700269
@@ -12303,7 +12307,7 @@ L1909:
     imul r12d, r12d, 14
     call os_window_draw
     mov rdi, rbx
-    add r12d, dword [rbx+20384]
+    add r12d, dword [rbx+20400]
     call ide_pc_line
     mov edx, r12d
     mov esi, ebp
@@ -12315,11 +12319,11 @@ L1909:
     mov esi, ebp
     mov rdi, rbx
     call ide_draw_text_row
-    mov ecx, dword [rbx+20388]
+    mov ecx, dword [rbx+20404]
     mov rdi, qword [rbx]
     mov edx, r12d
-    mov esi, dword [rbx+20364]
-    add ecx, dword [rbx+20372]
+    mov esi, dword [rbx+20380]
+    add ecx, dword [rbx+20388]
     add rsp, 8
     mov r8d, 14
     pop rbx
@@ -12575,7 +12579,7 @@ L1960:
     add rsp, 8
     mov ecx, 65535
     xor eax, eax
-    lea rdi, [rbx+19552]
+    lea rdi, [rbx+19572]
     mov edx, LC74
     pop rbx
     mov esi, 120
@@ -15017,11 +15021,11 @@ ide_after_stop:
     jnb L2484
     mov rdx, qword [rdi+776]
     mov ebp, dword [rdx+rax*4]
-    mov dword [rdi+19872], 1
+    mov dword [rdi+19892], 1
     test ebp, ebp
     je L2483
     mov ecx, ebp
-    lea rdi, [rdi+19672]
+    lea rdi, [rdi+19692]
     mov edx, LC129
     xor eax, eax
     lea r8, [rbx+10316]
@@ -15030,13 +15034,13 @@ ide_after_stop:
     mov ecx, ebp
     mov edx, LC130
     xor eax, eax
-    lea rdi, [rbx+19552]
+    lea rdi, [rbx+19572]
     mov esi, 120
     sub ebp, 1
     call snprintf
-    movsx rax, dword [rbx+20392]
-    mov dword [rbx+20180], 0
-    mov dword [rbx+19972], 1
+    movsx rax, dword [rbx+20408]
+    mov dword [rbx+20196], 0
+    mov dword [rbx+19988], 1
     mov rdx, rax
     imul rax, rax, -1840700269
     shr rax, 32
@@ -15090,7 +15094,7 @@ L2500:
     mov edx, dword [rdx+rax*4]
     sub edx, 1
 L2487:
-    movsx rax, dword [rbx+20392]
+    movsx rax, dword [rbx+20408]
     mov rcx, rax
     imul rax, rax, -1840700269
     shr rax, 32
@@ -15121,44 +15125,44 @@ L2488:
     pop rbp
     ret
 L2484:
-    mov dword [rbx+19872], 1
+    mov dword [rbx+19892], 1
 L2483:
     lea rcx, [rbx+10316]
-    lea rdi, [rbx+19672]
+    lea rdi, [rbx+19692]
     mov edx, LC131
     xor eax, eax
     mov esi, 200
     call snprintf
-    lea rdi, [rbx+19552]
+    lea rdi, [rbx+19572]
     xor ecx, ecx
     xor eax, eax
     mov edx, LC130
     mov esi, 120
     call snprintf
-    mov dword [rbx+20180], 0
-    mov dword [rbx+19972], 1
+    mov dword [rbx+20196], 0
+    mov dword [rbx+19988], 1
     jmp L2473
 L2476:
     mov dword [rdi+19396], 0
     mov edx, dword [rdi+10308]
-    mov dword [rdi+19872], 0
+    mov dword [rdi+19892], 0
     test edx, edx
     je L2479
     movdqa xmm0, oword [rel LC133]
-    movups oword [rdi+19672], xmm0
+    movups oword [rdi+19692], xmm0
     movdqa xmm0, oword [rel LC134]
-    movups oword [rdi+19688], xmm0
+    movups oword [rdi+19708], xmm0
     movdqa xmm0, oword [rel LC135]
-    movups oword [rdi+19697], xmm0
+    movups oword [rdi+19717], xmm0
 L2480:
     mov ecx, dword [rbx+10304]
     mov r8, qword [rbx+10288]
     mov edx, LC128
     xor eax, eax
-    lea rdi, [rbx+19552]
+    lea rdi, [rbx+19572]
     mov esi, 120
     call snprintf
-    mov dword [rbx+19972], 1
+    mov dword [rbx+19988], 1
     add rsp, 8
     pop rbx
     pop rbp
@@ -15167,15 +15171,15 @@ L2474:
     cmp dword [rdi+10476], 3
     mov dword [rdi+84], 1
     mov edx, LC126
-    mov dword [rdi+20180], 0
+    mov dword [rdi+20196], 0
     jne L2490
     mov edx, LC125
 L2490:
-    lea rdi, [rbx+19552]
+    lea rdi, [rbx+19572]
     mov esi, 120
     xor eax, eax
     call snprintf
-    mov dword [rbx+19972], 1
+    mov dword [rbx+19988], 1
     add rsp, 8
     pop rbx
     pop rbp
@@ -15187,7 +15191,7 @@ L2479:
     mov ecx, dword [rdi+10304]
     mov edx, LC127
     xor eax, eax
-    lea rdi, [rdi+19672]
+    lea rdi, [rdi+19692]
     mov esi, 200
     call snprintf
     jmp L2480
@@ -18922,7 +18926,7 @@ L3053:
     jmp L2506
     section .text
 rv_run.part.0.cold:
-LFSB251:
+LFSB257:
 L2508:
     section .text
     section .text
@@ -20975,15 +20979,15 @@ ide_draw_side:
     mov esi, 26
     mov eax, dword [r10+20]
     lea ecx, [rax-26]
-    mov eax, dword [r10+20460]
+    mov eax, dword [r10+20476]
     lea edi, [rax-2]
     call fill_rect
     mov r10, qword [rsp]
     mov r8d, 12632256
     mov ecx, 17
-    mov ebp, dword [r10+20460]
-    mov ebx, dword [r10+20464]
-    mov r12d, dword [r10+20468]
+    mov ebp, dword [r10+20476]
+    mov ebx, dword [r10+20480]
+    mov r12d, dword [r10+20484]
     mov edi, ebp
     mov esi, ebx
     mov edx, r12d
@@ -20994,7 +20998,7 @@ ide_draw_side:
     mov edx, r12d
     call hline
     mov r10, qword [rsp]
-    lea rbp, [r10+20652]
+    lea rbp, [r10+20668]
 L3635:
     mov r14d, dword [rbp+0]
     mov ebx, dword [rbp+8]
@@ -21003,7 +21007,7 @@ L3635:
     lea eax, [r14+rbx]
     mov dword [rsp], eax
     lea r9d, [r12+2]
-    cmp dword [r10+20684], r15d
+    cmp dword [r10+20700], r15d
     je L3711
     mov esi, r9d
     lea edx, [rbx-4]
@@ -21038,16 +21042,16 @@ L3634:
     mov r15d, 1
     cmp rax, 2
     jne L3635
-    mov eax, dword [r10+20684]
+    mov eax, dword [r10+20700]
     mov dword [rsp+68], eax
     test eax, eax
     jne L3636
-    mov r15d, dword [r10+20428]
-    mov r12d, dword [r10+20432]
+    mov r15d, dword [r10+20444]
+    mov r12d, dword [r10+20448]
     xor ebx, ebx
     mov r8d, 16777215
-    mov eax, dword [r10+20440]
-    mov edx, dword [r10+20436]
+    mov eax, dword [r10+20456]
+    mov edx, dword [r10+20452]
     mov qword [rsp+24], r10
     lea r14, [rsp+128]
     lea esi, [r12+17]
@@ -21094,7 +21098,7 @@ L3637:
     mov r11d, dword [r12+10152+rbx*4]
     sar eax, 4
     and edx, 15
-    mov r10d, dword [r12+19420+rbx*4]
+    mov r10d, dword [r12+19440+rbx*4]
     neg eax
     lea ecx, [rdx+rdx*2]
     and eax, 106
@@ -21102,7 +21106,7 @@ L3637:
     lea r13d, [rax+rsi]
     mov eax, dword [rsp+24]
     add ebp, eax
-    cmp dword [r12+19548], ebx
+    cmp dword [r12+19568], ebx
     je L3714
 L3639:
     lea r15d, [r13+38]
@@ -21162,13 +21166,13 @@ L3711:
     mov r10, qword [rsp+48]
     jmp L3634
 L3636:
-    mov eax, dword [r10+20472]
-    mov edx, dword [r10+20468]
+    mov eax, dword [r10+20488]
+    mov edx, dword [r10+20484]
     xor r8d, r8d
     mov qword [rsp], r10
-    mov edi, dword [r10+20460]
+    mov edi, dword [r10+20476]
     lea ecx, [rax-17]
-    mov eax, dword [r10+20464]
+    mov eax, dword [r10+20480]
     lea esi, [rax+17]
     call draw_field
     mov rdi, qword [rsp]
@@ -21184,7 +21188,7 @@ L3655:
     mov rdi, qword [r10]
     mov ecx, 218
     mov edx, 26
-    mov esi, dword [r10+20460]
+    mov esi, dword [r10+20476]
     add rsp, 184
     pop rbx
     lea r8d, [rax-26]
@@ -21271,7 +21275,7 @@ L3648:
     mov qword [rsp+24], r10
     call draw_text
     mov r10, qword [rsp+24]
-    movsx rdx, dword [r10+19548]
+    movsx rdx, dword [r10+19568]
     mov r8d, dword [r10+10152+rdx*4]
     lea ecx, [r8-32]
     cmp ecx, 94
@@ -21297,11 +21301,11 @@ L3651:
     call draw_text
     mov r10, qword [rsp+24]
 L3638:
-    mov eax, dword [r10+20448]
-    mov edx, dword [r10+20452]
+    mov eax, dword [r10+20464]
+    mov edx, dword [r10+20468]
     mov ecx, 2
     mov r8d, 12632256
-    mov edi, dword [r10+20444]
+    mov edi, dword [r10+20460]
     mov qword [rsp], r10
     xor r14d, r14d
     lea esi, [rax-2]
@@ -21309,15 +21313,15 @@ L3638:
     mov r10, qword [rsp]
     mov r8d, 12632256
     mov ecx, 17
-    movdqu xmm0, oword [r10+20444]
-    mov ebx, dword [r10+20448]
+    movdqu xmm0, oword [r10+20460]
+    mov ebx, dword [r10+20464]
     mov qword [rsp+24], r10
-    movd xmm1, dword [r10+20452]
-    mov r12d, dword [r10+20456]
+    movd xmm1, dword [r10+20468]
+    mov r12d, dword [r10+20472]
     movd ebp, xmm0
     mov esi, ebx
     movaps oword [rsp+32], xmm0
-    mov r13d, dword [r10+20448]
+    mov r13d, dword [r10+20464]
     movd edx, xmm1
     mov edi, ebp
     movd dword [rsp], xmm1
@@ -21332,10 +21336,10 @@ L3638:
     mov r10, qword [rsp+24]
     mov dword [rsp+24], ebx
     mov rbx, r14
-    lea r15, [r10+20604]
+    lea r15, [r10+20620]
     mov r14, r10
 L3653:
-    cmp dword [r14+20188], ebx
+    cmp dword [r14+20204], ebx
     mov ecx, dword [r15+12]
     sete r9b
     mov edx, dword [r15+8]
@@ -21362,7 +21366,7 @@ L3653:
     test edx, edx
     je L3717
     mov esi, dword [r10+10160]
-    mov eax, dword [r10+20188]
+    mov eax, dword [r10+20204]
     mov edx, esi
     mov dword [rsp+48], esi
     and edx, -8
@@ -21379,8 +21383,8 @@ L3657:
     movdqa xmm2, oword [rsp+32]
     paddd xmm2, oword [rel LC171]
     mov qword [rsp+24], r10
-    mov eax, dword [r10+20192]
-    mov ebx, dword [r10+20200]
+    mov eax, dword [r10+20208]
+    mov ebx, dword [r10+20216]
     movaps oword [rsp], xmm2
     mov rdi, qword [rsp]
     mov rsi, qword [rsp+8]
@@ -21418,7 +21422,7 @@ L3669:
     add ebp, 72
     call draw_text
     mov edi, dword [rsp+24]
-    mov dword [rbx+20200], r12d
+    mov dword [rbx+20216], r12d
     cmp r15d, edi
     jne L3671
     mov r12d, dword [rsp+72]
@@ -21469,7 +21473,7 @@ L3671:
     mov edx, LC165
     mov esi, 16
     mov rdi, r14
-    mov eax, dword [rbx+20204]
+    mov eax, dword [rbx+20220]
     mov dword [rsp+68], eax
     xor eax, eax
     call snprintf
@@ -21542,7 +21546,7 @@ L3674:
     mov qword [rsp], r10
     call gfx_clip
     mov r10, qword [rsp]
-    mov dword [r10+20200], r13d
+    mov dword [r10+20216], r13d
     jmp L3655
 L3717:
     mov edi, dword [rsp+88]
@@ -21562,7 +21566,7 @@ L3721:
     call fill_rect
     jmp L3668
 L3718:
-    mov edx, dword [r10+20196]
+    mov edx, dword [r10+20212]
     jmp L3657
 L3720:
     mov ecx, r12d
@@ -21622,28 +21626,28 @@ L3725:
     test esi, esi
     jne L3733
 L3726:
-    mov ecx, dword [rbx+19972]
+    mov ecx, dword [rbx+19988]
     test ecx, ecx
     je L3727
     mov rax, rbp
-    sub rax, qword [rbx+19904]
+    sub rax, qword [rbx+19920]
     cmp rax, 59
     jg L3734
 L3727:
     mov rcx, rbp
-    sub rcx, qword [rbx+19888]
+    sub rcx, qword [rbx+19904]
     cmp rcx, 499
     jle L3728
     mov rsi, qword [rbx+10288]
     xor edx, edx
-    mov qword [rbx+19888], rbp
+    mov qword [rbx+19904], rbp
     mov rax, rsi
-    sub rax, qword [rbx+19880]
-    mov qword [rbx+19880], rsi
+    sub rax, qword [rbx+19896]
+    mov qword [rbx+19896], rsi
     imul rax, rax, 1000
     div rcx
     mov edx, dword [rbx+10476]
-    mov qword [rbx+19920], rax
+    mov qword [rbx+19936], rax
     test edx, edx
     je L3735
 L3729:
@@ -21651,10 +21655,10 @@ L3729:
     call ide_draw_toolbar
 L3728:
     mov rax, rbp
-    sub rax, qword [rbx+19896]
+    sub rax, qword [rbx+19912]
     cmp rax, 249
     jle L3724
-    mov eax, dword [rbx+20684]
+    mov eax, dword [rbx+20700]
     test eax, eax
     je L3736
 L3724:
@@ -21666,38 +21670,38 @@ L3724:
     ret
 L3733:
     mov rax, rbp
-    sub rax, qword [rbx+19912]
+    sub rax, qword [rbx+19928]
     cmp rax, 29
     jle L3726
     xor esi, esi
     mov rdi, rbx
     call ide_bitmap_draw_rows
-    mov qword [rbx+19912], rbp
+    mov qword [rbx+19928], rbp
     jmp L3726
 L3732:
-    cmp dword [rbx+20684], 1
+    cmp dword [rbx+20700], 1
     jne L3726
     jmp L3725
 L3736:
     mov rdi, rbx
     call ide_draw_side
     movdqu xmm0, oword [rbx+10152]
-    mov qword [rbx+19896], rbp
-    movups oword [rbx+19420], xmm0
+    mov qword [rbx+19912], rbp
+    movups oword [rbx+19440], xmm0
     movdqu xmm0, oword [rbx+10168]
-    movups oword [rbx+19436], xmm0
+    movups oword [rbx+19456], xmm0
     movdqu xmm0, oword [rbx+10184]
-    movups oword [rbx+19452], xmm0
+    movups oword [rbx+19472], xmm0
     movdqu xmm0, oword [rbx+10200]
-    movups oword [rbx+19468], xmm0
+    movups oword [rbx+19488], xmm0
     movdqu xmm0, oword [rbx+10216]
-    movups oword [rbx+19484], xmm0
+    movups oword [rbx+19504], xmm0
     movdqu xmm0, oword [rbx+10232]
-    movups oword [rbx+19500], xmm0
+    movups oword [rbx+19520], xmm0
     movdqu xmm0, oword [rbx+10248]
-    movups oword [rbx+19516], xmm0
+    movups oword [rbx+19536], xmm0
     movdqu xmm0, oword [rbx+10264]
-    movups oword [rbx+19532], xmm0
+    movups oword [rbx+19552], xmm0
     add rsp, 72
     pop rbx
     pop rbp
@@ -21707,7 +21711,7 @@ L3736:
 L3734:
     mov rdi, rbx
     call ide_draw_bottom
-    mov qword [rbx+19904], rbp
+    mov qword [rbx+19920], rbp
     jmp L3727
 L3735:
     mov rcx, rax
@@ -21726,7 +21730,7 @@ L3735:
     mov r8, rsp
     mov rcx, r12
     mov edx, LC174
-    lea rdi, [rbx+19552]
+    lea rdi, [rbx+19572]
     mov esi, 120
     xor eax, eax
     call snprintf
@@ -21747,13 +21751,13 @@ L3738:
     xor esi, esi
     call memset
     movdqa xmm0, oword [rel LC175]
-    mov byte [rbx+19672], 0
+    mov byte [rbx+19692], 0
     mov rdi, rbx
     mov qword [rbx+19392], 0
-    movups oword [rbx+19552], xmm0
+    movups oword [rbx+19572], xmm0
     movdqa xmm0, oword [rel LC176]
     mov qword [rbx+19408], 0
-    movups oword [rbx+19564], xmm0
+    movups oword [rbx+19584], xmm0
     call ide_draw_side
     add rsp, 8
     mov rdi, rbx
@@ -21836,14 +21840,14 @@ L3751:
 L3748:
     mov ecx, LC177
     mov edx, LC57
-    lea rdi, [rbx+19552]
+    lea rdi, [rbx+19572]
     xor eax, eax
     mov esi, 120
     call snprintf
     mov rdi, rbx
     call ide_pc_line
     mov edx, eax
-    movsx rax, dword [rbx+20392]
+    movsx rax, dword [rbx+20408]
     mov rcx, rax
     imul rax, rax, -1840700269
     shr rax, 32
@@ -22065,16 +22069,16 @@ L3812:
     lea edx, [rax-32]
     cmp edx, 94
     ja L3789
-    movsx rdx, dword [rdi+20176]
+    movsx rdx, dword [rdi+20192]
     cmp edx, 198
     jg L3789
     lea ecx, [rdx+1]
-    mov dword [rdi+20176], ecx
-    mov byte [rdi+19976+rdx], al
+    mov dword [rdi+20192], ecx
+    mov byte [rdi+19992+rdx], al
 L3789:
     mov dword [rbx+72], 1
     mov rdi, rbx
-    mov dword [rbx+19968], 0
+    mov dword [rbx+19984], 0
     call ide_draw_bottom
     jmp L3804
 L3811:
@@ -22110,14 +22114,14 @@ L3798:
     mov ecx, 27
     jmp L3791
 L3813:
-    movsx r13, dword [rdi+20176]
-    lea rsi, [rdi+19976]
+    movsx r13, dword [rdi+20192]
+    lea rsi, [rdi+19992]
     mov rdi, rsp
     mov rdx, r13
     call memcpy
     mov rdi, rsp
     mov byte [rsp+r13], 0
-    mov dword [rbx+20176], 0
+    mov dword [rbx+20192], 0
     call strlen
     mov ecx, 1
     mov rsi, rsp
@@ -22131,7 +22135,7 @@ L3813:
     test eax, eax
     je L3788
     movabs rax, 29113321704551762
-    mov qword [rbx+19552], rax
+    mov qword [rbx+19572], rax
 L3787:
     mov rdi, rbx
     call ide_update_menus
@@ -22169,14 +22173,14 @@ L3796:
     jmp L3779
 L3782:
     movabs rax, 29113321704551762
-    mov qword [rbx+19552], rax
+    mov qword [rbx+19572], rax
     jmp L3781
 L3814:
-    mov eax, dword [rdi+20176]
+    mov eax, dword [rdi+20192]
     test eax, eax
     je L3789
     sub eax, 1
-    mov dword [rdi+20176], eax
+    mov dword [rdi+20192], eax
     jmp L3789
 L3816:
     mov esi, 4
@@ -22626,7 +22630,7 @@ L3919:
     mov eax, LC178
     cmove rcx, rax
 L3910:
-    lea rdi, [r9+19552]
+    lea rdi, [r9+19572]
     mov edx, LC180
     mov esi, 120
     xor eax, eax
@@ -22700,7 +22704,7 @@ L3946:
     mov edx, LC181
     mov esi, 120
     xor eax, eax
-    lea rdi, [r9+19552]
+    lea rdi, [r9+19572]
     add rsp, 24
     jmp snprintf
     align 16
@@ -22906,29 +22910,29 @@ L3999:
     movdqu xmm0, oword [rbx+10152]
     mov rdi, rbx
     mov rax, qword [rel LC21]
-    mov dword [rbx+19952], 0
-    mov qword [rbx+19960], 0
+    mov dword [rbx+19968], 0
+    mov qword [rbx+19976], 0
     mov esi, 1
-    mov dword [rbx+20176], 0
-    mov byte [rbx+19672], 0
-    mov qword [rbx+19968], rax
-    movups oword [rbx+19420], xmm0
+    mov dword [rbx+20192], 0
+    mov byte [rbx+19692], 0
+    mov qword [rbx+19984], rax
+    movups oword [rbx+19440], xmm0
     movdqu xmm0, oword [rbp+16]
-    movups oword [rbx+19436], xmm0
+    movups oword [rbx+19456], xmm0
     movdqu xmm0, oword [rbp+32]
-    movups oword [rbx+19452], xmm0
+    movups oword [rbx+19472], xmm0
     movdqu xmm0, oword [rbp+48]
-    movups oword [rbx+19468], xmm0
+    movups oword [rbx+19488], xmm0
     movdqu xmm0, oword [rbp+64]
-    movups oword [rbx+19484], xmm0
+    movups oword [rbx+19504], xmm0
     movdqu xmm0, oword [rbp+80]
-    movups oword [rbx+19500], xmm0
+    movups oword [rbx+19520], xmm0
     movdqu xmm0, oword [rbp+96]
-    movups oword [rbx+19516], xmm0
+    movups oword [rbx+19536], xmm0
     movdqu xmm0, oword [rbp+112]
     mov qword [rbx+19408], 0
-    mov dword [rbx+20200], 0
-    movups oword [rbx+19532], xmm0
+    mov dword [rbx+20216], 0
+    movups oword [rbx+19552], xmm0
     add rsp, 8
     pop rbx
     pop rbp
@@ -23421,22 +23425,22 @@ ide_build:
     call os_now_ms
     mov ecx, dword [r12+8280]
     mov qword [r12+10144], 1
-    mov dword [r12+20184], 0
+    mov dword [r12+20200], 0
     mov rbx, rax
     mov rax, qword [rel LC21]
-    mov dword [r12+19952], 0
-    mov qword [r12+19960], 0
-    mov dword [r12+20176], 0
-    mov byte [r12+19672], 0
-    mov qword [r12+19968], rax
+    mov dword [r12+19968], 0
+    mov qword [r12+19976], 0
+    mov dword [r12+20192], 0
+    mov byte [r12+19692], 0
+    mov qword [r12+19984], rax
     test ecx, ecx
     je L4093
     cmp ecx, 1
     mov eax, LC13
     mov r8d, LC185
-    mov dword [r12+20180], 1
+    mov dword [r12+20196], 1
     cmove r8, rax
-    lea rdi, [r12+19552]
+    lea rdi, [r12+19572]
     mov edx, LC187
     xor eax, eax
     mov dword [r12+84], 0
@@ -23583,34 +23587,34 @@ L4102:
     mov esi, 120
     mov edx, dword [r12+10140]
     mov r8d, dword [r12+784]
-    lea rdi, [r12+19552]
+    lea rdi, [r12+19572]
     movdqu xmm0, oword [r12+10152]
     test edx, edx
     mov edx, LC188
-    movups oword [r12+19420], xmm0
+    movups oword [r12+19440], xmm0
     movdqu xmm0, oword [r13+16]
     setne al
-    movups oword [r12+19436], xmm0
+    movups oword [r12+19456], xmm0
     movdqu xmm0, oword [r13+32]
-    movups oword [r12+19452], xmm0
+    movups oword [r12+19472], xmm0
     movdqu xmm0, oword [r13+48]
-    movups oword [r12+19468], xmm0
+    movups oword [r12+19488], xmm0
     movdqu xmm0, oword [r13+64]
-    movups oword [r12+19484], xmm0
+    movups oword [r12+19504], xmm0
     movdqu xmm0, oword [r13+80]
-    movups oword [r12+19500], xmm0
+    movups oword [r12+19520], xmm0
     movdqu xmm0, oword [r13+96]
-    movups oword [r12+19516], xmm0
+    movups oword [r12+19536], xmm0
     movdqu xmm0, oword [r13+112]
-    mov dword [r12+20180], eax
+    mov dword [r12+20196], eax
     mov eax, LC186
-    mov dword [r12+20192], 0
+    mov dword [r12+20208], 0
     cmovne r9, rax
     sub rbx, rbp
     xor eax, eax
-    mov dword [r12+20200], 0
+    mov dword [r12+20216], 0
     mov rcx, rbx
-    movups oword [r12+19532], xmm0
+    movups oword [r12+19552], xmm0
     call snprintf
     mov ecx, dword [r12+824]
     test ecx, ecx
@@ -23624,7 +23628,7 @@ L4117:
     mov rdi, r12
     call ide_pc_line
     mov edx, eax
-    movsx rax, dword [r12+20392]
+    movsx rax, dword [r12+20408]
     mov rcx, rax
     imul rax, rax, -1840700269
     shr rax, 32
@@ -23679,7 +23683,7 @@ L4138:
     jl L4119
     jmp L4118
 L4137:
-    mov dword [r12+20684], 1
+    mov dword [r12+20700], 1
     jmp L4116
 L4136:
     mov dword [r12+19348], 0
@@ -23692,10 +23696,10 @@ L4135:
     movabs rbx, 30787916450984560
     call memset
     movdqa xmm0, oword [rel LC189]
-    movups oword [r12+19552], xmm0
+    movups oword [r12+19572], xmm0
     movdqa xmm0, oword [rel LC190]
-    movups oword [r12+19568], xmm0
-    mov qword [r12+19581], rbx
+    movups oword [r12+19588], xmm0
+    mov qword [r12+19601], rbx
     jmp L4095
     section .rodata
 LC195:
@@ -23723,33 +23727,33 @@ LC203:
     db `Line number:`, 0
 LC204:
     db `Go to Line`, 0
-LC205:
-    db `Stepped`, 0
 LC206:
-    db `Stepped back`, 0
+    db `Stepped`, 0
 LC207:
+    db `Stepped back`, 0
+LC208:
     db `Back at the start, line %d`, 0
     section .rodata
     align 8, db 0
-LC208:
+LC209:
     db `ecall runs the service in a7, with a0, a1:\n1 i`
     db `nt  4 string  11 char  34 hex\n35 binary  36 unsigned  5 read int\n8 read string (a0 buffer, a1 size)\n12 read char  9 sbrk  10 exit\n93 exit with code a0  32 sleep a0 ms\n30 time (a0 low, a1 high)\n31, 33 MIDI note  40 seed  41 random\n42 random from 0 to a1 - 1`, 0
     section .rodata
-LC209:
+LC210:
     db `Ecalls`, 0
     section .rodata
     align 8, db 0
-LC210:
+LC211:
     db `Keyboard: the word at 0xffff0000 is 1\nwhen a key waits in 0xffff0004, which\na load takes.\nDisplay: a byte stored at 0xffff000c\nprints in the console.\nBitmap: a comment such as\n# @screen width=64 height=64 base=pic\nshows the words from pic, 0x00RRGGBB.`, 0
     section .rodata
-LC211:
+LC212:
     db `Devices`, 0
     section .rodata
     align 8, db 0
-LC212:
+LC213:
     db `Assembly Editor for asmOS.\nRISC-V (RV32IM) programs as RARS runs\nthem: a program runs the same in the\nweb editor's RISC-V Target.`, 0
     section .rodata
-LC213:
+LC214:
     db `About Assembly Editor`, 0
     section .text
     align 16
@@ -23848,7 +23852,7 @@ L4251:
     mov esi, 160
     mov edx, LC201
     sal rax, 6
-    lea rcx, [rdi+26848+rax]
+    lea rcx, [rdi+26864+rax]
     mov rdi, rsp
     xor eax, eax
     call snprintf
@@ -23863,11 +23867,11 @@ L4139:
     pop r13
     ret
 L4148:
-    mov dword [rdi+20192], 0
+    mov dword [rdi+20208], 0
     xor eax, eax
     cmp esi, 22
     setne al
-    mov dword [rdi+20188], eax
+    mov dword [rdi+20204], eax
     jmp L4142
 L4149:
     mov rdi, qword [rdi+8]
@@ -23875,7 +23879,7 @@ L4149:
     je L4230
     call os_window_close
     mov qword [rbx+8], 0
-    mov dword [rbx+25740], 0
+    mov dword [rbx+25756], 0
     jmp L4142
 L4150:
     mov eax, dword [rdi+19400]
@@ -23896,7 +23900,7 @@ L4150:
 L4227:
     mov edx, LC199
 L4228:
-    lea rdi, [rbx+19552]
+    lea rdi, [rbx+19572]
     mov esi, 120
     xor eax, eax
     call snprintf
@@ -23906,10 +23910,10 @@ L4154:
     test r8d, r8d
     je L4139
     call ide_end_session
-    mov byte [rbx+19672], 0
+    mov byte [rbx+19692], 0
     movabs rax, 28259031268160595
     mov dword [rbx+84], 0
-    mov qword [rbx+19552], rax
+    mov qword [rbx+19572], rax
 L4250:
     mov rdi, rbx
     call ide_update_menus
@@ -23954,14 +23958,14 @@ L4201:
     mov r13d, dword [rbx+10476]
     test r13d, r13d
     je L4206
-    movdqa xmm0, oword [rel LC217]
-    mov dword [rbx+84], 1
-    mov dword [rbx+19600], 6646895
-    movups oword [rbx+19552], xmm0
     movdqa xmm0, oword [rel LC218]
-    movups oword [rbx+19568], xmm0
+    mov dword [rbx+84], 1
+    mov dword [rbx+19620], 6646895
+    movups oword [rbx+19572], xmm0
     movdqa xmm0, oword [rel LC219]
-    movups oword [rbx+19584], xmm0
+    movups oword [rbx+19588], xmm0
+    movdqa xmm0, oword [rel LC220]
+    movups oword [rbx+19604], xmm0
 L4205:
     mov rdi, rbx
     call ide_update_menus
@@ -24012,15 +24016,15 @@ L4153:
     mov ebp, dword [rdx+rax*4]
 L4215:
     mov ecx, ebp
-    mov edx, LC207
-    lea rdi, [rbx+19552]
+    mov edx, LC208
+    lea rdi, [rbx+19572]
     xor eax, eax
     mov esi, 120
     call snprintf
     mov rdi, rbx
     call ide_pc_line
     mov edx, eax
-    movsx rax, dword [rbx+20392]
+    movsx rax, dword [rbx+20408]
     mov rcx, rax
     imul rax, rax, -1840700269
     shr rax, 32
@@ -24054,9 +24058,9 @@ L4151:
     jne L4220
 L4221:
     movabs rax, 7737577176746192718
-    mov qword [rbx+19552], rax
+    mov qword [rbx+19572], rax
     movabs rax, 32497639885860971
-    mov qword [rbx+19559], rax
+    mov qword [rbx+19579], rax
     jmp L4142
 L4155:
     mov ebp, dword [rdi+19396]
@@ -24071,21 +24075,21 @@ L4210:
     jne L4139
     movdqu xmm0, oword [rbx+10152]
     lea rdi, [rbx+10152]
-    movups oword [rbx+19420], xmm0
+    movups oword [rbx+19440], xmm0
     movdqu xmm0, oword [rdi+16]
-    movups oword [rbx+19436], xmm0
+    movups oword [rbx+19456], xmm0
     movdqu xmm0, oword [rdi+32]
-    movups oword [rbx+19452], xmm0
+    movups oword [rbx+19472], xmm0
     movdqu xmm0, oword [rdi+48]
-    movups oword [rbx+19468], xmm0
+    movups oword [rbx+19488], xmm0
     movdqu xmm0, oword [rdi+64]
-    movups oword [rbx+19484], xmm0
+    movups oword [rbx+19504], xmm0
     movdqu xmm0, oword [rdi+80]
-    movups oword [rbx+19500], xmm0
+    movups oword [rbx+19520], xmm0
     movdqu xmm0, oword [rdi+96]
-    movups oword [rbx+19516], xmm0
+    movups oword [rbx+19536], xmm0
     movdqu xmm0, oword [rdi+112]
-    movups oword [rbx+19532], xmm0
+    movups oword [rbx+19552], xmm0
     call rv_step_back
     test eax, eax
     jne L4211
@@ -24095,12 +24099,12 @@ L4210:
     je L4212
     mov edx, LC197
 L4212:
-    lea rdi, [rbx+19552]
+    lea rdi, [rbx+19572]
     mov esi, 120
     xor eax, eax
     call snprintf
 L4213:
-    mov dword [rbx+19972], 1
+    mov dword [rbx+19988], 1
     jmp L4250
 L4158:
     mov r10d, dword [rdi+19396]
@@ -24130,40 +24134,42 @@ L4196:
 L4197:
     movdqu xmm0, oword [rbx+10152]
     mov rax, qword [rbx+10288]
-    mov byte [rbx+19672], 0
+    mov byte [rbx+19692], 0
     mov dword [rbx+19396], 1
-    movups oword [rbx+19420], xmm0
+    movups oword [rbx+19440], xmm0
     movdqu xmm0, oword [rbx+10168]
     mov qword [rbx+19408], 0
-    movups oword [rbx+19436], xmm0
+    movups oword [rbx+19456], xmm0
     movdqu xmm0, oword [rbx+10184]
     mov dword [rbx+19416], 20000
-    movups oword [rbx+19452], xmm0
+    movups oword [rbx+19472], xmm0
     movdqu xmm0, oword [rbx+10200]
-    mov qword [rbx+19920], 0
-    movups oword [rbx+19468], xmm0
+    mov qword [rbx+19936], 0
+    movups oword [rbx+19488], xmm0
     movdqu xmm0, oword [rbx+10216]
-    mov qword [rbx+19880], rax
-    movups oword [rbx+19484], xmm0
+    mov qword [rbx+19896], rax
+    movups oword [rbx+19504], xmm0
     movdqu xmm0, oword [rbx+10232]
-    movups oword [rbx+19500], xmm0
+    movups oword [rbx+19520], xmm0
     movdqu xmm0, oword [rbx+10248]
-    movups oword [rbx+19516], xmm0
+    movups oword [rbx+19536], xmm0
     movdqu xmm0, oword [rbx+10264]
-    movups oword [rbx+19532], xmm0
+    movups oword [rbx+19552], xmm0
+    movdqa xmm0, oword [rel LC205]
+    movups oword [rbx+19424], xmm0
     call os_now_ms
     mov ecx, dword [rbx+10476]
     mov edx, LC196
     mov dword [rbx+84], 1
-    mov dword [rbx+20180], 0
+    mov dword [rbx+20196], 0
     movq xmm0, rax
     punpcklqdq xmm0, xmm0
-    movups oword [rbx+19888], xmm0
+    movups oword [rbx+19904], xmm0
     test ecx, ecx
     je L4198
     mov edx, LC126
 L4198:
-    lea rdi, [rbx+19552]
+    lea rdi, [rbx+19572]
     mov esi, 120
     xor eax, eax
     call snprintf
@@ -24220,7 +24226,7 @@ L4191:
 L4190:
     cmp edx, esi
     jl L4191
-    movsx rax, dword [rbx+20392]
+    movsx rax, dword [rbx+20408]
     mov rcx, rax
     imul rax, rax, -1840700269
     shr rax, 32
@@ -24380,21 +24386,21 @@ L4171:
     call ed_set_text
     mov rax, qword [rel LC21]
     mov byte [rbx+88], 0
-    mov dword [rbx+19952], 0
-    mov qword [rbx+19968], rax
+    mov dword [rbx+19968], 0
+    mov qword [rbx+19984], rax
     movabs rax, 7453301734228059470
-    mov qword [rbx+19960], 0
-    mov dword [rbx+20176], 0
-    mov byte [rbx+19672], 0
-    mov qword [rbx+19552], rax
-    mov dword [rbx+19560], 7168370
+    mov qword [rbx+19976], 0
+    mov dword [rbx+20192], 0
+    mov byte [rbx+19692], 0
+    mov qword [rbx+19572], rax
+    mov dword [rbx+19580], 7168370
     jmp L4142
 L4143:
     mov rdi, qword [rdi]
     xor r8d, r8d
     xor ecx, ecx
-    mov edx, LC212
-    mov esi, LC213
+    mov edx, LC213
+    mov esi, LC214
 L4249:
     add rsp, 168
     pop rbx
@@ -24406,15 +24412,15 @@ L4145:
     mov rdi, qword [rdi]
     xor r8d, r8d
     xor ecx, ecx
-    mov edx, LC210
-    mov esi, LC211
+    mov edx, LC211
+    mov esi, LC212
     jmp L4249
 L4146:
     mov rdi, qword [rdi]
     xor r8d, r8d
     xor ecx, ecx
-    mov edx, LC208
-    mov esi, LC209
+    mov edx, LC209
+    mov esi, LC210
     jmp L4249
 L4147:
     call ide_goto_address
@@ -24429,12 +24435,12 @@ L4229:
     mov edx, LC200
     jmp L4228
 L4203:
-    movdqa xmm0, oword [rel LC214]
-    movups oword [rbx+19552], xmm0
     movdqa xmm0, oword [rel LC215]
-    movups oword [rbx+19568], xmm0
+    movups oword [rbx+19572], xmm0
     movdqa xmm0, oword [rel LC216]
-    movups oword [rbx+19579], xmm0
+    movups oword [rbx+19588], xmm0
+    movdqa xmm0, oword [rel LC217]
+    movups oword [rbx+19599], xmm0
     jmp L4205
 L4255:
     call ide_can_edit.part.0
@@ -24482,16 +24488,16 @@ L4254:
     lea esi, [rax-1]
     jmp L4190
 L4211:
-    mov byte [rbx+19672], 0
-    mov esi, LC206
+    mov byte [rbx+19692], 0
+    mov esi, LC207
     mov rdi, rbx
-    mov dword [rbx+20176], 0
+    mov dword [rbx+20192], 0
     mov qword [rbx+19408], 0
     call ide_paused_status
     mov rdi, rbx
     call ide_pc_line
     mov edx, eax
-    movsx rax, dword [rbx+20392]
+    movsx rax, dword [rbx+20408]
     mov rcx, rax
     imul rax, rax, -1840700269
     shr rax, 32
@@ -24527,28 +24533,28 @@ L4206:
     lea rdi, [rbx+10152]
     xor edx, edx
     mov esi, 1
-    movups oword [rbx+19420], xmm0
+    movups oword [rbx+19440], xmm0
     movdqu xmm0, oword [rdi+16]
-    movups oword [rbx+19436], xmm0
+    movups oword [rbx+19456], xmm0
     movdqu xmm0, oword [rdi+32]
-    movups oword [rbx+19452], xmm0
+    movups oword [rbx+19472], xmm0
     movdqu xmm0, oword [rdi+48]
-    movups oword [rbx+19468], xmm0
+    movups oword [rbx+19488], xmm0
     movdqu xmm0, oword [rdi+64]
-    movups oword [rbx+19484], xmm0
+    movups oword [rbx+19504], xmm0
     movdqu xmm0, oword [rdi+80]
-    movups oword [rbx+19500], xmm0
+    movups oword [rbx+19520], xmm0
     movdqu xmm0, oword [rdi+96]
-    movups oword [rbx+19516], xmm0
+    movups oword [rbx+19536], xmm0
     movdqu xmm0, oword [rdi+112]
-    mov byte [rbx+19672], 0
-    movups oword [rbx+19532], xmm0
+    mov byte [rbx+19692], 0
+    movups oword [rbx+19552], xmm0
     call rv_run.part.0
     mov esi, eax
     mov eax, 66
     bt rax, rsi
     jnc L4207
-    mov esi, LC205
+    mov esi, LC206
     mov rdi, rbx
     call ide_paused_status
 L4208:
@@ -24557,7 +24563,7 @@ L4208:
     mov ecx, eax
     test eax, eax
     js L4205
-    movsx rax, dword [rbx+20392]
+    movsx rax, dword [rbx+20408]
     mov rdx, rax
     imul rax, rax, -1840700269
     shr rax, 32
@@ -24688,13 +24694,13 @@ L4283:
     xor eax, eax
     ret
     section .rodata
-LC220:
-    db `\t`, 0
 LC221:
+    db `\t`, 0
+LC222:
     db `Line %d`, 0
     section .rodata
     align 8, db 0
-LC222:
+LC223:
     db `Assembly Editor opens programs, .riscv Files.`, 0
     section .text
     align 16
@@ -24766,7 +24772,7 @@ L4720:
 L4304:
     mov r9d, dword [rbx+20]
     mov edi, dword [rbx+16]
-    lea rax, [r14+20476]
+    lea rax, [r14+20492]
     xor ebp, ebp
     mov r15d, r9d
     mov r12d, edi
@@ -24792,7 +24798,7 @@ L4380:
 L4379:
     cmp edx, 1
     je L4728
-    mov eax, dword [r14+20688]
+    mov eax, dword [r14+20704]
     test eax, eax
     js L4384
     cmp edx, 3
@@ -24801,28 +24807,28 @@ L4379:
     jne L4285
     cmp dword [rbx+24], 1
     jne L4285
-    mov dword [r14+20688], -1
+    mov dword [r14+20704], -1
     mov rdi, r14
     cmp eax, ebp
     je L4388
 L4709:
     call ide_draw_toolbar
-    mov eax, dword [r14+20688]
+    mov eax, dword [r14+20704]
     test eax, eax
     jns L4285
     mov eax, dword [rbx]
     cmp eax, 1
     je L4730
-    lea rbp, [r14+20696]
+    lea rbp, [r14+20712]
     cmp eax, 3
     je L4393
     cmp eax, 2
     jne L4731
 L4394:
-    mov r15d, dword [r14+20724]
+    mov r15d, dword [r14+20740]
     test r15d, r15d
     jne L4412
-    mov r13d, dword [r14+20728]
+    mov r13d, dword [r14+20744]
     test r13d, r13d
     jne L4412
     mov dword [r14+80], 0
@@ -25036,7 +25042,7 @@ L4733:
     xor r8d, r8d
     xor ecx, ecx
     pop rbx
-    mov edx, LC222
+    mov edx, LC223
     pop rbp
     mov esi, LC49
     pop r12
@@ -25096,38 +25102,38 @@ L4728:
     cmp dword [rbx+24], 1
     je L4736
 L4382:
-    mov eax, dword [r14+20688]
+    mov eax, dword [r14+20704]
     test eax, eax
     jns L4285
 L4484:
-    mov eax, dword [r14+20332]
+    mov eax, dword [r14+20348]
     cmp eax, r12d
     jg L4390
-    mov edx, dword [r14+20336]
+    mov edx, dword [r14+20352]
     cmp edx, r15d
     jg L4390
-    add eax, dword [r14+20340]
+    add eax, dword [r14+20356]
     cmp eax, r12d
     jle L4390
-    add edx, dword [r14+20344]
+    add edx, dword [r14+20360]
     cmp edx, r15d
     jg L4285
 L4390:
     mov eax, dword [rbx+24]
     cmp eax, 1
     je L4737
-    mov edx, dword [r14+20384]
-    mov ecx, dword [r14+20380]
+    mov edx, dword [r14+20400]
+    mov ecx, dword [r14+20396]
     cmp edx, r15d
     jg L4285
     cmp ecx, r12d
     jg L4285
 L4426:
-    mov esi, dword [r14+20388]
+    mov esi, dword [r14+20404]
     add esi, ecx
     cmp esi, r12d
     jle L4432
-    mov esi, dword [r14+20392]
+    mov esi, dword [r14+20408]
     add esi, edx
     cmp esi, r15d
     jg L4433
@@ -25135,14 +25141,14 @@ L4432:
     sub eax, 1
     jne L4285
 L4428:
-    mov eax, dword [r14+20364]
-    mov edx, dword [r14+20368]
+    mov eax, dword [r14+20380]
+    mov edx, dword [r14+20384]
     cmp eax, r12d
     jg L4446
     cmp edx, r15d
     jle L4738
 L4446:
-    lea rax, [r14+20572]
+    lea rax, [r14+20588]
     xor esi, esi
 L4449:
     mov edx, dword [rax]
@@ -25157,15 +25163,15 @@ L4447:
     mov esi, 1
     cmp edx, 2
     jne L4449
-    mov edx, dword [r14+20412]
-    mov r13d, dword [r14+20416]
+    mov edx, dword [r14+20428]
+    mov r13d, dword [r14+20432]
     cmp edx, r12d
     jg L4451
     cmp r13d, r15d
     jle L4740
 L4451:
-    mov esi, dword [r14+20684]
-    lea rax, [r14+20604]
+    mov esi, dword [r14+20700]
+    lea rax, [r14+20620]
     xor edx, edx
     test esi, esi
     jne L4466
@@ -25182,7 +25188,7 @@ L4463:
     cmp edx, 3
     jne L4465
 L4466:
-    lea rax, [r14+20652]
+    lea rax, [r14+20668]
     xor edi, edi
 L4471:
     mov ecx, dword [rax]
@@ -25201,17 +25207,17 @@ L4469:
     je L4743
     test esi, esi
     jne L4285
-    mov esi, dword [r14+20428]
-    mov edx, dword [r14+20432]
+    mov esi, dword [r14+20444]
+    mov edx, dword [r14+20448]
     cmp esi, r12d
     jg L4285
     cmp edx, r15d
     jg L4285
-    mov eax, dword [r14+20436]
+    mov eax, dword [r14+20452]
     add eax, esi
     cmp eax, r12d
     jle L4285
-    mov eax, dword [r14+20440]
+    mov eax, dword [r14+20456]
     add eax, edx
     cmp eax, r15d
     jle L4285
@@ -25234,7 +25240,7 @@ L4469:
     idiv esi
     sal eax, 4
     add eax, ecx
-    mov dword [r14+19548], eax
+    mov dword [r14+19568], eax
 L4721:
     add rsp, 248
     mov rdi, r14
@@ -25503,7 +25509,7 @@ L4323:
     je L4501
     cmp esi, 108
     je L4502
-    mov eax, dword [r14+20392]
+    mov eax, dword [r14+20408]
     mov edi, 14
     mov ebx, 1
     cdq
@@ -25590,7 +25596,7 @@ L4329:
 L4357:
     mov dword [rsp+24], ecx
     mov edx, 1
-    mov esi, LC220
+    mov esi, LC221
     mov dword [rsp+16], r8d
     jmp L4715
 L4327:
@@ -25728,14 +25734,14 @@ L4747:
     lea r15d, [rax-1]
     jmp L4368
 L4393:
-    mov r11d, dword [r14+20724]
+    mov r11d, dword [r14+20740]
     test r11d, r11d
     jne L4755
     mov ebp, dword [r14+80]
     test ebp, ebp
     je L4285
     mov edx, dword [rbx+16]
-    sub edx, dword [r14+20380]
+    sub edx, dword [r14+20396]
     mov rdi, r14
     lea eax, [rdx+9]
     add edx, 2
@@ -25744,7 +25750,7 @@ L4393:
     sar eax, 3
     cmovns edx, eax
     mov eax, dword [rbx+20]
-    sub eax, dword [r14+20384]
+    sub eax, dword [r14+20400]
     movsx rsi, eax
     add edx, dword [r14+68]
     imul rsi, rsi, -1840700269
@@ -25794,8 +25800,8 @@ L4756:
     lea esi, [rax-1]
     jmp L4444
 L4412:
-    mov qword [r14+20724], 0
-    mov eax, dword [r14+20720]
+    mov qword [r14+20740], 0
+    mov eax, dword [r14+20736]
 L4409:
     cmp dword [r14+64], eax
     je L4414
@@ -25897,38 +25903,38 @@ L4731:
     mov r9d, dword [rbx+20]
     mov edi, dword [rbx+16]
 L4395:
-    mov eax, dword [r14+20348]
-    mov edx, dword [r14+20352]
+    mov eax, dword [r14+20364]
+    mov edx, dword [r14+20368]
     cmp edi, eax
     jl L4416
     cmp r9d, edx
     jge L4760
 L4416:
-    mov eax, dword [r14+20412]
-    mov edx, dword [r14+20416]
+    mov eax, dword [r14+20428]
+    mov edx, dword [r14+20432]
     cmp edi, eax
     jl L4420
     cmp r9d, edx
     jge L4761
 L4420:
-    mov r12d, dword [r14+20684]
+    mov r12d, dword [r14+20700]
     test r12d, r12d
     jne L4285
-    mov edx, dword [r14+20444]
-    mov eax, dword [r14+20448]
+    mov edx, dword [r14+20460]
+    mov eax, dword [r14+20464]
     cmp edi, edx
     jl L4285
     cmp r9d, eax
     jl L4285
-    add edx, dword [r14+20452]
+    add edx, dword [r14+20468]
     cmp edi, edx
     jge L4285
-    add eax, dword [r14+20456]
+    add eax, dword [r14+20472]
     cmp r9d, eax
     jge L4285
     mov eax, dword [rbx+36]
     add eax, eax
-    sub dword [r14+20192], eax
+    sub dword [r14+20208], eax
     jmp L4721
 L4495:
     mov eax, 7
@@ -25937,28 +25943,28 @@ L4496:
     mov eax, 9
     jmp L4315
 L4737:
-    mov edx, dword [r14+20696]
+    mov edx, dword [r14+20712]
     cmp edx, r12d
     jle L4762
-    mov edx, dword [r14+20384]
-    mov ecx, dword [r14+20380]
+    mov edx, dword [r14+20400]
+    mov ecx, dword [r14+20396]
     cmp edx, r15d
     jg L4428
     cmp ecx, r12d
     jg L4428
     jmp L4426
 L4755:
-    mov eax, dword [r14+20708]
+    mov eax, dword [r14+20724]
     mov rdi, rbp
-    mov r12d, dword [r14+20700]
+    mov r12d, dword [r14+20716]
     lea r13d, [rax-32]
     call scroll_thumb
     sar rdx, 32
     cmp r13d, edx
     jle L4411
     mov eax, 0
-    mov ecx, dword [r14+20712]
-    sub ecx, dword [r14+20716]
+    mov ecx, dword [r14+20728]
+    sub ecx, dword [r14+20732]
     cmovs ecx, eax
     mov eax, dword [rbx+20]
     sub r11d, 1
@@ -25977,7 +25983,7 @@ L4755:
     xor edx, edx
     test eax, eax
     cmovs eax, edx
-    mov dword [r14+20720], eax
+    mov dword [r14+20736], eax
     jmp L4409
 L4336:
     mov eax, dword [r14+32]
@@ -25985,7 +25991,7 @@ L4336:
 L4414:
     mov rdi, qword [r14]
     call os_window_draw
-    movsx rax, dword [r14+20392]
+    movsx rax, dword [r14+20408]
     mov edx, dword [r14+48]
     mov rdi, rbp
     mov rcx, rax
@@ -25999,20 +26005,20 @@ L4414:
     test eax, eax
     cmovle eax, ecx
     mov ecx, eax
-    mov dword [r14+20716], eax
+    mov dword [r14+20732], eax
     sar ecx, 1
     add ecx, edx
     cmp edx, eax
     mov eax, dword [r14+64]
     cmovg edx, ecx
-    mov dword [r14+20720], eax
-    mov dword [r14+20712], edx
+    mov dword [r14+20736], eax
+    mov dword [r14+20728], edx
     call draw_scroll_bar
-    mov ecx, dword [r14+20704]
-    mov edx, dword [r14+20700]
-    mov esi, dword [r14+20696]
+    mov ecx, dword [r14+20720]
+    mov edx, dword [r14+20716]
+    mov esi, dword [r14+20712]
     mov rdi, qword [r14]
-    mov r8d, dword [r14+20708]
+    mov r8d, dword [r14+20724]
     add rsp, 248
     pop rbx
     pop rbp
@@ -26043,39 +26049,39 @@ L4688:
     setne bl
     jmp L4346
 L4762:
-    mov r13d, dword [r14+20700]
+    mov r13d, dword [r14+20716]
     cmp r13d, r15d
     jg L4398
-    add edx, dword [r14+20704]
+    add edx, dword [r14+20720]
     cmp edx, r12d
     jle L4398
-    mov r11d, dword [r14+20708]
+    mov r11d, dword [r14+20724]
     add r11d, r13d
     cmp r11d, r15d
     jle L4400
-    lea rbp, [r14+20696]
+    lea rbp, [r14+20712]
     add r13d, 15
     mov rdi, rbp
     call scroll_thumb
-    mov ecx, dword [r14+20720]
+    mov ecx, dword [r14+20736]
     mov rsi, rax
     mov rax, rdx
     cmp r13d, r15d
     jl L4401
     sub ecx, 1
     mov eax, 0
-    mov dword [r14+20728], -1
+    mov dword [r14+20744], -1
     cmovs ecx, eax
-    mov dword [r14+20720], ecx
+    mov dword [r14+20736], ecx
 L4411:
-    mov eax, dword [r14+20720]
+    mov eax, dword [r14+20736]
     jmp L4409
 L4498:
     xor eax, eax
     jmp L4319
 L4398:
-    mov ecx, dword [r14+20380]
-    mov edx, dword [r14+20384]
+    mov ecx, dword [r14+20396]
+    mov edx, dword [r14+20400]
     cmp ecx, r12d
     jg L4428
     cmp edx, r15d
@@ -26101,13 +26107,13 @@ L4365:
     mov r13d, 1
     jmp L4346
 L4760:
-    add eax, dword [r14+20356]
+    add eax, dword [r14+20372]
     cmp edi, eax
     jge L4416
-    add edx, dword [r14+20360]
+    add edx, dword [r14+20376]
     cmp r9d, edx
     jge L4416
-    mov eax, dword [r14+20392]
+    mov eax, dword [r14+20408]
     mov ecx, 14
     cdq
     idiv ecx
@@ -26131,22 +26137,22 @@ L4760:
     mov dword [r14+64], edx
     jmp L4719
 L4761:
-    add eax, dword [r14+20420]
+    add eax, dword [r14+20436]
     cmp edi, eax
     jge L4420
-    add edx, dword [r14+20424]
+    add edx, dword [r14+20440]
     cmp r9d, edx
     jge L4420
-    cmp dword [r14+20180], 0
+    cmp dword [r14+20196], 0
     mov eax, dword [rbx+36]
     jne L4423
     lea eax, [rax+rax*2]
-    add dword [r14+19968], eax
+    add dword [r14+19984], eax
     xor edx, edx
-    mov eax, dword [r14+19968]
+    mov eax, dword [r14+19984]
     test eax, eax
     cmovs eax, edx
-    mov dword [r14+19968], eax
+    mov dword [r14+19984], eax
     jmp L4720
 L4757:
     mov rdi, qword [r14]
@@ -26194,9 +26200,9 @@ L4729:
     cmp eax, ebp
     sete al
     movzx eax, al
-    cmp eax, dword [r14+20692]
+    cmp eax, dword [r14+20708]
     je L4285
-    mov dword [r14+20692], eax
+    mov dword [r14+20708], eax
 L4708:
     mov rdi, r14
     jmp L4709
@@ -26237,7 +26243,7 @@ L4753:
     mov r8d, dword [rsp+12]
     jmp L4340
 L4384:
-    lea rbp, [r14+20696]
+    lea rbp, [r14+20712]
     cmp edx, 3
     je L4393
     cmp edx, 2
@@ -26250,7 +26256,7 @@ L4739:
     add ecx, dword [rax+12]
     cmp ecx, r15d
     jle L4447
-    mov dword [r14+20180], esi
+    mov dword [r14+20196], esi
     jmp L4720
 L4741:
     add ecx, dword [rax+8]
@@ -26262,8 +26268,8 @@ L4741:
     cmp edx, 2
     je L4764
     xor edi, edi
-    mov dword [r14+20188], edx
-    mov dword [r14+20192], edi
+    mov dword [r14+20204], edx
+    mov dword [r14+20208], edi
 L4468:
     mov rdi, r14
     call ide_update_menus
@@ -26276,7 +26282,7 @@ L4742:
     add edx, dword [rax+12]
     cmp edx, r15d
     jle L4469
-    mov dword [r14+20684], edi
+    mov dword [r14+20700], edi
     jmp L4721
 L4745:
     mov rdi, r14
@@ -26302,10 +26308,10 @@ L4510:
     mov ebx, 1
     jmp L4363
 L4738:
-    add eax, dword [r14+20372]
+    add eax, dword [r14+20388]
     cmp eax, r12d
     jle L4446
-    mov eax, dword [r14+20376]
+    mov eax, dword [r14+20392]
     add eax, edx
     cmp eax, r15d
     jle L4446
@@ -26335,15 +26341,15 @@ L4694:
     mov r9d, dword [r14+52]
     jmp L4493
 L4740:
-    mov eax, dword [r14+20420]
+    mov eax, dword [r14+20436]
     add edx, eax
     cmp edx, r12d
     jle L4451
-    mov edx, dword [r14+20424]
+    mov edx, dword [r14+20440]
     add edx, r13d
     cmp edx, r15d
     jle L4451
-    cmp dword [r14+20180], 1
+    cmp dword [r14+20196], 1
     jne L4452
     cmp dword [r14+10144], 0
     jne L4765
@@ -26354,28 +26360,28 @@ L4452:
     call ide_draw_editor
     jmp L4720
 L4736:
-    mov dword [r14+20688], ebp
+    mov dword [r14+20704], ebp
     add ebp, 1
-    mov dword [r14+20692], 1
+    mov dword [r14+20708], 1
     je L4382
     jmp L4708
 L4743:
-    mov eax, dword [r14+20464]
-    mov edx, dword [r14+20460]
+    mov eax, dword [r14+20480]
+    mov edx, dword [r14+20476]
     cmp eax, r15d
     jg L4285
     cmp edx, r12d
     jg L4285
-    add edx, dword [r14+20468]
+    add edx, dword [r14+20484]
     cmp edx, r12d
     jle L4285
-    add eax, dword [r14+20472]
+    add eax, dword [r14+20488]
     cmp eax, r15d
     jg L4452
     jmp L4285
 L4400:
-    mov ecx, dword [r14+20380]
-    mov edx, dword [r14+20384]
+    mov ecx, dword [r14+20396]
+    mov edx, dword [r14+20400]
     cmp r12d, ecx
     jl L4428
     cmp r15d, edx
@@ -26385,15 +26391,15 @@ L4401:
     lea edx, [r11-16]
     cmp edx, r15d
     jg L4403
-    mov eax, dword [r14+20712]
+    mov eax, dword [r14+20728]
     mov edx, 0
-    sub eax, dword [r14+20716]
-    mov dword [r14+20728], 1
+    sub eax, dword [r14+20732]
+    mov dword [r14+20744], 1
     cmovs eax, edx
     add ecx, 1
     cmp eax, ecx
     cmovg eax, ecx
-    mov dword [r14+20720], eax
+    mov dword [r14+20736], eax
     jmp L4411
 L4499:
     mov eax, edx
@@ -26404,12 +26410,12 @@ L4505:
     jmp L4353
 L4423:
     imul eax, eax, -3
-    add dword [r14+20184], eax
+    add dword [r14+20200], eax
     xor edx, edx
-    mov eax, dword [r14+20184]
+    mov eax, dword [r14+20200]
     test eax, eax
     cmovs eax, edx
-    mov dword [r14+20184], eax
+    mov dword [r14+20200], eax
     jmp L4720
 L4513:
     mov r12d, ebp
@@ -26425,12 +26431,12 @@ L4403:
     cmp r15d, edi
     jge L4766
 L4404:
-    mov esi, dword [r14+20716]
+    mov esi, dword [r14+20732]
     mov edx, 1
     lea eax, [rsi-1]
     test eax, eax
     cmovle eax, edx
-    mov edx, dword [r14+20712]
+    mov edx, dword [r14+20728]
     sub edx, esi
     mov esi, 0
     cmovs edx, esi
@@ -26444,7 +26450,7 @@ L4408:
     xor edx, edx
     test eax, eax
     cmovs eax, edx
-    mov dword [r14+20720], eax
+    mov dword [r14+20736], eax
     jmp L4411
 L4764:
     mov rdi, r14
@@ -26454,7 +26460,7 @@ L4765:
     sub eax, 24
     mov ecx, 8
     add r13d, 4
-    movsx r12, dword [r14+20184]
+    movsx r12, dword [r14+20200]
     cdq
     idiv ecx
     mov edx, 8
@@ -26555,7 +26561,7 @@ L4458:
     xor r8d, r8d
     cdqe
     movd xmm0, dword [rdx+rax*4]
-    mov eax, dword [r14+20392]
+    mov eax, dword [r14+20408]
     mov dword [r14+60], r8d
     mov dword [r14+84], r8d
     cdq
@@ -26582,10 +26588,10 @@ L4461:
 L4462:
     mov rdi, r14
     call ed_follow
-    lea rdi, [r14+19552]
+    lea rdi, [r14+19572]
     mov ecx, ebp
     xor eax, eax
-    mov edx, LC221
+    mov edx, LC222
     mov esi, 120
     call snprintf
     add rsp, 248
@@ -26612,15 +26618,15 @@ L4766:
     mov eax, r15d
     sub eax, edi
     add eax, 1
-    mov dword [r14+20724], eax
+    mov dword [r14+20740], eax
     jmp L4411
 L4405:
-    mov esi, dword [r14+20716]
+    mov esi, dword [r14+20732]
     mov edx, 1
     lea eax, [rsi-1]
     test eax, eax
     cmovle eax, edx
-    mov edx, dword [r14+20712]
+    mov edx, dword [r14+20728]
     sub edx, esi
     mov esi, 0
     cmovs edx, esi
@@ -26648,17 +26654,17 @@ rv_machine_free:
     pop rbx
     ret
     section .rodata
-LC223:
-    db `(none in code/)`, 0
 LC224:
-    db `File`, 0
+    db `(none in code/)`, 0
 LC225:
-    db `Edit`, 0
+    db `File`, 0
 LC226:
-    db `Run`, 0
+    db `Edit`, 0
 LC227:
-    db `View`, 0
+    db `Run`, 0
 LC228:
+    db `View`, 0
+LC229:
     db `Help`, 0
     section .text
     align 16
@@ -26672,7 +26678,7 @@ ide_main:
     push rbx
     sub rsp, 2008
     mov qword [rsp], rdi
-    mov edi, 28480
+    mov edi, 28496
     call os_alloc
     test rax, rax
     je L4772
@@ -26686,7 +26692,7 @@ ide_main:
     mov qword [rbx+40], rax
     call os_alloc
     cmp qword [rbx+24], 0
-    mov qword [rbx+19944], rax
+    mov qword [rbx+19960], rax
     je L4772
     cmp qword [rbx+40], 0
     je L4772
@@ -26697,13 +26703,13 @@ ide_main:
     call os_now_ms
     mov esi, dword [rsp+52]
     mov ecx, dword [rsp+48]
-    mov qword [rbx+19936], rax
+    mov qword [rbx+19952], rax
     xor eax, eax
     mov r8d, dword [rsp+56]
     cmp esi, 2
     setle al
     sub ecx, eax
-    js L4839
+    js L4842
     mov eax, ecx
     mov edi, 400
     cdq
@@ -26725,8 +26731,8 @@ L4775:
     mov dword [rbx+72], 1
     lea rbp, [rsp+80]
     imul rdi, rdi, 146097
-    mov dword [rbx+20688], -1
-    mov dword [rbx+19548], 10
+    mov dword [rbx+20704], -1
+    mov dword [rbx+19568], 10
     add eax, 2
     cdq
     idiv esi
@@ -26738,7 +26744,7 @@ L4775:
     mov r9d, -100
     add r8d, eax
     mov eax, ecx
-    lea rcx, [rbx+24832]
+    lea rcx, [rbx+24848]
     cdq
     mov qword [rsp+8], rcx
     idiv r9d
@@ -26749,7 +26755,7 @@ L4775:
     mov esi, IDE_FILE_MENU
     cdqe
     lea rax, [rax-719468+rdi]
-    lea rdi, [rbx+24840]
+    lea rdi, [rbx+24856]
     imul rax, rax, 86400
     and rdi, -8
     add rax, rdx
@@ -26758,14 +26764,14 @@ L4775:
     add rax, rdx
     movsx rdx, dword [rsp+72]
     add rax, rdx
-    lea rdx, [rbx+25088]
+    lea rdx, [rbx+25104]
     imul rax, rax, 1000
-    mov qword [rbx+19928], rax
+    mov qword [rbx+19944], rax
     mov rax, qword [rel IDE_FILE_MENU]
-    mov qword [rbx+24832], rax
+    mov qword [rbx+24848], rax
     mov rax, qword [rel IDE_FILE_MENU+248]
     mov qword [rsp+32], rdx
-    mov qword [rbx+25080], rax
+    mov qword [rbx+25096], rax
     mov rax, rcx
     sub rax, rdi
     sub rsi, rax
@@ -26778,16 +26784,16 @@ L4775:
     mov esi, IDE_EDIT_MENU
     mov ecx, 56
     rep movsd
-    lea rcx, [rbx+25312]
-    lea rdx, [rbx+25728]
+    lea rcx, [rbx+25328]
+    lea rdx, [rbx+25744]
     mov esi, IDE_RUN_MENU
     mov qword [rsp+16], rcx
-    lea rdi, [rbx+25320]
-    mov qword [rbx+25312], rax
+    lea rdi, [rbx+25336]
+    mov qword [rbx+25328], rax
     mov rax, qword [rel IDE_RUN_MENU+408]
     and rdi, -8
     mov qword [rsp+40], rdx
-    mov qword [rbx+25720], rax
+    mov qword [rbx+25736], rax
     mov rax, rcx
     sub rax, rdi
     sub rsi, rax
@@ -26799,7 +26805,7 @@ L4775:
     mov esi, IDE_VIEW_MENU
     mov ecx, 48
     rep movsd
-    lea rdi, [rbx+25920]
+    lea rdi, [rbx+25936]
     mov esi, IDE_HELP_MENU
     mov ecx, 32
     mov qword [rsp+24], rdi
@@ -26815,8 +26821,8 @@ L4775:
     xor r13d, r13d
     xor r14d, r14d
 L4782:
-    mov esi, dword [r15+64]
-    test esi, esi
+    mov ecx, dword [r15+64]
+    test ecx, ecx
     jne L4778
     mov rdi, r15
     call strlen
@@ -26830,7 +26836,7 @@ L4782:
     movsx rsi, r13d
     mov rax, rsi
     sal rax, 6
-    lea rcx, [rbx+26848+rax]
+    lea rcx, [rbx+26864+rax]
     xor eax, eax
 L4779:
     movzx edx, byte [r15+rax]
@@ -26843,67 +26849,67 @@ L4779:
 L4780:
     mov byte [rcx+rax], 0
     mov rax, rsi
-    pxor xmm1, xmm1
+    lea edx, [r13+100]
+    sal rsi, 5
     sal rax, 5
-    lea rdx, [rbx+rax]
-    mov qword [rdx+26048], rcx
-    lea ecx, [r13+100]
+    pxor xmm1, xmm1
     add r13d, 1
-    mov dword [rdx+26056], ecx
-    xor ecx, ecx
-    mov dword [rdx+26060], ecx
-    movups oword [rbx+26064+rax], xmm1
+    add rax, rbx
+    mov dword [rax+26072], edx
+    xor edx, edx
+    mov qword [rax+26064], rcx
+    mov dword [rax+26076], edx
+    movups oword [rsi+26080+rbx], xmm1
 L4778:
     add r14d, 1
     add r15, 80
     cmp r12d, r14d
-    jle L4814
+    jle L4817
     cmp r13d, 24
     jne L4782
-L4814:
+L4817:
     test r13d, r13d
     je L4784
 L4777:
     movsx r8, r13d
-    xor r10d, r10d
-    pxor xmm0, xmm0
     xor r11d, r11d
+    pxor xmm0, xmm0
+    xor r12d, r12d
+    mov rax, r8
     mov ecx, 404
+    mov r8d, 5
     mov edx, 632
+    sal rax, 5
     mov esi, ICON_IDE
     mov edi, LC49
-    lea rax, [r8+814]
-    sal r8, 5
-    sal rax, 5
-    mov qword [rbx+rax], r10
-    mov qword [rbx+8+rax], r10
-    lea rax, [rbx+26048]
-    movups oword [rbx+26064+r8], xmm0
-    mov r8d, 5
-    mov qword [rbx+24920], rax
+    mov qword [rbx+26064+rax], r11
+    mov qword [rbx+26072+rax], r11
+    movups oword [rax+26080+rbx], xmm0
+    lea rax, [rbx+26064]
+    mov qword [rbx+24936], rax
     mov rax, qword [rsp+8]
-    mov qword [rbx+28384], LC224
-    mov qword [rbx+28392], rax
-    mov rax, qword [rsp+32]
     mov qword [rbx+28400], LC225
     mov qword [rbx+28408], rax
-    mov rax, qword [rsp+16]
+    mov rax, qword [rsp+32]
     mov qword [rbx+28416], LC226
     mov qword [rbx+28424], rax
-    mov rax, qword [rsp+40]
+    mov rax, qword [rsp+16]
     mov qword [rbx+28432], LC227
     mov qword [rbx+28440], rax
-    mov rax, qword [rsp+24]
+    mov rax, qword [rsp+40]
     mov qword [rbx+28448], LC228
     mov qword [rbx+28456], rax
-    mov qword [rbx+28464], r11
-    mov qword [rbx+28472], r11
+    mov rax, qword [rsp+24]
+    mov qword [rbx+28464], LC229
+    mov qword [rbx+28472], rax
+    mov qword [rbx+28480], r12
+    mov qword [rbx+28488], r12
     call os_window_create
     mov qword [rbx], rax
     test rax, rax
     je L4772
     mov rdi, rax
-    lea rsi, [rbx+28384]
+    lea rsi, [rbx+28400]
     call os_window_set_menu
     mov rdi, qword [rbx]
     mov edx, 330
@@ -26913,7 +26919,7 @@ L4777:
     test rax, rax
     je L4785
     cmp byte [rax], 0
-    jne L4840
+    jne L4843
 L4786:
     mov edx, 294
     mov esi, IDE_TEMPLATE
@@ -26921,17 +26927,17 @@ L4786:
     call ed_set_text
     mov rax, qword [rsp]
     cmp byte [rax], 0
-    jne L4841
-L4808:
-    movdqa xmm0, oword [rel LC232]
-    movups oword [rbx+19552], xmm0
+    jne L4844
+L4811:
     movdqa xmm0, oword [rel LC233]
-    movups oword [rbx+19562], xmm0
+    movups oword [rbx+19572], xmm0
+    movdqa xmm0, oword [rel LC234]
+    movups oword [rbx+19582], xmm0
 L4787:
-    xor r9d, r9d
+    xor r10d, r10d
     mov rdi, rbx
     lea r13, [rbx+10152]
-    mov dword [rbx+76], r9d
+    mov dword [rbx+76], r10d
     call ide_layout
     mov rdi, rbx
     call ide_title
@@ -26942,12 +26948,12 @@ L4787:
     mov esi, 1
     call os_set_timer
 L4791:
-    mov r8d, dword [rbx+19396]
-    test r8d, r8d
+    mov r9d, dword [rbx+19396]
+    test r9d, r9d
     je L4792
-L4842:
-    mov edi, dword [rbx+10476]
-    test edi, edi
+L4845:
+    mov r8d, dword [rbx+10476]
+    test r8d, r8d
     je L4793
 L4792:
     mov rdi, rbp
@@ -26955,30 +26961,30 @@ L4792:
     mov rsi, rbp
     mov rdi, rbx
     call ide_message
-    mov r8d, dword [rbx+19396]
-    test r8d, r8d
-    jne L4842
+    mov r9d, dword [rbx+19396]
+    test r9d, r9d
+    jne L4845
     jmp L4792
 L4772:
     mov edi, 1
     call os_exit
 L4795:
-    mov rsi, rbp
     mov rdi, rbx
+    mov rsi, rbp
     call ide_message
-    mov esi, dword [rbx+19396]
-    test esi, esi
+    mov edi, dword [rbx+19396]
+    test edi, edi
     je L4791
 L4793:
     mov rdi, rbp
     call os_peek_message
     test eax, eax
     jne L4795
-    mov ecx, dword [rbx+19396]
-    test ecx, ecx
+    mov esi, dword [rbx+19396]
+    test esi, esi
     je L4791
-    mov edx, dword [rbx+10476]
-    test edx, edx
+    mov ecx, dword [rbx+10476]
+    test ecx, ecx
     jne L4791
     mov r12, qword [rbx+19408]
     call os_now_ms
@@ -26992,8 +26998,10 @@ L4793:
     cmovle eax, r12d
     mov edi, eax
     call os_sleep
+    xor edx, edx
+    mov qword [rbx+19432], rdx
     jmp L4791
-L4839:
+L4842:
     lea eax, [rcx-399]
     mov edi, 400
     cdq
@@ -27003,42 +27011,79 @@ L4796:
     xor eax, eax
     mov qword [rbx+19408], rax
     call os_now_ms
+    mov rdx, qword [rbx+19432]
+    mov r12, rax
+    test rdx, rdx
+    je L4797
+    sub eax, edx
+    mov edx, 100
+    cmp eax, edx
+    cmovg eax, edx
+    mov edx, 12
+    cmp eax, edx
+    cmovl eax, edx
+    cdqe
+    mov qword [rbx+19424], rax
+L4797:
     cmp dword [rbx+10300], 0
-    mov r14, rax
-    jne L4811
+    jne L4814
     cmp dword [rbx+10312], 0
-    jne L4812
+    jne L4815
     cmp dword [rbx+10476], 0
-    jne L4813
+    jne L4816
     mov esi, dword [rbx+19416]
     test esi, esi
-    je L4843
+    je L4846
     mov edx, 1
     mov rdi, r13
     call rv_run.part.0
-    mov r12d, eax
+    mov r14d, eax
     call os_now_ms
-    sub rax, r14
-    cmp r12d, 1
-    jne L4807
+    cmp r14d, 1
+    jne L4801
+    sub rax, r12
+    mov rcx, rax
 L4800:
-    cmp rax, 5
-    jg L4802
+    mov rsi, qword [rbx+19424]
+    mov edi, 2
+    mov rax, rsi
+    cqo
+    idiv rdi
+    cmp rax, rcx
+    jle L4802
     mov eax, dword [rbx+19416]
     cmp eax, 2097151
-    jbe L4844
-L4803:
-    mov r12d, 1
+    ja L4803
+    add eax, eax
+    mov dword [rbx+19416], eax
+L4804:
+    call os_now_ms
+    mov r14d, 1
+    mov qword [rbx+19432], rax
+    jmp L4809
+L4814:
+    mov r14d, 3
+L4798:
+    mov dword [rbx+10296], r14d
+    call os_now_ms
 L4801:
+    call os_now_ms
+    mov esi, r14d
+    mov rdi, rbx
+    mov qword [rbx+19432], rax
+    call ide_after_stop
+L4809:
     cmp dword [rbx+19396], 0
-    je L4804
-    cmp r12d, 5
-    je L4804
-L4805:
+    je L4805
+    cmp r14d, 5
+    je L4805
+L4807:
     mov rdi, rbx
     call ide_refresh
+L4806:
+    call os_yield_point
     jmp L4791
-L4804:
+L4805:
     mov rdi, rbx
     call ide_update_menus
     call ide_draw_toolbar
@@ -27052,51 +27097,40 @@ L4804:
     mov rdi, rbx
     call ide_bitmap_draw_rows
     cmp dword [rbx+19396], 0
-    je L4791
-    jmp L4805
-L4811:
-    mov r12d, 3
-L4798:
-    mov dword [rbx+10296], r12d
-    call os_now_ms
-L4807:
-    mov esi, r12d
-    mov rdi, rbx
-    call ide_after_stop
-    jmp L4801
+    je L4806
+    jmp L4807
 L4784:
     mov rax, qword [rel LC21]
     pxor xmm0, xmm0
     mov r13d, 1
-    mov qword [rbx+26048], LC223
-    movups oword [rbx+26064], xmm0
-    mov qword [rbx+26056], rax
+    mov qword [rbx+26064], LC224
+    movups oword [rbx+26080], xmm0
+    mov qword [rbx+26072], rax
     jmp L4777
-L4802:
-    cmp rax, 24
-    jle L4803
-    mov eax, dword [rbx+19416]
-    cmp eax, 2000
-    jbe L4803
-    shr eax, 1
-    mov dword [rbx+19416], eax
-    jmp L4803
-L4844:
-    add eax, eax
-    mov dword [rbx+19416], eax
-    jmp L4803
-L4812:
-    mov r12d, 4
-    jmp L4798
-L4843:
+L4846:
     mov dword [rbx+10296], 1
     call os_now_ms
-    sub rax, r14
+    sub rax, r12
+    mov rcx, rax
     jmp L4800
-L4813:
-    mov r12d, 5
+L4802:
+    add rsi, rsi
+    cmp rsi, rcx
+    jge L4804
+    mov eax, dword [rbx+19416]
+    cmp eax, 2000
+    jbe L4804
+L4810:
+    shr eax, 1
+    mov dword [rbx+19416], eax
+    jmp L4804
+L4815:
+    mov r14d, 4
     jmp L4798
-L4840:
+L4816:
+    mov r14d, 5
+    jmp L4798
+L4843:
     mov rsi, rax
     mov rdi, rbx
     call ide_load
@@ -27108,8 +27142,8 @@ L4785:
     mov esi, IDE_TEMPLATE
     mov rdi, rbx
     call ed_set_text
-    jmp L4808
-L4841:
+    jmp L4811
+L4844:
     mov rcx, qword [rsp]
     xor eax, eax
 L4788:
@@ -27122,7 +27156,12 @@ L4788:
     jne L4788
 L4789:
     mov byte [rbx+88+rax], 0
-    jmp L4808
+    jmp L4811
+L4803:
+    add rsi, rsi
+    cmp rsi, rcx
+    jl L4810
+    jmp L4804
     section .rodata
     align 16, db 0
 ids.0:
@@ -27133,47 +27172,47 @@ ids.0:
     dd 15
     dd 16
     section .rodata
-LC234:
-    db `Data`, 0
 LC235:
-    db `Stack`, 0
+    db `Data`, 0
 LC236:
+    db `Stack`, 0
+LC237:
     db `Go to`, 0
     section .rodata
     align 16, db 0
 labels.1:
-    dq LC234
     dq LC235
     dq LC236
+    dq LC237
     section .rodata
-LC237:
-    db `Registers`, 0
 LC238:
+    db `Registers`, 0
+LC239:
     db `Bitmap`, 0
     section .rodata
     align 16, db 0
 labels.2:
-    dq LC237
     dq LC238
+    dq LC239
     section .rodata
-LC239:
-    db `zero`, 0
 LC240:
-    db `ra`, 0
+    db `zero`, 0
 LC241:
-    db `sp`, 0
+    db `ra`, 0
 LC242:
-    db `gp`, 0
+    db `sp`, 0
 LC243:
+    db `gp`, 0
+LC244:
     db `tp`, 0
     section .rodata
     align 32, db 0
 names.3:
-    dq LC239
     dq LC240
     dq LC241
     dq LC242
     dq LC243
+    dq LC244
     dq LC148
     align 8, db 0
 ops.4:
@@ -27218,53 +27257,53 @@ fp_counts.11:
     dd 12
     dd 8
     section .rodata
-LC244:
-    db `ft`, 0
 LC245:
-    db `fs`, 0
+    db `ft`, 0
 LC246:
+    db `fs`, 0
+LC247:
     db `fa`, 0
     section .rodata
     align 16, db 0
 fp_prefixes.12:
-    dq LC244
     dq LC245
     dq LC246
+    dq LC247
     section .rodata
-LC247:
-    db `Cut`, 0
 LC248:
-    db `Copy`, 0
+    db `Cut`, 0
 LC249:
-    db `Paste`, 0
+    db `Copy`, 0
 LC250:
-    db `-`, 0
+    db `Paste`, 0
 LC251:
+    db `-`, 0
+LC252:
     db `Toggle Breakpoint`, 0
     section .rodata
     align 32, db 0
 IDE_CONTEXT_MENU:
-    dq LC247
+    dq LC248
     dd 6
     dd 0
     dq 0
     dq 0
-    dq LC248
+    dq LC249
     dd 7
     dd 0
     dq 0
     dq 0
-    dq LC249
+    dq LC250
     dd 8
     dd 0
     dq 0
     dq 0
-    dq LC250
-    dd 0
-    dd 0
-    dq 0
-    dq 0
     dq LC251
+    dd 0
+    dd 0
+    dq 0
+    dq 0
+    dq LC252
     dd 18
     dd 0
     dq 0
@@ -27276,17 +27315,17 @@ IDE_CONTEXT_MENU:
     dq 0
     align 32, db 0
 IDE_HELP_MENU:
-    dq LC209
+    dq LC210
     dd 25
     dd 0
     dq 0
     dq 0
-    dq LC211
+    dq LC212
     dd 26
     dd 0
     dq 0
     dq 0
-    dq LC213
+    dq LC214
     dd 27
     dd 0
     dq 0
@@ -27297,38 +27336,38 @@ IDE_HELP_MENU:
     dq 0
     dq 0
     section .rodata
-LC252:
-    db `Bitmap Display Window`, 0
 LC253:
-    db `Memory: Data`, 0
+    db `Bitmap Display Window`, 0
 LC254:
-    db `Memory: Stack`, 0
+    db `Memory: Data`, 0
 LC255:
+    db `Memory: Stack`, 0
+LC256:
     db `Memory: Go to Address...`, 0
     section .rodata
     align 32, db 0
 IDE_VIEW_MENU:
-    dq LC252
+    dq LC253
     dd 21
     dd 0
     dq 0
     dq 0
-    dq LC250
+    dq LC251
     dd 0
-    dd 0
-    dq 0
-    dq 0
-    dq LC253
-    dd 22
     dd 0
     dq 0
     dq 0
     dq LC254
-    dd 23
+    dd 22
     dd 0
     dq 0
     dq 0
     dq LC255
+    dd 23
+    dd 0
+    dq 0
+    dq 0
+    dq LC256
     dd 24
     dd 0
     dq 0
@@ -27339,97 +27378,97 @@ IDE_VIEW_MENU:
     dq 0
     dq 0
     section .rodata
-LC256:
-    db `Build`, 0
 LC257:
-    db `F3`, 0
+    db `Build`, 0
 LC258:
-    db `F5`, 0
+    db `F3`, 0
 LC259:
-    db `Pause`, 0
+    db `F5`, 0
 LC260:
-    db `F9`, 0
+    db `Pause`, 0
 LC261:
-    db `Step`, 0
+    db `F9`, 0
 LC262:
-    db `F7`, 0
+    db `Step`, 0
 LC263:
-    db `Step Back`, 0
+    db `F7`, 0
 LC264:
-    db `F8`, 0
+    db `Step Back`, 0
 LC265:
-    db `Stop`, 0
+    db `F8`, 0
 LC266:
-    db `F11`, 0
+    db `Stop`, 0
 LC267:
-    db `Back to the Start`, 0
+    db `F11`, 0
 LC268:
-    db `F12`, 0
+    db `Back to the Start`, 0
 LC269:
-    db `F2`, 0
+    db `F12`, 0
 LC270:
-    db `Clear Breakpoints`, 0
+    db `F2`, 0
 LC271:
+    db `Clear Breakpoints`, 0
+LC272:
     db `Keep History for Step Back`, 0
     section .rodata
     align 32, db 0
 IDE_RUN_MENU:
-    dq LC256
-    dd 11
-    dd 0
     dq LC257
-    dq 0
-    dq LC226
-    dd 12
+    dd 11
     dd 0
     dq LC258
     dq 0
+    dq LC227
+    dd 12
+    dd 0
     dq LC259
+    dq 0
+    dq LC260
     dd 13
     dd 0
-    dq LC260
-    dq 0
     dq LC261
+    dq 0
+    dq LC262
     dd 14
     dd 0
-    dq LC262
-    dq 0
     dq LC263
+    dq 0
+    dq LC264
     dd 15
     dd 0
-    dq LC264
-    dq 0
     dq LC265
+    dq 0
+    dq LC266
     dd 16
     dd 0
-    dq LC266
-    dq 0
     dq LC267
-    dd 17
-    dd 0
+    dq 0
     dq LC268
-    dq 0
-    dq LC250
-    dd 0
-    dd 0
-    dq 0
-    dq 0
-    dq LC251
-    dd 18
+    dd 17
     dd 0
     dq LC269
     dq 0
+    dq LC251
+    dd 0
+    dd 0
+    dq 0
+    dq 0
+    dq LC252
+    dd 18
+    dd 0
     dq LC270
+    dq 0
+    dq LC271
     dd 19
     dd 0
     dq 0
     dq 0
-    dq LC250
+    dq LC251
     dd 0
     dd 0
     dq 0
     dq 0
-    dq LC271
+    dq LC272
     dd 20
     dd 2
     dq 0
@@ -27440,52 +27479,52 @@ IDE_RUN_MENU:
     dq 0
     dq 0
     section .rodata
-LC272:
-    db `Ctrl+X`, 0
 LC273:
-    db `Ctrl+C`, 0
+    db `Ctrl+X`, 0
 LC274:
-    db `Ctrl+V`, 0
+    db `Ctrl+C`, 0
 LC275:
-    db `Select All`, 0
+    db `Ctrl+V`, 0
 LC276:
-    db `Ctrl+A`, 0
+    db `Select All`, 0
 LC277:
-    db `Go to Line...`, 0
+    db `Ctrl+A`, 0
 LC278:
+    db `Go to Line...`, 0
+LC279:
     db `Ctrl+G`, 0
     section .rodata
     align 32, db 0
 IDE_EDIT_MENU:
-    dq LC247
-    dd 6
-    dd 0
-    dq LC272
-    dq 0
     dq LC248
-    dd 7
+    dd 6
     dd 0
     dq LC273
     dq 0
     dq LC249
-    dd 8
+    dd 7
     dd 0
     dq LC274
     dq 0
+    dq LC250
+    dd 8
+    dd 0
     dq LC275
+    dq 0
+    dq LC276
     dd 9
     dd 0
-    dq LC276
-    dq 0
-    dq LC250
-    dd 0
-    dd 0
-    dq 0
-    dq 0
     dq LC277
+    dq 0
+    dq LC251
+    dd 0
+    dd 0
+    dq 0
+    dq 0
+    dq LC278
     dd 10
     dd 0
-    dq LC278
+    dq LC279
     dq 0
     dq 0
     dd 0
@@ -27493,56 +27532,56 @@ IDE_EDIT_MENU:
     dq 0
     dq 0
     section .rodata
-LC279:
-    db `New`, 0
 LC280:
-    db `Open...`, 0
+    db `New`, 0
 LC281:
-    db `Ctrl+O`, 0
+    db `Open...`, 0
 LC282:
-    db `Examples`, 0
+    db `Ctrl+O`, 0
 LC283:
-    db `Save`, 0
+    db `Examples`, 0
 LC284:
-    db `Ctrl+S`, 0
+    db `Save`, 0
 LC285:
-    db `Save As...`, 0
+    db `Ctrl+S`, 0
 LC286:
+    db `Save As...`, 0
+LC287:
     db `Exit`, 0
     section .rodata
     align 32, db 0
 IDE_FILE_MENU:
-    dq LC279
+    dq LC280
     dd 1
     dd 0
     dq 0
     dq 0
-    dq LC280
+    dq LC281
     dd 2
     dd 0
-    dq LC281
-    dq 0
     dq LC282
-    dd 0
-    dd 0
-    dq 0
     dq 0
     dq LC283
+    dd 0
+    dd 0
+    dq 0
+    dq 0
+    dq LC284
     dd 3
     dd 0
-    dq LC284
-    dq 0
     dq LC285
+    dq 0
+    dq LC286
     dd 4
     dd 0
     dq 0
     dq 0
-    dq LC250
+    dq LC251
     dd 0
     dd 0
     dq 0
     dq 0
-    dq LC286
+    dq LC287
     dd 5
     dd 0
     dq 0
@@ -27553,17 +27592,17 @@ IDE_FILE_MENU:
     dq 0
     dq 0
     section .rodata
-LC287:
+LC288:
     db `Back`, 0
     section .rodata
     align 32, db 0
 IDE_BUTTON_LABEL:
-    dq LC256
-    dq LC226
-    dq LC259
-    dq LC261
-    dq LC287
-    dq LC265
+    dq LC257
+    dq LC227
+    dq LC260
+    dq LC262
+    dq LC288
+    dq LC266
     align 32, db 0
 IDE_TEMPLATE:
     db `# A RISC-V program, as RARS runs it.\n#`
@@ -27585,66 +27624,65 @@ rv_zero_page:
 RV_METADATA_DIRECTIVES:
     db `.file .ident .version .option .attribute .size .type .local .weak .hidden .protected .internal .addrsig .addrsig_sym`, 0
     section .rodata
-LC288:
-    db `.word`, 0
 LC289:
-    db `.dword`, 0
+    db `.word`, 0
 LC290:
-    db `.ascii`, 0
+    db `.dword`, 0
 LC291:
-    db `.asciz`, 0
+    db `.ascii`, 0
 LC292:
-    db `.string`, 0
+    db `.asciz`, 0
 LC293:
-    db `.byte`, 0
+    db `.string`, 0
 LC294:
-    db `.align`, 0
+    db `.byte`, 0
 LC295:
-    db `.half`, 0
+    db `.align`, 0
 LC296:
-    db `.space`, 0
+    db `.half`, 0
 LC297:
-    db `.double`, 0
+    db `.space`, 0
 LC298:
-    db `.float`, 0
+    db `.double`, 0
 LC299:
-    db `.extern`, 0
+    db `.float`, 0
 LC300:
-    db `.globl`, 0
+    db `.extern`, 0
 LC301:
-    db `.global`, 0
+    db `.globl`, 0
 LC302:
-    db `.eqv`, 0
+    db `.global`, 0
 LC303:
-    db `.macro`, 0
+    db `.eqv`, 0
 LC304:
-    db `.end_macro`, 0
+    db `.macro`, 0
 LC305:
-    db `.include`, 0
+    db `.end_macro`, 0
 LC306:
-    db `.section`, 0
+    db `.include`, 0
 LC307:
-    db `.zero`, 0
+    db `.section`, 0
 LC308:
-    db `.comm`, 0
+    db `.zero`, 0
 LC309:
-    db `.lcomm`, 0
+    db `.comm`, 0
 LC310:
-    db `.p2align`, 0
+    db `.lcomm`, 0
 LC311:
-    db `.balign`, 0
+    db `.p2align`, 0
 LC312:
-    db `.2byte`, 0
+    db `.balign`, 0
 LC313:
-    db `.4byte`, 0
+    db `.2byte`, 0
 LC314:
+    db `.4byte`, 0
+LC315:
     db `.8byte`, 0
     section .rodata
     align 32, db 0
 RV_DIRECTIVES:
     dq LC97
     dq LC102
-    dq LC288
     dq LC289
     dq LC290
     dq LC291
@@ -27663,9 +27701,9 @@ RV_DIRECTIVES:
     dq LC304
     dq LC305
     dq LC306
+    dq LC307
     dq LC100
     dq LC101
-    dq LC307
     dq LC308
     dq LC309
     dq LC310
@@ -27673,1540 +27711,1541 @@ RV_DIRECTIVES:
     dq LC312
     dq LC313
     dq LC314
+    dq LC315
     section .rodata
-LC315:
-    db `add`, 0
 LC316:
-    db `rrr`, 0
+    db `add`, 0
 LC317:
-    db `add t1, t2, t3`, 0
+    db `rrr`, 0
 LC318:
-    db `sub`, 0
+    db `add t1, t2, t3`, 0
 LC319:
-    db `sub t1, t2, t3`, 0
+    db `sub`, 0
 LC320:
-    db `sll`, 0
+    db `sub t1, t2, t3`, 0
 LC321:
-    db `sll t1, t2, t3`, 0
+    db `sll`, 0
 LC322:
-    db `slt`, 0
+    db `sll t1, t2, t3`, 0
 LC323:
-    db `slt t1, t2, t3`, 0
+    db `slt`, 0
 LC324:
-    db `sltu`, 0
+    db `slt t1, t2, t3`, 0
 LC325:
-    db `sltu t1, t2, t3`, 0
+    db `sltu`, 0
 LC326:
-    db `xor`, 0
+    db `sltu t1, t2, t3`, 0
 LC327:
-    db `xor t1, t2, t3`, 0
+    db `xor`, 0
 LC328:
-    db `srl`, 0
+    db `xor t1, t2, t3`, 0
 LC329:
-    db `srl t1, t2, t3`, 0
+    db `srl`, 0
 LC330:
-    db `sra`, 0
+    db `srl t1, t2, t3`, 0
 LC331:
-    db `sra t1, t2, t3`, 0
+    db `sra`, 0
 LC332:
-    db `or`, 0
+    db `sra t1, t2, t3`, 0
 LC333:
-    db `or t1, t2, t3`, 0
+    db `or`, 0
 LC334:
-    db `and`, 0
+    db `or t1, t2, t3`, 0
 LC335:
-    db `and t1, t2, t3`, 0
+    db `and`, 0
 LC336:
-    db `mul`, 0
+    db `and t1, t2, t3`, 0
 LC337:
-    db `mul t1, t2, t3`, 0
+    db `mul`, 0
 LC338:
-    db `mulh`, 0
+    db `mul t1, t2, t3`, 0
 LC339:
-    db `mulh t1, t2, t3`, 0
+    db `mulh`, 0
 LC340:
-    db `mulhsu`, 0
+    db `mulh t1, t2, t3`, 0
 LC341:
-    db `mulhsu t1, t2, t3`, 0
+    db `mulhsu`, 0
 LC342:
-    db `mulhu`, 0
+    db `mulhsu t1, t2, t3`, 0
 LC343:
-    db `mulhu t1, t2, t3`, 0
+    db `mulhu`, 0
 LC344:
-    db `div`, 0
+    db `mulhu t1, t2, t3`, 0
 LC345:
-    db `div t1, t2, t3`, 0
+    db `div`, 0
 LC346:
-    db `divu`, 0
+    db `div t1, t2, t3`, 0
 LC347:
-    db `divu t1, t2, t3`, 0
+    db `divu`, 0
 LC348:
-    db `rem`, 0
+    db `divu t1, t2, t3`, 0
 LC349:
-    db `rem t1, t2, t3`, 0
+    db `rem`, 0
 LC350:
-    db `remu`, 0
+    db `rem t1, t2, t3`, 0
 LC351:
-    db `remu t1, t2, t3`, 0
+    db `remu`, 0
 LC352:
-    db `addi`, 0
+    db `remu t1, t2, t3`, 0
 LC353:
-    db `rri`, 0
+    db `addi`, 0
 LC354:
-    db `addi t1, t2, -100`, 0
+    db `rri`, 0
 LC355:
-    db `slti`, 0
+    db `addi t1, t2, -100`, 0
 LC356:
-    db `slti t1, t2, -100`, 0
+    db `slti`, 0
 LC357:
-    db `sltiu`, 0
+    db `slti t1, t2, -100`, 0
 LC358:
-    db `sltiu t1, t2, -100`, 0
+    db `sltiu`, 0
 LC359:
-    db `xori`, 0
+    db `sltiu t1, t2, -100`, 0
 LC360:
-    db `xori t1, t2, -100`, 0
+    db `xori`, 0
 LC361:
-    db `ori`, 0
+    db `xori t1, t2, -100`, 0
 LC362:
-    db `ori t1, t2, -100`, 0
+    db `ori`, 0
 LC363:
-    db `andi`, 0
+    db `ori t1, t2, -100`, 0
 LC364:
-    db `andi t1, t2, -100`, 0
+    db `andi`, 0
 LC365:
-    db `slli`, 0
+    db `andi t1, t2, -100`, 0
 LC366:
-    db `rr5`, 0
+    db `slli`, 0
 LC367:
-    db `slli t1, t2, 10`, 0
+    db `rr5`, 0
 LC368:
-    db `srli`, 0
+    db `slli t1, t2, 10`, 0
 LC369:
-    db `srli t1, t2, 10`, 0
+    db `srli`, 0
 LC370:
-    db `srai`, 0
+    db `srli t1, t2, 10`, 0
 LC371:
-    db `srai t1, t2, 10`, 0
+    db `srai`, 0
 LC372:
-    db `lb`, 0
+    db `srai t1, t2, 10`, 0
 LC373:
-    db `ri(r)`, 0
+    db `lb`, 0
 LC374:
-    db `lb t1, -100(t2)`, 0
+    db `ri(r)`, 0
 LC375:
-    db `lh`, 0
+    db `lb t1, -100(t2)`, 0
 LC376:
-    db `lh t1, -100(t2)`, 0
+    db `lh`, 0
 LC377:
-    db `lw`, 0
+    db `lh t1, -100(t2)`, 0
 LC378:
-    db `lw t1, -100(t2)`, 0
+    db `lw`, 0
 LC379:
-    db `lbu`, 0
+    db `lw t1, -100(t2)`, 0
 LC380:
-    db `lbu t1, -100(t2)`, 0
+    db `lbu`, 0
 LC381:
-    db `lhu`, 0
+    db `lbu t1, -100(t2)`, 0
 LC382:
-    db `lhu t1, -100(t2)`, 0
+    db `lhu`, 0
 LC383:
-    db `sb`, 0
+    db `lhu t1, -100(t2)`, 0
 LC384:
-    db `sb t1, -100(t2)`, 0
+    db `sb`, 0
 LC385:
-    db `sh`, 0
+    db `sb t1, -100(t2)`, 0
 LC386:
-    db `sh t1, -100(t2)`, 0
+    db `sh`, 0
 LC387:
-    db `sw`, 0
+    db `sh t1, -100(t2)`, 0
 LC388:
-    db `sw t1, -100(t2)`, 0
+    db `sw`, 0
 LC389:
-    db `beq`, 0
+    db `sw t1, -100(t2)`, 0
 LC390:
-    db `rrl`, 0
+    db `beq`, 0
 LC391:
-    db `beq t1, t2, label`, 0
+    db `rrl`, 0
 LC392:
-    db `bne`, 0
+    db `beq t1, t2, label`, 0
 LC393:
-    db `bne t1, t2, label`, 0
+    db `bne`, 0
 LC394:
-    db `blt`, 0
+    db `bne t1, t2, label`, 0
 LC395:
-    db `blt t1, t2, label`, 0
+    db `blt`, 0
 LC396:
-    db `bge`, 0
+    db `blt t1, t2, label`, 0
 LC397:
-    db `bge t1, t2, label`, 0
+    db `bge`, 0
 LC398:
-    db `bltu`, 0
+    db `bge t1, t2, label`, 0
 LC399:
-    db `bltu t1, t2, label`, 0
+    db `bltu`, 0
 LC400:
-    db `bgeu`, 0
+    db `bltu t1, t2, label`, 0
 LC401:
-    db `bgeu t1, t2, label`, 0
+    db `bgeu`, 0
 LC402:
-    db `lui`, 0
+    db `bgeu t1, t2, label`, 0
 LC403:
-    db `ru`, 0
+    db `lui`, 0
 LC404:
-    db `lui t1, 100000`, 0
+    db `ru`, 0
 LC405:
-    db `auipc`, 0
+    db `lui t1, 100000`, 0
 LC406:
-    db `auipc t1, 100000`, 0
+    db `auipc`, 0
 LC407:
-    db `jal`, 0
+    db `auipc t1, 100000`, 0
 LC408:
-    db `rl`, 0
+    db `jal`, 0
 LC409:
-    db `jal t1, label`, 0
+    db `rl`, 0
 LC410:
-    db `jalr`, 0
+    db `jal t1, label`, 0
 LC411:
-    db `jalr t1, t2, -100`, 0
+    db `jalr`, 0
 LC412:
-    db `ecall`, 0
+    db `jalr t1, t2, -100`, 0
 LC413:
-    db `ebreak`, 0
+    db `ecall`, 0
 LC414:
-    db `fence`, 0
+    db `ebreak`, 0
 LC415:
-    db `55`, 0
+    db `fence`, 0
 LC416:
-    db `fence 1, 1`, 0
+    db `55`, 0
 LC417:
-    db `fence.i`, 0
+    db `fence 1, 1`, 0
 LC418:
-    db `nop`, 0
+    db `fence.i`, 0
 LC419:
-    db `addi x0, x0, 0`, 0
+    db `nop`, 0
 LC420:
-    db `not`, 0
+    db `addi x0, x0, 0`, 0
 LC421:
-    db `rr`, 0
+    db `not`, 0
 LC422:
-    db `xori RG1, RG2, -1`, 0
+    db `rr`, 0
 LC423:
-    db `not t1, t2`, 0
+    db `xori RG1, RG2, -1`, 0
 LC424:
-    db `mv`, 0
+    db `not t1, t2`, 0
 LC425:
-    db `add RG1, x0, RG2`, 0
+    db `mv`, 0
 LC426:
-    db `mv t1, t2`, 0
+    db `add RG1, x0, RG2`, 0
 LC427:
-    db `neg`, 0
+    db `mv t1, t2`, 0
 LC428:
-    db `sub RG1, x0, RG2`, 0
+    db `neg`, 0
 LC429:
-    db `neg t1, t2`, 0
+    db `sub RG1, x0, RG2`, 0
 LC430:
-    db `sgt`, 0
+    db `neg t1, t2`, 0
 LC431:
-    db `slt RG1, RG3, RG2`, 0
+    db `sgt`, 0
 LC432:
-    db `sgt t1, t2, t3`, 0
+    db `slt RG1, RG3, RG2`, 0
 LC433:
-    db `sgtu`, 0
+    db `sgt t1, t2, t3`, 0
 LC434:
-    db `sltu RG1, RG3, RG2`, 0
+    db `sgtu`, 0
 LC435:
-    db `sgtu t1, t2, t3`, 0
+    db `sltu RG1, RG3, RG2`, 0
 LC436:
-    db `seqz`, 0
+    db `sgtu t1, t2, t3`, 0
 LC437:
-    db `sltiu RG1, RG2, 1`, 0
+    db `seqz`, 0
 LC438:
-    db `seqz t1, t2`, 0
+    db `sltiu RG1, RG2, 1`, 0
 LC439:
-    db `snez`, 0
+    db `seqz t1, t2`, 0
 LC440:
-    db `sltu RG1, x0, RG2`, 0
+    db `snez`, 0
 LC441:
-    db `snez t1, t2`, 0
+    db `sltu RG1, x0, RG2`, 0
 LC442:
-    db `sgtz`, 0
+    db `snez t1, t2`, 0
 LC443:
-    db `slt RG1, x0, RG2`, 0
+    db `sgtz`, 0
 LC444:
-    db `sgtz t1, t2`, 0
+    db `slt RG1, x0, RG2`, 0
 LC445:
-    db `sltz`, 0
+    db `sgtz t1, t2`, 0
 LC446:
-    db `slt RG1, RG2, x0`, 0
+    db `sltz`, 0
 LC447:
-    db `sltz t1, t2`, 0
+    db `slt RG1, RG2, x0`, 0
 LC448:
-    db `b`, 0
+    db `sltz t1, t2`, 0
 LC449:
-    db `l`, 0
+    db `b`, 0
 LC450:
-    db `jal x0, LAB`, 0
+    db `l`, 0
 LC451:
-    db `b label`, 0
+    db `jal x0, LAB`, 0
 LC452:
-    db `beqz`, 0
+    db `b label`, 0
 LC453:
-    db `beq RG1, x0, LAB`, 0
+    db `beqz`, 0
 LC454:
-    db `beqz t1, label`, 0
+    db `beq RG1, x0, LAB`, 0
 LC455:
-    db `bnez`, 0
+    db `beqz t1, label`, 0
 LC456:
-    db `bne RG1, x0, LAB`, 0
+    db `bnez`, 0
 LC457:
-    db `bnez t1, label`, 0
+    db `bne RG1, x0, LAB`, 0
 LC458:
-    db `bgez`, 0
+    db `bnez t1, label`, 0
 LC459:
-    db `bge RG1, x0, LAB`, 0
+    db `bgez`, 0
 LC460:
-    db `bgez t1, label`, 0
+    db `bge RG1, x0, LAB`, 0
 LC461:
-    db `bltz`, 0
+    db `bgez t1, label`, 0
 LC462:
-    db `blt RG1, x0, LAB`, 0
+    db `bltz`, 0
 LC463:
-    db `bltz t1, label`, 0
+    db `blt RG1, x0, LAB`, 0
 LC464:
-    db `bgtz`, 0
+    db `bltz t1, label`, 0
 LC465:
-    db `blt x0, RG1, LAB`, 0
+    db `bgtz`, 0
 LC466:
-    db `bgtz t1, label`, 0
+    db `blt x0, RG1, LAB`, 0
 LC467:
-    db `blez`, 0
+    db `bgtz t1, label`, 0
 LC468:
-    db `bge x0, RG1, LAB`, 0
+    db `blez`, 0
 LC469:
-    db `blez t1, label`, 0
+    db `bge x0, RG1, LAB`, 0
 LC470:
-    db `bgt`, 0
+    db `blez t1, label`, 0
 LC471:
-    db `blt RG2, RG1, LAB`, 0
+    db `bgt`, 0
 LC472:
-    db `bgt t1, t2, label`, 0
+    db `blt RG2, RG1, LAB`, 0
 LC473:
-    db `bgtu`, 0
+    db `bgt t1, t2, label`, 0
 LC474:
-    db `bltu RG2, RG1, LAB`, 0
+    db `bgtu`, 0
 LC475:
-    db `bgtu t1, t2, label`, 0
+    db `bltu RG2, RG1, LAB`, 0
 LC476:
-    db `ble`, 0
+    db `bgtu t1, t2, label`, 0
 LC477:
-    db `bge RG2, RG1, LAB`, 0
+    db `ble`, 0
 LC478:
-    db `ble t1, t2, label`, 0
+    db `bge RG2, RG1, LAB`, 0
 LC479:
-    db `bleu`, 0
+    db `ble t1, t2, label`, 0
 LC480:
-    db `bgeu RG2, RG1, LAB`, 0
+    db `bleu`, 0
 LC481:
-    db `bleu t1, t2, label`, 0
+    db `bgeu RG2, RG1, LAB`, 0
 LC482:
-    db `j`, 0
+    db `bleu t1, t2, label`, 0
 LC483:
-    db `j label`, 0
+    db `j`, 0
 LC484:
-    db `jal x1, LAB`, 0
+    db `j label`, 0
 LC485:
-    db `jal label`, 0
+    db `jal x1, LAB`, 0
 LC486:
-    db `jr`, 0
+    db `jal label`, 0
 LC487:
-    db `r`, 0
+    db `jr`, 0
 LC488:
-    db `jalr x0, RG1, 0`, 0
+    db `r`, 0
 LC489:
-    db `jr t0`, 0
+    db `jalr x0, RG1, 0`, 0
 LC490:
-    db `jalr x1, RG1, 0`, 0
+    db `jr t0`, 0
 LC491:
-    db `jalr t0`, 0
+    db `jalr x1, RG1, 0`, 0
 LC492:
-    db `ri`, 0
+    db `jalr t0`, 0
 LC493:
-    db `jalr x0, RG1, VL2`, 0
+    db `ri`, 0
 LC494:
-    db `jr t0, -100`, 0
+    db `jalr x0, RG1, VL2`, 0
 LC495:
-    db `jalr x1, RG1, VL2`, 0
+    db `jr t0, -100`, 0
 LC496:
-    db `jalr t0, -100`, 0
+    db `jalr x1, RG1, VL2`, 0
 LC497:
-    db `jalr RG1, RG4, VL2`, 0
+    db `jalr t0, -100`, 0
 LC498:
-    db `jalr t0, -100(t1)`, 0
+    db `jalr RG1, RG4, VL2`, 0
 LC499:
-    db `ret`, 0
+    db `jalr t0, -100(t1)`, 0
 LC500:
-    db `jalr x0, x1, 0`, 0
+    db `ret`, 0
 LC501:
+    db `jalr x0, x1, 0`, 0
+LC502:
     db `call`, 0
     section .rodata
     align 8, db 0
-LC502:
+LC503:
     db `auipc x6, PCH1; jalr x1, x6, PCL1`, 0
     section .rodata
-LC503:
-    db `call label`, 0
 LC504:
+    db `call label`, 0
+LC505:
     db `tail`, 0
     section .rodata
     align 8, db 0
-LC505:
+LC506:
     db `auipc x6, PCH1; jalr x0, x6, PCL1`, 0
     section .rodata
-LC506:
-    db `tail label`, 0
 LC507:
-    db `li`, 0
+    db `tail label`, 0
 LC508:
-    db `addi RG1, x0, VL2`, 0
+    db `li`, 0
 LC509:
-    db `li t1, -100`, 0
+    db `addi RG1, x0, VL2`, 0
 LC510:
+    db `li t1, -100`, 0
+LC511:
     db `rw`, 0
     section .rodata
     align 8, db 0
-LC511:
+LC512:
     db `lui RG1, VH2; addi RG1, RG1, VL2`, 0
     section .rodata
-LC512:
-    db `li t1, 100000`, 0
 LC513:
+    db `li t1, 100000`, 0
+LC514:
     db `la`, 0
     section .rodata
     align 8, db 0
-LC514:
+LC515:
     db `auipc RG1, PCH2; addi RG1, RG1, PCL2`, 0
     section .rodata
-LC515:
-    db `la t1, label`, 0
 LC516:
-    db `r(r)`, 0
+    db `la t1, label`, 0
 LC517:
-    db `lw RG1, 0(RG3)`, 0
+    db `r(r)`, 0
 LC518:
-    db `lw t1, (t2)`, 0
+    db `lw RG1, 0(RG3)`, 0
 LC519:
-    db `lw RG1, VL2(x0)`, 0
+    db `lw t1, (t2)`, 0
 LC520:
+    db `lw RG1, VL2(x0)`, 0
+LC521:
     db `lw t1, -100`, 0
     section .rodata
     align 8, db 0
-LC521:
+LC522:
     db `lui RG1, VH2; lw RG1, VL2(RG1)`, 0
     section .rodata
-LC522:
+LC523:
     db `lw t1, 100000`, 0
     section .rodata
     align 8, db 0
-LC523:
+LC524:
     db `auipc RG1, PCH2; lw RG1, PCL2(RG1)`, 0
     section .rodata
-LC524:
-    db `lw t1, label`, 0
 LC525:
-    db `sw RG1, 0(RG3)`, 0
+    db `lw t1, label`, 0
 LC526:
-    db `sw t1, (t2)`, 0
+    db `sw RG1, 0(RG3)`, 0
 LC527:
-    db `sw RG1, VL2(x0)`, 0
+    db `sw t1, (t2)`, 0
 LC528:
-    db `sw t1, -100`, 0
+    db `sw RG1, VL2(x0)`, 0
 LC529:
+    db `sw t1, -100`, 0
+LC530:
     db `rwr`, 0
     section .rodata
     align 8, db 0
-LC530:
+LC531:
     db `lui RG3, VH2; sw RG1, VL2(RG3)`, 0
     section .rodata
-LC531:
-    db `sw t1, 100000, t2`, 0
 LC532:
+    db `sw t1, 100000, t2`, 0
+LC533:
     db `rlr`, 0
     section .rodata
     align 8, db 0
-LC533:
+LC534:
     db `auipc RG3, PCH2; sw RG1, PCL2(RG3)`, 0
     section .rodata
-LC534:
-    db `sw t1, label, t2`, 0
 LC535:
-    db `lh RG1, 0(RG3)`, 0
+    db `sw t1, label, t2`, 0
 LC536:
-    db `lh t1, (t2)`, 0
+    db `lh RG1, 0(RG3)`, 0
 LC537:
-    db `lh RG1, VL2(x0)`, 0
+    db `lh t1, (t2)`, 0
 LC538:
+    db `lh RG1, VL2(x0)`, 0
+LC539:
     db `lh t1, -100`, 0
     section .rodata
     align 8, db 0
-LC539:
+LC540:
     db `lui RG1, VH2; lh RG1, VL2(RG1)`, 0
     section .rodata
-LC540:
+LC541:
     db `lh t1, 100000`, 0
     section .rodata
     align 8, db 0
-LC541:
+LC542:
     db `auipc RG1, PCH2; lh RG1, PCL2(RG1)`, 0
     section .rodata
-LC542:
-    db `lh t1, label`, 0
 LC543:
-    db `sh RG1, 0(RG3)`, 0
+    db `lh t1, label`, 0
 LC544:
-    db `sh t1, (t2)`, 0
+    db `sh RG1, 0(RG3)`, 0
 LC545:
-    db `sh RG1, VL2(x0)`, 0
+    db `sh t1, (t2)`, 0
 LC546:
+    db `sh RG1, VL2(x0)`, 0
+LC547:
     db `sh t1, -100`, 0
     section .rodata
     align 8, db 0
-LC547:
+LC548:
     db `lui RG3, VH2; sh RG1, VL2(RG3)`, 0
     section .rodata
-LC548:
+LC549:
     db `sh t1, 100000, t2`, 0
     section .rodata
     align 8, db 0
-LC549:
+LC550:
     db `auipc RG3, PCH2; sh RG1, PCL2(RG3)`, 0
     section .rodata
-LC550:
-    db `sh t1, label, t2`, 0
 LC551:
-    db `lb RG1, 0(RG3)`, 0
+    db `sh t1, label, t2`, 0
 LC552:
-    db `lb t1, (t2)`, 0
+    db `lb RG1, 0(RG3)`, 0
 LC553:
-    db `lb RG1, VL2(x0)`, 0
+    db `lb t1, (t2)`, 0
 LC554:
+    db `lb RG1, VL2(x0)`, 0
+LC555:
     db `lb t1, -100`, 0
     section .rodata
     align 8, db 0
-LC555:
+LC556:
     db `lui RG1, VH2; lb RG1, VL2(RG1)`, 0
     section .rodata
-LC556:
+LC557:
     db `lb t1, 100000`, 0
     section .rodata
     align 8, db 0
-LC557:
+LC558:
     db `auipc RG1, PCH2; lb RG1, PCL2(RG1)`, 0
     section .rodata
-LC558:
-    db `lb t1, label`, 0
 LC559:
-    db `sb RG1, 0(RG3)`, 0
+    db `lb t1, label`, 0
 LC560:
-    db `sb t1, (t2)`, 0
+    db `sb RG1, 0(RG3)`, 0
 LC561:
-    db `sb RG1, VL2(x0)`, 0
+    db `sb t1, (t2)`, 0
 LC562:
+    db `sb RG1, VL2(x0)`, 0
+LC563:
     db `sb t1, -100`, 0
     section .rodata
     align 8, db 0
-LC563:
+LC564:
     db `lui RG3, VH2; sb RG1, VL2(RG3)`, 0
     section .rodata
-LC564:
+LC565:
     db `sb t1, 100000, t2`, 0
     section .rodata
     align 8, db 0
-LC565:
+LC566:
     db `auipc RG3, PCH2; sb RG1, PCL2(RG3)`, 0
     section .rodata
-LC566:
-    db `sb t1, label, t2`, 0
 LC567:
-    db `lhu RG1, 0(RG3)`, 0
+    db `sb t1, label, t2`, 0
 LC568:
-    db `lhu t1, (t2)`, 0
+    db `lhu RG1, 0(RG3)`, 0
 LC569:
-    db `lhu RG1, VL2(x0)`, 0
+    db `lhu t1, (t2)`, 0
 LC570:
+    db `lhu RG1, VL2(x0)`, 0
+LC571:
     db `lhu t1, -100`, 0
     section .rodata
     align 8, db 0
-LC571:
+LC572:
     db `lui RG1, VH2; lhu RG1, VL2(RG1)`, 0
     section .rodata
-LC572:
+LC573:
     db `lhu t1, 100000`, 0
     section .rodata
     align 8, db 0
-LC573:
+LC574:
     db `auipc RG1, PCH2; lhu RG1, PCL2(RG1)`, 0
     section .rodata
-LC574:
-    db `lhu t1, label`, 0
 LC575:
-    db `lbu RG1, 0(RG3)`, 0
+    db `lhu t1, label`, 0
 LC576:
-    db `lbu t1, (t2)`, 0
+    db `lbu RG1, 0(RG3)`, 0
 LC577:
-    db `lbu RG1, VL2(x0)`, 0
+    db `lbu t1, (t2)`, 0
 LC578:
+    db `lbu RG1, VL2(x0)`, 0
+LC579:
     db `lbu t1, -100`, 0
     section .rodata
     align 8, db 0
-LC579:
+LC580:
     db `lui RG1, VH2; lbu RG1, VL2(RG1)`, 0
     section .rodata
-LC580:
+LC581:
     db `lbu t1, 100000`, 0
     section .rodata
     align 8, db 0
-LC581:
+LC582:
     db `auipc RG1, PCH2; lbu RG1, PCL2(RG1)`, 0
     section .rodata
-LC582:
-    db `lbu t1, label`, 0
 LC583:
-    db `zext.b`, 0
+    db `lbu t1, label`, 0
 LC584:
-    db `andi RG1, RG2, 255`, 0
+    db `zext.b`, 0
 LC585:
-    db `zext.b t1, t2`, 0
+    db `andi RG1, RG2, 255`, 0
 LC586:
-    db `rH(l)`, 0
+    db `zext.b t1, t2`, 0
 LC587:
-    db `lui RG1, LH4`, 0
+    db `rH(l)`, 0
 LC588:
-    db `lui t1, %hi(label)`, 0
+    db `lui RG1, LH4`, 0
 LC589:
-    db `rrL(l)`, 0
+    db `lui t1, %hi(label)`, 0
 LC590:
-    db `addi RG1, RG2, LL5`, 0
+    db `rrL(l)`, 0
 LC591:
-    db `addi t1, t2, %lo(label)`, 0
+    db `addi RG1, RG2, LL5`, 0
 LC592:
-    db `rL(l)(r)`, 0
+    db `addi t1, t2, %lo(label)`, 0
 LC593:
-    db `lb RG1, LL4(RG7)`, 0
+    db `rL(l)(r)`, 0
 LC594:
-    db `lb t1, %lo(label)(t2)`, 0
+    db `lb RG1, LL4(RG7)`, 0
 LC595:
-    db `lh RG1, LL4(RG7)`, 0
+    db `lb t1, %lo(label)(t2)`, 0
 LC596:
-    db `lh t1, %lo(label)(t2)`, 0
+    db `lh RG1, LL4(RG7)`, 0
 LC597:
-    db `lw RG1, LL4(RG7)`, 0
+    db `lh t1, %lo(label)(t2)`, 0
 LC598:
-    db `lw t1, %lo(label)(t2)`, 0
+    db `lw RG1, LL4(RG7)`, 0
 LC599:
-    db `lbu RG1, LL4(RG7)`, 0
+    db `lw t1, %lo(label)(t2)`, 0
 LC600:
-    db `lbu t1, %lo(label)(t2)`, 0
+    db `lbu RG1, LL4(RG7)`, 0
 LC601:
-    db `lhu RG1, LL4(RG7)`, 0
+    db `lbu t1, %lo(label)(t2)`, 0
 LC602:
-    db `lhu t1, %lo(label)(t2)`, 0
+    db `lhu RG1, LL4(RG7)`, 0
 LC603:
-    db `sb RG1, LL4(RG7)`, 0
+    db `lhu t1, %lo(label)(t2)`, 0
 LC604:
-    db `sb t1, %lo(label)(t2)`, 0
+    db `sb RG1, LL4(RG7)`, 0
 LC605:
-    db `sh RG1, LL4(RG7)`, 0
+    db `sb t1, %lo(label)(t2)`, 0
 LC606:
-    db `sh t1, %lo(label)(t2)`, 0
+    db `sh RG1, LL4(RG7)`, 0
 LC607:
-    db `sw RG1, LL4(RG7)`, 0
+    db `sh t1, %lo(label)(t2)`, 0
 LC608:
+    db `sw RG1, LL4(RG7)`, 0
+LC609:
     db `sw t1, %lo(label)(t2)`, 0
     section .rodata
     align 32, db 0
 RV_FORMS:
-    dq LC315
     dq LC316
+    dq LC317
     dq 0
     db 0
     times 3 db 0
     dd 51
-    dq LC317
     dq LC318
-    dq LC316
+    dq LC319
+    dq LC317
     dq 0
     db 0
     times 3 db 0
     dd 1073741875
-    dq LC319
     dq LC320
-    dq LC316
+    dq LC321
+    dq LC317
     dq 0
     db 0
     times 3 db 0
     dd 4147
-    dq LC321
     dq LC322
-    dq LC316
+    dq LC323
+    dq LC317
     dq 0
     db 0
     times 3 db 0
     dd 8243
-    dq LC323
     dq LC324
-    dq LC316
+    dq LC325
+    dq LC317
     dq 0
     db 0
     times 3 db 0
     dd 12339
-    dq LC325
     dq LC326
-    dq LC316
+    dq LC327
+    dq LC317
     dq 0
     db 0
     times 3 db 0
     dd 16435
-    dq LC327
     dq LC328
-    dq LC316
+    dq LC329
+    dq LC317
     dq 0
     db 0
     times 3 db 0
     dd 20531
-    dq LC329
     dq LC330
-    dq LC316
+    dq LC331
+    dq LC317
     dq 0
     db 0
     times 3 db 0
     dd 1073762355
-    dq LC331
     dq LC332
-    dq LC316
+    dq LC333
+    dq LC317
     dq 0
     db 0
     times 3 db 0
     dd 24627
-    dq LC333
     dq LC334
-    dq LC316
+    dq LC335
+    dq LC317
     dq 0
     db 0
     times 3 db 0
     dd 28723
-    dq LC335
     dq LC336
-    dq LC316
+    dq LC337
+    dq LC317
     dq 0
     db 0
     times 3 db 0
     dd 33554483
-    dq LC337
     dq LC338
-    dq LC316
+    dq LC339
+    dq LC317
     dq 0
     db 0
     times 3 db 0
     dd 33558579
-    dq LC339
     dq LC340
-    dq LC316
+    dq LC341
+    dq LC317
     dq 0
     db 0
     times 3 db 0
     dd 33562675
-    dq LC341
     dq LC342
-    dq LC316
+    dq LC343
+    dq LC317
     dq 0
     db 0
     times 3 db 0
     dd 33566771
-    dq LC343
     dq LC344
-    dq LC316
+    dq LC345
+    dq LC317
     dq 0
     db 0
     times 3 db 0
     dd 33570867
-    dq LC345
     dq LC346
-    dq LC316
+    dq LC347
+    dq LC317
     dq 0
     db 0
     times 3 db 0
     dd 33574963
-    dq LC347
     dq LC348
-    dq LC316
+    dq LC349
+    dq LC317
     dq 0
     db 0
     times 3 db 0
     dd 33579059
-    dq LC349
     dq LC350
-    dq LC316
+    dq LC351
+    dq LC317
     dq 0
     db 0
     times 3 db 0
     dd 33583155
-    dq LC351
     dq LC352
     dq LC353
+    dq LC354
     dq 0
     db 1
     times 3 db 0
     dd 19
-    dq LC354
     dq LC355
-    dq LC353
+    dq LC356
+    dq LC354
     dq 0
     db 1
     times 3 db 0
     dd 8211
-    dq LC356
     dq LC357
-    dq LC353
+    dq LC358
+    dq LC354
     dq 0
     db 1
     times 3 db 0
     dd 12307
-    dq LC358
     dq LC359
-    dq LC353
+    dq LC360
+    dq LC354
     dq 0
     db 1
     times 3 db 0
     dd 16403
-    dq LC360
     dq LC361
-    dq LC353
+    dq LC362
+    dq LC354
     dq 0
     db 1
     times 3 db 0
     dd 24595
-    dq LC362
     dq LC363
-    dq LC353
+    dq LC364
+    dq LC354
     dq 0
     db 1
     times 3 db 0
     dd 28691
-    dq LC364
     dq LC365
     dq LC366
+    dq LC367
     dq 0
     db 2
     times 3 db 0
     dd 4115
-    dq LC367
     dq LC368
-    dq LC366
+    dq LC369
+    dq LC367
     dq 0
     db 2
     times 3 db 0
     dd 20499
-    dq LC369
     dq LC370
-    dq LC366
+    dq LC371
+    dq LC367
     dq 0
     db 2
     times 3 db 0
     dd 1073762323
-    dq LC371
     dq LC372
     dq LC373
+    dq LC374
     dq 0
     db 3
     times 3 db 0
     dd 3
-    dq LC374
     dq LC375
-    dq LC373
+    dq LC376
+    dq LC374
     dq 0
     db 3
     times 3 db 0
     dd 4099
-    dq LC376
     dq LC377
-    dq LC373
+    dq LC378
+    dq LC374
     dq 0
     db 3
     times 3 db 0
     dd 8195
-    dq LC378
     dq LC379
-    dq LC373
+    dq LC380
+    dq LC374
     dq 0
     db 3
     times 3 db 0
     dd 16387
-    dq LC380
     dq LC381
-    dq LC373
+    dq LC382
+    dq LC374
     dq 0
     db 3
     times 3 db 0
     dd 20483
-    dq LC382
     dq LC383
-    dq LC373
+    dq LC384
+    dq LC374
     dq 0
     db 4
     times 3 db 0
     dd 35
-    dq LC384
     dq LC385
-    dq LC373
+    dq LC386
+    dq LC374
     dq 0
     db 4
     times 3 db 0
     dd 4131
-    dq LC386
     dq LC387
-    dq LC373
+    dq LC388
+    dq LC374
     dq 0
     db 4
     times 3 db 0
     dd 8227
-    dq LC388
     dq LC389
     dq LC390
+    dq LC391
     dq 0
     db 5
     times 3 db 0
     dd 99
-    dq LC391
     dq LC392
-    dq LC390
+    dq LC393
+    dq LC391
     dq 0
     db 5
     times 3 db 0
     dd 4195
-    dq LC393
     dq LC394
-    dq LC390
+    dq LC395
+    dq LC391
     dq 0
     db 5
     times 3 db 0
     dd 16483
-    dq LC395
     dq LC396
-    dq LC390
+    dq LC397
+    dq LC391
     dq 0
     db 5
     times 3 db 0
     dd 20579
-    dq LC397
     dq LC398
-    dq LC390
+    dq LC399
+    dq LC391
     dq 0
     db 5
     times 3 db 0
     dd 24675
-    dq LC399
     dq LC400
-    dq LC390
+    dq LC401
+    dq LC391
     dq 0
     db 5
     times 3 db 0
     dd 28771
-    dq LC401
     dq LC402
     dq LC403
+    dq LC404
     dq 0
     db 6
     times 3 db 0
     dd 55
-    dq LC404
     dq LC405
-    dq LC403
+    dq LC406
+    dq LC404
     dq 0
     db 6
     times 3 db 0
     dd 23
-    dq LC406
     dq LC407
     dq LC408
+    dq LC409
     dq 0
     db 7
     times 3 db 0
     dd 111
-    dq LC409
     dq LC410
-    dq LC353
+    dq LC411
+    dq LC354
     dq 0
     db 8
     times 3 db 0
     dd 103
-    dq LC411
     dq LC412
+    dq LC413
     dq LC13
     dq 0
     db 9
     times 3 db 0
     dd 115
-    dq LC412
     dq LC413
+    dq LC414
     dq LC13
     dq 0
     db 9
     times 3 db 0
     dd 1048691
-    dq LC413
     dq LC414
     dq LC415
+    dq LC416
     dq 0
     db 10
     times 3 db 0
     dd 15
-    dq LC416
     dq LC417
+    dq LC418
     dq LC13
     dq 0
     db 9
     times 3 db 0
     dd 4111
-    dq LC417
     dq LC418
-    dq LC13
     dq LC419
+    dq LC13
+    dq LC420
     db 0
     times 3 db 0
     dd 0
-    dq LC418
-    dq LC420
+    dq LC419
     dq LC421
     dq LC422
-    db 0
-    times 3 db 0
-    dd 0
     dq LC423
+    db 0
+    times 3 db 0
+    dd 0
     dq LC424
-    dq LC421
     dq LC425
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC422
     dq LC426
+    db 0
+    times 3 db 0
+    dd 0
     dq LC427
-    dq LC421
     dq LC428
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC422
     dq LC429
+    db 0
+    times 3 db 0
+    dd 0
     dq LC430
-    dq LC316
     dq LC431
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC317
     dq LC432
+    db 0
+    times 3 db 0
+    dd 0
     dq LC433
-    dq LC316
     dq LC434
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC317
     dq LC435
+    db 0
+    times 3 db 0
+    dd 0
     dq LC436
-    dq LC421
     dq LC437
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC422
     dq LC438
+    db 0
+    times 3 db 0
+    dd 0
     dq LC439
-    dq LC421
     dq LC440
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC422
     dq LC441
+    db 0
+    times 3 db 0
+    dd 0
     dq LC442
-    dq LC421
     dq LC443
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC422
     dq LC444
-    dq LC445
-    dq LC421
-    dq LC446
     db 0
     times 3 db 0
     dd 0
+    dq LC445
+    dq LC446
+    dq LC422
     dq LC447
+    db 0
+    times 3 db 0
+    dd 0
     dq LC448
     dq LC449
     dq LC450
-    db 0
-    times 3 db 0
-    dd 0
     dq LC451
+    db 0
+    times 3 db 0
+    dd 0
     dq LC452
-    dq LC408
     dq LC453
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC409
     dq LC454
+    db 0
+    times 3 db 0
+    dd 0
     dq LC455
-    dq LC408
     dq LC456
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC409
     dq LC457
+    db 0
+    times 3 db 0
+    dd 0
     dq LC458
-    dq LC408
     dq LC459
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC409
     dq LC460
+    db 0
+    times 3 db 0
+    dd 0
     dq LC461
-    dq LC408
     dq LC462
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC409
     dq LC463
+    db 0
+    times 3 db 0
+    dd 0
     dq LC464
-    dq LC408
     dq LC465
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC409
     dq LC466
+    db 0
+    times 3 db 0
+    dd 0
     dq LC467
-    dq LC408
     dq LC468
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC409
     dq LC469
+    db 0
+    times 3 db 0
+    dd 0
     dq LC470
-    dq LC390
     dq LC471
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC391
     dq LC472
+    db 0
+    times 3 db 0
+    dd 0
     dq LC473
-    dq LC390
     dq LC474
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC391
     dq LC475
+    db 0
+    times 3 db 0
+    dd 0
     dq LC476
-    dq LC390
     dq LC477
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC391
     dq LC478
+    db 0
+    times 3 db 0
+    dd 0
     dq LC479
-    dq LC390
     dq LC480
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC391
     dq LC481
+    db 0
+    times 3 db 0
+    dd 0
     dq LC482
-    dq LC449
-    dq LC450
-    db 0
-    times 3 db 0
-    dd 0
     dq LC483
-    dq LC407
-    dq LC449
-    dq LC484
+    dq LC450
+    dq LC451
     db 0
     times 3 db 0
     dd 0
+    dq LC484
+    dq LC408
+    dq LC450
     dq LC485
+    db 0
+    times 3 db 0
+    dd 0
     dq LC486
     dq LC487
     dq LC488
-    db 0
-    times 3 db 0
-    dd 0
     dq LC489
-    dq LC410
-    dq LC487
+    db 0
+    times 3 db 0
+    dd 0
     dq LC490
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC411
+    dq LC488
     dq LC491
-    dq LC486
+    db 0
+    times 3 db 0
+    dd 0
     dq LC492
+    dq LC487
     dq LC493
-    db 0
-    times 3 db 0
-    dd 0
     dq LC494
-    dq LC410
-    dq LC492
+    db 0
+    times 3 db 0
+    dd 0
     dq LC495
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC411
+    dq LC493
     dq LC496
-    dq LC410
-    dq LC373
+    db 0
+    times 3 db 0
+    dd 0
     dq LC497
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC411
+    dq LC374
     dq LC498
+    db 0
+    times 3 db 0
+    dd 0
     dq LC499
-    dq LC13
     dq LC500
-    db 0
-    times 3 db 0
-    dd 0
-    dq LC499
+    dq LC13
     dq LC501
-    dq LC449
+    db 0
+    times 3 db 0
+    dd 0
+    dq LC500
     dq LC502
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC450
     dq LC503
+    db 0
+    times 3 db 0
+    dd 0
     dq LC504
-    dq LC449
     dq LC505
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC450
     dq LC506
+    db 0
+    times 3 db 0
+    dd 0
     dq LC507
-    dq LC492
     dq LC508
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC493
     dq LC509
-    dq LC507
+    db 0
+    times 3 db 0
+    dd 0
     dq LC510
+    dq LC508
     dq LC511
-    db 0
-    times 3 db 0
-    dd 0
     dq LC512
+    db 0
+    times 3 db 0
+    dd 0
     dq LC513
-    dq LC408
     dq LC514
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC409
     dq LC515
-    dq LC377
+    db 0
+    times 3 db 0
+    dd 0
     dq LC516
+    dq LC378
     dq LC517
-    db 0
-    times 3 db 0
-    dd 0
     dq LC518
-    dq LC377
-    dq LC492
+    db 0
+    times 3 db 0
+    dd 0
     dq LC519
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC378
+    dq LC493
     dq LC520
-    dq LC377
-    dq LC510
+    db 0
+    times 3 db 0
+    dd 0
     dq LC521
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC378
+    dq LC511
     dq LC522
-    dq LC377
-    dq LC408
+    db 0
+    times 3 db 0
+    dd 0
     dq LC523
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC378
+    dq LC409
     dq LC524
-    dq LC387
-    dq LC516
+    db 0
+    times 3 db 0
+    dd 0
     dq LC525
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC388
+    dq LC517
     dq LC526
-    dq LC387
-    dq LC492
+    db 0
+    times 3 db 0
+    dd 0
     dq LC527
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC388
+    dq LC493
     dq LC528
-    dq LC387
+    db 0
+    times 3 db 0
+    dd 0
     dq LC529
+    dq LC388
     dq LC530
-    db 0
-    times 3 db 0
-    dd 0
     dq LC531
-    dq LC387
+    db 0
+    times 3 db 0
+    dd 0
     dq LC532
+    dq LC388
     dq LC533
-    db 0
-    times 3 db 0
-    dd 0
     dq LC534
-    dq LC375
-    dq LC516
+    db 0
+    times 3 db 0
+    dd 0
     dq LC535
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC376
+    dq LC517
     dq LC536
-    dq LC375
-    dq LC492
+    db 0
+    times 3 db 0
+    dd 0
     dq LC537
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC376
+    dq LC493
     dq LC538
-    dq LC375
-    dq LC510
+    db 0
+    times 3 db 0
+    dd 0
     dq LC539
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC376
+    dq LC511
     dq LC540
-    dq LC375
-    dq LC408
+    db 0
+    times 3 db 0
+    dd 0
     dq LC541
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC376
+    dq LC409
     dq LC542
-    dq LC385
-    dq LC516
+    db 0
+    times 3 db 0
+    dd 0
     dq LC543
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC386
+    dq LC517
     dq LC544
-    dq LC385
-    dq LC492
+    db 0
+    times 3 db 0
+    dd 0
     dq LC545
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC386
+    dq LC493
     dq LC546
-    dq LC385
-    dq LC529
+    db 0
+    times 3 db 0
+    dd 0
     dq LC547
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC386
+    dq LC530
     dq LC548
-    dq LC385
-    dq LC532
+    db 0
+    times 3 db 0
+    dd 0
     dq LC549
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC386
+    dq LC533
     dq LC550
-    dq LC372
-    dq LC516
+    db 0
+    times 3 db 0
+    dd 0
     dq LC551
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC373
+    dq LC517
     dq LC552
-    dq LC372
-    dq LC492
+    db 0
+    times 3 db 0
+    dd 0
     dq LC553
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC373
+    dq LC493
     dq LC554
-    dq LC372
-    dq LC510
+    db 0
+    times 3 db 0
+    dd 0
     dq LC555
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC373
+    dq LC511
     dq LC556
-    dq LC372
-    dq LC408
+    db 0
+    times 3 db 0
+    dd 0
     dq LC557
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC373
+    dq LC409
     dq LC558
-    dq LC383
-    dq LC516
+    db 0
+    times 3 db 0
+    dd 0
     dq LC559
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC384
+    dq LC517
     dq LC560
-    dq LC383
-    dq LC492
+    db 0
+    times 3 db 0
+    dd 0
     dq LC561
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC384
+    dq LC493
     dq LC562
-    dq LC383
-    dq LC529
+    db 0
+    times 3 db 0
+    dd 0
     dq LC563
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC384
+    dq LC530
     dq LC564
-    dq LC383
-    dq LC532
+    db 0
+    times 3 db 0
+    dd 0
     dq LC565
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC384
+    dq LC533
     dq LC566
-    dq LC381
-    dq LC516
+    db 0
+    times 3 db 0
+    dd 0
     dq LC567
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC382
+    dq LC517
     dq LC568
-    dq LC381
-    dq LC492
+    db 0
+    times 3 db 0
+    dd 0
     dq LC569
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC382
+    dq LC493
     dq LC570
-    dq LC381
-    dq LC510
+    db 0
+    times 3 db 0
+    dd 0
     dq LC571
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC382
+    dq LC511
     dq LC572
-    dq LC381
-    dq LC408
+    db 0
+    times 3 db 0
+    dd 0
     dq LC573
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC382
+    dq LC409
     dq LC574
-    dq LC379
-    dq LC516
+    db 0
+    times 3 db 0
+    dd 0
     dq LC575
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC380
+    dq LC517
     dq LC576
-    dq LC379
-    dq LC492
+    db 0
+    times 3 db 0
+    dd 0
     dq LC577
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC380
+    dq LC493
     dq LC578
-    dq LC379
-    dq LC510
+    db 0
+    times 3 db 0
+    dd 0
     dq LC579
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC380
+    dq LC511
     dq LC580
-    dq LC379
-    dq LC408
+    db 0
+    times 3 db 0
+    dd 0
     dq LC581
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC380
+    dq LC409
     dq LC582
+    db 0
+    times 3 db 0
+    dd 0
     dq LC583
-    dq LC421
     dq LC584
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC422
     dq LC585
-    dq LC402
+    db 0
+    times 3 db 0
+    dd 0
     dq LC586
+    dq LC403
     dq LC587
-    db 0
-    times 3 db 0
-    dd 0
     dq LC588
-    dq LC352
+    db 0
+    times 3 db 0
+    dd 0
     dq LC589
+    dq LC353
     dq LC590
-    db 0
-    times 3 db 0
-    dd 0
     dq LC591
-    dq LC372
+    db 0
+    times 3 db 0
+    dd 0
     dq LC592
+    dq LC373
     dq LC593
-    db 0
-    times 3 db 0
-    dd 0
     dq LC594
-    dq LC375
-    dq LC592
+    db 0
+    times 3 db 0
+    dd 0
     dq LC595
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC376
+    dq LC593
     dq LC596
-    dq LC377
-    dq LC592
+    db 0
+    times 3 db 0
+    dd 0
     dq LC597
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC378
+    dq LC593
     dq LC598
-    dq LC379
-    dq LC592
+    db 0
+    times 3 db 0
+    dd 0
     dq LC599
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC380
+    dq LC593
     dq LC600
-    dq LC381
-    dq LC592
+    db 0
+    times 3 db 0
+    dd 0
     dq LC601
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC382
+    dq LC593
     dq LC602
-    dq LC383
-    dq LC592
+    db 0
+    times 3 db 0
+    dd 0
     dq LC603
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC384
+    dq LC593
     dq LC604
-    dq LC385
-    dq LC592
+    db 0
+    times 3 db 0
+    dd 0
     dq LC605
-    db 0
-    times 3 db 0
-    dd 0
+    dq LC386
+    dq LC593
     dq LC606
-    dq LC387
-    dq LC592
-    dq LC607
     db 0
     times 3 db 0
     dd 0
+    dq LC607
+    dq LC388
+    dq LC593
     dq LC608
+    db 0
+    times 3 db 0
+    dd 0
+    dq LC609
     align 16, db 0
 RV_ROUNDING:
     db `rne rtz rdn rup rmm dyn`, 0
@@ -29228,69 +29267,68 @@ RV_RARS_MNEMONICS:
     db `rori sext.b sext.h xnor zext.h sh1add sh2add sh3add bclr b`
     db `clri bext bexti binv binvi bset bseti fmv.s fabs.s fneg.s fmv.d fabs.d fneg.d csrr csrw csrs csrc csrwi csrsi csrci frcsr fscsr frsr fssr frrm fsrm frflags fsflags rdcycle rdtime rdinstret rdcycleh rdtimeh rdinstreth fmv.x.w fmv.w.x fgt.s fge.s fgt.d fge.d`, 0
     section .rodata
-LC609:
-    db `t0`, 0
 LC610:
-    db `t1`, 0
+    db `t0`, 0
 LC611:
-    db `t2`, 0
+    db `t1`, 0
 LC612:
-    db `s0`, 0
+    db `t2`, 0
 LC613:
-    db `s1`, 0
+    db `s0`, 0
 LC614:
-    db `a0`, 0
+    db `s1`, 0
 LC615:
-    db `a1`, 0
+    db `a0`, 0
 LC616:
-    db `a2`, 0
+    db `a1`, 0
 LC617:
-    db `a3`, 0
+    db `a2`, 0
 LC618:
-    db `a4`, 0
+    db `a3`, 0
 LC619:
-    db `a5`, 0
+    db `a4`, 0
 LC620:
-    db `a6`, 0
+    db `a5`, 0
 LC621:
-    db `a7`, 0
+    db `a6`, 0
 LC622:
-    db `s2`, 0
+    db `a7`, 0
 LC623:
-    db `s3`, 0
+    db `s2`, 0
 LC624:
-    db `s4`, 0
+    db `s3`, 0
 LC625:
-    db `s5`, 0
+    db `s4`, 0
 LC626:
-    db `s6`, 0
+    db `s5`, 0
 LC627:
-    db `s7`, 0
+    db `s6`, 0
 LC628:
-    db `s8`, 0
+    db `s7`, 0
 LC629:
-    db `s9`, 0
+    db `s8`, 0
 LC630:
-    db `s10`, 0
+    db `s9`, 0
 LC631:
-    db `s11`, 0
+    db `s10`, 0
 LC632:
-    db `t3`, 0
+    db `s11`, 0
 LC633:
-    db `t4`, 0
+    db `t3`, 0
 LC634:
-    db `t5`, 0
+    db `t4`, 0
 LC635:
+    db `t5`, 0
+LC636:
     db `t6`, 0
     section .rodata
     align 32, db 0
 RV_ABI_NAMES:
-    dq LC239
     dq LC240
     dq LC241
     dq LC242
     dq LC243
-    dq LC609
+    dq LC244
     dq LC610
     dq LC611
     dq LC612
@@ -29317,6 +29355,7 @@ RV_ABI_NAMES:
     dq LC633
     dq LC634
     dq LC635
+    dq LC636
     section .rodata
     align 4, db 0
 LC8:
@@ -29458,35 +29497,39 @@ LC194:
     dq ide_host_midi
     section .rodata
     align 16, db 0
-LC214:
+LC205:
+    dq 12
+    dq 0
+    align 16, db 0
+LC215:
     dq 7453301734226880596
     dq 2338319731383951730
     align 16, db 0
-LC215:
+LC216:
     dq 5917794113237053029
     dq 8390876208520261237
     align 16, db 0
-LC216:
+LC217:
     dq 7575181517209564275
     dq 31078114505334900
     align 16, db 0
-LC217:
+LC218:
     dq 7453301734226880596
     dq 8388342945227301234
     align 16, db 0
-LC218:
+LC219:
     dq 7955925892594016371
     dq 8104636686198404464
     align 16, db 0
-LC219:
+LC220:
     dq 2336920844764782693
     dq 8317708033335847028
     align 16, db 0
-LC232:
+LC233:
     dq 5055326197411050818
     dq 7954879164785109299
     align 16, db 0
-LC233:
+LC234:
     dq 5917851292188024876
     dq 11599049482333813
     section .text

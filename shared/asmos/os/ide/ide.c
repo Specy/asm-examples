@@ -26,6 +26,9 @@
 #include "../keys.h"
 
 #include "../os.h"
+/* only for PLATFORM_SMALL_MEMORY, how much the editor keeps: the editor calls the kernel, never
+ * the platform */
+#include "../platform/platform.h"
 
 #define RV_ALLOC(size) os_alloc(size)
 #define RV_REALLOC(pointer, size) os_realloc((pointer), (size))
@@ -35,14 +38,21 @@
 #include "../apps/widgets.c"
 
 enum {
+#if PLATFORM_SMALL_MEMORY
+    /* a machine of a few megabytes keeps a shorter program and history: 0.3 MB rather than 1.3 */
+    IDE_CAPACITY = 32768,      /* bytes of program text */
+    IDE_JOURNAL = 8192,        /* Step back's journal entries: 128 KB, thousands of steps */
+#else
     IDE_CAPACITY = 65536,      /* bytes of program text */
     IDE_JOURNAL = 65536,       /* Step back's journal entries: 1 MiB, tens of thousands of steps */
+#endif
     IDE_MAX_BREAKS = 128,
     IDE_LINE_MAX = 512,        /* the part of a line that is coloured */
     IDE_CONSOLE = 32768,       /* bytes of output the console keeps */
     IDE_INPUT = 200,           /* a line of input */
     IDE_EXAMPLES = 24,
     IDE_SLICE_MS = 12,         /* how long one slice of a running program should take */
+    IDE_SLICE_MAX_MS = 100,    /* and at most, where drawing between slices is slow */
 };
 /* The layout, in pixels. */
 enum {
@@ -176,6 +186,8 @@ typedef struct {
     int history;                  /* the journal is on */
     long wake_at;                 /* a sleep ecall waits until then */
     uint32_t slice;               /* instructions a slice runs */
+    long slice_ms;                /* how long a slice should take, IDE_SLICE_MS or more */
+    long slice_end;               /* when the last one ended, or 0 after a wait */
     uint32_t prev[32];            /* the registers before the last step, to show what changed */
     int selected;                 /* the register whose number shows in decimal */
     char status[120];
@@ -753,6 +765,8 @@ static void ide_run(Ide *I) {
     I->running = 1;
     I->wake_at = 0;
     I->slice = 20000;
+    I->slice_ms = IDE_SLICE_MS;
+    I->slice_end = 0;
     I->speed = 0;
     I->speed_steps = I->machine.steps;
     I->speed_time = I->regs_drawn = os_now_ms();
@@ -846,12 +860,18 @@ static void ide_submit(Ide *I) {
 static void ide_slice(Ide *I) {
     RvMachine *m = &I->machine;
     long started = os_now_ms();
+    /* What happens between two slices, the drawing and the other processes' turns, takes a few
+     * milliseconds on a fast machine and far longer on a slow one, where a short slice would leave
+     * the program a sliver of the processor: a slice lasts as long as the time between two, up to
+     * IDE_SLICE_MAX_MS, so the program gets about half. */
+    if (I->slice_end) I->slice_ms = clamp_int((int)(started - I->slice_end), IDE_SLICE_MS, IDE_SLICE_MAX_MS);
     int stop = rv_run(m, I->slice, 1);
     long took = os_now_ms() - started;
     if (stop == RV_STOP_LIMIT) {
-        if (took < IDE_SLICE_MS / 2 && I->slice < (1u << 21)) I->slice *= 2;
-        else if (took > IDE_SLICE_MS * 2 && I->slice > 2000) I->slice /= 2;
+        if (took < I->slice_ms / 2 && I->slice < (1u << 21)) I->slice *= 2;
+        else if (took > I->slice_ms * 2 && I->slice > 2000) I->slice /= 2;
     }
+    I->slice_end = os_now_ms();
     if (stop != RV_STOP_LIMIT) ide_after_stop(I, stop);
     if (!I->running || stop == RV_STOP_INPUT) {
         ide_draw_all(I);
@@ -2217,12 +2237,13 @@ void ide_main(const char *argument) {
             if (wait > 0) {
                 ide_refresh(I);
                 os_sleep((int)min_int((int)wait, 10));
+                I->slice_end = 0;   /* a sleep is no time between slices */
                 continue;
             }
             I->wake_at = 0;
             ide_slice(I);
             if (I->running) ide_refresh(I);
-            os_yield_point();   /* a slice is about IDE_SLICE_MS: then the others' turn */
+            os_yield_point();   /* a slice is about slice_ms: then the others' turn */
             continue;
         }
         os_get_message(&m);

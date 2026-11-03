@@ -1,7 +1,10 @@
 /*
- * Files on x86 are the Project's: the program's working directory, through Linux's file calls.
- * The editor keeps a folder only while a file is in it, so a new folder gets a hidden file, .keep,
- * and deleting a folder with nothing else in it takes .keep out first.
+ * Files are the Project's, through the POSIX file calls: on x86 Linux's, the program's working
+ * directory being the Project, and on MIPS and RISC-V the C library's, made of the folder calls
+ * MARS and RARS gained for asmOS (open, getdents, stat, mkdir, rmdir, unlink, rename). Every
+ * machine with them shares this File. The editor keeps a folder only while a file is in it, so a
+ * new folder gets a hidden file, .keep, and deleting a folder with nothing else in it takes .keep
+ * out first.
  */
 #include <dirent.h>
 #include <stdio.h>

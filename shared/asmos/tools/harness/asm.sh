@@ -5,7 +5,7 @@ SRC=$1; B=$2
 mkdir -p $B/proj $B/asm
 rsync -a --delete --exclude '*.c.asm' --exclude os/main $SRC/ $B/proj/
 echo '[{"stats":"built"}]' > $B/none.json
-cd "${ASM_EDITOR:-$(cd "$(dirname "$0")/../../../../asm-editor" && pwd)}/packages/asm-editor" && \
+cd "$(. "$(dirname "$0")/../editor.sh")/packages/asm-editor" && \
 OS_DIR=$B/proj OS_ENTRY=os/main.c OS_ASM_OUT=$B/asm \
 OS_SOURCES=os/main.c,os/apps/apps.c,os/ide/ide.c,os/doom/doom_game.c,os/doom/doom_play.c,os/doom/doom_render.c,os/doom/doom_world.c \
 OS_OPT=1 OS_OPTS=os/ide/ide.c=2,os/doom/doom_game.c=2,os/doom/doom_play.c=2,os/doom/doom_render.c=2,os/doom/doom_world.c=2 \

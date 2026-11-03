@@ -1,0 +1,6 @@
+[{"wait":6000},{"stats":"boot"},{"shot":"sim-term-1-open"},
+ {"type":"ls -l\n"},{"wait":2500},{"shot":"sim-term-2-ls"},{"stats":"ls"},
+ {"type":"ls code | grep i | wc\n"},{"wait":2500},{"shot":"sim-term-3-pipe"},{"stats":"pipe"},
+ {"type":"mkdir scratch\n"},{"wait":1500},{"type":"echo hi > scratch/a.txt\n"},{"wait":1500},{"type":"tree scratch\n"},{"wait":2500},{"shot":"sim-term-4-mkdir"},
+ {"type":"rm -r scratch\n"},{"wait":1500},{"type":"ls\n"},{"wait":2500},{"shot":"sim-term-5-rm"},{"stats":"rm"},
+ {"type":"uname -a\n"},{"wait":1500},{"key":"ArrowUp"},{"wait":500},{"key":"Escape"},{"wait":800},{"shot":"sim-term-6-uname"},{"stats":"end"}]
