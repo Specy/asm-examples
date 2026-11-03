@@ -1,0 +1,5 @@
+{
+    "name": "Graphics tour",
+    "description": "Every drawing task of the M68K screen on one picture, then the sound tasks, ported from EASy68K's own example.",
+    "license": "GPL-2.0-or-later"
+}

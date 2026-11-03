@@ -1,0 +1,24 @@
+{
+    "name": "Pac-Man",
+    "description": "The arcade game with its sound, in RISC-V assembly and in C, reading its pictures from BMP Files.",
+    "project": {
+        "programs": {
+            "assembly/main.s": {
+                "display": {
+                    "unitWidth": 1,
+                    "unitHeight": 1,
+                    "width": 224,
+                    "height": 288,
+                    "baseAddress": 268500992
+                }
+            },
+            "c/pacman.c.riscv": {}
+        },
+        "selectedProgram": "assembly/main.s",
+        "openTabs": ["README.md", "assembly/main.s", "c/pacman.c", "assets/sprites.bmp"],
+        "activeTab": "assembly/main.s",
+        "fileViews": {
+            "README.md": "preview"
+        }
+    }
+}

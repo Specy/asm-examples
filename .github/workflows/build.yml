@@ -1,0 +1,36 @@
+name: Build
+# Packs every example on pull requests and on main, failing on any problem the build finds and on a
+# README table of examples that is out of date. The archives are uploaded as the run's artifact.
+# The editor builds them again itself and adds the Build outputs some ask for, which only it can
+# link.
+on:
+    pull_request:
+    push:
+        branches:
+            - main
+
+concurrency:
+    group: build-${{ github.event.pull_request.number || github.ref }}
+    cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+    contents: read
+
+jobs:
+    build:
+        name: Build the examples
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v7
+            # mise.toml's Node, as the editor's CI installs it
+            - uses: jdx/mise-action@c2a87611a18de5b3828c5652fe268e992400cb5c # v4.3.0
+              with:
+                  version: 2026.10.2
+            - run: npm ci
+            - run: npm test
+            - run: npm run check
+            - uses: actions/upload-artifact@v7
+              with:
+                  name: examples
+                  path: dist
+                  if-no-files-found: error

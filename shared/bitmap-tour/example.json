@@ -1,0 +1,4 @@
+{
+    "name": "Bitmap tour",
+    "description": "The bitmap display, one word of memory a pixel: a colour ramp, a square and a border over a 256 by 256 grid."
+}

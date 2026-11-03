@@ -1,0 +1,10 @@
+# Flappy Bird
+
+Fly between the pipes: every tap flaps, and gravity does the rest. Build, Run, click the Screen so that it has the keyboard, then tap Space to start and to flap.
+
+| Target | Written in | How it works                                                                                                                                                                                                                                                                                                                                                                            |
+| ------ | ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| M68K   | Assembly   | Draws off screen and shows each frame with task 94, waits with task 23, reads the keys with task 19 and the mouse with task 61, and draws the score with task 95. A frame costs about 61 instructions, so the editor's default limit of two million instructions ends the game after about a quarter of an hour: set "Instruction execution limit" to 0 in the settings to play longer. |
+| RISC-V | C          | Uses `<sim.h>`: `SIM_SCREEN(display, 256, 256, 4)` makes a grid of 64 × 64 cells of 4 pixels. Space, `w` and Enter flap. After a crash, tap once to reset and again to start. The score and the session's best go to the console. The Program is the Generated assembly, `flappy-bird.c.riscv`, compiled at -O0: Compile `flappy-bird.c` again after changing it.                       |
+
+The editor's courses go through both: [Flappy bird](https://asm-editor.specy.app/learn/courses/m68k/examples/flappy-bird) in M68K assembly, and [Flappy bird in C](https://asm-editor.specy.app/learn/courses/risc-v/examples/flappy-bird-in-c) for RISC-V.

@@ -1,0 +1,18 @@
+{
+    "risc-v": [
+        {
+            "runtimeAbi": "v1",
+            "assemblerProfile": "gnu-compiler-v1",
+            "sourcePath": "flappy-bird.c",
+            "outputPath": "flappy-bird.c.riscv",
+            "target": "RISC-V",
+            "language": "c",
+            "compilerId": "rv32-cclang2110",
+            "optimization": "0",
+            "inputs": {
+                "flappy-bird.c": "30c5f1802182e9345f2147a64e665f12"
+            },
+            "outputFingerprint": "5712e0de421c6f053fffbeb22af13169"
+        }
+    ]
+}

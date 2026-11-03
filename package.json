@@ -1,0 +1,19 @@
+{
+    "name": "asm-examples",
+    "private": true,
+    "description": "Example Projects for asm-editor, packed into .asmproj archives",
+    "license": "MIT",
+    "type": "module",
+    "engines": {
+        "node": ">=24.11.0"
+    },
+    "scripts": {
+        "build": "node scripts/build.mjs",
+        "check": "node scripts/build.mjs --check",
+        "sync": "node scripts/sync.mjs",
+        "test": "node --test \"scripts/**/*.test.mjs\""
+    },
+    "dependencies": {
+        "fflate": "0.8.3"
+    }
+}

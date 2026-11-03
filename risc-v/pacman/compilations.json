@@ -1,0 +1,27 @@
+{
+    "risc-v": [
+        {
+            "assemblerProfile": "gnu-compiler-v1",
+            "runtimeAbi": "v1",
+            "sourcePath": "c/pacman.c",
+            "outputPath": "c/pacman.c.riscv",
+            "target": "RISC-V",
+            "language": "c",
+            "compilerId": "rv32-cclang2110",
+            "optimization": "2",
+            "inputs": {
+                "c/pacman.c": "c98d2add177f4a5eb8d3fa2d66219aae",
+                "c/pacman.h": "c6a389fa222550e849207868ada6a17a",
+                "c/state.c": "59f768d170ea8991b254737b9b49923b",
+                "c/assets.c": "335c834905a84576061221fb30e6e7c4",
+                "c/video.c": "877fe39ec2db9a97028cbb6c4728c265",
+                "c/maze.c": "c956510405c26eae212907baedbd3810",
+                "c/sound.c": "d433e5364d9a5cf05061ff0dc9c846cb",
+                "c/player.c": "905f538a6c5be5dbba8e87ba468a31eb",
+                "c/ghosts.c": "a0cdef1f082296bfe0836077486c19d7",
+                "c/game.c": "ad80f8efad8c84a433a9e2bd33a59ef6"
+            },
+            "outputFingerprint": "f4f3e1806634a6884b6853e5d9af14ed"
+        }
+    ]
+}

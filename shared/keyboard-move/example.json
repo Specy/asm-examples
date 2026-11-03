@@ -1,0 +1,4 @@
+{
+    "name": "Keyboard move",
+    "description": "A square that moves while the arrow keys are held, reading which keys are down as a game does."
+}

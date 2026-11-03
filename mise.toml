@@ -1,0 +1,3 @@
+# The Node the build runs on, the editor's own (its mise.toml); CI installs it through mise too.
+[tools]
+node = "24.11.0"

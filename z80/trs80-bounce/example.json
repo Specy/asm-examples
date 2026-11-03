@@ -1,0 +1,4 @@
+{
+    "name": "TRS-80 bounce",
+    "description": "A block bouncing around the TRS-80's display, each frame composed in memory and copied in with one ldir."
+}

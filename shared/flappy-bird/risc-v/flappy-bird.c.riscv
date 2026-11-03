@@ -1,0 +1,1225 @@
+        .attribute      4, 16
+        .attribute      5, "rv32i2p1_m2p0_f2p2_d2p2_zicsr2p0_zmmul1p0"
+        # @screen width=256 height=256 unit=4 base=display
+        .text
+        .globl  main                            # -- Begin function main
+        .p2align        2
+        .type   main,@function
+main:                                   # @main
+.Lfunc_begin0:
+# %bb.0:                                # %entry
+        addi    sp, sp, -16
+        sw      ra, 12(sp)                      # 4-byte Folded Spill
+        sw      s0, 8(sp)                       # 4-byte Folded Spill
+        addi    s0, sp, 16
+        li      a0, 0
+        sw      a0, -12(s0)
+.Ltmp0:
+        call    new_game
+        j       .LBB0_1
+.LBB0_1:                                # %for.cond
+        call    read_flap
+        call    update
+        call    draw_bird
+        li      a0, 80
+        call    sim_sleep
+        j       .LBB0_1
+.Ltmp1:
+.Lfunc_end0:
+        .size   main, .Lfunc_end0-main
+        .p2align        2                               # -- Begin function new_game
+        .type   new_game,@function
+new_game:                               # @new_game
+.Lfunc_begin1:
+# %bb.0:                                # %entry
+        addi    sp, sp, -16
+        sw      ra, 12(sp)                      # 4-byte Folded Spill
+        sw      s0, 8(sp)                       # 4-byte Folded Spill
+        addi    s0, sp, 16
+.Ltmp2:
+        lui     a1, %hi(bird_y)
+        li      a0, 320
+        sw      a0, %lo(bird_y)(a1)
+        lui     a1, %hi(velocity)
+        li      a0, 0
+        sw      a0, %lo(velocity)(a1)
+        lui     a1, %hi(state)
+        sw      a0, %lo(state)(a1)
+        lui     a1, %hi(score)
+        sw      a0, %lo(score)(a1)
+        call    new_pipes
+        call    paint_grid
+        lw      ra, 12(sp)                      # 4-byte Folded Reload
+        lw      s0, 8(sp)                       # 4-byte Folded Reload
+        addi    sp, sp, 16
+        ret
+.Ltmp3:
+.Lfunc_end1:
+        .size   new_game, .Lfunc_end1-new_game
+        .p2align        2                               # -- Begin function update
+        .type   update,@function
+update:                                 # @update
+.Lfunc_begin2:
+# %bb.0:                                # %entry
+        addi    sp, sp, -32
+        sw      ra, 28(sp)                      # 4-byte Folded Spill
+        sw      s0, 24(sp)                      # 4-byte Folded Spill
+        addi    s0, sp, 32
+        sw      a0, -12(s0)
+.Ltmp4:
+        lui     a0, %hi(state)
+        lw      a0, %lo(state)(a0)
+        sw      a0, -16(s0)                     # 4-byte Folded Spill
+        beqz    a0, .LBB2_3
+        j       .LBB2_1
+.LBB2_1:                                # %entry
+        lw      a0, -16(s0)                     # 4-byte Folded Reload
+        li      a1, 1
+        beq     a0, a1, .LBB2_8
+        j       .LBB2_2
+.LBB2_2:                                # %entry
+        lw      a0, -16(s0)                     # 4-byte Folded Reload
+        li      a1, 2
+        beq     a0, a1, .LBB2_17
+        j       .LBB2_23
+.LBB2_3:                                # %sw.bb
+        lw      a0, -12(s0)
+        beqz    a0, .LBB2_7
+        j       .LBB2_4
+.LBB2_4:                                # %if.then
+        call    sim_time
+        sw      a0, -20(s0)                     # 4-byte Folded Spill
+        lw      a1, -20(s0)                     # 4-byte Folded Reload
+        lui     a0, %hi(seed)
+        sw      a1, %lo(seed)(a0)
+        lw      a0, %lo(seed)(a0)
+        bnez    a0, .LBB2_6
+        j       .LBB2_5
+.LBB2_5:                                # %if.then2
+        lui     a1, %hi(seed)
+        lui     a0, 127268
+        addi    a0, a0, -1099
+        sw      a0, %lo(seed)(a1)
+        j       .LBB2_6
+.LBB2_6:                                # %if.end
+        call    new_pipes
+        call    paint_grid
+        lui     a1, %hi(state)
+        li      a0, 1
+        sw      a0, %lo(state)(a1)
+        lui     a1, %hi(velocity)
+        li      a0, -26
+        sw      a0, %lo(velocity)(a1)
+        j       .LBB2_7
+.LBB2_7:                                # %if.end3
+        j       .LBB2_23
+.LBB2_8:                                # %sw.bb4
+        lw      a0, -12(s0)
+        beqz    a0, .LBB2_10
+        j       .LBB2_9
+.LBB2_9:                                # %if.then6
+        lui     a1, %hi(velocity)
+        li      a0, -26
+        sw      a0, %lo(velocity)(a1)
+        j       .LBB2_10
+.LBB2_10:                               # %if.end7
+        call    fall
+        lui     a0, %hi(bird_y)
+        lw      a0, %lo(bird_y)(a0)
+        bgez    a0, .LBB2_12
+        j       .LBB2_11
+.LBB2_11:                               # %if.then10
+        lui     a1, %hi(bird_y)
+        li      a0, 0
+        sw      a0, %lo(bird_y)(a1)
+        lui     a1, %hi(velocity)
+        sw      a0, %lo(velocity)(a1)
+        j       .LBB2_12
+.LBB2_12:                               # %if.end11
+        call    move_pipes
+        call    hit_test
+        beqz    a0, .LBB2_16
+        j       .LBB2_13
+.LBB2_13:                               # %if.then14
+        lui     a1, %hi(state)
+        li      a0, 2
+        sw      a0, %lo(state)(a1)
+        call    paint_dead_ground
+        lui     a0, %hi(score)
+        lw      a1, %lo(score)(a0)
+        lui     a0, %hi(best)
+        lw      a0, %lo(best)(a0)
+        bge     a0, a1, .LBB2_15
+        j       .LBB2_14
+.LBB2_14:                               # %if.then17
+        lui     a0, %hi(score)
+        lw      a0, %lo(score)(a0)
+        lui     a1, %hi(best)
+        sw      a0, %lo(best)(a1)
+        j       .LBB2_15
+.LBB2_15:                               # %if.end18
+        lui     a0, %hi(.L.str)
+        addi    a0, a0, %lo(.L.str)
+        call    sim_print_string
+        lui     a0, %hi(score)
+        lw      a0, %lo(score)(a0)
+        call    sim_print_int
+        lui     a0, %hi(.L.str.1)
+        addi    a0, a0, %lo(.L.str.1)
+        call    sim_print_string
+        lui     a0, %hi(best)
+        lw      a0, %lo(best)(a0)
+        call    sim_print_int
+        li      a0, 10
+        call    sim_print_char
+        j       .LBB2_16
+.LBB2_16:                               # %if.end19
+        j       .LBB2_23
+.LBB2_17:                               # %sw.bb20
+        lw      a0, -12(s0)
+        beqz    a0, .LBB2_19
+        j       .LBB2_18
+.LBB2_18:                               # %if.then22
+        call    new_game
+        j       .LBB2_22
+.LBB2_19:                               # %if.else
+        call    fall
+        lui     a0, %hi(bird_y)
+        lw      a0, %lo(bird_y)(a0)
+        li      a1, 817
+        blt     a0, a1, .LBB2_21
+        j       .LBB2_20
+.LBB2_20:                               # %if.then25
+        lui     a1, %hi(bird_y)
+        li      a0, 816
+        sw      a0, %lo(bird_y)(a1)
+        lui     a1, %hi(velocity)
+        li      a0, 0
+        sw      a0, %lo(velocity)(a1)
+        j       .LBB2_21
+.LBB2_21:                               # %if.end26
+        j       .LBB2_22
+.LBB2_22:                               # %if.end27
+        j       .LBB2_23
+.LBB2_23:                               # %sw.epilog
+        lw      ra, 28(sp)                      # 4-byte Folded Reload
+        lw      s0, 24(sp)                      # 4-byte Folded Reload
+        addi    sp, sp, 32
+        ret
+.Ltmp5:
+.Lfunc_end2:
+        .size   update, .Lfunc_end2-update
+        .p2align        2                               # -- Begin function read_flap
+        .type   read_flap,@function
+read_flap:                              # @read_flap
+.Lfunc_begin3:
+# %bb.0:                                # %entry
+        addi    sp, sp, -16
+        sw      ra, 12(sp)                      # 4-byte Folded Spill
+        sw      s0, 8(sp)                       # 4-byte Folded Spill
+        addi    s0, sp, 16
+        li      a0, 0
+.Ltmp6:
+        sw      a0, -12(s0)
+        j       .LBB3_1
+.LBB3_1:                                # %while.cond
+        call    sim_keyboard_ready
+        beqz    a0, .LBB3_7
+        j       .LBB3_2
+.LBB3_2:                                # %while.body
+        call    sim_keyboard_read
+        zext.b  a0, a0
+        sw      a0, -16(s0)
+        lw      a0, -16(s0)
+        li      a1, 32
+        beq     a0, a1, .LBB3_5
+        j       .LBB3_3
+.LBB3_3:                                # %lor.lhs.false
+        lw      a0, -16(s0)
+        li      a1, 119
+        beq     a0, a1, .LBB3_5
+        j       .LBB3_4
+.LBB3_4:                                # %lor.lhs.false3
+        lw      a0, -16(s0)
+        li      a1, 10
+        bne     a0, a1, .LBB3_6
+        j       .LBB3_5
+.LBB3_5:                                # %if.then
+        li      a0, 1
+        sw      a0, -12(s0)
+        j       .LBB3_6
+.LBB3_6:                                # %if.end
+        j       .LBB3_1
+.LBB3_7:                                # %while.end
+        lw      a0, -12(s0)
+        lw      ra, 12(sp)                      # 4-byte Folded Reload
+        lw      s0, 8(sp)                       # 4-byte Folded Reload
+        addi    sp, sp, 16
+        ret
+.Ltmp7:
+.Lfunc_end3:
+        .size   read_flap, .Lfunc_end3-read_flap
+        .p2align        2                               # -- Begin function draw_bird
+        .type   draw_bird,@function
+draw_bird:                              # @draw_bird
+.Lfunc_begin4:
+# %bb.0:                                # %entry
+        addi    sp, sp, -32
+        sw      ra, 28(sp)                      # 4-byte Folded Spill
+        sw      s0, 24(sp)                      # 4-byte Folded Spill
+        addi    s0, sp, 32
+.Ltmp8:
+        lui     a0, %hi(bird_y)
+        lw      a0, %lo(bird_y)(a0)
+        srai    a0, a0, 4
+        sw      a0, -12(s0)
+        li      a0, 12
+        sw      a0, -16(s0)
+        j       .LBB4_1
+.LBB4_1:                                # %for.cond
+        lw      a1, -16(s0)
+        li      a0, 17
+        blt     a0, a1, .LBB4_4
+        j       .LBB4_2
+.LBB4_2:                                # %for.body
+        lw      a0, -16(s0)
+        lw      a2, -12(s0)
+        li      a1, 0
+        sw      a1, -24(s0)                     # 4-byte Folded Spill
+        call    world_column
+        lw      a4, -24(s0)                     # 4-byte Folded Reload
+        lw      a0, -16(s0)
+        lw      a1, -12(s0)
+        addi    a2, a1, 5
+        lui     a3, 4013
+        addi    a3, a3, -450
+        li      a5, 64
+        sw      a5, -20(s0)                     # 4-byte Folded Spill
+        call    fill_span
+        lw      a2, -20(s0)                     # 4-byte Folded Reload
+        lw      a0, -16(s0)
+        lw      a1, -12(s0)
+        addi    a1, a1, 5
+        call    world_column
+        j       .LBB4_3
+.LBB4_3:                                # %for.inc
+        lw      a0, -16(s0)
+        addi    a0, a0, 1
+        sw      a0, -16(s0)
+        j       .LBB4_1
+.LBB4_4:                                # %for.end
+        lw      a0, -12(s0)
+        addi    a1, a0, 1
+        addi    a2, a0, 2
+        lui     a0, 514
+        addi    a3, a0, -2032
+        li      a0, 16
+        li      a4, 0
+        sw      a4, -32(s0)                     # 4-byte Folded Spill
+        li      a5, 64
+        sw      a5, -28(s0)                     # 4-byte Folded Spill
+        call    fill_span
+        lw      a4, -32(s0)                     # 4-byte Folded Reload
+        lw      a5, -28(s0)                     # 4-byte Folded Reload
+        lw      a0, -12(s0)
+        addi    a1, a0, 2
+        addi    a2, a0, 4
+        lui     a0, 3848
+        addi    a3, a0, 552
+        li      a0, 17
+        call    fill_span
+        lw      ra, 28(sp)                      # 4-byte Folded Reload
+        lw      s0, 24(sp)                      # 4-byte Folded Reload
+        addi    sp, sp, 32
+        ret
+.Ltmp9:
+.Lfunc_end4:
+        .size   draw_bird, .Lfunc_end4-draw_bird
+        .p2align        2                               # -- Begin function sim_sleep
+        .type   sim_sleep,@function
+sim_sleep:                              # @sim_sleep
+.Lfunc_begin5:
+# %bb.0:                                # %entry
+        addi    sp, sp, -32
+        sw      ra, 28(sp)                      # 4-byte Folded Spill
+        sw      s0, 24(sp)                      # 4-byte Folded Spill
+        addi    s0, sp, 32
+        sw      a0, -12(s0)
+        li      a0, 32
+.Ltmp10:
+        sw      a0, -16(s0)
+        lw      a0, -12(s0)
+        sw      a0, -20(s0)
+        lw      a7, -16(s0)
+        lw      a0, -20(s0)
+        ecall
+        lw      ra, 28(sp)                      # 4-byte Folded Reload
+        lw      s0, 24(sp)                      # 4-byte Folded Reload
+        addi    sp, sp, 32
+        ret
+.Ltmp11:
+.Lfunc_end5:
+        .size   sim_sleep, .Lfunc_end5-sim_sleep
+        .p2align        2                               # -- Begin function new_pipes
+        .type   new_pipes,@function
+new_pipes:                              # @new_pipes
+.Lfunc_begin6:
+# %bb.0:                                # %entry
+        addi    sp, sp, -16
+        sw      ra, 12(sp)                      # 4-byte Folded Spill
+        sw      s0, 8(sp)                       # 4-byte Folded Spill
+        addi    s0, sp, 16
+        li      a0, 0
+.Ltmp12:
+        sw      a0, -12(s0)
+        j       .LBB6_1
+.LBB6_1:                                # %for.cond
+        lw      a1, -12(s0)
+        li      a0, 2
+        blt     a0, a1, .LBB6_4
+        j       .LBB6_2
+.LBB6_2:                                # %for.body
+        lw      a1, -12(s0)
+        slli    a2, a1, 3
+        slli    a0, a1, 5
+        sub     a0, a0, a2
+        addi    a0, a0, 62
+        slli    a2, a1, 2
+        slli    a1, a1, 4
+        sub     a2, a1, a2
+        lui     a1, %hi(pipes)
+        addi    a1, a1, %lo(pipes)
+        sw      a1, -16(s0)                     # 4-byte Folded Spill
+        add     a1, a1, a2
+        sw      a0, 0(a1)
+        call    random_gap
+        mv      a1, a0
+        lw      a0, -16(s0)                     # 4-byte Folded Reload
+        lw      a2, -12(s0)
+        slli    a3, a2, 2
+        slli    a2, a2, 4
+        sub     a2, a2, a3
+        add     a2, a0, a2
+        sw      a1, 4(a2)
+        lw      a1, -12(s0)
+        slli    a2, a1, 2
+        slli    a1, a1, 4
+        sub     a1, a1, a2
+        add     a1, a0, a1
+        li      a0, 0
+        sw      a0, 8(a1)
+        j       .LBB6_3
+.LBB6_3:                                # %for.inc
+        lw      a0, -12(s0)
+        addi    a0, a0, 1
+        sw      a0, -12(s0)
+        j       .LBB6_1
+.LBB6_4:                                # %for.end
+        lw      ra, 12(sp)                      # 4-byte Folded Reload
+        lw      s0, 8(sp)                       # 4-byte Folded Reload
+        addi    sp, sp, 16
+        ret
+.Ltmp13:
+.Lfunc_end6:
+        .size   new_pipes, .Lfunc_end6-new_pipes
+        .p2align        2                               # -- Begin function paint_grid
+        .type   paint_grid,@function
+paint_grid:                             # @paint_grid
+.Lfunc_begin7:
+# %bb.0:                                # %entry
+        addi    sp, sp, -16
+        sw      ra, 12(sp)                      # 4-byte Folded Spill
+        sw      s0, 8(sp)                       # 4-byte Folded Spill
+        addi    s0, sp, 16
+        li      a0, 0
+.Ltmp14:
+        sw      a0, -12(s0)
+        j       .LBB7_1
+.LBB7_1:                                # %for.cond
+        lw      a1, -12(s0)
+        li      a0, 63
+        blt     a0, a1, .LBB7_4
+        j       .LBB7_2
+.LBB7_2:                                # %for.body
+        lw      a0, -12(s0)
+        li      a1, 0
+        li      a2, 64
+        call    world_column
+        j       .LBB7_3
+.LBB7_3:                                # %for.inc
+        lw      a0, -12(s0)
+        addi    a0, a0, 1
+        sw      a0, -12(s0)
+        j       .LBB7_1
+.LBB7_4:                                # %for.end
+        lw      ra, 12(sp)                      # 4-byte Folded Reload
+        lw      s0, 8(sp)                       # 4-byte Folded Reload
+        addi    sp, sp, 16
+        ret
+.Ltmp15:
+.Lfunc_end7:
+        .size   paint_grid, .Lfunc_end7-paint_grid
+        .p2align        2                               # -- Begin function random_gap
+        .type   random_gap,@function
+random_gap:                             # @random_gap
+.Lfunc_begin8:
+# %bb.0:                                # %entry
+        addi    sp, sp, -16
+        sw      ra, 12(sp)                      # 4-byte Folded Spill
+        sw      s0, 8(sp)                       # 4-byte Folded Spill
+        addi    s0, sp, 16
+.Ltmp16:
+        lui     a0, %hi(seed)
+        lw      a1, %lo(seed)(a0)
+        slli    a2, a1, 13
+        xor     a1, a1, a2
+        sw      a1, %lo(seed)(a0)
+        lw      a1, %lo(seed)(a0)
+        srli    a2, a1, 17
+        xor     a1, a1, a2
+        sw      a1, %lo(seed)(a0)
+        lw      a1, %lo(seed)(a0)
+        slli    a2, a1, 5
+        xor     a1, a1, a2
+        sw      a1, %lo(seed)(a0)
+        lw      a0, %lo(seed)(a0)
+        srli    a0, a0, 8
+        lui     a1, 40330
+        addi    a1, a1, -630
+        mulhu   a1, a0, a1
+        li      a2, 26
+        mul     a1, a1, a2
+        sub     a0, a0, a1
+        addi    a0, a0, 13
+        lw      ra, 12(sp)                      # 4-byte Folded Reload
+        lw      s0, 8(sp)                       # 4-byte Folded Reload
+        addi    sp, sp, 16
+        ret
+.Ltmp17:
+.Lfunc_end8:
+        .size   random_gap, .Lfunc_end8-random_gap
+        .p2align        2                               # -- Begin function world_column
+        .type   world_column,@function
+world_column:                           # @world_column
+.Lfunc_begin9:
+# %bb.0:                                # %entry
+        addi    sp, sp, -80
+        sw      ra, 76(sp)                      # 4-byte Folded Spill
+        sw      s0, 72(sp)                      # 4-byte Folded Spill
+        addi    s0, sp, 80
+        sw      a0, -12(s0)
+        sw      a1, -16(s0)
+        sw      a2, -20(s0)
+.Ltmp18:
+        lw      a0, -12(s0)
+        bltz    a0, .LBB9_2
+        j       .LBB9_1
+.LBB9_1:                                # %lor.lhs.false
+        lw      a0, -12(s0)
+        li      a1, 64
+        blt     a0, a1, .LBB9_3
+        j       .LBB9_2
+.LBB9_2:                                # %if.then
+        j       .LBB9_18
+.LBB9_3:                                # %if.end
+        li      a0, -1
+        sw      a0, -24(s0)
+        li      a0, 0
+        sw      a0, -28(s0)
+        j       .LBB9_4
+.LBB9_4:                                # %for.cond
+        lw      a1, -28(s0)
+        li      a0, 2
+        blt     a0, a1, .LBB9_10
+        j       .LBB9_5
+.LBB9_5:                                # %for.body
+        lw      a0, -12(s0)
+        lw      a1, -28(s0)
+        slli    a2, a1, 2
+        slli    a1, a1, 4
+        sub     a2, a1, a2
+        lui     a1, %hi(pipes)
+        addi    a1, a1, %lo(pipes)
+        add     a1, a1, a2
+        lw      a1, 0(a1)
+        blt     a0, a1, .LBB9_8
+        j       .LBB9_6
+.LBB9_6:                                # %land.lhs.true
+        lw      a0, -12(s0)
+        lw      a1, -28(s0)
+        slli    a2, a1, 2
+        slli    a1, a1, 4
+        sub     a2, a1, a2
+        lui     a1, %hi(pipes)
+        addi    a1, a1, %lo(pipes)
+        add     a1, a1, a2
+        lw      a1, 0(a1)
+        addi    a1, a1, 8
+        bge     a0, a1, .LBB9_8
+        j       .LBB9_7
+.LBB9_7:                                # %if.then8
+        lw      a0, -28(s0)
+        slli    a1, a0, 2
+        slli    a0, a0, 4
+        sub     a1, a0, a1
+        lui     a0, %hi(pipes)
+        addi    a0, a0, %lo(pipes)
+        add     a0, a0, a1
+        lw      a0, 4(a0)
+        sw      a0, -24(s0)
+        j       .LBB9_8
+.LBB9_8:                                # %if.end11
+        j       .LBB9_9
+.LBB9_9:                                # %for.inc
+        lw      a0, -28(s0)
+        addi    a0, a0, 1
+        sw      a0, -28(s0)
+        j       .LBB9_4
+.LBB9_10:                               # %for.end
+        lw      a0, -24(s0)
+        bgez    a0, .LBB9_12
+        j       .LBB9_11
+.LBB9_11:                               # %if.then13
+        lw      a0, -12(s0)
+        lw      a4, -16(s0)
+        lw      a5, -20(s0)
+        lui     a1, 1260
+        addi    a3, a1, 232
+        li      a1, 0
+        li      a2, 56
+        call    fill_span
+        j       .LBB9_13
+.LBB9_12:                               # %if.else
+        lw      a0, -12(s0)
+        lw      a1, -24(s0)
+        addi    a2, a1, -9
+        lw      a4, -16(s0)
+        lw      a5, -20(s0)
+        lui     a1, 1420
+        addi    a3, a1, -1223
+        sw      a3, -32(s0)                     # 4-byte Folded Spill
+        li      a1, 0
+        call    fill_span
+        lw      a0, -12(s0)
+        lw      a2, -24(s0)
+        addi    a1, a2, -9
+        addi    a2, a2, 9
+        lw      a4, -16(s0)
+        lw      a5, -20(s0)
+        lui     a3, 1260
+        addi    a3, a3, 232
+        call    fill_span
+        lw      a3, -32(s0)                     # 4-byte Folded Reload
+        lw      a0, -12(s0)
+        lw      a1, -24(s0)
+        addi    a1, a1, 9
+        lw      a4, -16(s0)
+        lw      a5, -20(s0)
+        li      a2, 56
+        call    fill_span
+        j       .LBB9_13
+.LBB9_13:                               # %if.end17
+        lw      a0, -12(s0)
+        sw      a0, -56(s0)                     # 4-byte Folded Spill
+        lui     a0, %hi(state)
+        sw      a0, -52(s0)                     # 4-byte Folded Spill
+        lw      a0, %lo(state)(a0)
+        lui     a1, 1868
+        addi    a1, a1, 1112
+        sw      a1, -48(s0)                     # 4-byte Folded Spill
+        lui     a1, 2819
+        addi    a2, a1, 40
+        sw      a2, -44(s0)                     # 4-byte Folded Spill
+        li      a1, 2
+        sw      a1, -40(s0)                     # 4-byte Folded Spill
+        sw      a2, -36(s0)                     # 4-byte Folded Spill
+        beq     a0, a1, .LBB9_15
+# %bb.14:                               # %if.end17
+        lw      a0, -48(s0)                     # 4-byte Folded Reload
+        sw      a0, -36(s0)                     # 4-byte Folded Spill
+.LBB9_15:                               # %if.end17
+        lw      a0, -56(s0)                     # 4-byte Folded Reload
+        lw      a3, -36(s0)                     # 4-byte Folded Reload
+        lw      a4, -16(s0)
+        lw      a5, -20(s0)
+        li      a1, 56
+        li      a2, 58
+        sw      a2, -72(s0)                     # 4-byte Folded Spill
+        call    fill_span
+        lw      a0, -52(s0)                     # 4-byte Folded Reload
+        lw      a2, -44(s0)                     # 4-byte Folded Reload
+        lw      a1, -40(s0)                     # 4-byte Folded Reload
+        lw      a3, -12(s0)
+        sw      a3, -68(s0)                     # 4-byte Folded Spill
+        lw      a0, %lo(state)(a0)
+        lui     a3, 3566
+        addi    a3, a3, -1899
+        sw      a3, -64(s0)                     # 4-byte Folded Spill
+        sw      a2, -60(s0)                     # 4-byte Folded Spill
+        beq     a0, a1, .LBB9_17
+# %bb.16:                               # %if.end17
+        lw      a0, -64(s0)                     # 4-byte Folded Reload
+        sw      a0, -60(s0)                     # 4-byte Folded Spill
+.LBB9_17:                               # %if.end17
+        lw      a1, -72(s0)                     # 4-byte Folded Reload
+        lw      a0, -68(s0)                     # 4-byte Folded Reload
+        lw      a3, -60(s0)                     # 4-byte Folded Reload
+        lw      a4, -16(s0)
+        lw      a5, -20(s0)
+        li      a2, 64
+        call    fill_span
+        j       .LBB9_18
+.LBB9_18:                               # %return
+        lw      ra, 76(sp)                      # 4-byte Folded Reload
+        lw      s0, 72(sp)                      # 4-byte Folded Reload
+        addi    sp, sp, 80
+        ret
+.Ltmp19:
+.Lfunc_end9:
+        .size   world_column, .Lfunc_end9-world_column
+        .p2align        2                               # -- Begin function fill_span
+        .type   fill_span,@function
+fill_span:                              # @fill_span
+.Lfunc_begin10:
+# %bb.0:                                # %entry
+        addi    sp, sp, -48
+        sw      ra, 44(sp)                      # 4-byte Folded Spill
+        sw      s0, 40(sp)                      # 4-byte Folded Spill
+        addi    s0, sp, 48
+        sw      a0, -12(s0)
+        sw      a1, -16(s0)
+        sw      a2, -20(s0)
+        sw      a3, -24(s0)
+        sw      a4, -28(s0)
+        sw      a5, -32(s0)
+.Ltmp20:
+        lw      a0, -16(s0)
+        lw      a1, -28(s0)
+        bge     a0, a1, .LBB10_2
+        j       .LBB10_1
+.LBB10_1:                               # %if.then
+        lw      a0, -28(s0)
+        sw      a0, -16(s0)
+        j       .LBB10_2
+.LBB10_2:                               # %if.end
+        lw      a1, -20(s0)
+        lw      a0, -32(s0)
+        bge     a0, a1, .LBB10_4
+        j       .LBB10_3
+.LBB10_3:                               # %if.then2
+        lw      a0, -32(s0)
+        sw      a0, -20(s0)
+        j       .LBB10_4
+.LBB10_4:                               # %if.end3
+        lw      a0, -16(s0)
+        sw      a0, -36(s0)
+        j       .LBB10_5
+.LBB10_5:                               # %for.cond
+        lw      a0, -36(s0)
+        lw      a1, -20(s0)
+        bge     a0, a1, .LBB10_8
+        j       .LBB10_6
+.LBB10_6:                               # %for.body
+        lw      a0, -24(s0)
+        lw      a1, -36(s0)
+        slli    a1, a1, 6
+        lw      a2, -12(s0)
+        add     a1, a1, a2
+        slli    a2, a1, 2
+        lui     a1, %hi(display)
+        addi    a1, a1, %lo(display)
+        add     a1, a1, a2
+        sw      a0, 0(a1)
+        j       .LBB10_7
+.LBB10_7:                               # %for.inc
+        lw      a0, -36(s0)
+        addi    a0, a0, 1
+        sw      a0, -36(s0)
+        j       .LBB10_5
+.LBB10_8:                               # %for.end
+        lw      ra, 44(sp)                      # 4-byte Folded Reload
+        lw      s0, 40(sp)                      # 4-byte Folded Reload
+        addi    sp, sp, 48
+        ret
+.Ltmp21:
+.Lfunc_end10:
+        .size   fill_span, .Lfunc_end10-fill_span
+        .p2align        2                               # -- Begin function sim_time
+        .type   sim_time,@function
+sim_time:                               # @sim_time
+.Lfunc_begin11:
+# %bb.0:                                # %entry
+        addi    sp, sp, -32
+        sw      ra, 28(sp)                      # 4-byte Folded Spill
+        sw      s0, 24(sp)                      # 4-byte Folded Spill
+        addi    s0, sp, 32
+        li      a0, 30
+.Ltmp22:
+        sw      a0, -12(s0)
+        lw      a7, -12(s0)
+        ecall
+        sw      a0, -16(s0)
+        sw      a1, -20(s0)
+        lw      a1, -20(s0)
+        lw      a0, -16(s0)
+        lw      ra, 28(sp)                      # 4-byte Folded Reload
+        lw      s0, 24(sp)                      # 4-byte Folded Reload
+        addi    sp, sp, 32
+        ret
+.Ltmp23:
+.Lfunc_end11:
+        .size   sim_time, .Lfunc_end11-sim_time
+        .p2align        2                               # -- Begin function fall
+        .type   fall,@function
+fall:                                   # @fall
+.Lfunc_begin12:
+# %bb.0:                                # %entry
+        addi    sp, sp, -16
+        sw      ra, 12(sp)                      # 4-byte Folded Spill
+        sw      s0, 8(sp)                       # 4-byte Folded Spill
+        addi    s0, sp, 16
+.Ltmp24:
+        lui     a0, %hi(velocity)
+        lw      a1, %lo(velocity)(a0)
+        addi    a1, a1, 3
+        sw      a1, %lo(velocity)(a0)
+        lw      a0, %lo(velocity)(a0)
+        li      a1, 27
+        blt     a0, a1, .LBB12_2
+        j       .LBB12_1
+.LBB12_1:                               # %if.then
+        lui     a1, %hi(velocity)
+        li      a0, 26
+        sw      a0, %lo(velocity)(a1)
+        j       .LBB12_2
+.LBB12_2:                               # %if.end
+        lui     a0, %hi(velocity)
+        lw      a2, %lo(velocity)(a0)
+        lui     a1, %hi(bird_y)
+        lw      a0, %lo(bird_y)(a1)
+        add     a0, a0, a2
+        sw      a0, %lo(bird_y)(a1)
+        lw      ra, 12(sp)                      # 4-byte Folded Reload
+        lw      s0, 8(sp)                       # 4-byte Folded Reload
+        addi    sp, sp, 16
+        ret
+.Ltmp25:
+.Lfunc_end12:
+        .size   fall, .Lfunc_end12-fall
+        .p2align        2                               # -- Begin function move_pipes
+        .type   move_pipes,@function
+move_pipes:                             # @move_pipes
+.Lfunc_begin13:
+# %bb.0:                                # %entry
+        addi    sp, sp, -32
+        sw      ra, 28(sp)                      # 4-byte Folded Spill
+        sw      s0, 24(sp)                      # 4-byte Folded Spill
+        addi    s0, sp, 32
+        li      a0, 0
+.Ltmp26:
+        sw      a0, -12(s0)
+        j       .LBB13_1
+.LBB13_1:                               # %for.cond
+        lw      a1, -12(s0)
+        li      a0, 2
+        blt     a0, a1, .LBB13_9
+        j       .LBB13_2
+.LBB13_2:                               # %for.body
+        lw      a0, -12(s0)
+        slli    a1, a0, 2
+        slli    a0, a0, 4
+        sub     a1, a0, a1
+        lui     a0, %hi(pipes)
+        addi    a0, a0, %lo(pipes)
+        add     a0, a0, a1
+        sw      a0, -16(s0)
+        lw      a1, -16(s0)
+        lw      a0, 0(a1)
+        addi    a0, a0, -1
+        sw      a0, 0(a1)
+        lw      a0, -16(s0)
+        lw      a1, 0(a0)
+        li      a0, -9
+        blt     a0, a1, .LBB13_4
+        j       .LBB13_3
+.LBB13_3:                               # %if.then
+        lw      a1, -16(s0)
+        lw      a0, 0(a1)
+        addi    a0, a0, 72
+        sw      a0, 0(a1)
+        call    random_gap
+        lw      a1, -16(s0)
+        sw      a0, 4(a1)
+        lw      a1, -16(s0)
+        li      a0, 0
+        sw      a0, 8(a1)
+        j       .LBB13_4
+.LBB13_4:                               # %if.end
+        lw      a0, -16(s0)
+        lw      a0, 8(a0)
+        bnez    a0, .LBB13_7
+        j       .LBB13_5
+.LBB13_5:                               # %land.lhs.true
+        lw      a0, -16(s0)
+        lw      a0, 0(a0)
+        addi    a1, a0, 8
+        li      a0, 11
+        blt     a0, a1, .LBB13_7
+        j       .LBB13_6
+.LBB13_6:                               # %if.then8
+        lw      a1, -16(s0)
+        li      a0, 1
+        sw      a0, 8(a1)
+        lui     a1, %hi(score)
+        lw      a0, %lo(score)(a1)
+        addi    a0, a0, 1
+        sw      a0, %lo(score)(a1)
+        call    print_score
+        j       .LBB13_7
+.LBB13_7:                               # %if.end10
+        lw      a0, -16(s0)
+        lw      a0, 0(a0)
+        li      a1, 0
+        sw      a1, -24(s0)                     # 4-byte Folded Spill
+        li      a2, 64
+        sw      a2, -20(s0)                     # 4-byte Folded Spill
+        call    world_column
+        lw      a1, -24(s0)                     # 4-byte Folded Reload
+        lw      a2, -20(s0)                     # 4-byte Folded Reload
+        lw      a0, -16(s0)
+        lw      a0, 0(a0)
+        addi    a0, a0, 8
+        call    world_column
+        j       .LBB13_8
+.LBB13_8:                               # %for.inc
+        lw      a0, -12(s0)
+        addi    a0, a0, 1
+        sw      a0, -12(s0)
+        j       .LBB13_1
+.LBB13_9:                               # %for.end
+        lw      ra, 28(sp)                      # 4-byte Folded Reload
+        lw      s0, 24(sp)                      # 4-byte Folded Reload
+        addi    sp, sp, 32
+        ret
+.Ltmp27:
+.Lfunc_end13:
+        .size   move_pipes, .Lfunc_end13-move_pipes
+        .p2align        2                               # -- Begin function hit_test
+        .type   hit_test,@function
+hit_test:                               # @hit_test
+.Lfunc_begin14:
+# %bb.0:                                # %entry
+        addi    sp, sp, -32
+        sw      ra, 28(sp)                      # 4-byte Folded Spill
+        sw      s0, 24(sp)                      # 4-byte Folded Spill
+        addi    s0, sp, 32
+.Ltmp28:
+        lui     a0, %hi(bird_y)
+        lw      a0, %lo(bird_y)(a0)
+        srai    a0, a0, 4
+        sw      a0, -16(s0)
+        lw      a0, -16(s0)
+        addi    a0, a0, 5
+        sw      a0, -20(s0)
+        lw      a0, -20(s0)
+        li      a1, 57
+        blt     a0, a1, .LBB14_2
+        j       .LBB14_1
+.LBB14_1:                               # %if.then
+        li      a0, 1
+        sw      a0, -12(s0)
+        j       .LBB14_13
+.LBB14_2:                               # %if.end
+        li      a0, 0
+        sw      a0, -24(s0)
+        j       .LBB14_3
+.LBB14_3:                               # %for.cond
+        lw      a1, -24(s0)
+        li      a0, 2
+        blt     a0, a1, .LBB14_12
+        j       .LBB14_4
+.LBB14_4:                               # %for.body
+        lw      a0, -24(s0)
+        slli    a1, a0, 2
+        slli    a0, a0, 4
+        sub     a1, a0, a1
+        lui     a0, %hi(pipes)
+        addi    a0, a0, %lo(pipes)
+        add     a0, a0, a1
+        sw      a0, -28(s0)
+        lw      a0, -28(s0)
+        lw      a1, 0(a0)
+        li      a0, 17
+        blt     a0, a1, .LBB14_6
+        j       .LBB14_5
+.LBB14_5:                               # %lor.lhs.false
+        lw      a0, -28(s0)
+        lw      a0, 0(a0)
+        addi    a1, a0, 8
+        li      a0, 12
+        blt     a0, a1, .LBB14_7
+        j       .LBB14_6
+.LBB14_6:                               # %if.then6
+        j       .LBB14_11
+.LBB14_7:                               # %if.end7
+        lw      a0, -16(s0)
+        lw      a1, -28(s0)
+        lw      a1, 4(a1)
+        addi    a1, a1, -9
+        blt     a0, a1, .LBB14_9
+        j       .LBB14_8
+.LBB14_8:                               # %lor.lhs.false9
+        lw      a1, -20(s0)
+        lw      a0, -28(s0)
+        lw      a0, 4(a0)
+        addi    a0, a0, 9
+        bge     a0, a1, .LBB14_10
+        j       .LBB14_9
+.LBB14_9:                               # %if.then13
+        li      a0, 1
+        sw      a0, -12(s0)
+        j       .LBB14_13
+.LBB14_10:                              # %if.end14
+        j       .LBB14_11
+.LBB14_11:                              # %for.inc
+        lw      a0, -24(s0)
+        addi    a0, a0, 1
+        sw      a0, -24(s0)
+        j       .LBB14_3
+.LBB14_12:                              # %for.end
+        li      a0, 0
+        sw      a0, -12(s0)
+        j       .LBB14_13
+.LBB14_13:                              # %return
+        lw      a0, -12(s0)
+        lw      ra, 28(sp)                      # 4-byte Folded Reload
+        lw      s0, 24(sp)                      # 4-byte Folded Reload
+        addi    sp, sp, 32
+        ret
+.Ltmp29:
+.Lfunc_end14:
+        .size   hit_test, .Lfunc_end14-hit_test
+        .p2align        2                               # -- Begin function paint_dead_ground
+        .type   paint_dead_ground,@function
+paint_dead_ground:                      # @paint_dead_ground
+.Lfunc_begin15:
+# %bb.0:                                # %entry
+        addi    sp, sp, -16
+        sw      ra, 12(sp)                      # 4-byte Folded Spill
+        sw      s0, 8(sp)                       # 4-byte Folded Spill
+        addi    s0, sp, 16
+        li      a0, 0
+.Ltmp30:
+        sw      a0, -12(s0)
+        j       .LBB15_1
+.LBB15_1:                               # %for.cond
+        lw      a1, -12(s0)
+        li      a0, 63
+        blt     a0, a1, .LBB15_4
+        j       .LBB15_2
+.LBB15_2:                               # %for.body
+        lw      a0, -12(s0)
+        lui     a1, 2819
+        addi    a3, a1, 40
+        li      a1, 56
+        li      a4, 0
+        li      a5, 64
+        mv      a2, a5
+        call    fill_span
+        j       .LBB15_3
+.LBB15_3:                               # %for.inc
+        lw      a0, -12(s0)
+        addi    a0, a0, 1
+        sw      a0, -12(s0)
+        j       .LBB15_1
+.LBB15_4:                               # %for.end
+        lw      ra, 12(sp)                      # 4-byte Folded Reload
+        lw      s0, 8(sp)                       # 4-byte Folded Reload
+        addi    sp, sp, 16
+        ret
+.Ltmp31:
+.Lfunc_end15:
+        .size   paint_dead_ground, .Lfunc_end15-paint_dead_ground
+        .p2align        2                               # -- Begin function sim_print_string
+        .type   sim_print_string,@function
+sim_print_string:                       # @sim_print_string
+.Lfunc_begin16:
+# %bb.0:                                # %entry
+        addi    sp, sp, -32
+        sw      ra, 28(sp)                      # 4-byte Folded Spill
+        sw      s0, 24(sp)                      # 4-byte Folded Spill
+        addi    s0, sp, 32
+        sw      a0, -12(s0)
+        li      a0, 4
+.Ltmp32:
+        sw      a0, -16(s0)
+        lw      a0, -12(s0)
+        sw      a0, -20(s0)
+        lw      a7, -16(s0)
+        lw      a0, -20(s0)
+        ecall
+        lw      ra, 28(sp)                      # 4-byte Folded Reload
+        lw      s0, 24(sp)                      # 4-byte Folded Reload
+        addi    sp, sp, 32
+        ret
+.Ltmp33:
+.Lfunc_end16:
+        .size   sim_print_string, .Lfunc_end16-sim_print_string
+        .p2align        2                               # -- Begin function sim_print_int
+        .type   sim_print_int,@function
+sim_print_int:                          # @sim_print_int
+.Lfunc_begin17:
+# %bb.0:                                # %entry
+        addi    sp, sp, -32
+        sw      ra, 28(sp)                      # 4-byte Folded Spill
+        sw      s0, 24(sp)                      # 4-byte Folded Spill
+        addi    s0, sp, 32
+        sw      a0, -12(s0)
+        li      a0, 1
+.Ltmp34:
+        sw      a0, -16(s0)
+        lw      a0, -12(s0)
+        sw      a0, -20(s0)
+        lw      a7, -16(s0)
+        lw      a0, -20(s0)
+        ecall
+        lw      ra, 28(sp)                      # 4-byte Folded Reload
+        lw      s0, 24(sp)                      # 4-byte Folded Reload
+        addi    sp, sp, 32
+        ret
+.Ltmp35:
+.Lfunc_end17:
+        .size   sim_print_int, .Lfunc_end17-sim_print_int
+        .p2align        2                               # -- Begin function sim_print_char
+        .type   sim_print_char,@function
+sim_print_char:                         # @sim_print_char
+.Lfunc_begin18:
+# %bb.0:                                # %entry
+        addi    sp, sp, -32
+        sw      ra, 28(sp)                      # 4-byte Folded Spill
+        sw      s0, 24(sp)                      # 4-byte Folded Spill
+        addi    s0, sp, 32
+        sw      a0, -12(s0)
+        li      a0, 11
+.Ltmp36:
+        sw      a0, -16(s0)
+        lw      a0, -12(s0)
+        sw      a0, -20(s0)
+        lw      a7, -16(s0)
+        lw      a0, -20(s0)
+        ecall
+        lw      ra, 28(sp)                      # 4-byte Folded Reload
+        lw      s0, 24(sp)                      # 4-byte Folded Reload
+        addi    sp, sp, 32
+        ret
+.Ltmp37:
+.Lfunc_end18:
+        .size   sim_print_char, .Lfunc_end18-sim_print_char
+        .p2align        2                               # -- Begin function print_score
+        .type   print_score,@function
+print_score:                            # @print_score
+.Lfunc_begin19:
+# %bb.0:                                # %entry
+        addi    sp, sp, -16
+        sw      ra, 12(sp)                      # 4-byte Folded Spill
+        sw      s0, 8(sp)                       # 4-byte Folded Spill
+        addi    s0, sp, 16
+.Ltmp38:
+        lui     a0, %hi(.L.str.2)
+        addi    a0, a0, %lo(.L.str.2)
+        call    sim_print_string
+        lui     a0, %hi(score)
+        lw      a0, %lo(score)(a0)
+        call    sim_print_int
+        li      a0, 10
+        call    sim_print_char
+        lw      ra, 12(sp)                      # 4-byte Folded Reload
+        lw      s0, 8(sp)                       # 4-byte Folded Reload
+        addi    sp, sp, 16
+        ret
+.Ltmp39:
+.Lfunc_end19:
+        .size   print_score, .Lfunc_end19-print_score
+        .p2align        2                               # -- Begin function sim_keyboard_ready
+        .type   sim_keyboard_ready,@function
+sim_keyboard_ready:                     # @sim_keyboard_ready
+.Lfunc_begin20:
+# %bb.0:                                # %entry
+        addi    sp, sp, -16
+        sw      ra, 12(sp)                      # 4-byte Folded Spill
+        sw      s0, 8(sp)                       # 4-byte Folded Spill
+        addi    s0, sp, 16
+        lui     a0, 1048560
+.Ltmp40:
+        lw      a0, 0(a0)
+        andi    a0, a0, 1
+        lw      ra, 12(sp)                      # 4-byte Folded Reload
+        lw      s0, 8(sp)                       # 4-byte Folded Reload
+        addi    sp, sp, 16
+        ret
+.Ltmp41:
+.Lfunc_end20:
+        .size   sim_keyboard_ready, .Lfunc_end20-sim_keyboard_ready
+        .p2align        2                               # -- Begin function sim_keyboard_read
+        .type   sim_keyboard_read,@function
+sim_keyboard_read:                      # @sim_keyboard_read
+.Lfunc_begin21:
+# %bb.0:                                # %entry
+        addi    sp, sp, -16
+        sw      ra, 12(sp)                      # 4-byte Folded Spill
+        sw      s0, 8(sp)                       # 4-byte Folded Spill
+        addi    s0, sp, 16
+        lui     a0, 1048560
+.Ltmp42:
+        lw      a0, 4(a0)
+        lw      ra, 12(sp)                      # 4-byte Folded Reload
+        lw      s0, 8(sp)                       # 4-byte Folded Reload
+        addi    sp, sp, 16
+        ret
+.Ltmp43:
+.Lfunc_end21:
+        .size   sim_keyboard_read, .Lfunc_end21-sim_keyboard_read
+        .type   display,@object                 # @display
+        .bss
+        .globl  display
+        .p2align        2, 0x0
+display:
+        .zero   16384
+        .size   display, 16384
+        .type   bird_y,@object                  # @bird_y
+        .local  bird_y
+        .comm   bird_y,4,4
+        .type   velocity,@object                # @velocity
+        .local  velocity
+        .comm   velocity,4,4
+        .type   state,@object                   # @state
+        .local  state
+        .comm   state,4,4
+        .type   score,@object                   # @score
+        .local  score
+        .comm   score,4,4
+        .type   pipes,@object                   # @pipes
+        .local  pipes
+        .comm   pipes,36,4
+        .type   seed,@object                    # @seed
+        .data
+        .p2align        2, 0x0
+seed:
+        .word   521288629                       # 0x1f123bb5
+        .size   seed, 4
+        .type   best,@object                    # @best
+        .local  best
+        .comm   best,4,4
+        .type   .L.str,@object                  # @.str
+        .section        .rodata.str1.1,"aMS",@progbits,1
+.L.str:
+        .asciz  "Game over. Score: "
+        .size   .L.str, 19
+        .type   .L.str.1,@object                # @.str.1
+.L.str.1:
+        .asciz  ", best: "
+        .size   .L.str.1, 9
+        .type   .L.str.2,@object                # @.str.2
+.L.str.2:
+        .asciz  "Score: "
+        .size   .L.str.2, 8
