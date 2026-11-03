@@ -1,0 +1,1 @@
+[{"wait": 5000}, {"click": [85, 56]}, {"wait": 300}, {"stats": "start"}, {"wait": 2000}, {"stats": "running"}, {"shot": "speed-running"}, {"wait": 12000}, {"stats": "end"}, {"shot": "speed-end"}]

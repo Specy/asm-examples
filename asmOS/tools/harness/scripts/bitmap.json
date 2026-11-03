@@ -1,0 +1,1 @@
+[{"wait": 5000}, {"click": [33, 56]}, {"wait": 800}, {"shot": "bitmap-1-built"}, {"click": [85, 56]}, {"wait": 1500}, {"stats": "warm"}, {"wait": 2000}, {"stats": "running"}, {"shot": "bitmap-2-running"}, {"wait": 600}, {"shot": "bitmap-3-running"}, {"click": [137, 56]}, {"wait": 500}, {"shot": "bitmap-4-paused"}]

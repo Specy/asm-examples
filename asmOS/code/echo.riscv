@@ -1,0 +1,26 @@
+# Keyboard echo through the memory-mapped
+# Keyboard and Display: 0xffff0000 says
+# whether a key is ready, 0xffff0004
+# holds it, and a byte stored at
+# 0xffff000c prints in the console.
+# Run, click the console and type; a full
+# stop (.) ends the program.
+
+    .text
+main:
+    li      s0, 0xffff0000
+poll:
+    lw      t0, 0(s0)     # control
+    andi    t0, t0, 1     # Ready bit
+    bnez    t0, take
+    li      a0, 20        # sleep 20 ms,
+    li      a7, 32        # which runs no
+    ecall                 # instructions
+    j       poll
+take:
+    lw      t1, 4(s0)     # the key
+    sw      t1, 12(s0)    # print it
+    li      t2, '.'
+    bne     t1, t2, poll
+    li      a7, 10
+    ecall

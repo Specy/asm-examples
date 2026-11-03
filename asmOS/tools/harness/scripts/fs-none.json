@@ -1,0 +1,4 @@
+[{"wait":5000},{"dblclick":[135,362]},{"wait":2500},{"shot":"fsn-1-files"},
+ {"click":[68,48]},{"wait":600},{"shot":"fsn-2-filemenu"},{"key":"Escape"},{"wait":300},{"key":"F4","alt":true},{"wait":1000},
+ {"dblclick":[135,294]},{"wait":2000},
+ {"type":"ls\n"},{"type":"mkdir new\n"},{"type":"rm welcome.txt\n"},{"type":"mv welcome.txt w.txt\n"},{"type":"find . x\n"},{"type":"cat welcome.txt | wc\n"},{"type":"ls welcome.txt\n"},{"wait":2000},{"shot":"fsn-3-terminal"}]

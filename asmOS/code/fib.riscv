@@ -1,0 +1,57 @@
+# A table of Fibonacci numbers. fib is a
+# function: it takes n in a0, answers
+# fib(n) in a0, and keeps what it must not
+# lose on the stack, as the calling
+# convention says.
+
+    .data
+header: .asciz "n\tfib(n)\n"
+
+    .text
+main:
+    la      a0, header
+    li      a7, 4
+    ecall
+    li      s0, 0         # n
+    li      s1, 20        # rows
+row:
+    mv      a0, s0        # print n
+    li      a7, 1
+    ecall
+    li      a0, '\t'
+    li      a7, 11
+    ecall
+    mv      a0, s0
+    call    fib           # a0 = fib(n)
+    li      a7, 1
+    ecall
+    li      a0, '\n'
+    li      a7, 11
+    ecall
+    addi    s0, s0, 1
+    blt     s0, s1, row
+    li      a7, 10
+    ecall
+
+# fib(n): n for n < 2, else the sum of the
+# two before it, counted up in a loop
+fib:
+    addi    sp, sp, -8    # two words
+    sw      ra, 4(sp)
+    sw      s0, 0(sp)
+    li      t0, 0         # fib(i)
+    li      t1, 1         # fib(i + 1)
+    mv      s0, a0
+loop:
+    beqz    s0, done
+    add     t2, t0, t1
+    mv      t0, t1
+    mv      t1, t2
+    addi    s0, s0, -1
+    j       loop
+done:
+    mv      a0, t0
+    lw      s0, 0(sp)
+    lw      ra, 4(sp)
+    addi    sp, sp, 8
+    ret

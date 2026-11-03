@@ -1,0 +1,5 @@
+[{"wait":5000},{"dblclick":[135,294]},{"wait":2000},
+ {"type":"wc videos/bad-apple.vid\n"},{"move":[300,300]},{"wait":300},{"move":[400,350]},{"wait":300},{"shot":"busy-1-during"},{"stats":"wc"},
+ {"wait":6000},{"shot":"busy-2-wc"},{"stats":"after wc"},
+ {"type":"seq 1 3000 | grep 7 | wc\n"},{"wait":300},{"move":[500,100]},{"wait":300},{"shot":"busy-3-during"},{"wait":6000},{"shot":"busy-4-seq"},{"stats":"seq"},
+ {"type":"find . bmp\n"},{"wait":4000},{"shot":"busy-5-find"},{"stats":"find"}]

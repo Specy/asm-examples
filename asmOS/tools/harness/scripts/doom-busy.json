@@ -1,0 +1,2 @@
+[{"wait":12000},{"move":[300,420]},{"wait":400},{"move":[560,420]},{"wait":400},{"shot":"db-1-pointer"},
+ {"dblclick":[48,22]},{"wait":2500},{"type":"typed while DOOM runs"},{"wait":1500},{"shot":"db-2-notepad"},{"stats":"doom+notepad"}]

@@ -1,0 +1,25 @@
+Welcome to asmOS!
+
+asmOS is a small operating system that runs as one Linux program
+on the emulated x86 machine. Every application is a process of
+its own, and the kernel switches between them many times a second.
+
+Click the Screen first, so that it gets the keyboard and the mouse.
+Shift+Tab gives the keyboard back to the page.
+
+Things to try:
+ - Open Start > Programs > Games > Pac-Man. Space starts a game.
+ - Open several applications, then Task Manager: each one is a
+   process with its own share of the processor and memory.
+ - Drag a window by its title bar, or resize it from a corner.
+ - Edit this file and press Ctrl+S: the File in the Project changes.
+ - Right-click the desktop, a file in Files, or the text in Notepad.
+ - Drag a file from Files onto the desktop or onto another program.
+ - Open the Terminal and type help.
+ - Open pictures/sunset.bmp in Paint, draw on it and Save.
+ - Play a piece in the Music Player.
+ - Watch Bad Apple!! in the Video Player.
+ - Write RISC-V assembly in the Assembly Editor: File > Examples,
+   then Build and Run, Step and Step back.
+ - Change the wallpaper and the colours in Settings.
+ - Shut Down from the Start menu ends the program.

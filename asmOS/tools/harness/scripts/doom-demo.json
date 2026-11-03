@@ -1,0 +1,2 @@
+[{"wait":8000},{"click":[183,116]},{"wait":600},{"click":[232,178]},
+ {"wait":60000},{"shot":"doom-1"},{"stats":"doom 1"},{"wait":60000},{"shot":"doom-2"},{"stats":"doom 2"},{"wait":60000},{"shot":"doom-3"},{"stats":"doom 3"},{"wait":30000},{"shot":"doom-4"},{"stats":"doom 4"}]

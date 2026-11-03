@@ -1,0 +1,1 @@
+[{"wait":5000},{"click":[33,56]},{"wait":600},{"shot":"def-1-warnings"},{"click":[556,79]},{"wait":200},{"click":[85,56]},{"wait":1500},{"shot":"def-2-run"},{"click":[158,33]},{"wait":300},{"click":[210,56]},{"wait":1000},{"shot":"def-3-window"},{"click":[200,120]},{"wait":200},{"type":"x"},{"wait":400},{"shot":"def-4-edited"}]

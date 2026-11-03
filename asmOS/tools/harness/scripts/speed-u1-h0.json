@@ -1,0 +1,1 @@
+[{"wait": 12000}, {"click": [117, 33]}, {"wait": 400}, {"click": [228, 252]}, {"wait": 400}, {"click": [85, 56]}, {"wait": 300}, {"stats": "start"}, {"wait": 30000}, {"stats": "end"}, {"shot": "speed-u1-h0"}]

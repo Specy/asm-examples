@@ -1,0 +1,1 @@
+[{"wait":5000},{"click":[85,56]},{"wait":1200},{"shot":"fault-1"},{"key":"F8"},{"wait":400},{"shot":"fault-2-back"},{"key":"F8"},{"wait":400},{"shot":"fault-3-back"}]

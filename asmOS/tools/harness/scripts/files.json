@@ -1,0 +1,1 @@
+[{"wait":5000},{"shot":"files-1"},{"click":[110,154],"button":"right"},{"wait":400},{"move":[150,178]},{"wait":500},{"shot":"files-2-openwith"}]

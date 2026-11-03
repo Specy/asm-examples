@@ -1,0 +1,3 @@
+[{"wait":5000},{"dblclick":[48,22]},{"wait":2000},{"shot":"np-1-open"},
+ {"type":"Hello from asmOS!\nA second line, typed."},{"wait":800},{"shot":"np-2-typed"},
+ {"key":"Home"},{"key":"ArrowUp"},{"key":"End","shift":true},{"wait":500},{"shot":"np-3-selected"}]

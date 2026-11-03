@@ -1,0 +1,126 @@
+# @screen width=256 height=256 unit=4 base=display
+# A ball bouncing over a colour gradient
+# on the bitmap display. The @screen line
+# sets it up: 256 by 256 pixels, each
+# word a 4 by 4 square, so the picture is
+# 64 by 64 words from the label display.
+# A word's low 24 bits are its colour,
+# 0x00RRGGBB. Each frame puts the
+# gradient back where the ball was, moves
+# it, draws it again and sleeps 30 ms.
+
+    .eqv    SIZE, 64      # words a side
+    .eqv    BALL, 6       # the ball's side
+    .eqv    EDGE, 58      # SIZE - BALL
+    .eqv    RIM, 5        # BALL - 1
+
+    .data
+display: .space 16384     # 64 * 64 words
+
+    .text
+main:
+    la      s0, display
+    li      t1, 0         # y
+fill_rows:
+    li      t0, 0         # x
+fill:
+    jal     paint_background
+    addi    t0, t0, 1
+    li      t3, SIZE
+    blt     t0, t3, fill
+    addi    t1, t1, 1
+    blt     t1, t3, fill_rows
+
+    li      s1, 5         # the ball's x
+    li      s2, 20        # and y
+    li      s3, 1         # step across
+    li      s4, 1         # and down
+frame:
+    li      a5, 0         # background
+    jal     ball          # under the ball
+    add     s1, s1, s3    # move, turning
+    bltz    s1, bounce_x  # at the edges
+    li      t3, EDGE
+    ble     s1, t3, moved_x
+bounce_x:
+    neg     s3, s3
+    add     s1, s1, s3
+    add     s1, s1, s3
+moved_x:
+    add     s2, s2, s4
+    bltz    s2, bounce_y
+    li      t3, EDGE
+    ble     s2, t3, moved_y
+bounce_y:
+    neg     s4, s4
+    add     s2, s2, s4
+    add     s2, s2, s4
+moved_y:
+    li      a5, 1         # draw the ball
+    jal     ball
+    li      a0, 30        # sleep 30 ms
+    li      a7, 32
+    ecall
+    j       frame
+
+# Paints the ball's square at s1, s2: the
+# ball (a5 = 1) or the background under
+# it (a5 = 0).
+ball:
+    mv      s5, ra
+    li      t1, 0
+ball_rows:
+    li      t0, 0
+ball_cols:
+    add     t4, t0, s1    # its word at
+    add     t5, t1, s2    # x, y
+    beqz    a5, ball_clear
+    li      t6, 0x00ffd040   # gold
+    beqz    t0, ball_rim
+    beqz    t1, ball_rim
+    li      t3, RIM
+    beq     t0, t3, ball_rim
+    beq     t1, t3, ball_rim
+    j       ball_store
+ball_rim:
+    li      t6, 0x00c08020   # darker
+ball_store:
+    slli    t2, t5, 6     # (y * 64 + x)
+    add     t2, t2, t4    # * 4
+    slli    t2, t2, 2
+    add     t2, t2, s0
+    sw      t6, 0(t2)
+    j       ball_next
+ball_clear:
+    mv      a2, t0        # keep t0, t1:
+    mv      a3, t1        # the call below
+    mv      t0, t4        # works on them
+    mv      t1, t5
+    jal     paint_background
+    mv      t0, a2
+    mv      t1, a3
+ball_next:
+    addi    t0, t0, 1
+    li      t3, BALL
+    blt     t0, t3, ball_cols
+    addi    t1, t1, 1
+    blt     t1, t3, ball_rows
+    mv      ra, s5
+    ret
+
+# Paints the background word at x = t0,
+# y = t1: red grows to the right, green
+# downwards.
+paint_background:
+    slli    t2, t0, 2     # red = x * 4
+    slli    t2, t2, 16
+    slli    t6, t1, 2     # green = y * 4
+    slli    t6, t6, 8
+    or      t2, t2, t6
+    ori     t2, t2, 0x60  # some blue
+    slli    t6, t1, 6     # display +
+    add     t6, t6, t0    # (y * 64 + x)
+    slli    t6, t6, 2     # * 4
+    add     t6, t6, s0
+    sw      t2, 0(t6)
+    ret

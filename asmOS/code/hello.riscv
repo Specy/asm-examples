@@ -1,0 +1,17 @@
+# Hello, world: prints a line with the
+# print string service (ecall 4), then
+# ends with exit (10).
+# Build, then Run. Step runs one
+# instruction at a time.
+
+    .data
+greeting:
+    .asciz  "Hello, world!\n"
+
+    .text
+main:
+    la      a0, greeting  # its address
+    li      a7, 4         # print string
+    ecall
+    li      a7, 10        # exit
+    ecall

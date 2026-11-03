@@ -1,0 +1,1 @@
+[{"wait":5000},{"click":[204,33]},{"wait":300},{"click":[230,56]},{"wait":600},{"shot":"help-ecalls"},{"key":"Enter"},{"wait":300},{"click":[204,33]},{"wait":300},{"click":[230,76]},{"wait":600},{"shot":"help-devices"}]

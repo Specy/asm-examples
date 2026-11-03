@@ -1,0 +1,1 @@
+[{"wait": 5000}, {"click": [200, 78]}, {"key": "End", "ctrl": true}, {"type": "\n    addi t0, t0, 5000\nlw t9, 0(sp)\njal nowhere\n"}, {"key": "KeyB", "ctrl": true}, {"wait": 600}, {"shot": "err-1-listed"}, {"click": [161, 354]}, {"wait": 400}, {"shot": "err-2-clicked"}]

@@ -1,0 +1,1 @@
+[{"wait":4500},{"shot":"desktop"},{"click":[30,467]},{"wait":400},{"move":[60,300]},{"wait":400},{"move":[200,300]},{"wait":400},{"shot":"start-menu"},{"key":"Escape"},{"key":"Escape"},{"key":"Escape"},{"wait":300},{"dblclick":[48,366]},{"wait":1500},{"shot":"desktop-launch"}]

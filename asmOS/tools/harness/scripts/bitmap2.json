@@ -1,0 +1,1 @@
+[{"wait":5000},{"click":[33,56]},{"wait":800},{"click":[85,56]},{"wait":150},{"shot":"bm2-1"},{"wait":250},{"shot":"bm2-2"},{"wait":2000},{"shot":"bm2-3"},{"click":[293,56]},{"wait":400},{"click":[85,56]},{"wait":2000},{"shot":"bm2-4-rerun"},{"key":"F12"},{"wait":300},{"key":"F5"},{"wait":2000},{"shot":"bm2-5-reset"}]

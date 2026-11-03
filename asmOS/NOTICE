@@ -1,0 +1,38 @@
+asmOS
+Copyright (C) 2026 Specy
+
+asmOS is free software: you can redistribute it and/or modify it under the terms of the GNU
+General Public License as published by the Free Software Foundation, either version 2 of the
+License, or (at your option) any later version. See LICENSE.
+
+It contains or is built with the following works by others.
+
+DOOM, through doomgeneric (os/doom/doomgeneric/)
+  doomgeneric, https://github.com/ozkl/doomgeneric, the portable Chocolate Doom, under the GNU
+  General Public License version 2 (os/doom/LICENSE.txt). DOOM's source code is copyright
+  id Software; Chocolate Doom is copyright its authors.
+
+The DOOM shareware IWAD (games/doom/doom1.wad)
+  The first episode of DOOM, copyright id Software, which id Software allows to be copied and
+  shared unchanged. It is not under asmOS's license.
+
+The 8 x 13 font (os/font.c)
+  X11's "fixed" font, in the public domain, taken from console-setup's Lat15-Fixed13.psf.
+
+Bad Apple!! (videos/bad-apple.vid)
+  A video by Anira to "Bad Apple!! feat. nomico", Alstroemeria Records' arrangement of ZUN's
+  "Bad Apple!!" from the Touhou Project, sung by nomico, re-encoded for asmOS's Video Player.
+  The video and the song are their authors' own and not under asmOS's license.
+
+Pac-Man (os/apps/pacman.c, os/apps/pacman/, games/pacman/)
+  An unofficial reimplementation of Namco's arcade game, for teaching. Pac-Man is a trademark of
+  Bandai Namco Entertainment Inc., which has no part in this project.
+
+The music (music/)
+  Pachelbel's Canon, Bach's Minuet in G and Beethoven's Ode to Joy, in the public domain,
+  sequenced for asmOS.
+
+Formats asmOS's own code follows
+  The Video Player's sound follows the layout of the QOA format (https://qoaformat.org, MIT
+  license), its picture is coded in the manner of ITU-T T.6 with LZMA's adaptive binary range
+  coder; the code is asmOS's own.

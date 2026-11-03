@@ -1,0 +1,1 @@
+[{"wait": 5000}, {"click": [85, 56]}, {"wait": 1500}, {"shot": "guess-1-waiting"}, {"type": "50\n"}, {"wait": 800}, {"type": "25\n"}, {"wait": 800}, {"type": "7"}, {"wait": 300}, {"shot": "guess-2-answers"}]

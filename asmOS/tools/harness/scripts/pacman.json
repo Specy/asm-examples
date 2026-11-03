@@ -1,0 +1,1 @@
+[{"wait":5000},{"dblclick":[135,22]},{"wait":3000},{"shot":"pac-1"},{"key":"Space"},{"wait":3000},{"shot":"pac-2"},{"hold":"ArrowLeft","ms":1500},{"shot":"pac-3"},{"stats":"pac"}]

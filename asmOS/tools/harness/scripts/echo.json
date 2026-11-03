@@ -1,0 +1,1 @@
+[{"wait": 5000}, {"click": [85, 56]}, {"wait": 800}, {"type": "Hi there"}, {"wait": 600}, {"shot": "echo-1-typed"}, {"type": "."}, {"wait": 800}, {"shot": "echo-2-ended"}]

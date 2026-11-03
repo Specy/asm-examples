@@ -1,0 +1,1 @@
+[{"wait":5000},{"click":[33,56]},{"wait":500},{"click":[300,148]},{"wait":200},{"type":"#"},{"wait":400},{"shot":"edit-1"},{"key":"F5"},{"wait":1500},{"shot":"edit-2-run"}]

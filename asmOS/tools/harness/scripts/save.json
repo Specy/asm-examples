@@ -1,0 +1,1 @@
+[{"wait":5000},{"click":[30,33]},{"wait":300},{"click":[70,136]},{"wait":700},{"shot":"save-1-dialog"},{"key":"Enter"},{"wait":700},{"shot":"save-2-saved"}]

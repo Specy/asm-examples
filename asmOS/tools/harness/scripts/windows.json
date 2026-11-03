@@ -1,0 +1,8 @@
+[{"wait":5000},{"dblclick":[48,22]},{"wait":1500},
+ {"drag":[200,30,330,120]},{"wait":800},
+ {"dblclick":[135,294]},{"wait":1500},{"shot":"win-1-two"},
+ {"click":[600,420]},{"wait":600},{"shot":"win-2-focus"},
+ {"click":[198,126]},{"wait":600},{"shot":"win-3-menu"},
+ {"key":"Escape"},{"wait":400},{"key":"F4","alt":true},{"wait":1500},{"shot":"win-4-closed"},
+ {"click":[150,467]},{"wait":800},{"shot":"win-5-minimized"},
+ {"click":[150,467]},{"wait":800},{"shot":"win-6-restored"}]
