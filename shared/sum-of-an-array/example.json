@@ -1,0 +1,7 @@
+{
+    "name": "Sum of an array",
+    "description": "Adds six numbers stored next to each other in memory, walking them with a pointer.",
+    "tags": [
+        "basics"
+    ]
+}

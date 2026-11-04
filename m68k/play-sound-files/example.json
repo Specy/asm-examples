@@ -1,0 +1,5 @@
+{
+    "name": "Play sound files",
+    "description": "Writes a WAV file and a MIDI file with the file tasks, then plays both.",
+    "tags": ["sound", "files"]
+}

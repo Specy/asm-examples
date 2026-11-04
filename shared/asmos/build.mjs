@@ -37,7 +37,7 @@ const MACHINES = [
         target: 'RISC-V',
         platforms: ['riscv', 'sim'],
         description:
-            'A small operating system with processes, a window manager and eighteen applications, Pac-Man, DOOM, a Video Player and an Assembly Editor among them, in C and RISC-V assembly, on RARS.',
+            'A desktop with a process scheduler and window manager, written in C and RISC-V assembly. Includes Pac-Man, DOOM and a RISC-V assembly editor.',
         //keeping the history of every instruction makes drawing half as fast
         project: project(
             'os/main.c.riscv',
@@ -53,7 +53,7 @@ const MACHINES = [
         target: 'MIPS',
         platforms: ['mips', 'sim'],
         description:
-            'A small operating system with processes, a window manager and eighteen applications, Pac-Man, DOOM, a Video Player and an Assembly Editor that runs RISC-V programs among them, in C and MIPS assembly, on MARS.',
+            'A desktop with a process scheduler and window manager, written in C and MIPS assembly. Includes Pac-Man, DOOM and a RISC-V assembly editor. No video is bundled.',
         project: project(
             'os/main.c.mips',
             { undoEnabled: false },

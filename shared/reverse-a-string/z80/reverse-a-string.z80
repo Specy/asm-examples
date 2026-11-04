@@ -1,0 +1,34 @@
+    .org 0x8000
+    ld hl, text     ; hl = the start of the string
+find_end:
+    ld a, (hl)
+    or a
+    jr z, at_end    ; hl stops on the terminator
+    inc hl
+    jr find_end
+at_end:
+    ld d, h
+    ld e, l
+    dec de          ; right = the last character
+    ld bc, text
+    or a            ; C = 0 before subtraction
+    sbc hl, bc      ; hl = the length
+    ld a, l
+    srl a           ; half of it = number of swaps
+    jr z, done
+    ld b, a
+    ld hl, text     ; left = text, again
+swap:
+    ld a, (de)      ; u = *right
+    ld c, a
+    ld a, (hl)      ; t = *left
+    ld (hl), c      ; *left = u
+    ld (de), a      ; *right = t
+    inc hl          ; left++
+    dec de          ; right--
+    djnz swap
+done:
+    halt
+
+    .org 0x9000
+text:   .asciz "Assembly"

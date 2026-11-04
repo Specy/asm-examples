@@ -1,4 +1,4 @@
 {
     "name": "Keyboard and display",
-    "description": "The memory-mapped keyboard and display registers: every key typed is echoed to the console and paints a cell of the bitmap display."
+    "description": "Echo typed characters through the memory-mapped display registers and paint cells of the bitmap display."
 }

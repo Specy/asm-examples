@@ -1,4 +1,9 @@
 {
     "name": "Mouse paint",
-    "description": "Painting with the mouse: a brush under the pointer while the left button is held, red with Shift."
+    "description": "Painting with the mouse: a brush under the pointer while the left button is held, red with Shift.",
+    "ports": {
+        "x86": {
+            "description": "Painting with the mouse: a brush under the pointer while the left button is held, its colour changed with the wheel."
+        }
+    }
 }

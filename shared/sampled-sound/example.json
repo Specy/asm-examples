@@ -1,0 +1,5 @@
+{
+    "name": "Sampled sound",
+    "description": "A sound computed sample by sample, then played as a scale.",
+    "tags": ["sound"]
+}

@@ -1,0 +1,7 @@
+{
+    "name": "Hello world",
+    "description": "Printing text and a number to the console: the shortest program that shows something.",
+    "tags": [
+        "basics"
+    ]
+}

@@ -1,6 +1,6 @@
 # Pac-Man
 
-1. Choose the version in the program picker at the right of the bottom panel's tabs: `main.s` is the assembly, `pacman.c` the C.
+1. Choose the version in the program picker at the right of the bottom panel's tabs: `main.s` is the assembly version and `pacman.c` is the C version.
 2. **Build**, then **Run**.
 3. Click the Screen so it receives the keyboard, then press space.
 4. Move with **W A S D**, or **Z Q S D**, or **8 4 5 6** on the number pad. **P** pauses.

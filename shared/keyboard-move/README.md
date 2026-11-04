@@ -1,6 +1,8 @@
 # Keyboard move
 
-A square that moves while the arrow keys are held. Every frame the program asks which keys are down, as a game does, instead of reading the characters typed. Build, Run, then click the Screen so that the keys go to the program instead of the editor. It runs until you press Stop.
+Build, Run, then click the Screen so that the keys go to the program. Hold the arrow keys to move the square. It runs until you press Stop.
+
+Every frame the program asks which keys are down, as a game does, instead of reading the characters typed.
 
 | Target | How it reads the keys                                                                                                                               |
 | ------ | --------------------------------------------------------------------------------------------------------------------------------------------------- |

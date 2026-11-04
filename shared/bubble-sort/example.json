@@ -1,0 +1,7 @@
+{
+    "name": "Bubble sort",
+    "description": "Sorts an array in place by swapping neighbours that are out of order.",
+    "tags": [
+        "basics"
+    ]
+}

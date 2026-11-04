@@ -1,0 +1,7 @@
+{
+    "name": "Binary search",
+    "description": "Finds a value in a sorted array by halving the range it could be in.",
+    "tags": [
+        "basics"
+    ]
+}

@@ -1,0 +1,25 @@
+count equ 8
+
+    .org 0x8000
+    ld c, count-1       ; the outer loop runs count-1 times
+outer:
+    ld hl, numbers      ; back to the first element
+    ld b, c             ; the inner loop is one shorter every pass
+inner:
+    ld a, (hl)          ; left = numbers[i]
+    inc hl
+    cp (hl)             ; left - right
+    jr c, in_order      ; already in order, so leave them
+    ld d, (hl)          ; otherwise swap them
+    ld (hl), a
+    dec hl
+    ld (hl), d
+    inc hl
+in_order:
+    djnz inner
+    dec c
+    jr nz, outer
+    halt
+
+    .org 0x9000
+numbers: .db 42, 8, 15, 4, 23, 16, 99, 1

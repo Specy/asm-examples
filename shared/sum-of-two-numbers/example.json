@@ -1,0 +1,7 @@
+{
+    "name": "Sum of two numbers",
+    "description": "Asks for two numbers in the console and prints their sum.",
+    "tags": [
+        "basics"
+    ]
+}

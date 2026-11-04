@@ -1,6 +1,6 @@
 {
     "name": "Pac-Man",
-    "description": "The arcade game with its sound, in RISC-V assembly and in C, reading its pictures from BMP Files.",
+    "description": "The arcade game with its sound, in RISC-V assembly and in C, reading its pictures from BMP files.",
     "project": {
         "programs": {
             "assembly/main.s": {

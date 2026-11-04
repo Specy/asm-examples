@@ -1,0 +1,7 @@
+{
+    "name": "Reverse a string",
+    "description": "Reverses a zero-terminated string in place, with two pointers walking towards each other.",
+    "tags": [
+        "basics"
+    ]
+}

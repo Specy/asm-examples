@@ -1,0 +1,50 @@
+    .org 0x8000
+    ld a, 8
+    call factorial      ; 8!, returned in hl
+    push hl
+    pop ix              ; keep 8! while fib uses hl
+    ld a, 10
+    call fib            ; fib(10), returned in hl
+    jp done
+
+; factorial(n): n in a, answer in hl
+factorial:
+    cp 2
+    jr nc, more
+    ld hl, 1            ; factorial(0) and factorial(1) are 1
+    ret
+more:
+    push af             ; save this call's n
+    dec a
+    call factorial      ; hl = factorial(n - 1)
+    pop af              ; recover this call's n
+    ld b, a
+    ld d, h
+    ld e, l             ; de = factorial(n - 1)
+    ld hl, 0
+times:
+    add hl, de          ; add the smaller factorial n times
+    djnz times
+    ret
+
+; fib(n): n in a, answer in hl
+fib:
+    cp 2
+    jr nc, recurse
+    ld l, a
+    ld h, 0             ; fib(0) is 0 and fib(1) is 1
+    ret
+recurse:
+    push af             ; save this call's n
+    dec a
+    call fib            ; hl = fib(n - 1)
+    pop af              ; restore n before calculating n - 2
+    push hl             ; keep the first answer across the next call
+    sub 2
+    call fib            ; hl = fib(n - 2)
+    pop de              ; de = fib(n - 1)
+    add hl, de          ; fib(n - 2) + fib(n - 1)
+    ret
+
+done:
+    halt

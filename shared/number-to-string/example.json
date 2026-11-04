@@ -1,0 +1,7 @@
+{
+    "name": "Number to string",
+    "description": "Prints a number in hexadecimal, decimal and binary, making the digits itself.",
+    "tags": [
+        "basics"
+    ]
+}

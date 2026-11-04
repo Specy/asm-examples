@@ -1,0 +1,7 @@
+{
+    "name": "Subroutine with stack arguments",
+    "description": "Passes arguments on the stack and keeps a local variable in a stack frame.",
+    "tags": [
+        "basics"
+    ]
+}

@@ -1,4 +1,4 @@
 {
     "name": "Bouncing ball",
-    "description": "A ball bouncing around the Screen, drawn a whole frame at a time and paced by the clock."
+    "description": "A ball bouncing around the Screen, with a wait between frames."
 }

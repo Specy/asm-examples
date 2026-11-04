@@ -1,8 +1,8 @@
 # Bad Apple!!
 
-Bad Apple!!, the shadow-play video, on the M68K screen: 6,526 frames of 16 × 16 pixels, one byte a pixel, scaled up to the full height of the screen. Build, then Run.
+Build, then Run to watch Bad Apple!! on the M68K screen. This version stores 6,526 frames of 16 × 16 pixels, one byte a pixel, and scales them up to the full height of the screen.
 
-A frame is drawn as filled rectangles (task 87), and only the cells that changed since the frame before are drawn again. About eight of the 256 change between frames, which is what keeps a frame within its time. `FPS` at the top sets the pace. Task 23 waits whole hundredths of a second, so at the video's own 30 frames a second a frame waits three hundredths.
+A frame is drawn as filled rectangles (task 87). Only the cells that changed since the previous frame are drawn again: about eight of the 256 cells. Drawing fewer cells helps fit the work within the frame budget. `FPS` at the top sets the intended pace. Task 23 waits whole hundredths of a second, so at the video's own 30 frames a second each frame waits three hundredths.
 
 ## License
 

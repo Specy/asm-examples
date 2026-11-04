@@ -1,0 +1,5 @@
+{
+    "name": "Snake",
+    "description": "Steer the snake to the food to grow it, without hitting a wall or its own body.",
+    "tags": ["game", "screen", "keyboard"]
+}

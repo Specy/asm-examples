@@ -1,5 +1,5 @@
 {
     "name": "asmOS",
-    "description": "A small operating system with processes, a compositing window manager and eighteen applications, Pac-Man, DOOM, a Video Player playing Bad Apple!! and an Assembly Editor that runs RISC-V programs among them, in C and x86 assembly.",
+    "description": "A desktop with a process scheduler and window manager, written in C and x86 assembly. Includes Pac-Man, DOOM and a RISC-V assembly editor.",
     "license": "GPL-2.0-or-later"
 }

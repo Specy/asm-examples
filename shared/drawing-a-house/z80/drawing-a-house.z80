@@ -1,0 +1,97 @@
+P_CHAR  equ 0x10        ; the console character port draws at the text cursor
+P_PEN   equ 0x20        ; lines, outlines and text
+P_FILL  equ 0x21        ; the inside of a shape, and the clear
+P_WIDTH equ 0x22
+P_X     equ 0x23
+P_Y     equ 0x24
+P_X2    equ 0x25
+P_Y2    equ 0x26
+P_CMD   equ 0x27        ; one write here runs one drawing operation
+P_COL   equ 0x29        ; the text cursor, in 8 by 8 cells
+P_ROW   equ 0x2A
+
+C_LINE_TO equ 2
+C_MOVE_TO equ 3
+C_RECT    equ 4
+C_ELLIPSE equ 6
+C_FLOOD   equ 8
+C_CLEAR   equ 9
+C_RESIZE  equ 10
+
+SKY     equ 0x9B        ; a colour is one byte: 3 bits of red, 3 of green, 2 of blue
+GRASS   equ 0x35
+SUN     equ 0xFC
+WALL    equ 0xAD
+ROOF    equ 0x64
+DOOR    equ 0x44
+WHITE   equ 0xFF
+
+CMD     equ 0           ; offsets within each seven-byte command row
+FILL    equ 1
+PEN     equ 2
+SX      equ 3
+SY      equ 4
+SX2     equ 5
+SY2     equ 6
+SHAPE_SIZE equ 7        ; bytes in one table row
+COUNT   equ (shapes_end - shapes) / SHAPE_SIZE
+
+    .org 0x8000
+    ld a, 3
+    out (P_WIDTH), a    ; a three pixel pen, for every outline in the picture
+
+    ld ix, shapes
+    ld b, COUNT
+draw:
+    ld a, (ix+FILL)
+    out (P_FILL), a
+    ld a, (ix+PEN)
+    out (P_PEN), a
+    ld a, (ix+SX)
+    out (P_X), a
+    ld a, (ix+SY)
+    out (P_Y), a
+    ld a, (ix+SX2)
+    out (P_X2), a
+    ld a, (ix+SY2)
+    out (P_Y2), a
+    ld a, (ix+CMD)
+    out (P_CMD), a      ; and the command port draws it
+    ld de, SHAPE_SIZE
+    add ix, de          ; on to the next table row
+    djnz draw
+
+    ld a, WHITE
+    out (P_PEN), a
+    ld a, 1
+    out (P_COL), a      ; the text cursor is in cells, not in pixels
+    xor a
+    out (P_ROW), a
+    ld hl, label
+print:
+    ld a, (hl)
+    or a
+    jr z, done
+    out (P_CHAR), a
+    inc hl
+    jr print
+done:
+    halt
+
+    .org 0x9000
+shapes:
+;        command     fill   pen     x    y    x2   y2
+    .db C_RESIZE,    0,     0,      240, 192, 0,   0      ; the Screen itself
+    .db C_CLEAR,     SKY,   SKY,    0,   0,   0,   0      ; the sky
+    .db C_RECT,      GRASS, GRASS,  0,   130, 240, 192    ; the ground
+    .db C_ELLIPSE,   SUN,   SUN,    180, 20,  225, 65     ; the sun
+    .db C_RECT,      WALL,  WHITE,  70,  80,  160, 160    ; the house
+    .db C_MOVE_TO,   WALL,  ROOF,   58,  80,  0,   0      ; over to the left eave
+    .db C_LINE_TO,   WALL,  ROOF,   115, 40,  0,   0      ; up to the apex
+    .db C_LINE_TO,   WALL,  ROOF,   172, 80,  0,   0      ; down to the right eave
+    .db C_LINE_TO,   WALL,  ROOF,   58,  80,  0,   0      ; and back where it started
+    .db C_FLOOD,     ROOF,  ROOF,   115, 65,  0,   0      ; and the inside of the roof
+    .db C_RECT,      DOOR,  DOOR,   100, 125, 125, 160    ; the door
+shapes_end:
+
+label:  .asciz "A HOUSE IN ELEVEN COMMANDS"

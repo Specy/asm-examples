@@ -1,17 +1,24 @@
 {
     "name": "Flappy Bird",
-    "description": "Fly between the pipes: every tap flaps, and gravity does the rest. In M68K assembly and, for RISC-V, in C.",
+    "description": "Fly between the pipes: every tap flaps, and gravity does the rest. In assembly and, for RISC-V, in C as well.",
     "ports": {
         "risc-v": {
             "project": {
                 "programs": {
+                    "flappy-bird.s": {},
                     "flappy-bird.c.riscv": {}
                 },
-                "openTabs": ["README.md", "flappy-bird.c", "flappy-bird.c.riscv"],
-                "activeTab": "flappy-bird.c.riscv",
+                "openTabs": [
+                    "README.md",
+                    "flappy-bird.s",
+                    "flappy-bird.c",
+                    "flappy-bird.c.riscv"
+                ],
+                "activeTab": "flappy-bird.s",
                 "fileViews": {
                     "README.md": "preview"
-                }
+                },
+                "selectedProgram": "flappy-bird.s"
             }
         }
     }

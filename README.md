@@ -5,16 +5,34 @@ Example programs for [asm-editor](https://github.com/Specy/asm-editor), the web 
 <!-- examples:start -->
 | Example | Targets | What it is | License |
 | ------- | ------- | ---------- | ------- |
-| [asmOS](shared/asmos/) | MIPS, RISC-V, X86 | A small operating system with processes, a compositing window manager and eighteen applications, Pac-Man, DOOM, a Video Player playing Bad Apple!! and an Assembly Editor that runs RISC-V programs among them, in C and x86 assembly. | GPL-2.0-or-later |
+| [asmOS](shared/asmos/) | MIPS, RISC-V, X86 | A desktop with a process scheduler and window manager, written in C and x86 assembly. Includes Pac-Man, DOOM and a RISC-V assembly editor. | GPL-2.0-or-later |
 | [Bad Apple!!](m68k/bad-apple/) | M68K | Bad Apple!!, the shadow-play video, as 6,526 frames of 16 by 16 pixels drawn with rectangles. | MIT |
+| [Binary search](shared/binary-search/) | M68K, MIPS, RISC-V, X86, Z80 | Finds a value in a sorted array by halving the range it could be in. | MIT |
 | [Bitmap tour](shared/bitmap-tour/) | MIPS, RISC-V | The bitmap display, one word of memory a pixel: a colour ramp, a square and a border over a 256 by 256 grid. | MIT |
-| [Bouncing ball](shared/bouncing-ball/) | M68K, MIPS, RISC-V, Z80 | A ball bouncing around the Screen, drawn a whole frame at a time and paced by the clock. | MIT |
-| [Flappy Bird](shared/flappy-bird/) | M68K, RISC-V | Fly between the pipes: every tap flaps, and gravity does the rest. In M68K assembly and, for RISC-V, in C. | MIT |
+| [Bouncing ball](shared/bouncing-ball/) | M68K, MIPS, RISC-V, X86, Z80 | A ball bouncing around the Screen, with a wait between frames. | MIT |
+| [Branches and loops](shared/branches-and-loops/) | M68K, MIPS, RISC-V, X86, Z80 | An if/else that picks the larger of two numbers, then a loop that counts from 1 to 10 into memory. | MIT |
+| [Bubble sort](shared/bubble-sort/) | M68K, MIPS, RISC-V, X86, Z80 | Sorts an array in place by swapping neighbours that are out of order. | MIT |
+| [Chiptune](shared/chiptune/) | M68K, MIPS, RISC-V, Z80 | A short tune on three voices at once, a melody, a bass and drums, the way a game console's music was made. | MIT |
+| [Drawing a house](shared/drawing-a-house/) | M68K, MIPS, RISC-V, X86, Z80 | A house under the sun, with sky and ground, drawn on the Screen in each Target's own way. | MIT |
+| [Factorial and Fibonacci](shared/factorial-and-fibonacci/) | M68K, MIPS, RISC-V, X86, Z80 | Two subroutines that call themselves: factorial(8) and fib(10). | MIT |
+| [Flappy Bird](shared/flappy-bird/) | M68K, MIPS, RISC-V, Z80 | Fly between the pipes: every tap flaps, and gravity does the rest. In assembly and, for RISC-V, in C as well. | MIT |
 | [Graphics tour](m68k/graphics-tour/) | M68K | Every drawing task of the M68K screen on one picture, then the sound tasks, ported from EASy68K's own example. | GPL-2.0-or-later |
-| [Keyboard and display](shared/keyboard-display/) | MIPS, RISC-V | The memory-mapped keyboard and display registers: every key typed is echoed to the console and paints a cell of the bitmap display. | MIT |
+| [Hello world](shared/hello-world/) | M68K, MIPS, RISC-V, X86, Z80 | Printing text and a number to the console: the shortest program that shows something. | MIT |
+| [Keyboard and display](shared/keyboard-display/) | MIPS, RISC-V | Echo typed characters through the memory-mapped display registers and paint cells of the bitmap display. | MIT |
+| [Keyboard control](shared/keyboard-control/) | M68K, MIPS, RISC-V, X86, Z80 | A square on the Screen that you steer with the keyboard. | MIT |
 | [Keyboard move](shared/keyboard-move/) | M68K, Z80 | A square that moves while the arrow keys are held, reading which keys are down as a game does. | MIT |
-| [Mouse paint](shared/mouse-paint/) | M68K, Z80 | Painting with the mouse: a brush under the pointer while the left button is held, red with Shift. | MIT |
-| [Pac-Man](risc-v/pacman/) | RISC-V | The arcade game with its sound, in RISC-V assembly and in C, reading its pictures from BMP Files. | MIT |
+| [Mouse paint](shared/mouse-paint/) | M68K, X86, Z80 | Painting with the mouse: a brush under the pointer while the left button is held, red with Shift. | MIT |
+| [Number to string](shared/number-to-string/) | M68K, MIPS, RISC-V, X86, Z80 | Prints a number in hexadecimal, decimal and binary, making the digits itself. | MIT |
+| [Pac-Man](risc-v/pacman/) | RISC-V | The arcade game with its sound, in RISC-V assembly and in C, reading its pictures from BMP files. | MIT |
+| [PC speaker](x86/pc-speaker/) | X86 | The opening of Für Elise on the PC speaker, one square-wave tone at a time. | MIT |
+| [Play a tune](shared/play-a-tune/) | MIPS, RISC-V, X86, Z80 | The first phrase of Ode to Joy, played from a table of notes. | MIT |
+| [Play sound files](m68k/play-sound-files/) | M68K | Writes a WAV file and a MIDI file with the file tasks, then plays both. | MIT |
+| [Reverse a string](shared/reverse-a-string/) | M68K, MIPS, RISC-V, X86, Z80 | Reverses a zero-terminated string in place, with two pointers walking towards each other. | MIT |
+| [Sampled sound](shared/sampled-sound/) | M68K, MIPS, RISC-V, X86 | A sound computed sample by sample, then played as a scale. | MIT |
+| [Snake](shared/snake/) | M68K, MIPS, RISC-V, Z80 | Steer the snake to the food to grow it, without hitting a wall or its own body. | MIT |
+| [Subroutine with stack arguments](shared/subroutine-with-stack-arguments/) | M68K, MIPS, RISC-V, X86, Z80 | Passes arguments on the stack and keeps a local variable in a stack frame. | MIT |
+| [Sum of an array](shared/sum-of-an-array/) | M68K, MIPS, RISC-V, X86, Z80 | Adds six numbers stored next to each other in memory, walking them with a pointer. | MIT |
+| [Sum of two numbers](shared/sum-of-two-numbers/) | M68K, MIPS, RISC-V, Z80 | Asks for two numbers in the console and prints their sum. | MIT |
 | [TRS-80 bounce](z80/trs80-bounce/) | Z80 | A block bouncing around the TRS-80's display, each frame composed in memory and copied in with one ldir. | MIT |
 | [TRS-80 text](z80/trs80-text/) | Z80 | Text and block graphics stored straight into the TRS-80's video memory. | MIT |
 <!-- examples:end -->

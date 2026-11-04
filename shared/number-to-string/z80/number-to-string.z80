@@ -1,0 +1,62 @@
+P_CHAR  equ 0x10
+
+    .org 0x8000
+    ld hl, 48879        ; n = 48879
+    ld c, 16            ; in hexadecimal
+    call print_in_base
+    ld hl, 48879
+    ld c, 10            ; in decimal
+    call print_in_base
+    ld hl, 48879
+    ld c, 2             ; in binary
+    call print_in_base
+    halt
+
+; print an unsigned 16-bit number in base 2 to 36: number in hl, base in c
+print_in_base:
+    ld de, buffer_end
+    dec de
+    xor a
+    ld (de), a          ; put the zero terminator at the end
+digit:
+    xor a               ; the remainder, which becomes the digit
+    ld b, 16            ; sixteen bits of n
+divide:
+    add hl, hl          ; shift the next dividend bit into the C flag
+    rla                 ; bring that bit into the remainder
+    cp c
+    jr c, no_sub
+    sub c               ; the divisor goes in once
+    inc l               ; set the new quotient bit to 1
+no_sub:
+    djnz divide
+    cp 10
+    jr c, is_digit
+    add a, 'A' - 10     ; 10 and up become 'A' and up
+    jr store
+is_digit:
+    add a, '0'          ; 0 to 9 become '0' to '9'
+store:
+    dec de
+    ld (de), a          ; in front of the digits we have already
+    ld a, h
+    or l                ; is anything left of n?
+    jr nz, digit
+    ex de, hl           ; the first character of the answer
+    call print
+    ld a, 10
+    out (P_CHAR), a
+    ret
+
+; print(p): the zero terminated string at hl
+print:
+    ld a, (hl)
+    or a
+    ret z
+    out (P_CHAR), a
+    inc hl
+    jr print
+
+    .org 0x9000
+buffer:     .ds 18      ; sixteen binary digits, the terminator and a spare byte
+buffer_end:

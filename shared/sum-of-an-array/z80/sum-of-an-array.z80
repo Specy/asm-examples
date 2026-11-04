@@ -1,0 +1,14 @@
+count equ 6
+
+    .org 0x8000
+    ld hl, numbers  ; address of the first byte
+    ld b, count     ; six passes through the loop
+    xor a           ; total = 0
+loop:
+    add a, (hl)     ; total = total + byte at hl
+    inc hl          ; address of the next byte
+    djnz loop
+    halt
+
+    .org 0x9000
+numbers: .db 4, 8, 15, 16, 23, 42

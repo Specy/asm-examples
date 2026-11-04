@@ -1,0 +1,36 @@
+count equ 10
+
+    .org 0x8000
+; If and else: the larger of x and y in d, their distance in e
+    ld b, 37        ; x = 37
+    ld c, 64        ; y = 64
+
+    ld a, b
+    cp c
+    jr nc, x_is_at_least_y
+    ld d, c         ; x was smaller, so y is the larger value
+    jr done
+x_is_at_least_y:
+    ld d, b         ; x was larger, or the two values were equal
+done:
+
+    ld a, b
+    sub c
+    jr nc, positive_distance
+    neg
+positive_distance:
+    ld e, a
+
+; A loop: the numbers 1 to 10 into the bytes at numbers
+    ld hl, numbers  ; hl = address of the first element
+    ld b, count     ; b is the loop counter
+    ld a, 1         ; a is the number to write
+fill:
+    ld (hl), a      ; write a at the address in hl
+    inc hl          ; move to the next byte
+    inc a           ; prepare the next number
+    djnz fill       ; decrease b; jump to fill if b is not zero
+    halt
+
+    .org 0x9000
+numbers: .ds count

@@ -1,0 +1,40 @@
+count equ 12
+
+    .org 0x8000
+    ld d, 91            ; the value we are looking for
+    ld b, 0             ; low = 0
+    ld c, count         ; high = count, one past the last element
+    ld e, 0xFF          ; found = -1, meaning not there
+search:
+    ld a, b
+    cp c
+    jr nc, search_done  ; while(low < high)
+    add a, c            ; low + high
+    srl a               ; mid = (low + high) / 2
+    push af             ; mid, kept while a is used for the element
+    ld hl, numbers
+    add a, l
+    ld l, a
+    jr nc, addressed
+    inc h               ; the carry into the high byte
+addressed:
+    ld a, (hl)          ; numbers[mid]
+    cp d                ; numbers[mid] - target
+    jr z, hit
+    jr c, go_right      ; it was too small, look above it
+    pop af              ; mid back
+    ld c, a             ; high = mid
+    jr search
+go_right:
+    pop af
+    inc a
+    ld b, a             ; low = mid + 1
+    jr search
+hit:
+    pop af
+    ld e, a             ; found = mid
+search_done:
+    halt
+
+    .org 0x9000
+numbers: .db 2, 5, 8, 12, 16, 23, 38, 56, 72, 91, 100, 127

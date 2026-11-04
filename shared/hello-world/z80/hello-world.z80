@@ -1,0 +1,29 @@
+P_CHAR  equ 0x10        ; writing a byte here prints it as a character
+P_NUM   equ 0x11        ; and here as an unsigned decimal number
+
+    .org 0x8000
+    ld hl, greeting
+    call print          ; print the greeting one character at a time
+    ld a, 10
+    out (P_CHAR), a     ; and a new line
+
+    ld hl, question
+    call print
+    ld a, 42
+    out (P_NUM), a      ; print the number as 42
+    ld a, 10
+    out (P_CHAR), a
+    halt
+
+; print the zero-terminated string pointed to by hl
+print:
+    ld a, (hl)
+    or a
+    ret z               ; the terminator, and the string is done
+    out (P_CHAR), a
+    inc hl
+    jr print
+
+    .org 0x9000
+greeting: .asciz "Hello, world!"
+question: .asciz "The answer is "

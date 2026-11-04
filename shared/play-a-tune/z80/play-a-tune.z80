@@ -1,0 +1,35 @@
+    .org 0x8000
+    ld a, 0
+    out (0x62), a   ; instrument 0, the acoustic grand piano
+    ld a, 100
+    out (0x63), a   ; volume, 0 to 127
+    ld hl, tune     ; address of the next note
+
+next:
+    ld e, (hl)      ; the pitch, the low byte of its word
+    inc hl
+    inc hl          ; skip the pitch word's unused high byte
+    ld a, e
+    or a            ; this table uses pitch 0 as its end marker
+    jr z, done
+    ld a, (hl)      ; the duration's low byte
+    inc hl
+    ld b, (hl)      ; and its high byte
+    inc hl
+    ld c, 0x64
+    out (c), a      ; store the duration: high byte in b, low byte in a
+    ld b, e         ; duration is stored; reuse b for the pitch
+    ld c, 0x61
+    in a, (c)       ; play the note at pitch b, then wait for it to end
+    jr next
+
+done:
+    halt
+
+    .org 0x9000
+tune:               ; pitch, milliseconds
+    .dw 64, 400,  64, 400,  65, 400,  67, 400
+    .dw 67, 400,  65, 400,  64, 400,  62, 400
+    .dw 60, 400,  60, 400,  62, 400,  64, 400
+    .dw 64, 600,  62, 200,  62, 800
+    .dw 0
