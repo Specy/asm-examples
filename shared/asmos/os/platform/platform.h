@@ -7,9 +7,10 @@
  *           sound on /dev/dsp and a MIDI port, a timer signal whose handler switches processes,
  *           and the Project's folders as Linux files.
  *   riscv/  one program on RARS, and mips/ one on MARS: a bitmap display in memory, the editor's
- *           Input controller, no sound, processes that give the processor up themselves, and the
- *           Project's folders through MARS's and RARS's file and folder calls. What the two share,
- *           all but the processor's own switch and counter, is in sim/.
+ *           Input controller, MIDI port and sampled-audio output, a timer whose interrupt the
+ *           program's own trap handler switches processes in, and the Project's folders through
+ *           MARS's and RARS's file and folder calls. What the two share, all but the processor's
+ *           own timer, trap handler and counter, is in sim/.
  *
  * files.c, the Project's files and folders through the POSIX calls, serves every machine.
  *
@@ -53,10 +54,8 @@
  *   PLATFORM_BACK_BUFFER  1 when there is memory for a back buffer the size of the screen, which the
  *                         window manager composes in; 0 when it draws straight onto the screen
  *   PLATFORM_WALLPAPER_PICTURE  1 when a picture the size of the screen fits as the wallpaper
- *   PLATFORM_DOOM, PLATFORM_VIDEO  1 when DOOM, and the Video Player, have the memory they need;
- *                         an application the machine leaves out is not in its APPS (apps.c)
- *   PLATFORM_SMALL_MEMORY 1 where all of static data and the heap is a few megabytes, as on MARS
- *                         and RARS: the applications that keep large buffers keep smaller ones
+ *   PLATFORM_DOOM, PLATFORM_VIDEO  1 when DOOM, and the Video Player, are there; an application
+ *                         the machine leaves out is not in its APPS (apps.c)
  */
 
 /* ------------------------------------------------------------------ the screen and the console */

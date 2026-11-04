@@ -33,7 +33,7 @@ static uint32_t *bmp_decode_with(const char *data, long size, int *w, int *h,
     return pixels;
 }
 
-static void *allocate_kernel(size_t size) { return malloc(size); }
+static void *allocate_kernel(size_t size) { return heap_alloc(size); }
 
 uint32_t *bmp_decode(const char *data, long size, int *w, int *h) {
     return bmp_decode_with(data, size, w, h, allocate_kernel);

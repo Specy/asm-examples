@@ -1,14 +1,22 @@
 /*
- * Memory on MARS and RARS. Static data and the heap share the data segment, 0x10010000 to
- * 0x10400000: the heap grows from the end of static data, and the machine refuses it past there
- * (the C library's malloc then answers NULL). The stack segment is another 4 MB, from 0x7ffffffc
- * down to 0x7fc00000, all of it ordinary memory however far it is from the stack pointer, and the
- * system's own stack, `main`'s, uses only its top. So each process's stack is a slot at the
- * segment's far end, and costs the heap nothing.
+ * Memory on MARS and RARS. Static data and the heap share the data segment, from 0x10010000 to
+ * the end the editor's MARS and RARS give it, <sim.h>'s SIM_DATA_SEGMENT_END: 64 MB, where MARS
+ * and RARS themselves stop at 0x10400000. The heap grows from the end of static data, and the
+ * machine ends the program that asks it for more than that, so the kernel checks what is left as
+ * it starts, and before it lets the heap grow (kernel.c's heap_alloc). The stack
+ * segment is another 4 MB, from 0x7ffffffc down to 0x7fc00000, all of it ordinary memory however
+ * far it is from the stack pointer, and the system's own stack, `main`'s, uses only its top. So
+ * each process's stack is a slot at the segment's far end, and costs the heap nothing.
  */
 #include <sim.h>
 
-enum { STACK_SEGMENT_END = 0x7fc00000, DATA_SEGMENT_LIMIT = 0x10400000 };
+enum { STACK_SEGMENT_END = 0x7fc00000 };
+
+/* Where asmOS takes the heap to end: the data segment's end, or lower, -DASMOS_HEAP_END=0x10600000
+ * say, to try asmOS short of memory, as tools/harness/scripts/sim-low-memory.json does. */
+#ifndef ASMOS_HEAP_END
+#define ASMOS_HEAP_END SIM_DATA_SEGMENT_END
+#endif
 
 /* Which slots a process has, one for each process the kernel can have. */
 static unsigned char stack_slots[PLATFORM_MAX_PROCESSES];
@@ -32,5 +40,5 @@ void platform_stack_free(void *stack) {
  * service 9 answers when asked for no bytes. */
 size_t platform_memory_left(void) {
     uintptr_t end = (uintptr_t)sim_sbrk(0);
-    return end < DATA_SEGMENT_LIMIT ? DATA_SEGMENT_LIMIT - end : 0;
+    return end < ASMOS_HEAP_END ? ASMOS_HEAP_END - end : 0;
 }

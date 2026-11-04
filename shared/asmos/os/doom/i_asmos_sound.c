@@ -16,6 +16,7 @@
 #include "doomgeneric/i_sound.h"
 #include "doomgeneric/w_wad.h"
 #include "doomgeneric/z_zone.h"
+#include "asmos_x86.h"
 
 /* DOOM_MIX: samples mixed at a time, more than the buffer holds, so one write usually fills it;
  * DOOM_PUMP_MS: the least time between two top-ups, each a few system calls, which cost time */
@@ -24,10 +25,7 @@ enum { DOOM_RATE = 11025, DOOM_CHANNELS = 16, DOOM_MIX = 4096, DOOM_PUMP_MS = 20
 void I_SoundPump(void);
 static void doom_pump_effects(void);
 
-/* doom_simd.asm's mixer, used while Game > Fast Drawing is on (doom_simd, i_asmos.c) */
-extern int doom_simd;
-void doom_mix_add(int32_t *mix, const byte *samples, int count, int volume);
-void doom_mix_out(int16_t *out, int32_t *mix, int count);
+/* doom_simd.asm's mixer is used while Game > Fast Drawing is on, on x86 (asmos_x86.h) */
 extern long doom_now_ms;    /* i_asmos.c: os_now_ms as DOOM last read it */
 
 /* ------------------------------------------------------------------ the effects */
@@ -108,7 +106,8 @@ static boolean doom_sound_playing(int channel) {
 }
 
 /* `count` samples of every voice playing, added up into `mix`, which is all zero before: answers
- * whether any played. With Game > Fast Drawing on, doom_simd.asm adds eight samples at a time. */
+ * whether any played. With Game > Fast Drawing on, on x86, doom_simd.asm adds eight samples at a
+ * time. */
 static boolean doom_mix(int *mix, int count) {
     boolean any = false;
     for (int c = 0; c < DOOM_CHANNELS; c++) {
@@ -122,8 +121,11 @@ static boolean doom_mix(int *mix, int count) {
         if (step == 1 << 16) {              /* the IWAD's own rate, nearly every effect */
             unsigned at = position >> 16, left = voice->length - at;
             int n = (unsigned)count < left ? count : (int)left;
+#if DOOM_X86
             if (doom_simd) doom_mix_add(mix, samples + at, n, volume);
-            else for (; i < n; i++) mix[i] += (samples[at + i] - 128) * volume;
+            else
+#endif
+            for (; i < n; i++) mix[i] += (samples[at + i] - 128) * volume;
             position += (unsigned)n << 16;
         } else {
             for (; i < count && position < end; i++, position += step)
@@ -155,14 +157,14 @@ static void doom_pump_effects(void) {
             doom_silence_owed -= count;
         }
         /* the mix as 16-bit samples, and back to zero for the next */
-        if (doom_simd) {
-            doom_mix_out(out, mix, count);
-        } else {
-            for (int i = 0; i < count; i++) {
-                int s = mix[i];
-                out[i] = (int16_t)(s > 32767 ? 32767 : s < -32768 ? -32768 : s);
-                mix[i] = 0;
-            }
+#if DOOM_X86
+        if (doom_simd) doom_mix_out(out, mix, count);
+        else
+#endif
+        for (int i = 0; i < count; i++) {
+            int s = mix[i];
+            out[i] = (int16_t)(s > 32767 ? 32767 : s < -32768 ? -32768 : s);
+            mix[i] = 0;
         }
         os_pcm_write(out, count);
     }

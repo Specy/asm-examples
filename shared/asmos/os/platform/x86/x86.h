@@ -48,15 +48,14 @@
 #define PLATFORM_BLIT 1
 #endif
 /* a back buffer the window manager composes in, and a picture as the wallpaper;
- * -DPLATFORM_BACK_BUFFER=0 tries drawing straight onto the screen, as smaller machines do */
+ * -DPLATFORM_BACK_BUFFER=0 tries drawing straight onto the screen, as a machine short of memory would */
 #ifndef PLATFORM_BACK_BUFFER
 #define PLATFORM_BACK_BUFFER 1
 #endif
 #define PLATFORM_WALLPAPER_PICTURE PLATFORM_BACK_BUFFER
-/* room for DOOM and the Video Player, and for every application's buffers */
+/* room for DOOM and the Video Player */
 #define PLATFORM_DOOM 1
 #define PLATFORM_VIDEO 1
-#define PLATFORM_SMALL_MEMORY 0
 
 #if PLATFORM_PREEMPTIVE
 /* What the signal frame holds of a process: its general-purpose registers, in Linux's order, and

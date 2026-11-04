@@ -97,17 +97,8 @@ int			dccount;
 //  given the DOOM style restrictions on the view orientation,
 //  will always have constant z depth.
 // asmOS: the loops of R_DrawColumn and R_DrawSpan in AVX2, in doom_simd.asm, while Game > Fast
-// Drawing is on (doom_simd, in i_asmos.c)
-extern int doom_simd;
-void doom_column(byte *dest, int count, fixed_t frac, fixed_t step, const byte *source,
-                 const byte *colormap);
-void doom_span(byte *dest, int count, unsigned int position, unsigned int step,
-               const byte *source, const byte *colormap);
-// and of R_DrawColumnLow and R_DrawSpanLow, each pixel two wide
-void doom_column2(byte *dest, int count, fixed_t frac, fixed_t step, const byte *source,
-                  const byte *colormap);
-void doom_span2(byte *dest, int count, unsigned int position, unsigned int step,
-                const byte *source, const byte *colormap);
+// Drawing is on (doom_simd, in i_asmos.c), on x86: asmos_x86.h
+#include "../asmos_x86.h"
 
 // Thus a special case loop for very fast rendering can
 //  be used. It has also been used with Wolfenstein 3D.
@@ -142,12 +133,14 @@ void R_DrawColumn (void)
     fracstep = dc_iscale; 
     frac = dc_texturemid + (dc_yl-centery)*fracstep; 
 
+#if DOOM_X86
     // asmOS: eight pixels at a time
     if (doom_simd)
     {
         doom_column(dest, count + 1, frac, fracstep, dc_source, dc_colormap);
         return;
     }
+#endif
 
     // Inner loop that does the actual texture mapping,
     //  e.g. a DDA-lile scaling.
@@ -259,12 +252,14 @@ void R_DrawColumnLow (void)
     fracstep = dc_iscale; 
     frac = dc_texturemid + (dc_yl-centery)*fracstep;
     
+#if DOOM_X86
     // asmOS: eight pixels at a time, dest2 being dest + 1
     if (doom_simd)
     {
         doom_column2(dest, count + 1, frac, fracstep, dc_source, dc_colormap);
         return;
     }
+#endif
 
     do 
     {
@@ -649,12 +644,14 @@ void R_DrawSpan (void)
     // We do not check for zero spans here?
     count = ds_x2 - ds_x1;
 
+#if DOOM_X86
     // asmOS: eight pixels at a time
     if (doom_simd)
     {
         doom_span(dest, count + 1, position, step, ds_source, ds_colormap);
         return;
     }
+#endif
 
     do
     {
@@ -783,12 +780,14 @@ void R_DrawSpanLow (void)
 
     dest = ylookup[ds_y] + columnofs[ds_x1];
 
+#if DOOM_X86
     // asmOS: eight pixels at a time
     if (doom_simd)
     {
         doom_span2(dest, count + 1, position, step, ds_source, ds_colormap);
         return;
     }
+#endif
 
     do
     {

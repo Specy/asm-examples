@@ -26,9 +26,6 @@
 #include "../keys.h"
 
 #include "../os.h"
-/* only for PLATFORM_SMALL_MEMORY, how much the editor keeps: the editor calls the kernel, never
- * the platform */
-#include "../platform/platform.h"
 
 #define RV_ALLOC(size) os_alloc(size)
 #define RV_REALLOC(pointer, size) os_realloc((pointer), (size))
@@ -38,14 +35,8 @@
 #include "../apps/widgets.c"
 
 enum {
-#if PLATFORM_SMALL_MEMORY
-    /* a machine of a few megabytes keeps a shorter program and history: 0.3 MB rather than 1.3 */
-    IDE_CAPACITY = 32768,      /* bytes of program text */
-    IDE_JOURNAL = 8192,        /* Step back's journal entries: 128 KB, thousands of steps */
-#else
     IDE_CAPACITY = 65536,      /* bytes of program text */
     IDE_JOURNAL = 65536,       /* Step back's journal entries: 1 MiB, tens of thousands of steps */
-#endif
     IDE_MAX_BREAKS = 128,
     IDE_LINE_MAX = 512,        /* the part of a line that is coloured */
     IDE_CONSOLE = 32768,       /* bytes of output the console keeps */

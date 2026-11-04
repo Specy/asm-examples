@@ -7,9 +7,9 @@
     extern free
     extern strcmp
     extern strlen
+    extern memmove
     extern malloc
     extern fill_rect32
-    extern memmove
     extern strrchr
     extern strchr
     extern memset
@@ -134,33 +134,29 @@
     ; compiler-symbol L240 .L240
     ; compiler-symbol L238 .L238
     ; compiler-symbol L241 .L241
-    ; compiler-symbol L249 .L249
-    ; compiler-symbol L246 .L246
-    ; compiler-symbol L260 .L260
-    ; compiler-symbol L251 .L251
-    ; compiler-symbol L253 .L253
     ; compiler-symbol L254 .L254
-    ; compiler-symbol L250 .L250
     ; compiler-symbol L255 .L255
     ; compiler-symbol L256 .L256
     ; compiler-symbol L257 .L257
+    ; compiler-symbol L251 .L251
+    ; compiler-symbol L244 .L244
+    ; compiler-symbol L258 .L258
+    ; compiler-symbol L246 .L246
+    ; compiler-symbol L252 .L252
+    ; compiler-symbol L259 .L259
+    ; compiler-symbol L266 .L266
     ; compiler-symbol L261 .L261
-    ; compiler-symbol L272 .L272
-    ; compiler-symbol L273 .L273
-    ; compiler-symbol L274 .L274
-    ; compiler-symbol L275 .L275
-    ; compiler-symbol L269 .L269
-    ; compiler-symbol L262 .L262
-    ; compiler-symbol L276 .L276
+    ; compiler-symbol L267 .L267
     ; compiler-symbol L264 .L264
-    ; compiler-symbol L270 .L270
-    ; compiler-symbol L277 .L277
-    ; compiler-symbol L284 .L284
+    ; compiler-symbol L272 .L272
+    ; compiler-symbol L271 .L271
+    ; compiler-symbol L276 .L276
     ; compiler-symbol L279 .L279
-    ; compiler-symbol L285 .L285
-    ; compiler-symbol L282 .L282
+    ; compiler-symbol L284 .L284
     ; compiler-symbol L290 .L290
     ; compiler-symbol L289 .L289
+    ; compiler-symbol L292 .L292
+    ; compiler-symbol L293 .L293
     ; compiler-symbol L294 .L294
     ; compiler-symbol L297 .L297
     ; compiler-symbol L316 .L316
@@ -675,508 +671,512 @@
     ; compiler-symbol L1221 .L1221
     ; compiler-symbol L1220 .L1220
     ; compiler-symbol L1223 .L1223
-    ; compiler-symbol L1243 .L1243
-    ; compiler-symbol L1224 .L1224
-    ; compiler-symbol L1236 .L1236
-    ; compiler-symbol L1244 .L1244
-    ; compiler-symbol L1245 .L1245
-    ; compiler-symbol L1226 .L1226
-    ; compiler-symbol L1229 .L1229
-    ; compiler-symbol L1222 .L1222
-    ; compiler-symbol L1227 .L1227
-    ; compiler-symbol L1246 .L1246
-    ; compiler-symbol L1247 .L1247
-    ; compiler-symbol L1237 .L1237
-    ; compiler-symbol L1232 .L1232
-    ; compiler-symbol L1233 .L1233
-    ; compiler-symbol L1256 .L1256
     ; compiler-symbol L1248 .L1248
+    ; compiler-symbol L1224 .L1224
+    ; compiler-symbol L1240 .L1240
+    ; compiler-symbol L1249 .L1249
+    ; compiler-symbol L1226 .L1226
     ; compiler-symbol L1250 .L1250
+    ; compiler-symbol L1230 .L1230
+    ; compiler-symbol L1233 .L1233
+    ; compiler-symbol L1222 .L1222
+    ; compiler-symbol L1229 .L1229
+    ; compiler-symbol L1228 .L1228
+    ; compiler-symbol L1231 .L1231
     ; compiler-symbol L1251 .L1251
     ; compiler-symbol L1252 .L1252
-    ; compiler-symbol L1263 .L1263
-    ; compiler-symbol L1264 .L1264
-    ; compiler-symbol L1272 .L1272
+    ; compiler-symbol L1241 .L1241
+    ; compiler-symbol L1236 .L1236
+    ; compiler-symbol L1237 .L1237
+    ; compiler-symbol L1261 .L1261
+    ; compiler-symbol L1253 .L1253
+    ; compiler-symbol L1255 .L1255
+    ; compiler-symbol L1256 .L1256
+    ; compiler-symbol L1257 .L1257
+    ; compiler-symbol L1268 .L1268
+    ; compiler-symbol L1269 .L1269
     ; compiler-symbol L1277 .L1277
-    ; compiler-symbol L1273 .L1273
-    ; compiler-symbol L1278 .L1278
-    ; compiler-symbol L1271 .L1271
-    ; compiler-symbol L1281 .L1281
-    ; compiler-symbol L1279 .L1279
-    ; compiler-symbol L1285 .L1285
-    ; compiler-symbol L1283 .L1283
-    ; compiler-symbol L1286 .L1286
     ; compiler-symbol L1282 .L1282
+    ; compiler-symbol L1278 .L1278
+    ; compiler-symbol L1283 .L1283
+    ; compiler-symbol L1276 .L1276
+    ; compiler-symbol L1286 .L1286
+    ; compiler-symbol L1284 .L1284
+    ; compiler-symbol L1290 .L1290
+    ; compiler-symbol L1288 .L1288
+    ; compiler-symbol L1291 .L1291
     ; compiler-symbol L1287 .L1287
     ; compiler-symbol L1292 .L1292
-    ; compiler-symbol L1291 .L1291
-    ; compiler-symbol L1290 .L1290
-    ; compiler-symbol L1295 .L1295
     ; compiler-symbol L1297 .L1297
-    ; compiler-symbol L1308 .L1308
-    ; compiler-symbol L1304 .L1304
+    ; compiler-symbol L1296 .L1296
+    ; compiler-symbol L1295 .L1295
+    ; compiler-symbol L1300 .L1300
+    ; compiler-symbol L1302 .L1302
+    ; compiler-symbol L1310 .L1310
     ; compiler-symbol L1309 .L1309
-    ; compiler-symbol L1311 .L1311
     ; compiler-symbol L1314 .L1314
-    ; compiler-symbol L1312 .L1312
-    ; compiler-symbol L1313 .L1313
-    ; compiler-symbol L1321 .L1321
-    ; compiler-symbol L1328 .L1328
-    ; compiler-symbol L1324 .L1324
-    ; compiler-symbol L1336 .L1336
-    ; compiler-symbol L1330 .L1330
+    ; compiler-symbol L1316 .L1316
+    ; compiler-symbol L1319 .L1319
+    ; compiler-symbol L1317 .L1317
+    ; compiler-symbol L1318 .L1318
+    ; compiler-symbol L1326 .L1326
+    ; compiler-symbol L1333 .L1333
+    ; compiler-symbol L1329 .L1329
+    ; compiler-symbol L1341 .L1341
+    ; compiler-symbol L1335 .L1335
+    ; compiler-symbol L1342 .L1342
     ; compiler-symbol L1337 .L1337
-    ; compiler-symbol L1332 .L1332
     ; compiler-symbol LC31 .LC31
     ; compiler-symbol LC32 .LC32
     ; compiler-symbol LC33 .LC33
     ; compiler-symbol LC34 .LC34
-    ; compiler-symbol L1344 .L1344
-    ; compiler-symbol L1338 .L1338
-    ; compiler-symbol L1346 .L1346
-    ; compiler-symbol L1348 .L1348
-    ; compiler-symbol L1351 .L1351
-    ; compiler-symbol L1350 .L1350
-    ; compiler-symbol L1364 .L1364
-    ; compiler-symbol L1352 .L1352
-    ; compiler-symbol L1353 .L1353
-    ; compiler-symbol L1354 .L1354
-    ; compiler-symbol L1355 .L1355
     ; compiler-symbol L1349 .L1349
+    ; compiler-symbol L1343 .L1343
+    ; compiler-symbol L1351 .L1351
+    ; compiler-symbol L1353 .L1353
+    ; compiler-symbol L1356 .L1356
+    ; compiler-symbol L1355 .L1355
+    ; compiler-symbol L1369 .L1369
     ; compiler-symbol L1357 .L1357
     ; compiler-symbol L1358 .L1358
-    ; compiler-symbol L1366 .L1366
-    ; compiler-symbol L1372 .L1372
-    ; compiler-symbol L1369 .L1369
-    ; compiler-symbol L1374 .L1374
-    ; compiler-symbol L1380 .L1380
+    ; compiler-symbol L1359 .L1359
+    ; compiler-symbol L1360 .L1360
+    ; compiler-symbol L1354 .L1354
+    ; compiler-symbol L1362 .L1362
+    ; compiler-symbol L1363 .L1363
+    ; compiler-symbol L1371 .L1371
     ; compiler-symbol L1377 .L1377
+    ; compiler-symbol L1374 .L1374
+    ; compiler-symbol L1379 .L1379
+    ; compiler-symbol L1385 .L1385
     ; compiler-symbol L1382 .L1382
-    ; compiler-symbol L1384 .L1384
-    ; compiler-symbol L1388 .L1388
-    ; compiler-symbol L1390 .L1390
-    ; compiler-symbol L1392 .L1392
-    ; compiler-symbol L1394 .L1394
-    ; compiler-symbol L1398 .L1398
+    ; compiler-symbol L1387 .L1387
+    ; compiler-symbol L1389 .L1389
+    ; compiler-symbol L1393 .L1393
+    ; compiler-symbol L1395 .L1395
+    ; compiler-symbol L1397 .L1397
     ; compiler-symbol L1399 .L1399
-    ; compiler-symbol L1402 .L1402
-    ; compiler-symbol L1401 .L1401
-    ; compiler-symbol L1411 .L1411
-    ; compiler-symbol L1409 .L1409
-    ; compiler-symbol L1417 .L1417
+    ; compiler-symbol L1403 .L1403
+    ; compiler-symbol L1404 .L1404
+    ; compiler-symbol L1407 .L1407
+    ; compiler-symbol L1406 .L1406
     ; compiler-symbol L1416 .L1416
-    ; compiler-symbol L1424 .L1424
-    ; compiler-symbol L1427 .L1427
-    ; compiler-symbol L1428 .L1428
-    ; compiler-symbol L1423 .L1423
-    ; compiler-symbol LC35 .LC35
-    ; compiler-symbol L1434 .L1434
+    ; compiler-symbol L1414 .L1414
+    ; compiler-symbol L1422 .L1422
+    ; compiler-symbol L1421 .L1421
+    ; compiler-symbol L1429 .L1429
     ; compiler-symbol L1432 .L1432
+    ; compiler-symbol L1433 .L1433
+    ; compiler-symbol L1428 .L1428
+    ; compiler-symbol LC35 .LC35
+    ; compiler-symbol L1439 .L1439
+    ; compiler-symbol L1437 .L1437
+    ; compiler-symbol L1446 .L1446
+    ; compiler-symbol L1447 .L1447
     ; compiler-symbol L1441 .L1441
-    ; compiler-symbol L1442 .L1442
-    ; compiler-symbol L1436 .L1436
-    ; compiler-symbol L1443 .L1443
     ; compiler-symbol L1448 .L1448
-    ; compiler-symbol L1452 .L1452
-    ; compiler-symbol L1457 .L1457
     ; compiler-symbol L1453 .L1453
+    ; compiler-symbol L1457 .L1457
+    ; compiler-symbol L1462 .L1462
     ; compiler-symbol L1458 .L1458
-    ; compiler-symbol L1465 .L1465
     ; compiler-symbol L1463 .L1463
-    ; compiler-symbol L1466 .L1466
+    ; compiler-symbol L1470 .L1470
     ; compiler-symbol L1468 .L1468
-    ; compiler-symbol LC36 .LC36
     ; compiler-symbol L1471 .L1471
     ; compiler-symbol L1473 .L1473
+    ; compiler-symbol LC36 .LC36
     ; compiler-symbol L1476 .L1476
-    ; compiler-symbol L1474 .L1474
-    ; compiler-symbol L1479 .L1479
     ; compiler-symbol L1478 .L1478
-    ; compiler-symbol L1493 .L1493
-    ; compiler-symbol L1494 .L1494
-    ; compiler-symbol L1480 .L1480
-    ; compiler-symbol L1486 .L1486
-    ; compiler-symbol L1487 .L1487
     ; compiler-symbol L1481 .L1481
+    ; compiler-symbol L1479 .L1479
     ; compiler-symbol L1484 .L1484
-    ; compiler-symbol L1495 .L1495
     ; compiler-symbol L1483 .L1483
+    ; compiler-symbol L1498 .L1498
+    ; compiler-symbol L1499 .L1499
     ; compiler-symbol L1485 .L1485
-    ; compiler-symbol L1497 .L1497
+    ; compiler-symbol L1491 .L1491
+    ; compiler-symbol L1492 .L1492
+    ; compiler-symbol L1486 .L1486
+    ; compiler-symbol L1489 .L1489
     ; compiler-symbol L1500 .L1500
-    ; compiler-symbol L1507 .L1507
-    ; compiler-symbol L1508 .L1508
-    ; compiler-symbol L1503 .L1503
+    ; compiler-symbol L1488 .L1488
+    ; compiler-symbol L1490 .L1490
+    ; compiler-symbol L1502 .L1502
+    ; compiler-symbol L1505 .L1505
+    ; compiler-symbol L1512 .L1512
     ; compiler-symbol L1513 .L1513
+    ; compiler-symbol L1508 .L1508
     ; compiler-symbol L1518 .L1518
-    ; compiler-symbol L1519 .L1519
-    ; compiler-symbol L1509 .L1509
+    ; compiler-symbol L1523 .L1523
+    ; compiler-symbol L1524 .L1524
+    ; compiler-symbol L1514 .L1514
+    ; compiler-symbol L1532 .L1532
     ; compiler-symbol L1527 .L1527
-    ; compiler-symbol L1522 .L1522
-    ; compiler-symbol L1528 .L1528
-    ; compiler-symbol L1539 .L1539
-    ; compiler-symbol L1548 .L1548
-    ; compiler-symbol L1549 .L1549
-    ; compiler-symbol L1545 .L1545
-    ; compiler-symbol L1542 .L1542
-    ; compiler-symbol L1546 .L1546
-    ; compiler-symbol L1553 .L1553
-    ; compiler-symbol L1547 .L1547
-    ; compiler-symbol L1540 .L1540
-    ; compiler-symbol L1555 .L1555
-    ; compiler-symbol L1559 .L1559
-    ; compiler-symbol L1556 .L1556
+    ; compiler-symbol L1533 .L1533
+    ; compiler-symbol L1544 .L1544
     ; compiler-symbol L1554 .L1554
-    ; compiler-symbol L1568 .L1568
-    ; compiler-symbol L1569 .L1569
-    ; compiler-symbol L1566 .L1566
-    ; compiler-symbol L1570 .L1570
+    ; compiler-symbol L1555 .L1555
+    ; compiler-symbol L1550 .L1550
+    ; compiler-symbol L1547 .L1547
+    ; compiler-symbol L1551 .L1551
+    ; compiler-symbol L1560 .L1560
+    ; compiler-symbol L1552 .L1552
+    ; compiler-symbol L1553 .L1553
+    ; compiler-symbol L1545 .L1545
     ; compiler-symbol L1562 .L1562
-    ; compiler-symbol LC37 .LC37
+    ; compiler-symbol L1566 .L1566
+    ; compiler-symbol L1563 .L1563
+    ; compiler-symbol L1561 .L1561
     ; compiler-symbol L1575 .L1575
-    ; compiler-symbol L1572 .L1572
     ; compiler-symbol L1576 .L1576
-    ; compiler-symbol L1589 .L1589
-    ; compiler-symbol L1579 .L1579
+    ; compiler-symbol L1573 .L1573
+    ; compiler-symbol L1577 .L1577
+    ; compiler-symbol L1569 .L1569
+    ; compiler-symbol LC37 .LC37
     ; compiler-symbol L1582 .L1582
-    ; compiler-symbol L1580 .L1580
-    ; compiler-symbol L1581 .L1581
-    ; compiler-symbol L1590 .L1590
+    ; compiler-symbol L1579 .L1579
+    ; compiler-symbol L1583 .L1583
     ; compiler-symbol L1596 .L1596
-    ; compiler-symbol L1595 .L1595
-    ; compiler-symbol L1599 .L1599
-    ; compiler-symbol L1594 .L1594
-    ; compiler-symbol L1591 .L1591
-    ; compiler-symbol L1606 .L1606
+    ; compiler-symbol L1586 .L1586
+    ; compiler-symbol L1589 .L1589
+    ; compiler-symbol L1587 .L1587
+    ; compiler-symbol L1588 .L1588
+    ; compiler-symbol L1597 .L1597
     ; compiler-symbol L1603 .L1603
-    ; compiler-symbol L1604 .L1604
-    ; compiler-symbol L1600 .L1600
-    ; compiler-symbol LC38 .LC38
-    ; compiler-symbol L1609 .L1609
-    ; compiler-symbol L1607 .L1607
-    ; compiler-symbol L1612 .L1612
-    ; compiler-symbol L1618 .L1618
+    ; compiler-symbol L1602 .L1602
+    ; compiler-symbol L1606 .L1606
+    ; compiler-symbol L1601 .L1601
+    ; compiler-symbol L1598 .L1598
+    ; compiler-symbol L1613 .L1613
+    ; compiler-symbol L1610 .L1610
     ; compiler-symbol L1611 .L1611
+    ; compiler-symbol L1607 .L1607
+    ; compiler-symbol LC38 .LC38
+    ; compiler-symbol L1616 .L1616
     ; compiler-symbol L1614 .L1614
-    ; compiler-symbol L1626 .L1626
+    ; compiler-symbol L1619 .L1619
+    ; compiler-symbol L1625 .L1625
+    ; compiler-symbol L1618 .L1618
     ; compiler-symbol L1621 .L1621
-    ; compiler-symbol L1623 .L1623
-    ; compiler-symbol LC39 .LC39
-    ; compiler-symbol L1632 .L1632
-    ; compiler-symbol L1635 .L1635
+    ; compiler-symbol L1633 .L1633
+    ; compiler-symbol L1628 .L1628
     ; compiler-symbol L1630 .L1630
-    ; compiler-symbol L1629 .L1629
-    ; compiler-symbol L1640 .L1640
-    ; compiler-symbol L1638 .L1638
-    ; compiler-symbol LC40 .LC40
-    ; compiler-symbol L1644 .L1644
-    ; compiler-symbol L1643 .L1643
+    ; compiler-symbol LC39 .LC39
+    ; compiler-symbol L1639 .L1639
+    ; compiler-symbol L1642 .L1642
+    ; compiler-symbol L1637 .L1637
+    ; compiler-symbol L1636 .L1636
     ; compiler-symbol L1647 .L1647
-    ; compiler-symbol L1658 .L1658
-    ; compiler-symbol L1652 .L1652
+    ; compiler-symbol L1645 .L1645
+    ; compiler-symbol LC40 .LC40
+    ; compiler-symbol L1651 .L1651
     ; compiler-symbol L1650 .L1650
     ; compiler-symbol L1654 .L1654
-    ; compiler-symbol L1648 .L1648
-    ; compiler-symbol LC41 .LC41
-    ; compiler-symbol L1679 .L1679
-    ; compiler-symbol L1661 .L1661
-    ; compiler-symbol L1664 .L1664
-    ; compiler-symbol L1669 .L1669
-    ; compiler-symbol L1676 .L1676
-    ; compiler-symbol L1671 .L1671
-    ; compiler-symbol L1680 .L1680
-    ; compiler-symbol L1681 .L1681
-    ; compiler-symbol L1667 .L1667
     ; compiler-symbol L1665 .L1665
-    ; compiler-symbol L1666 .L1666
+    ; compiler-symbol L1659 .L1659
+    ; compiler-symbol L1657 .L1657
+    ; compiler-symbol L1661 .L1661
+    ; compiler-symbol L1655 .L1655
+    ; compiler-symbol LC41 .LC41
+    ; compiler-symbol L1686 .L1686
+    ; compiler-symbol L1668 .L1668
+    ; compiler-symbol L1671 .L1671
+    ; compiler-symbol L1676 .L1676
+    ; compiler-symbol L1683 .L1683
+    ; compiler-symbol L1678 .L1678
     ; compiler-symbol L1687 .L1687
     ; compiler-symbol L1688 .L1688
+    ; compiler-symbol L1674 .L1674
+    ; compiler-symbol L1672 .L1672
+    ; compiler-symbol L1673 .L1673
+    ; compiler-symbol L1694 .L1694
+    ; compiler-symbol L1695 .L1695
+    ; compiler-symbol L1696 .L1696
     ; compiler-symbol L1689 .L1689
-    ; compiler-symbol L1682 .L1682
-    ; compiler-symbol L1693 .L1693
-    ; compiler-symbol L1690 .L1690
+    ; compiler-symbol L1700 .L1700
+    ; compiler-symbol L1697 .L1697
     ; compiler-symbol LC42 .LC42
     ; compiler-symbol LC43 .LC43
     ; compiler-symbol LC44 .LC44
-    ; compiler-symbol L1695 .L1695
-    ; compiler-symbol L1721 .L1721
-    ; compiler-symbol L1697 .L1697
-    ; compiler-symbol L1722 .L1722
-    ; compiler-symbol L1699 .L1699
-    ; compiler-symbol L1716 .L1716
     ; compiler-symbol L1702 .L1702
-    ; compiler-symbol L1694 .L1694
-    ; compiler-symbol L1717 .L1717
-    ; compiler-symbol L1704 .L1704
-    ; compiler-symbol L1718 .L1718
-    ; compiler-symbol L1724 .L1724
-    ; compiler-symbol L1706 .L1706
-    ; compiler-symbol L1712 .L1712
-    ; compiler-symbol L1707 .L1707
-    ; compiler-symbol L1708 .L1708
-    ; compiler-symbol L1723 .L1723
-    ; compiler-symbol L1713 .L1713
-    ; compiler-symbol L1725 .L1725
-    ; compiler-symbol L1726 .L1726
-    ; compiler-symbol L1730 .L1730
     ; compiler-symbol L1728 .L1728
-    ; compiler-symbol LC45 .LC45
-    ; compiler-symbol L1732 .L1732
+    ; compiler-symbol L1704 .L1704
+    ; compiler-symbol L1729 .L1729
+    ; compiler-symbol L1706 .L1706
+    ; compiler-symbol L1723 .L1723
+    ; compiler-symbol L1709 .L1709
+    ; compiler-symbol L1701 .L1701
+    ; compiler-symbol L1724 .L1724
+    ; compiler-symbol L1711 .L1711
+    ; compiler-symbol L1725 .L1725
     ; compiler-symbol L1731 .L1731
-    ; compiler-symbol L1736 .L1736
-    ; compiler-symbol L1739 .L1739
-    ; compiler-symbol L1742 .L1742
+    ; compiler-symbol L1713 .L1713
+    ; compiler-symbol L1719 .L1719
+    ; compiler-symbol L1714 .L1714
+    ; compiler-symbol L1715 .L1715
+    ; compiler-symbol L1730 .L1730
+    ; compiler-symbol L1720 .L1720
+    ; compiler-symbol L1732 .L1732
+    ; compiler-symbol L1733 .L1733
     ; compiler-symbol L1737 .L1737
+    ; compiler-symbol L1735 .L1735
+    ; compiler-symbol LC45 .LC45
+    ; compiler-symbol L1739 .L1739
     ; compiler-symbol L1738 .L1738
-    ; compiler-symbol L1744 .L1744
-    ; compiler-symbol L1748 .L1748
-    ; compiler-symbol L1755 .L1755
     ; compiler-symbol L1743 .L1743
-    ; compiler-symbol L1756 .L1756
+    ; compiler-symbol L1746 .L1746
+    ; compiler-symbol L1749 .L1749
+    ; compiler-symbol L1744 .L1744
+    ; compiler-symbol L1745 .L1745
+    ; compiler-symbol L1751 .L1751
+    ; compiler-symbol L1755 .L1755
+    ; compiler-symbol L1762 .L1762
     ; compiler-symbol L1750 .L1750
+    ; compiler-symbol L1763 .L1763
+    ; compiler-symbol L1757 .L1757
     ; compiler-symbol LC46 .LC46
-    ; compiler-symbol L1758 .L1758
-    ; compiler-symbol L1759 .L1759
-    ; compiler-symbol L1760 .L1760
-    ; compiler-symbol L1761 .L1761
-    ; compiler-symbol L1774 .L1774
+    ; compiler-symbol L1765 .L1765
+    ; compiler-symbol L1766 .L1766
     ; compiler-symbol L1767 .L1767
-    ; compiler-symbol L1775 .L1775
-    ; compiler-symbol L1769 .L1769
-    ; compiler-symbol L1770 .L1770
+    ; compiler-symbol L1768 .L1768
+    ; compiler-symbol L1781 .L1781
+    ; compiler-symbol L1774 .L1774
+    ; compiler-symbol L1782 .L1782
     ; compiler-symbol L1776 .L1776
-    ; compiler-symbol L1764 .L1764
-    ; compiler-symbol L1792 .L1792
-    ; compiler-symbol L1793 .L1793
-    ; compiler-symbol L1790 .L1790
-    ; compiler-symbol L1783 .L1783
-    ; compiler-symbol L1794 .L1794
-    ; compiler-symbol L1795 .L1795
     ; compiler-symbol L1777 .L1777
-    ; compiler-symbol L1786 .L1786
-    ; compiler-symbol L1787 .L1787
-    ; compiler-symbol L1807 .L1807
-    ; compiler-symbol L1808 .L1808
-    ; compiler-symbol L1809 .L1809
-    ; compiler-symbol L1796 .L1796
+    ; compiler-symbol L1783 .L1783
+    ; compiler-symbol L1771 .L1771
+    ; compiler-symbol L1799 .L1799
+    ; compiler-symbol L1800 .L1800
+    ; compiler-symbol L1797 .L1797
+    ; compiler-symbol L1790 .L1790
     ; compiler-symbol L1801 .L1801
-    ; compiler-symbol L1810 .L1810
-    ; compiler-symbol L1811 .L1811
-    ; compiler-symbol L1805 .L1805
-    ; compiler-symbol L1803 .L1803
-    ; compiler-symbol LC47 .LC47
-    ; compiler-symbol L1819 .L1819
-    ; compiler-symbol L1812 .L1812
+    ; compiler-symbol L1802 .L1802
+    ; compiler-symbol L1784 .L1784
+    ; compiler-symbol L1793 .L1793
+    ; compiler-symbol L1794 .L1794
     ; compiler-symbol L1814 .L1814
+    ; compiler-symbol L1815 .L1815
     ; compiler-symbol L1816 .L1816
-    ; compiler-symbol L1820 .L1820
-    ; compiler-symbol L1821 .L1821
+    ; compiler-symbol L1803 .L1803
+    ; compiler-symbol L1808 .L1808
     ; compiler-symbol L1817 .L1817
+    ; compiler-symbol L1818 .L1818
+    ; compiler-symbol L1812 .L1812
+    ; compiler-symbol L1810 .L1810
+    ; compiler-symbol LC47 .LC47
+    ; compiler-symbol L1826 .L1826
+    ; compiler-symbol L1819 .L1819
+    ; compiler-symbol L1821 .L1821
+    ; compiler-symbol L1823 .L1823
     ; compiler-symbol L1827 .L1827
-    ; compiler-symbol L1838 .L1838
-    ; compiler-symbol L1833 .L1833
+    ; compiler-symbol L1828 .L1828
+    ; compiler-symbol L1824 .L1824
+    ; compiler-symbol L1834 .L1834
+    ; compiler-symbol L1845 .L1845
+    ; compiler-symbol L1840 .L1840
     ; compiler-symbol LC48 .LC48
     ; compiler-symbol LC49 .LC49
-    ; compiler-symbol L1842 .L1842
-    ; compiler-symbol L1841 .L1841
-    ; compiler-symbol L1847 .L1847
-    ; compiler-symbol L1845 .L1845
-    ; compiler-symbol L1854 .L1854
     ; compiler-symbol L1849 .L1849
-    ; compiler-symbol L1851 .L1851
-    ; compiler-symbol L1850 .L1850
+    ; compiler-symbol L1848 .L1848
+    ; compiler-symbol L1854 .L1854
+    ; compiler-symbol L1852 .L1852
+    ; compiler-symbol L1861 .L1861
+    ; compiler-symbol L1856 .L1856
+    ; compiler-symbol L1858 .L1858
+    ; compiler-symbol L1857 .L1857
     ; compiler-symbol LC50 .LC50
     ; compiler-symbol LC51 .LC51
     ; compiler-symbol LC52 .LC52
     ; compiler-symbol LC53 .LC53
     ; compiler-symbol LC54 .LC54
-    ; compiler-symbol L1880 .L1880
-    ; compiler-symbol L1858 .L1858
-    ; compiler-symbol L1855 .L1855
-    ; compiler-symbol L1881 .L1881
-    ; compiler-symbol L1862 .L1862
-    ; compiler-symbol L1866 .L1866
-    ; compiler-symbol L1865 .L1865
-    ; compiler-symbol L1864 .L1864
-    ; compiler-symbol L1863 .L1863
-    ; compiler-symbol L1861 .L1861
-    ; compiler-symbol L1882 .L1882
-    ; compiler-symbol L1868 .L1868
-    ; compiler-symbol L1872 .L1872
-    ; compiler-symbol L1883 .L1883
-    ; compiler-symbol L1870 .L1870
-    ; compiler-symbol L1884 .L1884
-    ; compiler-symbol L1874 .L1874
-    ; compiler-symbol L1886 .L1886
-    ; compiler-symbol L2000 .L2000
     ; compiler-symbol L1887 .L1887
+    ; compiler-symbol L1865 .L1865
+    ; compiler-symbol L1862 .L1862
     ; compiler-symbol L1888 .L1888
+    ; compiler-symbol L1869 .L1869
+    ; compiler-symbol L1873 .L1873
+    ; compiler-symbol L1872 .L1872
+    ; compiler-symbol L1871 .L1871
+    ; compiler-symbol L1870 .L1870
+    ; compiler-symbol L1868 .L1868
     ; compiler-symbol L1889 .L1889
+    ; compiler-symbol L1875 .L1875
+    ; compiler-symbol L1879 .L1879
     ; compiler-symbol L1890 .L1890
-    ; compiler-symbol L1885 .L1885
-    ; compiler-symbol L2001 .L2001
-    ; compiler-symbol L2002 .L2002
-    ; compiler-symbol L1894 .L1894
-    ; compiler-symbol L2003 .L2003
-    ; compiler-symbol L1895 .L1895
-    ; compiler-symbol L1901 .L1901
-    ; compiler-symbol L2004 .L2004
-    ; compiler-symbol L2005 .L2005
-    ; compiler-symbol L1919 .L1919
-    ; compiler-symbol L2006 .L2006
-    ; compiler-symbol L1898 .L1898
+    ; compiler-symbol L1877 .L1877
+    ; compiler-symbol L1891 .L1891
+    ; compiler-symbol L1881 .L1881
+    ; compiler-symbol L1893 .L1893
     ; compiler-symbol L2007 .L2007
+    ; compiler-symbol L1894 .L1894
+    ; compiler-symbol L1895 .L1895
+    ; compiler-symbol L1896 .L1896
+    ; compiler-symbol L1897 .L1897
+    ; compiler-symbol L1892 .L1892
     ; compiler-symbol L2008 .L2008
     ; compiler-symbol L2009 .L2009
-    ; compiler-symbol L1985 .L1985
-    ; compiler-symbol L1899 .L1899
-    ; compiler-symbol L1906 .L1906
+    ; compiler-symbol L1901 .L1901
     ; compiler-symbol L2010 .L2010
+    ; compiler-symbol L1902 .L1902
+    ; compiler-symbol L1908 .L1908
     ; compiler-symbol L2011 .L2011
-    ; compiler-symbol L1913 .L1913
-    ; compiler-symbol L1980 .L1980
-    ; compiler-symbol L1911 .L1911
     ; compiler-symbol L2012 .L2012
-    ; compiler-symbol L1912 .L1912
+    ; compiler-symbol L1926 .L1926
     ; compiler-symbol L2013 .L2013
-    ; compiler-symbol L1915 .L1915
+    ; compiler-symbol L1905 .L1905
     ; compiler-symbol L2014 .L2014
-    ; compiler-symbol L1918 .L1918
-    ; compiler-symbol L1920 .L1920
-    ; compiler-symbol L1992 .L1992
-    ; compiler-symbol L1921 .L1921
     ; compiler-symbol L2015 .L2015
-    ; compiler-symbol L1922 .L1922
-    ; compiler-symbol L1923 .L1923
-    ; compiler-symbol L1924 .L1924
     ; compiler-symbol L2016 .L2016
+    ; compiler-symbol L1992 .L1992
+    ; compiler-symbol L1906 .L1906
+    ; compiler-symbol L1913 .L1913
     ; compiler-symbol L2017 .L2017
     ; compiler-symbol L2018 .L2018
-    ; compiler-symbol L1930 .L1930
+    ; compiler-symbol L1920 .L1920
+    ; compiler-symbol L1987 .L1987
+    ; compiler-symbol L1918 .L1918
     ; compiler-symbol L2019 .L2019
-    ; compiler-symbol L1934 .L1934
+    ; compiler-symbol L1919 .L1919
     ; compiler-symbol L2020 .L2020
-    ; compiler-symbol L1938 .L1938
+    ; compiler-symbol L1922 .L1922
     ; compiler-symbol L2021 .L2021
+    ; compiler-symbol L1925 .L1925
+    ; compiler-symbol L1927 .L1927
+    ; compiler-symbol L1999 .L1999
+    ; compiler-symbol L1928 .L1928
     ; compiler-symbol L2022 .L2022
-    ; compiler-symbol L1941 .L1941
-    ; compiler-symbol L1942 .L1942
+    ; compiler-symbol L1929 .L1929
+    ; compiler-symbol L1930 .L1930
+    ; compiler-symbol L1931 .L1931
     ; compiler-symbol L2023 .L2023
     ; compiler-symbol L2024 .L2024
-    ; compiler-symbol L1945 .L1945
     ; compiler-symbol L2025 .L2025
-    ; compiler-symbol L1946 .L1946
+    ; compiler-symbol L1937 .L1937
     ; compiler-symbol L2026 .L2026
+    ; compiler-symbol L1941 .L1941
     ; compiler-symbol L2027 .L2027
+    ; compiler-symbol L1945 .L1945
     ; compiler-symbol L2028 .L2028
     ; compiler-symbol L2029 .L2029
-    ; compiler-symbol L2030 .L2030
+    ; compiler-symbol L1948 .L1948
     ; compiler-symbol L1949 .L1949
+    ; compiler-symbol L2030 .L2030
     ; compiler-symbol L2031 .L2031
+    ; compiler-symbol L1952 .L1952
     ; compiler-symbol L2032 .L2032
+    ; compiler-symbol L1953 .L1953
     ; compiler-symbol L2033 .L2033
-    ; compiler-symbol L1954 .L1954
-    ; compiler-symbol L1957 .L1957
     ; compiler-symbol L2034 .L2034
-    ; compiler-symbol L1968 .L1968
     ; compiler-symbol L2035 .L2035
-    ; compiler-symbol L1971 .L1971
     ; compiler-symbol L2036 .L2036
     ; compiler-symbol L2037 .L2037
-    ; compiler-symbol L1974 .L1974
+    ; compiler-symbol L1956 .L1956
     ; compiler-symbol L2038 .L2038
     ; compiler-symbol L2039 .L2039
-    ; compiler-symbol L1976 .L1976
-    ; compiler-symbol L1978 .L1978
     ; compiler-symbol L2040 .L2040
-    ; compiler-symbol L2041 .L2041
-    ; compiler-symbol L1955 .L1955
-    ; compiler-symbol L1958 .L1958
-    ; compiler-symbol L1959 .L1959
-    ; compiler-symbol L2042 .L2042
-    ; compiler-symbol L1960 .L1960
-    ; compiler-symbol L1962 .L1962
-    ; compiler-symbol L1963 .L1963
+    ; compiler-symbol L1961 .L1961
     ; compiler-symbol L1964 .L1964
+    ; compiler-symbol L2041 .L2041
+    ; compiler-symbol L1975 .L1975
+    ; compiler-symbol L2042 .L2042
+    ; compiler-symbol L1978 .L1978
     ; compiler-symbol L2043 .L2043
-    ; compiler-symbol L1967 .L1967
-    ; compiler-symbol L1984 .L1984
-    ; compiler-symbol L1966 .L1966
     ; compiler-symbol L2044 .L2044
-    ; compiler-symbol L1965 .L1965
+    ; compiler-symbol L1981 .L1981
     ; compiler-symbol L2045 .L2045
-    ; compiler-symbol L1969 .L1969
     ; compiler-symbol L2046 .L2046
-    ; compiler-symbol L1973 .L1973
+    ; compiler-symbol L1983 .L1983
+    ; compiler-symbol L1985 .L1985
     ; compiler-symbol L2047 .L2047
-    ; compiler-symbol L2052 .L2052
+    ; compiler-symbol L2048 .L2048
+    ; compiler-symbol L1962 .L1962
+    ; compiler-symbol L1965 .L1965
+    ; compiler-symbol L1966 .L1966
     ; compiler-symbol L2049 .L2049
+    ; compiler-symbol L1967 .L1967
+    ; compiler-symbol L1969 .L1969
+    ; compiler-symbol L1970 .L1970
+    ; compiler-symbol L1971 .L1971
     ; compiler-symbol L2050 .L2050
+    ; compiler-symbol L1974 .L1974
+    ; compiler-symbol L1991 .L1991
+    ; compiler-symbol L1973 .L1973
+    ; compiler-symbol L2051 .L2051
+    ; compiler-symbol L1972 .L1972
+    ; compiler-symbol L2052 .L2052
+    ; compiler-symbol L1976 .L1976
+    ; compiler-symbol L2053 .L2053
+    ; compiler-symbol L1980 .L1980
+    ; compiler-symbol L2054 .L2054
     ; compiler-symbol L2059 .L2059
-    ; compiler-symbol L2107 .L2107
-    ; compiler-symbol L2063 .L2063
-    ; compiler-symbol L2108 .L2108
-    ; compiler-symbol L2109 .L2109
-    ; compiler-symbol L2082 .L2082
-    ; compiler-symbol L2110 .L2110
-    ; compiler-symbol L2084 .L2084
-    ; compiler-symbol L2111 .L2111
-    ; compiler-symbol L2085 .L2085
-    ; compiler-symbol L2112 .L2112
-    ; compiler-symbol L2060 .L2060
-    ; compiler-symbol L2089 .L2089
-    ; compiler-symbol L2113 .L2113
-    ; compiler-symbol L2096 .L2096
-    ; compiler-symbol L2117 .L2117
-    ; compiler-symbol L2090 .L2090
-    ; compiler-symbol L2067 .L2067
-    ; compiler-symbol L2070 .L2070
-    ; compiler-symbol L2069 .L2069
-    ; compiler-symbol L2071 .L2071
-    ; compiler-symbol L2115 .L2115
-    ; compiler-symbol L2073 .L2073
-    ; compiler-symbol L2116 .L2116
-    ; compiler-symbol L2076 .L2076
-    ; compiler-symbol L2077 .L2077
-    ; compiler-symbol L2079 .L2079
-    ; compiler-symbol L2080 .L2080
-    ; compiler-symbol L2081 .L2081
+    ; compiler-symbol L2056 .L2056
+    ; compiler-symbol L2057 .L2057
+    ; compiler-symbol L2066 .L2066
     ; compiler-symbol L2114 .L2114
-    ; compiler-symbol L2074 .L2074
-    ; compiler-symbol LC55 .LC55
+    ; compiler-symbol L2070 .L2070
+    ; compiler-symbol L2115 .L2115
+    ; compiler-symbol L2116 .L2116
+    ; compiler-symbol L2089 .L2089
+    ; compiler-symbol L2117 .L2117
+    ; compiler-symbol L2091 .L2091
+    ; compiler-symbol L2118 .L2118
+    ; compiler-symbol L2092 .L2092
     ; compiler-symbol L2119 .L2119
+    ; compiler-symbol L2067 .L2067
+    ; compiler-symbol L2096 .L2096
     ; compiler-symbol L2120 .L2120
-    ; compiler-symbol L2169 .L2169
-    ; compiler-symbol L2128 .L2128
-    ; compiler-symbol L2152 .L2152
-    ; compiler-symbol L2129 .L2129
-    ; compiler-symbol L2125 .L2125
-    ; compiler-symbol L2126 .L2126
-    ; compiler-symbol L2133 .L2133
-    ; compiler-symbol L2123 .L2123
+    ; compiler-symbol L2103 .L2103
     ; compiler-symbol L2124 .L2124
+    ; compiler-symbol L2097 .L2097
+    ; compiler-symbol L2074 .L2074
+    ; compiler-symbol L2077 .L2077
+    ; compiler-symbol L2076 .L2076
+    ; compiler-symbol L2078 .L2078
+    ; compiler-symbol L2122 .L2122
+    ; compiler-symbol L2080 .L2080
+    ; compiler-symbol L2123 .L2123
+    ; compiler-symbol L2083 .L2083
+    ; compiler-symbol L2084 .L2084
+    ; compiler-symbol L2086 .L2086
+    ; compiler-symbol L2087 .L2087
+    ; compiler-symbol L2088 .L2088
+    ; compiler-symbol L2121 .L2121
+    ; compiler-symbol L2081 .L2081
+    ; compiler-symbol LC55 .LC55
+    ; compiler-symbol L2126 .L2126
+    ; compiler-symbol L2127 .L2127
+    ; compiler-symbol L2176 .L2176
+    ; compiler-symbol L2135 .L2135
+    ; compiler-symbol L2159 .L2159
+    ; compiler-symbol L2136 .L2136
+    ; compiler-symbol L2132 .L2132
+    ; compiler-symbol L2133 .L2133
+    ; compiler-symbol L2140 .L2140
     ; compiler-symbol L2130 .L2130
     ; compiler-symbol L2131 .L2131
-    ; compiler-symbol L2154 .L2154
-    ; compiler-symbol L2132 .L2132
-    ; compiler-symbol L2142 .L2142
-    ; compiler-symbol L2170 .L2170
-    ; compiler-symbol L2134 .L2134
     ; compiler-symbol L2137 .L2137
-    ; compiler-symbol L2136 .L2136
     ; compiler-symbol L2138 .L2138
+    ; compiler-symbol L2161 .L2161
     ; compiler-symbol L2139 .L2139
-    ; compiler-symbol L2140 .L2140
-    ; compiler-symbol L2121 .L2121
-    ; compiler-symbol L2143 .L2143
-    ; compiler-symbol L2144 .L2144
-    ; compiler-symbol L2165 .L2165
-    ; compiler-symbol L2166 .L2166
-    ; compiler-symbol L2167 .L2167
-    ; compiler-symbol L2148 .L2148
-    ; compiler-symbol L2168 .L2168
     ; compiler-symbol L2149 .L2149
-    ; compiler-symbol L2127 .L2127
+    ; compiler-symbol L2177 .L2177
+    ; compiler-symbol L2141 .L2141
+    ; compiler-symbol L2144 .L2144
+    ; compiler-symbol L2143 .L2143
+    ; compiler-symbol L2145 .L2145
+    ; compiler-symbol L2146 .L2146
+    ; compiler-symbol L2147 .L2147
+    ; compiler-symbol L2128 .L2128
+    ; compiler-symbol L2150 .L2150
+    ; compiler-symbol L2151 .L2151
+    ; compiler-symbol L2172 .L2172
+    ; compiler-symbol L2173 .L2173
+    ; compiler-symbol L2174 .L2174
+    ; compiler-symbol L2155 .L2155
+    ; compiler-symbol L2175 .L2175
+    ; compiler-symbol L2156 .L2156
+    ; compiler-symbol L2134 .L2134
     ; compiler-symbol LC56 .LC56
     ; compiler-symbol LC57 .LC57
     ; compiler-symbol LC58 .LC58
@@ -1192,86 +1192,88 @@
     ; compiler-symbol LC68 .LC68
     ; compiler-symbol LC69 .LC69
     ; compiler-symbol LC70 .LC70
-    ; compiler-symbol L2171 .L2171
-    ; compiler-symbol L2239 .L2239
-    ; compiler-symbol L2173 .L2173
-    ; compiler-symbol L2174 .L2174
-    ; compiler-symbol L2183 .L2183
-    ; compiler-symbol L2260 .L2260
-    ; compiler-symbol L2176 .L2176
-    ; compiler-symbol L2259 .L2259
-    ; compiler-symbol L2175 .L2175
-    ; compiler-symbol L2261 .L2261
-    ; compiler-symbol L2262 .L2262
-    ; compiler-symbol L2263 .L2263
-    ; compiler-symbol L2264 .L2264
-    ; compiler-symbol L2187 .L2187
-    ; compiler-symbol L2265 .L2265
-    ; compiler-symbol L2186 .L2186
-    ; compiler-symbol L2184 .L2184
-    ; compiler-symbol L2266 .L2266
-    ; compiler-symbol L2189 .L2189
-    ; compiler-symbol L2268 .L2268
-    ; compiler-symbol L2188 .L2188
-    ; compiler-symbol L2267 .L2267
-    ; compiler-symbol L2190 .L2190
-    ; compiler-symbol L2191 .L2191
-    ; compiler-symbol L2196 .L2196
-    ; compiler-symbol L2269 .L2269
-    ; compiler-symbol L2195 .L2195
-    ; compiler-symbol L2194 .L2194
-    ; compiler-symbol L2192 .L2192
-    ; compiler-symbol L2193 .L2193
-    ; compiler-symbol L2197 .L2197
-    ; compiler-symbol L2271 .L2271
-    ; compiler-symbol L2198 .L2198
-    ; compiler-symbol L2270 .L2270
-    ; compiler-symbol L2202 .L2202
-    ; compiler-symbol L2200 .L2200
-    ; compiler-symbol L2201 .L2201
-    ; compiler-symbol L2206 .L2206
-    ; compiler-symbol L2273 .L2273
-    ; compiler-symbol L2204 .L2204
-    ; compiler-symbol L2205 .L2205
-    ; compiler-symbol L2203 .L2203
-    ; compiler-symbol L2272 .L2272
-    ; compiler-symbol L2207 .L2207
-    ; compiler-symbol L2208 .L2208
-    ; compiler-symbol L2274 .L2274
-    ; compiler-symbol L2209 .L2209
-    ; compiler-symbol L2210 .L2210
-    ; compiler-symbol L2275 .L2275
-    ; compiler-symbol L2211 .L2211
-    ; compiler-symbol L2218 .L2218
-    ; compiler-symbol L2220 .L2220
-    ; compiler-symbol L2243 .L2243
-    ; compiler-symbol L2213 .L2213
-    ; compiler-symbol L2277 .L2277
-    ; compiler-symbol L2212 .L2212
-    ; compiler-symbol L2276 .L2276
-    ; compiler-symbol L2214 .L2214
-    ; compiler-symbol L2215 .L2215
-    ; compiler-symbol L2216 .L2216
-    ; compiler-symbol L2217 .L2217
-    ; compiler-symbol L2219 .L2219
-    ; compiler-symbol L2278 .L2278
-    ; compiler-symbol L2221 .L2221
-    ; compiler-symbol L2222 .L2222
-    ; compiler-symbol L2224 .L2224
-    ; compiler-symbol L2225 .L2225
-    ; compiler-symbol L2236 .L2236
-    ; compiler-symbol L2280 .L2280
-    ; compiler-symbol L2257 .L2257
-    ; compiler-symbol L2229 .L2229
-    ; compiler-symbol L2228 .L2228
-    ; compiler-symbol L2279 .L2279
-    ; compiler-symbol L2231 .L2231
-    ; compiler-symbol L2232 .L2232
-    ; compiler-symbol L2233 .L2233
-    ; compiler-symbol L2234 .L2234
-    ; compiler-symbol L2235 .L2235
     ; compiler-symbol LC71 .LC71
     ; compiler-symbol LC72 .LC72
+    ; compiler-symbol L2178 .L2178
+    ; compiler-symbol L2247 .L2247
+    ; compiler-symbol L2180 .L2180
+    ; compiler-symbol L2181 .L2181
+    ; compiler-symbol L2190 .L2190
+    ; compiler-symbol L2268 .L2268
+    ; compiler-symbol L2183 .L2183
+    ; compiler-symbol L2267 .L2267
+    ; compiler-symbol L2182 .L2182
+    ; compiler-symbol L2269 .L2269
+    ; compiler-symbol L2270 .L2270
+    ; compiler-symbol L2271 .L2271
+    ; compiler-symbol L2272 .L2272
+    ; compiler-symbol L2194 .L2194
+    ; compiler-symbol L2192 .L2192
+    ; compiler-symbol L2273 .L2273
+    ; compiler-symbol L2193 .L2193
+    ; compiler-symbol L2191 .L2191
+    ; compiler-symbol L2196 .L2196
+    ; compiler-symbol L2195 .L2195
+    ; compiler-symbol L2274 .L2274
+    ; compiler-symbol L2197 .L2197
+    ; compiler-symbol L2198 .L2198
+    ; compiler-symbol L2203 .L2203
+    ; compiler-symbol L2275 .L2275
+    ; compiler-symbol L2202 .L2202
+    ; compiler-symbol L2201 .L2201
+    ; compiler-symbol L2199 .L2199
+    ; compiler-symbol L2200 .L2200
+    ; compiler-symbol L2204 .L2204
+    ; compiler-symbol L2277 .L2277
+    ; compiler-symbol L2206 .L2206
+    ; compiler-symbol L2278 .L2278
+    ; compiler-symbol L2205 .L2205
+    ; compiler-symbol L2276 .L2276
+    ; compiler-symbol L2210 .L2210
+    ; compiler-symbol L2208 .L2208
+    ; compiler-symbol L2209 .L2209
+    ; compiler-symbol L2214 .L2214
+    ; compiler-symbol L2280 .L2280
+    ; compiler-symbol L2212 .L2212
+    ; compiler-symbol L2213 .L2213
+    ; compiler-symbol L2211 .L2211
+    ; compiler-symbol L2279 .L2279
+    ; compiler-symbol L2215 .L2215
+    ; compiler-symbol L2216 .L2216
+    ; compiler-symbol L2281 .L2281
+    ; compiler-symbol L2217 .L2217
+    ; compiler-symbol L2218 .L2218
+    ; compiler-symbol L2282 .L2282
+    ; compiler-symbol L2219 .L2219
+    ; compiler-symbol L2226 .L2226
+    ; compiler-symbol L2228 .L2228
+    ; compiler-symbol L2251 .L2251
+    ; compiler-symbol L2221 .L2221
+    ; compiler-symbol L2284 .L2284
+    ; compiler-symbol L2220 .L2220
+    ; compiler-symbol L2283 .L2283
+    ; compiler-symbol L2222 .L2222
+    ; compiler-symbol L2223 .L2223
+    ; compiler-symbol L2224 .L2224
+    ; compiler-symbol L2225 .L2225
+    ; compiler-symbol L2227 .L2227
+    ; compiler-symbol L2285 .L2285
+    ; compiler-symbol L2229 .L2229
+    ; compiler-symbol L2230 .L2230
+    ; compiler-symbol L2231 .L2231
+    ; compiler-symbol L2244 .L2244
+    ; compiler-symbol L2288 .L2288
+    ; compiler-symbol L2265 .L2265
+    ; compiler-symbol L2237 .L2237
+    ; compiler-symbol L2287 .L2287
+    ; compiler-symbol L2236 .L2236
+    ; compiler-symbol L2286 .L2286
+    ; compiler-symbol L2239 .L2239
+    ; compiler-symbol L2240 .L2240
+    ; compiler-symbol L2241 .L2241
+    ; compiler-symbol L2242 .L2242
+    ; compiler-symbol L2243 .L2243
+    ; compiler-symbol L2232 .L2232
     ; compiler-symbol LC73 .LC73
     ; compiler-symbol LC74 .LC74
     ; compiler-symbol LC75 .LC75
@@ -1526,6 +1528,8 @@
     ; compiler-symbol LC324 .LC324
     ; compiler-symbol LC325 .LC325
     ; compiler-symbol LC326 .LC326
+    ; compiler-symbol LC327 .LC327
+    ; compiler-symbol LC328 .LC328
     section .text
 gradient_row:
     push r15
@@ -3314,151 +3318,6 @@ L235:
     pop rbp
     pop r12
     ret
-allocate_kernel:
-    sub rsp, 8
-    call malloc
-    add rsp, 8
-    ret
-system_alloc:
-    push rbx
-    mov rbx, rdi
-    call malloc
-    test rax, rax
-    je L249
-L246:
-    pop rbx
-    ret
-L249:
-    mov rax, qword [rel system_reserve]
-    test rax, rax
-    je L246
-    mov rdi, rax
-    call free
-    mov qword [rel system_reserve], 0
-    mov rdi, rbx
-    call malloc
-    jmp L246
-window_set_picture_size:
-    push r14
-    push r13
-    push r12
-    push rbp
-    push rbx
-    sub rsp, 192
-    mov rbx, rdi
-    test esi, esi
-    mov eax, 1
-    cmovg eax, esi
-    mov ebp, eax
-    test edx, edx
-    mov eax, 1
-    cmovg eax, edx
-    mov r12d, eax
-    cmp dword [rdi+32], ebp
-    je L260
-L251:
-    cmp dword [rbx+4], 0
-    jle L253
-    movsx rdi, ebp
-    movsx rax, r12d
-    imul rdi, rax
-    sal rdi, 2
-    call malloc
-    mov r13, rax
-L254:
-    test r13, r13
-    je L250
-    lea r14d, [0+rbp*4]
-    movsx r14, r14d
-    movsx rcx, r12d
-    movsx rdx, ebp
-    mov r8d, 12632256
-    mov rsi, r14
-    mov rdi, r13
-    call fill_rect32
-    mov rdx, qword [rbx+24]
-    test rdx, rdx
-    je L255
-    mov ecx, dword [rbx+32]
-    mov r9d, dword [rbx+36]
-    cmp r12d, r9d
-    cmovle r9d, r12d
-    cmp ecx, ebp
-    mov r8d, ebp
-    cmovle r8d, ecx
-    sal ecx, 2
-    movsx rcx, ecx
-    movsx r9, r9d
-    movsx r8, r8d
-    mov rsi, r14
-    mov rdi, r13
-    call copy_rect32
-    cmp dword [rbx+4], 0
-    jle L256
-    mov edi, 16
-    call malloc
-    test rax, rax
-    je L257
-    mov rdx, qword [rbx+24]
-    mov qword [rax+8], rdx
-    mov rdx, qword [rbx+40]
-    mov qword [rax], rdx
-    mov qword [rbx+40], rax
-L255:
-    mov qword [rbx+24], r13
-    mov dword [rbx+32], ebp
-    mov dword [rbx+36], r12d
-    mov edx, dword [rbx+4]
-    test edx, edx
-    jg L261
-    mov rax, qword [rbx+168]
-    test rax, rax
-    je L250
-    mov rdi, rbx
-    call rax
-    jmp L250
-L260:
-    cmp dword [rdi+36], eax
-    jne L251
-    jmp L250
-L253:
-    movsx rdi, ebp
-    movsx rax, r12d
-    imul rdi, rax
-    sal rdi, 2
-    call system_alloc
-    mov r13, rax
-    jmp L254
-L257:
-    mov rdi, qword [rbx+24]
-    call free
-    jmp L255
-L256:
-    mov rdi, qword [rbx+24]
-    call free
-    jmp L255
-L261:
-    mov qword [rsp+4], 0
-    mov qword [rsp+184], 0
-    lea rdi, [rsp+8]
-    mov ecx, 23
-    mov eax, 0
-    rep stosq
-    mov dword [rsp], 9
-    mov qword [rsp+8], rbx
-    mov dword [rsp+56], ebp
-    mov dword [rsp+60], r12d
-    mov rsi, rsp
-    mov edi, edx
-    call post_message
-L250:
-    add rsp, 192
-    pop rbx
-    pop rbp
-    pop r12
-    pop r13
-    pop r14
-    ret
 field_key:
     push r12
     push rbp
@@ -3470,37 +3329,37 @@ field_key:
     call strlen
     mov edx, dword [r12+40]
     cmp edx, 14
-    je L272
+    je L254
     cmp edx, 111
-    je L273
+    je L255
     cmp edx, 105
-    je L274
+    je L256
     cmp edx, 106
-    je L275
+    je L257
     cmp edx, 102
-    jne L269
+    jne L251
     mov dword [rbx+1032], 0
     mov eax, 1
-L262:
+L244:
     pop rbx
     pop rbp
     pop r12
     ret
-L272:
+L254:
     mov edx, dword [rbx+1032]
     test edx, edx
-    jg L276
-L264:
+    jg L258
+L246:
     mov ecx, dword [r12+44]
     lea edx, [rcx-32]
     cmp edx, 94
-    ja L270
+    ja L252
     cmp eax, 126
-    jle L277
-L270:
+    jle L259
+L252:
     mov eax, 0
-    jmp L262
-L276:
+    jmp L244
+L258:
     movsx rcx, edx
     sub eax, edx
     lea edx, [rax+1]
@@ -3510,11 +3369,11 @@ L276:
     call memmove
     sub dword [rbx+1032], 1
     mov eax, 1
-    jmp L262
-L273:
+    jmp L244
+L255:
     mov edx, dword [rbx+1032]
     cmp edx, eax
-    jge L264
+    jge L246
     movsx rdi, edx
     sub eax, edx
     movsx rdx, eax
@@ -3522,30 +3381,30 @@ L273:
     add rdi, rbp
     call memmove
     mov eax, 1
-    jmp L262
-L274:
+    jmp L244
+L256:
     mov edx, dword [rbx+1032]
     test edx, edx
-    jle L264
+    jle L246
     sub edx, 1
     mov dword [rbx+1032], edx
     mov eax, 1
-    jmp L262
-L275:
+    jmp L244
+L257:
     mov edx, dword [rbx+1032]
     cmp edx, eax
-    jge L264
+    jge L246
     add edx, 1
     mov dword [rbx+1032], edx
     mov eax, 1
-    jmp L262
-L269:
+    jmp L244
+L251:
     cmp edx, 107
-    jne L264
+    jne L246
     mov dword [rbx+1032], eax
     mov eax, 1
-    jmp L262
-L277:
+    jmp L244
+L259:
     mov edx, dword [rbx+1032]
     movsx rcx, edx
     sub eax, edx
@@ -3561,30 +3420,30 @@ L277:
     cdqe
     mov byte [rbx+904+rax], dl
     mov eax, 1
-    jmp L262
+    jmp L244
 open:
     mov qword [rsp-32], rdx
     mov edx, 0
     test sil, 64
-    jne L284
-L279:
+    jne L266
+L261:
     mov eax, 2
     movsx rsi, esi
     mov edx, edx
     syscall
     cmp rax, -4096
-    ja L285
-L282:
+    ja L267
+L264:
     ret
-L284:
+L266:
     lea rax, [rsp+8]
     mov qword [rsp-64], rax
     lea rax, [rsp-48]
     mov qword [rsp-56], rax
     mov dword [rsp-72], 24
     mov edx, dword [rsp-32]
-    jmp L279
-L285:
+    jmp L261
+L267:
     neg eax
     mov dword [rel errno], eax
     mov rax, -1
@@ -3600,10 +3459,10 @@ ioctl:
     movsx rdi, edi
     syscall
     cmp rax, -4096
-    ja L290
-L289:
+    ja L272
+L271:
     ret
-L290:
+L272:
     neg eax
     mov dword [rel errno], eax
     mov rax, -1
@@ -3630,16 +3489,16 @@ present:
     cmovg edi, r8d
     sub edi, edx
     test edi, edi
-    jle L294
+    jle L276
     test eax, eax
-    jle L294
+    jle L276
     mov r11, qword [rel back_buffer]
     mov r9, qword [rel framebuffer]
     cmp r11, r9
-    jne L297
-L294:
+    jne L279
+L276:
     ret
-L297:
+L279:
     push rbp
     push rbx
     sub rsp, 8
@@ -3667,6 +3526,133 @@ L297:
     add rsp, 8
     pop rbx
     pop rbp
+    ret
+heap_alloc:
+    mov eax, 0
+    cmp rdi, -257
+    ja L284
+    sub rsp, 8
+    call malloc
+    add rsp, 8
+    ret
+L284:
+    ret
+allocate_kernel:
+    sub rsp, 8
+    call heap_alloc
+    add rsp, 8
+    ret
+window_set_picture_size:
+    push r15
+    push r14
+    push r13
+    push r12
+    push rbp
+    push rbx
+    sub rsp, 200
+    mov rbx, rdi
+    test esi, esi
+    mov eax, 1
+    cmovg eax, esi
+    mov ebp, eax
+    test edx, edx
+    mov eax, 1
+    cmovg eax, edx
+    mov r12d, eax
+    cmp dword [rdi+32], ebp
+    jne L290
+    cmp dword [rdi+36], eax
+    je L289
+L290:
+    movsx r14, ebp
+    movsx r15, r12d
+    mov rdi, r14
+    imul rdi, r15
+    sal rdi, 2
+    call heap_alloc
+    mov r13, rax
+    test rax, rax
+    je L289
+    lea eax, [0+rbp*4]
+    cdqe
+    mov r8d, 12632256
+    mov rcx, r15
+    mov rdx, r14
+    mov r14, rax
+    mov rsi, rax
+    mov rdi, r13
+    call fill_rect32
+    mov rdx, qword [rbx+24]
+    test rdx, rdx
+    je L292
+    mov ecx, dword [rbx+32]
+    mov r9d, dword [rbx+36]
+    cmp r12d, r9d
+    cmovle r9d, r12d
+    cmp ecx, ebp
+    mov r8d, ebp
+    cmovle r8d, ecx
+    sal ecx, 2
+    movsx rcx, ecx
+    movsx r9, r9d
+    movsx r8, r8d
+    mov rsi, r14
+    mov rdi, r13
+    call copy_rect32
+    cmp dword [rbx+4], 0
+    jle L293
+    mov edi, 16
+    call heap_alloc
+    test rax, rax
+    je L294
+    mov rdx, qword [rbx+24]
+    mov qword [rax+8], rdx
+    mov rdx, qword [rbx+40]
+    mov qword [rax], rdx
+    mov qword [rbx+40], rax
+L292:
+    mov qword [rbx+24], r13
+    mov dword [rbx+32], ebp
+    mov dword [rbx+36], r12d
+    mov edx, dword [rbx+4]
+    test edx, edx
+    jg L297
+    mov rax, qword [rbx+168]
+    test rax, rax
+    je L289
+    mov rdi, rbx
+    call rax
+    jmp L289
+L294:
+    mov rdi, qword [rbx+24]
+    call free
+    jmp L292
+L293:
+    mov rdi, qword [rbx+24]
+    call free
+    jmp L292
+L297:
+    mov qword [rsp+4], 0
+    mov qword [rsp+184], 0
+    lea rdi, [rsp+8]
+    mov ecx, 23
+    mov eax, 0
+    rep stosq
+    mov dword [rsp], 9
+    mov qword [rsp+8], rbx
+    mov dword [rsp+56], ebp
+    mov dword [rsp+60], r12d
+    mov rsi, rsp
+    mov edi, edx
+    call post_message
+L289:
+    add rsp, 200
+    pop rbx
+    pop rbp
+    pop r12
+    pop r13
+    pop r14
+    pop r15
     ret
 evdev_tablet:
     mov rax, rdi
@@ -10689,7 +10675,7 @@ dialog_create:
     mov rax, qword [rsp+48]
     mov qword [rbx+184], rax
     mov edi, 11440
-    call system_alloc
+    call heap_alloc
     mov rbp, rax
     mov qword [rbx+192], rax
     test rax, rax
@@ -11539,20 +11525,22 @@ kernel_switch:
     mov rax, qword [rel current]
     mov edi, dword [rel profile_pid]
     cmp dword [rax+4], edi
-    je L1243
+    je L1248
 L1224:
     mov rax, qword [rel current]
     cmp rax, processes
-    je L1236
+    je L1240
     mov eax, dword [rel kernel_lock]
     test eax, eax
-    jne L1244
+    jne L1249
 L1223:
     mov r13, qword [rel current]
     mov rbx, qword [rel current]
-    cmp dword [rbx+8], 1
-    je L1245
-L1226:
+    cmp rbx, processes
+    je L1226
+    cmp dword [rbx+8], 4
+    jne L1250
+L1230:
     mov rsi, qword [rel current]
     sub rsi, processes
     sar rsi, 5
@@ -11560,8 +11548,8 @@ L1226:
     imul rsi, rax
     lea ecx, [rsi+1]
     add esi, 33
-    jmp L1229
-L1243:
+    jmp L1233
+L1248:
     mov eax, dword [rel profile_count]
     cmp eax, 4095
     jg L1224
@@ -11570,18 +11558,30 @@ L1243:
     cdqe
     mov qword [profile_samples+rax*8], rsi
     jmp L1224
-L1244:
+L1249:
     mov dword [rel need_resched], 1
     mov eax, 0
     jmp L1222
-L1245:
+L1250:
+    mov rax, qword [rbx+184]
+    lea rcx, [rax+256]
+L1229:
+    mov edx, dword [rax]
+    cmp edx, 1526618028
+    jne L1228
+    add rax, 4
+    cmp rax, rcx
+    jne L1229
+L1226:
+    cmp dword [rbx+8], 1
+    jne L1230
     mov dword [rbx+8], 0
-    jmp L1226
-L1227:
+    jmp L1230
+L1231:
     add ecx, 1
     cmp ecx, esi
-    je L1246
-L1229:
+    je L1251
+L1233:
     mov edx, ecx
     sar edx, 31
     shr edx, 27
@@ -11591,16 +11591,16 @@ L1229:
     movsx rdx, eax
     imul rdx, rdx, 25632
     cmp dword [processes+rdx], 0
-    je L1227
+    je L1231
     movsx rdx, eax
     imul rdx, rdx, 25632
     cmp dword [processes+rdx+8], 0
-    jne L1227
+    jne L1231
     cdqe
     imul r14, rax, 25632
     lea r15, [processes+r14]
     cmp rbx, r15
-    je L1247
+    je L1252
     call platform_instructions
     mov rdx, rax
     add rdx, qword [rbx+25560]
@@ -11610,10 +11610,11 @@ L1229:
     mov dword [r15+8], 1
     mov qword [rel current], r15
     test r14, r14
-    je L1237
+    je L1241
     lea rax, [r15+25584]
-L1232:
+L1236:
     mov qword [rel gfx], rax
+    mov dword [rel need_resched], 0
     add r13, 192
     mov qword [rbp+0], r13
     add r15, 192
@@ -11628,24 +11629,24 @@ L1222:
     pop r14
     pop r15
     ret
-L1247:
+L1252:
     mov rbx, r15
-L1233:
+L1237:
     mov dword [rbx+8], 1
     mov eax, 0
     jmp L1222
-L1237:
+L1241:
     mov r15d, processes
     mov eax, gfx_system
-    jmp L1232
-L1236:
+    jmp L1236
+L1240:
     mov eax, 0
     jmp L1222
-L1246:
+L1251:
     cmp dword [rbx+8], 0
-    je L1233
+    je L1237
     cmp rbx, processes
-    je L1233
+    je L1237
     call platform_instructions
     mov rdx, rax
     add rdx, qword [rbx+25560]
@@ -11656,7 +11657,12 @@ L1246:
     mov qword [rel current], processes
     mov r15d, processes
     mov eax, gfx_system
-    jmp L1232
+    jmp L1236
+L1228:
+    mov dword [rbx+8], 2
+    mov dword [rbx+25496], 0
+    mov dword [rbx+25508], 1
+    jmp L1230
 on_switch_signal:
     push rbx
     sub rsp, 16
@@ -11669,12 +11675,12 @@ on_switch_signal:
     movzx edi, dil
     call kernel_switch
     test eax, eax
-    jne L1256
-L1248:
+    jne L1261
+L1253:
     add rsp, 16
     pop rbx
     ret
-L1256:
+L1261:
     mov rax, qword [rsp+8]
     movdqu xmm0, oword [rbx+40]
     movups oword [rax], xmm0
@@ -11702,7 +11708,7 @@ L1256:
     mov qword [rax+176], rdx
     mov rsi, qword [rbx+224]
     test rsi, rsi
-    je L1250
+    je L1255
     lea rdx, [rax+192]
     mov rcx, qword [rsi]
     mov qword [rax+192], rcx
@@ -11716,21 +11722,21 @@ L1256:
     shr ecx, 3
     mov ecx, ecx
     rep movsq
-L1250:
+L1255:
     mov dword [rax+704], 1
     mov rcx, qword [rsp]
     cmp dword [rcx+704], 0
-    je L1251
+    je L1256
     mov eax, 0
-L1252:
+L1257:
     mov rdx, qword [rcx+rax]
     mov qword [rbx+40+rax], rdx
     add rax, 8
     cmp rax, 144
-    jne L1252
+    jne L1257
     mov rax, qword [rbx+224]
     test rax, rax
-    je L1248
+    je L1253
     lea rsi, [rcx+192]
     mov rdx, qword [rcx+192]
     mov qword [rax], rdx
@@ -11745,8 +11751,8 @@ L1252:
     shr eax, 3
     mov ecx, eax
     rep movsq
-    jmp L1248
-L1251:
+    jmp L1253
+L1256:
     mov rax, qword [rcx+120]
     mov qword [rbx+160], rax
     mov rax, qword [rcx+80]
@@ -11754,7 +11760,7 @@ L1251:
     mov rax, qword [rcx+128]
     mov qword [rbx+168], rax
     mov dword [rcx+704], 1
-    jmp L1248
+    jmp L1253
     global platform_time
 platform_time:
     sub rsp, 8
@@ -11778,20 +11784,20 @@ platform_sleep_ms:
     imul rdi, rdi, 1000000
     mov qword [rsp-16], rdi
     lea rdx, [rsp-24]
-L1263:
+L1268:
     mov eax, 35
     mov rdi, rdx
     mov rsi, rdx
     syscall
     cmp rax, -4096
-    ja L1264
+    ja L1269
     test eax, eax
-    jne L1263
+    jne L1268
     ret
-L1264:
+L1269:
     neg eax
     mov dword [rel errno], eax
-    jmp L1263
+    jmp L1268
     global platform_stack_alloc
 platform_stack_alloc:
     sub rsp, 8
@@ -11830,11 +11836,11 @@ platform_scheduler_start:
     mov dword [rsp+48], 268435460
     lea rax, [rsp-80]
     lea rdx, [rsp+48]
-L1272:
+L1277:
     mov qword [rax], 0
     add rax, 8
     cmp rax, rdx
-    jne L1272
+    jne L1277
     mov qword [rsp-80], 10240
     mov qword [rsp-120], on_switch_signal
     movsx rax, dword [rsp+48]
@@ -11849,8 +11855,8 @@ L1272:
     mov r10d, 8
     syscall
     cmp rax, -4096
-    ja L1277
-L1273:
+    ja L1282
+L1278:
     mov rax, qword [rsp-88]
     mov qword [rsp-120], rax
     movsx rax, dword [rsp+48]
@@ -11866,18 +11872,18 @@ L1273:
     mov r10d, 8
     syscall
     cmp rax, -4096
-    ja L1278
-L1271:
+    ja L1283
+L1276:
     add rsp, 80
     ret
-L1277:
+L1282:
     neg eax
     mov dword [rel errno], eax
-    jmp L1273
-L1278:
+    jmp L1278
+L1283:
     neg eax
     mov dword [rel errno], eax
-    jmp L1271
+    jmp L1276
     global platform_timer
 platform_timer:
     mov qword [rsp-40], 0
@@ -11892,10 +11898,10 @@ platform_timer:
     mov edx, 0
     syscall
     cmp rax, -4096
-    ja L1281
-L1279:
+    ja L1286
+L1284:
     ret
-L1281:
+L1286:
     neg eax
     mov dword [rel errno], eax
     ret
@@ -11905,22 +11911,22 @@ platform_trap:
     syscall
     mov rdi, rax
     cmp rax, -4096
-    ja L1285
-L1283:
+    ja L1290
+L1288:
     mov eax, 62
     movsx rdi, edi
     mov esi, 12
     syscall
     cmp rax, -4096
-    ja L1286
-L1282:
+    ja L1291
+L1287:
     ret
-L1285:
+L1290:
     neg edi
     mov dword [rel errno], edi
     mov rdi, -1
-    jmp L1283
-L1286:
+    jmp L1288
+L1291:
     neg eax
     mov dword [rel errno], eax
     ret
@@ -11928,16 +11934,16 @@ unlock:
     mov eax, dword [rel kernel_lock]
     sub eax, 1
     mov dword [rel kernel_lock], eax
-    jne L1287
+    jne L1292
     mov eax, dword [rel need_resched]
     test eax, eax
-    je L1287
+    je L1292
     mov rax, qword [rel current]
     cmp rax, processes
-    je L1287
+    je L1292
     mov dword [rel need_resched], 0
     call platform_trap
-L1287:
+L1292:
     ret
     global os_processes
 os_processes:
@@ -11954,20 +11960,20 @@ os_processes:
     mov ebx, processes+16
     mov r13d, processes+820240
     mov r12d, 0
-    jmp L1292
-L1291:
+    jmp L1297
+L1296:
     add r12d, 1
-L1290:
+L1295:
     add rbx, 25632
     cmp rbx, r13
-    je L1295
-L1292:
+    je L1300
+L1297:
     cmp dword [rbx-16], 0
-    je L1290
+    je L1295
     cmp dword [rbx-8], 4
-    je L1290
+    je L1295
     cmp r14d, r12d
-    jle L1291
+    jle L1296
     movsx rbp, r12d
     sal rbp, 6
     add rbp, r15
@@ -11988,8 +11994,8 @@ L1292:
     mov edi, dword [rbx-12]
     call wm_window_count
     mov dword [rbp+56], eax
-    jmp L1291
-L1295:
+    jmp L1296
+L1300:
     call unlock
     mov eax, r12d
     add rsp, 8
@@ -12007,10 +12013,10 @@ os_profile:
     call $lock
     mov eax, -1
     test ebx, ebx
-    je L1297
+    je L1302
     mov rax, qword [rel current]
     mov eax, dword [rax+4]
-L1297:
+L1302:
     mov dword [rel profile_pid], eax
     mov dword [rel profile_count], 0
     call unlock
@@ -12059,12 +12065,16 @@ os_alloc:
     sub rsp, 8
     mov rbp, rdi
     call $lock
+    cmp rbp, -32
+    jnb L1310
     lea rsi, [rbp+32]
+    cmp rsi, -257
+    ja L1310
     mov edi, 1
     call calloc
     mov rbx, rax
     test rax, rax
-    je L1308
+    je L1310
     mov qword [rax+16], rbp
     mov rax, qword [rel current]
     mov rdx, qword [rax+25520]
@@ -12077,16 +12087,16 @@ os_alloc:
     mov rax, qword [rel current]
     add qword [rax+25552], rbp
     call unlock
-    add rbx, 32
-L1304:
-    mov rax, rbx
+    lea rax, [rbx+32]
+L1309:
     add rsp, 8
     pop rbx
     pop rbp
     ret
-L1308:
+L1310:
     call unlock
-    jmp L1304
+    mov eax, 0
+    jmp L1309
     global os_bmp_encode
 os_bmp_encode:
     push r15
@@ -12110,7 +12120,7 @@ os_bmp_encode:
     call os_alloc
     mov rdi, rax
     test rax, rax
-    je L1309
+    je L1314
     mov byte [rax], 66
     mov byte [rax+1], 77
     mov byte [rax+2], r15b
@@ -12167,7 +12177,7 @@ os_bmp_encode:
     mov byte [rdi+44], 0
     mov byte [rdi+45], 0
     test r12d, r12d
-    jle L1311
+    jle L1316
     sub r14, rbp
     lea r9, [rdi+54+r14]
     movsx rax, ebx
@@ -12175,13 +12185,13 @@ os_bmp_encode:
     add rsi, r9
     mov r10d, 0
     mov r8d, 0
-L1314:
+L1319:
     test ebx, ebx
-    jle L1312
+    jle L1317
     movsx rax, r10d
     lea rcx, [r13+0+rax*4]
     mov rax, r9
-L1313:
+L1318:
     mov edx, dword [rcx]
     mov byte [rax], dl
     mov byte [rax+1], dh
@@ -12190,18 +12200,18 @@ L1313:
     add rcx, 4
     add rax, 3
     cmp rax, rsi
-    jne L1313
-L1312:
+    jne L1318
+L1317:
     add r8d, 1
     sub r9, rbp
     add r10d, ebx
     sub rsi, rbp
     cmp r12d, r8d
-    jne L1314
-L1311:
+    jne L1319
+L1316:
     mov rax, qword [rsp+8]
     mov qword [rax], r15
-L1309:
+L1314:
     mov rax, rdi
     add rsp, 24
     pop rbx
@@ -12214,7 +12224,7 @@ L1309:
     global os_free
 os_free:
     test rdi, rdi
-    je L1321
+    je L1326
     push rbx
     mov rbx, rdi
     call $lock
@@ -12231,7 +12241,7 @@ os_free:
     call unlock
     pop rbx
     ret
-L1321:
+L1326:
     ret
     global os_realloc
 os_realloc:
@@ -12242,14 +12252,14 @@ os_realloc:
     sub rsp, 8
     mov r12, rsi
     test rdi, rdi
-    je L1328
+    je L1333
     mov rbx, rdi
     mov r13, qword [rdi-16]
     mov rdi, rsi
     call os_alloc
     mov rbp, rax
     test rax, rax
-    je L1324
+    je L1329
     cmp r13, r12
     mov rdx, r12
     cmovbe rdx, r13
@@ -12258,7 +12268,7 @@ os_realloc:
     call memcpy
     mov rdi, rbx
     call os_free
-L1324:
+L1329:
     mov rax, rbp
     add rsp, 8
     pop rbx
@@ -12266,11 +12276,11 @@ L1324:
     pop r12
     pop r13
     ret
-L1328:
+L1333:
     mov rdi, rsi
     call os_alloc
     mov rbp, rax
-    jmp L1324
+    jmp L1329
     global os_time
 os_time:
     push rbx
@@ -12288,8 +12298,8 @@ os_time:
     imul rax, rcx, 86400
     mov rdi, rsi
     sub rdi, rax
-    js L1336
-L1330:
+    js L1341
+L1335:
     movabs rdx, 5247073869855161349
     mov rax, rdi
     imul rdx
@@ -12349,7 +12359,7 @@ L1330:
     mov dword [rbx+12], edi
     mov rsi, rcx
     add rsi, 719468
-    js L1337
+    js L1342
     movabs rdx, 4137408090565272301
     mov rax, rsi
     imul rdx
@@ -12358,7 +12368,7 @@ L1330:
     sar rax, 63
     mov rdi, rdx
     sub rdi, rax
-L1332:
+L1337:
     imul rcx, rdi, -146097
     add rcx, rsi
     movabs r8, 3234497591006606311
@@ -12441,11 +12451,11 @@ L1332:
     call unlock
     pop rbx
     ret
-L1336:
+L1341:
     add rdi, 86400
     sub rcx, 1
-    jmp L1330
-L1337:
+    jmp L1335
+L1342:
     add rcx, 573372
     movabs rdx, 4137408090565272301
     mov rax, rcx
@@ -12454,7 +12464,7 @@ L1337:
     sar rcx, 63
     mov rdi, rdx
     sub rdi, rcx
-    jmp L1332
+    jmp L1337
     section .rodata
 LC31:
     db `AM`, 0
@@ -12472,7 +12482,7 @@ update_clock_text:
     mov ecx, dword [rsp+16]
     mov r8d, dword [rsp+20]
     cmp dword [rel settings+76], 0
-    jne L1344
+    jne L1349
     cmp ecx, 11
     mov r9d, LC32
     mov eax, LC31
@@ -12493,16 +12503,16 @@ update_clock_text:
     mov edi, clock_text
     mov eax, 0
     call snprintf
-L1338:
+L1343:
     add rsp, 40
     ret
-L1344:
+L1349:
     mov edx, LC33
     mov esi, 12
     mov edi, clock_text
     mov eax, 0
     call snprintf
-    jmp L1338
+    jmp L1343
     global os_peek_message
 os_peek_message:
     push r12
@@ -12514,7 +12524,7 @@ os_peek_message:
     cmp dword [rbp+25492], 0
     setg r12b
     movzx r12d, r12b
-    jle L1346
+    jle L1351
     movsx rax, dword [rbp+25488]
     lea rdx, [rax+rax*2]
     sal rdx, 6
@@ -12553,20 +12563,20 @@ os_peek_message:
     mov dword [rbp+25488], eax
     sub dword [rbp+25492], 1
     cmp dword [rbx], 9
-    je L1348
-L1346:
+    je L1353
+L1351:
     call unlock
     mov eax, r12d
     pop rbx
     pop rbp
     pop r12
     ret
-L1348:
+L1353:
     mov rdi, qword [rbx+8]
     test rdi, rdi
-    je L1346
+    je L1351
     call wm_take_retired
-    jmp L1346
+    jmp L1351
     global os_set_timer
 os_set_timer:
     push r13
@@ -12582,49 +12592,49 @@ os_set_timer:
     mov edx, timers+2048
     mov rax, rsi
     mov ebp, 0
-    jmp L1351
-L1350:
+    jmp L1356
+L1355:
     add rax, 32
     cmp rax, rdx
-    je L1364
-L1351:
+    je L1369
+L1356:
     cmp dword [rax], 0
-    je L1350
+    je L1355
     mov rcx, qword [rel current]
     mov edi, dword [rcx+4]
     cmp dword [rax+4], edi
-    jne L1350
+    jne L1355
     cmp qword [rax+16], rbx
-    jne L1350
+    jne L1355
     cmp dword [rax+8], r12d
     cmove rbp, rax
-    jmp L1350
-L1364:
+    jmp L1355
+L1369:
     test r13d, r13d
-    jle L1352
+    jle L1357
     mov eax, 0
     test rbp, rbp
-    je L1353
-    jmp L1354
-L1352:
-    test rbp, rbp
-    je L1355
-    mov dword [rbp+0], 0
-L1355:
-    call unlock
-    jmp L1349
+    je L1358
+    jmp L1359
 L1357:
+    test rbp, rbp
+    je L1360
+    mov dword [rbp+0], 0
+L1360:
+    call unlock
+    jmp L1354
+L1362:
     add eax, 1
     add rsi, 32
     cmp eax, 63
-    jg L1358
-L1353:
+    jg L1363
+L1358:
     cmp dword [rsi], 0
-    jne L1357
+    jne L1362
     cdqe
     sal rax, 5
     lea rbp, [timers+rax]
-L1354:
+L1359:
     mov dword [rbp+0], 1
     mov rax, qword [rel current]
     mov eax, dword [rax+4]
@@ -12636,9 +12646,9 @@ L1354:
     movsx r13, r13d
     add r13, rax
     mov qword [rbp+24], r13
-L1358:
+L1363:
     call unlock
-L1349:
+L1354:
     add rsp, 8
     pop rbx
     pop rbp
@@ -12658,10 +12668,10 @@ os_clipboard_set_text:
     call clip_clear
     lea edi, [rbp+1]
     movsx rdi, edi
-    call malloc
+    call heap_alloc
     mov qword [rel clip_text], rax
     test rax, rax
-    je L1366
+    je L1371
     mov rbx, rax
     movsx r13, ebp
     mov rdx, r13
@@ -12671,7 +12681,7 @@ os_clipboard_set_text:
     mov byte [rbx+r13], 0
     mov dword [rel clip_length], ebp
     mov dword [rel clip_kind], 1
-L1366:
+L1371:
     call unlock
     add rsp, 8
     pop rbx
@@ -12690,8 +12700,8 @@ os_clipboard_text:
     call $lock
     mov ebx, 0
     cmp dword [rel clip_kind], 1
-    je L1372
-L1369:
+    je L1377
+L1374:
     call unlock
     mov rax, rbx
     add rsp, 8
@@ -12700,7 +12710,7 @@ L1369:
     pop r12
     pop r13
     ret
-L1372:
+L1377:
     mov r13d, dword [rel clip_length]
     lea r12d, [r13+1]
     movsx r12, r12d
@@ -12708,15 +12718,15 @@ L1372:
     call os_alloc
     mov rbx, rax
     test rax, rax
-    je L1369
+    je L1374
     mov rdx, r12
     mov rsi, qword [rel clip_text]
     mov rdi, rax
     call memcpy
     test rbp, rbp
-    je L1369
+    je L1374
     mov dword [rbp+0], r13d
-    jmp L1369
+    jmp L1374
     global os_clipboard_set_picture
 os_clipboard_set_picture:
     push r13
@@ -12734,10 +12744,10 @@ os_clipboard_set_picture:
     imul rbx, rax
     sal rbx, 2
     mov rdi, rbx
-    call malloc
+    call heap_alloc
     mov qword [rel clip_pixels], rax
     test rax, rax
-    je L1374
+    je L1379
     mov rdi, rax
     mov rdx, rbx
     mov rsi, r13
@@ -12745,7 +12755,7 @@ os_clipboard_set_picture:
     mov dword [rel clip_w], r12d
     mov dword [rel clip_h], ebp
     mov dword [rel clip_kind], 2
-L1374:
+L1379:
     call unlock
     add rsp, 8
     pop rbx
@@ -12767,8 +12777,8 @@ os_clipboard_picture:
     call $lock
     mov ebx, 0
     cmp dword [rel clip_kind], 2
-    je L1380
-L1377:
+    je L1385
+L1382:
     call unlock
     mov rax, rbx
     add rsp, 8
@@ -12779,7 +12789,7 @@ L1377:
     pop r14
     pop r15
     ret
-L1380:
+L1385:
     mov r15d, dword [rel clip_w]
     mov r14d, dword [rel clip_h]
     movsx r13, r15d
@@ -12790,35 +12800,35 @@ L1380:
     call os_alloc
     mov rbx, rax
     test rax, rax
-    je L1377
+    je L1382
     mov rdx, r13
     mov rsi, qword [rel clip_pixels]
     mov rdi, rax
     call memcpy
     mov dword [r12], r15d
     mov dword [rbp+0], r14d
-    jmp L1377
+    jmp L1382
     global os_window_close
 os_window_close:
     push rbx
     mov rbx, rdi
     call $lock
     test rbx, rbx
-    je L1382
+    je L1387
     cmp dword [rbx], 0
-    je L1382
+    je L1387
     mov rax, qword [rel current]
     mov eax, dword [rax+4]
     cmp dword [rbx+4], eax
-    je L1384
-L1382:
+    je L1389
+L1387:
     call unlock
     pop rbx
     ret
-L1384:
+L1389:
     mov rdi, rbx
     call window_destroy
-    jmp L1382
+    jmp L1387
     global os_window_set_title
 os_window_set_title:
     push rbp
@@ -12851,22 +12861,22 @@ os_window_move:
     mov ebp, edx
     call $lock
     test rbx, rbx
-    je L1388
+    je L1393
     cmp dword [rbx], 0
-    je L1388
+    je L1393
     mov rax, qword [rel current]
     mov eax, dword [rax+4]
     cmp dword [rbx+4], eax
-    je L1390
-L1388:
+    je L1395
+L1393:
     call unlock
     pop rbx
     pop rbp
     pop r12
     ret
-L1390:
+L1395:
     cmp dword [rbx+128], 0
-    jne L1388
+    jne L1393
     mov rdi, rbx
     call window_frame
     mov r8, rax
@@ -12903,7 +12913,7 @@ L1390:
     mov rdx, r9
     mov rdi, rbx
     call window_set_frame
-    jmp L1388
+    jmp L1393
     global os_window_update
 os_window_update:
     push r14
@@ -12918,10 +12928,10 @@ os_window_update:
     mov r14d, r8d
     call $lock
     cmp dword [rbx], 0
-    je L1392
+    je L1397
     cmp dword [rbx+124], 0
-    je L1394
-L1392:
+    je L1399
+L1397:
     call unlock
     pop rbx
     pop rbp
@@ -12929,7 +12939,7 @@ L1392:
     pop r13
     pop r14
     ret
-L1394:
+L1399:
     mov rdi, rbx
     call client_rect
     mov rcx, rdx
@@ -12979,7 +12989,7 @@ L1394:
     mov rdi, r9
     mov rsi, rcx
     call invalidate
-    jmp L1392
+    jmp L1397
     global os_window_update_all
 os_window_update_all:
     sub rsp, 8
@@ -13004,7 +13014,7 @@ os_window_set_menu:
     test rbp, rbp
     setne dl
     cmp dl, al
-    je L1398
+    je L1403
     mov rdi, rbx
     call window_frame
     mov rdi, rax
@@ -13013,23 +13023,23 @@ os_window_set_menu:
     mov rcx, rdx
     sar rcx, 32
     test rbp, rbp
-    jne L1399
+    jne L1404
     sub ecx, 19
     test byte [rbx+120], 4
-    je L1402
+    je L1407
     mov r8d, -9
-    jmp L1401
-L1399:
+    jmp L1406
+L1404:
     add ecx, 19
     test byte [rbx+120], 4
-    je L1402
+    je L1407
     mov r8d, 9
-L1401:
+L1406:
     mov esi, edi
     sub esi, r8d
     mov edi, 0
     cmovs esi, edi
-L1402:
+L1407:
     sal rsi, 32
     mov edi, eax
     or rsi, rdi
@@ -13041,7 +13051,7 @@ L1402:
     mov rsi, rax
     mov rdi, rbx
     call window_set_frame
-L1398:
+L1403:
     mov rdi, rbx
     call window_frame
     mov rdi, rax
@@ -13060,12 +13070,12 @@ os_drag_file:
     mov eax, dword [rel held]
     and eax, -5
     cmp eax, 3
-    je L1411
-L1409:
+    je L1416
+L1414:
     call unlock
     pop rbx
     ret
-L1411:
+L1416:
     mov rcx, rbx
     mov edx, LC3
     mov esi, 128
@@ -13077,7 +13087,7 @@ L1411:
     call cursor_draw
     mov dword [rel held], 0
     mov qword [rel held_window], 0
-    jmp L1409
+    jmp L1414
 wait_for_answer:
     push rbx
     mov rbx, qword [rel current]
@@ -13149,10 +13159,10 @@ os_input_box:
     mov esi, 1
     call input_box_open
     test rax, rax
-    je L1417
+    je L1422
     mov rdx, qword [rel current]
     cmp rdx, processes
-    je L1417
+    je L1422
     mov rax, qword [rax+192]
     mov qword [rax+8], rbx
     mov dword [rax+16], r13d
@@ -13160,17 +13170,17 @@ os_input_box:
     cmp eax, 1
     sete al
     movzx eax, al
-L1416:
+L1421:
     add rsp, 8
     pop rbx
     pop rbp
     pop r12
     pop r13
     ret
-L1417:
+L1422:
     call unlock
     mov eax, 0
-    jmp L1416
+    jmp L1421
     global os_get_message
 os_get_message:
     push rbp
@@ -13178,18 +13188,18 @@ os_get_message:
     sub rsp, 8
     mov rbp, rdi
     mov rbx, qword [rel current]
-L1424:
+L1429:
     call $lock
     cmp dword [rbx+25492], 0
-    jne L1427
+    jne L1432
     mov dword [rbx+8], 2
     mov dword [rbx+25496], 1
     mov eax, dword [rel kernel_lock]
     sub eax, 1
     mov dword [rel kernel_lock], eax
     call platform_trap
-    jmp L1424
-L1427:
+    jmp L1429
+L1432:
     movsx rax, dword [rbx+25488]
     lea rdx, [rax+rax*2]
     sal rdx, 6
@@ -13228,19 +13238,19 @@ L1427:
     mov dword [rbx+25488], eax
     sub dword [rbx+25492], 1
     cmp dword [rbp+0], 9
-    je L1428
-L1423:
+    je L1433
+L1428:
     call unlock
     add rsp, 8
     pop rbx
     pop rbp
     ret
-L1428:
+L1433:
     mov rdi, qword [rbp+8]
     test rdi, rdi
-    je L1423
+    je L1428
     call wm_take_retired
-    jmp L1423
+    jmp L1428
     global os_sleep
 os_sleep:
     push rbx
@@ -13280,7 +13290,7 @@ platform_pcm_open:
     call open
     mov dword [rel pcm_fd], eax
     test eax, eax
-    js L1434
+    js L1439
     mov ebx, eax
     mov dword [rsp+12], 16
     mov dword [rsp+8], 1
@@ -13307,14 +13317,14 @@ platform_pcm_open:
     mov eax, 0
     call ioctl
     mov eax, 0
-L1432:
+L1437:
     add rsp, 16
     pop rbx
     pop rbp
     ret
-L1434:
+L1439:
     mov eax, -1
-    jmp L1432
+    jmp L1437
     global os_pcm_open
 os_pcm_open:
     push rbp
@@ -13323,21 +13333,21 @@ os_pcm_open:
     call $lock
     mov ebp, dword [rel pcm_owner]
     test ebp, ebp
-    jns L1441
+    jns L1446
     mov edi, ebx
     call platform_pcm_open
     test eax, eax
-    js L1442
+    js L1447
     mov rax, qword [rel current]
     mov eax, dword [rax+4]
     mov dword [rel pcm_owner], eax
     call unlock
     mov eax, 0
-L1436:
+L1441:
     pop rbx
     pop rbp
     ret
-L1441:
+L1446:
     mov rax, qword [rel current]
     mov ebx, dword [rax+4]
     call unlock
@@ -13345,11 +13355,11 @@ L1441:
     setne al
     movzx eax, al
     neg eax
-    jmp L1436
-L1442:
+    jmp L1441
+L1447:
     call unlock
     mov eax, -1
-    jmp L1436
+    jmp L1441
     global platform_pcm_space
 platform_pcm_space:
     sub rsp, 24
@@ -13363,13 +13373,13 @@ platform_pcm_space:
     mov edx, eax
     mov eax, 0
     test edx, edx
-    jne L1443
+    jne L1448
     mov edx, dword [rsp+12]
     mov eax, edx
     shr eax, 31
     add eax, edx
     sar eax, 1
-L1443:
+L1448:
     add rsp, 24
     ret
     global os_pcm_space
@@ -13379,19 +13389,19 @@ os_pcm_space:
     mov eax, dword [rel pcm_owner]
     mov ebx, 0
     test eax, eax
-    js L1448
+    js L1453
     mov rdx, qword [rel current]
     cmp eax, dword [rdx+4]
-    je L1452
-L1448:
+    je L1457
+L1453:
     call unlock
     mov eax, ebx
     pop rbx
     ret
-L1452:
+L1457:
     call platform_pcm_space
     mov ebx, eax
-    jmp L1448
+    jmp L1453
     global platform_pcm_write
 platform_pcm_write:
     mov rcx, rdi
@@ -13402,22 +13412,22 @@ platform_pcm_write:
     mov rsi, rcx
     syscall
     cmp rax, -4096
-    ja L1457
+    ja L1462
     mov edx, 0
     test rax, rax
-    jle L1453
+    jle L1458
     mov rdx, rax
     shr rdx, 63
     add rdx, rax
     sar rdx, 1
-L1453:
+L1458:
     mov eax, edx
     ret
-L1457:
+L1462:
     neg eax
     mov dword [rel errno], eax
     mov edx, 0
-    jmp L1453
+    jmp L1458
     global os_pcm_write
 os_pcm_write:
     push r12
@@ -13430,14 +13440,14 @@ os_pcm_write:
     cmovle ebx, eax
     mov ebp, 0
     test ebx, ebx
-    jle L1458
+    jle L1463
     call $lock
     mov esi, ebx
     mov rdi, r12
     call platform_pcm_write
     mov ebp, eax
     call unlock
-L1458:
+L1463:
     mov eax, ebp
     pop rbx
     pop rbp
@@ -13456,25 +13466,25 @@ platform_pcm_close:
     movsx rdi, ebx
     syscall
     cmp rax, -4096
-    ja L1465
-L1463:
+    ja L1470
+L1468:
     mov dword [rel pcm_fd], -1
     pop rbx
     ret
-L1465:
+L1470:
     neg eax
     mov dword [rel errno], eax
-    jmp L1463
+    jmp L1468
     global pcm_release
 pcm_release:
     mov eax, dword [rel pcm_owner]
     cmp eax, edi
-    jne L1466
+    jne L1471
     test eax, eax
-    jns L1468
-L1466:
+    jns L1473
+L1471:
     ret
-L1468:
+L1473:
     call platform_pcm_close
     mov dword [rel pcm_owner], -1
     ret
@@ -13505,26 +13515,26 @@ platform_midi_write:
     mov edx, esi
     mov edi, dword [rel midi_fd]
     test edi, edi
-    js L1471
+    js L1476
     mov eax, 1
     movsx rdi, edi
     mov rsi, rcx
     movsx rdx, edx
     syscall
     cmp rax, -4096
-    ja L1473
-L1471:
+    ja L1478
+L1476:
     ret
-L1473:
+L1478:
     neg eax
     mov dword [rel errno], eax
     ret
 midi_write:
     cmp dword [rel midi_open], 0
-    jne L1476
-L1474:
+    jne L1481
+L1479:
     ret
-L1476:
+L1481:
     call platform_midi_write
     ret
 process_cleanup:
@@ -13537,37 +13547,37 @@ process_cleanup:
     call wm_process_ended
     mov eax, timers
     mov edx, timers+2048
-    jmp L1479
-L1478:
+    jmp L1484
+L1483:
     add rax, 32
     cmp rax, rdx
-    je L1493
-L1479:
+    je L1498
+L1484:
     cmp dword [rax], 0
-    je L1478
+    je L1483
     mov esi, dword [rbx+4]
     cmp dword [rax+4], esi
-    jne L1478
+    jne L1483
     mov dword [rax], 0
-    jmp L1478
-L1493:
+    jmp L1483
+L1498:
     mov edi, dword [rbx+4]
     call pcm_release
     cmp dword [rbx+25504], 0
-    jne L1494
-L1480:
+    jne L1499
+L1485:
     lea rbp, [rbx+25520]
     mov rdi, qword [rbx+25520]
     cmp rbp, rdi
-    je L1486
-L1487:
+    je L1491
+L1492:
     mov rax, qword [rdi]
     mov qword [rbx+25520], rax
     call free
     mov rdi, qword [rbx+25520]
     cmp rdi, rbp
-    jne L1487
-L1486:
+    jne L1492
+L1491:
     mov qword [rbx+25528], rbp
     mov qword [rbx+25552], 0
     mov dword [rbx+25492], 0
@@ -13577,14 +13587,14 @@ L1486:
     pop rbp
     pop r12
     ret
-L1494:
+L1499:
     mov esi, dword [rbx+4]
     mov eax, dword [rel midi_queued]
     test eax, eax
-    jle L1481
+    jle L1486
     mov edx, 0
-    jmp L1484
-L1495:
+    jmp L1489
+L1500:
     sub eax, 1
     mov dword [rel midi_queued], eax
     movsx rcx, edx
@@ -13595,21 +13605,21 @@ L1495:
     movups oword [midi_queue+rcx*8], xmm0
     mov rax, qword [midi_queue+16+rax*8]
     mov qword [midi_queue+16+rcx*8], rax
-L1483:
+L1488:
     mov eax, dword [rel midi_queued]
     cmp eax, edx
-    jle L1481
-L1484:
+    jle L1486
+L1489:
     movsx rcx, edx
     lea rcx, [rcx+rcx*2]
     cmp esi, dword [midi_queue+16+rcx*8]
-    je L1495
+    je L1500
     add edx, 1
-    jmp L1483
-L1481:
+    jmp L1488
+L1486:
     mov ebp, 0
     lea r12, [rsp+10]
-L1485:
+L1490:
     mov eax, ebp
     or eax, -80
     mov byte [rsp+10], al
@@ -13623,8 +13633,8 @@ L1485:
     call midi_write
     add ebp, 1
     cmp ebp, 13
-    jne L1485
-    jmp L1480
+    jne L1490
+    jmp L1485
     global os_exit
 os_exit:
     sub rsp, 8
@@ -13632,9 +13642,9 @@ os_exit:
     mov rdi, qword [rel current]
     call process_cleanup
     mov dword [rel kernel_lock], 0
-L1497:
+L1502:
     call platform_trap
-    jmp L1497
+    jmp L1502
 process_start:
     sub rsp, 8
     mov rax, qword [rel current]
@@ -13643,9 +13653,9 @@ process_start:
     mov rdx, qword [APPS+16+rdx*8]
     mov edi, 0
     cmp dword [rax+176], 0
-    je L1500
+    je L1505
     lea rdi, [rax+48]
-L1500:
+L1505:
     call rdx
     mov edi, 0
     call os_exit
@@ -13654,19 +13664,19 @@ os_default_message:
     push rbx
     mov eax, dword [rdi]
     cmp eax, 15
-    je L1507
+    je L1512
     cmp eax, 10
-    je L1508
-L1503:
+    je L1513
+L1508:
     pop rbx
     ret
-L1507:
+L1512:
     mov edi, 0
     call os_exit
-L1508:
+L1513:
     mov rdi, qword [rdi+8]
     test rdi, rdi
-    je L1503
+    je L1508
     call os_window_close
     call $lock
     mov rax, qword [rel current]
@@ -13675,13 +13685,13 @@ L1508:
     mov ebx, eax
     call unlock
     test ebx, ebx
-    jne L1503
+    jne L1508
     mov edi, 0
     call os_exit
     global os_kill
 os_kill:
     test edi, edi
-    je L1513
+    je L1518
     push rbx
     mov ebx, edi
     call $lock
@@ -13689,24 +13699,24 @@ os_kill:
     call process_of
     mov rdi, rax
     test rax, rax
-    je L1518
+    je L1523
     mov rax, qword [rel current]
     cmp rax, rdi
-    je L1519
+    je L1524
     call process_cleanup
     call unlock
     mov eax, 0
-L1509:
+L1514:
     pop rbx
     ret
-L1518:
+L1523:
     call unlock
     mov eax, -1
-    jmp L1509
-L1519:
+    jmp L1514
+L1524:
     mov edi, 0
     call os_exit
-L1513:
+L1518:
     mov eax, -1
     ret
     global os_midi_send
@@ -13736,26 +13746,26 @@ midi_later:
     mov byte [rsp+14], dl
     mov byte [rsp+15], cl
     test rdi, rdi
-    jle L1527
+    jle L1532
     mov rbx, rdi
     mov eax, dword [rel midi_queued]
     cmp eax, 256
-    je L1522
+    je L1527
     cmp dword [rel midi_open], 0
-    jne L1528
-L1522:
+    jne L1533
+L1527:
     add rsp, 24
     pop rbx
     pop rbp
     pop r12
     pop r13
     ret
-L1527:
+L1532:
     lea rdi, [rsp+13]
     mov esi, r8d
     call midi_write
-    jmp L1522
-L1528:
+    jmp L1527
+L1533:
     lea edx, [rax+1]
     mov dword [rel midi_queued], edx
     mov rdx, qword [rel current]
@@ -13775,7 +13785,7 @@ L1528:
     mov byte [rax+10], dl
     add r13, rbp
     mov dword [midi_queue+12+r13*8], r12d
-    jmp L1522
+    jmp L1527
     global os_midi_program
 os_midi_program:
     push rbp
@@ -13843,9 +13853,9 @@ os_midi_note:
     global os_beep
 os_beep:
     cmp dword [rel settings+80], 0
-    jne L1539
+    jne L1544
     ret
-L1539:
+L1544:
     sub rsp, 8
     mov esi, 14
     mov edi, 13
@@ -13872,73 +13882,83 @@ os_spawn:
     push rbp
     push rbx
     cmp edi, 17
-    ja L1548
+    ja L1554
     mov r12d, edi
     mov r13, rsi
     movsx rax, edi
     lea rax, [rax+rax*4]
     cmp qword [APPS+16+rax*8], 0
-    je L1549
+    je L1555
     call $lock
     mov eax, processes+25632
     mov ebx, 1
-    jmp L1545
-L1542:
+    jmp L1550
+L1547:
     add ebx, 1
     add rax, 25632
     cmp ebx, 32
-    je L1546
-L1545:
+    je L1551
+L1550:
     cmp dword [rax], 0
-    jne L1542
+    jne L1547
     mov edi, 262144
     call malloc
     mov rbp, rax
     test rax, rax
-    je L1553
+    je L1560
     movsx rbx, ebx
-    imul rbx, rbx, 25632
-    lea r14, [processes+rbx]
+    imul r14, rbx, 25632
+    lea rbx, [processes+r14]
     mov edx, 25632
     mov esi, 0
-    mov rdi, r14
+    mov rdi, rbx
     call memset
-    mov dword [processes+rbx], 1
+    mov dword [processes+r14], 1
     mov eax, dword [rel next_pid]
     lea edx, [rax+1]
     mov dword [rel next_pid], edx
-    mov dword [r14+4], eax
-    mov dword [r14+12], r12d
-    mov qword [r14+184], rbp
+    mov dword [rbx+4], eax
+    mov dword [rbx+12], r12d
+    mov qword [rbx+184], rbp
+    mov rax, rbp
+    lea rdx, [rbp+256]
+L1552:
+    mov dword [rax], 1526618028
+    add rax, 4
+    cmp rdx, rax
+    jne L1552
     add rbp, 262144
     and rbp, -16
-    sub rbp, 8
-    mov qword [r14+312], rbp
-    mov qword [r14+320], process_start
+    lea rax, [rbp-8]
+    mov qword [rbx+312], rax
+    mov qword [rbx+272], 0
+    mov qword [rbx+320], process_start
+    mov dword [rbx+896], 0
+    mov dword [rbx+8], 0
     movsx r12, r12d
     lea rax, [r12+r12*4]
     mov rcx, qword [APPS+rax*8]
-    lea rdi, [r14+16]
+    lea rdi, [rbx+16]
     mov edx, LC3
     mov esi, 32
     mov eax, 0
     call snprintf
     test r13, r13
-    je L1547
-    lea rdi, [r14+48]
+    je L1553
+    lea rdi, [rbx+48]
     mov rcx, r13
     mov edx, LC3
     mov esi, 128
     mov eax, 0
     call snprintf
-    mov dword [r14+176], 1
-L1547:
-    lea rax, [r14+25520]
-    mov qword [r14+25528], rax
-    mov qword [r14+25520], rax
-    mov ebx, dword [r14+4]
+    mov dword [rbx+176], 1
+L1553:
+    lea rax, [rbx+25520]
+    mov qword [rbx+25528], rax
+    mov qword [rbx+25520], rax
+    mov ebx, dword [rbx+4]
     call unlock
-L1540:
+L1545:
     mov eax, ebx
     pop rbx
     pop rbp
@@ -13946,21 +13966,21 @@ L1540:
     pop r13
     pop r14
     ret
-L1553:
-    je L1546
+L1560:
+    je L1551
     mov rdi, rax
     call free
-L1546:
+L1551:
     call unlock
     call os_beep
     mov ebx, -1
-    jmp L1540
-L1548:
+    jmp L1545
+L1554:
     mov ebx, -1
-    jmp L1540
-L1549:
+    jmp L1545
+L1555:
     mov ebx, -1
-    jmp L1540
+    jmp L1545
 window_focus:
     push rbp
     push rbx
@@ -13969,29 +13989,29 @@ window_focus:
     mov edi, dword [rdi+4]
     call dialog_of
     test rax, rax
-    je L1555
+    je L1562
     mov rbp, rax
     cmp rbx, rax
-    je L1555
+    je L1562
     cmp dword [rbx+124], 0
-    jne L1559
-L1556:
+    jne L1566
+L1563:
     mov rdi, rbp
     call window_raise
     call os_beep
-L1554:
+L1561:
     add rsp, 8
     pop rbx
     pop rbp
     ret
-L1559:
+L1566:
     mov rdi, rbx
     call window_raise
-    jmp L1556
-L1555:
+    jmp L1563
+L1562:
     mov rdi, rbx
     call window_raise
-    jmp L1554
+    jmp L1561
     global os_window_focus
 os_window_focus:
     push rbx
@@ -14028,36 +14048,36 @@ os_message_box:
     mov rsi, r12
     call message_box_open
     test rax, rax
-    je L1568
+    je L1575
     mov rax, qword [rel current]
     cmp rax, processes
-    je L1569
+    je L1576
     cmp dword [rel settings+80], 0
-    je L1566
+    je L1573
     cmp ebp, 2
-    jne L1570
-L1566:
+    jne L1577
+L1573:
     call wait_for_answer
-L1562:
+L1569:
     add rsp, 8
     pop rbx
     pop rbp
     pop r12
     pop r13
     ret
-L1568:
+L1575:
     call unlock
     mov eax, 2
-    jmp L1562
-L1569:
+    jmp L1569
+L1576:
     mov eax, dword [rel kernel_lock]
     sub eax, 1
     mov dword [rel kernel_lock], eax
     mov eax, 1
-    jmp L1562
-L1570:
+    jmp L1569
+L1577:
     call os_beep
-    jmp L1566
+    jmp L1573
     section .rodata
     align 8, db 0
 LC37:
@@ -14078,8 +14098,8 @@ os_window_create:
     mov r14d, r8d
     call $lock
     test rbx, rbx
-    je L1575
-L1572:
+    je L1582
+L1579:
     mov rax, qword [rel current]
     mov edi, dword [rax+4]
     mov r9d, r14d
@@ -14091,7 +14111,7 @@ L1572:
     mov rbx, rax
     call unlock
     test rbx, rbx
-    je L1576
+    je L1583
     mov rax, rbx
     add rsp, 96
     pop rbx
@@ -14100,13 +14120,13 @@ L1572:
     pop r13
     pop r14
     ret
-L1575:
+L1582:
     mov rax, qword [rel current]
     movsx rax, dword [rax+12]
     lea rax, [rax+rax*4]
     mov rbx, qword [APPS+8+rax*8]
-    jmp L1572
-L1576:
+    jmp L1579
+L1583:
     mov rcx, rbp
     mov edx, LC37
     mov esi, 96
@@ -14126,9 +14146,9 @@ L1576:
     call os_exit
 sound_chime:
     cmp dword [rel settings+80], 0
-    jne L1589
+    jne L1596
     ret
-L1589:
+L1596:
     push rbp
     push rbx
     sub rsp, 8
@@ -14141,9 +14161,9 @@ L1589:
     call os_midi_program
     mov ebx, 48
     test ebp, ebp
-    je L1579
+    je L1586
     mov ebx, 53
-L1579:
+L1586:
     mov r8d, 2200
     mov ecx, 0
     mov edx, 70
@@ -14163,27 +14183,27 @@ L1579:
     mov edi, 14
     call os_midi_note
     mov ebx, 0
-    jmp L1582
-L1580:
+    jmp L1589
+L1587:
     mov esi, dword [rising.0+rbx*4]
-L1581:
+L1588:
     mov r8d, 1200
     mov edx, 90
     mov edi, 15
     call os_midi_note
     add rbx, 1
     cmp rbx, 6
-    je L1590
-L1582:
+    je L1597
+L1589:
     imul ecx, ebx, 150
     test ebp, ebp
-    je L1580
+    je L1587
     mov rax, rbx
     neg rax
     mov esi, dword [rising.0+20+rax*4]
     sub esi, 2
-    jmp L1581
-L1590:
+    jmp L1588
+L1597:
     add rsp, 8
     pop rbx
     pop rbp
@@ -14199,12 +14219,12 @@ sound_run:
     call os_now_ms
     mov ebx, dword [rel midi_queued]
     test ebx, ebx
-    jle L1596
+    jle L1603
     mov r13, rax
     mov ebp, 0
     mov r12, -1
-    jmp L1595
-L1599:
+    jmp L1602
+L1606:
     movsx r15, ebp
     lea r14, [r15+r15]
     lea rax, [r14+r15]
@@ -14220,24 +14240,24 @@ L1599:
     movups oword [midi_queue+r14*8], xmm0
     mov rax, qword [midi_queue+16+rax*8]
     mov qword [midi_queue+16+r14*8], rax
-L1594:
+L1601:
     mov ebx, dword [rel midi_queued]
     cmp ebp, ebx
-    jge L1591
-L1595:
+    jge L1598
+L1602:
     movsx rax, ebp
     lea rax, [rax+rax*2]
     mov rax, qword [midi_queue+rax*8]
     cmp rax, r13
-    jle L1599
+    jle L1606
     sub rax, r13
     cmp r12, rax
     cmova r12, rax
     add ebp, 1
-    jmp L1594
-L1596:
+    jmp L1601
+L1603:
     mov r12, -1
-L1591:
+L1598:
     mov rax, r12
     add rsp, 8
     pop rbx
@@ -14254,28 +14274,28 @@ platform_file_size:
     lea rsi, [rsp-120]
     syscall
     cmp rax, -4096
-    ja L1606
+    ja L1613
     test eax, eax
-    jne L1603
+    jne L1610
     mov eax, dword [rsp-96]
     and eax, 61440
     cmp eax, 16384
-    je L1604
+    je L1611
     mov rax, qword [rsp-72]
-L1600:
+L1607:
     add rsp, 32
     ret
-L1606:
+L1613:
     neg eax
     mov dword [rel errno], eax
     mov rax, -1
-    jmp L1600
-L1603:
+    jmp L1607
+L1610:
     mov rax, -1
-    jmp L1600
-L1604:
+    jmp L1607
+L1611:
     mov rax, -1
-    jmp L1600
+    jmp L1607
     section .rodata
 LC38:
     db `rb`, 0
@@ -14290,7 +14310,7 @@ platform_file_read:
     mov esi, LC38
     call fopen
     test rax, rax
-    je L1609
+    je L1616
     mov rbx, rax
     mov rcx, rax
     mov rdx, r12
@@ -14300,15 +14320,15 @@ platform_file_read:
     mov rbp, rax
     mov rdi, rbx
     call fclose
-L1607:
+L1614:
     mov rax, rbp
     pop rbx
     pop rbp
     pop r12
     ret
-L1609:
+L1616:
     mov rbp, -1
-    jmp L1607
+    jmp L1614
 read_file_with:
     push r14
     push r13
@@ -14321,25 +14341,25 @@ read_file_with:
     mov r14, rcx
     call platform_file_size
     test rax, rax
-    js L1612
+    js L1619
     mov rbx, rax
     lea rdi, [rax+1]
     call r12
     mov r12, rax
     test rax, rax
-    je L1612
+    je L1619
     mov rdx, rbx
     mov rsi, rax
     mov rdi, r13
     call platform_file_read
     cmp rax, rbx
-    jne L1618
+    jne L1625
     mov byte [r12+rbx], 0
     test rbp, rbp
-    je L1611
-L1614:
+    je L1618
+L1621:
     mov qword [rbp+0], rbx
-L1611:
+L1618:
     mov rax, r12
     pop rbx
     pop rbp
@@ -14347,16 +14367,16 @@ L1611:
     pop r13
     pop r14
     ret
-L1618:
+L1625:
     mov rdi, r12
     call r14
-L1612:
+L1619:
     mov r12, rbp
     test rbp, rbp
-    je L1611
+    je L1618
     mov r12d, 0
     mov ebx, 0
-    jmp L1614
+    jmp L1621
     global os_read_file
 os_read_file:
     push rbp
@@ -14387,15 +14407,15 @@ wallpaper_load:
     call free
     mov qword [rel wallpaper_picture], 0
     cmp dword [rel settings], 6
-    je L1626
-L1621:
+    je L1633
+L1628:
     add rsp, 72
     pop rbx
     pop rbp
     pop r12
     pop r13
     ret
-L1626:
+L1633:
     lea rsi, [rsp+56]
     mov ecx, free
     mov edx, malloc
@@ -14403,7 +14423,7 @@ L1626:
     call read_file_with
     mov rbx, rax
     test rax, rax
-    je L1621
+    je L1628
     lea rcx, [rsp+48]
     lea rdx, [rsp+52]
     mov rsi, qword [rsp+56]
@@ -14413,7 +14433,7 @@ L1626:
     mov rdi, rbx
     call free
     test rbp, rbp
-    je L1621
+    je L1628
     mov eax, dword [rel screen_h]
     lea ebx, [rax-28]
     mov r13d, dword [rel screen_w]
@@ -14425,7 +14445,7 @@ L1626:
     mov r12, rax
     mov qword [rel wallpaper_picture], rax
     test rax, rax
-    je L1623
+    je L1630
     mov rdi, rsp
     call gfx_save
     mov ecx, r13d
@@ -14452,10 +14472,10 @@ L1626:
     movups oword [rsp+32], xmm2
     call gfx_restore
     add rsp, 64
-L1623:
+L1630:
     mov rdi, rbp
     call free
-    jmp L1621
+    jmp L1628
     global wm_settings_changed
 wm_settings_changed:
     sub rsp, 8
@@ -14494,7 +14514,7 @@ platform_file_write:
     mov esi, LC39
     call fopen
     test rax, rax
-    je L1632
+    je L1639
     mov rbx, rax
     mov rcx, rax
     mov rdx, rbp
@@ -14507,20 +14527,20 @@ platform_file_write:
     mov rdi, rbx
     call fclose
     test eax, eax
-    jne L1635
-L1630:
+    jne L1642
+L1637:
     lea eax, [rbp-1]
-L1629:
+L1636:
     pop rbx
     pop rbp
     pop r12
     ret
-L1632:
+L1639:
     mov ebp, 0
-    jmp L1630
-L1635:
+    jmp L1637
+L1642:
     mov eax, -1
-    jmp L1629
+    jmp L1636
     global os_write_file
 os_write_file:
     push r12
@@ -14550,7 +14570,7 @@ os_copy_file:
     lea rsi, [rsp+8]
     call os_read_file
     test rax, rax
-    je L1640
+    je L1647
     mov rbx, rax
     mov rdx, qword [rsp+8]
     mov rsi, rax
@@ -14559,15 +14579,15 @@ os_copy_file:
     mov ebp, eax
     mov rdi, rbx
     call os_free
-L1638:
+L1645:
     mov eax, ebp
     add rsp, 24
     pop rbx
     pop rbp
     ret
-L1640:
+L1647:
     mov ebp, -1
-    jmp L1638
+    jmp L1645
     section .rodata
     align 8, db 0
 LC40:
@@ -14624,21 +14644,21 @@ os_apply_settings:
     mov ebx, processes+25632
     mov ebp, processes+820224
     mov r12, rsp
-    jmp L1644
-L1643:
+    jmp L1651
+L1650:
     add rbx, 25632
     cmp rbx, rbp
-    je L1647
-L1644:
+    je L1654
+L1651:
     cmp dword [rbx], 0
-    je L1643
+    je L1650
     cmp dword [rbx+8], 4
-    je L1643
+    je L1650
     mov edi, dword [rbx+4]
     mov rsi, r12
     call post_message
-    jmp L1643
-L1647:
+    jmp L1650
+L1654:
     call unlock
     add rsp, 448
     pop rbx
@@ -14659,38 +14679,38 @@ platform_stat:
     lea rsi, [rsp-120]
     syscall
     cmp rax, -4096
-    ja L1658
+    ja L1665
     test rdx, rdx
-    je L1652
+    je L1659
     test eax, eax
-    jne L1650
+    jne L1657
     mov rax, qword [rsp-72]
     mov qword [rdx], rax
-L1654:
+L1661:
     mov eax, dword [rsp-96]
     and eax, 61440
     cmp eax, 16384
     sete al
     movzx eax, al
     add eax, 1
-    jmp L1648
-L1658:
+    jmp L1655
+L1665:
     neg eax
     mov dword [rel errno], eax
     mov eax, 0
     test rdx, rdx
-    je L1648
-L1650:
+    je L1655
+L1657:
     mov qword [rdx], 0
     mov eax, 0
-L1648:
+L1655:
     add rsp, 32
     ret
-L1652:
+L1659:
     test eax, eax
-    je L1654
+    je L1661
     mov eax, 0
-    jmp L1648
+    jmp L1655
     global os_stat
 os_stat:
     push rbp
@@ -14722,14 +14742,14 @@ input_answer:
     mov ebp, esi
     mov rcx, qword [rdi+192]
     cmp dword [rcx], 3
-    je L1679
+    je L1686
     call dialog_finish
-L1661:
+L1668:
     add rsp, 296
     pop rbx
     pop rbp
     ret
-L1679:
+L1686:
     add rcx, 904
     mov rdi, rsp
     mov edx, LC3
@@ -14739,33 +14759,33 @@ L1679:
     mov rdi, rbx
     call window_destroy
     cmp ebp, 1
-    jne L1661
+    jne L1668
     movzx ebx, byte [rsp]
     test bl, bl
-    je L1661
+    je L1668
     mov rdi, rsp
     call os_app_named
     mov edi, eax
     test eax, eax
-    jns L1664
+    jns L1671
     mov r9d, APPS
     mov r10d, 0
-    jmp L1669
-L1676:
+    jmp L1676
+L1683:
     test edi, edi
-    js L1671
-L1664:
+    js L1678
+L1671:
     mov esi, 0
     call os_spawn
-    jmp L1661
-L1671:
+    jmp L1668
+L1678:
     mov rdi, rsp
     mov esi, 0
     call os_stat
     cmp eax, 1
-    je L1680
+    je L1687
     cmp eax, 2
-    je L1681
+    je L1688
     mov rcx, rsp
     lea rbx, [rsp+128]
     mov edx, LC41
@@ -14779,90 +14799,90 @@ L1671:
     mov esi, LC27
     mov edi, 0
     call message_box_open
-    jmp L1661
-L1680:
+    jmp L1668
+L1687:
     mov rdi, rsp
     call os_app_for_file
     mov edi, eax
     mov rsi, rsp
     call os_spawn
-    jmp L1661
-L1681:
+    jmp L1668
+L1688:
     mov rsi, rsp
     mov edi, 14
     call os_spawn
-    jmp L1661
-L1667:
+    jmp L1668
+L1674:
     cmp byte [rsi], 0
     cmove edi, r10d
-L1665:
+L1672:
     add r10d, 1
     add r9, 40
     cmp r10d, 17
-    jg L1676
+    jg L1683
     test edi, edi
-    jns L1676
-L1669:
+    jns L1683
+L1676:
     cmp qword [r9+16], 0
-    je L1665
+    je L1672
     mov rsi, qword [r9]
     mov ecx, ebx
     mov r8, rsp
-L1666:
+L1673:
     movzx edx, byte [rsi]
     test dl, dl
-    je L1665
+    je L1672
     or ecx, 32
     or edx, 32
     cmp cl, dl
-    jne L1665
+    jne L1672
     add r8, 1
     add rsi, 1
     movzx ecx, byte [r8]
     test cl, cl
-    jne L1666
-    jmp L1667
+    jne L1673
+    jmp L1674
 input_key:
     push rbx
     mov rbx, rdi
     mov eax, dword [rsi+40]
     cmp eax, 28
-    je L1687
+    je L1694
     cmp eax, 1
-    je L1688
+    je L1695
     mov rdi, qword [rdi+192]
     call field_key
     test eax, eax
-    jne L1689
-L1682:
+    jne L1696
+L1689:
     pop rbx
     ret
-L1687:
+L1694:
     mov esi, 1
     call input_answer
-    jmp L1682
-L1688:
+    jmp L1689
+L1695:
     mov esi, 2
     call input_answer
-    jmp L1682
-L1689:
+    jmp L1689
+L1696:
     mov rdi, rbx
     call dialog_repaint
-    jmp L1682
+    jmp L1689
 input_mouse:
     push rbx
     mov rbx, rdi
     call dialog_buttons_mouse
     test eax, eax
-    jne L1693
-L1690:
+    jne L1700
+L1697:
     pop rbx
     ret
-L1693:
+L1700:
     mov esi, eax
     mov rdi, rbx
     call input_answer
-    jmp L1690
+    jmp L1697
     section .rodata
 LC42:
     db `.`, 0
@@ -14885,10 +14905,10 @@ platform_list_dir:
     mov r15d, edx
     mov edi, LC42
     test r12, r12
-    je L1695
+    je L1702
     cmp byte [r12], 0
     cmovne rdi, r12
-L1695:
+L1702:
     mov eax, 2
     mov esi, 591872
     mov edx, 0
@@ -14898,9 +14918,9 @@ L1695:
     syscall
     mov rbp, rax
     cmp rax, -4096
-    ja L1721
+    ja L1728
     test rax, rax
-    js L1697
+    js L1704
     mov eax, 9
     mov edi, 0
     mov esi, 32768
@@ -14911,24 +14931,24 @@ L1695:
     syscall
     mov rbx, rax
     cmp rax, -4096
-    ja L1722
+    ja L1729
     test rax, rax
-    js L1699
+    js L1706
     mov dword [rax], ebp
     mov dword [rax+4], 0
     mov dword [rax+8], 0
-    je L1716
+    je L1723
     mov ebp, 0
     lea r14, [rax+16]
-    jmp L1702
-L1721:
+    jmp L1709
+L1728:
     neg ebp
     mov dword [rel errno], ebp
-    jmp L1697
-L1722:
+    jmp L1704
+L1729:
     neg ebx
     mov dword [rel errno], ebx
-L1699:
+L1706:
     mov eax, 3
     mov rdi, rbp
     mov esi, 0
@@ -14937,31 +14957,31 @@ L1699:
     mov r8d, 0
     mov r9d, 0
     syscall
-L1697:
+L1704:
     mov ebp, -1
-    jmp L1694
-L1717:
+    jmp L1701
+L1724:
     mov r8d, LC11
     mov rcx, r8
-    jmp L1704
-L1718:
+    jmp L1711
+L1725:
     mov rcx, r12
     mov r8d, LC10
-    jmp L1704
-L1724:
+    jmp L1711
+L1731:
     neg eax
     mov dword [rel errno], eax
-L1706:
+L1713:
     mov dword [rbp+64], 0
-L1712:
+L1719:
     mov rax, qword [rsp+64]
-L1707:
+L1714:
     mov qword [rbp+72], rax
     mov ebp, dword [rsp+4]
-L1702:
+L1709:
     mov eax, dword [rbx+8]
     cmp dword [rbx+4], eax
-    jl L1708
+    jl L1715
     movsx rdi, dword [rbx]
     mov eax, 217
     mov rsi, r14
@@ -14971,10 +14991,10 @@ L1702:
     mov r9d, 0
     syscall
     test rax, rax
-    jle L1723
+    jle L1730
     mov dword [rbx+8], eax
     mov dword [rbx+4], 0
-L1708:
+L1715:
     mov edx, dword [rbx+4]
     movsx rcx, edx
     add rcx, r14
@@ -14982,9 +15002,9 @@ L1708:
     add eax, edx
     mov dword [rbx+4], eax
     cmp ebp, r15d
-    jge L1713
+    jge L1720
     cmp byte [rcx+19], 46
-    je L1702
+    je L1709
     lea eax, [rbp+1]
     mov dword [rsp+4], eax
     movsx rbp, ebp
@@ -14999,12 +15019,12 @@ L1708:
     mov eax, 0
     call snprintf
     test r12, r12
-    je L1717
+    je L1724
     cmp byte [r12], 0
-    jne L1718
+    jne L1725
     mov r8d, LC11
     mov rcx, r8
-L1704:
+L1711:
     lea r13, [rsp+160]
     mov r9, rbp
     mov edx, LC44
@@ -15021,22 +15041,22 @@ L1704:
     lea rsi, [rsp+16]
     syscall
     cmp rax, -4096
-    ja L1724
+    ja L1731
     test eax, eax
-    jne L1706
+    jne L1713
     mov eax, dword [rsp+40]
     and eax, 61440
     cmp eax, 16384
     sete al
     movzx eax, al
     mov dword [rbp+64], eax
-    jne L1712
+    jne L1719
     mov eax, 0
-    jmp L1707
-L1723:
+    jmp L1714
+L1730:
     cmp rax, -4096
-    ja L1725
-L1713:
+    ja L1732
+L1720:
     movsx r12, dword [rbx]
     mov eax, 11
     mov rdi, rbx
@@ -15051,8 +15071,8 @@ L1713:
     mov esi, 0
     syscall
     cmp rax, -4096
-    ja L1726
-L1694:
+    ja L1733
+L1701:
     mov eax, ebp
     add rsp, 424
     pop rbx
@@ -15062,17 +15082,17 @@ L1694:
     pop r14
     pop r15
     ret
-L1725:
+L1732:
     neg eax
     mov dword [rel errno], eax
-    jmp L1713
-L1726:
+    jmp L1720
+L1733:
     neg eax
     mov dword [rel errno], eax
-    jmp L1694
-L1716:
+    jmp L1701
+L1723:
     mov ebp, -1
-    jmp L1694
+    jmp L1701
     global os_list_dir
 os_list_dir:
     push r12
@@ -15088,21 +15108,21 @@ os_list_dir:
     call platform_list_dir
     mov ebx, eax
     test eax, eax
-    jg L1730
-L1728:
+    jg L1737
+L1735:
     call unlock
     mov eax, ebx
     pop rbx
     pop rbp
     pop r12
     ret
-L1730:
+L1737:
     movsx rsi, eax
     mov ecx, entry_order
     mov edx, 80
     mov rdi, rbp
     call qsort
-    jmp L1728
+    jmp L1735
     section .rodata
 LC45:
     db `Desktop`, 0
@@ -15119,7 +15139,7 @@ desktop_refresh:
     mov ebx, edx
     cmovns ebx, eax
     cmp dword [rel desktop_file_count], ebx
-    jne L1732
+    jne L1739
     movsx rax, ebx
     lea rdx, [rax+rax*4]
     sal rdx, 4
@@ -15127,8 +15147,8 @@ desktop_refresh:
     mov esi, desktop_files
     call memcmp
     test eax, eax
-    je L1731
-L1732:
+    je L1738
+L1739:
     movsx rax, ebx
     lea rdx, [rax+rax*4]
     sal rdx, 4
@@ -15140,7 +15160,7 @@ L1732:
     mov rdi, rax
     mov rsi, rdx
     call invalidate
-L1731:
+L1738:
     add rsp, 1920
     pop rbx
     ret
@@ -15158,31 +15178,31 @@ file_read_dir:
     call os_list_dir
     mov dword [r12+11424], 0
     test eax, eax
-    jle L1736
+    jle L1743
     mov rbx, rsp
     cdqe
     lea r13, [rax+rax*4]
     sal r13, 4
     add r13, rsp
     lea r14, [r12+1168]
-    jmp L1739
-L1742:
+    jmp L1746
+L1749:
     mov rsi, r14
     mov rdi, rbx
     call has_extension
     test eax, eax
-    jne L1737
-L1738:
+    jne L1744
+L1745:
     add rbx, 80
     cmp rbx, r13
-    je L1736
-L1739:
+    je L1743
+L1746:
     mov rbp, rbx
     cmp dword [rbx+64], 0
-    jne L1737
+    jne L1744
     cmp byte [r12+1168], 0
-    jne L1742
-L1737:
+    jne L1749
+L1744:
     mov eax, dword [r12+11424]
     lea edx, [rax+1]
     mov dword [r12+11424], edx
@@ -15200,8 +15220,8 @@ L1737:
     movups oword [rax+1232], xmm3
     movdqa xmm4, oword [rbp+64]
     movups oword [rax+1248], xmm4
-    jmp L1738
-L1736:
+    jmp L1745
+L1743:
     mov dword [r12+11428], -1
     mov dword [r12+11432], 0
     add rsp, 10240
@@ -15228,7 +15248,7 @@ os_file_dialog:
     call $lock
     mov rax, qword [rel current]
     cmp rax, processes
-    je L1744
+    je L1751
     mov rax, qword [rel current]
     mov edi, dword [rax+4]
     sub rsp, 8
@@ -15242,7 +15262,7 @@ os_file_dialog:
     mov r13, rax
     add rsp, 16
     test rax, rax
-    je L1744
+    je L1751
     mov rbx, qword [rax+192]
     mov dword [rbx], 2
     mov rax, qword [rel current]
@@ -15261,10 +15281,10 @@ os_file_dialog:
     mov eax, 0
     call snprintf
     test r12, r12
-    je L1748
+    je L1755
     cmp byte [r12], 0
-    jne L1755
-L1748:
+    jne L1762
+L1755:
     lea rdi, [rbx+904]
     call strlen
     mov dword [rbx+1032], eax
@@ -15288,7 +15308,7 @@ L1748:
     cmp eax, 1
     sete al
     movzx eax, al
-L1743:
+L1750:
     add rsp, 8
     pop rbx
     pop rbp
@@ -15297,21 +15317,21 @@ L1743:
     pop r14
     pop r15
     ret
-L1744:
+L1751:
     call unlock
     mov eax, 0
-    jmp L1743
-L1755:
+    jmp L1750
+L1762:
     mov esi, 0
     mov rdi, r12
     call os_stat
     cmp eax, 2
-    je L1756
+    je L1763
     mov esi, 47
     mov rdi, r12
     call strrchr
     test rax, rax
-    je L1750
+    je L1757
     lea rdi, [rbx+1040]
     mov r8, r12
     mov ecx, eax
@@ -15320,7 +15340,7 @@ L1755:
     mov esi, 128
     mov eax, 0
     call snprintf
-L1750:
+L1757:
     mov rdi, r12
     call os_base_name
     mov rcx, rax
@@ -15329,15 +15349,15 @@ L1750:
     mov esi, 128
     mov eax, 0
     call snprintf
-    jmp L1748
-L1756:
+    jmp L1755
+L1763:
     lea rdi, [rbx+1040]
     mov rcx, r12
     mov edx, LC3
     mov esi, 128
     mov eax, 0
     call snprintf
-    jmp L1748
+    jmp L1755
     section .rodata
 LC46:
     db `%.127s`, 0
@@ -15356,23 +15376,23 @@ file_enter:
     mov rdi, rbp
     call strcmp
     test eax, eax
-    jne L1758
+    jne L1765
     lea rdi, [r12+1040]
     mov esi, 47
     call strrchr
     test rax, rax
-    je L1759
+    je L1766
     mov byte [rax], 0
-    jmp L1760
-L1759:
+    jmp L1767
+L1766:
     mov byte [r12+1040], 0
-    jmp L1760
-L1758:
+    jmp L1767
+L1765:
     mov r8d, LC11
     cmp byte [r12+1040], 0
-    je L1761
+    je L1768
     mov r8d, LC10
-L1761:
+L1768:
     lea r13, [r12+1040]
     mov r9, rbp
     mov rcx, r13
@@ -15387,7 +15407,7 @@ L1761:
     mov rdi, r13
     mov eax, 0
     call snprintf
-L1760:
+L1767:
     mov rdi, r12
     call file_read_dir
     mov rdi, rbx
@@ -15409,14 +15429,14 @@ file_accept:
     sub rsp, 312
     mov rbx, qword [rdi+192]
     cmp byte [rbx+904], 0
-    je L1774
+    je L1781
     mov rbp, rdi
     lea r13, [rbx+904]
     mov r8d, LC11
     cmp byte [rbx+1040], 0
-    je L1767
+    je L1774
     mov r8d, LC10
-L1767:
+L1774:
     lea rcx, [rbx+1040]
     mov r9, r13
     mov edx, LC44
@@ -15429,17 +15449,17 @@ L1767:
     call os_stat
     mov r12d, eax
     cmp eax, 2
-    je L1775
+    je L1782
     cmp dword [rbx+1036], 0
-    je L1769
+    je L1776
     cmp byte [rbx+1168], 0
-    je L1770
+    je L1777
     mov esi, 46
     mov rdi, r13
     call strchr
     test rax, rax
-    je L1776
-L1770:
+    je L1783
+L1777:
     mov rcx, rsp
     mov edx, LC46
     mov esi, 128
@@ -15449,7 +15469,7 @@ L1770:
     mov esi, 1
     mov rdi, rbp
     call dialog_finish
-L1764:
+L1771:
     add rsp, 312
     pop rbx
     pop rbp
@@ -15458,10 +15478,10 @@ L1764:
     pop r14
     pop r15
     ret
-L1774:
+L1781:
     call os_beep
-    jmp L1764
-L1775:
+    jmp L1771
+L1782:
     mov byte [rbx+904], 0
     mov dword [rbx+1032], 0
     mov rdi, rsp
@@ -15469,8 +15489,8 @@ L1775:
     mov rsi, rax
     mov rdi, rbp
     call file_enter
-    jmp L1764
-L1776:
+    jmp L1771
+L1783:
     mov rdi, rsp
     call strlen
     mov r14, rax
@@ -15479,17 +15499,17 @@ L1776:
     call strlen
     add r14, rax
     cmp r14, 299
-    ja L1770
+    ja L1777
     mov rdi, rsp
     mov rsi, r15
     call strcat
-L1769:
+L1776:
     cmp dword [rbx+1036], 0
-    jne L1770
+    jne L1777
     cmp r12d, 1
-    je L1770
+    je L1777
     call os_beep
-    jmp L1764
+    jmp L1771
 file_key:
     push r13
     push r12
@@ -15499,41 +15519,41 @@ file_key:
     mov rbx, rdi
     mov eax, dword [rsi+40]
     cmp eax, 28
-    je L1792
+    je L1799
     cmp eax, 1
-    je L1793
+    je L1800
     mov r12, qword [rdi+192]
     cmp eax, 103
-    je L1790
+    je L1797
     cmp eax, 108
-    je L1790
+    je L1797
     cmp eax, 14
-    jne L1783
+    jne L1790
     cmp byte [r12+904], 0
-    je L1794
-L1783:
+    je L1801
+L1790:
     mov rdi, r12
     call field_key
     test eax, eax
-    jne L1795
-L1777:
+    jne L1802
+L1784:
     add rsp, 8
     pop rbx
     pop rbp
     pop r12
     pop r13
     ret
-L1792:
+L1799:
     call file_accept
-    jmp L1777
-L1793:
+    jmp L1784
+L1800:
     mov esi, 2
     call dialog_finish
-    jmp L1777
-L1790:
+    jmp L1784
+L1797:
     mov ebp, dword [r12+11424]
     test ebp, ebp
-    je L1783
+    je L1790
     cmp eax, 103
     setne al
     movzx eax, al
@@ -15547,19 +15567,19 @@ L1790:
     cmovs ebp, eax
     mov dword [r12+11428], ebp
     cmp dword [r12+11432], ebp
-    jle L1786
+    jle L1793
     mov dword [r12+11432], ebp
-L1786:
+L1793:
     mov r13d, dword [r12+11432]
     call file_rows
     add r13d, eax
     cmp r13d, ebp
-    jg L1787
+    jg L1794
     mov edx, ebp
     sub edx, eax
     lea eax, [rdx+1]
     mov dword [r12+11432], eax
-L1787:
+L1794:
     lea r13, [r12+904]
     movsx rbp, ebp
     lea rax, [rbp+0+rbp*4]
@@ -15575,15 +15595,15 @@ L1787:
     mov dword [r12+1032], eax
     mov rdi, rbx
     call dialog_repaint
-    jmp L1777
-L1794:
+    jmp L1784
+L1801:
     mov esi, LC20
     call file_enter
-    jmp L1777
-L1795:
+    jmp L1784
+L1802:
     mov rdi, rbx
     call dialog_repaint
-    jmp L1777
+    jmp L1784
 file_mouse:
     push r14
     push r13
@@ -15595,31 +15615,31 @@ file_mouse:
     mov r12, qword [rdi+192]
     call dialog_buttons_mouse
     cmp eax, 1
-    je L1807
+    je L1814
     test eax, eax
-    jne L1808
+    jne L1815
     mov eax, dword [rbx]
     cmp eax, 4
-    je L1809
+    je L1816
     cmp eax, 1
-    jne L1796
+    jne L1803
     cmp dword [rbx+24], 1
-    jne L1796
+    jne L1803
     mov edx, dword [rbx+20]
     mov eax, dword [rbx+16]
     lea ecx, [rax-328]
     cmp ecx, 61
-    ja L1801
+    ja L1808
     lea ecx, [rdx-8]
     cmp ecx, 21
-    jbe L1810
-L1801:
+    jbe L1817
+L1808:
     sub eax, 10
     cmp eax, 379
-    ja L1796
+    ja L1803
     lea eax, [rdx-38]
     cmp eax, 171
-    ja L1796
+    ja L1803
     sub edx, 40
     movsx r13, edx
     imul r13, r13, 954437177
@@ -15628,43 +15648,43 @@ L1801:
     sub r13d, edx
     add r13d, dword [r12+11432]
     cmp dword [r12+11424], r13d
-    jle L1796
+    jle L1803
     mov dword [r12+11428], r13d
     movsx rax, r13d
     lea rax, [rax+rax*4]
     sal rax, 4
     cmp dword [r12+1248+rax], 0
-    je L1811
+    je L1818
     cmp dword [rbx+32], 2
-    je L1805
-L1803:
+    je L1812
+L1810:
     mov rdi, rbp
     call dialog_repaint
-    jmp L1796
-L1807:
+    jmp L1803
+L1814:
     mov rdi, rbp
     call file_accept
-    jmp L1796
-L1808:
+    jmp L1803
+L1815:
     mov esi, eax
     mov rdi, rbp
     call dialog_finish
-L1796:
+L1803:
     pop rbx
     pop rbp
     pop r12
     pop r13
     pop r14
     ret
-L1809:
+L1816:
     mov eax, dword [rbx+16]
     sub eax, 10
     cmp eax, 379
-    ja L1796
+    ja L1803
     mov eax, dword [rbx+20]
     sub eax, 38
     cmp eax, 171
-    ja L1796
+    ja L1803
     mov r13d, dword [r12+11424]
     call file_rows
     mov edx, eax
@@ -15682,13 +15702,13 @@ L1809:
     mov dword [r12+11432], eax
     mov rdi, rbp
     call dialog_repaint
-    jmp L1796
-L1810:
+    jmp L1803
+L1817:
     mov esi, LC20
     mov rdi, rbp
     call file_enter
-    jmp L1796
-L1811:
+    jmp L1803
+L1818:
     lea r14, [r12+904]
     movsx rax, r13d
     lea rax, [rax+rax*4]
@@ -15703,23 +15723,23 @@ L1811:
     call strlen
     mov dword [r12+1032], eax
     cmp dword [rbx+32], 2
-    jne L1803
+    jne L1810
     movsx rax, r13d
     lea rax, [rax+rax*4]
     sal rax, 4
     cmp dword [r12+1248+rax], 0
-    jne L1805
+    jne L1812
     mov rdi, rbp
     call file_accept
-    jmp L1796
-L1805:
+    jmp L1803
+L1812:
     movsx r13, r13d
     lea rax, [r13+0+r13*4]
     sal rax, 4
     lea rsi, [r12+1184+rax]
     mov rdi, rbp
     call file_enter
-    jmp L1796
+    jmp L1803
     section .rodata
 LC47:
     db `%s/.keep`, 0
@@ -15732,11 +15752,11 @@ platform_delete:
     mov eax, 87
     syscall
     cmp rax, -4096
-    ja L1819
+    ja L1826
     mov edx, eax
     test eax, eax
-    je L1812
-L1814:
+    je L1819
+L1821:
     mov rdi, rsp
     mov rcx, rbx
     mov edx, LC47
@@ -15748,41 +15768,41 @@ L1814:
     mov rdi, rbx
     call platform_list_dir
     test eax, eax
-    jne L1816
+    jne L1823
     mov eax, 87
     mov rdi, rsp
     syscall
     cmp rax, -4096
-    ja L1820
-L1816:
+    ja L1827
+L1823:
     mov eax, 84
     mov rdi, rbx
     syscall
     cmp rax, -4096
-    ja L1821
-L1817:
+    ja L1828
+L1824:
     mov esi, 0
     mov rdi, rbx
     call platform_stat
     neg eax
     sbb edx, edx
-L1812:
+L1819:
     mov eax, edx
     add rsp, 384
     pop rbx
     ret
-L1819:
+L1826:
     neg eax
     mov dword [rel errno], eax
-    jmp L1814
-L1820:
+    jmp L1821
+L1827:
     neg eax
     mov dword [rel errno], eax
-    jmp L1816
-L1821:
+    jmp L1823
+L1828:
     neg eax
     mov dword [rel errno], eax
-    jmp L1817
+    jmp L1824
     global os_delete
 os_delete:
     push rbx
@@ -15800,10 +15820,10 @@ platform_rename:
     mov eax, 82
     syscall
     cmp rax, -4096
-    ja L1827
+    ja L1834
     sar eax, 31
     ret
-L1827:
+L1834:
     neg eax
     mov dword [rel errno], eax
     mov eax, -1
@@ -15830,9 +15850,9 @@ platform_make_dir:
     mov esi, 511
     syscall
     cmp rax, -4096
-    ja L1838
+    ja L1845
     test eax, eax
-    jne L1833
+    jne L1840
     push rbx
     sub rsp, 304
     mov rcx, rdi
@@ -15847,12 +15867,12 @@ platform_make_dir:
     add rsp, 304
     pop rbx
     ret
-L1838:
+L1845:
     neg eax
     mov dword [rel errno], eax
     mov eax, -1
     ret
-L1833:
+L1840:
     mov eax, -1
     ret
     global os_make_dir
@@ -15887,10 +15907,10 @@ drop_file:
     mov edi, r12d
     call window_at
     test rax, rax
-    je L1842
+    je L1849
     mov rbx, rax
     cmp dword [rax+4], 0
-    jle L1841
+    jle L1848
     mov rdi, rax
     call client_rect
     mov rdx, rax
@@ -15917,33 +15937,33 @@ drop_file:
     mov edi, dword [rbx+4]
     mov rsi, rsp
     call post_message
-L1841:
+L1848:
     add rsp, 192
     pop rbx
     pop rbp
     pop r12
     ret
-L1842:
+L1849:
     call screen_rect
     mov rcx, rax
     sar rcx, 32
     cmp ebp, ecx
-    jl L1841
+    jl L1848
     cmp r12d, eax
-    jl L1841
+    jl L1848
     add eax, edx
     cmp r12d, eax
-    jge L1841
+    jge L1848
     sar rdx, 32
     add ecx, edx
     cmp ebp, ecx
-    jge L1841
+    jge L1848
     mov edx, 8
     mov esi, LC48
     mov edi, drag_path
     call strncmp
     test eax, eax
-    je L1841
+    je L1848
     mov edi, LC45
     call os_make_dir
     mov edi, drag_path
@@ -15958,15 +15978,15 @@ L1842:
     mov edi, drag_path
     call os_stat
     cmp eax, 1
-    je L1847
-L1845:
+    je L1854
+L1852:
     call desktop_refresh
-    jmp L1841
-L1847:
+    jmp L1848
+L1854:
     mov rsi, rsp
     mov edi, drag_path
     call os_copy_file
-    jmp L1845
+    jmp L1852
     global os_shutdown
 os_shutdown:
     push r12
@@ -15975,15 +15995,15 @@ os_shutdown:
     sub rsp, 192
     call $lock
     cmp dword [rel shutting_down], 0
-    je L1854
-L1849:
+    je L1861
+L1856:
     call unlock
     add rsp, 192
     pop rbx
     pop rbp
     pop r12
     ret
-L1854:
+L1861:
     mov dword [rel shutting_down], 1
     call os_now_ms
     add rax, 1500
@@ -15999,20 +16019,20 @@ L1854:
     mov ebx, processes+25632
     mov ebp, processes+820224
     mov r12, rsp
-    jmp L1851
-L1850:
+    jmp L1858
+L1857:
     add rbx, 25632
     cmp rbx, rbp
-    je L1849
-L1851:
+    je L1856
+L1858:
     cmp dword [rbx], 0
-    je L1850
+    je L1857
     cmp dword [rbx+8], 4
-    je L1850
+    je L1857
     mov edi, dword [rbx+4]
     mov rsi, r12
     call post_message
-    jmp L1850
+    jmp L1857
     section .rodata
 LC50:
     db `.txt`, 0
@@ -16039,16 +16059,16 @@ popup_choose:
     mov dword [rel popup_pid], -1
     call popup_close_all
     cmp ebx, 1
-    je L1880
+    je L1887
     test ebx, ebx
-    jne L1858
+    jne L1865
     test r12, r12
-    je L1858
+    je L1865
     cmp dword [r12], 0
-    je L1858
+    je L1865
     mov edx, dword [r12+4]
     test edx, edx
-    jle L1855
+    jle L1862
     mov qword [rsp+4], 0
     mov qword [rsp+184], 0
     lea rdi, [rsp+8]
@@ -16062,12 +16082,12 @@ popup_choose:
     mov rsi, rsp
     mov edi, edx
     call post_message
-    jmp L1855
-L1880:
+    jmp L1862
+L1887:
     mov esi, dword [rbp+8]
     mov edi, r13d
     call answer_process
-L1855:
+L1862:
     add rsp, 192
     pop rbx
     pop rbp
@@ -16075,58 +16095,58 @@ L1855:
     pop r13
     pop r14
     ret
-L1858:
+L1865:
     mov r12d, dword [rbp+8]
     cmp r12d, 1017
-    jle L1881
+    jle L1888
     lea eax, [r12-2000]
     cmp eax, 5
-    ja L1855
+    ja L1862
     lea eax, [r12-2000]
     cmp eax, 5
-    ja L1855
+    ja L1862
     mov eax, eax
-    jmp qword [L1862+rax*8]
+    jmp qword [L1869+rax*8]
     section .rodata
     align 8, db 0
     align 4, db 0
-L1862:
-    dq L1866
-    dq L1865
-    dq L1864
-    dq L1864
-    dq L1863
-    dq L1861
+L1869:
+    dq L1873
+    dq L1872
+    dq L1871
+    dq L1871
+    dq L1870
+    dq L1868
     section .text
-L1881:
+L1888:
     cmp r12d, 999
-    jle L1855
+    jle L1862
     lea edi, [r12-1000]
     mov esi, 0
     call os_spawn
-    jmp L1855
-L1865:
+    jmp L1862
+L1872:
     call os_shutdown
-    jmp L1855
-L1866:
+    jmp L1862
+L1873:
     call dialog_run
-    jmp L1855
-L1864:
+    jmp L1862
+L1871:
     mov edi, LC45
     call os_make_dir
     mov r14d, LC11
     mov r13d, LC52
     cmp r12d, 2002
-    je L1882
-L1868:
+    je L1889
+L1875:
     mov ebx, 1
     mov rbp, rsp
-    jmp L1872
-L1882:
+    jmp L1879
+L1889:
     mov r14d, LC50
     mov r13d, LC51
-    jmp L1868
-L1883:
+    jmp L1875
+L1890:
     mov r8, r14
     mov rcx, r13
     mov edx, LC53
@@ -16138,11 +16158,11 @@ L1883:
     mov rdi, rbp
     call os_stat
     test eax, eax
-    je L1870
+    je L1877
     add ebx, 1
-L1872:
+L1879:
     cmp ebx, 1
-    je L1883
+    je L1890
     mov r9, r14
     mov r8d, ebx
     mov rcx, r13
@@ -16155,36 +16175,36 @@ L1872:
     mov rdi, rbp
     call os_stat
     test eax, eax
-    je L1870
+    je L1877
     add ebx, 1
     cmp ebx, 100
-    jne L1872
-L1870:
+    jne L1879
+L1877:
     cmp r12d, 2002
-    je L1884
+    je L1891
     mov rdi, rsp
     call os_make_dir
-L1874:
+L1881:
     call desktop_refresh
-    jmp L1855
-L1884:
+    jmp L1862
+L1891:
     mov rdi, rsp
     mov edx, 0
     mov esi, LC11
     call os_write_file
-    jmp L1874
-L1863:
+    jmp L1881
+L1870:
     call desktop_refresh
     call screen_rect
     mov rdi, rax
     mov rsi, rdx
     call invalidate
-    jmp L1855
-L1861:
+    jmp L1862
+L1868:
     mov esi, 0
     mov edi, 16
     call os_spawn
-    jmp L1855
+    jmp L1862
     global wm_mouse_event
 wm_mouse_event:
     push r15
@@ -16198,48 +16218,48 @@ wm_mouse_event:
     mov r12d, dword [rdi+8]
     mov ebp, dword [rdi+4]
     cmp ebp, dword [rel cursor_x]
-    jne L1886
+    jne L1893
     cmp r12d, dword [rel cursor_y]
-    je L2000
-L1886:
+    je L2007
+L1893:
     call cursor_hide
     mov dword [rel cursor_x], ebp
     mov dword [rel cursor_y], r12d
     call cursor_draw
-L1887:
+L1894:
     mov eax, dword [rbx]
     cmp eax, 2
-    je L1888
-    jg L1889
+    je L1895
+    jg L1896
     test eax, eax
-    je L1890
+    je L1897
     cmp eax, 1
-    jne L1885
+    jne L1892
     cmp dword [rbx+16], 0
-    je L2001
+    je L2008
     cmp dword [rel held], 3
-    jne L1885
+    jne L1892
     mov rdi, qword [rel held_window]
     test rdi, rdi
-    je L1885
+    je L1892
     mov rsi, rbx
     call send_to_client
-    jmp L1885
-L2000:
+    jmp L1892
+L2007:
     cmp dword [rel cursor_shown], 0
-    je L1886
-    jmp L1887
-L1889:
+    je L1893
+    jmp L1894
+L1896:
     cmp eax, 3
-    jne L1885
+    jne L1892
     mov esi, dword [rbx+8]
     mov edi, dword [rbx+4]
     call window_at
     test rax, rax
-    je L1885
+    je L1892
     cmp dword [rel popup_count], 0
-    je L2002
-L1885:
+    je L2009
+L1892:
     add rsp, 184
     pop rbx
     pop rbp
@@ -16248,84 +16268,84 @@ L1885:
     pop r14
     pop r15
     ret
-L1890:
+L1897:
     mov eax, dword [rel held]
     test eax, eax
-    jne L1894
+    jne L1901
     mov ebp, dword [rel drag_active]
     test ebp, ebp
-    jne L1885
+    jne L1892
     mov r13d, dword [rbx+4]
     mov r14d, dword [rbx+8]
     cmp dword [rel popup_count], 0
-    jne L2003
-L1895:
+    jne L2010
+L1902:
     call taskbar_rect
     mov rcx, rax
     sar rcx, 32
     cmp r13d, eax
-    jl L1901
+    jl L1908
     cmp r14d, ecx
-    jge L2004
-L1901:
+    jge L2011
+L1908:
     mov esi, r14d
     mov edi, r13d
     call window_at
     mov r12, rax
     test rax, rax
-    je L2005
+    je L2012
     mov edi, -1
     call select_icon
     mov edi, dword [r12+4]
     call dialog_of
     test rax, rax
-    je L1919
+    je L1926
     cmp r12, rax
-    je L1919
+    je L1926
     mov rdi, r12
     call window_focus
-    jmp L1885
-L2003:
+    jmp L1892
+L2010:
     lea rdx, [rsp+76]
     mov esi, r14d
     mov edi, r13d
     call popup_at
     test eax, eax
-    jns L2006
+    jns L2013
     call popup_is_start
     test eax, eax
-    je L1898
+    je L1905
     call start_button
     mov rcx, rax
     sar rcx, 32
     cmp r13d, eax
-    jl L1898
+    jl L1905
     cmp r14d, ecx
-    jge L2007
-L1898:
+    jge L2014
+L1905:
     mov r12d, dword [rel popup_kind]
     test r12d, r12d
-    jne L2008
+    jne L2015
     mov rdi, qword [rel popup_window]
     test rdi, rdi
-    je L2009
-L1985:
+    je L2016
+L1992:
     lea rcx, [rsp+80]
     mov edx, r14d
     mov esi, r13d
     call menu_bar_at
     mov r15d, eax
-L1899:
+L1906:
     call popup_close_all
     test r12b, 1
-    jne L1885
+    jne L1892
     test r15d, r15d
-    jns L1885
-    jmp L1895
-L2006:
+    jns L1892
+    jmp L1902
+L2013:
     mov edx, dword [rsp+76]
     test edx, edx
-    js L1885
+    js L1892
     cdqe
     lea rax, [rax+rax*4]
     movsx rbx, edx
@@ -16335,18 +16355,18 @@ L2006:
     mov esi, LC1
     call strcmp
     test eax, eax
-    je L1885
+    je L1892
     test byte [rbx+12], 1
-    jne L1885
+    jne L1892
     cmp qword [rbx+24], 0
-    jne L1885
+    jne L1892
     mov rdi, rbx
     call popup_choose
-    jmp L1885
-L2007:
+    jmp L1892
+L2014:
     add eax, edx
     cmp r13d, eax
-    jge L1898
+    jge L1905
     sar rdx, 32
     add ecx, edx
     cmp r14d, ecx
@@ -16354,65 +16374,65 @@ L2007:
     movzx r12d, r12b
     mov r15d, -1
     cmp dword [rel popup_kind], 0
-    jne L1899
+    jne L1906
     mov rdi, qword [rel popup_window]
     test rdi, rdi
-    je L1899
-    jmp L1985
-L2004:
+    je L1906
+    jmp L1992
+L2011:
     add eax, edx
     cmp r13d, eax
-    jge L1901
+    jge L1908
     sar rdx, 32
     add ecx, edx
     cmp r14d, ecx
-    jge L1901
+    jge L1908
     cmp dword [rbx+12], 1
-    jne L1885
+    jne L1892
     call start_button
     mov rcx, rax
     sar rcx, 32
     cmp r14d, ecx
-    jl L1906
+    jl L1913
     cmp r13d, eax
-    jge L2010
-L1906:
+    jge L2017
+L1913:
     lea rdx, [rsp+80]
     mov esi, r14d
     mov edi, r13d
     call task_at
     test eax, eax
-    je L1885
+    je L1892
     call top_window
     mov rdi, qword [rsp+80]
     cmp rdi, rax
-    je L2011
+    je L2018
     call window_focus
-    jmp L1885
-L2010:
+    jmp L1892
+L2017:
     add eax, edx
     cmp r13d, eax
-    jge L1906
+    jge L1913
     sar rdx, 32
     add ecx, edx
     cmp r14d, ecx
-    jge L1906
+    jge L1913
     call start_menu_toggle
-    jmp L1885
-L2011:
+    jmp L1892
+L2018:
     call window_minimize
-    jmp L1885
-L2005:
+    jmp L1892
+L2012:
     call desktop_app_count
     add eax, dword [rel desktop_file_count]
     mov r12d, eax
     test eax, eax
-    jg L1913
+    jg L1920
     mov edi, -1
     call select_icon
     cmp dword [rbx+12], 2
-    jne L1885
-L1980:
+    jne L1892
+L1987:
     mov dword [rel popup_kind], 3
     sub rsp, 8
     push 0
@@ -16424,54 +16444,54 @@ L1980:
     mov edi, 0
     call popup_open
     add rsp, 16
-    jmp L1885
-L1911:
+    jmp L1892
+L1918:
     add ebp, 1
     cmp ebp, r12d
-    je L2012
-L1913:
+    je L2019
+L1920:
     mov edi, ebp
     call desktop_icon_rect
     mov rcx, rax
     sar rcx, 32
     add eax, 10
     cmp r14d, ecx
-    jl L1911
+    jl L1918
     cmp r13d, eax
-    jl L1911
+    jl L1918
     lea eax, [rax-20+rdx]
     cmp r13d, eax
-    jge L1911
+    jge L1918
     sar rdx, 32
     add ecx, edx
     cmp r14d, ecx
-    jge L1911
-L1912:
+    jge L1918
+L1919:
     mov edi, ebp
     call select_icon
     mov eax, dword [rbx+12]
     cmp eax, 2
-    je L2013
+    je L2020
     test ebp, ebp
-    js L1885
+    js L1892
     cmp eax, 1
     sete r12b
     cmp dword [rbx+20], 2
-    jne L1915
+    jne L1922
     test r12b, r12b
-    je L1915
+    je L1922
     mov edi, -1
     call select_icon
     mov edi, ebp
     call desktop_icon_app
     mov edi, eax
     test eax, eax
-    jns L2014
+    jns L2021
     mov edi, ebp
     call desktop_icon_file
     mov rbx, rax
     test rax, rax
-    je L1885
+    je L1892
     lea rdi, [rsp+80]
     mov rcx, rax
     mov edx, LC49
@@ -16480,38 +16500,38 @@ L1912:
     call snprintf
     mov edi, 14
     cmp dword [rbx+64], 0
-    jne L1918
+    jne L1925
     lea rdi, [rsp+80]
     call os_app_for_file
     mov edi, eax
-L1918:
+L1925:
     lea rsi, [rsp+80]
     call os_spawn
-    jmp L1885
-L2012:
+    jmp L1892
+L2019:
     mov ebp, -1
-    jmp L1912
-L2013:
+    jmp L1919
+L2020:
     mov r12d, 0
     test ebp, ebp
-    js L1980
-L1915:
+    js L1987
+L1922:
     mov edi, ebp
     call desktop_icon_file
     test rax, rax
-    je L1885
+    je L1892
     test r12b, r12b
-    je L1885
+    je L1892
     mov dword [rel held], 7
     mov dword [rel held_icon], ebp
     mov dword [rel press_x], r13d
     mov dword [rel press_y], r14d
-    jmp L1885
-L2014:
+    jmp L1892
+L2021:
     mov esi, 0
     call os_spawn
-    jmp L1885
-L1919:
+    jmp L1892
+L1926:
     mov rdi, r12
     call window_focus
     mov qword [rel held_window], r12
@@ -16521,34 +16541,34 @@ L1919:
     mov r15d, dword [r12+120]
     and r15d, 1
     mov dword [rsp], r15d
-    je L1920
+    je L1927
     mov eax, dword [r12+128]
     mov dword [rsp], eax
     test eax, eax
-    jne L1992
+    jne L1999
     mov rdi, r12
     call window_frame
     mov rcx, rax
     sar rcx, 32
     cmp r13d, eax
-    jl L1920
+    jl L1927
     cmp r14d, ecx
-    jl L1920
+    jl L1927
     lea edi, [rdx+rax]
     cmp r13d, edi
-    jge L1920
+    jge L1927
     mov r8, rdx
     sar r8, 32
     lea esi, [r8+rcx]
     cmp r14d, esi
-    jge L1920
+    jge L1927
     lea r9d, [rcx+4]
     lea r10d, [rax+4]
     cmp r14d, r9d
-    jl L1921
+    jl L1928
     cmp r13d, r10d
-    jge L2015
-L1921:
+    jge L2022
+L1928:
     add eax, 16
     cmp r13d, eax
     setl al
@@ -16556,119 +16576,119 @@ L1921:
     mov dword [rsp], eax
     sub edi, 16
     cmp r13d, edi
-    jl L1922
+    jl L1929
     or eax, 2
     mov dword [rsp], eax
-L1922:
+L1929:
     add ecx, 16
     cmp r14d, ecx
-    jge L1923
+    jge L1930
     or dword [rsp], 4
-L1923:
+L1930:
     sub esi, 16
     cmp r14d, esi
-    jl L1920
+    jl L1927
     or dword [rsp], 8
-    jmp L1920
-L2015:
+    jmp L1927
+L2022:
     lea edx, [r10-8+rdx]
     cmp r13d, edx
-    jge L1921
+    jge L1928
     lea edx, [r9-8+r8]
     cmp r14d, edx
-    jl L1920
-    jmp L1921
-L1992:
+    jl L1927
+    jmp L1928
+L1999:
     mov dword [rsp], ebp
-L1920:
+L1927:
     mov rdi, r12
     call client_rect
     mov rcx, rax
     sar rcx, 32
     cmp r14d, ecx
-    jl L1924
+    jl L1931
     cmp r13d, eax
-    jge L2016
-L1924:
+    jge L2023
+L1931:
     cmp dword [rbx+12], 1
-    je L2017
+    je L2024
     mov dword [rel held], 0
-    jmp L1885
-L2016:
+    jmp L1892
+L2023:
     add eax, edx
     cmp r13d, eax
-    jge L1924
+    jge L1931
     sar rdx, 32
     add ecx, edx
     cmp r14d, ecx
-    jge L1924
+    jge L1931
     mov dword [rel held], 3
     mov rsi, rbx
     mov rdi, r12
     call send_to_client
-    jmp L1885
-L2017:
+    jmp L1892
+L2024:
     cmp dword [rsp], 0
-    jne L2018
+    jne L2025
     mov rdi, r12
     call close_button
     mov rcx, rax
     sar rcx, 32
     cmp r14d, ecx
-    jl L1930
+    jl L1937
     cmp r13d, eax
-    jge L2019
-L1930:
+    jge L2026
+L1937:
     mov rdi, r12
     call maximize_button
     mov rcx, rax
     sar rcx, 32
     cmp r14d, ecx
-    jl L1934
+    jl L1941
     cmp r13d, eax
-    jge L2020
-L1934:
+    jge L2027
+L1941:
     mov rdi, r12
     call minimize_button
     mov rcx, rax
     sar rcx, 32
     cmp r14d, ecx
-    jl L1938
+    jl L1945
     cmp r13d, eax
-    jge L2021
-L1938:
+    jge L2028
+L1945:
     cmp qword [r12+160], 0
-    jne L2022
-L1941:
+    jne L2029
+L1948:
     mov rdi, r12
     call title_rect
     mov rcx, rax
     sar rcx, 32
     cmp r14d, ecx
-    jl L1885
+    jl L1892
     cmp r13d, eax
-    jl L1885
+    jl L1892
     add eax, edx
     cmp r13d, eax
-    jge L1885
+    jge L1892
     sar rdx, 32
     add ecx, edx
     cmp r14d, ecx
-    jge L1885
+    jge L1892
     cmp dword [rbx+20], 2
-    jne L1942
+    jne L1949
     test r15d, r15d
-    jne L2023
-L1942:
+    jne L2030
+L1949:
     cmp dword [r12+128], 0
-    jne L1885
+    jne L1892
     mov dword [rel held], 1
     sub r13d, dword [r12+8]
     mov dword [rel drag_dx], r13d
     sub r14d, dword [r12+12]
     mov dword [rel drag_dy], r14d
-    jmp L1885
-L2018:
+    jmp L1892
+L2025:
     mov dword [rel held], 2
     mov eax, dword [rsp]
     mov dword [rel resize_edges], eax
@@ -16679,53 +16699,53 @@ L2018:
     mov qword [rel outline], rax
     mov qword [rel outline+8], rdx
     call outline_draw
-    jmp L1885
-L2019:
+    jmp L1892
+L2026:
     add eax, edx
     cmp r13d, eax
-    jge L1930
+    jge L1937
     sar rdx, 32
     add ecx, edx
     cmp r14d, ecx
-    jge L1930
+    jge L1937
     mov dword [rel held], 4
     mov rdi, r12
     call close_button
     mov rdi, rax
     mov rsi, rdx
     call invalidate
-    jmp L1885
-L2020:
+    jmp L1892
+L2027:
     add eax, edx
     cmp r13d, eax
-    jge L1934
+    jge L1941
     sar rdx, 32
     add ecx, edx
     cmp r14d, ecx
-    jge L1934
+    jge L1941
     mov dword [rel held], 5
     mov rdi, r12
     call maximize_button
     mov rdi, rax
     mov rsi, rdx
     call invalidate
-    jmp L1885
-L2021:
+    jmp L1892
+L2028:
     add eax, edx
     cmp r13d, eax
-    jge L1938
+    jge L1945
     sar rdx, 32
     add ecx, edx
     cmp r14d, ecx
-    jge L1938
+    jge L1945
     mov dword [rel held], 6
     mov rdi, r12
     call minimize_button
     mov rdi, rax
     mov rsi, rdx
     call invalidate
-    jmp L1885
-L2022:
+    jmp L1892
+L2029:
     lea rcx, [rsp+80]
     mov edx, r14d
     mov esi, r13d
@@ -16733,55 +16753,55 @@ L2022:
     call menu_bar_at
     mov esi, eax
     test eax, eax
-    js L1941
+    js L1948
     mov dword [rel held], 0
     mov edx, dword [rsp+80]
     mov rdi, r12
     call bar_open
-    jmp L1885
-L2023:
+    jmp L1892
+L2030:
     mov dword [rel held], 0
     mov rdi, r12
     call window_toggle_maximize
-    jmp L1885
-L1894:
+    jmp L1892
+L1901:
     cmp eax, 3
-    jne L1885
+    jne L1892
     mov rdi, qword [rel held_window]
     test rdi, rdi
-    je L1885
+    je L1892
     mov rsi, rbx
     call send_to_client
-    jmp L1885
-L2001:
+    jmp L1892
+L2008:
     mov r12, qword [rel held_window]
     mov ebp, dword [rel held]
     mov dword [rel held], 0
     mov qword [rel held_window], 0
     cmp dword [rel drag_active], 0
-    jne L2024
+    jne L2031
     test r12, r12
     setne al
     cmp ebp, 3
-    jne L1945
+    jne L1952
     test al, al
-    jne L2025
-L1945:
+    jne L2032
+L1952:
     cmp ebp, 2
-    jne L1946
+    jne L1953
     test al, al
-    jne L2026
-L1946:
+    jne L2033
+L1953:
     cmp ebp, 7
-    je L2027
+    je L2034
     test r12, r12
-    je L1885
+    je L1892
     cmp ebp, 4
-    je L2028
+    je L2035
     cmp ebp, 5
-    je L2029
+    je L2036
     cmp ebp, 6
-    je L2030
+    je L2037
     mov eax, 0
     mov edx, 0
     mov rcx, rax
@@ -16795,18 +16815,18 @@ L1946:
     mov rdi, rax
     mov rsi, rcx
     call invalidate
-    jmp L1885
-L2024:
+    jmp L1892
+L2031:
     mov esi, dword [rbx+8]
     mov edi, dword [rbx+4]
     call drop_file
-    jmp L1885
-L2025:
+    jmp L1892
+L2032:
     mov rsi, rbx
     mov rdi, r12
     call send_to_client
-    jmp L1885
-L2026:
+    jmp L1892
+L2033:
     mov edx, dword [rbx+8]
     mov esi, dword [rbx+4]
     mov rdi, r12
@@ -16818,11 +16838,11 @@ L2026:
     mov rdx, rbx
     mov rdi, r12
     call window_set_frame
-    jmp L1885
-L2027:
+    jmp L1892
+L2034:
     mov dword [rel held_icon], -1
-    jmp L1885
-L2028:
+    jmp L1892
+L2035:
     mov rdi, r12
     call close_button
     mov r15d, eax
@@ -16831,7 +16851,7 @@ L2028:
     mov dword [rsp], edx
     mov r14, rdx
     shr r14, 32
-L1949:
+L1956:
     mov edi, r15d
     mov rcx, rax
     movabs rsi, -4294967296
@@ -16856,26 +16876,26 @@ L1949:
     mov eax, dword [rbx+8]
     mov edx, dword [rbx+4]
     cmp r13d, eax
-    jg L1885
+    jg L1892
     cmp r15d, edx
-    jg L1885
+    jg L1892
     mov ecx, dword [rsp]
     add r15d, ecx
     cmp edx, r15d
-    jge L1885
+    jge L1892
     add r13d, r14d
     cmp eax, r13d
-    jge L1885
+    jge L1892
     cmp ebp, 4
-    je L2031
+    je L2038
     cmp ebp, 5
-    je L2032
+    je L2039
     cmp ebp, 6
-    jne L1885
+    jne L1892
     mov rdi, r12
     call window_minimize
-    jmp L1885
-L2029:
+    jmp L1892
+L2036:
     mov rdi, r12
     call maximize_button
     mov r15d, eax
@@ -16884,8 +16904,8 @@ L2029:
     mov dword [rsp], edx
     mov r14, rdx
     shr r14, 32
-    jmp L1949
-L2030:
+    jmp L1956
+L2037:
     mov rdi, r12
     call minimize_button
     mov r15d, eax
@@ -16894,136 +16914,136 @@ L2030:
     mov dword [rsp], edx
     mov r14, rdx
     shr r14, 32
-    jmp L1949
-L2031:
+    jmp L1956
+L2038:
     mov rdi, r12
     call request_close
-    jmp L1885
-L2032:
+    jmp L1892
+L2039:
     mov rdi, r12
     call window_toggle_maximize
-    jmp L1885
-L1888:
+    jmp L1892
+L1895:
     mov r14d, dword [rbx+4]
     mov r13d, dword [rbx+8]
     cmp dword [rel popup_count], 0
-    jne L2033
-L1954:
+    jne L2040
+L1961:
     mov ebp, dword [rel drag_active]
     test ebp, ebp
-    jne L1885
+    jne L1892
     mov r12, qword [rel held_window]
     mov eax, dword [rel held]
     test r12, r12
     setne dl
     cmp eax, 1
-    jne L1957
+    jne L1964
     test dl, dl
-    jne L2034
-L1957:
+    jne L2041
+L1964:
     cmp eax, 2
-    jne L1968
+    jne L1975
     test dl, dl
-    jne L2035
-L1968:
+    jne L2042
+L1975:
     cmp eax, 3
-    jne L1971
+    jne L1978
     test dl, dl
-    jne L2036
-L1971:
+    jne L2043
+L1978:
     cmp eax, 7
-    je L2037
+    je L2044
     lea edx, [rax-4]
     cmp edx, 2
-    ja L1974
+    ja L1981
     cmp eax, 4
-    je L2038
+    je L2045
     cmp eax, 5
-    je L2039
+    je L2046
     mov rdi, r12
     call minimize_button
     mov rdi, rax
     mov rsi, rdx
-L1976:
+L1983:
     mov rax, rdi
     sar rax, 32
     cmp r13d, eax
-    jl L1978
+    jl L1985
     cmp r14d, edi
-    jge L2040
-L1978:
+    jge L2047
+L1985:
     cmp dword [rel held_inside], ebp
-    je L1885
+    je L1892
     mov dword [rel held_inside], ebp
     call invalidate
-    jmp L1885
-L2033:
+    jmp L1892
+L2040:
     lea rdx, [rsp+76]
     mov esi, r13d
     mov edi, r14d
     call popup_at
     test eax, eax
-    jns L2041
-L1955:
+    jns L2048
+L1962:
     cmp dword [rel popup_kind], 0
-    jne L1954
+    jne L1961
     mov rbp, qword [rel popup_window]
     test rbp, rbp
-    je L1954
+    je L1961
     lea rcx, [rsp+80]
     mov edx, r13d
     mov esi, r14d
     mov rdi, rbp
     call menu_bar_at
     test eax, eax
-    js L1954
+    js L1961
     cmp eax, dword [rel bar_index]
-    je L1954
+    je L1961
     mov edx, dword [rsp+80]
     mov esi, eax
     mov rdi, rbp
     call bar_open
-    jmp L1954
-L2041:
+    jmp L1961
+L2048:
     mov esi, dword [rsp+76]
     mov edi, eax
     call popup_hover
-    jmp L1955
-L2034:
+    jmp L1962
+L2041:
     sub r13d, dword [rel drag_dy]
     sub r14d, dword [rel drag_dx]
     mov ebx, 40
     sub ebx, dword [r12+16]
     cmp r14d, ebx
-    jl L1958
+    jl L1965
     mov eax, dword [rel screen_w]
     lea ebx, [rax-40]
     cmp ebx, r14d
     cmovg ebx, r14d
-L1958:
+L1965:
     test r13d, r13d
-    js L1959
+    js L1966
     mov eax, dword [rel screen_h]
     lea ebp, [rax-42]
     cmp ebp, r13d
     cmovg ebp, r13d
-L1959:
+L1966:
     mov r13d, dword [r12+8]
     cmp r13d, ebx
-    je L2042
-L1960:
+    je L2049
+L1967:
     mov rdi, r12
     call window_frame
     mov qword [rsp], rax
     mov qword [rsp+8], rdx
     call top_window
     cmp r12, rax
-    jne L1962
+    jne L1969
     mov eax, dword [rel popup_count]
     mov dword [rsp+44], eax
     test eax, eax
-    je L1963
-L1962:
+    je L1970
+L1969:
     mov dword [r12+8], ebx
     mov dword [r12+12], ebp
     mov rdi, qword [rsp]
@@ -17034,12 +17054,12 @@ L1962:
     mov rdi, rax
     mov rsi, rdx
     call invalidate
-    jmp L1885
-L2042:
+    jmp L1892
+L2049:
     cmp dword [r12+12], ebp
-    jne L1960
-    jmp L1885
-L1963:
+    jne L1967
+    jmp L1892
+L1970:
     mov r15d, ebx
     sub r15d, r13d
     mov r14d, ebp
@@ -17158,10 +17178,10 @@ L1963:
     mov dword [rsp+48], eax
     mov rax, qword [rel framebuffer]
     cmp qword [rel back_buffer], rax
-    jne L1964
+    jne L1971
     cmp dword [rel cursor_shown], 0
-    jne L2043
-L1964:
+    jne L2050
+L1971:
     mov dword [r12+8], ebx
     mov dword [r12+12], ebp
     mov rdi, r12
@@ -17169,10 +17189,10 @@ L1964:
     mov rbp, rax
     mov rbx, rdx
     cmp dword [rsp+16], 0
-    jle L1967
+    jle L1974
     cmp dword [rsp+24], 0
-    jle L1967
-L1984:
+    jle L1974
+L1991:
     mov eax, dword [rel screen_w]
     mov r8, qword [rel back_buffer]
     movsx rcx, dword [rsp+24]
@@ -17230,7 +17250,7 @@ L1984:
     cmp r13d, eax
     cmovge eax, r13d
     cmp ecx, eax
-    jle L1966
+    jle L1973
     mov rax, rdx
     sar rax, 32
     add eax, esi
@@ -17242,14 +17262,14 @@ L1984:
     cmp r12d, esi
     cmovge esi, r12d
     cmp eax, esi
-    jg L2044
-L1966:
+    jg L2051
+L1973:
     cmp dword [rsp+44], 0
-    je L1967
-L1965:
+    je L1974
+L1972:
     cmp dword [rel cursor_shown], 0
-    je L2045
-L1967:
+    je L2052
+L1974:
     mov ecx, dword [rsp+48]
     mov rax, r14
     movabs rdx, -4294967296
@@ -17278,8 +17298,8 @@ L1967:
     mov rdi, qword [rsp]
     mov rsi, qword [rsp+8]
     call invalidate_outside
-    jmp L1885
-L2043:
+    jmp L1892
+L2050:
     call cursor_hide
     mov dword [r12+8], ebx
     mov dword [r12+12], ebp
@@ -17288,18 +17308,18 @@ L2043:
     mov rbp, rax
     mov rbx, rdx
     cmp dword [rsp+16], 0
-    jle L1965
+    jle L1972
     cmp dword [rsp+24], 0
-    jle L1965
+    jle L1972
     mov dword [rsp+44], 1
-    jmp L1984
-L2044:
+    jmp L1991
+L2051:
     call cursor_draw
-    jmp L1966
-L2045:
+    jmp L1973
+L2052:
     call cursor_draw
-    jmp L1967
-L2035:
+    jmp L1974
+L2042:
     mov edx, r13d
     mov esi, r14d
     mov rdi, r12
@@ -17307,31 +17327,31 @@ L2035:
     mov rbx, rax
     mov rbp, rdx
     cmp dword [rel outline], eax
-    jne L1969
+    jne L1976
     sar rax, 32
     cmp dword [rel outline+4], eax
-    je L2046
-L1969:
+    je L2053
+L1976:
     call outline_hide
     mov qword [rel outline], rbx
     mov qword [rel outline+8], rbp
     call outline_draw
     call cursor_draw
-    jmp L1885
-L2046:
+    jmp L1892
+L2053:
     cmp dword [rel outline+8], edx
-    jne L1969
+    jne L1976
     mov rax, rdx
     sar rax, 32
     cmp dword [rel outline+12], eax
-    jne L1969
-    jmp L1885
-L2036:
+    jne L1976
+    jmp L1892
+L2043:
     mov rsi, rbx
     mov rdi, r12
     call send_to_client
-    jmp L1885
-L2037:
+    jmp L1892
+L2044:
     sub r14d, dword [rel press_x]
     mov eax, r14d
     neg eax
@@ -17342,17 +17362,17 @@ L2037:
     cmovs edx, r13d
     add eax, edx
     cmp eax, 4
-    jle L1885
+    jle L1892
     mov edi, dword [rel held_icon]
     call desktop_icon_file
     test rax, rax
-    je L1973
+    je L1980
     cmp dword [rax+64], 0
-    je L2047
-L1973:
+    je L2054
+L1980:
     mov dword [rel held], 0
-    jmp L1885
-L2047:
+    jmp L1892
+L2054:
     lea rbx, [rsp+80]
     mov rcx, rax
     mov edx, LC49
@@ -17366,72 +17386,72 @@ L2047:
     mov eax, dword [rel kernel_lock]
     sub eax, 1
     mov dword [rel kernel_lock], eax
-    jmp L1973
-L2038:
+    jmp L1980
+L2045:
     mov rdi, r12
     call close_button
     mov rdi, rax
     mov rsi, rdx
-    jmp L1976
-L2039:
+    jmp L1983
+L2046:
     mov rdi, r12
     call maximize_button
     mov rdi, rax
     mov rsi, rdx
-    jmp L1976
-L2040:
+    jmp L1983
+L2047:
     lea edx, [rdi+rsi]
     cmp r14d, edx
-    jge L1978
+    jge L1985
     mov rdx, rsi
     sar rdx, 32
     add eax, edx
     cmp r13d, eax
     setl bpl
     movzx ebp, bpl
-    jmp L1978
-L1974:
+    jmp L1985
+L1981:
     test eax, eax
-    jne L1885
+    jne L1892
     mov esi, r13d
     mov edi, r14d
     call window_at
     mov rbp, rax
     test rax, rax
-    je L1885
+    je L1892
     call top_window
     cmp rbp, rax
-    jne L1885
+    jne L1892
     mov rdi, rbp
     call client_rect
     mov rcx, rax
     sar rcx, 32
     cmp r13d, ecx
-    jl L1885
+    jl L1892
     cmp r14d, eax
-    jl L1885
+    jl L1892
     add eax, edx
     cmp r14d, eax
-    jge L1885
+    jge L1892
     sar rdx, 32
     add ecx, edx
     cmp r13d, ecx
-    jge L1885
+    jge L1892
     mov rsi, rbx
     mov rdi, rbp
     call send_to_client
-    jmp L1885
-L2002:
+    jmp L1892
+L2009:
     mov rsi, rbx
     mov rdi, rax
     call send_to_client
-    jmp L1885
-L2008:
+    jmp L1892
+L2015:
     call popup_close_all
-    jmp L1895
-L2009:
+    jmp L1902
+L2016:
     call popup_close_all
-    jmp L1895
+    jmp L1902
 send_pointer:
     push r12
     push rbp
@@ -17448,8 +17468,8 @@ send_pointer:
     mov dword [rsp+20], 1
     mov dword [rsp+24], edx
     test edi, edi
-    je L2052
-L2049:
+    je L2059
+L2056:
     mov rdi, rsp
     call wm_mouse_event
     add rsp, 32
@@ -17457,39 +17477,39 @@ L2049:
     pop rbp
     pop r12
     ret
-L2052:
+L2059:
     mov ebx, esi
     call os_now_ms
     mov edx, ebp
     sub edx, dword [rel last_press_x]
     add edx, 4
     cmp edx, 8
-    ja L2050
+    ja L2057
     mov edx, r12d
     sub edx, dword [rel last_press_y]
     add edx, 4
     cmp edx, 8
-    ja L2050
+    ja L2057
     cmp dword [rel last_press_button], ebx
-    jne L2050
+    jne L2057
     mov rcx, rax
     sub rcx, qword [rel last_press_time]
     movsx rdx, dword [rel settings+72]
     cmp rcx, rdx
-    jge L2050
+    jge L2057
     mov dword [rsp+20], 2
     mov rax, -100000
-L2050:
+L2057:
     mov qword [rel last_press_time], rax
     mov dword [rel last_press_x], ebp
     mov dword [rel last_press_y], r12d
     mov dword [rel last_press_button], ebx
-    jmp L2049
+    jmp L2056
 flush_move:
     cmp dword [rel moved], 0
-    jne L2059
+    jne L2066
     ret
-L2059:
+L2066:
     sub rsp, 8
     mov dword [rel moved], 0
     mov edx, 0
@@ -17512,40 +17532,40 @@ wm_key_event:
     call top_window
     mov rbp, rax
     test ebx, ebx
-    jne L2107
+    jne L2114
     mov edx, dword [r12]
     lea eax, [rdx-125]
     cmp eax, 1
-    jbe L2063
+    jbe L2070
     cmp edx, 1
-    je L2108
+    je L2115
     mov r14d, dword [rel popup_count]
     test r14d, r14d
-    jne L2109
+    jne L2116
     test rbp, rbp
     setne cl
     cmp edx, 68
-    jne L2082
+    jne L2089
     test cl, cl
-    jne L2110
-L2082:
+    jne L2117
+L2089:
     mov esi, dword [r12+8]
     mov eax, esi
     shr eax, 2
     and eax, 1
     cmp edx, 62
-    jne L2084
+    jne L2091
     test al, al
-    jne L2111
-L2084:
+    jne L2118
+L2091:
     cmp edx, 15
-    jne L2085
+    jne L2092
     test al, al
-    jne L2112
-L2085:
+    jne L2119
+L2092:
     test rbp, rbp
-    je L2060
-L2089:
+    je L2067
+L2096:
     mov qword [rsp+212], 0
     mov qword [rsp+392], 0
     lea rdi, [rsp+216]
@@ -17560,22 +17580,22 @@ L2089:
     mov dword [rsp+256], esi
     mov edi, dword [rbp+4]
     test edi, edi
-    jg L2113
+    jg L2120
     mov rax, qword [rbp+184]
     test rax, rax
-    je L2060
+    je L2067
     lea rsi, [rsp+208]
     mov rdi, rbp
     call rax
-    jmp L2060
-L2107:
+    jmp L2067
+L2114:
     test rax, rax
-    je L2060
+    je L2067
     mov edx, dword [rax+4]
     test edx, edx
-    jle L2060
+    jle L2067
     cmp dword [rel popup_count], 0
-    jne L2060
+    jne L2067
     mov qword [rsp+20], 0
     mov qword [rsp+200], 0
     lea rdi, [rsp+24]
@@ -17591,19 +17611,19 @@ L2107:
     lea rsi, [rsp+16]
     mov edi, edx
     call post_message
-    jmp L2060
-L2108:
+    jmp L2067
+L2115:
     test byte [r12+8], 2
-    jne L2063
+    jne L2070
     mov eax, dword [rel popup_count]
     test eax, eax
-    jne L2096
+    jne L2103
     test rbp, rbp
     setne cl
-    jmp L2082
-L2063:
+    jmp L2089
+L2070:
     call start_menu_toggle
-L2060:
+L2067:
     add rsp, 408
     pop rbx
     pop rbp
@@ -17612,10 +17632,10 @@ L2060:
     pop r14
     pop r15
     ret
-L2117:
+L2124:
     call popup_close_all
-    jmp L2060
-L2090:
+    jmp L2067
+L2097:
     cmp edx, 103
     setne r15b
     movzx r15d, r15b
@@ -17627,17 +17647,17 @@ L2090:
     mov ebp, dword [popups+28+rcx*8]
     mov r13d, dword [popups+8+rcx*8]
     test r13d, r13d
-    jle L2067
+    jle L2074
     mov rax, qword [popups+rcx*8]
     mov qword [rsp], rax
     lea eax, [r13-1]
     mov dword [rsp+8], eax
-    jmp L2070
-L2069:
+    jmp L2077
+L2076:
     add ebx, 1
     cmp r13d, ebx
-    je L2067
-L2070:
+    je L2074
+L2077:
     lea eax, [r15+rbp]
     add eax, r13d
     cdq
@@ -17653,18 +17673,18 @@ L2070:
     mov esi, LC1
     call strcmp
     test eax, eax
-    je L2069
+    je L2076
     test byte [r12+12], 1
-    jne L2069
-L2067:
+    jne L2076
+L2074:
     mov esi, ebp
     mov edi, dword [rsp+12]
     call popup_hover
     mov ebp, dword [rel popup_count]
     cmp ebp, r14d
-    jle L2060
+    jle L2067
     mov ebx, r14d
-L2071:
+L2078:
     movsx rax, ebx
     lea rax, [rax+rax*4]
     lea rax, [popups+rax*8]
@@ -17673,31 +17693,31 @@ L2071:
     call invalidate
     add ebx, 1
     cmp ebp, ebx
-    jne L2071
+    jne L2078
     mov dword [rel popup_count], r14d
-    jmp L2060
-L2115:
+    jmp L2067
+L2122:
     mov edi, dword [rsp+12]
     movsx rax, edi
     lea rax, [rax+rax*4]
     mov esi, dword [popups+28+rax*8]
     test esi, esi
-    js L2073
+    js L2080
     movsx rax, edi
     lea rdx, [rax+rax*4]
     movsx rax, esi
     sal rax, 5
     add rax, qword [popups+rdx*8]
     cmp qword [rax+24], 0
-    je L2073
+    je L2080
     call popup_hover
     cmp dword [rel popup_count], r14d
-    jle L2060
+    jle L2067
     mov esi, 0
     mov edi, r14d
     call popup_hover
-    jmp L2060
-L2116:
+    jmp L2067
+L2123:
     mov ebx, dword [rsp+12]
     movsx rax, ebx
     lea rax, [rax+rax*4]
@@ -17706,22 +17726,22 @@ L2116:
     mov rsi, qword [rax+20]
     call invalidate
     mov dword [rel popup_count], ebx
-    jmp L2060
-L2073:
+    jmp L2067
+L2080:
     mov ebx, dword [rel popup_kind]
     test ebx, ebx
-    jne L2060
+    jne L2067
     mov r12, qword [rel popup_window]
     mov rbp, qword [r12+160]
     cmp qword [rbp+0], 0
-    je L2076
+    je L2083
     lea rax, [rbp+16]
-L2077:
+L2084:
     add ebx, 1
     add rax, 16
     cmp qword [rax-16], 0
-    jne L2077
-L2076:
+    jne L2084
+L2083:
     lea eax, [rbx-1]
     test cl, cl
     mov ecx, 1
@@ -17734,35 +17754,35 @@ L2076:
     call menu_bar_rect
     lea r13d, [rax+2]
     test r14d, r14d
-    jle L2079
+    jle L2086
     mov rbx, rbp
     movsx rax, r14d
     sal rax, 4
     add rbp, rax
-L2080:
+L2087:
     mov rdi, qword [rbx]
     call text_width
     lea r13d, [r13+14+rax]
     add rbx, 16
     cmp rbp, rbx
-    jne L2080
-L2079:
+    jne L2087
+L2086:
     mov edx, r13d
     mov esi, r14d
     mov rdi, r12
     call bar_open
-    jmp L2060
-L2081:
+    jmp L2067
+L2088:
     test byte [rdi+12], 1
-    jne L2060
+    jne L2067
     call popup_choose
-    jmp L2060
-L2110:
+    jmp L2067
+L2117:
     cmp qword [rbp+160], 0
-    jne L2114
+    jne L2121
     mov esi, dword [r12+8]
-    jmp L2089
-L2114:
+    jmp L2096
+L2121:
     mov rdi, rbp
     call menu_bar_rect
     lea edx, [rax+2]
@@ -17772,24 +17792,24 @@ L2114:
     mov esi, 0
     mov edi, 0
     call popup_hover
-    jmp L2060
-L2111:
+    jmp L2067
+L2118:
     test cl, cl
-    je L2060
+    je L2067
     mov rdi, rbp
     call request_close
-    jmp L2060
-L2112:
+    jmp L2067
+L2119:
     cmp dword [rel window_count], 0
-    je L2060
+    je L2067
     mov rdi, qword [rel stack]
     call window_focus
-    jmp L2060
-L2113:
+    jmp L2067
+L2120:
     lea rsi, [rsp+208]
     call post_message
-    jmp L2060
-L2109:
+    jmp L2067
+L2116:
     lea eax, [r14-1]
     mov dword [rsp+12], eax
     cmp edx, 103
@@ -17797,40 +17817,40 @@ L2109:
     cmp edx, 108
     sete al
     or cl, al
-    jne L2090
+    jne L2097
     cmp edx, 106
-    je L2115
+    je L2122
     cmp edx, 105
     sete cl
     cmp r14d, 1
-    jle L2074
+    jle L2081
     test cl, cl
-    jne L2116
-L2074:
+    jne L2123
+L2081:
     lea eax, [rdx-105]
     cmp eax, 1
-    jbe L2073
+    jbe L2080
     cmp edx, 28
-    jne L2060
+    jne L2067
     mov ecx, dword [rsp+12]
     movsx rax, ecx
     lea rax, [rax+rax*4]
     mov esi, dword [popups+28+rax*8]
     test esi, esi
-    js L2060
+    js L2067
     movsx rax, ecx
     lea rax, [rax+rax*4]
     movsx rdi, esi
     sal rdi, 5
     add rdi, qword [popups+rax*8]
     cmp qword [rdi+24], 0
-    je L2081
+    je L2088
     mov edi, ecx
     call popup_hover
-    jmp L2060
-L2096:
+    jmp L2067
+L2103:
     cmp eax, 1
-    jle L2117
+    jle L2124
     lea ebx, [rax-1]
     movsx rax, ebx
     lea rax, [rax+rax*4]
@@ -17839,7 +17859,7 @@ L2096:
     mov rsi, qword [rax+20]
     call invalidate
     mov dword [rel popup_count], ebx
-    jmp L2060
+    jmp L2067
     section .rodata
 LC55:
     db `789-456+1230.`, 0
@@ -17856,8 +17876,8 @@ input_wait:
     call platform_input_read
     mov r12d, 0
     test eax, eax
-    jg L2119
-L2120:
+    jg L2126
+L2127:
     call flush_move
     add rsp, 2072
     pop rbx
@@ -17865,22 +17885,22 @@ L2120:
     pop r12
     pop r13
     ret
-L2169:
+L2176:
     cmp eax, 28
-    jle L2128
+    jle L2135
     cmp eax, 42
-    je L2152
+    je L2159
     cmp eax, 54
-    jne L2128
+    jne L2135
     mov eax, 1
-    jmp L2129
-L2125:
+    jmp L2136
+L2132:
     cmp eax, 100
-    jne L2128
-L2126:
+    jne L2135
+L2133:
     mov eax, 4
-    jmp L2133
-L2123:
+    jmp L2140
+L2130:
     lea esi, [rax+7]
     test eax, eax
     cmovns esi, eax
@@ -17893,25 +17913,25 @@ L2123:
     not edi
     and byte [keys_held+rsi], dil
     cmp eax, 97
-    je L2124
-    jg L2130
+    je L2131
+    jg L2137
     cmp eax, 56
-    je L2126
-    jg L2131
+    je L2133
+    jg L2138
     cmp eax, 29
-    je L2124
+    je L2131
     cmp eax, 28
-    jle L2131
+    jle L2138
     cmp eax, 42
-    je L2154
+    je L2161
     cmp eax, 54
-    jne L2131
+    jne L2138
     mov eax, edx
-    jmp L2132
-L2130:
+    jmp L2139
+L2137:
     cmp eax, 100
-    je L2126
-L2131:
+    je L2133
+L2138:
     mov dword [rsp+4], eax
     mov dword [rsp+8], r12d
     mov eax, dword [rel modifiers]
@@ -17919,47 +17939,47 @@ L2131:
     lea rdi, [rsp+4]
     mov esi, 1
     call wm_key_event
-    jmp L2142
-L2152:
+    jmp L2149
+L2159:
     mov eax, 1
-    jmp L2129
-L2154:
+    jmp L2136
+L2161:
     mov eax, edx
-L2132:
+L2139:
     not eax
     and dword [rel modifiers], eax
-    jmp L2142
-L2170:
+    jmp L2149
+L2177:
     cmp dword [rel caps_lock], 0
     sete al
     movzx eax, al
     mov dword [rel caps_lock], eax
-    jmp L2142
-L2134:
+    jmp L2149
+L2141:
     lea edx, [rax-71]
     cmp edx, 12
-    ja L2137
+    ja L2144
     mov eax, edx
     cdqe
     movsx edx, byte [LC55+rax]
-    jmp L2136
-L2137:
+    jmp L2143
+L2144:
     mov edx, 10
     cmp eax, 96
-    je L2138
+    je L2145
     cmp eax, 98
     mov edx, 47
     cmovne edx, r12d
-L2138:
+L2145:
     cmp dword [rel caps_lock], 0
-    je L2139
+    je L2146
     mov eax, edx
-L2140:
+L2147:
     sub eax, 65
     lea ecx, [rdx+32]
     cmp eax, 26
     cmovb edx, ecx
-L2139:
+L2146:
     mov eax, dword [rel modifiers]
     mov dword [rsp+12], eax
     test al, 6
@@ -17968,40 +17988,40 @@ L2139:
     lea rdi, [rsp+4]
     mov esi, r12d
     call wm_key_event
-    jmp L2142
-L2121:
+    jmp L2149
+L2128:
     mov ecx, dword [rbx+8]
     mov eax, r12d
     test ecx, ecx
-    js L2143
+    js L2150
     mov eax, dword [rel screen_w]
     sub eax, 1
     cmp eax, ecx
     cmovg eax, ecx
-L2143:
+L2150:
     mov dword [rel pointer_x], eax
     mov ecx, dword [r13+12]
     mov eax, r12d
     test ecx, ecx
-    js L2144
+    js L2151
     mov eax, dword [rel screen_h]
     sub eax, 1
     cmp eax, ecx
     cmovg eax, ecx
-L2144:
+L2151:
     mov dword [rel pointer_y], eax
     cmp edx, 5
-    je L2165
+    je L2172
     cmp edx, 6
-    je L2166
+    je L2173
     call flush_move
     mov edx, dword [r13+0]
     cmp edx, 3
-    je L2167
+    je L2174
     mov eax, dword [r13+4]
     not eax
     and eax, dword [rel pointer_buttons]
-L2148:
+L2155:
     mov dword [rel pointer_buttons], eax
     mov esi, dword [r13+4]
     cmp edx, 3
@@ -18009,20 +18029,20 @@ L2148:
     movzx edi, dil
     mov edx, r12d
     call send_pointer
-L2142:
+L2149:
     add rbx, 16
     cmp rbx, rbp
-    je L2168
-L2149:
+    je L2175
+L2156:
     mov r13, rbx
     mov edx, dword [rbx]
     cmp edx, 2
-    jg L2121
+    jg L2128
     mov eax, dword [rbx+4]
     cmp eax, 255
-    ja L2142
+    ja L2149
     cmp edx, 1
-    je L2123
+    je L2130
     lea esi, [rax+7]
     test eax, eax
     cmovns esi, eax
@@ -18034,70 +18054,70 @@ L2149:
     sal edi, cl
     or byte [keys_held+rsi], dil
     cmp eax, 97
-    je L2124
-    jg L2125
+    je L2131
+    jg L2132
     cmp eax, 56
-    je L2126
-    jg L2127
+    je L2133
+    jg L2134
     cmp eax, 29
-    jne L2169
-L2124:
+    jne L2176
+L2131:
     mov eax, 2
-L2133:
+L2140:
     cmp edx, 1
-    je L2132
-L2129:
+    je L2139
+L2136:
     or dword [rel modifiers], eax
-    jmp L2142
-L2165:
+    jmp L2149
+L2172:
     mov dword [rel moved], 1
-    jmp L2142
-L2166:
+    jmp L2149
+L2173:
     call flush_move
     mov edx, dword [r13+4]
     mov esi, r12d
     mov edi, 3
     call send_pointer
-    jmp L2142
-L2167:
+    jmp L2149
+L2174:
     mov eax, dword [r13+4]
     or eax, dword [rel pointer_buttons]
-    jmp L2148
-L2168:
+    jmp L2155
+L2175:
     lea rdi, [rsp+16]
     mov edx, r12d
     mov esi, 128
     call platform_input_read
     test eax, eax
-    jle L2120
-L2119:
+    jle L2127
+L2126:
     lea rbx, [rsp+16]
     cdqe
     sal rax, 4
     lea rbp, [rax+rbx]
-    jmp L2149
-L2127:
+    jmp L2156
+L2134:
     cmp eax, 58
-    je L2170
-L2128:
+    je L2177
+L2135:
     mov dword [rsp+4], eax
     cmp eax, 57
-    jg L2134
+    jg L2141
     test byte [rel modifiers], 1
     mov edx, KEYMAP
     mov ecx, KEYMAP_SHIFT
     cmovne rdx, rcx
     cdqe
     movsx edx, byte [rdx+rax]
-L2136:
+L2143:
     cmp dword [rel caps_lock], 0
-    je L2139
+    je L2146
     mov eax, edx
     lea ecx, [rdx-97]
     cmp ecx, 25
-    ja L2140
+    ja L2147
     sub edx, 32
-    jmp L2139
+    jmp L2146
     section .rodata
 LC56:
     db `\n`, 0
@@ -18127,11 +18147,18 @@ LC66:
     db `autostart.txt`, 0
 LC67:
     db `\r`, 0
+    section .rodata
+    align 8, db 0
 LC68:
-    db `asmOS is shutting down...`, 0
+    db `%s used all of its %d KB of stack and was ended, so that it cannot overwrite another application's memory.`, 0
+    section .rodata
 LC69:
-    db `It is now safe to turn off`, 0
+    db `asmOS: %s\n`, 0
 LC70:
+    db `asmOS is shutting down...`, 0
+LC71:
+    db `It is now safe to turn off`, 0
+LC72:
     db `your computer.`, 0
     section .text
     global main
@@ -18142,7 +18169,7 @@ main:
     push r12
     push rbp
     push rbx
-    sub rsp, 408
+    sub rsp, 616
     mov ecx, fb_stride
     mov edx, screen_h
     mov esi, screen_w
@@ -18151,7 +18178,7 @@ main:
     mov edx, eax
     mov eax, 1
     test edx, edx
-    js L2171
+    js L2178
     mov ebx, dword [rel screen_w]
     mov ebp, dword [rel screen_h]
     movsx rdi, ebx
@@ -18161,7 +18188,7 @@ main:
     call malloc
     mov qword [rsp+88], rax
     test rax, rax
-    je L2239
+    je L2247
     mov qword [rel back_buffer], rax
     mov ecx, ebx
     mov edx, ebp
@@ -18188,16 +18215,16 @@ main:
     call read_file_with
     mov rbx, rax
     test rax, rax
-    je L2173
+    je L2180
     cmp byte [rax], 0
-    je L2174
+    je L2181
     mov rbp, rax
     mov qword [rsp+16], r12
     mov qword [rsp+24], r13
     mov r13, rax
-    jmp L2183
-L2260:
-    lea rdi, [rsp+128]
+    jmp L2190
+L2268:
+    lea rdi, [rsp+304]
     call atoi
     mov edx, 6
     cmp eax, edx
@@ -18206,74 +18233,74 @@ L2260:
     mov edx, 0
     cmovs eax, edx
     mov dword [rel settings], eax
-L2176:
-    cmp byte [rbx], 0
-    je L2259
-    mov rbp, rbx
 L2183:
+    cmp byte [rbx], 0
+    je L2267
+    mov rbp, rbx
+L2190:
     mov esi, LC56
     mov rdi, rbp
     call strcspn
     lea rbx, [rbp+0+rax]
     cmp byte [rbx], 0
-    je L2175
+    je L2182
     mov byte [rbx], 0
     lea rbx, [rbx+1]
-L2175:
+L2182:
     lea rdx, [rsp+96]
-    lea rcx, [rsp+128]
+    lea rcx, [rsp+304]
     mov esi, LC57
     mov rdi, rbp
     mov eax, 0
     call sscanf
     cmp eax, 2
-    jne L2176
+    jne L2183
     lea rdi, [rsp+96]
     mov esi, LC58
     call strcmp
     test eax, eax
-    je L2260
+    je L2268
     lea rdi, [rsp+96]
     mov esi, LC59
     call strcmp
     test eax, eax
-    je L2261
+    je L2269
     lea rdi, [rsp+96]
     mov esi, LC60
     call strcmp
     test eax, eax
-    je L2262
+    je L2270
     lea rdi, [rsp+96]
     mov esi, LC61
     call strcmp
     test eax, eax
-    je L2263
+    je L2271
     lea rdi, [rsp+96]
     mov esi, LC62
     call strcmp
     test eax, eax
-    je L2264
+    je L2272
     lea rdi, [rsp+96]
     mov esi, LC63
     call strcmp
     test eax, eax
-    jne L2176
-    lea rdi, [rsp+128]
+    jne L2183
+    lea rdi, [rsp+304]
     call atoi
     test eax, eax
     setne al
     movzx eax, al
     mov dword [rel settings+80], eax
-    jmp L2176
-L2261:
-    lea rcx, [rsp+128]
+    jmp L2183
+L2269:
+    lea rcx, [rsp+304]
     mov edx, LC43
     mov esi, 64
     mov edi, settings+4
     call snprintf
-    jmp L2176
-L2262:
-    lea rdi, [rsp+128]
+    jmp L2183
+L2270:
+    lea rdi, [rsp+304]
     call atoi
     mov edx, 3
     cmp eax, edx
@@ -18282,9 +18309,9 @@ L2262:
     mov edx, 0
     cmovs eax, edx
     mov dword [rel settings+68], eax
-    jmp L2176
-L2263:
-    lea rdi, [rsp+128]
+    jmp L2183
+L2271:
+    lea rdi, [rsp+304]
     call atoi
     mov edx, 900
     cmp eax, edx
@@ -18293,30 +18320,30 @@ L2263:
     cmp eax, edx
     cmovl eax, edx
     mov dword [rel settings+72], eax
-    jmp L2176
-L2264:
-    lea rdi, [rsp+128]
+    jmp L2183
+L2272:
+    lea rdi, [rsp+304]
     call atoi
     test eax, eax
     setne al
     movzx eax, al
     mov dword [rel settings+76], eax
-    jmp L2176
-L2259:
+    jmp L2183
+L2267:
     mov rbx, r13
     mov r12, qword [rsp+16]
     mov r13, qword [rsp+24]
-L2174:
+L2181:
     mov rdi, rbx
     call free
-L2173:
+L2180:
     call platform_midi_open
     test eax, eax
     sete al
     movzx eax, al
     mov dword [rel midi_open], eax
     call platform_input_open
-    lea rbx, [rsp+320]
+    lea rbx, [rsp+528]
     mov r8d, dword [rel screen_h]
     mov ecx, dword [rel screen_w]
     mov edx, LC64
@@ -18415,32 +18442,8 @@ L2173:
     mov rax, rbp
     sal rax, 32
     mov qword [rsp+80], rax
-    jmp L2187
-L2265:
-    add ebx, 14
-L2186:
-    movsx rax, ebx
-    imul rax, rax, 1374389535
-    sar rax, 38
-    mov edx, ebx
-    sar edx, 31
-    sub eax, edx
-    imul eax, eax, 200
-    mov edi, ebx
-    sub edi, eax
-    sub edi, 30
-    cmp ebp, 1
-    je L2184
-    mov eax, dword [rsp+16]
-    add edi, eax
-    mov r8d, 2105504
-    mov ecx, 10
-    mov edx, 10
-    mov esi, dword [rsp+40]
-    call fill_rect
-    add ebp, 1
-    cmp ebp, 3
-    jne L2265
+    jmp L2194
+L2192:
     mov rax, r14
     movabs rbx, -4294967296
     and rax, rbx
@@ -18480,12 +18483,12 @@ L2186:
     or al, -92
     mov qword [rsp], rsi
     mov qword [rsp+8], rax
-    mov rcx, qword [rsp]
-    mov rbx, qword [rsp+8]
-    mov eax, ebx
+    mov rsi, qword [rsp]
+    mov rdi, qword [rsp+8]
+    mov eax, edi
     movabs rdx, 77309411328
     or rax, rdx
-    mov qword [rsp], rcx
+    mov qword [rsp], rsi
     mov qword [rsp+8], rax
     mov rax, qword [rsp]
     mov rdx, qword [rsp+8]
@@ -18498,8 +18501,8 @@ L2186:
     add dword [rsp+32], 6
     mov eax, dword [rsp+32]
     cmp eax, 288
-    je L2266
-L2187:
+    je L2273
+L2194:
     mov ebx, dword [rsp+16]
     mov edx, ebx
     mov rax, r12
@@ -18533,8 +18536,32 @@ L2187:
     mov eax, dword [rsp+48]
     add eax, 112
     mov dword [rsp+40], eax
-    jmp L2186
-L2266:
+L2193:
+    movsx rax, ebx
+    imul rax, rax, 1374389535
+    sar rax, 38
+    mov edx, ebx
+    sar edx, 31
+    sub eax, edx
+    imul eax, eax, 200
+    mov edi, ebx
+    sub edi, eax
+    sub edi, 30
+    cmp ebp, 1
+    je L2191
+    mov eax, dword [rsp+16]
+    add edi, eax
+    mov r8d, 2105504
+    mov ecx, 10
+    mov edx, 10
+    mov esi, dword [rsp+40]
+    call fill_rect
+    add ebp, 1
+    cmp ebp, 3
+    je L2192
+    add ebx, 14
+    jmp L2193
+L2273:
     mov rax, qword [rel fb_pixels]
     mov qword [rel framebuffer], rax
     mov eax, dword [rel fb_stride]
@@ -18545,18 +18572,25 @@ L2266:
     mov ecx, esi
     mov edx, dword [rel screen_h]
     call gfx_target
-    mov dword [rsp+128], 0
-    mov dword [rsp+132], 0
-    mov dword [rsp+136], 0
+    mov dword [rsp+304], 0
+    mov dword [rsp+308], 0
+    mov dword [rsp+312], 0
     mov eax, APPS
     mov r8d, APPS+720
     mov esi, 1000
-    jmp L2189
-L2268:
+    jmp L2196
+L2195:
+    add rax, 40
+    add esi, 1
+    cmp rax, r8
+    je L2274
+L2196:
+    cmp qword [rax+16], 0
+    je L2195
     movsx rdx, dword [rax+24]
-    mov ecx, dword [rsp+128+rdx*4]
+    mov ecx, dword [rsp+304+rdx*4]
     lea edi, [rcx+1]
-    mov dword [rsp+128+rdx*4], edi
+    mov dword [rsp+304+rdx*4], edi
     movsx rcx, ecx
     lea rdi, [rdx+rdx*8]
     lea rdx, [rdx+rdi*2]
@@ -18565,16 +18599,8 @@ L2268:
     mov rcx, qword [rax]
     mov qword [group_items+rdx], rcx
     mov dword [group_items+rdx+8], esi
-L2188:
-    add rax, 40
-    add esi, 1
-    cmp rax, r8
-    je L2267
-L2189:
-    cmp qword [rax+16], 0
-    jne L2268
-    jmp L2188
-L2267:
+    jmp L2195
+L2274:
     call update_clock_text
     call desktop_refresh
     call wallpaper_load
@@ -18614,31 +18640,30 @@ L2267:
     call read_file_with
     mov rbx, rax
     test rax, rax
-    je L2190
+    je L2197
     cmp byte [rax], 0
-    je L2191
+    je L2198
     mov rbp, rax
-    jmp L2196
-L2269:
+    jmp L2203
+L2275:
     add r13, 1
-L2195:
+L2202:
     mov rsi, r13
-    mov edi, eax
     call os_spawn
-L2194:
+L2201:
     cmp byte [r12], 0
-    je L2191
+    je L2198
     mov rbp, r12
-L2196:
+L2203:
     mov esi, LC56
     mov rdi, rbp
     call strcspn
     lea r12, [rbp+0+rax]
     cmp byte [r12], 0
-    je L2192
+    je L2199
     mov byte [r12], 0
     lea r12, [r12+1]
-L2192:
+L2199:
     mov esi, LC67
     mov rdi, rbp
     call strcspn
@@ -18648,152 +18673,186 @@ L2192:
     call strchr
     mov r13, rax
     test rax, rax
-    je L2193
+    je L2200
     mov byte [rax], 0
     mov rdi, rbp
     call os_app_named
+    mov edi, eax
     test eax, eax
-    js L2194
+    js L2201
     cmp byte [r13+1], 0
-    jne L2269
+    jne L2275
     mov r13d, 0
-    jmp L2195
-L2191:
+    jmp L2202
+L2198:
     mov rdi, rbx
     call free
-L2190:
+L2197:
     call os_now_ms
     add rax, 1000
     mov qword [rsp+32], rax
     call os_now_ms
     mov qword [rsp+48], rax
-    mov r15d, processes+820224
-    jmp L2197
-L2271:
-    mov rdi, qword [rbx+184]
+    jmp L2204
+L2277:
+    mov dword [rbx+25508], 0
+    lea r13, [rbx+16]
+    mov r8d, 256
+    mov rcx, r13
+    mov edx, LC68
+    mov esi, 200
+    lea rdi, [rsp+96]
+    mov eax, 0
+    call snprintf
+    lea rcx, [rsp+96]
+    mov edx, LC69
+    mov esi, 220
+    lea rdi, [rsp+304]
+    mov eax, 0
+    call snprintf
+    lea rdi, [rsp+304]
+    call platform_print
+    call $lock
+    mov rdi, rbx
+    call process_cleanup
+    call unlock
+    mov r8d, 1
+    mov ecx, 0
+    lea rdx, [rsp+96]
+    mov rsi, r13
+    mov edi, 0
+    call os_message_box
+    jmp L2206
+L2278:
+    mov rdi, qword [rbp+184]
     call free
-    mov dword [rbx], 0
-L2198:
+    mov dword [rbp+0], 0
+L2205:
     add rbx, 25632
-    cmp rbx, r15
-    je L2270
-L2202:
+    cmp rbx, processes+820224
+    je L2276
+L2210:
+    mov rbp, rbx
     cmp dword [rbx], 0
-    je L2198
-    mov eax, dword [rbx+8]
+    je L2205
+    cmp dword [rbx+25508], 0
+    jne L2277
+L2206:
+    mov eax, dword [rbp+8]
     cmp eax, 4
-    je L2271
+    je L2278
     cmp eax, 3
-    jne L2198
-    mov rax, qword [rbx+25512]
-    cmp r13, rax
-    jl L2200
-    mov dword [rbx+8], 0
-    jmp L2198
-L2200:
+    jne L2205
+    mov rax, qword [rbp+25512]
+    cmp r15, rax
+    jl L2208
+    mov dword [rbp+8], 0
+    jmp L2205
+L2208:
     test r12, r12
-    js L2201
+    js L2209
     mov rdx, rax
-    sub rdx, r13
+    sub rdx, r15
     cmp r12, rdx
-    jle L2198
-L2201:
-    sub rax, r13
+    jle L2205
+L2209:
+    sub rax, r15
     mov r12, rax
-    jmp L2198
-L2270:
+    jmp L2205
+L2276:
     call sound_run
     mov qword [rsp], rax
     call os_now_ms
     mov r13, rax
     mov ebx, timers
+    mov r15d, timers+2048
     mov rbp, -1
     mov qword [rsp+16], r12
-    jmp L2206
-L2273:
-    mov qword [rsp+132], 0
-    mov qword [rsp+312], 0
-    lea rdi, [rsp+136]
-    lea rcx, [rsp+132]
+    jmp L2214
+L2280:
+    mov qword [rsp+308], 0
+    mov qword [rsp+488], 0
+    lea rdi, [rsp+312]
+    lea rcx, [rsp+308]
     sub rcx, rdi
     add ecx, 188
     shr ecx, 3
     mov ecx, ecx
     mov eax, 0
     rep stosq
-    mov dword [rsp+128], 8
+    mov dword [rsp+304], 8
     mov rax, qword [rbx+16]
-    mov qword [rsp+136], rax
+    mov qword [rsp+312], rax
     mov eax, dword [rbx+8]
-    mov dword [rsp+180], eax
-    lea rsi, [rsp+128]
+    mov dword [rsp+356], eax
     mov edi, dword [rbx+4]
+    lea rsi, [rsp+304]
     call post_message
     movsx rax, dword [rbx+12]
     add rax, r13
     mov qword [rbx+24], rax
-    jmp L2204
-L2205:
+    jmp L2212
+L2213:
     mov rbp, qword [r12+24]
     sub rbp, r13
-L2203:
+L2211:
     add rbx, 32
-    cmp rbx, timers+2048
-    je L2272
-L2206:
+    cmp rbx, r15
+    je L2279
+L2214:
     mov r12, rbx
     cmp dword [rbx], 0
-    je L2203
+    je L2211
     cmp r13, qword [rbx+24]
-    jge L2273
-L2204:
+    jge L2280
+L2212:
     test rbp, rbp
-    js L2205
+    js L2213
     mov rax, qword [r12+24]
     sub rax, r13
     cmp rbp, rax
-    jle L2203
-    jmp L2205
-L2272:
+    jle L2211
+    jmp L2213
+L2279:
     mov r12, qword [rsp+16]
     test rbp, rbp
-    js L2207
+    js L2215
     mov rax, qword [rsp]
     test rax, rax
-    js L2208
+    js L2216
     cmp rbp, rax
     cmovg rbp, rax
     test r12, r12
-    js L2274
-L2209:
+    js L2281
+L2217:
     cmp r12, rbp
     cmovg r12, rbp
-L2210:
+L2218:
     call os_now_ms
     mov rbx, rax
     cmp qword [rsp+32], rax
-    jle L2275
-L2211:
+    jle L2282
+L2219:
     call wm_render
     cmp dword [rel shutting_down], 0
-    je L2218
+    je L2226
     mov eax, processes+25632
     mov ecx, 0
-    jmp L2220
-L2274:
+    jmp L2228
+L2281:
     mov r12, rbp
-    jmp L2210
-L2207:
+    jmp L2218
+L2215:
     test r12, r12
-    js L2243
+    js L2251
     cmp qword [rsp], 0
-    js L2210
+    js L2218
     mov rbp, qword [rsp]
-    jmp L2209
-L2243:
+    jmp L2217
+L2251:
     mov r12, qword [rsp]
-    jmp L2210
-L2275:
+    jmp L2218
+L2282:
     mov rbp, rax
     mov rax, qword [rsp+48]
     sub rbp, rax
@@ -18808,8 +18867,8 @@ L2275:
     mov eax, 0
     mov ecx, 0
     mov esi, 1
-    jmp L2213
-L2277:
+    jmp L2221
+L2284:
     mov rdx, qword [r14+25560]
     mov rax, rdx
     sub rax, qword [r14+25568]
@@ -18817,22 +18876,22 @@ L2277:
     mov qword [r14+25568], rdx
     add rcx, rax
     mov eax, esi
-L2212:
+L2220:
     add r14, 25632
-    cmp r14, r15
-    je L2276
-L2213:
+    cmp r14, processes+820224
+    je L2283
+L2221:
     cmp dword [r14], 0
-    jne L2277
-    jmp L2212
-L2276:
+    jne L2284
+    jmp L2220
+L2283:
     test al, al
-    je L2214
+    je L2222
     mov qword [rel load_total], rcx
-L2214:
+L2222:
     mov edx, 0
     test rbp, rbp
-    jle L2215
+    jle L2223
     mov rax, qword [rel idle_ms]
     lea rax, [rax+rax*4]
     lea rax, [rax+rax*4]
@@ -18847,76 +18906,67 @@ L2214:
     test edx, edx
     mov eax, 0
     cmovs edx, eax
-L2215:
+L2223:
     mov dword [rel load_busy], edx
     mov qword [rel idle_ms], 0
     mov rax, qword [rel clock_text]
-    mov qword [rsp+128], rax
+    mov qword [rsp+304], rax
     mov eax, dword [rel clock_text+8]
-    mov dword [rsp+136], eax
+    mov dword [rsp+312], eax
     call update_clock_text
     mov ebp, dword [rel load_busy]
-    lea rdi, [rsp+128]
     mov esi, clock_text
+    lea rdi, [rsp+304]
     call strcmp
     test eax, eax
-    jne L2216
+    jne L2224
     cmp dword [rel cpu_percent], ebp
-    je L2217
-L2216:
+    je L2225
+L2224:
     call tray_rect
     mov rdi, rax
     mov rsi, rdx
     call invalidate
-L2217:
+L2225:
     mov dword [rel cpu_percent], ebp
     call desktop_refresh
     lea rax, [rbx+1000]
     mov qword [rsp+32], rax
     mov qword [rsp+48], rbx
-    jmp L2211
-L2219:
+    jmp L2219
+L2227:
     add ecx, edx
     add rax, 25632
-    cmp rax, r15
-    je L2278
-L2220:
+    cmp rax, processes+820224
+    je L2285
+L2228:
     mov edx, dword [rax]
     test edx, edx
-    je L2219
+    je L2227
     cmp dword [rax+8], 4
     setne dl
     movzx edx, dl
-    jmp L2219
-L2278:
+    jmp L2227
+L2285:
     test ecx, ecx
-    je L2221
+    je L2229
     cmp qword [rel shutdown_deadline], rbx
-    jle L2221
-L2218:
+    jle L2229
+L2226:
     call applications_ready
-    mov ebp, eax
-    cmp eax, dword [rel timer_on]
-    je L2222
-    mov dword [rel timer_on], eax
-    neg eax
-    sbb edi, edi
-    and edi, 10
-    call platform_timer
-L2222:
-    test ebp, ebp
-    jne L2224
+    test eax, eax
+    jne L2230
     mov rbp, qword [rsp+32]
     sub rbp, rbx
     test r12, r12
-    js L2225
+    js L2231
     cmp rbp, r12
     mov rax, r12
     cmovle rax, rbp
     test rbp, rbp
     mov rbp, r12
     cmovns rbp, rax
-L2225:
+L2231:
     call os_now_ms
     mov rbx, rax
     mov edi, ebp
@@ -18924,49 +18974,50 @@ L2225:
     call os_now_ms
     sub rax, rbx
     add qword [rel idle_ms], rax
-    jmp L2236
-L2280:
+    jmp L2244
+L2288:
     call platform_trap
-    jmp L2197
-L2221:
+    jmp L2204
+L2229:
     cmp dword [rel timer_on], 0
-    je L2257
+    je L2265
     mov dword [rel timer_on], 0
     mov edi, 0
     call platform_timer
     mov rbx, qword [rsp+40]
-    jmp L2229
-L2257:
+    jmp L2237
+L2265:
     mov rbx, qword [rsp+40]
-    jmp L2229
-L2228:
-    add rbx, 25632
-    cmp rbx, r15
-    je L2279
-L2229:
-    cmp dword [rbx], 0
-    je L2228
-    cmp dword [rbx+8], 4
-    je L2228
+    jmp L2237
+L2287:
     mov rdi, rbx
     call process_cleanup
-    jmp L2228
-L2279:
+L2236:
+    add rbx, 25632
+    cmp rbx, processes+820224
+    je L2286
+L2237:
+    cmp dword [rbx], 0
+    je L2236
+    cmp dword [rbx+8], 4
+    je L2236
+    jmp L2287
+L2286:
     mov dword [rel midi_queued], 0
     mov ebx, 0
-    lea rbp, [rsp+128]
-L2231:
+    lea rbp, [rsp+304]
+L2239:
     mov eax, ebx
     or eax, -80
-    mov byte [rsp+128], al
-    mov byte [rsp+129], 123
-    mov byte [rsp+130], 0
+    mov byte [rsp+304], al
+    mov byte [rsp+305], 123
+    mov byte [rsp+306], 0
     mov esi, 3
     mov rdi, rbp
     call midi_write
     add ebx, 1
     cmp ebx, 16
-    jne L2231
+    jne L2239
     mov edi, 1
     call sound_chime
     mov esi, dword [rel screen_w]
@@ -18980,7 +19031,7 @@ L2231:
     mov esi, 0
     mov edi, 0
     call fill_rect
-    mov edi, LC68
+    mov edi, LC70
     call text_width
     mov edi, eax
     mov eax, dword [rel screen_h]
@@ -18993,28 +19044,28 @@ L2231:
     cdq
     idiv ecx
     mov ecx, 16777215
-    mov edx, LC68
+    mov edx, LC70
     mov edi, eax
     call draw_text_bold
     call show_all
     mov ebx, 50
-L2232:
+L2240:
     call sound_run
     mov edi, 30
     call platform_sleep_ms
     sub ebx, 1
-    jne L2232
+    jne L2240
     mov r8d, 0
     mov ecx, dword [rel screen_h]
     mov edx, dword [rel screen_w]
     mov esi, 0
     mov edi, 0
     call fill_rect
-    mov qword [rsp+128], LC69
-    mov qword [rsp+136], LC70
+    mov qword [rsp+304], LC71
+    mov qword [rsp+312], LC72
     mov ebx, 0
-L2233:
-    mov rbp, qword [rsp+128+rbx*8]
+L2241:
+    mov rbp, qword [rsp+304+rbx*8]
     mov edx, dword [rel screen_h]
     mov eax, edx
     shr eax, 31
@@ -19039,19 +19090,19 @@ L2233:
     call draw_text_scaled
     add rbx, 1
     cmp rbx, 2
-    jne L2233
+    jne L2241
     call show_all
-    jmp L2234
-L2235:
+    jmp L2242
+L2243:
     mov edi, 30
     call platform_sleep_ms
-L2234:
+L2242:
     call sound_run
     test rax, rax
-    jns L2235
+    jns L2243
     mov eax, 0
-L2171:
-    add rsp, 408
+L2178:
+    add rsp, 616
     pop rbx
     pop rbp
     pop r12
@@ -19059,37 +19110,47 @@ L2171:
     pop r14
     pop r15
     ret
-L2239:
+L2247:
     mov eax, 1
-    jmp L2171
-L2224:
+    jmp L2178
+L2230:
     call os_now_ms
     mov edi, 0
     call input_wait
-L2236:
+L2244:
     call applications_ready
-    test eax, eax
-    jne L2280
-L2197:
+    mov ebx, eax
+    cmp eax, dword [rel timer_on]
+    je L2232
+    mov dword [rel timer_on], eax
+    neg eax
+    sbb edi, edi
+    and edi, 10
+    call platform_timer
+L2232:
+    test ebx, ebx
+    jne L2288
+L2204:
     call os_now_ms
-    mov r13, rax
+    mov r15, rax
     mov qword [rsp+40], processes+25632
     mov r14d, processes
     mov ebx, processes+25632
     mov r12, -1
-    jmp L2202
-L2208:
-    test r12, r12
-    jns L2209
-    mov r12, rbp
     jmp L2210
-L2193:
+L2216:
+    test r12, r12
+    jns L2217
+    mov r12, rbp
+    jmp L2218
+L2200:
     mov rdi, rbp
     call os_app_named
+    mov edi, eax
     test eax, eax
-    jns L2195
-    jmp L2194
-L2184:
+    jns L2202
+    jmp L2201
+L2191:
     mov eax, dword [rsp+48]
     lea esi, [rax+112]
     mov eax, dword [rsp+16]
@@ -19100,7 +19161,7 @@ L2184:
     call fill_rect
     add ebp, 1
     add ebx, 14
-    jmp L2186
+    jmp L2193
     section .rodata
     align 16, db 0
 rising.0:
@@ -19115,54 +19176,54 @@ answers.1:
     dd 1
     dd 2
     section .rodata
-LC71:
+LC73:
     db `Open`, 0
-LC72:
+LC74:
     db `Cancel`, 0
     section .rodata
     align 16, db 0
 open_labels.2:
-    dq LC71
-    dq LC72
+    dq LC73
+    dq LC74
     section .rodata
-LC73:
+LC75:
     db `Save`, 0
     section .rodata
     align 16, db 0
 save_labels.3:
-    dq LC73
-    dq LC72
+    dq LC75
+    dq LC74
     align 8, db 0
 answers.4:
     dd 1
     dd 2
     section .rodata
-LC74:
+LC76:
     db `OK`, 0
     section .rodata
     align 16, db 0
 labels.5:
+    dq LC76
     dq LC74
-    dq LC72
     section .rodata
-LC75:
+LC77:
     db `Yes`, 0
-LC76:
+LC78:
     db `No`, 0
     section .rodata
     align 32, db 0
 labels.6:
-    dq LC74
+    dq LC76
     times 16 db 0
+    dq LC76
     dq LC74
-    dq LC72
     times 8 db 0
-    dq LC75
-    dq LC76
+    dq LC77
+    dq LC78
     times 8 db 0
-    dq LC75
-    dq LC76
-    dq LC72
+    dq LC77
+    dq LC78
+    dq LC74
     align 32, db 0
 answers.7:
     dd 1
@@ -19198,56 +19259,54 @@ colours.11:
     dd 3170352
     dd 5255248
     section .rodata
-LC77:
+LC79:
     db `x86-64, emulated by Blink`, 0
     section .rodata
     align 8, db 0
-LC78:
+LC80:
     db `x86_64 (a Linux program on the emulated x86 machine)`, 0
     align 8, db 0
-LC79:
+LC81:
     db `with its pixel loops in x86 assembly.`, 0
     align 8, db 0
-LC80:
+LC82:
     db `One Linux program on the emulated`, 0
     align 8, db 0
-LC81:
+LC83:
     db `machine; its files are the Project's.`, 0
     section .rodata
     align 32, db 0
 words.12:
-    dq LC77
-    dq LC78
     dq LC79
     dq LC80
     dq LC81
+    dq LC82
+    dq LC83
     section .rodata
-LC82:
-    db `.md`, 0
-LC83:
-    db `.c`, 0
 LC84:
-    db `.h`, 0
+    db `.md`, 0
 LC85:
-    db `.asm`, 0
+    db `.c`, 0
 LC86:
-    db `.s`, 0
+    db `.h`, 0
 LC87:
-    db `.json`, 0
+    db `.asm`, 0
 LC88:
-    db `.csv`, 0
+    db `.s`, 0
 LC89:
-    db `.log`, 0
+    db `.json`, 0
 LC90:
-    db `.ini`, 0
+    db `.csv`, 0
 LC91:
+    db `.log`, 0
+LC92:
+    db `.ini`, 0
+LC93:
     db `.cfg`, 0
     section .rodata
     align 32, db 0
 text.13:
     dq LC50
-    dq LC82
-    dq LC83
     dq LC84
     dq LC85
     dq LC86
@@ -19256,6 +19315,8 @@ text.13:
     dq LC89
     dq LC90
     dq LC91
+    dq LC92
+    dq LC93
     section .bss
     alignb 32
 rows.14: resb 24576
@@ -19322,21 +19383,21 @@ x86_screen_w: resb 4
 stale: resb 16
     section .data
     section .rodata
-LC92:
-    db `New`, 0
-LC93:
-    db `Refresh`, 0
 LC94:
+    db `New`, 0
+LC95:
+    db `Refresh`, 0
+LC96:
     db `Settings...`, 0
     section .data
     align 32, db 0
 desktop_items:
-    dq LC92
+    dq LC94
     dd 0
     dd 0
     dq 0
     dq new_items
-    dq LC93
+    dq LC95
     dd 2004
     dd 0
     dq 0
@@ -19346,7 +19407,7 @@ desktop_items:
     dd 0
     dq 0
     dq 0
-    dq LC94
+    dq LC96
     dd 2005
     dd 0
     dq 0
@@ -19357,19 +19418,19 @@ desktop_items:
     dq 0
     dq 0
     section .rodata
-LC95:
+LC97:
     db `Folder`, 0
-LC96:
+LC98:
     db `Text File`, 0
     section .data
     align 32, db 0
 new_items:
-    dq LC95
+    dq LC97
     dd 2003
     dd 0
     dq 0
     dq 0
-    dq LC96
+    dq LC98
     dd 2002
     dd 0
     dq 0
@@ -19380,42 +19441,42 @@ new_items:
     dq 0
     dq 0
     section .rodata
-LC97:
-    db `Programs`, 0
-LC98:
-    db `Files`, 0
 LC99:
-    db `Settings`, 0
+    db `Programs`, 0
 LC100:
-    db `About asmOS`, 0
+    db `Files`, 0
 LC101:
-    db `Run...`, 0
+    db `Settings`, 0
 LC102:
+    db `About asmOS`, 0
+LC103:
+    db `Run...`, 0
+LC104:
     db `Shut Down...`, 0
     section .data
     align 32, db 0
 start_items:
-    dq LC97
+    dq LC99
     dd 0
     dd 0
     dq 0
     dq programs_items
-    dq LC98
+    dq LC100
     dd 1014
     dd 0
     dq 0
     dq 0
-    dq LC99
+    dq LC101
     dd 1016
     dd 0
     dq 0
     dq 0
-    dq LC100
+    dq LC102
     dd 1017
     dd 0
     dq 0
     dq 0
-    dq LC101
+    dq LC103
     dd 2000
     dd 0
     dq 0
@@ -19425,7 +19486,7 @@ start_items:
     dd 0
     dq 0
     dq 0
-    dq LC102
+    dq LC104
     dd 2001
     dd 0
     dq 0
@@ -19436,26 +19497,26 @@ start_items:
     dq 0
     dq 0
     section .rodata
-LC103:
-    db `Accessories`, 0
-LC104:
-    db `Games`, 0
 LC105:
+    db `Accessories`, 0
+LC106:
+    db `Games`, 0
+LC107:
     db `System`, 0
     section .data
     align 32, db 0
 programs_items:
-    dq LC103
+    dq LC105
     dd 0
     dd 0
     dq 0
     dq group_items
-    dq LC104
+    dq LC106
     dd 0
     dd 0
     dq 0
     dq group_items+608
-    dq LC105
+    dq LC107
     dd 0
     dd 0
     dq 0
@@ -19504,49 +19565,47 @@ desktop_file_count: resb 4
 desktop_files: resb 1920
     section .data
     section .rodata
-LC106:
-    db `X           `, 0
-LC107:
-    db `XX          `, 0
 LC108:
-    db `X.X         `, 0
+    db `X           `, 0
 LC109:
-    db `X..X        `, 0
+    db `XX          `, 0
 LC110:
-    db `X...X       `, 0
+    db `X.X         `, 0
 LC111:
-    db `X....X      `, 0
+    db `X..X        `, 0
 LC112:
-    db `X.....X     `, 0
+    db `X...X       `, 0
 LC113:
-    db `X......X    `, 0
+    db `X....X      `, 0
 LC114:
-    db `X.......X   `, 0
+    db `X.....X     `, 0
 LC115:
-    db `X........X  `, 0
+    db `X......X    `, 0
 LC116:
-    db `X.........X `, 0
+    db `X.......X   `, 0
 LC117:
-    db `X......XXXXX`, 0
+    db `X........X  `, 0
 LC118:
-    db `X...X..X    `, 0
+    db `X.........X `, 0
 LC119:
-    db `X..XX..X    `, 0
+    db `X......XXXXX`, 0
 LC120:
-    db `X.X  X..X   `, 0
+    db `X...X..X    `, 0
 LC121:
-    db `XX   X..X   `, 0
+    db `X..XX..X    `, 0
 LC122:
-    db `X     X..X  `, 0
+    db `X.X  X..X   `, 0
 LC123:
-    db `      X..X  `, 0
+    db `XX   X..X   `, 0
 LC124:
+    db `X     X..X  `, 0
+LC125:
+    db `      X..X  `, 0
+LC126:
     db `       XX   `, 0
     section .rodata
     align 32, db 0
 ARROW:
-    dq LC106
-    dq LC107
     dq LC108
     dq LC109
     dq LC110
@@ -19564,6 +19623,8 @@ ARROW:
     dq LC122
     dq LC123
     dq LC124
+    dq LC125
+    dq LC126
     section .bss
     alignb 4
 cpu_percent: resb 4
@@ -19821,10 +19882,6 @@ clip_kind: resb 4
     section .data
     section .bss
     alignb 8
-system_reserve: resb 8
-    section .data
-    section .bss
-    alignb 8
 idle_ms: resb 8
     section .data
     section .bss
@@ -19882,410 +19939,408 @@ processes: resb 820224
     section .data
     global ICON_QUESTION
     section .rodata
-LC125:
-    db `     bbbbbb     `, 0
-LC126:
-    db `   bbbbbbbbbb   `, 0
 LC127:
-    db `  bbbbwwwwbbbb  `, 0
+    db `     bbbbbb     `, 0
 LC128:
-    db ` bbbbwwbbwwbbbb `, 0
+    db `   bbbbbbbbbb   `, 0
 LC129:
-    db ` bbbbbbbbwwbbbb `, 0
+    db `  bbbbwwwwbbbb  `, 0
 LC130:
-    db `bbbbbbbbwwbbbbbb`, 0
+    db ` bbbbwwbbwwbbbb `, 0
 LC131:
-    db `bbbbbbbwwbbbbbbb`, 0
+    db ` bbbbbbbbwwbbbb `, 0
 LC132:
-    db `bbbbbbbbbbbbbbbb`, 0
+    db `bbbbbbbbwwbbbbbb`, 0
 LC133:
-    db ` bbbbbbwwbbbbbb `, 0
+    db `bbbbbbbwwbbbbbbb`, 0
 LC134:
-    db ` bbbbbbbbbbbbbb `, 0
+    db `bbbbbbbbbbbbbbbb`, 0
 LC135:
-    db `  bbbbbbbbbbbb  `, 0
+    db ` bbbbbbwwbbbbbb `, 0
 LC136:
+    db ` bbbbbbbbbbbbbb `, 0
+LC137:
+    db `  bbbbbbbbbbbb  `, 0
+LC138:
     db `                `, 0
     section .rodata
     align 32, db 0
 ICON_QUESTION:
-    dq LC125
-    dq LC126
     dq LC127
     dq LC128
     dq LC129
     dq LC130
     dq LC131
-    dq LC131
     dq LC132
-    dq LC131
+    dq LC133
     dq LC133
     dq LC134
+    dq LC133
     dq LC135
-    dq LC126
-    dq LC125
     dq LC136
+    dq LC137
+    dq LC128
+    dq LC127
+    dq LC138
     global ICON_INFO
     section .rodata
-LC137:
-    db `  bbbbbwwbbbbb  `, 0
-LC138:
-    db `bbbbbbwwwbbbbbbb`, 0
 LC139:
+    db `  bbbbbwwbbbbb  `, 0
+LC140:
+    db `bbbbbbwwwbbbbbbb`, 0
+LC141:
     db ` bbbbbwwwwbbbbb `, 0
     section .rodata
     align 32, db 0
 ICON_INFO:
-    dq LC125
-    dq LC126
-    dq LC137
-    dq LC133
-    dq LC134
-    dq LC138
-    dq LC131
-    dq LC131
-    dq LC131
-    dq LC131
-    dq LC133
+    dq LC127
+    dq LC128
     dq LC139
     dq LC135
-    dq LC126
-    dq LC125
     dq LC136
+    dq LC140
+    dq LC133
+    dq LC133
+    dq LC133
+    dq LC133
+    dq LC135
+    dq LC141
+    dq LC137
+    dq LC128
+    dq LC127
+    dq LC138
     global ICON_WARNING
     section .rodata
-LC140:
-    db `       kk       `, 0
-LC141:
-    db `      kyyk      `, 0
 LC142:
-    db `     kyyyyk     `, 0
+    db `       kk       `, 0
 LC143:
-    db `     kykkyk     `, 0
+    db `      kyyk      `, 0
 LC144:
-    db `    kyykkyyk    `, 0
+    db `     kyyyyk     `, 0
 LC145:
-    db `   kyyykkyyyk   `, 0
+    db `     kykkyk     `, 0
 LC146:
-    db `  kyyyykkyyyyk  `, 0
+    db `    kyykkyyk    `, 0
 LC147:
-    db `  kyyyyyyyyyyk  `, 0
+    db `   kyyykkyyyk   `, 0
 LC148:
-    db ` kyyyyykkyyyyyk `, 0
+    db `  kyyyykkyyyyk  `, 0
 LC149:
-    db `kyyyyyyyyyyyyyyk`, 0
+    db `  kyyyyyyyyyyk  `, 0
 LC150:
+    db ` kyyyyykkyyyyyk `, 0
+LC151:
+    db `kyyyyyyyyyyyyyyk`, 0
+LC152:
     db `kkkkkkkkkkkkkkkk`, 0
     section .rodata
     align 32, db 0
 ICON_WARNING:
-    dq LC140
-    dq LC141
-    dq LC141
     dq LC142
     dq LC143
+    dq LC143
     dq LC144
-    dq LC144
-    dq LC145
     dq LC145
     dq LC146
+    dq LC146
     dq LC147
-    dq LC148
+    dq LC147
     dq LC148
     dq LC149
     dq LC150
-    dq LC136
+    dq LC150
+    dq LC151
+    dq LC152
+    dq LC138
     global ICON_FILE
     section .rodata
-LC151:
-    db `  kkkkkkkk      `, 0
-LC152:
-    db `  kwwwwwwkk     `, 0
 LC153:
-    db `  kwwwwwwkwk    `, 0
+    db `  kkkkkkkk      `, 0
 LC154:
-    db `  kwwwwwwkwwk   `, 0
+    db `  kwwwwwwkk     `, 0
 LC155:
-    db `  kwwwwwwkkkkk  `, 0
+    db `  kwwwwwwkwk    `, 0
 LC156:
-    db `  kwwwwwwwwwwk  `, 0
+    db `  kwwwwwwkwwk   `, 0
 LC157:
+    db `  kwwwwwwkkkkk  `, 0
+LC158:
+    db `  kwwwwwwwwwwk  `, 0
+LC159:
     db `  kkkkkkkkkkkk  `, 0
     section .rodata
     align 32, db 0
 ICON_FILE:
-    dq LC151
-    dq LC152
     dq LC153
     dq LC154
     dq LC155
     dq LC156
-    dq LC156
-    dq LC156
-    dq LC156
-    dq LC156
-    dq LC156
-    dq LC156
-    dq LC156
-    dq LC156
     dq LC157
-    dq LC136
+    dq LC158
+    dq LC158
+    dq LC158
+    dq LC158
+    dq LC158
+    dq LC158
+    dq LC158
+    dq LC158
+    dq LC158
+    dq LC159
+    dq LC138
     global ICON_SETTINGS
     section .rodata
-LC158:
-    db `      dddd      `, 0
-LC159:
-    db `  dd  dddd  dd  `, 0
 LC160:
-    db ` dddddddddddddd `, 0
+    db `      dddd      `, 0
 LC161:
-    db `  dddddddddddd  `, 0
+    db `  dd  dddd  dd  `, 0
 LC162:
-    db `  dddd    dddd  `, 0
+    db ` dddddddddddddd `, 0
 LC163:
-    db `dddddd    dddddd`, 0
+    db `  dddddddddddd  `, 0
 LC164:
+    db `  dddd    dddd  `, 0
+LC165:
+    db `dddddd    dddddd`, 0
+LC166:
     db `ddddd      ddddd`, 0
     section .rodata
     align 32, db 0
 ICON_SETTINGS:
-    dq LC158
-    dq LC159
     dq LC160
     dq LC161
     dq LC162
     dq LC163
     dq LC164
-    dq LC164
-    dq LC164
+    dq LC165
+    dq LC166
+    dq LC166
+    dq LC166
+    dq LC166
+    dq LC165
     dq LC164
     dq LC163
     dq LC162
     dq LC161
     dq LC160
-    dq LC159
-    dq LC158
     global ICON_TASKS
     section .rodata
-LC165:
-    db ` kkkkkkkkkkkkkk `, 0
-LC166:
-    db ` kkkkkkkkkkkkek `, 0
 LC167:
-    db ` kkkkkkkkkkkekk `, 0
+    db ` kkkkkkkkkkkkkk `, 0
 LC168:
-    db ` kkkkkkekkkkekk `, 0
+    db ` kkkkkkkkkkkkek `, 0
 LC169:
-    db ` kkkkkkeekkekkk `, 0
+    db ` kkkkkkkkkkkekk `, 0
 LC170:
-    db ` kekkkekkekekkk `, 0
+    db ` kkkkkkekkkkekk `, 0
 LC171:
-    db ` kkekekkkkekkkk `, 0
+    db ` kkkkkkeekkekkk `, 0
 LC172:
-    db ` kkkekkkkkkkkkk `, 0
+    db ` kekkkekkekekkk `, 0
 LC173:
-    db `       gg       `, 0
+    db ` kkekekkkkekkkk `, 0
 LC174:
+    db ` kkkekkkkkkkkkk `, 0
+LC175:
+    db `       gg       `, 0
+LC176:
     db `    gggggggg    `, 0
     section .rodata
     align 32, db 0
 ICON_TASKS:
-    dq LC136
-    dq LC165
-    dq LC165
-    dq LC166
+    dq LC138
+    dq LC167
     dq LC167
     dq LC168
     dq LC169
     dq LC170
     dq LC171
     dq LC172
-    dq LC165
-    dq LC165
     dq LC173
     dq LC174
-    dq LC136
-    dq LC136
+    dq LC167
+    dq LC167
+    dq LC175
+    dq LC176
+    dq LC138
+    dq LC138
     global ICON_IDE
     section .rodata
-LC175:
-    db ` knnnnnnnnnnwnk `, 0
-LC176:
-    db ` kgggkwwwwwwwwk `, 0
 LC177:
-    db ` kgggkwbbbwttwk `, 0
+    db ` knnnnnnnnnnwnk `, 0
 LC178:
-    db ` kgrgkwwwwwwwwk `, 0
+    db ` kgggkwwwwwwwwk `, 0
 LC179:
-    db ` krrrkwwbbwtttk `, 0
+    db ` kgggkwbbbwttwk `, 0
 LC180:
-    db ` kgggkyybbbyyyk `, 0
+    db ` kgrgkwwwwwwwwk `, 0
 LC181:
-    db ` kgggkwwbbwwmmk `, 0
+    db ` krrrkwwbbwtttk `, 0
 LC182:
+    db ` kgggkyybbbyyyk `, 0
+LC183:
+    db ` kgggkwwbbwwmmk `, 0
+LC184:
     db ` kgggkweeeeewwk `, 0
     section .rodata
     align 32, db 0
 ICON_IDE:
-    dq LC136
-    dq LC165
-    dq LC175
-    dq LC165
-    dq LC176
+    dq LC138
+    dq LC167
     dq LC177
+    dq LC167
     dq LC178
     dq LC179
-    dq LC178
     dq LC180
-    dq LC176
     dq LC181
-    dq LC176
+    dq LC180
     dq LC182
-    dq LC165
-    dq LC136
+    dq LC178
+    dq LC183
+    dq LC178
+    dq LC184
+    dq LC167
+    dq LC138
     global ICON_HEX
     section .rodata
-LC183:
-    db `  kkkkkkkkkk    `, 0
-LC184:
-    db `  kwwwwwwwwkk   `, 0
 LC185:
-    db `  kwwwwwwwwkwk  `, 0
+    db `  kkkkkkkkkk    `, 0
 LC186:
-    db `  kwwwwwwwwkkkk `, 0
+    db `  kwwwwwwwwkk   `, 0
 LC187:
-    db `  kwbbwbbwwwwwk `, 0
+    db `  kwwwwwwwwkwk  `, 0
 LC188:
-    db `  kwwwwwwwwwwwk `, 0
+    db `  kwwwwwwwwkkkk `, 0
 LC189:
-    db `  kwbbwbbwbbwwk `, 0
+    db `  kwbbwbbwwwwwk `, 0
 LC190:
-    db `  kwbbwwwwwwwwk `, 0
+    db `  kwwwwwwwwwwwk `, 0
 LC191:
+    db `  kwbbwbbwbbwwk `, 0
+LC192:
+    db `  kwbbwwwwwwwwk `, 0
+LC193:
     db `  kkkkkkkkkkkkk `, 0
     section .rodata
     align 32, db 0
 ICON_HEX:
-    dq LC183
-    dq LC184
     dq LC185
     dq LC186
     dq LC187
     dq LC188
     dq LC189
-    dq LC188
-    dq LC187
-    dq LC188
-    dq LC189
-    dq LC188
     dq LC190
-    dq LC188
     dq LC191
-    dq LC136
+    dq LC190
+    dq LC189
+    dq LC190
+    dq LC191
+    dq LC190
+    dq LC192
+    dq LC190
+    dq LC193
+    dq LC138
     global ICON_VIDEO
     section .rodata
-LC192:
-    db `kwkkwkkwkkwkkwkk`, 0
-LC193:
-    db `kwwwwwwwwwwwwwwk`, 0
 LC194:
-    db `kwwwwwwwkwwwwwwk`, 0
+    db `kwkkwkkwkkwkkwkk`, 0
 LC195:
-    db `kwwwwwwkweewwwwk`, 0
+    db `kwwwwwwwwwwwwwwk`, 0
 LC196:
-    db `kwwwkkkwkkkwwwwk`, 0
+    db `kwwwwwwwkwwwwwwk`, 0
 LC197:
-    db `kwwkkkkkkkkkwwwk`, 0
+    db `kwwwwwwkweewwwwk`, 0
 LC198:
-    db `kwwwkkkkkkkwwwwk`, 0
+    db `kwwwkkkwkkkwwwwk`, 0
 LC199:
+    db `kwwkkkkkkkkkwwwk`, 0
+LC200:
+    db `kwwwkkkkkkkwwwwk`, 0
+LC201:
     db `kwwwwkkwkkwwwwwk`, 0
     section .rodata
     align 32, db 0
 ICON_VIDEO:
-    dq LC150
-    dq LC192
-    dq LC150
-    dq LC193
+    dq LC152
     dq LC194
+    dq LC152
     dq LC195
     dq LC196
     dq LC197
-    dq LC197
-    dq LC197
-    dq LC197
     dq LC198
     dq LC199
-    dq LC193
-    dq LC150
-    dq LC192
+    dq LC199
+    dq LC199
+    dq LC199
+    dq LC200
+    dq LC201
+    dq LC195
+    dq LC152
+    dq LC194
     global ICON_MUSIC
     section .rodata
-LC200:
-    db `      ppppppppp `, 0
-LC201:
-    db `      p       p `, 0
 LC202:
-    db `      p    pppp `, 0
+    db `      ppppppppp `, 0
 LC203:
-    db `   pppp   ppppp `, 0
+    db `      p       p `, 0
 LC204:
-    db `  ppppp   ppppp `, 0
+    db `      p    pppp `, 0
 LC205:
-    db `  ppppp    ppp  `, 0
+    db `   pppp   ppppp `, 0
 LC206:
+    db `  ppppp   ppppp `, 0
+LC207:
+    db `  ppppp    ppp  `, 0
+LC208:
     db `   ppp          `, 0
     section .rodata
     align 32, db 0
 ICON_MUSIC:
-    dq LC136
-    dq LC200
-    dq LC200
-    dq LC201
-    dq LC201
-    dq LC201
-    dq LC201
-    dq LC201
-    dq LC201
+    dq LC138
     dq LC202
+    dq LC202
+    dq LC203
+    dq LC203
+    dq LC203
+    dq LC203
+    dq LC203
     dq LC203
     dq LC204
     dq LC205
     dq LC206
-    dq LC136
-    dq LC136
+    dq LC207
+    dq LC208
+    dq LC138
+    dq LC138
     global ICON_VIEWER
     section .rodata
-LC207:
-    db `nnnnnnnnnnnnnnnn`, 0
-LC208:
-    db `nwwwwwwwwwwwwwwn`, 0
 LC209:
-    db `nwccccccccccyywn`, 0
+    db `nnnnnnnnnnnnnnnn`, 0
 LC210:
-    db `nwcccccccccyyywn`, 0
+    db `nwwwwwwwwwwwwwwn`, 0
 LC211:
-    db `nwccwwccccccccwn`, 0
+    db `nwccccccccccyywn`, 0
 LC212:
-    db `nwcwwwwcccccccwn`, 0
+    db `nwcccccccccyyywn`, 0
 LC213:
-    db `nwccccccceccccwn`, 0
+    db `nwccwwccccccccwn`, 0
 LC214:
-    db `nwcccccceeeeccwn`, 0
+    db `nwcwwwwcccccccwn`, 0
 LC215:
-    db `nwccecceeeeeecwn`, 0
+    db `nwccccccceccccwn`, 0
 LC216:
-    db `nweeeeeeeeeeeewn`, 0
+    db `nwcccccceeeeccwn`, 0
 LC217:
-    db `      nnnn      `, 0
+    db `nwccecceeeeeecwn`, 0
 LC218:
+    db `nweeeeeeeeeeeewn`, 0
+LC219:
+    db `      nnnn      `, 0
+LC220:
     db `    nnnnnnnn    `, 0
     section .rodata
     align 32, db 0
 ICON_VIEWER:
-    dq LC136
-    dq LC207
-    dq LC208
+    dq LC138
     dq LC209
     dq LC210
     dq LC211
@@ -20294,48 +20349,48 @@ ICON_VIEWER:
     dq LC214
     dq LC215
     dq LC216
-    dq LC208
-    dq LC207
     dq LC217
     dq LC218
-    dq LC136
+    dq LC210
+    dq LC209
+    dq LC219
+    dq LC220
+    dq LC138
     global ICON_DOOM
     section .rodata
-LC219:
-    db `     mmmmmm     `, 0
-LC220:
-    db `   mmrrrrrrmm   `, 0
 LC221:
-    db `  mrrrrrrrrrrm  `, 0
+    db `     mmmmmm     `, 0
 LC222:
-    db ` mrrrrwwwwrrrrm `, 0
+    db `   mmrrrrrrmm   `, 0
 LC223:
-    db ` mrrrwweewwrrrm `, 0
+    db `  mrrrrrrrrrrm  `, 0
 LC224:
-    db `mrrrrweekewrrrrm`, 0
+    db ` mrrrrwwwwrrrrm `, 0
 LC225:
-    db `mrrrrwweewwrrrrm`, 0
+    db ` mrrrwweewwrrrm `, 0
 LC226:
-    db `mrrrrrwwwwrrrrrm`, 0
+    db `mrrrrweekewrrrrm`, 0
 LC227:
-    db `mrrrrrrrrrrrrrrm`, 0
+    db `mrrrrwweewwrrrrm`, 0
 LC228:
-    db `mrrkkkkkkkkkkrrm`, 0
+    db `mrrrrrwwwwrrrrrm`, 0
 LC229:
-    db `mrrkwkwkwkwkkrrm`, 0
+    db `mrrrrrrrrrrrrrrm`, 0
 LC230:
-    db ` mrrkwkwkwkwkrm `, 0
+    db `mrrkkkkkkkkkkrrm`, 0
 LC231:
-    db ` mrrrkkkkkkkrrm `, 0
+    db `mrrkwkwkwkwkkrrm`, 0
 LC232:
-    db `  mmrrrrrrrrmm  `, 0
+    db ` mrrkwkwkwkwkrm `, 0
 LC233:
+    db ` mrrrkkkkkkkrrm `, 0
+LC234:
+    db `  mmrrrrrrrrmm  `, 0
+LC235:
     db `    mmmmmmmm    `, 0
     section .rodata
     align 32, db 0
 ICON_DOOM:
-    dq LC219
-    dq LC220
     dq LC221
     dq LC222
     dq LC223
@@ -20345,32 +20400,30 @@ ICON_DOOM:
     dq LC227
     dq LC228
     dq LC229
-    dq LC228
     dq LC230
     dq LC231
+    dq LC230
     dq LC232
     dq LC233
+    dq LC234
+    dq LC235
     global ICON_BLOCKS
     section .rodata
-LC234:
-    db `    bbbkbbbk    `, 0
-LC235:
-    db `    kkkkkkkk    `, 0
 LC236:
-    db `    bbbkyyykyyyk`, 0
+    db `    bbbkbbbk    `, 0
 LC237:
-    db `    kkkkkkkkkkkk`, 0
+    db `    kkkkkkkk    `, 0
 LC238:
-    db `rrrkrrrkyyykyyyk`, 0
+    db `    bbbkyyykyyyk`, 0
 LC239:
+    db `    kkkkkkkkkkkk`, 0
+LC240:
+    db `rrrkrrrkyyykyyyk`, 0
+LC241:
     db `rrrkrrrkeeekeeek`, 0
     section .rodata
     align 32, db 0
 ICON_BLOCKS:
-    dq LC234
-    dq LC234
-    dq LC234
-    dq LC235
     dq LC236
     dq LC236
     dq LC236
@@ -20378,112 +20431,114 @@ ICON_BLOCKS:
     dq LC238
     dq LC238
     dq LC238
-    dq LC150
     dq LC239
-    dq LC239
-    dq LC239
-    dq LC150
+    dq LC240
+    dq LC240
+    dq LC240
+    dq LC152
+    dq LC241
+    dq LC241
+    dq LC241
+    dq LC152
     global ICON_PACMAN
     section .rodata
-LC240:
-    db `     yyyyy      `, 0
-LC241:
-    db `   yyyyyyyyy    `, 0
 LC242:
-    db `  yyyyyyyyyyy   `, 0
+    db `     yyyyy      `, 0
 LC243:
-    db ` yyyyyyyyyyy    `, 0
+    db `   yyyyyyyyy    `, 0
 LC244:
-    db ` yyyyyyyyy      `, 0
+    db `  yyyyyyyyyyy   `, 0
 LC245:
-    db `yyyyyyyy        `, 0
+    db ` yyyyyyyyyyy    `, 0
 LC246:
+    db ` yyyyyyyyy      `, 0
+LC247:
+    db `yyyyyyyy        `, 0
+LC248:
     db `yyyyyy      ww  `, 0
     section .rodata
     align 32, db 0
 ICON_PACMAN:
-    dq LC136
-    dq LC240
-    dq LC241
+    dq LC138
     dq LC242
     dq LC243
     dq LC244
     dq LC245
     dq LC246
+    dq LC247
+    dq LC248
+    dq LC247
+    dq LC246
     dq LC245
     dq LC244
     dq LC243
     dq LC242
-    dq LC241
-    dq LC240
-    dq LC136
-    dq LC136
+    dq LC138
+    dq LC138
     global ICON_SHUTDOWN
     section .rodata
-LC247:
-    db `       rr       `, 0
-LC248:
-    db `   rr  rr  rr   `, 0
 LC249:
-    db `  rr   rr   rr  `, 0
+    db `       rr       `, 0
 LC250:
-    db ` rr    rr    rr `, 0
+    db `   rr  rr  rr   `, 0
 LC251:
-    db ` rr          rr `, 0
+    db `  rr   rr   rr  `, 0
 LC252:
-    db `  rr        rr  `, 0
+    db ` rr    rr    rr `, 0
 LC253:
-    db `   rr      rr   `, 0
+    db ` rr          rr `, 0
 LC254:
+    db `  rr        rr  `, 0
+LC255:
+    db `   rr      rr   `, 0
+LC256:
     db `    rrrrrrrr    `, 0
     section .rodata
     align 32, db 0
 ICON_SHUTDOWN:
-    dq LC136
-    dq LC247
-    dq LC248
+    dq LC138
     dq LC249
     dq LC250
-    dq LC250
-    dq LC251
-    dq LC251
     dq LC251
     dq LC252
+    dq LC252
+    dq LC253
+    dq LC253
     dq LC253
     dq LC254
-    dq LC136
-    dq LC136
-    dq LC136
-    dq LC136
+    dq LC255
+    dq LC256
+    dq LC138
+    dq LC138
+    dq LC138
+    dq LC138
     global ICON_PICTURE
     section .rodata
-LC255:
-    db ` kccccccccccyyk `, 0
-LC256:
-    db ` kcccccccccyyyk `, 0
 LC257:
-    db ` kccwwcccccyyyk `, 0
+    db ` kccccccccccyyk `, 0
 LC258:
-    db ` kcwwwwccccccck `, 0
+    db ` kcccccccccyyyk `, 0
 LC259:
-    db ` kcccccccccccck `, 0
+    db ` kccwwcccccyyyk `, 0
 LC260:
-    db ` kcccccccekkkck `, 0
+    db ` kcwwwwccccccck `, 0
 LC261:
-    db ` kccccccceeeeck `, 0
+    db ` kcccccccccccck `, 0
 LC262:
-    db ` kcceccceeeeeek `, 0
+    db ` kcccccccekkkck `, 0
 LC263:
-    db ` kceeeceeeeeeek `, 0
+    db ` kccccccceeeeck `, 0
 LC264:
+    db ` kcceccceeeeeek `, 0
+LC265:
+    db ` kceeeceeeeeeek `, 0
+LC266:
     db ` keeeeeeeeeeeek `, 0
     section .rodata
     align 32, db 0
 ICON_PICTURE:
-    dq LC136
-    dq LC165
-    dq LC255
-    dq LC256
+    dq LC138
+    dq LC167
     dq LC257
     dq LC258
     dq LC259
@@ -20492,241 +20547,241 @@ ICON_PICTURE:
     dq LC262
     dq LC263
     dq LC264
-    dq LC165
-    dq LC136
-    dq LC136
-    dq LC136
+    dq LC265
+    dq LC266
+    dq LC167
+    dq LC138
+    dq LC138
+    dq LC138
     global ICON_CHIP
     section .rodata
-LC265:
-    db `     d d d d    `, 0
-LC266:
-    db `   kkkkkkkkkk   `, 0
 LC267:
-    db ` ddknnnnnnnnkdd `, 0
+    db `     d d d d    `, 0
 LC268:
-    db `   knnnnnnnnk   `, 0
+    db `   kkkkkkkkkk   `, 0
 LC269:
-    db ` ddknnyyyynnkdd `, 0
+    db ` ddknnnnnnnnkdd `, 0
 LC270:
+    db `   knnnnnnnnk   `, 0
+LC271:
+    db ` ddknnyyyynnkdd `, 0
+LC272:
     db `   knnyyyynnk   `, 0
     section .rodata
     align 32, db 0
 ICON_CHIP:
-    dq LC136
-    dq LC265
-    dq LC265
-    dq LC266
+    dq LC138
+    dq LC267
     dq LC267
     dq LC268
     dq LC269
     dq LC270
+    dq LC271
+    dq LC272
+    dq LC271
+    dq LC272
     dq LC269
     dq LC270
-    dq LC267
     dq LC268
-    dq LC266
-    dq LC265
-    dq LC265
-    dq LC136
+    dq LC267
+    dq LC267
+    dq LC138
     global ICON_COMPUTER
     section .rodata
-LC271:
-    db `  kggggggggggk  `, 0
-LC272:
-    db `  kgkkkkkkkkgk  `, 0
 LC273:
-    db `  kgkttttttkgk  `, 0
+    db `  kggggggggggk  `, 0
 LC274:
-    db `  kggggggggegk  `, 0
+    db `  kgkkkkkkkkgk  `, 0
 LC275:
-    db `      kggk      `, 0
+    db `  kgkttttttkgk  `, 0
 LC276:
+    db `  kggggggggegk  `, 0
+LC277:
+    db `      kggk      `, 0
+LC278:
     db `   kggggggggk   `, 0
     section .rodata
     align 32, db 0
 ICON_COMPUTER:
-    dq LC136
-    dq LC157
-    dq LC271
-    dq LC272
+    dq LC138
+    dq LC159
     dq LC273
-    dq LC273
-    dq LC273
-    dq LC273
-    dq LC272
     dq LC274
-    dq LC157
     dq LC275
-    dq LC235
+    dq LC275
+    dq LC275
+    dq LC275
+    dq LC274
     dq LC276
-    dq LC266
-    dq LC136
+    dq LC159
+    dq LC277
+    dq LC237
+    dq LC278
+    dq LC268
+    dq LC138
     global ICON_FOLDER
     section .rodata
-LC277:
-    db `  kkkkk         `, 0
-LC278:
-    db ` kwyyyyk        `, 0
 LC279:
-    db `kwyyyyyykkkkkkk `, 0
+    db `  kkkkk         `, 0
 LC280:
-    db `kwyyyyyyyyyyyyyk`, 0
+    db ` kwyyyyk        `, 0
 LC281:
-    db `kyyyyyyyyyyyyyok`, 0
+    db `kwyyyyyykkkkkkk `, 0
 LC282:
+    db `kwyyyyyyyyyyyyyk`, 0
+LC283:
+    db `kyyyyyyyyyyyyyok`, 0
+LC284:
     db `kooooooooooooook`, 0
     section .rodata
     align 32, db 0
 ICON_FOLDER:
-    dq LC136
-    dq LC136
-    dq LC277
-    dq LC278
+    dq LC138
+    dq LC138
     dq LC279
     dq LC280
     dq LC281
-    dq LC281
-    dq LC281
-    dq LC281
-    dq LC281
-    dq LC281
     dq LC282
-    dq LC150
-    dq LC136
-    dq LC136
+    dq LC283
+    dq LC283
+    dq LC283
+    dq LC283
+    dq LC283
+    dq LC283
+    dq LC284
+    dq LC152
+    dq LC138
+    dq LC138
     global ICON_TERMINAL
     section .rodata
-LC283:
-    db ` knnnnnnnnnnnnk `, 0
-LC284:
-    db ` kkekkkkkkkkkkk `, 0
 LC285:
-    db ` kkkkekkkkkkkkk `, 0
+    db ` knnnnnnnnnnnnk `, 0
 LC286:
+    db ` kkekkkkkkkkkkk `, 0
+LC287:
+    db ` kkkkekkkkkkkkk `, 0
+LC288:
     db ` kkekkkeeeekkkk `, 0
     section .rodata
     align 32, db 0
 ICON_TERMINAL:
-    dq LC136
-    dq LC165
-    dq LC283
-    dq LC165
-    dq LC165
-    dq LC284
-    dq LC172
+    dq LC138
+    dq LC167
     dq LC285
-    dq LC172
+    dq LC167
+    dq LC167
     dq LC286
-    dq LC165
-    dq LC165
-    dq LC165
-    dq LC165
-    dq LC136
-    dq LC136
+    dq LC174
+    dq LC287
+    dq LC174
+    dq LC288
+    dq LC167
+    dq LC167
+    dq LC167
+    dq LC167
+    dq LC138
+    dq LC138
     global ICON_CLOCK
     section .rodata
-LC287:
-    db `     kkkkkk     `, 0
-LC288:
-    db `   kkwwwwwwkk   `, 0
 LC289:
-    db `  kwwwwkwwwwwk  `, 0
+    db `     kkkkkk     `, 0
 LC290:
-    db ` kwwwwwkwwwwwwk `, 0
+    db `   kkwwwwwwkk   `, 0
 LC291:
-    db `kwwwwwwkwwwwwwwk`, 0
+    db `  kwwwwkwwwwwk  `, 0
 LC292:
-    db `kwwwwwwkkkkkwwwk`, 0
+    db ` kwwwwwkwwwwwwk `, 0
 LC293:
+    db `kwwwwwwkwwwwwwwk`, 0
+LC294:
+    db `kwwwwwwkkkkkwwwk`, 0
+LC295:
     db ` kwwwwwwwwwwwwk `, 0
     section .rodata
     align 32, db 0
 ICON_CLOCK:
-    dq LC287
-    dq LC288
     dq LC289
     dq LC290
-    dq LC290
-    dq LC291
     dq LC291
     dq LC292
-    dq LC193
-    dq LC193
+    dq LC292
     dq LC293
     dq LC293
-    dq LC156
-    dq LC288
-    dq LC287
-    dq LC136
+    dq LC294
+    dq LC195
+    dq LC195
+    dq LC295
+    dq LC295
+    dq LC158
+    dq LC290
+    dq LC289
+    dq LC138
     global ICON_MINES
     section .rodata
-LC294:
-    db `       k        `, 0
-LC295:
-    db `   k kkkkk k    `, 0
 LC296:
-    db `    kkkkkkk     `, 0
+    db `       k        `, 0
 LC297:
-    db `   kkwwkkkkk    `, 0
+    db `   k kkkkk k    `, 0
 LC298:
-    db ` kkkkkkkkkkkkk  `, 0
+    db `    kkkkkkk     `, 0
 LC299:
+    db `   kkwwkkkkk    `, 0
+LC300:
+    db ` kkkkkkkkkkkkk  `, 0
+LC301:
     db `   kkkkkkkkk    `, 0
     section .rodata
     align 32, db 0
 ICON_MINES:
-    dq LC136
-    dq LC294
-    dq LC294
-    dq LC295
+    dq LC138
     dq LC296
-    dq LC297
+    dq LC296
     dq LC297
     dq LC298
     dq LC299
     dq LC299
+    dq LC300
+    dq LC301
+    dq LC301
+    dq LC298
+    dq LC297
     dq LC296
-    dq LC295
-    dq LC294
-    dq LC294
-    dq LC136
-    dq LC136
+    dq LC296
+    dq LC138
+    dq LC138
     global ICON_PAINT
     section .rodata
-LC300:
-    db `           kk   `, 0
-LC301:
-    db `          kssk  `, 0
 LC302:
-    db `         kssk   `, 0
+    db `           kk   `, 0
 LC303:
-    db `        kssk    `, 0
+    db `          kssk  `, 0
 LC304:
-    db `       kssk     `, 0
+    db `         kssk   `, 0
 LC305:
-    db `      kddk      `, 0
+    db `        kssk    `, 0
 LC306:
-    db `     kddk       `, 0
+    db `       kssk     `, 0
 LC307:
-    db `    kkkk        `, 0
+    db `      kddk      `, 0
 LC308:
-    db `   krrk         `, 0
+    db `     kddk       `, 0
 LC309:
-    db `  krrk          `, 0
+    db `    kkkk        `, 0
 LC310:
-    db ` krrk           `, 0
+    db `   krrk         `, 0
 LC311:
-    db ` kkk            `, 0
+    db `  krrk          `, 0
 LC312:
-    db `  rr  yy  bb    `, 0
+    db ` krrk           `, 0
 LC313:
+    db ` kkk            `, 0
+LC314:
+    db `  rr  yy  bb    `, 0
+LC315:
     db ` rrrr yyyybbbb  `, 0
     section .rodata
     align 32, db 0
 ICON_PAINT:
-    dq LC300
-    dq LC301
     dq LC302
     dq LC303
     dq LC304
@@ -20737,78 +20792,80 @@ ICON_PAINT:
     dq LC309
     dq LC310
     dq LC311
-    dq LC136
     dq LC312
     dq LC313
-    dq LC312
+    dq LC138
+    dq LC314
+    dq LC315
+    dq LC314
     global ICON_CALCULATOR
     section .rodata
-LC314:
-    db ` kgggggggggggkd `, 0
-LC315:
-    db ` kgkkkkkkkkkgkd `, 0
 LC316:
-    db ` kgkeeeeeeekgkd `, 0
+    db ` kgggggggggggkd `, 0
 LC317:
-    db ` kggwwgwwgrrgkd `, 0
+    db ` kgkkkkkkkkkgkd `, 0
 LC318:
-    db ` kggkkgkkgkkgkd `, 0
+    db ` kgkeeeeeeekgkd `, 0
 LC319:
+    db ` kggwwgwwgrrgkd `, 0
+LC320:
+    db ` kggkkgkkgkkgkd `, 0
+LC321:
     db ` kkkkkkkkkkkkkd `, 0
     section .rodata
     align 32, db 0
 ICON_CALCULATOR:
-    dq LC298
-    dq LC314
-    dq LC315
+    dq LC300
     dq LC316
+    dq LC317
+    dq LC318
+    dq LC318
+    dq LC317
     dq LC316
-    dq LC315
-    dq LC314
-    dq LC317
-    dq LC318
-    dq LC314
-    dq LC317
-    dq LC318
-    dq LC314
-    dq LC317
-    dq LC318
     dq LC319
+    dq LC320
+    dq LC316
+    dq LC319
+    dq LC320
+    dq LC316
+    dq LC319
+    dq LC320
+    dq LC321
     global ICON_NOTEPAD
     section .rodata
-LC320:
-    db `   d d d d d    `, 0
-LC321:
-    db `  kdkdkdkdkdk   `, 0
 LC322:
-    db `  kwbbbbbbbbwk  `, 0
+    db `   d d d d d    `, 0
 LC323:
-    db `  kwbbbbbwwwwk  `, 0
+    db `  kdkdkdkdkdk   `, 0
 LC324:
-    db `  kwwwwwwwwwwkd `, 0
+    db `  kwbbbbbbbbwk  `, 0
 LC325:
-    db `  kkkkkkkkkkkkd `, 0
+    db `  kwbbbbbwwwwk  `, 0
 LC326:
+    db `  kwwwwwwwwwwkd `, 0
+LC327:
+    db `  kkkkkkkkkkkkd `, 0
+LC328:
     db `   dddddddddddd `, 0
     section .rodata
     align 32, db 0
 ICON_NOTEPAD:
-    dq LC320
-    dq LC321
-    dq LC156
     dq LC322
-    dq LC156
-    dq LC322
-    dq LC156
-    dq LC322
-    dq LC156
-    dq LC322
-    dq LC156
     dq LC323
-    dq LC156
+    dq LC158
     dq LC324
+    dq LC158
+    dq LC324
+    dq LC158
+    dq LC324
+    dq LC158
+    dq LC324
+    dq LC158
     dq LC325
+    dq LC158
     dq LC326
+    dq LC327
+    dq LC328
     global gfx
     section .data
     align 8, db 0

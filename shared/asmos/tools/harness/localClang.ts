@@ -71,14 +71,20 @@ export async function localCompiler(url: string | URL | Request, init?: RequestI
                 .split('\n')
                 .filter(Boolean)
                 .map((line) => ({ text: line }))
-        return new Response(
-            JSON.stringify({
-                code: run.status,
-                stdout: [],
-                stderr: lines(run.stderr ?? ''),
-                asm: run.status === 0 ? withSources(run.stdout) : []
-            })
+        const answer = JSON.stringify({
+            code: run.status,
+            stdout: [],
+            stderr: lines(run.stderr ?? ''),
+            asm: run.status === 0 ? withSources(run.stdout) : []
+        })
+        //Compiler Explorer's own answer adds labels and columns to each line: about 96 to 100 bytes
+        //a line where this one writes 86 to 90, and the editor refuses one over 16 MiB
+        const count = run.status === 0 ? run.stdout.split('\n').length : 0
+        console.log(
+            `answer for ${compilerId}: ${count} lines, ${(answer.length / 2 ** 20).toFixed(1)} MiB here, ` +
+                `about ${((count * 96) / 2 ** 20).toFixed(1)} to ${((count * 100) / 2 ** 20).toFixed(1)} MiB from Compiler Explorer`
         )
+        return new Response(answer)
     } finally {
         rmSync(directory, { recursive: true, force: true })
     }

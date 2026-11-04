@@ -314,6 +314,23 @@ describe('build.mjs', () => {
         assert.equal(compilations['risc-v'][0].sourcePath, 'os/main.c')
     })
 
+    it('reports every port’s problems, not only the first failing port’s', () => {
+        const repo = fixture({
+            ...tree,
+            'shared/os/build.mjs': `export default function build({ files, pack }) {
+                pack({ target: 'X86', files: files({ include: ['os/main.c.asm'] }), project: { openTabs: ['missing.asm'] } })
+                pack({ target: 'RISC-V', files: files({ include: ['os/platform/riscv/'] }), project: { programs: { 'os/main.c.riscv': {} } } })
+                pack({ target: 'X86', variant: 'lite', files: files({ include: ['os/main.c.asm'] }) })
+            }`
+        })
+        const { status, output } = repo.run('build.mjs')
+        assert.equal(status, 1)
+        assert.match(output, /shared\/os: x86: the tab missing\.asm is not a File/)
+        assert.match(output, /shared\/os: risc-v: the Entry os\/main\.c\.riscv is not a File/)
+        assert.match(output, /3 problems; nothing written/)
+        assert.equal(repo.exists('dist'), false)
+    })
+
     it('packs what it asks for, its variants and Build outputs going into the index', () => {
         const repo = fixture({
             ...tree,
@@ -387,7 +404,7 @@ describe('build.mjs', () => {
         })
         const { status, output } = repo.run('build.mjs')
         assert.equal(status, 1)
-        assert.match(output, /shared\/os: only x86 saves a Build output, not RISC-V/)
+        assert.match(output, /shared\/os: risc-v: only x86 saves a Build output, not RISC-V/)
         assert.match(output, /shared\/typo: files\(\): src\/ matches no File of the example/)
         assert.match(
             output,

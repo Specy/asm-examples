@@ -1,0 +1,9 @@
+[{"wait":6000},{"stats":"boot"},
+ {"type":"seq 30000 > big.txt\n"},{"wait":8000},{"stats":"file made"},
+ {"type":"sort big.txt | wc\n"},{"wait":300},
+ {"mark":"Start menu while sorting"},{"click":[30,467]},{"untilPixel":[40,440,"c0c0c0"],"timeout":30000},
+ {"move":[80,333]},{"wait":400},{"move":[230,333]},{"wait":400},{"move":[350,173]},{"wait":400},{"shot":"sim-busy-1-start-menu"},
+ {"mark":"Notepad opens while sorting"},{"click":[350,173]},{"untilPixel":[300,250,"ffffff"],"timeout":30000},
+ {"type":"typed while the Terminal sorts"},{"wait":500},{"shot":"sim-busy-2-notepad"},{"stats":"while sorting"},
+ {"move":[300,53]},{"wait":200},{"mark":"one drag step while sorting"},{"drag":[300,53,420,153],"steps":1},{"untilPixel":[600,300,"ffffff"],"timeout":30000},
+ {"wait":15000},{"click":[150,467]},{"wait":2000},{"shot":"sim-busy-3-sorted"},{"stats":"end"}]

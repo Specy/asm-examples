@@ -23,6 +23,7 @@
 #include "doomgeneric/w_file.h"
 #include "doomgeneric/z_zone.h"
 #include "asmos_prof.h"
+#include "asmos_x86.h"
 
 /* r_draw.c's: where the 3D view is in DOOM's picture */
 extern int viewwindowy, viewheight;
@@ -43,14 +44,11 @@ enum {
 /* i_asmos_sound.c: tops up the sound, which a frame lasts too long to do only once */
 void I_SoundPump(void);
 
-/* doom_simd.asm: rows of DOOM's picture through the palette, eight pixels at a time */
-void doom_palette_row(uint32_t *to, const byte *from, int count, const uint32_t *palette);
-void doom_palette_row2(uint64_t *to, const byte *from, int count, const uint64_t *palette2);
-int doom_row_changed(const byte *row, byte *previous, int count);
-
+#if DOOM_X86
 /* Game > Fast Drawing: DOOM's pixel loops in AVX2, doom_simd.asm's, rather than in C. r_draw.c
- * reads it too. */
+ * reads it too. The machines without them draw in C (asmos_x86.h). */
 int doom_simd = 1;
+#endif
 
 enum { DOOM_MIN_W = 320, DOOM_MIN_H = 240 };
 enum {
@@ -63,19 +61,31 @@ extern int detailLevel;
 void M_ChangeDetail(int choice);
 
 /* The checks of FPS Counter, Frame Times, Fast Drawing, Low Detail and Profile change, in this
- * array itself: there is only one DOOM. */
+ * array itself: there is only one DOOM. Fast Drawing, Profile and Benchmark CPU are x86's alone
+ * (asmos_x86.h). */
 static MenuItem doom_game_menu[] = {
     { "DOOM's Menu", DOOM_MENU_MENU, 0, "Esc", NULL },
     { "FPS Counter", DOOM_MENU_FPS, MENU_CHECKED, NULL, NULL },
     { "Frame Times", DOOM_MENU_TIMES, 0, NULL, NULL },
+#if DOOM_X86
     { "Fast Drawing (AVX2)", DOOM_MENU_SIMD, MENU_CHECKED, NULL, NULL },
+#endif
     { "Low Detail", DOOM_MENU_DETAIL, 0, "F5", NULL },
+#if DOOM_X86
     { "Profile", DOOM_MENU_PROFILE, 0, NULL, NULL },
     { "Benchmark CPU", DOOM_MENU_BENCH, 0, NULL, NULL },
+#endif
     { "-", 0, 0, NULL, NULL },
     { "Exit", DOOM_MENU_EXIT, 0, NULL, NULL },
     { NULL, 0, 0, NULL, NULL },
 };
+
+/* Checks the Game menu's item `id`, or takes its check away. */
+static void doom_check(int id, int checked) {
+    for (MenuItem *item = doom_game_menu; item->label; item++)
+        if (item->id == id) item->flags = checked ? MENU_CHECKED : 0;
+}
+
 static MenuItem doom_help_menu[] = {
     { "Keys...", DOOM_MENU_KEYS, 0, NULL, NULL },
     { "About DOOM...", DOOM_MENU_ABOUT, 0, NULL, NULL },
@@ -609,13 +619,18 @@ static void doom_count_frame(void) {
 
 /* Turns a row of DOOM's picture into the window's pixels, once, or twice as wide. */
 static void doom_convert_row(uint32_t *to, const byte *from, int columns) {
+#if DOOM_X86
+    if (doom_simd) {
+        if (doom_scale == 2) doom_palette_row2((uint64_t *)to, from, columns, doom_palette2);
+        else doom_palette_row(to, from, columns, doom_palette);
+        return;
+    }
+#endif
     if (doom_scale == 2) {
         uint64_t *pair = (uint64_t *)to;
-        if (doom_simd) doom_palette_row2(pair, from, columns, doom_palette2);
-        else for (int x = 0; x < columns; x++) pair[x] = doom_palette2[from[x]];
+        for (int x = 0; x < columns; x++) pair[x] = doom_palette2[from[x]];
     } else {
-        if (doom_simd) doom_palette_row(to, from, columns, doom_palette);
-        else for (int x = 0; x < columns; x++) to[x] = doom_palette[from[x]];
+        for (int x = 0; x < columns; x++) to[x] = doom_palette[from[x]];
     }
 }
 
@@ -623,7 +638,9 @@ static void doom_convert_row(uint32_t *to, const byte *from, int columns) {
 static int doom_row_differs(int row) {
     const byte *now = I_VideoBuffer + row * SCREENWIDTH;
     byte *before = doom_previous + row * SCREENWIDTH;
+#if DOOM_X86
     if (doom_simd) return doom_row_changed(now, before, SCREENWIDTH);
+#endif
     int changed = memcmp(now, before, SCREENWIDTH) != 0;
     if (changed) memcpy(before, now, SCREENWIDTH);
     return changed;
@@ -659,7 +676,7 @@ void I_FinishUpdate(void) {
         y += 1 + copies;
     }
     doom_previous_valid = 1;
-    doom_game_menu[4].flags = detailLevel ? MENU_CHECKED : 0;   /* F5 changes it too */
+    doom_check(DOOM_MENU_DETAIL, detailLevel);    /* F5 changes it too */
     DOOM_PROF(DOOM_PROF_CONVERT, {
         for (int i = 0; i < count; i++)
             if (bands[i].changed)
@@ -824,6 +841,7 @@ static void doom_release_keys(void) {
     memset(doom_pressed, 0, sizeof doom_pressed);
 }
 
+#if DOOM_X86
 /*
  * Game > Benchmark CPU: what each kind of instruction costs in the emulator, which charges
  * neither as a real processor does nor all kinds alike. asmos_bench.asm has a loop for each kind,
@@ -833,24 +851,6 @@ static void doom_release_keys(void) {
  * the emulator looked at the host's clock before each one, and since November 2026 it looks
  * once in a thousand.
  */
-void bench_int(long n, void *buf);
-void bench_mul(long n, void *buf);
-void bench_div(long n, void *buf);
-void bench_load(long n, void *buf);
-void bench_store(long n, void *buf);
-void bench_scatter(long n, void *buf);
-void bench_branch(long n, void *buf);
-void bench_call(long n, void *buf);
-void bench_sse(long n, void *buf);
-void bench_avx(long n, void *buf);
-void bench_pextrb(long n, void *buf);
-void bench_gather(long n, void *buf);
-void bench_rep(long n, void *buf);
-void bench_movsb(long n, void *buf);
-void bench_movsq(long n, void *buf);
-void bench_stosd(long n, void *buf);
-void bench_avxcopy(long n, void *buf);
-
 static void bench_clock(long n, void *buf) {    /* a system call: what os_now_ms costs */
     (void)buf;
     for (long i = 0; i < n; i++) os_now_ms();
@@ -898,6 +898,7 @@ static void doom_benchmark(void) {
     doom_previous_valid = 0;
     os_message_box(doom_window, "Benchmark CPU", text, MB_OK, MB_INFO);
 }
+#endif
 
 static void doom_command(int id) {
     switch (id) {
@@ -906,35 +907,39 @@ static void doom_command(int id) {
         break;
     case DOOM_MENU_FPS:
         doom_show_fps = !doom_show_fps;
-        doom_game_menu[1].flags = doom_show_fps ? MENU_CHECKED : 0;
+        doom_check(DOOM_MENU_FPS, doom_show_fps);
         doom_previous_valid = 0;    /* every row again, to take the counter away */
         break;
     case DOOM_MENU_TIMES:
         doom_show_times = !doom_show_times;
-        doom_game_menu[2].flags = doom_show_times ? MENU_CHECKED : 0;
+        doom_check(DOOM_MENU_TIMES, doom_show_times);
         snprintf(doom_times_text[0], sizeof doom_times_text[0], "measuring...");
         for (int i = 1; i < 4; i++) doom_times_text[i][0] = 0;
         doom_reset_counts();
         doom_previous_valid = 0;
         break;
+#if DOOM_X86
     case DOOM_MENU_SIMD:
         doom_simd = !doom_simd;
-        doom_game_menu[3].flags = doom_simd ? MENU_CHECKED : 0;
+        doom_check(DOOM_MENU_SIMD, doom_simd);
         break;
+#endif
     case DOOM_MENU_DETAIL:          /* as F5 does: its check follows in I_FinishUpdate */
         M_ChangeDetail(0);
         break;
     case DOOM_MENU_PROFILE:
         doom_show_profile = !doom_show_profile;
-        doom_game_menu[5].flags = doom_show_profile ? MENU_CHECKED : 0;
+        doom_check(DOOM_MENU_PROFILE, doom_show_profile);
         if (doom_show_profile) doom_profile_start();
         else os_profile(0);
         doom_previous_valid = 0;
         break;
+#if DOOM_X86
     case DOOM_MENU_BENCH:
         doom_release_keys();
         doom_benchmark();
         break;
+#endif
     case DOOM_MENU_EXIT: I_Quit(); break;
     case DOOM_MENU_KEYS:
         doom_release_keys();
@@ -1046,10 +1051,6 @@ static void doom_loading(const char *text) {
     os_window_update_all(doom_window);
 }
 
-/* os/doom/asmos_fresh.asm: DOOM's variables as they were when asmOS started, so that a second
- * game in the same asmOS does not begin with what the first left in them */
-void doom_fresh(void);
-
 /* d_main.c and m_argv.c, which declare them nowhere */
 void D_DoomMain(void);
 void D_Display(void);
@@ -1080,8 +1081,22 @@ void doom_main(const char *argument) {
                        MB_OK, MB_INFO);
         os_exit(0);
     }
-    /* only now, with no other DOOM using them: its variables as they were at the start */
+#if DOOM_X86
+    /* only now, with no other DOOM using them: its variables as they were at the start, so that a
+     * second game does not begin with what the first left in them (asmos_fresh.asm) */
     doom_fresh();
+#else
+    /* DOOM never sets its variables back, and only x86 has asmos_fresh.asm to: a second game would
+     * begin with what the first left in them, so there is one each time asmOS starts */
+    static int doom_played;
+    if (doom_played) {
+        os_message_box(NULL, "DOOM",
+                       "DOOM plays once each time asmOS starts.\n"
+                       "Restart asmOS to play DOOM again.",
+                       MB_OK, MB_INFO);
+        os_exit(0);
+    }
+#endif
     if (!doom_find_iwad(argument, iwad, sizeof iwad)) {
         os_message_box(NULL, "DOOM",
                        "DOOM needs the game's data, an IWAD file.\n"
@@ -1098,6 +1113,9 @@ void doom_main(const char *argument) {
     doom_layout();
     doom_loading("Loading DOOM...");
 
+#if !DOOM_X86
+    doom_played = 1;            /* from here on DOOM changes its variables */
+#endif
     myargc = 3;
     myargv = args;
     M_FindResponseFile();

@@ -31,6 +31,7 @@
 
 #include "r_local.h"
 #include "r_sky.h"
+#include "../asmos_x86.h"     // asmOS: doom_span, on x86
 
 
 
@@ -162,6 +163,7 @@ R_MapPlane
 	ds_colormap = planezlight[index];
     }
 	
+#if DOOM_X86
     // asmOS: the span straight to doom_simd.asm's loop, while Game > Fast Drawing is on and the
     // drawer is DOOM's own, as R_DrawSpan or R_DrawSpanLow would call it
     if (doom_simd && (spanfunc == R_DrawSpan || spanfunc == R_DrawSpanLow))
@@ -178,6 +180,7 @@ R_MapPlane
                        ds_source, ds_colormap);
         return;
     }
+#endif
 
     ds_y = y;
     ds_x1 = x1;

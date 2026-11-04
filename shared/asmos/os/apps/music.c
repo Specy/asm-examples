@@ -236,14 +236,16 @@ static int music_parse(MusicPlayer *p, const unsigned char *data, long size, con
         os_free(reader.raw);
         return 0;
     }
-    /* ticks to microseconds: from the last tempo change, at its tempo; SMPTE time has no tempo */
+    /* ticks to microseconds: from the last tempo change, at its tempo; SMPTE time has no tempo. The
+     * products are 64-bit: a few thousand ticks times a tempo of half a million is over what a long
+     * holds on a 32-bit machine. */
     long tempo = 500000, base_tick = 0, base_us = 0, per_second = 0, count = 0;
     if (division & 0x8000) per_second = (long)(256 - (division >> 8 & 0xff)) * (division & 0xff);
     if (per_second <= 0 && (division & 0x8000)) per_second = 1000;
     for (int i = 0; i < reader.count; i++) {
         MusicRaw *raw = &reader.raw[i];
-        long us = per_second ? raw->tick * 1000000 / per_second
-                             : base_us + (raw->tick - base_tick) * tempo / division;
+        long us = per_second ? (long)((int64_t)raw->tick * 1000000 / per_second)
+                             : base_us + (long)((int64_t)(raw->tick - base_tick) * tempo / division);
         if (!raw->length) {
             base_us = us;
             base_tick = raw->tick;
@@ -256,8 +258,8 @@ static int music_parse(MusicPlayer *p, const unsigned char *data, long size, con
         event->bytes[0] = (unsigned char)((raw->bytes[0] & 0xf0) | map[raw->bytes[0] & 15]);
         event->length = raw->length;
     }
-    long length_us = per_second ? reader.end_tick * 1000000 / per_second
-                                : base_us + (reader.end_tick - base_tick) * tempo / division;
+    long length_us = per_second ? (long)((int64_t)reader.end_tick * 1000000 / per_second)
+                                : base_us + (long)((int64_t)(reader.end_tick - base_tick) * tempo / division);
     if (count && events[count - 1].us > length_us) length_us = events[count - 1].us;
     os_free(reader.raw);
     os_free(p->events);

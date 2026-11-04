@@ -1,7 +1,8 @@
 /*
- * The instructions the program has run. MIPS32's own counter, CP0's Count register, is not in
- * MARS, so this asks the editor's MARS, which counts every instruction: syscall 1101 answers the
- * count in $a0 and $a1, the low and the high word, as the C library's clock() asks it.
+ * The instructions the program has run. MIPS32's own counter, CP0's Count register, goes up once
+ * every two instructions and comes round after 32 bits, every 8.6 billion, so this asks the
+ * editor's MARS instead, which counts every instruction: syscall 1101 answers the count in $a0 and
+ * $a1, the low and the high word, as the C library's clock() asks it.
  */
 
 uint64_t platform_instructions(void) {

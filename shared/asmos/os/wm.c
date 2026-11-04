@@ -338,14 +338,13 @@ static void window_set_picture_size(Window *win, int w, int h) {
     w = max_int(1, w);
     h = max_int(1, h);
     if (w == win->pw && h == win->ph) return;
-    /* a dialog of the system's may take the kernel's reserve, an application's window may not */
-    uint32_t *pixels = win->pid > 0 ? malloc((size_t)w * h * 4) : system_alloc((size_t)w * h * 4);
+    uint32_t *pixels = heap_alloc((size_t)w * h * 4);
     if (!pixels) return;
     fill_rect32(pixels, w * 4, w, h, FACE);
     if (win->pixels) {
         copy_rect32(pixels, w * 4, win->pixels, win->pw * 4, min_int(w, win->pw), min_int(h, win->ph));
         if (win->pid > 0) {
-            Retired *retired = malloc(sizeof *retired);
+            Retired *retired = heap_alloc(sizeof *retired);
             if (retired) {
                 retired->pixels = win->pixels;
                 retired->next = win->retired;
@@ -484,8 +483,8 @@ Window *os_window_create(const char *title, const Icon *icon, int w, int h, int 
     Window *win = window_new(current->pid, title, icon ? icon : APPS[current->app].icon, w, h, flags);
     unlock();
     if (!win) {
-        /* no slot, or no memory for its picture, as on a machine of 4 MB with several windows open:
-         * the application ends, saying why, rather than draw into a window it does not have */
+        /* no slot, or no memory for its picture: the application ends, saying why, rather than draw
+         * into a window it does not have */
         char text[96];
         snprintf(text, sizeof text, "There is not enough memory to open %s. Close a window and try again.",
                  title);

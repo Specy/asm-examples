@@ -8,9 +8,10 @@
  * up when it waits for a message or sleeps, and on a machine with a timer (PLATFORM_PREEMPTIVE)
  * the timer ticks every 10 ms while applications are ready to run, and takes the processor from
  * one that does not give it up: preemption. The platform layer does the switch itself, its own
- * way (os/platform/): on x86 a signal handler rewrites the registers the signal frame holds, and
- * on a machine without a timer a call keeps the callee-saved registers. The kernel only says which
- * process runs next, in switch_to_next.
+ * way (os/platform/): on x86 a signal handler rewrites the registers the signal frame holds, on
+ * RISC-V and MIPS a trap handler keeps them on the process's own stack, and on a machine without a
+ * timer a call keeps the callee-saved registers. The kernel only says which process runs next, in
+ * switch_to_next.
  *
  * A process may be stopped at any instruction, so the kernel's own data is changed only under the
  * kernel lock: an os_ call takes it, and the timer leaves a process holding it alone until it lets
@@ -43,6 +44,7 @@ typedef struct {
     int waiting;
     int answer;
     int midi_used;                   /* it sent MIDI: its notes are silenced when it ends */
+    int overran;                     /* it wrote into its stack's guard: the system ends it */
     long wake_at;
     Allocation allocations;          /* a ring: its own memory, freed when the process ends */
     long memory;
@@ -95,6 +97,26 @@ static void unlock(void) {
     }
 }
 
+/* The bottom of each process's stack, filled with STACK_GUARD as the process is made: a process
+ * whose stack has grown into it has used the whole of its stack, and the next byte down is another
+ * process's, or nobody's. The kernel looks at it each time it switches from the process, and the
+ * system ends a process that overran it (schedule_pass), on the system's own stack, before it
+ * can run again and write further into the stack below its own. */
+enum { STACK_GUARD_WORDS = 64 };
+#define STACK_GUARD 0x5AFE57ACu
+
+static void stack_guard_set(Process *process) {
+    uint32_t *guard = (uint32_t *)process->stack;
+    for (int i = 0; i < STACK_GUARD_WORDS; i++) guard[i] = STACK_GUARD;
+}
+
+static int stack_guard_intact(const Process *process) {
+    const volatile uint32_t *guard = (const volatile uint32_t *)process->stack;
+    for (int i = 0; i < STACK_GUARD_WORDS; i++)
+        if (guard[i] != STACK_GUARD) return 0;
+    return 1;
+}
+
 /* Starts the timer while applications are ready to run, and stops it while none is, so that a
  * desktop with nothing to do does nothing. A machine without one has nothing to start. */
 static void timer_set(int on) {
@@ -126,6 +148,12 @@ static Process *next_ready(void) {
  * or NULL when the current one goes on. Both kinds of switch below come here. */
 static Process *switch_to_next(void) {
     Process *from = current;
+    if (from != SYSTEM && from->state != PROC_ENDED && !stack_guard_intact(from)) {
+        /* it overran its stack: it never runs again, waiting for nothing, until the system ends it */
+        from->state = PROC_WAITING;
+        from->waiting = WAIT_NONE;
+        from->overran = 1;
+    }
     if (from->state == PROC_RUNNING) from->state = PROC_READY;
     Process *to = next_ready();
     if (!to) to = from->state == PROC_READY ? from : SYSTEM;
@@ -162,6 +190,10 @@ int kernel_switch(int by_timer, uintptr_t pc, PlatformContext **from, PlatformCo
     }
     Process *was = current, *next = switch_to_next();
     if (!next) return 0;
+    /* this is the switch a tick asked for while the lock was held, if one did: a process that let
+     * the lock go to wait (os_get_message, os_sleep, wait_for_answer) gave the processor up, so the
+     * one that runs next is not made to give it up again at its first unlock */
+    need_resched = 0;
     *from = &was->context;
     *to = &next->context;
     return 1;
@@ -187,24 +219,24 @@ void os_yield_point(void) {
 }
 
 /* Whether the heap holds what asmOS needs before it can show anything: `screen_bytes` for the back
- * buffer, and room for the first applications' stacks and memory. Where the heap is small, as on
- * MARS and RARS, which give static data and the heap 4 MB together, asmOS says what it needs and
+ * buffer and as much again for the wallpaper's picture, and room for the first applications'
+ * stacks and memory. Where the heap has a limit, as on MARS and RARS, which give static data and
+ * the heap 64 MB together and end the program that asks for more, asmOS says what it needs and
  * stops rather than run out half way. The kernel's own tables are static data, already there. */
 static int kernel_memory_check(size_t screen_bytes) {
     size_t left = platform_memory_left();
-    size_t need = screen_bytes + 2 * PLATFORM_STACK_SIZE + 256 * 1024;
+    size_t pictures = screen_bytes * (PLATFORM_WALLPAPER_PICTURE ? 2 : 1);
+    size_t need = pictures + 2 * PLATFORM_STACK_SIZE + 256 * 1024;
     if (left >= need) return 1;
     char line[200];
     snprintf(line, sizeof line,
-             "asmOS needs %lu KB of memory to start, %lu KB of it for the screen; %lu KB are left "
-             "(the process table takes %lu KB)\n",
-             (unsigned long)(need / 1024), (unsigned long)(screen_bytes / 1024),
+             "asmOS needs %lu KB of memory to start, %lu KB of it for the back buffer and the "
+             "wallpaper; %lu KB are left (the process table takes %lu KB)\n",
+             (unsigned long)(need / 1024), (unsigned long)(pictures / 1024),
              (unsigned long)(left / 1024), (unsigned long)(sizeof processes / 1024));
     platform_print(line);
     return 0;
 }
-
-static void system_reserve_refill(void);   /* below, with the memory */
 
 static void kernel_start(void) {
     boot_ms = 0;
@@ -219,7 +251,6 @@ static void kernel_start(void) {
     platform_scheduler_start();
 #endif
     switched_at = platform_instructions();
-    system_reserve_refill();
 }
 
 /* ------------------------------------------------------------------ processes */
@@ -252,6 +283,7 @@ int os_spawn(int app, const char *argument) {
     process->pid = next_pid++;
     process->app = app;
     process->stack = stack;
+    stack_guard_set(process);
     platform_context_init(&process->context, stack, PLATFORM_STACK_SIZE, process_start);
     process->state = PROC_READY;
     snprintf(process->name, sizeof process->name, "%s", APPS[app].name);
@@ -318,13 +350,32 @@ void os_sleep(int ms) {
     yield();
 }
 
-/* The system's part of scheduling, once a pass: wakes the processes whose sleep is over and frees
- * the stacks of the ones that ended; answers how long until the next one wakes, or -1. */
+/* Ends a process that overran its stack (switch_to_next), saying so on the Terminal and on the
+ * screen: the system's, which runs on a stack of its own. */
+static void stack_overran(Process *process) {
+    process->overran = 0;
+    char text[200];
+    snprintf(text, sizeof text,
+             "%s used all of its %d KB of stack and was ended, so that it cannot overwrite another "
+             "application's memory.", process->name, PLATFORM_STACK_SIZE / 1024);
+    char line[220];
+    snprintf(line, sizeof line, "asmOS: %s\n", text);
+    platform_print(line);
+    lock();
+    process_cleanup(process);
+    unlock();
+    os_message_box(NULL, process->name, text, MB_OK, MB_WARNING);
+}
+
+/* The system's part of scheduling, once a pass: wakes the processes whose sleep is over, ends the
+ * ones that overran their stack and frees the stacks of the ones that ended; answers how long
+ * until the next one wakes, or -1. */
 static long schedule_pass(void) {
     long now = os_now_ms(), next = -1;
     for (int i = 1; i < MAX_PROCESSES; i++) {
         Process *process = &processes[i];
         if (!process->used) continue;
+        if (process->overran) stack_overran(process);
         if (process->state == PROC_ENDED) {
             platform_stack_free(process->stack);
             process->used = 0;
@@ -417,36 +468,29 @@ static void measure_load(long elapsed_ms) {
     }
     load_busy = elapsed_ms > 0 ? clamp_int((int)(100 - idle_ms * 100 / elapsed_ms), 0, 100) : 0;
     idle_ms = 0;
-    system_reserve_refill();
 }
 
 /* ------------------------------------------------------------------ memory */
 
-/* Where all of the heap is a few megabytes (PLATFORM_SMALL_MEMORY), the applications can use it
- * up, and then the system could not even show a message box saying so. So the kernel keeps a
- * reserve, enough for one, which the system's own windows take when nothing else is left and which
- * it takes back once a second, when memory is free again. */
-enum { SYSTEM_RESERVE = PLATFORM_SMALL_MEMORY ? 224 * 1024 : 0 };
-static void *system_reserve;
+/* What the heap must keep beyond a request, for the C library's own header and alignment. */
+enum { HEAP_SLACK = 256 };
 
-static void system_reserve_refill(void) {
-    if (SYSTEM_RESERVE && !system_reserve) system_reserve = malloc(SYSTEM_RESERVE);
+/* Memory from the C library's malloc, or NULL when the heap could not grow by `size`. Where the
+ * heap has a limit, as on MARS and RARS, a malloc that has to grow the heap past it ends the whole
+ * program, every application and asmOS with it, where NULL ends only the application that asked,
+ * or makes it ask for less. The check is cautious: memory freed below the heap's end might hold a
+ * request it refuses. Elsewhere there is no limit to check (platform_memory_left). */
+static int heap_has_room(size_t size) {
+    size_t left = platform_memory_left();
+    return size <= left && left - size >= HEAP_SLACK;
 }
 
-/* malloc for the system's own windows: the reserve goes when nothing else is left. */
-static void *system_alloc(size_t size) {
-    void *memory = malloc(size);
-    if (!memory && system_reserve) {
-        free(system_reserve);
-        system_reserve = NULL;
-        memory = malloc(size);
-    }
-    return memory;
-}
+static void *heap_alloc(size_t size) { return heap_has_room(size) ? malloc(size) : NULL; }
 
 void *os_alloc(size_t size) {
     lock();
-    Allocation *block = calloc(1, sizeof(Allocation) + size);
+    size_t total = sizeof(Allocation) + size;
+    Allocation *block = total < size || !heap_has_room(total) ? NULL : calloc(1, total);
     if (!block) {
         unlock();
         return NULL;
@@ -797,7 +841,7 @@ int os_clipboard_kind(void) { return clip_kind; }
 void os_clipboard_set_text(const char *text, int length) {
     lock();
     clip_clear();
-    clip_text = malloc(length + 1);
+    clip_text = heap_alloc(length + 1);
     if (clip_text) {
         memcpy(clip_text, text, length);
         clip_text[length] = 0;
@@ -821,7 +865,7 @@ char *os_clipboard_text(int *length) {
 void os_clipboard_set_picture(const uint32_t *pixels, int w, int h) {
     lock();
     clip_clear();
-    clip_pixels = malloc((size_t)w * h * 4);
+    clip_pixels = heap_alloc((size_t)w * h * 4);
     if (clip_pixels) {
         memcpy(clip_pixels, pixels, (size_t)w * h * 4);
         clip_w = w;

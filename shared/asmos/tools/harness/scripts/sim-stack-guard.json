@@ -1,0 +1,3 @@
+[{"until":"Click the Screen","timeout":120000},{"wait":5000},{"dblclick":[48,22]},{"wait":3500},{"shot":"sim-guard-1-notepad"},
+ {"poke":[2143289344,0]},{"type":"x"},{"until":"used all of its 64 KB of stack","timeout":30000},{"wait":1500},
+ {"shot":"sim-guard-2-ended"},{"key":"Enter"},{"wait":1500},{"dblclick":[48,22]},{"wait":3500},{"shot":"sim-guard-3-again"}]

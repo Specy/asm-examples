@@ -7,8 +7,6 @@
     extern gametic
     extern os_alloc
     extern os_realloc
-    extern doom_palette_row
-    extern doom_palette_row2
     extern text_width
     extern strcmp
     extern gfx_save
@@ -25,6 +23,8 @@
     extern os_pcm_close
     extern os_pcm_open
     extern os_pcm_space
+    extern doom_palette_row
+    extern doom_palette_row2
     extern os_midi_send
     extern os_midi_note
     extern V_UseBuffer
@@ -75,8 +75,8 @@
     extern demoplayback
     extern os_message_box
     extern os_profile
-    extern M_ChangeDetail
     extern M_StartControlPanel
+    extern M_ChangeDetail
     extern os_read_file
     extern strchr
     extern strcspn
@@ -309,288 +309,288 @@
     ; compiler-symbol L121 .L121
     ; compiler-symbol L118 .L118
     ; compiler-symbol L119 .L119
-    ; compiler-symbol LFSB371 .LFSB371
+    ; compiler-symbol LFSB372 .LFSB372
     ; compiler-symbol LCOLDE20 .LCOLDE20
     ; compiler-symbol LHOTE20 .LHOTE20
-    ; compiler-symbol L156 .L156
-    ; compiler-symbol L149 .L149
-    ; compiler-symbol L157 .L157
-    ; compiler-symbol L151 .L151
-    ; compiler-symbol L144 .L144
-    ; compiler-symbol L158 .L158
-    ; compiler-symbol L147 .L147
     ; compiler-symbol LC21 .LC21
-    ; compiler-symbol L160 .L160
-    ; compiler-symbol L161 .L161
-    ; compiler-symbol L163 .L163
-    ; compiler-symbol L171 .L171
+    ; compiler-symbol L143 .L143
+    ; compiler-symbol L144 .L144
+    ; compiler-symbol L146 .L146
+    ; compiler-symbol L154 .L154
     ; compiler-symbol LC22 .LC22
-    ; compiler-symbol L176 .L176
+    ; compiler-symbol L159 .L159
+    ; compiler-symbol L158 .L158
+    ; compiler-symbol L157 .L157
+    ; compiler-symbol L160 .L160
+    ; compiler-symbol L155 .L155
+    ; compiler-symbol L165 .L165
+    ; compiler-symbol L168 .L168
+    ; compiler-symbol L164 .L164
     ; compiler-symbol L175 .L175
-    ; compiler-symbol L174 .L174
-    ; compiler-symbol L177 .L177
-    ; compiler-symbol L172 .L172
-    ; compiler-symbol L182 .L182
-    ; compiler-symbol L185 .L185
     ; compiler-symbol L181 .L181
+    ; compiler-symbol L188 .L188
+    ; compiler-symbol L201 .L201
     ; compiler-symbol L192 .L192
-    ; compiler-symbol L198 .L198
-    ; compiler-symbol L205 .L205
-    ; compiler-symbol L217 .L217
-    ; compiler-symbol L209 .L209
-    ; compiler-symbol L208 .L208
+    ; compiler-symbol L202 .L202
+    ; compiler-symbol L197 .L197
+    ; compiler-symbol L189 .L189
+    ; compiler-symbol L196 .L196
+    ; compiler-symbol L203 .L203
+    ; compiler-symbol L215 .L215
     ; compiler-symbol L207 .L207
-    ; compiler-symbol L216 .L216
-    ; compiler-symbol L222 .L222
     ; compiler-symbol L206 .L206
-    ; compiler-symbol L221 .L221
+    ; compiler-symbol L205 .L205
     ; compiler-symbol L214 .L214
-    ; compiler-symbol L210 .L210
-    ; compiler-symbol L211 .L211
-    ; compiler-symbol L223 .L223
-    ; compiler-symbol L233 .L233
-    ; compiler-symbol L230 .L230
-    ; compiler-symbol L239 .L239
+    ; compiler-symbol L220 .L220
+    ; compiler-symbol L204 .L204
+    ; compiler-symbol L219 .L219
+    ; compiler-symbol L212 .L212
+    ; compiler-symbol L208 .L208
+    ; compiler-symbol L209 .L209
+    ; compiler-symbol L221 .L221
+    ; compiler-symbol L231 .L231
+    ; compiler-symbol L228 .L228
     ; compiler-symbol L237 .L237
-    ; compiler-symbol L248 .L248
-    ; compiler-symbol L245 .L245
-    ; compiler-symbol L242 .L242
-    ; compiler-symbol L251 .L251
+    ; compiler-symbol L235 .L235
+    ; compiler-symbol L246 .L246
     ; compiler-symbol L243 .L243
-    ; compiler-symbol L252 .L252
-    ; compiler-symbol L269 .L269
-    ; compiler-symbol L262 .L262
-    ; compiler-symbol L255 .L255
-    ; compiler-symbol L274 .L274
-    ; compiler-symbol L256 .L256
-    ; compiler-symbol L257 .L257
-    ; compiler-symbol L275 .L275
+    ; compiler-symbol L240 .L240
+    ; compiler-symbol L249 .L249
+    ; compiler-symbol L241 .L241
+    ; compiler-symbol L250 .L250
+    ; compiler-symbol L267 .L267
+    ; compiler-symbol L260 .L260
+    ; compiler-symbol L253 .L253
     ; compiler-symbol L272 .L272
+    ; compiler-symbol L254 .L254
+    ; compiler-symbol L255 .L255
     ; compiler-symbol L273 .L273
-    ; compiler-symbol L263 .L263
-    ; compiler-symbol L299 .L299
-    ; compiler-symbol L277 .L277
-    ; compiler-symbol L305 .L305
-    ; compiler-symbol L279 .L279
-    ; compiler-symbol L300 .L300
-    ; compiler-symbol L276 .L276
-    ; compiler-symbol L281 .L281
-    ; compiler-symbol L292 .L292
-    ; compiler-symbol L282 .L282
-    ; compiler-symbol L320 .L320
-    ; compiler-symbol L321 .L321
-    ; compiler-symbol L322 .L322
-    ; compiler-symbol L289 .L289
-    ; compiler-symbol L291 .L291
-    ; compiler-symbol L285 .L285
-    ; compiler-symbol L293 .L293
-    ; compiler-symbol L295 .L295
-    ; compiler-symbol L323 .L323
-    ; compiler-symbol L296 .L296
-    ; compiler-symbol L284 .L284
-    ; compiler-symbol L290 .L290
-    ; compiler-symbol L298 .L298
+    ; compiler-symbol L270 .L270
+    ; compiler-symbol L271 .L271
+    ; compiler-symbol L261 .L261
     ; compiler-symbol L297 .L297
+    ; compiler-symbol L275 .L275
+    ; compiler-symbol L303 .L303
+    ; compiler-symbol L277 .L277
+    ; compiler-symbol L298 .L298
+    ; compiler-symbol L274 .L274
+    ; compiler-symbol L279 .L279
+    ; compiler-symbol L290 .L290
+    ; compiler-symbol L280 .L280
+    ; compiler-symbol L318 .L318
+    ; compiler-symbol L319 .L319
+    ; compiler-symbol L320 .L320
+    ; compiler-symbol L287 .L287
+    ; compiler-symbol L289 .L289
+    ; compiler-symbol L283 .L283
+    ; compiler-symbol L291 .L291
+    ; compiler-symbol L293 .L293
+    ; compiler-symbol L321 .L321
+    ; compiler-symbol L294 .L294
+    ; compiler-symbol L282 .L282
+    ; compiler-symbol L288 .L288
+    ; compiler-symbol L296 .L296
+    ; compiler-symbol L295 .L295
+    ; compiler-symbol L348 .L348
     ; compiler-symbol L350 .L350
-    ; compiler-symbol L352 .L352
-    ; compiler-symbol L351 .L351
+    ; compiler-symbol L349 .L349
+    ; compiler-symbol L324 .L324
     ; compiler-symbol L326 .L326
-    ; compiler-symbol L328 .L328
-    ; compiler-symbol L333 .L333
-    ; compiler-symbol L329 .L329
-    ; compiler-symbol L336 .L336
-    ; compiler-symbol L332 .L332
+    ; compiler-symbol L331 .L331
+    ; compiler-symbol L327 .L327
     ; compiler-symbol L334 .L334
-    ; compiler-symbol L353 .L353
-    ; compiler-symbol L361 .L361
-    ; compiler-symbol L354 .L354
-    ; compiler-symbol L366 .L366
-    ; compiler-symbol L358 .L358
+    ; compiler-symbol L330 .L330
+    ; compiler-symbol L332 .L332
+    ; compiler-symbol L351 .L351
+    ; compiler-symbol L359 .L359
+    ; compiler-symbol L352 .L352
+    ; compiler-symbol L364 .L364
+    ; compiler-symbol L356 .L356
+    ; compiler-symbol L365 .L365
+    ; compiler-symbol L368 .L368
     ; compiler-symbol L367 .L367
-    ; compiler-symbol L370 .L370
-    ; compiler-symbol L369 .L369
     ; compiler-symbol LC23 .LC23
     ; compiler-symbol LC24 .LC24
     ; compiler-symbol LC25 .LC25
     ; compiler-symbol LC26 .LC26
     ; compiler-symbol LC27 .LC27
-    ; compiler-symbol L380 .L380
-    ; compiler-symbol L377 .L377
-    ; compiler-symbol L375 .L375
-    ; compiler-symbol L376 .L376
-    ; compiler-symbol L374 .L374
     ; compiler-symbol L378 .L378
+    ; compiler-symbol L375 .L375
     ; compiler-symbol L373 .L373
+    ; compiler-symbol L374 .L374
+    ; compiler-symbol L372 .L372
+    ; compiler-symbol L376 .L376
+    ; compiler-symbol L371 .L371
     ; compiler-symbol LC28 .LC28
+    ; compiler-symbol L388 .L388
+    ; compiler-symbol L381 .L381
     ; compiler-symbol L390 .L390
-    ; compiler-symbol L383 .L383
-    ; compiler-symbol L392 .L392
-    ; compiler-symbol L396 .L396
-    ; compiler-symbol L400 .L400
-    ; compiler-symbol L404 .L404
-    ; compiler-symbol L418 .L418
-    ; compiler-symbol L419 .L419
-    ; compiler-symbol L403 .L403
+    ; compiler-symbol L394 .L394
+    ; compiler-symbol L398 .L398
+    ; compiler-symbol L402 .L402
+    ; compiler-symbol L416 .L416
+    ; compiler-symbol L417 .L417
+    ; compiler-symbol L401 .L401
+    ; compiler-symbol L423 .L423
     ; compiler-symbol L425 .L425
-    ; compiler-symbol L427 .L427
-    ; compiler-symbol L428 .L428
     ; compiler-symbol L426 .L426
+    ; compiler-symbol L424 .L424
+    ; compiler-symbol L434 .L434
+    ; compiler-symbol L437 .L437
     ; compiler-symbol L436 .L436
     ; compiler-symbol L439 .L439
-    ; compiler-symbol L438 .L438
-    ; compiler-symbol L441 .L441
-    ; compiler-symbol L449 .L449
-    ; compiler-symbol L450 .L450
-    ; compiler-symbol L460 .L460
-    ; compiler-symbol L461 .L461
-    ; compiler-symbol L465 .L465
+    ; compiler-symbol L447 .L447
+    ; compiler-symbol L448 .L448
+    ; compiler-symbol L458 .L458
+    ; compiler-symbol L459 .L459
+    ; compiler-symbol L463 .L463
     ; compiler-symbol LC29 .LC29
-    ; compiler-symbol L469 .L469
-    ; compiler-symbol L473 .L473
-    ; compiler-symbol L478 .L478
-    ; compiler-symbol L481 .L481
+    ; compiler-symbol L467 .L467
+    ; compiler-symbol L471 .L471
+    ; compiler-symbol L476 .L476
     ; compiler-symbol L479 .L479
     ; compiler-symbol L477 .L477
-    ; compiler-symbol L494 .L494
-    ; compiler-symbol L499 .L499
-    ; compiler-symbol L495 .L495
-    ; compiler-symbol L505 .L505
+    ; compiler-symbol L475 .L475
+    ; compiler-symbol L492 .L492
     ; compiler-symbol L497 .L497
+    ; compiler-symbol L493 .L493
+    ; compiler-symbol L503 .L503
+    ; compiler-symbol L495 .L495
+    ; compiler-symbol L500 .L500
     ; compiler-symbol L502 .L502
-    ; compiler-symbol L504 .L504
+    ; compiler-symbol L506 .L506
     ; compiler-symbol L508 .L508
     ; compiler-symbol L510 .L510
-    ; compiler-symbol L512 .L512
-    ; compiler-symbol L515 .L515
-    ; compiler-symbol L519 .L519
-    ; compiler-symbol L520 .L520
-    ; compiler-symbol L521 .L521
-    ; compiler-symbol L523 .L523
-    ; compiler-symbol L522 .L522
+    ; compiler-symbol L513 .L513
     ; compiler-symbol L517 .L517
-    ; compiler-symbol L526 .L526
-    ; compiler-symbol L525 .L525
-    ; compiler-symbol L551 .L551
-    ; compiler-symbol L545 .L545
-    ; compiler-symbol L548 .L548
+    ; compiler-symbol L518 .L518
+    ; compiler-symbol L519 .L519
+    ; compiler-symbol L521 .L521
+    ; compiler-symbol L520 .L520
+    ; compiler-symbol L515 .L515
+    ; compiler-symbol L524 .L524
+    ; compiler-symbol L523 .L523
+    ; compiler-symbol L549 .L549
+    ; compiler-symbol L543 .L543
+    ; compiler-symbol L546 .L546
+    ; compiler-symbol L553 .L553
     ; compiler-symbol L555 .L555
-    ; compiler-symbol L557 .L557
-    ; compiler-symbol L556 .L556
+    ; compiler-symbol L554 .L554
+    ; compiler-symbol L559 .L559
     ; compiler-symbol L561 .L561
-    ; compiler-symbol L563 .L563
-    ; compiler-symbol L566 .L566
-    ; compiler-symbol L569 .L569
+    ; compiler-symbol L564 .L564
     ; compiler-symbol L567 .L567
+    ; compiler-symbol L565 .L565
+    ; compiler-symbol L570 .L570
     ; compiler-symbol L572 .L572
-    ; compiler-symbol L574 .L574
-    ; compiler-symbol L573 .L573
-    ; compiler-symbol L583 .L583
-    ; compiler-symbol L584 .L584
+    ; compiler-symbol L571 .L571
+    ; compiler-symbol L581 .L581
     ; compiler-symbol L582 .L582
+    ; compiler-symbol L580 .L580
+    ; compiler-symbol L591 .L591
     ; compiler-symbol L593 .L593
-    ; compiler-symbol L595 .L595
     ; compiler-symbol LC30 .LC30
+    ; compiler-symbol L597 .L597
+    ; compiler-symbol L598 .L598
     ; compiler-symbol L599 .L599
     ; compiler-symbol L600 .L600
     ; compiler-symbol L601 .L601
-    ; compiler-symbol L602 .L602
     ; compiler-symbol L603 .L603
+    ; compiler-symbol L604 .L604
     ; compiler-symbol L605 .L605
-    ; compiler-symbol L606 .L606
     ; compiler-symbol L607 .L607
-    ; compiler-symbol L609 .L609
-    ; compiler-symbol L630 .L630
+    ; compiler-symbol L628 .L628
+    ; compiler-symbol L606 .L606
     ; compiler-symbol L608 .L608
-    ; compiler-symbol L610 .L610
+    ; compiler-symbol L630 .L630
     ; compiler-symbol L632 .L632
-    ; compiler-symbol L634 .L634
-    ; compiler-symbol L635 .L635
+    ; compiler-symbol L633 .L633
+    ; compiler-symbol L637 .L637
     ; compiler-symbol L639 .L639
     ; compiler-symbol L641 .L641
-    ; compiler-symbol L643 .L643
+    ; compiler-symbol L640 .L640
     ; compiler-symbol L642 .L642
-    ; compiler-symbol L644 .L644
     ; compiler-symbol LC32 .LC32
-    ; compiler-symbol L650 .L650
-    ; compiler-symbol L651 .L651
+    ; compiler-symbol L648 .L648
+    ; compiler-symbol L649 .L649
     ; compiler-symbol LC33 .LC33
     ; compiler-symbol LC34 .LC34
     ; compiler-symbol LC35 .LC35
     ; compiler-symbol LC36 .LC36
     ; compiler-symbol LC37 .LC37
-    ; compiler-symbol L656 .L656
-    ; compiler-symbol L697 .L697
-    ; compiler-symbol L660 .L660
-    ; compiler-symbol L698 .L698
-    ; compiler-symbol L699 .L699
-    ; compiler-symbol L673 .L673
-    ; compiler-symbol L700 .L700
-    ; compiler-symbol L665 .L665
     ; compiler-symbol L654 .L654
-    ; compiler-symbol L674 .L674
-    ; compiler-symbol L701 .L701
-    ; compiler-symbol L688 .L688
-    ; compiler-symbol L676 .L676
-    ; compiler-symbol L681 .L681
-    ; compiler-symbol L679 .L679
-    ; compiler-symbol L680 .L680
-    ; compiler-symbol L702 .L702
-    ; compiler-symbol L662 .L662
-    ; compiler-symbol L703 .L703
-    ; compiler-symbol L684 .L684
-    ; compiler-symbol L704 .L704
-    ; compiler-symbol L677 .L677
-    ; compiler-symbol L683 .L683
-    ; compiler-symbol L705 .L705
-    ; compiler-symbol L689 .L689
-    ; compiler-symbol L678 .L678
-    ; compiler-symbol L706 .L706
-    ; compiler-symbol L666 .L666
-    ; compiler-symbol L707 .L707
-    ; compiler-symbol L667 .L667
-    ; compiler-symbol L669 .L669
+    ; compiler-symbol L695 .L695
+    ; compiler-symbol L658 .L658
     ; compiler-symbol L696 .L696
-    ; compiler-symbol L670 .L670
+    ; compiler-symbol L697 .L697
     ; compiler-symbol L671 .L671
-    ; compiler-symbol L714 .L714
+    ; compiler-symbol L698 .L698
+    ; compiler-symbol L663 .L663
+    ; compiler-symbol L652 .L652
+    ; compiler-symbol L672 .L672
+    ; compiler-symbol L699 .L699
+    ; compiler-symbol L686 .L686
+    ; compiler-symbol L674 .L674
+    ; compiler-symbol L679 .L679
+    ; compiler-symbol L677 .L677
+    ; compiler-symbol L678 .L678
+    ; compiler-symbol L700 .L700
+    ; compiler-symbol L660 .L660
+    ; compiler-symbol L701 .L701
+    ; compiler-symbol L682 .L682
+    ; compiler-symbol L702 .L702
+    ; compiler-symbol L675 .L675
+    ; compiler-symbol L681 .L681
+    ; compiler-symbol L703 .L703
+    ; compiler-symbol L687 .L687
+    ; compiler-symbol L676 .L676
+    ; compiler-symbol L704 .L704
+    ; compiler-symbol L664 .L664
+    ; compiler-symbol L705 .L705
+    ; compiler-symbol L665 .L665
+    ; compiler-symbol L667 .L667
+    ; compiler-symbol L694 .L694
+    ; compiler-symbol L668 .L668
+    ; compiler-symbol L669 .L669
+    ; compiler-symbol L712 .L712
+    ; compiler-symbol L716 .L716
     ; compiler-symbol L718 .L718
-    ; compiler-symbol L720 .L720
-    ; compiler-symbol L721 .L721
-    ; compiler-symbol L729 .L729
+    ; compiler-symbol L719 .L719
+    ; compiler-symbol L727 .L727
+    ; compiler-symbol L722 .L722
     ; compiler-symbol L724 .L724
-    ; compiler-symbol L726 .L726
-    ; compiler-symbol L725 .L725
+    ; compiler-symbol L723 .L723
+    ; compiler-symbol L781 .L781
+    ; compiler-symbol L782 .L782
+    ; compiler-symbol L742 .L742
+    ; compiler-symbol L749 .L749
     ; compiler-symbol L783 .L783
-    ; compiler-symbol L784 .L784
-    ; compiler-symbol L744 .L744
     ; compiler-symbol L751 .L751
-    ; compiler-symbol L785 .L785
     ; compiler-symbol L753 .L753
     ; compiler-symbol L755 .L755
-    ; compiler-symbol L757 .L757
-    ; compiler-symbol L762 .L762
-    ; compiler-symbol L732 .L732
+    ; compiler-symbol L760 .L760
+    ; compiler-symbol L730 .L730
+    ; compiler-symbol L731 .L731
     ; compiler-symbol L733 .L733
-    ; compiler-symbol L735 .L735
-    ; compiler-symbol L763 .L763
-    ; compiler-symbol L728 .L728
-    ; compiler-symbol L766 .L766
+    ; compiler-symbol L761 .L761
+    ; compiler-symbol L726 .L726
+    ; compiler-symbol L764 .L764
+    ; compiler-symbol L743 .L743
+    ; compiler-symbol L784 .L784
     ; compiler-symbol L745 .L745
-    ; compiler-symbol L786 .L786
+    ; compiler-symbol L785 .L785
     ; compiler-symbol L747 .L747
-    ; compiler-symbol L787 .L787
-    ; compiler-symbol L749 .L749
-    ; compiler-symbol L788 .L788
+    ; compiler-symbol L786 .L786
+    ; compiler-symbol L735 .L735
     ; compiler-symbol L737 .L737
+    ; compiler-symbol L738 .L738
     ; compiler-symbol L739 .L739
-    ; compiler-symbol L740 .L740
-    ; compiler-symbol L741 .L741
+    ; compiler-symbol L788 .L788
+    ; compiler-symbol L791 .L791
     ; compiler-symbol L790 .L790
-    ; compiler-symbol L793 .L793
     ; compiler-symbol L792 .L792
-    ; compiler-symbol L794 .L794
-    ; compiler-symbol L808 .L808
-    ; compiler-symbol L797 .L797
+    ; compiler-symbol L806 .L806
+    ; compiler-symbol L795 .L795
     ; compiler-symbol LC41 .LC41
     ; compiler-symbol LC58 .LC58
     ; compiler-symbol LC42 .LC42
@@ -599,7 +599,7 @@
     ; compiler-symbol LC62 .LC62
     ; compiler-symbol LC43 .LC43
     ; compiler-symbol LC61 .LC61
-    ; compiler-symbol L815 .L815
+    ; compiler-symbol L813 .L813
     ; compiler-symbol LC45 .LC45
     ; compiler-symbol LC44 .LC44
     ; compiler-symbol LC47 .LC47
@@ -616,113 +616,113 @@
     ; compiler-symbol LC55 .LC55
     ; compiler-symbol LC56 .LC56
     ; compiler-symbol LC57 .LC57
-    ; compiler-symbol L820 .L820
-    ; compiler-symbol L821 .L821
-    ; compiler-symbol L824 .L824
+    ; compiler-symbol L818 .L818
+    ; compiler-symbol L819 .L819
+    ; compiler-symbol L822 .L822
     ; compiler-symbol LC65 .LC65
+    ; compiler-symbol L825 .L825
     ; compiler-symbol L827 .L827
-    ; compiler-symbol L829 .L829
-    ; compiler-symbol L837 .L837
-    ; compiler-symbol L834 .L834
-    ; compiler-symbol L833 .L833
-    ; compiler-symbol L861 .L861
-    ; compiler-symbol L840 .L840
-    ; compiler-symbol L845 .L845
-    ; compiler-symbol L844 .L844
-    ; compiler-symbol L842 .L842
-    ; compiler-symbol L850 .L850
-    ; compiler-symbol L849 .L849
-    ; compiler-symbol L851 .L851
+    ; compiler-symbol L835 .L835
+    ; compiler-symbol L832 .L832
+    ; compiler-symbol L831 .L831
+    ; compiler-symbol L859 .L859
+    ; compiler-symbol L838 .L838
     ; compiler-symbol L843 .L843
-    ; compiler-symbol L862 .L862
-    ; compiler-symbol L877 .L877
-    ; compiler-symbol L870 .L870
-    ; compiler-symbol L874 .L874
-    ; compiler-symbol L871 .L871
-    ; compiler-symbol L872 .L872
-    ; compiler-symbol L867 .L867
+    ; compiler-symbol L842 .L842
+    ; compiler-symbol L840 .L840
+    ; compiler-symbol L848 .L848
+    ; compiler-symbol L847 .L847
+    ; compiler-symbol L849 .L849
+    ; compiler-symbol L841 .L841
+    ; compiler-symbol L860 .L860
     ; compiler-symbol L875 .L875
-    ; compiler-symbol L882 .L882
-    ; compiler-symbol L885 .L885
-    ; compiler-symbol L886 .L886
+    ; compiler-symbol L868 .L868
+    ; compiler-symbol L872 .L872
+    ; compiler-symbol L869 .L869
+    ; compiler-symbol L870 .L870
+    ; compiler-symbol L865 .L865
+    ; compiler-symbol L873 .L873
+    ; compiler-symbol L880 .L880
+    ; compiler-symbol L883 .L883
+    ; compiler-symbol L884 .L884
+    ; compiler-symbol L887 .L887
+    ; compiler-symbol L888 .L888
     ; compiler-symbol L889 .L889
-    ; compiler-symbol L890 .L890
-    ; compiler-symbol L891 .L891
-    ; compiler-symbol L899 .L899
-    ; compiler-symbol L898 .L898
-    ; compiler-symbol L911 .L911
-    ; compiler-symbol L915 .L915
+    ; compiler-symbol L897 .L897
+    ; compiler-symbol L896 .L896
+    ; compiler-symbol L909 .L909
+    ; compiler-symbol L913 .L913
+    ; compiler-symbol L906 .L906
+    ; compiler-symbol L905 .L905
     ; compiler-symbol L908 .L908
     ; compiler-symbol L907 .L907
-    ; compiler-symbol L910 .L910
-    ; compiler-symbol L909 .L909
-    ; compiler-symbol L920 .L920
-    ; compiler-symbol L929 .L929
     ; compiler-symbol L918 .L918
-    ; compiler-symbol L924 .L924
-    ; compiler-symbol L930 .L930
-    ; compiler-symbol L921 .L921
-    ; compiler-symbol L923 .L923
-    ; compiler-symbol L931 .L931
+    ; compiler-symbol L927 .L927
+    ; compiler-symbol L916 .L916
     ; compiler-symbol L922 .L922
-    ; compiler-symbol L934 .L934
-    ; compiler-symbol L933 .L933
+    ; compiler-symbol L928 .L928
+    ; compiler-symbol L919 .L919
+    ; compiler-symbol L921 .L921
+    ; compiler-symbol L929 .L929
+    ; compiler-symbol L920 .L920
     ; compiler-symbol L932 .L932
-    ; compiler-symbol L949 .L949
+    ; compiler-symbol L931 .L931
+    ; compiler-symbol L930 .L930
+    ; compiler-symbol L947 .L947
+    ; compiler-symbol L937 .L937
+    ; compiler-symbol L944 .L944
+    ; compiler-symbol L938 .L938
+    ; compiler-symbol L948 .L948
     ; compiler-symbol L939 .L939
-    ; compiler-symbol L946 .L946
     ; compiler-symbol L940 .L940
-    ; compiler-symbol L950 .L950
     ; compiler-symbol L941 .L941
     ; compiler-symbol L942 .L942
+    ; compiler-symbol L949 .L949
     ; compiler-symbol L943 .L943
-    ; compiler-symbol L944 .L944
-    ; compiler-symbol L951 .L951
-    ; compiler-symbol L945 .L945
-    ; compiler-symbol L952 .L952
+    ; compiler-symbol L950 .L950
+    ; compiler-symbol L953 .L953
+    ; compiler-symbol L954 .L954
     ; compiler-symbol L955 .L955
-    ; compiler-symbol L956 .L956
-    ; compiler-symbol L957 .L957
+    ; compiler-symbol L958 .L958
+    ; compiler-symbol L965 .L965
     ; compiler-symbol L960 .L960
-    ; compiler-symbol L967 .L967
+    ; compiler-symbol L961 .L961
+    ; compiler-symbol L969 .L969
     ; compiler-symbol L962 .L962
     ; compiler-symbol L963 .L963
-    ; compiler-symbol L971 .L971
+    ; compiler-symbol L970 .L970
     ; compiler-symbol L964 .L964
-    ; compiler-symbol L965 .L965
     ; compiler-symbol L972 .L972
-    ; compiler-symbol L966 .L966
-    ; compiler-symbol L974 .L974
-    ; compiler-symbol L975 .L975
-    ; compiler-symbol L976 .L976
     ; compiler-symbol L973 .L973
-    ; compiler-symbol L997 .L997
+    ; compiler-symbol L974 .L974
+    ; compiler-symbol L971 .L971
+    ; compiler-symbol L995 .L995
+    ; compiler-symbol L976 .L976
+    ; compiler-symbol L981 .L981
     ; compiler-symbol L978 .L978
-    ; compiler-symbol L983 .L983
-    ; compiler-symbol L980 .L980
+    ; compiler-symbol L998 .L998
+    ; compiler-symbol L984 .L984
+    ; compiler-symbol L999 .L999
     ; compiler-symbol L1000 .L1000
-    ; compiler-symbol L986 .L986
     ; compiler-symbol L1001 .L1001
     ; compiler-symbol L1002 .L1002
     ; compiler-symbol L1003 .L1003
-    ; compiler-symbol L1004 .L1004
-    ; compiler-symbol L1005 .L1005
-    ; compiler-symbol L1014 .L1014
-    ; compiler-symbol L1013 .L1013
-    ; compiler-symbol L1020 .L1020
-    ; compiler-symbol L1021 .L1021
-    ; compiler-symbol L1022 .L1022
-    ; compiler-symbol L1037 .L1037
-    ; compiler-symbol L1030 .L1030
-    ; compiler-symbol L1029 .L1029
-    ; compiler-symbol L1044 .L1044
-    ; compiler-symbol L1048 .L1048
-    ; compiler-symbol L1027 .L1027
+    ; compiler-symbol L1012 .L1012
+    ; compiler-symbol L1011 .L1011
+    ; compiler-symbol L1018 .L1018
     ; compiler-symbol L1019 .L1019
+    ; compiler-symbol L1020 .L1020
     ; compiler-symbol L1035 .L1035
-    ; compiler-symbol L1034 .L1034
-    ; compiler-symbol L1050 .L1050
-    ; compiler-symbol L1049 .L1049
+    ; compiler-symbol L1028 .L1028
+    ; compiler-symbol L1027 .L1027
+    ; compiler-symbol L1042 .L1042
+    ; compiler-symbol L1046 .L1046
+    ; compiler-symbol L1025 .L1025
+    ; compiler-symbol L1017 .L1017
+    ; compiler-symbol L1033 .L1033
+    ; compiler-symbol L1032 .L1032
+    ; compiler-symbol L1048 .L1048
+    ; compiler-symbol L1047 .L1047
     ; compiler-symbol LC67 .LC67
     ; compiler-symbol LC68 .LC68
     ; compiler-symbol LC69 .LC69
@@ -751,65 +751,65 @@
     ; compiler-symbol LC92 .LC92
     ; compiler-symbol LC93 .LC93
     ; compiler-symbol LC94 .LC94
-    ; compiler-symbol L1086 .L1086
-    ; compiler-symbol L1052 .L1052
-    ; compiler-symbol L1055 .L1055
-    ; compiler-symbol L1060 .L1060
-    ; compiler-symbol L1056 .L1056
-    ; compiler-symbol L1059 .L1059
-    ; compiler-symbol L1070 .L1070
-    ; compiler-symbol L1057 .L1057
-    ; compiler-symbol L1054 .L1054
-    ; compiler-symbol L1061 .L1061
-    ; compiler-symbol L1087 .L1087
-    ; compiler-symbol L1062 .L1062
-    ; compiler-symbol L1063 .L1063
-    ; compiler-symbol L1067 .L1067
-    ; compiler-symbol L1066 .L1066
-    ; compiler-symbol L1065 .L1065
+    ; compiler-symbol L1084 .L1084
+    ; compiler-symbol L1050 .L1050
     ; compiler-symbol L1053 .L1053
+    ; compiler-symbol L1058 .L1058
+    ; compiler-symbol L1054 .L1054
+    ; compiler-symbol L1057 .L1057
+    ; compiler-symbol L1068 .L1068
+    ; compiler-symbol L1055 .L1055
+    ; compiler-symbol L1052 .L1052
+    ; compiler-symbol L1059 .L1059
+    ; compiler-symbol L1085 .L1085
+    ; compiler-symbol L1060 .L1060
+    ; compiler-symbol L1061 .L1061
+    ; compiler-symbol L1065 .L1065
+    ; compiler-symbol L1064 .L1064
+    ; compiler-symbol L1063 .L1063
+    ; compiler-symbol L1051 .L1051
     ; compiler-symbol LC95 .LC95
     ; compiler-symbol LC96 .LC96
     ; compiler-symbol LC97 .LC97
     ; compiler-symbol LC98 .LC98
-    ; compiler-symbol L1132 .L1132
+    ; compiler-symbol L1130 .L1130
+    ; compiler-symbol L1098 .L1098
     ; compiler-symbol L1100 .L1100
     ; compiler-symbol L1102 .L1102
-    ; compiler-symbol L1104 .L1104
-    ; compiler-symbol L1109 .L1109
-    ; compiler-symbol L1108 .L1108
-    ; compiler-symbol L1133 .L1133
-    ; compiler-symbol L1111 .L1111
-    ; compiler-symbol L1105 .L1105
-    ; compiler-symbol L1106 .L1106
     ; compiler-symbol L1107 .L1107
+    ; compiler-symbol L1106 .L1106
+    ; compiler-symbol L1131 .L1131
+    ; compiler-symbol L1109 .L1109
+    ; compiler-symbol L1103 .L1103
+    ; compiler-symbol L1104 .L1104
+    ; compiler-symbol L1105 .L1105
+    ; compiler-symbol L1110 .L1110
+    ; compiler-symbol L1111 .L1111
     ; compiler-symbol L1112 .L1112
-    ; compiler-symbol L1113 .L1113
-    ; compiler-symbol L1114 .L1114
-    ; compiler-symbol L1159 .L1159
-    ; compiler-symbol L1160 .L1160
-    ; compiler-symbol L1143 .L1143
-    ; compiler-symbol L1146 .L1146
+    ; compiler-symbol L1157 .L1157
+    ; compiler-symbol L1158 .L1158
+    ; compiler-symbol L1141 .L1141
     ; compiler-symbol L1144 .L1144
-    ; compiler-symbol L1147 .L1147
     ; compiler-symbol L1142 .L1142
-    ; compiler-symbol L1136 .L1136
-    ; compiler-symbol L1173 .L1173
-    ; compiler-symbol L1162 .L1162
+    ; compiler-symbol L1145 .L1145
+    ; compiler-symbol L1140 .L1140
+    ; compiler-symbol L1134 .L1134
+    ; compiler-symbol L1171 .L1171
+    ; compiler-symbol L1160 .L1160
+    ; compiler-symbol L1161 .L1161
+    ; compiler-symbol L1164 .L1164
+    ; compiler-symbol L1172 .L1172
     ; compiler-symbol L1163 .L1163
-    ; compiler-symbol L1166 .L1166
-    ; compiler-symbol L1174 .L1174
     ; compiler-symbol L1165 .L1165
-    ; compiler-symbol L1167 .L1167
-    ; compiler-symbol L1184 .L1184
-    ; compiler-symbol L1180 .L1180
     ; compiler-symbol L1182 .L1182
-    ; compiler-symbol L1186 .L1186
+    ; compiler-symbol L1178 .L1178
+    ; compiler-symbol L1180 .L1180
+    ; compiler-symbol L1184 .L1184
     ; compiler-symbol LC99 .LC99
-    ; compiler-symbol L1192 .L1192
-    ; compiler-symbol L1198 .L1198
-    ; compiler-symbol L1205 .L1205
-    ; compiler-symbol L1206 .L1206
+    ; compiler-symbol L1190 .L1190
+    ; compiler-symbol L1196 .L1196
+    ; compiler-symbol L1203 .L1203
+    ; compiler-symbol L1204 .L1204
     ; compiler-symbol LC100 .LC100
     ; compiler-symbol LC101 .LC101
     ; compiler-symbol LC103 .LC103
@@ -823,186 +823,196 @@
     ; compiler-symbol LC111 .LC111
     ; compiler-symbol LC112 .LC112
     ; compiler-symbol LC113 .LC113
-    ; compiler-symbol L1213 .L1213
-    ; compiler-symbol L1402 .L1402
-    ; compiler-symbol L1330 .L1330
+    ; compiler-symbol L1211 .L1211
+    ; compiler-symbol L1426 .L1426
+    ; compiler-symbol L1340 .L1340
+    ; compiler-symbol L1212 .L1212
     ; compiler-symbol L1214 .L1214
-    ; compiler-symbol L1216 .L1216
-    ; compiler-symbol L1223 .L1223
-    ; compiler-symbol L1222 .L1222
     ; compiler-symbol L1221 .L1221
     ; compiler-symbol L1220 .L1220
     ; compiler-symbol L1219 .L1219
     ; compiler-symbol L1218 .L1218
-    ; compiler-symbol L1215 .L1215
     ; compiler-symbol L1217 .L1217
-    ; compiler-symbol L1280 .L1280
-    ; compiler-symbol L1288 .L1288
-    ; compiler-symbol L1287 .L1287
+    ; compiler-symbol L1216 .L1216
+    ; compiler-symbol L1213 .L1213
+    ; compiler-symbol L1215 .L1215
+    ; compiler-symbol L1278 .L1278
     ; compiler-symbol L1286 .L1286
     ; compiler-symbol L1285 .L1285
     ; compiler-symbol L1284 .L1284
     ; compiler-symbol L1283 .L1283
     ; compiler-symbol L1282 .L1282
     ; compiler-symbol L1281 .L1281
+    ; compiler-symbol L1280 .L1280
     ; compiler-symbol L1279 .L1279
-    ; compiler-symbol L1278 .L1278
+    ; compiler-symbol L1277 .L1277
+    ; compiler-symbol L1276 .L1276
+    ; compiler-symbol L1222 .L1222
     ; compiler-symbol L1224 .L1224
-    ; compiler-symbol L1226 .L1226
-    ; compiler-symbol L1332 .L1332
-    ; compiler-symbol L1230 .L1230
-    ; compiler-symbol L1229 .L1229
+    ; compiler-symbol L1342 .L1342
     ; compiler-symbol L1228 .L1228
     ; compiler-symbol L1227 .L1227
-    ; compiler-symbol L1243 .L1243
-    ; compiler-symbol L1333 .L1333
+    ; compiler-symbol L1226 .L1226
+    ; compiler-symbol L1225 .L1225
+    ; compiler-symbol L1241 .L1241
+    ; compiler-symbol L1343 .L1343
+    ; compiler-symbol L1230 .L1230
     ; compiler-symbol L1232 .L1232
-    ; compiler-symbol L1234 .L1234
-    ; compiler-symbol L1263 .L1263
-    ; compiler-symbol L1253 .L1253
+    ; compiler-symbol L1261 .L1261
     ; compiler-symbol L1251 .L1251
-    ; compiler-symbol L1262 .L1262
-    ; compiler-symbol L1334 .L1334
-    ; compiler-symbol L1248 .L1248
-    ; compiler-symbol L1259 .L1259
-    ; compiler-symbol L1258 .L1258
-    ; compiler-symbol L1245 .L1245
+    ; compiler-symbol L1249 .L1249
+    ; compiler-symbol L1260 .L1260
+    ; compiler-symbol L1344 .L1344
+    ; compiler-symbol L1246 .L1246
     ; compiler-symbol L1257 .L1257
     ; compiler-symbol L1256 .L1256
+    ; compiler-symbol L1243 .L1243
     ; compiler-symbol L1255 .L1255
     ; compiler-symbol L1254 .L1254
-    ; compiler-symbol L1244 .L1244
-    ; compiler-symbol L1242 .L1242
-    ; compiler-symbol L1241 .L1241
+    ; compiler-symbol L1253 .L1253
     ; compiler-symbol L1252 .L1252
+    ; compiler-symbol L1242 .L1242
     ; compiler-symbol L1240 .L1240
     ; compiler-symbol L1239 .L1239
-    ; compiler-symbol L1237 .L1237
-    ; compiler-symbol L1236 .L1236
-    ; compiler-symbol L1235 .L1235
     ; compiler-symbol L1250 .L1250
-    ; compiler-symbol L1249 .L1249
-    ; compiler-symbol L1246 .L1246
+    ; compiler-symbol L1238 .L1238
+    ; compiler-symbol L1237 .L1237
+    ; compiler-symbol L1235 .L1235
+    ; compiler-symbol L1234 .L1234
     ; compiler-symbol L1233 .L1233
+    ; compiler-symbol L1248 .L1248
+    ; compiler-symbol L1247 .L1247
+    ; compiler-symbol L1244 .L1244
+    ; compiler-symbol L1231 .L1231
     ; compiler-symbol LC114 .LC114
     ; compiler-symbol LC115 .LC115
     ; compiler-symbol LC116 .LC116
     ; compiler-symbol LC117 .LC117
-    ; compiler-symbol L1329 .L1329
-    ; compiler-symbol L1320 .L1320
-    ; compiler-symbol L1321 .L1321
-    ; compiler-symbol L1322 .L1322
-    ; compiler-symbol L1403 .L1403
-    ; compiler-symbol L1291 .L1291
-    ; compiler-symbol L1404 .L1404
-    ; compiler-symbol L1319 .L1319
-    ; compiler-symbol L1290 .L1290
-    ; compiler-symbol L1324 .L1324
-    ; compiler-symbol L1326 .L1326
-    ; compiler-symbol L1328 .L1328
-    ; compiler-symbol L1231 .L1231
-    ; compiler-symbol L1405 .L1405
-    ; compiler-symbol L1271 .L1271
-    ; compiler-symbol L1276 .L1276
-    ; compiler-symbol L1406 .L1406
-    ; compiler-symbol L1272 .L1272
-    ; compiler-symbol L1274 .L1274
-    ; compiler-symbol L1275 .L1275
-    ; compiler-symbol L1399 .L1399
-    ; compiler-symbol L1335 .L1335
-    ; compiler-symbol L1407 .L1407
-    ; compiler-symbol L1394 .L1394
-    ; compiler-symbol L1293 .L1293
-    ; compiler-symbol L1341 .L1341
-    ; compiler-symbol L1408 .L1408
-    ; compiler-symbol L1294 .L1294
+    ; compiler-symbol L1339 .L1339
+    ; compiler-symbol L1330 .L1330
+    ; compiler-symbol L1331 .L1331
+    ; compiler-symbol L1332 .L1332
     ; compiler-symbol L1300 .L1300
-    ; compiler-symbol L1345 .L1345
-    ; compiler-symbol L1313 .L1313
-    ; compiler-symbol L1303 .L1303
-    ; compiler-symbol L1409 .L1409
-    ; compiler-symbol L1304 .L1304
-    ; compiler-symbol L1306 .L1306
-    ; compiler-symbol L1312 .L1312
-    ; compiler-symbol L1346 .L1346
-    ; compiler-symbol L1308 .L1308
-    ; compiler-symbol L1311 .L1311
-    ; compiler-symbol L1410 .L1410
-    ; compiler-symbol L1310 .L1310
-    ; compiler-symbol L1309 .L1309
-    ; compiler-symbol L1397 .L1397
-    ; compiler-symbol L1302 .L1302
-    ; compiler-symbol L1348 .L1348
-    ; compiler-symbol L1315 .L1315
-    ; compiler-symbol L1317 .L1317
-    ; compiler-symbol L1400 .L1400
-    ; compiler-symbol L1314 .L1314
-    ; compiler-symbol L1305 .L1305
-    ; compiler-symbol L1298 .L1298
-    ; compiler-symbol L1295 .L1295
-    ; compiler-symbol L1411 .L1411
-    ; compiler-symbol L1297 .L1297
+    ; compiler-symbol L1296 .L1296
     ; compiler-symbol L1299 .L1299
+    ; compiler-symbol L1427 .L1427
+    ; compiler-symbol L1301 .L1301
+    ; compiler-symbol L1428 .L1428
+    ; compiler-symbol L1329 .L1329
+    ; compiler-symbol L1424 .L1424
+    ; compiler-symbol L1295 .L1295
+    ; compiler-symbol L1294 .L1294
+    ; compiler-symbol L1293 .L1293
+    ; compiler-symbol L1291 .L1291
+    ; compiler-symbol L1292 .L1292
+    ; compiler-symbol L1287 .L1287
+    ; compiler-symbol L1289 .L1289
+    ; compiler-symbol L1334 .L1334
+    ; compiler-symbol L1336 .L1336
+    ; compiler-symbol L1338 .L1338
+    ; compiler-symbol L1229 .L1229
+    ; compiler-symbol L1429 .L1429
+    ; compiler-symbol L1269 .L1269
+    ; compiler-symbol L1274 .L1274
+    ; compiler-symbol L1430 .L1430
+    ; compiler-symbol L1270 .L1270
+    ; compiler-symbol L1272 .L1272
+    ; compiler-symbol L1273 .L1273
+    ; compiler-symbol L1422 .L1422
+    ; compiler-symbol L1345 .L1345
+    ; compiler-symbol L1431 .L1431
+    ; compiler-symbol L1414 .L1414
+    ; compiler-symbol L1303 .L1303
+    ; compiler-symbol L1354 .L1354
+    ; compiler-symbol L1432 .L1432
+    ; compiler-symbol L1304 .L1304
+    ; compiler-symbol L1310 .L1310
+    ; compiler-symbol L1358 .L1358
+    ; compiler-symbol L1323 .L1323
+    ; compiler-symbol L1313 .L1313
+    ; compiler-symbol L1433 .L1433
+    ; compiler-symbol L1314 .L1314
+    ; compiler-symbol L1316 .L1316
+    ; compiler-symbol L1322 .L1322
+    ; compiler-symbol L1359 .L1359
+    ; compiler-symbol L1318 .L1318
+    ; compiler-symbol L1321 .L1321
+    ; compiler-symbol L1434 .L1434
+    ; compiler-symbol L1320 .L1320
+    ; compiler-symbol L1319 .L1319
+    ; compiler-symbol L1420 .L1420
+    ; compiler-symbol L1312 .L1312
+    ; compiler-symbol L1361 .L1361
+    ; compiler-symbol L1325 .L1325
+    ; compiler-symbol L1327 .L1327
+    ; compiler-symbol L1423 .L1423
+    ; compiler-symbol L1324 .L1324
+    ; compiler-symbol L1315 .L1315
+    ; compiler-symbol L1308 .L1308
+    ; compiler-symbol L1305 .L1305
+    ; compiler-symbol L1435 .L1435
+    ; compiler-symbol L1307 .L1307
+    ; compiler-symbol L1309 .L1309
     ; compiler-symbol LC118 .LC118
     ; compiler-symbol LC119 .LC119
     ; compiler-symbol LC120 .LC120
     ; compiler-symbol LC121 .LC121
-    ; compiler-symbol L1445 .L1445
-    ; compiler-symbol L1413 .L1413
-    ; compiler-symbol L1430 .L1430
-    ; compiler-symbol L1431 .L1431
-    ; compiler-symbol L1412 .L1412
-    ; compiler-symbol L1433 .L1433
-    ; compiler-symbol L1419 .L1419
-    ; compiler-symbol L1418 .L1418
-    ; compiler-symbol L1446 .L1446
-    ; compiler-symbol L1417 .L1417
-    ; compiler-symbol L1424 .L1424
-    ; compiler-symbol L1442 .L1442
-    ; compiler-symbol L1447 .L1447
-    ; compiler-symbol L1422 .L1422
-    ; compiler-symbol L1423 .L1423
+    ; compiler-symbol L1469 .L1469
+    ; compiler-symbol L1437 .L1437
+    ; compiler-symbol L1454 .L1454
+    ; compiler-symbol L1455 .L1455
+    ; compiler-symbol L1436 .L1436
+    ; compiler-symbol L1457 .L1457
     ; compiler-symbol L1443 .L1443
+    ; compiler-symbol L1442 .L1442
+    ; compiler-symbol L1470 .L1470
+    ; compiler-symbol L1441 .L1441
     ; compiler-symbol L1448 .L1448
-    ; compiler-symbol L1427 .L1427
-    ; compiler-symbol L1428 .L1428
-    ; compiler-symbol L1429 .L1429
+    ; compiler-symbol L1466 .L1466
+    ; compiler-symbol L1471 .L1471
+    ; compiler-symbol L1446 .L1446
+    ; compiler-symbol L1447 .L1447
+    ; compiler-symbol L1467 .L1467
+    ; compiler-symbol L1472 .L1472
+    ; compiler-symbol L1451 .L1451
+    ; compiler-symbol L1452 .L1452
+    ; compiler-symbol L1453 .L1453
     ; compiler-symbol LC122 .LC122
     ; compiler-symbol LC123 .LC123
     ; compiler-symbol LC124 .LC124
-    ; compiler-symbol L1461 .L1461
-    ; compiler-symbol L1449 .L1449
-    ; compiler-symbol L1462 .L1462
-    ; compiler-symbol L1457 .L1457
-    ; compiler-symbol L1456 .L1456
-    ; compiler-symbol L1463 .L1463
-    ; compiler-symbol L1471 .L1471
-    ; compiler-symbol L1464 .L1464
+    ; compiler-symbol L1485 .L1485
     ; compiler-symbol L1473 .L1473
-    ; compiler-symbol L1477 .L1477
-    ; compiler-symbol L1491 .L1491
-    ; compiler-symbol L1478 .L1478
-    ; compiler-symbol L1493 .L1493
+    ; compiler-symbol L1486 .L1486
+    ; compiler-symbol L1481 .L1481
+    ; compiler-symbol L1480 .L1480
+    ; compiler-symbol L1487 .L1487
+    ; compiler-symbol L1495 .L1495
+    ; compiler-symbol L1488 .L1488
     ; compiler-symbol L1497 .L1497
-    ; compiler-symbol L1499 .L1499
-    ; compiler-symbol L1510 .L1510
+    ; compiler-symbol L1501 .L1501
+    ; compiler-symbol L1515 .L1515
     ; compiler-symbol L1502 .L1502
-    ; compiler-symbol L1503 .L1503
-    ; compiler-symbol L1505 .L1505
-    ; compiler-symbol L1509 .L1509
+    ; compiler-symbol L1517 .L1517
+    ; compiler-symbol L1521 .L1521
+    ; compiler-symbol L1523 .L1523
+    ; compiler-symbol L1534 .L1534
     ; compiler-symbol L1526 .L1526
     ; compiler-symbol L1527 .L1527
-    ; compiler-symbol L1530 .L1530
-    ; compiler-symbol L1531 .L1531
-    ; compiler-symbol L1539 .L1539
-    ; compiler-symbol L1542 .L1542
-    ; compiler-symbol L1544 .L1544
-    ; compiler-symbol L1546 .L1546
-    ; compiler-symbol L1548 .L1548
+    ; compiler-symbol L1529 .L1529
+    ; compiler-symbol L1533 .L1533
     ; compiler-symbol L1550 .L1550
-    ; compiler-symbol L1552 .L1552
+    ; compiler-symbol L1551 .L1551
     ; compiler-symbol L1554 .L1554
-    ; compiler-symbol L1557 .L1557
+    ; compiler-symbol L1555 .L1555
+    ; compiler-symbol L1563 .L1563
+    ; compiler-symbol L1566 .L1566
+    ; compiler-symbol L1568 .L1568
+    ; compiler-symbol L1570 .L1570
+    ; compiler-symbol L1572 .L1572
+    ; compiler-symbol L1574 .L1574
+    ; compiler-symbol L1576 .L1576
+    ; compiler-symbol L1578 .L1578
+    ; compiler-symbol L1581 .L1581
     ; compiler-symbol LC125 .LC125
     ; compiler-symbol LC126 .LC126
     ; compiler-symbol LC127 .LC127
@@ -1022,475 +1032,475 @@
     ; compiler-symbol LC141 .LC141
     ; compiler-symbol LC142 .LC142
     ; compiler-symbol LC143 .LC143
-    ; compiler-symbol L1574 .L1574
-    ; compiler-symbol L1584 .L1584
-    ; compiler-symbol L1595 .L1595
-    ; compiler-symbol L1594 .L1594
-    ; compiler-symbol L1596 .L1596
-    ; compiler-symbol L1603 .L1603
-    ; compiler-symbol L1604 .L1604
-    ; compiler-symbol L1610 .L1610
-    ; compiler-symbol L1624 .L1624
-    ; compiler-symbol L1625 .L1625
-    ; compiler-symbol L1626 .L1626
-    ; compiler-symbol L1614 .L1614
-    ; compiler-symbol LC144 .LC144
-    ; compiler-symbol L1631 .L1631
+    ; compiler-symbol L1598 .L1598
+    ; compiler-symbol L1608 .L1608
+    ; compiler-symbol L1619 .L1619
+    ; compiler-symbol L1618 .L1618
+    ; compiler-symbol L1620 .L1620
     ; compiler-symbol L1627 .L1627
-    ; compiler-symbol L1637 .L1637
-    ; compiler-symbol L1629 .L1629
+    ; compiler-symbol L1628 .L1628
+    ; compiler-symbol L1634 .L1634
+    ; compiler-symbol L1648 .L1648
+    ; compiler-symbol L1649 .L1649
+    ; compiler-symbol L1650 .L1650
     ; compiler-symbol L1638 .L1638
-    ; compiler-symbol L1640 .L1640
-    ; compiler-symbol L1645 .L1645
-    ; compiler-symbol L1641 .L1641
-    ; compiler-symbol L1679 .L1679
-    ; compiler-symbol L1659 .L1659
-    ; compiler-symbol L1665 .L1665
-    ; compiler-symbol L1661 .L1661
-    ; compiler-symbol L1680 .L1680
-    ; compiler-symbol L1664 .L1664
-    ; compiler-symbol L1663 .L1663
-    ; compiler-symbol L1658 .L1658
-    ; compiler-symbol L1683 .L1683
-    ; compiler-symbol L1681 .L1681
-    ; compiler-symbol L1653 .L1653
-    ; compiler-symbol L1652 .L1652
-    ; compiler-symbol L1654 .L1654
-    ; compiler-symbol L1682 .L1682
+    ; compiler-symbol LC144 .LC144
     ; compiler-symbol L1655 .L1655
-    ; compiler-symbol L1666 .L1666
     ; compiler-symbol L1651 .L1651
-    ; compiler-symbol L1685 .L1685
+    ; compiler-symbol L1661 .L1661
+    ; compiler-symbol L1653 .L1653
+    ; compiler-symbol L1662 .L1662
+    ; compiler-symbol L1664 .L1664
+    ; compiler-symbol L1669 .L1669
+    ; compiler-symbol L1665 .L1665
+    ; compiler-symbol L1703 .L1703
+    ; compiler-symbol L1683 .L1683
     ; compiler-symbol L1689 .L1689
-    ; compiler-symbol L1690 .L1690
-    ; compiler-symbol L1700 .L1700
-    ; compiler-symbol L1701 .L1701
-    ; compiler-symbol L1697 .L1697
-    ; compiler-symbol L1699 .L1699
+    ; compiler-symbol L1685 .L1685
+    ; compiler-symbol L1704 .L1704
+    ; compiler-symbol L1688 .L1688
+    ; compiler-symbol L1687 .L1687
+    ; compiler-symbol L1682 .L1682
+    ; compiler-symbol L1707 .L1707
     ; compiler-symbol L1705 .L1705
+    ; compiler-symbol L1677 .L1677
+    ; compiler-symbol L1676 .L1676
+    ; compiler-symbol L1678 .L1678
+    ; compiler-symbol L1706 .L1706
+    ; compiler-symbol L1679 .L1679
+    ; compiler-symbol L1690 .L1690
+    ; compiler-symbol L1675 .L1675
     ; compiler-symbol L1709 .L1709
-    ; compiler-symbol L1714 .L1714
-    ; compiler-symbol L1712 .L1712
-    ; compiler-symbol L1716 .L1716
-    ; compiler-symbol L1719 .L1719
     ; compiler-symbol L1713 .L1713
-    ; compiler-symbol L1722 .L1722
-    ; compiler-symbol L1720 .L1720
-    ; compiler-symbol L1727 .L1727
-    ; compiler-symbol L1732 .L1732
+    ; compiler-symbol L1714 .L1714
+    ; compiler-symbol L1724 .L1724
+    ; compiler-symbol L1725 .L1725
+    ; compiler-symbol L1721 .L1721
+    ; compiler-symbol L1723 .L1723
+    ; compiler-symbol L1729 .L1729
+    ; compiler-symbol L1733 .L1733
+    ; compiler-symbol L1738 .L1738
+    ; compiler-symbol L1736 .L1736
+    ; compiler-symbol L1740 .L1740
+    ; compiler-symbol L1743 .L1743
+    ; compiler-symbol L1737 .L1737
+    ; compiler-symbol L1746 .L1746
+    ; compiler-symbol L1744 .L1744
+    ; compiler-symbol L1751 .L1751
+    ; compiler-symbol L1756 .L1756
     ; compiler-symbol LC145 .LC145
     ; compiler-symbol LC146 .LC146
     ; compiler-symbol LC147 .LC147
     ; compiler-symbol LC148 .LC148
     ; compiler-symbol LC149 .LC149
-    ; compiler-symbol L1739 .L1739
-    ; compiler-symbol L1738 .L1738
-    ; compiler-symbol L1734 .L1734
-    ; compiler-symbol L1736 .L1736
-    ; compiler-symbol L1737 .L1737
-    ; compiler-symbol L1743 .L1743
+    ; compiler-symbol L1763 .L1763
+    ; compiler-symbol L1762 .L1762
+    ; compiler-symbol L1758 .L1758
+    ; compiler-symbol L1760 .L1760
+    ; compiler-symbol L1761 .L1761
+    ; compiler-symbol L1767 .L1767
     ; compiler-symbol LC150 .LC150
-    ; compiler-symbol L1746 .L1746
-    ; compiler-symbol L1747 .L1747
-    ; compiler-symbol L1749 .L1749
     ; compiler-symbol L1770 .L1770
     ; compiler-symbol L1771 .L1771
-    ; compiler-symbol L1775 .L1775
-    ; compiler-symbol L1766 .L1766
-    ; compiler-symbol L1778 .L1778
-    ; compiler-symbol L1767 .L1767
-    ; compiler-symbol L1776 .L1776
-    ; compiler-symbol L1777 .L1777
-    ; compiler-symbol L1769 .L1769
-    ; compiler-symbol L1781 .L1781
-    ; compiler-symbol L1788 .L1788
-    ; compiler-symbol L1783 .L1783
-    ; compiler-symbol L1789 .L1789
-    ; compiler-symbol L1786 .L1786
-    ; compiler-symbol LC151 .LC151
-    ; compiler-symbol L1796 .L1796
-    ; compiler-symbol L1795 .L1795
-    ; compiler-symbol L1791 .L1791
-    ; compiler-symbol L1804 .L1804
-    ; compiler-symbol L1790 .L1790
-    ; compiler-symbol L1793 .L1793
+    ; compiler-symbol L1773 .L1773
     ; compiler-symbol L1794 .L1794
-    ; compiler-symbol LC152 .LC152
-    ; compiler-symbol L1811 .L1811
+    ; compiler-symbol L1795 .L1795
+    ; compiler-symbol L1799 .L1799
+    ; compiler-symbol L1790 .L1790
+    ; compiler-symbol L1802 .L1802
+    ; compiler-symbol L1791 .L1791
+    ; compiler-symbol L1800 .L1800
+    ; compiler-symbol L1801 .L1801
+    ; compiler-symbol L1793 .L1793
+    ; compiler-symbol L1805 .L1805
     ; compiler-symbol L1812 .L1812
-    ; compiler-symbol L1808 .L1808
-    ; compiler-symbol LC153 .LC153
-    ; compiler-symbol L1814 .L1814
+    ; compiler-symbol L1807 .L1807
+    ; compiler-symbol L1813 .L1813
+    ; compiler-symbol L1810 .L1810
+    ; compiler-symbol LC151 .LC151
+    ; compiler-symbol L1820 .L1820
+    ; compiler-symbol L1819 .L1819
     ; compiler-symbol L1815 .L1815
-    ; compiler-symbol L1824 .L1824
+    ; compiler-symbol L1828 .L1828
+    ; compiler-symbol L1814 .L1814
     ; compiler-symbol L1817 .L1817
     ; compiler-symbol L1818 .L1818
-    ; compiler-symbol LC154 .LC154
-    ; compiler-symbol L1829 .L1829
-    ; compiler-symbol L1827 .L1827
-    ; compiler-symbol L1833 .L1833
-    ; compiler-symbol L1831 .L1831
-    ; compiler-symbol L1846 .L1846
-    ; compiler-symbol L1837 .L1837
-    ; compiler-symbol L1854 .L1854
-    ; compiler-symbol L1855 .L1855
-    ; compiler-symbol L1844 .L1844
+    ; compiler-symbol LC152 .LC152
+    ; compiler-symbol L1835 .L1835
+    ; compiler-symbol L1836 .L1836
+    ; compiler-symbol L1832 .L1832
+    ; compiler-symbol LC153 .LC153
+    ; compiler-symbol L1838 .L1838
     ; compiler-symbol L1839 .L1839
-    ; compiler-symbol L1840 .L1840
-    ; compiler-symbol L1863 .L1863
+    ; compiler-symbol L1848 .L1848
+    ; compiler-symbol L1841 .L1841
+    ; compiler-symbol L1842 .L1842
+    ; compiler-symbol LC154 .LC154
+    ; compiler-symbol L1853 .L1853
+    ; compiler-symbol L1851 .L1851
+    ; compiler-symbol L1857 .L1857
+    ; compiler-symbol L1855 .L1855
+    ; compiler-symbol L1870 .L1870
+    ; compiler-symbol L1861 .L1861
+    ; compiler-symbol L1878 .L1878
+    ; compiler-symbol L1879 .L1879
     ; compiler-symbol L1868 .L1868
-    ; compiler-symbol L1862 .L1862
+    ; compiler-symbol L1863 .L1863
+    ; compiler-symbol L1864 .L1864
+    ; compiler-symbol L1887 .L1887
+    ; compiler-symbol L1892 .L1892
+    ; compiler-symbol L1886 .L1886
     ; compiler-symbol LC155 .LC155
     ; compiler-symbol LC156 .LC156
-    ; compiler-symbol L1880 .L1880
-    ; compiler-symbol L1886 .L1886
-    ; compiler-symbol L1876 .L1876
-    ; compiler-symbol L1877 .L1877
-    ; compiler-symbol L1879 .L1879
-    ; compiler-symbol L1878 .L1878
-    ; compiler-symbol LC157 .LC157
-    ; compiler-symbol L1933 .L1933
-    ; compiler-symbol L1890 .L1890
-    ; compiler-symbol L1887 .L1887
-    ; compiler-symbol L1934 .L1934
-    ; compiler-symbol L1893 .L1893
-    ; compiler-symbol L1894 .L1894
-    ; compiler-symbol L1895 .L1895
-    ; compiler-symbol L1896 .L1896
-    ; compiler-symbol L1899 .L1899
-    ; compiler-symbol L1897 .L1897
-    ; compiler-symbol L1935 .L1935
-    ; compiler-symbol L1898 .L1898
-    ; compiler-symbol L1905 .L1905
-    ; compiler-symbol L1900 .L1900
     ; compiler-symbol L1904 .L1904
-    ; compiler-symbol L1903 .L1903
     ; compiler-symbol L1910 .L1910
-    ; compiler-symbol L1936 .L1936
-    ; compiler-symbol L1932 .L1932
-    ; compiler-symbol L1907 .L1907
-    ; compiler-symbol L1937 .L1937
-    ; compiler-symbol L1911 .L1911
+    ; compiler-symbol L1900 .L1900
+    ; compiler-symbol L1901 .L1901
+    ; compiler-symbol L1903 .L1903
     ; compiler-symbol L1902 .L1902
-    ; compiler-symbol L1912 .L1912
-    ; compiler-symbol L1940 .L1940
+    ; compiler-symbol LC157 .LC157
+    ; compiler-symbol L1957 .L1957
+    ; compiler-symbol L1914 .L1914
+    ; compiler-symbol L1911 .L1911
+    ; compiler-symbol L1958 .L1958
+    ; compiler-symbol L1917 .L1917
+    ; compiler-symbol L1918 .L1918
+    ; compiler-symbol L1919 .L1919
+    ; compiler-symbol L1920 .L1920
+    ; compiler-symbol L1923 .L1923
+    ; compiler-symbol L1921 .L1921
+    ; compiler-symbol L1959 .L1959
+    ; compiler-symbol L1922 .L1922
+    ; compiler-symbol L1929 .L1929
+    ; compiler-symbol L1924 .L1924
+    ; compiler-symbol L1928 .L1928
+    ; compiler-symbol L1927 .L1927
+    ; compiler-symbol L1934 .L1934
+    ; compiler-symbol L1960 .L1960
+    ; compiler-symbol L1956 .L1956
+    ; compiler-symbol L1931 .L1931
+    ; compiler-symbol L1961 .L1961
+    ; compiler-symbol L1935 .L1935
+    ; compiler-symbol L1926 .L1926
+    ; compiler-symbol L1936 .L1936
+    ; compiler-symbol L1964 .L1964
+    ; compiler-symbol L2001 .L2001
+    ; compiler-symbol L1966 .L1966
+    ; compiler-symbol L1967 .L1967
+    ; compiler-symbol L1962 .L1962
+    ; compiler-symbol L1975 .L1975
+    ; compiler-symbol L1969 .L1969
+    ; compiler-symbol L1970 .L1970
+    ; compiler-symbol L1971 .L1971
+    ; compiler-symbol L1972 .L1972
     ; compiler-symbol L1977 .L1977
-    ; compiler-symbol L1942 .L1942
-    ; compiler-symbol L1943 .L1943
-    ; compiler-symbol L1938 .L1938
-    ; compiler-symbol L1951 .L1951
-    ; compiler-symbol L1945 .L1945
-    ; compiler-symbol L1946 .L1946
-    ; compiler-symbol L1947 .L1947
-    ; compiler-symbol L1948 .L1948
-    ; compiler-symbol L1953 .L1953
-    ; compiler-symbol L1978 .L1978
-    ; compiler-symbol L1980 .L1980
-    ; compiler-symbol L1981 .L1981
-    ; compiler-symbol L1982 .L1982
-    ; compiler-symbol L1986 .L1986
-    ; compiler-symbol L2019 .L2019
-    ; compiler-symbol L1983 .L1983
-    ; compiler-symbol L1979 .L1979
-    ; compiler-symbol L1988 .L1988
-    ; compiler-symbol L2020 .L2020
-    ; compiler-symbol L1990 .L1990
-    ; compiler-symbol L1999 .L1999
-    ; compiler-symbol L2021 .L2021
-    ; compiler-symbol L1991 .L1991
-    ; compiler-symbol L1995 .L1995
-    ; compiler-symbol L1992 .L1992
-    ; compiler-symbol L2022 .L2022
-    ; compiler-symbol L1996 .L1996
-    ; compiler-symbol L1985 .L1985
-    ; compiler-symbol L1984 .L1984
     ; compiler-symbol L2002 .L2002
-    ; compiler-symbol L2024 .L2024
-    ; compiler-symbol L2025 .L2025
-    ; compiler-symbol L2026 .L2026
-    ; compiler-symbol L2030 .L2030
-    ; compiler-symbol L2028 .L2028
-    ; compiler-symbol L2023 .L2023
-    ; compiler-symbol L2056 .L2056
-    ; compiler-symbol L2057 .L2057
-    ; compiler-symbol L2032 .L2032
-    ; compiler-symbol L2039 .L2039
-    ; compiler-symbol L2044 .L2044
-    ; compiler-symbol L2050 .L2050
-    ; compiler-symbol L2055 .L2055
-    ; compiler-symbol L2081 .L2081
-    ; compiler-symbol L2051 .L2051
-    ; compiler-symbol L2054 .L2054
-    ; compiler-symbol L2053 .L2053
-    ; compiler-symbol L2062 .L2062
-    ; compiler-symbol L2082 .L2082
-    ; compiler-symbol L2045 .L2045
-    ; compiler-symbol L2048 .L2048
-    ; compiler-symbol L2047 .L2047
-    ; compiler-symbol L2060 .L2060
-    ; compiler-symbol L2083 .L2083
-    ; compiler-symbol L2040 .L2040
+    ; compiler-symbol L2004 .L2004
+    ; compiler-symbol L2005 .L2005
+    ; compiler-symbol L2006 .L2006
+    ; compiler-symbol L2010 .L2010
     ; compiler-symbol L2043 .L2043
-    ; compiler-symbol L2042 .L2042
-    ; compiler-symbol L2059 .L2059
+    ; compiler-symbol L2007 .L2007
+    ; compiler-symbol L2003 .L2003
+    ; compiler-symbol L2012 .L2012
+    ; compiler-symbol L2044 .L2044
+    ; compiler-symbol L2014 .L2014
+    ; compiler-symbol L2023 .L2023
+    ; compiler-symbol L2045 .L2045
+    ; compiler-symbol L2015 .L2015
+    ; compiler-symbol L2019 .L2019
+    ; compiler-symbol L2016 .L2016
+    ; compiler-symbol L2046 .L2046
+    ; compiler-symbol L2020 .L2020
+    ; compiler-symbol L2009 .L2009
+    ; compiler-symbol L2008 .L2008
+    ; compiler-symbol L2026 .L2026
+    ; compiler-symbol L2048 .L2048
+    ; compiler-symbol L2049 .L2049
+    ; compiler-symbol L2050 .L2050
+    ; compiler-symbol L2054 .L2054
+    ; compiler-symbol L2052 .L2052
+    ; compiler-symbol L2047 .L2047
     ; compiler-symbol L2080 .L2080
-    ; compiler-symbol L2084 .L2084
-    ; compiler-symbol L2033 .L2033
-    ; compiler-symbol L2036 .L2036
-    ; compiler-symbol L2035 .L2035
-    ; compiler-symbol L2058 .L2058
+    ; compiler-symbol L2081 .L2081
+    ; compiler-symbol L2056 .L2056
+    ; compiler-symbol L2063 .L2063
+    ; compiler-symbol L2068 .L2068
+    ; compiler-symbol L2074 .L2074
+    ; compiler-symbol L2079 .L2079
+    ; compiler-symbol L2105 .L2105
+    ; compiler-symbol L2075 .L2075
+    ; compiler-symbol L2078 .L2078
+    ; compiler-symbol L2077 .L2077
     ; compiler-symbol L2086 .L2086
-    ; compiler-symbol L2087 .L2087
-    ; compiler-symbol L2112 .L2112
-    ; compiler-symbol L2088 .L2088
-    ; compiler-symbol L2103 .L2103
-    ; compiler-symbol L2085 .L2085
-    ; compiler-symbol L2090 .L2090
-    ; compiler-symbol L2091 .L2091
-    ; compiler-symbol L2095 .L2095
-    ; compiler-symbol L2094 .L2094
-    ; compiler-symbol L2093 .L2093
-    ; compiler-symbol L2092 .L2092
-    ; compiler-symbol L2113 .L2113
-    ; compiler-symbol L2099 .L2099
-    ; compiler-symbol L2114 .L2114
-    ; compiler-symbol L2101 .L2101
-    ; compiler-symbol L2115 .L2115
-    ; compiler-symbol L2100 .L2100
-    ; compiler-symbol L2116 .L2116
-    ; compiler-symbol L2096 .L2096
-    ; compiler-symbol L2118 .L2118
-    ; compiler-symbol L2178 .L2178
-    ; compiler-symbol L2126 .L2126
-    ; compiler-symbol L2127 .L2127
-    ; compiler-symbol L2150 .L2150
-    ; compiler-symbol L2179 .L2179
-    ; compiler-symbol L2153 .L2153
-    ; compiler-symbol L2128 .L2128
-    ; compiler-symbol L2130 .L2130
-    ; compiler-symbol L2140 .L2140
-    ; compiler-symbol L2141 .L2141
-    ; compiler-symbol L2180 .L2180
-    ; compiler-symbol L2143 .L2143
-    ; compiler-symbol L2148 .L2148
-    ; compiler-symbol L2125 .L2125
-    ; compiler-symbol L2181 .L2181
-    ; compiler-symbol L2120 .L2120
-    ; compiler-symbol L2182 .L2182
-    ; compiler-symbol L2121 .L2121
-    ; compiler-symbol L2183 .L2183
-    ; compiler-symbol L2123 .L2123
-    ; compiler-symbol L2146 .L2146
-    ; compiler-symbol L2155 .L2155
-    ; compiler-symbol L2135 .L2135
-    ; compiler-symbol L2156 .L2156
+    ; compiler-symbol L2106 .L2106
+    ; compiler-symbol L2069 .L2069
+    ; compiler-symbol L2072 .L2072
+    ; compiler-symbol L2071 .L2071
+    ; compiler-symbol L2084 .L2084
+    ; compiler-symbol L2107 .L2107
+    ; compiler-symbol L2064 .L2064
+    ; compiler-symbol L2067 .L2067
+    ; compiler-symbol L2066 .L2066
+    ; compiler-symbol L2083 .L2083
+    ; compiler-symbol L2104 .L2104
+    ; compiler-symbol L2108 .L2108
+    ; compiler-symbol L2057 .L2057
+    ; compiler-symbol L2060 .L2060
+    ; compiler-symbol L2059 .L2059
+    ; compiler-symbol L2082 .L2082
+    ; compiler-symbol L2110 .L2110
+    ; compiler-symbol L2111 .L2111
     ; compiler-symbol L2136 .L2136
-    ; compiler-symbol L2184 .L2184
-    ; compiler-symbol L2132 .L2132
-    ; compiler-symbol L2134 .L2134
-    ; compiler-symbol L2152 .L2152
-    ; compiler-symbol L2133 .L2133
-    ; compiler-symbol L2176 .L2176
-    ; compiler-symbol L2177 .L2177
-    ; compiler-symbol L2162 .L2162
+    ; compiler-symbol L2112 .L2112
+    ; compiler-symbol L2127 .L2127
+    ; compiler-symbol L2109 .L2109
+    ; compiler-symbol L2114 .L2114
+    ; compiler-symbol L2115 .L2115
+    ; compiler-symbol L2119 .L2119
+    ; compiler-symbol L2118 .L2118
+    ; compiler-symbol L2117 .L2117
+    ; compiler-symbol L2116 .L2116
+    ; compiler-symbol L2137 .L2137
+    ; compiler-symbol L2123 .L2123
     ; compiler-symbol L2138 .L2138
-    ; compiler-symbol L2185 .L2185
-    ; compiler-symbol L2186 .L2186
+    ; compiler-symbol L2125 .L2125
+    ; compiler-symbol L2139 .L2139
+    ; compiler-symbol L2124 .L2124
+    ; compiler-symbol L2140 .L2140
+    ; compiler-symbol L2120 .L2120
+    ; compiler-symbol L2142 .L2142
+    ; compiler-symbol L2202 .L2202
+    ; compiler-symbol L2150 .L2150
+    ; compiler-symbol L2151 .L2151
+    ; compiler-symbol L2174 .L2174
     ; compiler-symbol L2203 .L2203
-    ; compiler-symbol L2199 .L2199
-    ; compiler-symbol L2200 .L2200
+    ; compiler-symbol L2177 .L2177
+    ; compiler-symbol L2152 .L2152
+    ; compiler-symbol L2154 .L2154
+    ; compiler-symbol L2164 .L2164
+    ; compiler-symbol L2165 .L2165
     ; compiler-symbol L2204 .L2204
-    ; compiler-symbol L2214 .L2214
-    ; compiler-symbol L2216 .L2216
-    ; compiler-symbol L2220 .L2220
-    ; compiler-symbol LC158 .LC158
+    ; compiler-symbol L2167 .L2167
+    ; compiler-symbol L2172 .L2172
+    ; compiler-symbol L2149 .L2149
+    ; compiler-symbol L2205 .L2205
+    ; compiler-symbol L2144 .L2144
+    ; compiler-symbol L2206 .L2206
+    ; compiler-symbol L2145 .L2145
+    ; compiler-symbol L2207 .L2207
+    ; compiler-symbol L2147 .L2147
+    ; compiler-symbol L2170 .L2170
+    ; compiler-symbol L2179 .L2179
+    ; compiler-symbol L2159 .L2159
+    ; compiler-symbol L2180 .L2180
+    ; compiler-symbol L2160 .L2160
+    ; compiler-symbol L2208 .L2208
+    ; compiler-symbol L2156 .L2156
+    ; compiler-symbol L2158 .L2158
+    ; compiler-symbol L2176 .L2176
+    ; compiler-symbol L2157 .L2157
+    ; compiler-symbol L2200 .L2200
+    ; compiler-symbol L2201 .L2201
+    ; compiler-symbol L2186 .L2186
+    ; compiler-symbol L2162 .L2162
+    ; compiler-symbol L2209 .L2209
+    ; compiler-symbol L2210 .L2210
     ; compiler-symbol L2227 .L2227
-    ; compiler-symbol L2221 .L2221
-    ; compiler-symbol LC159 .LC159
-    ; compiler-symbol L2256 .L2256
-    ; compiler-symbol L2229 .L2229
-    ; compiler-symbol L2257 .L2257
+    ; compiler-symbol L2223 .L2223
+    ; compiler-symbol L2224 .L2224
     ; compiler-symbol L2228 .L2228
-    ; compiler-symbol L2237 .L2237
-    ; compiler-symbol L2258 .L2258
-    ; compiler-symbol L2239 .L2239
     ; compiler-symbol L2238 .L2238
-    ; compiler-symbol L2259 .L2259
+    ; compiler-symbol L2240 .L2240
     ; compiler-symbol L2244 .L2244
+    ; compiler-symbol LC158 .LC158
+    ; compiler-symbol L2251 .L2251
     ; compiler-symbol L2245 .L2245
-    ; compiler-symbol L2262 .L2262
-    ; compiler-symbol L2264 .L2264
-    ; compiler-symbol L2272 .L2272
+    ; compiler-symbol LC159 .LC159
+    ; compiler-symbol L2280 .L2280
+    ; compiler-symbol L2253 .L2253
+    ; compiler-symbol L2281 .L2281
+    ; compiler-symbol L2252 .L2252
+    ; compiler-symbol L2261 .L2261
+    ; compiler-symbol L2282 .L2282
     ; compiler-symbol L2263 .L2263
-    ; compiler-symbol LC160 .LC160
-    ; compiler-symbol L2278 .L2278
-    ; compiler-symbol L2273 .L2273
-    ; compiler-symbol L2276 .L2276
-    ; compiler-symbol L2289 .L2289
-    ; compiler-symbol L2290 .L2290
-    ; compiler-symbol LC161 .LC161
-    ; compiler-symbol L2303 .L2303
-    ; compiler-symbol L2298 .L2298
-    ; compiler-symbol L2292 .L2292
-    ; compiler-symbol L2306 .L2306
+    ; compiler-symbol L2262 .L2262
+    ; compiler-symbol L2283 .L2283
+    ; compiler-symbol L2268 .L2268
+    ; compiler-symbol L2269 .L2269
+    ; compiler-symbol L2286 .L2286
+    ; compiler-symbol L2288 .L2288
     ; compiler-symbol L2296 .L2296
+    ; compiler-symbol L2287 .L2287
+    ; compiler-symbol LC160 .LC160
+    ; compiler-symbol L2302 .L2302
     ; compiler-symbol L2297 .L2297
-    ; compiler-symbol L2308 .L2308
-    ; compiler-symbol L2330 .L2330
-    ; compiler-symbol L2331 .L2331
-    ; compiler-symbol L2309 .L2309
-    ; compiler-symbol L2312 .L2312
-    ; compiler-symbol L2332 .L2332
-    ; compiler-symbol L2310 .L2310
-    ; compiler-symbol L2333 .L2333
-    ; compiler-symbol L2311 .L2311
-    ; compiler-symbol L2315 .L2315
+    ; compiler-symbol L2300 .L2300
+    ; compiler-symbol L2313 .L2313
     ; compiler-symbol L2314 .L2314
+    ; compiler-symbol LC161 .LC161
+    ; compiler-symbol L2327 .L2327
+    ; compiler-symbol L2322 .L2322
     ; compiler-symbol L2316 .L2316
-    ; compiler-symbol L2318 .L2318
-    ; compiler-symbol L2317 .L2317
+    ; compiler-symbol L2330 .L2330
+    ; compiler-symbol L2320 .L2320
+    ; compiler-symbol L2321 .L2321
+    ; compiler-symbol L2332 .L2332
+    ; compiler-symbol L2354 .L2354
+    ; compiler-symbol L2355 .L2355
+    ; compiler-symbol L2333 .L2333
+    ; compiler-symbol L2336 .L2336
+    ; compiler-symbol L2356 .L2356
     ; compiler-symbol L2334 .L2334
+    ; compiler-symbol L2357 .L2357
+    ; compiler-symbol L2335 .L2335
+    ; compiler-symbol L2339 .L2339
+    ; compiler-symbol L2338 .L2338
+    ; compiler-symbol L2340 .L2340
+    ; compiler-symbol L2342 .L2342
     ; compiler-symbol L2341 .L2341
+    ; compiler-symbol L2358 .L2358
+    ; compiler-symbol L2365 .L2365
     ; compiler-symbol LC162 .LC162
-    ; compiler-symbol L2346 .L2346
+    ; compiler-symbol L2370 .L2370
     ; compiler-symbol LC163 .LC163
-    ; compiler-symbol L2352 .L2352
+    ; compiler-symbol L2376 .L2376
     ; compiler-symbol LC164 .LC164
     ; compiler-symbol LC165 .LC165
-    ; compiler-symbol L2355 .L2355
-    ; compiler-symbol L2354 .L2354
-    ; compiler-symbol L2358 .L2358
-    ; compiler-symbol LC166 .LC166
-    ; compiler-symbol L2375 .L2375
-    ; compiler-symbol L2361 .L2361
-    ; compiler-symbol L2362 .L2362
-    ; compiler-symbol L2363 .L2363
-    ; compiler-symbol L2376 .L2376
-    ; compiler-symbol L2359 .L2359
-    ; compiler-symbol L2364 .L2364
-    ; compiler-symbol L2365 .L2365
-    ; compiler-symbol L2377 .L2377
-    ; compiler-symbol L2380 .L2380
     ; compiler-symbol L2379 .L2379
-    ; compiler-symbol L2392 .L2392
+    ; compiler-symbol L2378 .L2378
+    ; compiler-symbol L2382 .L2382
+    ; compiler-symbol LC166 .LC166
+    ; compiler-symbol L2399 .L2399
+    ; compiler-symbol L2385 .L2385
+    ; compiler-symbol L2386 .L2386
+    ; compiler-symbol L2387 .L2387
+    ; compiler-symbol L2400 .L2400
+    ; compiler-symbol L2383 .L2383
+    ; compiler-symbol L2388 .L2388
+    ; compiler-symbol L2389 .L2389
+    ; compiler-symbol L2401 .L2401
+    ; compiler-symbol L2404 .L2404
+    ; compiler-symbol L2403 .L2403
+    ; compiler-symbol L2416 .L2416
     ; compiler-symbol LC168 .LC168
     ; compiler-symbol LC169 .LC169
-    ; compiler-symbol L2396 .L2396
-    ; compiler-symbol L2398 .L2398
-    ; compiler-symbol L2397 .L2397
-    ; compiler-symbol L2418 .L2418
-    ; compiler-symbol L2400 .L2400
-    ; compiler-symbol L2401 .L2401
-    ; compiler-symbol L2417 .L2417
-    ; compiler-symbol L2402 .L2402
-    ; compiler-symbol L2403 .L2403
-    ; compiler-symbol L2404 .L2404
-    ; compiler-symbol L2419 .L2419
-    ; compiler-symbol L2405 .L2405
-    ; compiler-symbol L2421 .L2421
-    ; compiler-symbol L2438 .L2438
     ; compiler-symbol L2420 .L2420
-    ; compiler-symbol L2426 .L2426
-    ; compiler-symbol L2423 .L2423
+    ; compiler-symbol L2422 .L2422
+    ; compiler-symbol L2421 .L2421
+    ; compiler-symbol L2442 .L2442
     ; compiler-symbol L2424 .L2424
-    ; compiler-symbol L2444 .L2444
+    ; compiler-symbol L2425 .L2425
+    ; compiler-symbol L2441 .L2441
+    ; compiler-symbol L2426 .L2426
+    ; compiler-symbol L2427 .L2427
+    ; compiler-symbol L2428 .L2428
+    ; compiler-symbol L2443 .L2443
+    ; compiler-symbol L2429 .L2429
     ; compiler-symbol L2445 .L2445
-    ; compiler-symbol L2446 .L2446
+    ; compiler-symbol L2462 .L2462
+    ; compiler-symbol L2444 .L2444
+    ; compiler-symbol L2450 .L2450
     ; compiler-symbol L2447 .L2447
-    ; compiler-symbol L2451 .L2451
-    ; compiler-symbol L2453 .L2453
-    ; compiler-symbol L2454 .L2454
-    ; compiler-symbol L2457 .L2457
-    ; compiler-symbol L2455 .L2455
-    ; compiler-symbol L2458 .L2458
-    ; compiler-symbol L2452 .L2452
+    ; compiler-symbol L2448 .L2448
+    ; compiler-symbol L2468 .L2468
     ; compiler-symbol L2469 .L2469
-    ; compiler-symbol L2466 .L2466
-    ; compiler-symbol L2489 .L2489
-    ; compiler-symbol L2475 .L2475
-    ; compiler-symbol L2474 .L2474
-    ; compiler-symbol L2595 .L2595
-    ; compiler-symbol L2473 .L2473
+    ; compiler-symbol L2470 .L2470
     ; compiler-symbol L2471 .L2471
-    ; compiler-symbol L2478 .L2478
+    ; compiler-symbol L2475 .L2475
     ; compiler-symbol L2477 .L2477
+    ; compiler-symbol L2478 .L2478
     ; compiler-symbol L2481 .L2481
-    ; compiler-symbol L2480 .L2480
-    ; compiler-symbol L2483 .L2483
+    ; compiler-symbol L2479 .L2479
     ; compiler-symbol L2482 .L2482
-    ; compiler-symbol L2485 .L2485
-    ; compiler-symbol L2484 .L2484
-    ; compiler-symbol L2589 .L2589
-    ; compiler-symbol L2487 .L2487
-    ; compiler-symbol L2536 .L2536
-    ; compiler-symbol L2584 .L2584
-    ; compiler-symbol L2523 .L2523
-    ; compiler-symbol L2491 .L2491
-    ; compiler-symbol L2490 .L2490
-    ; compiler-symbol L2492 .L2492
-    ; compiler-symbol L2596 .L2596
+    ; compiler-symbol L2476 .L2476
     ; compiler-symbol L2493 .L2493
-    ; compiler-symbol L2496 .L2496
-    ; compiler-symbol L2597 .L2597
-    ; compiler-symbol L2500 .L2500
-    ; compiler-symbol L2501 .L2501
-    ; compiler-symbol L2543 .L2543
-    ; compiler-symbol L2528 .L2528
-    ; compiler-symbol L2527 .L2527
-    ; compiler-symbol L2591 .L2591
-    ; compiler-symbol L2509 .L2509
-    ; compiler-symbol L2557 .L2557
-    ; compiler-symbol L2541 .L2541
-    ; compiler-symbol L2540 .L2540
-    ; compiler-symbol L2539 .L2539
-    ; compiler-symbol L2598 .L2598
-    ; compiler-symbol L2545 .L2545
-    ; compiler-symbol L2511 .L2511
-    ; compiler-symbol L2510 .L2510
-    ; compiler-symbol L2512 .L2512
+    ; compiler-symbol L2490 .L2490
     ; compiler-symbol L2513 .L2513
-    ; compiler-symbol L2594 .L2594
-    ; compiler-symbol L2592 .L2592
-    ; compiler-symbol L2550 .L2550
-    ; compiler-symbol L2544 .L2544
-    ; compiler-symbol L2551 .L2551
-    ; compiler-symbol L2552 .L2552
-    ; compiler-symbol L2546 .L2546
-    ; compiler-symbol L2506 .L2506
-    ; compiler-symbol L2505 .L2505
-    ; compiler-symbol L2494 .L2494
-    ; compiler-symbol L2599 .L2599
+    ; compiler-symbol L2499 .L2499
+    ; compiler-symbol L2498 .L2498
+    ; compiler-symbol L2619 .L2619
+    ; compiler-symbol L2497 .L2497
     ; compiler-symbol L2495 .L2495
-    ; compiler-symbol L2554 .L2554
-    ; compiler-symbol L2600 .L2600
-    ; compiler-symbol L2582 .L2582
-    ; compiler-symbol L2518 .L2518
-    ; compiler-symbol L2520 .L2520
-    ; compiler-symbol L2519 .L2519
-    ; compiler-symbol L2521 .L2521
-    ; compiler-symbol L2548 .L2548
-    ; compiler-symbol L2530 .L2530
-    ; compiler-symbol L2529 .L2529
-    ; compiler-symbol L2532 .L2532
-    ; compiler-symbol L2531 .L2531
-    ; compiler-symbol L2601 .L2601
+    ; compiler-symbol L2502 .L2502
+    ; compiler-symbol L2501 .L2501
+    ; compiler-symbol L2505 .L2505
+    ; compiler-symbol L2504 .L2504
+    ; compiler-symbol L2507 .L2507
+    ; compiler-symbol L2506 .L2506
+    ; compiler-symbol L2509 .L2509
+    ; compiler-symbol L2508 .L2508
+    ; compiler-symbol L2613 .L2613
+    ; compiler-symbol L2511 .L2511
+    ; compiler-symbol L2560 .L2560
+    ; compiler-symbol L2608 .L2608
+    ; compiler-symbol L2547 .L2547
     ; compiler-symbol L2515 .L2515
     ; compiler-symbol L2514 .L2514
-    ; compiler-symbol L2604 .L2604
+    ; compiler-symbol L2516 .L2516
+    ; compiler-symbol L2620 .L2620
+    ; compiler-symbol L2517 .L2517
+    ; compiler-symbol L2520 .L2520
+    ; compiler-symbol L2621 .L2621
+    ; compiler-symbol L2524 .L2524
+    ; compiler-symbol L2525 .L2525
+    ; compiler-symbol L2567 .L2567
+    ; compiler-symbol L2552 .L2552
+    ; compiler-symbol L2551 .L2551
+    ; compiler-symbol L2615 .L2615
+    ; compiler-symbol L2533 .L2533
+    ; compiler-symbol L2581 .L2581
+    ; compiler-symbol L2565 .L2565
+    ; compiler-symbol L2564 .L2564
+    ; compiler-symbol L2563 .L2563
+    ; compiler-symbol L2622 .L2622
+    ; compiler-symbol L2569 .L2569
+    ; compiler-symbol L2535 .L2535
+    ; compiler-symbol L2534 .L2534
+    ; compiler-symbol L2536 .L2536
+    ; compiler-symbol L2537 .L2537
+    ; compiler-symbol L2618 .L2618
+    ; compiler-symbol L2616 .L2616
+    ; compiler-symbol L2574 .L2574
+    ; compiler-symbol L2568 .L2568
+    ; compiler-symbol L2575 .L2575
+    ; compiler-symbol L2576 .L2576
+    ; compiler-symbol L2570 .L2570
+    ; compiler-symbol L2530 .L2530
+    ; compiler-symbol L2529 .L2529
+    ; compiler-symbol L2518 .L2518
+    ; compiler-symbol L2623 .L2623
+    ; compiler-symbol L2519 .L2519
+    ; compiler-symbol L2578 .L2578
+    ; compiler-symbol L2624 .L2624
+    ; compiler-symbol L2606 .L2606
+    ; compiler-symbol L2542 .L2542
+    ; compiler-symbol L2544 .L2544
+    ; compiler-symbol L2543 .L2543
+    ; compiler-symbol L2545 .L2545
+    ; compiler-symbol L2572 .L2572
+    ; compiler-symbol L2554 .L2554
+    ; compiler-symbol L2553 .L2553
+    ; compiler-symbol L2556 .L2556
+    ; compiler-symbol L2555 .L2555
+    ; compiler-symbol L2625 .L2625
+    ; compiler-symbol L2539 .L2539
+    ; compiler-symbol L2538 .L2538
+    ; compiler-symbol L2628 .L2628
     ; compiler-symbol LC170 .LC170
     ; compiler-symbol LC171 .LC171
     ; compiler-symbol LC172 .LC172
-    ; compiler-symbol L2615 .L2615
-    ; compiler-symbol L2608 .L2608
-    ; compiler-symbol L2611 .L2611
-    ; compiler-symbol L2606 .L2606
-    ; compiler-symbol L2616 .L2616
-    ; compiler-symbol L2617 .L2617
+    ; compiler-symbol L2639 .L2639
+    ; compiler-symbol L2632 .L2632
+    ; compiler-symbol L2635 .L2635
+    ; compiler-symbol L2630 .L2630
+    ; compiler-symbol L2640 .L2640
+    ; compiler-symbol L2641 .L2641
     ; compiler-symbol LC173 .LC173
     ; compiler-symbol LC174 .LC174
-    ; compiler-symbol L2622 .L2622
-    ; compiler-symbol L2620 .L2620
-    ; compiler-symbol L2623 .L2623
+    ; compiler-symbol L2646 .L2646
+    ; compiler-symbol L2644 .L2644
+    ; compiler-symbol L2647 .L2647
     ; compiler-symbol LC175 .LC175
     ; compiler-symbol LC176 .LC176
     ; compiler-symbol LC177 .LC177
@@ -1498,105 +1508,105 @@
     ; compiler-symbol LC179 .LC179
     ; compiler-symbol LC180 .LC180
     ; compiler-symbol LC181 .LC181
-    ; compiler-symbol L2662 .L2662
-    ; compiler-symbol L2631 .L2631
-    ; compiler-symbol L2629 .L2629
-    ; compiler-symbol L2663 .L2663
-    ; compiler-symbol L2630 .L2630
-    ; compiler-symbol L2633 .L2633
+    ; compiler-symbol L2686 .L2686
+    ; compiler-symbol L2655 .L2655
+    ; compiler-symbol L2653 .L2653
+    ; compiler-symbol L2687 .L2687
+    ; compiler-symbol L2654 .L2654
+    ; compiler-symbol L2657 .L2657
+    ; compiler-symbol L2688 .L2688
+    ; compiler-symbol L2656 .L2656
+    ; compiler-symbol L2658 .L2658
+    ; compiler-symbol L2659 .L2659
+    ; compiler-symbol L2660 .L2660
     ; compiler-symbol L2664 .L2664
-    ; compiler-symbol L2632 .L2632
-    ; compiler-symbol L2634 .L2634
-    ; compiler-symbol L2635 .L2635
-    ; compiler-symbol L2636 .L2636
-    ; compiler-symbol L2640 .L2640
-    ; compiler-symbol L2637 .L2637
-    ; compiler-symbol L2665 .L2665
-    ; compiler-symbol L2639 .L2639
-    ; compiler-symbol L2644 .L2644
-    ; compiler-symbol L2643 .L2643
-    ; compiler-symbol L2624 .L2624
+    ; compiler-symbol L2661 .L2661
+    ; compiler-symbol L2689 .L2689
+    ; compiler-symbol L2663 .L2663
+    ; compiler-symbol L2668 .L2668
+    ; compiler-symbol L2667 .L2667
+    ; compiler-symbol L2648 .L2648
     ; compiler-symbol LC182 .LC182
     ; compiler-symbol LC183 .LC183
-    ; compiler-symbol L2666 .L2666
-    ; compiler-symbol L2669 .L2669
-    ; compiler-symbol L2670 .L2670
-    ; compiler-symbol L2671 .L2671
+    ; compiler-symbol L2690 .L2690
+    ; compiler-symbol L2693 .L2693
+    ; compiler-symbol L2694 .L2694
+    ; compiler-symbol L2695 .L2695
     ; compiler-symbol LC184 .LC184
     ; compiler-symbol LC185 .LC185
     ; compiler-symbol LC186 .LC186
-    ; compiler-symbol L2684 .L2684
-    ; compiler-symbol L2678 .L2678
-    ; compiler-symbol L2682 .L2682
+    ; compiler-symbol L2708 .L2708
+    ; compiler-symbol L2702 .L2702
+    ; compiler-symbol L2706 .L2706
     ; compiler-symbol LC187 .LC187
     ; compiler-symbol LC188 .LC188
-    ; compiler-symbol L2691 .L2691
-    ; compiler-symbol L2692 .L2692
+    ; compiler-symbol L2715 .L2715
+    ; compiler-symbol L2716 .L2716
     ; compiler-symbol LC189 .LC189
-    ; compiler-symbol L2698 .L2698
-    ; compiler-symbol L2704 .L2704
+    ; compiler-symbol L2722 .L2722
+    ; compiler-symbol L2728 .L2728
     ; compiler-symbol LC190 .LC190
-    ; compiler-symbol L2708 .L2708
-    ; compiler-symbol L2712 .L2712
-    ; compiler-symbol L2714 .L2714
+    ; compiler-symbol L2732 .L2732
+    ; compiler-symbol L2736 .L2736
     ; compiler-symbol L2738 .L2738
-    ; compiler-symbol L2739 .L2739
-    ; compiler-symbol L2717 .L2717
-    ; compiler-symbol L2718 .L2718
-    ; compiler-symbol L2719 .L2719
-    ; compiler-symbol L2720 .L2720
+    ; compiler-symbol L2762 .L2762
+    ; compiler-symbol L2763 .L2763
+    ; compiler-symbol L2741 .L2741
+    ; compiler-symbol L2742 .L2742
+    ; compiler-symbol L2743 .L2743
+    ; compiler-symbol L2744 .L2744
     ; compiler-symbol LC191 .LC191
     ; compiler-symbol LC192 .LC192
-    ; compiler-symbol L2746 .L2746
-    ; compiler-symbol L2747 .L2747
-    ; compiler-symbol L2748 .L2748
-    ; compiler-symbol L2749 .L2749
-    ; compiler-symbol L2750 .L2750
-    ; compiler-symbol L2752 .L2752
-    ; compiler-symbol L2755 .L2755
-    ; compiler-symbol L2766 .L2766
+    ; compiler-symbol L2770 .L2770
+    ; compiler-symbol L2771 .L2771
+    ; compiler-symbol L2772 .L2772
+    ; compiler-symbol L2773 .L2773
     ; compiler-symbol L2774 .L2774
-    ; compiler-symbol L2775 .L2775
     ; compiler-symbol L2776 .L2776
-    ; compiler-symbol L2777 .L2777
-    ; compiler-symbol L2778 .L2778
-    ; compiler-symbol L2786 .L2786
-    ; compiler-symbol L2787 .L2787
-    ; compiler-symbol L2788 .L2788
-    ; compiler-symbol L2789 .L2789
+    ; compiler-symbol L2779 .L2779
     ; compiler-symbol L2790 .L2790
     ; compiler-symbol L2798 .L2798
     ; compiler-symbol L2799 .L2799
     ; compiler-symbol L2800 .L2800
     ; compiler-symbol L2801 .L2801
     ; compiler-symbol L2802 .L2802
-    ; compiler-symbol LC193 .LC193
+    ; compiler-symbol L2810 .L2810
     ; compiler-symbol L2811 .L2811
-    ; compiler-symbol L2805 .L2805
-    ; compiler-symbol L2803 .L2803
-    ; compiler-symbol L2807 .L2807
     ; compiler-symbol L2812 .L2812
-    ; compiler-symbol L2809 .L2809
     ; compiler-symbol L2813 .L2813
+    ; compiler-symbol L2814 .L2814
+    ; compiler-symbol L2822 .L2822
+    ; compiler-symbol L2823 .L2823
+    ; compiler-symbol L2824 .L2824
+    ; compiler-symbol L2825 .L2825
+    ; compiler-symbol L2826 .L2826
+    ; compiler-symbol LC193 .LC193
+    ; compiler-symbol L2835 .L2835
+    ; compiler-symbol L2829 .L2829
+    ; compiler-symbol L2827 .L2827
+    ; compiler-symbol L2831 .L2831
+    ; compiler-symbol L2836 .L2836
+    ; compiler-symbol L2833 .L2833
+    ; compiler-symbol L2837 .L2837
     ; compiler-symbol LC194 .LC194
     ; compiler-symbol LC195 .LC195
-    ; compiler-symbol L2829 .L2829
-    ; compiler-symbol L2818 .L2818
-    ; compiler-symbol L2817 .L2817
-    ; compiler-symbol L2814 .L2814
-    ; compiler-symbol L2830 .L2830
-    ; compiler-symbol L2820 .L2820
-    ; compiler-symbol L2831 .L2831
-    ; compiler-symbol L2832 .L2832
-    ; compiler-symbol L2824 .L2824
-    ; compiler-symbol L2833 .L2833
-    ; compiler-symbol L2839 .L2839
-    ; compiler-symbol L2835 .L2835
+    ; compiler-symbol L2853 .L2853
+    ; compiler-symbol L2842 .L2842
+    ; compiler-symbol L2841 .L2841
     ; compiler-symbol L2838 .L2838
-    ; compiler-symbol L2840 .L2840
+    ; compiler-symbol L2854 .L2854
+    ; compiler-symbol L2844 .L2844
+    ; compiler-symbol L2855 .L2855
+    ; compiler-symbol L2856 .L2856
+    ; compiler-symbol L2848 .L2848
+    ; compiler-symbol L2857 .L2857
+    ; compiler-symbol L2863 .L2863
+    ; compiler-symbol L2859 .L2859
+    ; compiler-symbol L2862 .L2862
+    ; compiler-symbol L2864 .L2864
     ; compiler-symbol LC196 .LC196
     ; compiler-symbol LC197 .LC197
-    ; compiler-symbol L2841 .L2841
+    ; compiler-symbol L2865 .L2865
     ; compiler-symbol LC198 .LC198
     ; compiler-symbol LC199 .LC199
     ; compiler-symbol LC201 .LC201
@@ -1610,271 +1620,274 @@
     ; compiler-symbol LC211 .LC211
     ; compiler-symbol LC212 .LC212
     ; compiler-symbol LC213 .LC213
-    ; compiler-symbol L2923 .L2923
-    ; compiler-symbol L2854 .L2854
-    ; compiler-symbol L2856 .L2856
-    ; compiler-symbol L2888 .L2888
-    ; compiler-symbol L2924 .L2924
-    ; compiler-symbol L2858 .L2858
-    ; compiler-symbol L2859 .L2859
-    ; compiler-symbol L2860 .L2860
-    ; compiler-symbol L2861 .L2861
-    ; compiler-symbol L2864 .L2864
-    ; compiler-symbol L2880 .L2880
-    ; compiler-symbol L2925 .L2925
-    ; compiler-symbol L2883 .L2883
-    ; compiler-symbol L2882 .L2882
-    ; compiler-symbol L2885 .L2885
-    ; compiler-symbol L2886 .L2886
-    ; compiler-symbol L2926 .L2926
-    ; compiler-symbol L2897 .L2897
-    ; compiler-symbol L2893 .L2893
-    ; compiler-symbol L2927 .L2927
-    ; compiler-symbol L2896 .L2896
-    ; compiler-symbol L2921 .L2921
-    ; compiler-symbol L2895 .L2895
-    ; compiler-symbol L2862 .L2862
-    ; compiler-symbol LC200 .LC200
-    ; compiler-symbol L2863 .L2863
-    ; compiler-symbol L2887 .L2887
-    ; compiler-symbol L2865 .L2865
-    ; compiler-symbol L2866 .L2866
-    ; compiler-symbol LC203 .LC203
-    ; compiler-symbol L2928 .L2928
-    ; compiler-symbol L2873 .L2873
-    ; compiler-symbol L2879 .L2879
-    ; compiler-symbol L2874 .L2874
-    ; compiler-symbol L2929 .L2929
-    ; compiler-symbol L2868 .L2868
-    ; compiler-symbol L2872 .L2872
-    ; compiler-symbol L2918 .L2918
-    ; compiler-symbol L2941 .L2941
-    ; compiler-symbol L2931 .L2931
-    ; compiler-symbol L2933 .L2933
-    ; compiler-symbol L2944 .L2944
-    ; compiler-symbol L2934 .L2934
-    ; compiler-symbol L2930 .L2930
-    ; compiler-symbol L2939 .L2939
-    ; compiler-symbol L2942 .L2942
-    ; compiler-symbol L2943 .L2943
-    ; compiler-symbol L2945 .L2945
-    ; compiler-symbol L2938 .L2938
     ; compiler-symbol L2947 .L2947
-    ; compiler-symbol L2949 .L2949
+    ; compiler-symbol L2878 .L2878
+    ; compiler-symbol L2880 .L2880
+    ; compiler-symbol L2912 .L2912
     ; compiler-symbol L2948 .L2948
-    ; compiler-symbol L2957 .L2957
-    ; compiler-symbol L2970 .L2970
-    ; compiler-symbol L2960 .L2960
-    ; compiler-symbol L2969 .L2969
-    ; compiler-symbol L2959 .L2959
-    ; compiler-symbol L2967 .L2967
+    ; compiler-symbol L2882 .L2882
+    ; compiler-symbol L2883 .L2883
+    ; compiler-symbol L2884 .L2884
+    ; compiler-symbol L2885 .L2885
+    ; compiler-symbol L2888 .L2888
+    ; compiler-symbol L2904 .L2904
+    ; compiler-symbol L2949 .L2949
+    ; compiler-symbol L2907 .L2907
+    ; compiler-symbol L2906 .L2906
+    ; compiler-symbol L2909 .L2909
+    ; compiler-symbol L2910 .L2910
+    ; compiler-symbol L2950 .L2950
+    ; compiler-symbol L2921 .L2921
+    ; compiler-symbol L2917 .L2917
+    ; compiler-symbol L2951 .L2951
+    ; compiler-symbol L2920 .L2920
+    ; compiler-symbol L2945 .L2945
+    ; compiler-symbol L2919 .L2919
+    ; compiler-symbol L2886 .L2886
+    ; compiler-symbol LC200 .LC200
+    ; compiler-symbol L2887 .L2887
+    ; compiler-symbol L2911 .L2911
+    ; compiler-symbol L2889 .L2889
+    ; compiler-symbol L2890 .L2890
+    ; compiler-symbol LC203 .LC203
+    ; compiler-symbol L2952 .L2952
+    ; compiler-symbol L2897 .L2897
+    ; compiler-symbol L2903 .L2903
+    ; compiler-symbol L2898 .L2898
+    ; compiler-symbol L2953 .L2953
+    ; compiler-symbol L2892 .L2892
+    ; compiler-symbol L2896 .L2896
+    ; compiler-symbol L2942 .L2942
+    ; compiler-symbol L2965 .L2965
     ; compiler-symbol L2955 .L2955
-    ; compiler-symbol L2972 .L2972
-    ; compiler-symbol L2973 .L2973
-    ; compiler-symbol L2961 .L2961
-    ; compiler-symbol L3000 .L3000
-    ; compiler-symbol L2971 .L2971
+    ; compiler-symbol L2957 .L2957
+    ; compiler-symbol L2968 .L2968
+    ; compiler-symbol L2958 .L2958
     ; compiler-symbol L2954 .L2954
+    ; compiler-symbol L2963 .L2963
     ; compiler-symbol L2966 .L2966
+    ; compiler-symbol L2967 .L2967
+    ; compiler-symbol L2969 .L2969
+    ; compiler-symbol L2962 .L2962
+    ; compiler-symbol L2971 .L2971
+    ; compiler-symbol L2973 .L2973
+    ; compiler-symbol L2972 .L2972
+    ; compiler-symbol L2981 .L2981
+    ; compiler-symbol L2994 .L2994
+    ; compiler-symbol L2984 .L2984
+    ; compiler-symbol L2993 .L2993
+    ; compiler-symbol L2983 .L2983
+    ; compiler-symbol L2991 .L2991
+    ; compiler-symbol L2979 .L2979
+    ; compiler-symbol L2996 .L2996
+    ; compiler-symbol L2997 .L2997
+    ; compiler-symbol L2985 .L2985
     ; compiler-symbol L3024 .L3024
-    ; compiler-symbol L3005 .L3005
-    ; compiler-symbol L3025 .L3025
-    ; compiler-symbol L3003 .L3003
-    ; compiler-symbol L3026 .L3026
-    ; compiler-symbol L3008 .L3008
-    ; compiler-symbol L3007 .L3007
-    ; compiler-symbol L3027 .L3027
-    ; compiler-symbol L3031 .L3031
-    ; compiler-symbol L3045 .L3045
-    ; compiler-symbol L3035 .L3035
-    ; compiler-symbol L3046 .L3046
-    ; compiler-symbol L3038 .L3038
-    ; compiler-symbol LC219 .LC219
+    ; compiler-symbol L2995 .L2995
+    ; compiler-symbol L2978 .L2978
+    ; compiler-symbol L2990 .L2990
+    ; compiler-symbol L3048 .L3048
+    ; compiler-symbol L3029 .L3029
     ; compiler-symbol L3049 .L3049
-    ; compiler-symbol L3052 .L3052
-    ; compiler-symbol LC220 .LC220
-    ; compiler-symbol L3056 .L3056
-    ; compiler-symbol L3060 .L3060
-    ; compiler-symbol L3064 .L3064
-    ; compiler-symbol L3068 .L3068
-    ; compiler-symbol LC222 .LC222
-    ; compiler-symbol L3075 .L3075
-    ; compiler-symbol L3071 .L3071
+    ; compiler-symbol L3027 .L3027
+    ; compiler-symbol L3050 .L3050
+    ; compiler-symbol L3032 .L3032
+    ; compiler-symbol L3031 .L3031
+    ; compiler-symbol L3051 .L3051
+    ; compiler-symbol L3055 .L3055
+    ; compiler-symbol L3069 .L3069
+    ; compiler-symbol L3059 .L3059
+    ; compiler-symbol L3070 .L3070
+    ; compiler-symbol L3062 .L3062
+    ; compiler-symbol LC219 .LC219
+    ; compiler-symbol L3073 .L3073
     ; compiler-symbol L3076 .L3076
-    ; compiler-symbol L3077 .L3077
-    ; compiler-symbol L3083 .L3083
+    ; compiler-symbol LC220 .LC220
+    ; compiler-symbol L3080 .L3080
     ; compiler-symbol L3084 .L3084
-    ; compiler-symbol L3078 .L3078
-    ; compiler-symbol LC223 .LC223
-    ; compiler-symbol L3089 .L3089
-    ; compiler-symbol L3087 .L3087
-    ; compiler-symbol L3110 .L3110
+    ; compiler-symbol L3088 .L3088
     ; compiler-symbol L3092 .L3092
-    ; compiler-symbol L3093 .L3093
-    ; compiler-symbol L3090 .L3090
-    ; compiler-symbol L3100 .L3100
+    ; compiler-symbol LC222 .LC222
     ; compiler-symbol L3099 .L3099
-    ; compiler-symbol L3098 .L3098
+    ; compiler-symbol L3095 .L3095
+    ; compiler-symbol L3100 .L3100
+    ; compiler-symbol L3101 .L3101
+    ; compiler-symbol L3107 .L3107
+    ; compiler-symbol L3108 .L3108
+    ; compiler-symbol L3102 .L3102
+    ; compiler-symbol LC223 .LC223
+    ; compiler-symbol L3113 .L3113
     ; compiler-symbol L3111 .L3111
+    ; compiler-symbol L3134 .L3134
+    ; compiler-symbol L3116 .L3116
+    ; compiler-symbol L3117 .L3117
+    ; compiler-symbol L3114 .L3114
+    ; compiler-symbol L3124 .L3124
+    ; compiler-symbol L3123 .L3123
+    ; compiler-symbol L3122 .L3122
+    ; compiler-symbol L3135 .L3135
     ; compiler-symbol LC224 .LC224
     ; compiler-symbol LC225 .LC225
     ; compiler-symbol LC226 .LC226
     ; compiler-symbol LC227 .LC227
-    ; compiler-symbol L3126 .L3126
-    ; compiler-symbol L3127 .L3127
-    ; compiler-symbol L3117 .L3117
-    ; compiler-symbol L3129 .L3129
-    ; compiler-symbol L3116 .L3116
-    ; compiler-symbol L3128 .L3128
-    ; compiler-symbol L3112 .L3112
-    ; compiler-symbol L3130 .L3130
-    ; compiler-symbol L3131 .L3131
-    ; compiler-symbol L3121 .L3121
-    ; compiler-symbol L3132 .L3132
-    ; compiler-symbol L3133 .L3133
+    ; compiler-symbol L3150 .L3150
+    ; compiler-symbol L3151 .L3151
+    ; compiler-symbol L3141 .L3141
+    ; compiler-symbol L3153 .L3153
+    ; compiler-symbol L3140 .L3140
+    ; compiler-symbol L3152 .L3152
+    ; compiler-symbol L3136 .L3136
+    ; compiler-symbol L3154 .L3154
+    ; compiler-symbol L3155 .L3155
+    ; compiler-symbol L3145 .L3145
+    ; compiler-symbol L3156 .L3156
+    ; compiler-symbol L3157 .L3157
     ; compiler-symbol LC228 .LC228
     ; compiler-symbol LC229 .LC229
     ; compiler-symbol LC230 .LC230
     ; compiler-symbol LC231 .LC231
-    ; compiler-symbol L3135 .L3135
-    ; compiler-symbol L3136 .L3136
-    ; compiler-symbol L3137 .L3137
-    ; compiler-symbol L3148 .L3148
-    ; compiler-symbol L3142 .L3142
-    ; compiler-symbol L3143 .L3143
-    ; compiler-symbol L3134 .L3134
-    ; compiler-symbol L3140 .L3140
-    ; compiler-symbol L3149 .L3149
-    ; compiler-symbol L3162 .L3162
-    ; compiler-symbol L3165 .L3165
+    ; compiler-symbol L3159 .L3159
+    ; compiler-symbol L3160 .L3160
+    ; compiler-symbol L3161 .L3161
+    ; compiler-symbol L3172 .L3172
     ; compiler-symbol L3166 .L3166
-    ; compiler-symbol L3178 .L3178
-    ; compiler-symbol L3169 .L3169
-    ; compiler-symbol L3179 .L3179
+    ; compiler-symbol L3167 .L3167
+    ; compiler-symbol L3158 .L3158
     ; compiler-symbol L3164 .L3164
-    ; compiler-symbol L3168 .L3168
-    ; compiler-symbol L3181 .L3181
-    ; compiler-symbol L3182 .L3182
+    ; compiler-symbol L3173 .L3173
+    ; compiler-symbol L3186 .L3186
+    ; compiler-symbol L3189 .L3189
+    ; compiler-symbol L3190 .L3190
+    ; compiler-symbol L3202 .L3202
+    ; compiler-symbol L3193 .L3193
+    ; compiler-symbol L3203 .L3203
     ; compiler-symbol L3188 .L3188
     ; compiler-symbol L3192 .L3192
-    ; compiler-symbol L3190 .L3190
-    ; compiler-symbol L3199 .L3199
-    ; compiler-symbol L3203 .L3203
-    ; compiler-symbol L3209 .L3209
-    ; compiler-symbol L3200 .L3200
-    ; compiler-symbol L3210 .L3210
+    ; compiler-symbol L3205 .L3205
+    ; compiler-symbol L3206 .L3206
     ; compiler-symbol L3212 .L3212
+    ; compiler-symbol L3216 .L3216
+    ; compiler-symbol L3214 .L3214
+    ; compiler-symbol L3223 .L3223
+    ; compiler-symbol L3227 .L3227
+    ; compiler-symbol L3233 .L3233
+    ; compiler-symbol L3224 .L3224
+    ; compiler-symbol L3234 .L3234
+    ; compiler-symbol L3236 .L3236
     ; compiler-symbol LC232 .LC232
     ; compiler-symbol LC233 .LC233
     ; compiler-symbol LC234 .LC234
     ; compiler-symbol LC235 .LC235
-    ; compiler-symbol L3377 .L3377
-    ; compiler-symbol L3214 .L3214
-    ; compiler-symbol L3215 .L3215
-    ; compiler-symbol L3378 .L3378
-    ; compiler-symbol L3216 .L3216
-    ; compiler-symbol L3218 .L3218
-    ; compiler-symbol L3220 .L3220
-    ; compiler-symbol L3221 .L3221
-    ; compiler-symbol L3231 .L3231
-    ; compiler-symbol L3224 .L3224
-    ; compiler-symbol L3379 .L3379
-    ; compiler-symbol L3225 .L3225
-    ; compiler-symbol L3380 .L3380
-    ; compiler-symbol L3223 .L3223
-    ; compiler-symbol L3320 .L3320
-    ; compiler-symbol L3226 .L3226
-    ; compiler-symbol L3229 .L3229
-    ; compiler-symbol L3381 .L3381
-    ; compiler-symbol L3382 .L3382
-    ; compiler-symbol L3230 .L3230
-    ; compiler-symbol L3232 .L3232
-    ; compiler-symbol L3234 .L3234
-    ; compiler-symbol L3233 .L3233
-    ; compiler-symbol L3383 .L3383
-    ; compiler-symbol L3384 .L3384
-    ; compiler-symbol L3304 .L3304
-    ; compiler-symbol L3243 .L3243
+    ; compiler-symbol L3408 .L3408
+    ; compiler-symbol L3238 .L3238
+    ; compiler-symbol L3239 .L3239
+    ; compiler-symbol L3409 .L3409
+    ; compiler-symbol L3240 .L3240
     ; compiler-symbol L3242 .L3242
     ; compiler-symbol L3244 .L3244
-    ; compiler-symbol L3385 .L3385
-    ; compiler-symbol L3250 .L3250
-    ; compiler-symbol L3252 .L3252
-    ; compiler-symbol L3251 .L3251
-    ; compiler-symbol L3249 .L3249
-    ; compiler-symbol L3253 .L3253
-    ; compiler-symbol L3254 .L3254
+    ; compiler-symbol L3337 .L3337
     ; compiler-symbol L3255 .L3255
-    ; compiler-symbol L3256 .L3256
-    ; compiler-symbol L3257 .L3257
-    ; compiler-symbol L3259 .L3259
-    ; compiler-symbol L3267 .L3267
-    ; compiler-symbol L3386 .L3386
-    ; compiler-symbol L3313 .L3313
-    ; compiler-symbol L3265 .L3265
-    ; compiler-symbol L3266 .L3266
-    ; compiler-symbol L3264 .L3264
-    ; compiler-symbol L3387 .L3387
-    ; compiler-symbol L3261 .L3261
-    ; compiler-symbol L3268 .L3268
-    ; compiler-symbol L3269 .L3269
-    ; compiler-symbol L3271 .L3271
-    ; compiler-symbol L3388 .L3388
-    ; compiler-symbol L3389 .L3389
-    ; compiler-symbol L3273 .L3273
-    ; compiler-symbol L3270 .L3270
-    ; compiler-symbol L3237 .L3237
-    ; compiler-symbol L3240 .L3240
-    ; compiler-symbol L3236 .L3236
-    ; compiler-symbol L3390 .L3390
-    ; compiler-symbol L3370 .L3370
-    ; compiler-symbol L3300 .L3300
-    ; compiler-symbol L3245 .L3245
-    ; compiler-symbol L3247 .L3247
-    ; compiler-symbol L3246 .L3246
     ; compiler-symbol L3248 .L3248
-    ; compiler-symbol L3275 .L3275
-    ; compiler-symbol L3284 .L3284
-    ; compiler-symbol L3276 .L3276
-    ; compiler-symbol L3283 .L3283
-    ; compiler-symbol L3316 .L3316
-    ; compiler-symbol L3296 .L3296
-    ; compiler-symbol L3289 .L3289
-    ; compiler-symbol L3290 .L3290
-    ; compiler-symbol L3292 .L3292
-    ; compiler-symbol L3318 .L3318
-    ; compiler-symbol L3288 .L3288
-    ; compiler-symbol L3299 .L3299
-    ; compiler-symbol L3391 .L3391
-    ; compiler-symbol L3298 .L3298
-    ; compiler-symbol L3393 .L3393
-    ; compiler-symbol L3392 .L3392
-    ; compiler-symbol L3280 .L3280
-    ; compiler-symbol L3394 .L3394
-    ; compiler-symbol L3279 .L3279
-    ; compiler-symbol L3319 .L3319
-    ; compiler-symbol L3291 .L3291
-    ; compiler-symbol L3294 .L3294
-    ; compiler-symbol L3295 .L3295
-    ; compiler-symbol L3293 .L3293
-    ; compiler-symbol L3302 .L3302
-    ; compiler-symbol L3376 .L3376
+    ; compiler-symbol L3410 .L3410
+    ; compiler-symbol L3249 .L3249
+    ; compiler-symbol L3411 .L3411
+    ; compiler-symbol L3247 .L3247
+    ; compiler-symbol L3349 .L3349
+    ; compiler-symbol L3250 .L3250
+    ; compiler-symbol L3253 .L3253
     ; compiler-symbol L3412 .L3412
+    ; compiler-symbol L3413 .L3413
+    ; compiler-symbol L3254 .L3254
+    ; compiler-symbol L3245 .L3245
+    ; compiler-symbol L3261 .L3261
+    ; compiler-symbol L3260 .L3260
+    ; compiler-symbol L3259 .L3259
+    ; compiler-symbol L3414 .L3414
+    ; compiler-symbol L3272 .L3272
+    ; compiler-symbol L3264 .L3264
+    ; compiler-symbol L3263 .L3263
+    ; compiler-symbol L3415 .L3415
+    ; compiler-symbol L3416 .L3416
+    ; compiler-symbol L3333 .L3333
+    ; compiler-symbol L3274 .L3274
+    ; compiler-symbol L3273 .L3273
+    ; compiler-symbol L3275 .L3275
+    ; compiler-symbol L3280 .L3280
+    ; compiler-symbol L3281 .L3281
+    ; compiler-symbol L3282 .L3282
+    ; compiler-symbol L3332 .L3332
+    ; compiler-symbol L3283 .L3283
+    ; compiler-symbol L3285 .L3285
+    ; compiler-symbol L3286 .L3286
+    ; compiler-symbol L3287 .L3287
+    ; compiler-symbol L3288 .L3288
+    ; compiler-symbol L3289 .L3289
+    ; compiler-symbol L3284 .L3284
+    ; compiler-symbol L3291 .L3291
+    ; compiler-symbol L3299 .L3299
+    ; compiler-symbol L3417 .L3417
+    ; compiler-symbol L3342 .L3342
+    ; compiler-symbol L3297 .L3297
+    ; compiler-symbol L3298 .L3298
+    ; compiler-symbol L3296 .L3296
+    ; compiler-symbol L3418 .L3418
+    ; compiler-symbol L3293 .L3293
+    ; compiler-symbol L3300 .L3300
+    ; compiler-symbol L3301 .L3301
+    ; compiler-symbol L3303 .L3303
+    ; compiler-symbol L3419 .L3419
+    ; compiler-symbol L3304 .L3304
+    ; compiler-symbol L3420 .L3420
+    ; compiler-symbol L3305 .L3305
+    ; compiler-symbol L3302 .L3302
+    ; compiler-symbol L3271 .L3271
+    ; compiler-symbol L3270 .L3270
+    ; compiler-symbol L3269 .L3269
+    ; compiler-symbol L3421 .L3421
+    ; compiler-symbol L3276 .L3276
+    ; compiler-symbol L3278 .L3278
+    ; compiler-symbol L3277 .L3277
+    ; compiler-symbol L3279 .L3279
+    ; compiler-symbol L3307 .L3307
+    ; compiler-symbol L3316 .L3316
+    ; compiler-symbol L3308 .L3308
+    ; compiler-symbol L3315 .L3315
+    ; compiler-symbol L3345 .L3345
+    ; compiler-symbol L3328 .L3328
+    ; compiler-symbol L3321 .L3321
+    ; compiler-symbol L3322 .L3322
+    ; compiler-symbol L3324 .L3324
+    ; compiler-symbol L3347 .L3347
+    ; compiler-symbol L3320 .L3320
+    ; compiler-symbol L3331 .L3331
+    ; compiler-symbol L3422 .L3422
+    ; compiler-symbol L3330 .L3330
+    ; compiler-symbol L3424 .L3424
+    ; compiler-symbol L3423 .L3423
+    ; compiler-symbol L3312 .L3312
+    ; compiler-symbol L3425 .L3425
+    ; compiler-symbol L3311 .L3311
+    ; compiler-symbol L3348 .L3348
+    ; compiler-symbol L3323 .L3323
+    ; compiler-symbol L3326 .L3326
+    ; compiler-symbol L3327 .L3327
+    ; compiler-symbol L3325 .L3325
+    ; compiler-symbol L3443 .L3443
     ; compiler-symbol LC236 .LC236
     ; compiler-symbol LC237 .LC237
     ; compiler-symbol LC238 .LC238
     ; compiler-symbol LC239 .LC239
-    ; compiler-symbol L3415 .L3415
-    ; compiler-symbol L3418 .L3418
-    ; compiler-symbol L3437 .L3437
-    ; compiler-symbol L3417 .L3417
-    ; compiler-symbol L3419 .L3419
-    ; compiler-symbol L3436 .L3436
-    ; compiler-symbol L3422 .L3422
-    ; compiler-symbol L3438 .L3438
-    ; compiler-symbol L3424 .L3424
-    ; compiler-symbol L3439 .L3439
-    ; compiler-symbol L3425 .L3425
+    ; compiler-symbol L3446 .L3446
+    ; compiler-symbol L3449 .L3449
+    ; compiler-symbol L3468 .L3468
+    ; compiler-symbol L3448 .L3448
+    ; compiler-symbol L3450 .L3450
+    ; compiler-symbol L3467 .L3467
+    ; compiler-symbol L3453 .L3453
+    ; compiler-symbol L3469 .L3469
+    ; compiler-symbol L3455 .L3455
+    ; compiler-symbol L3470 .L3470
+    ; compiler-symbol L3456 .L3456
     ; compiler-symbol LC240 .LC240
     ; compiler-symbol LC241 .LC241
     ; compiler-symbol LC242 .LC242
@@ -4640,7 +4653,7 @@ L115:
     jmp L88
     section .text
 doom_read_mus.cold:
-LFSB371:
+LFSB372:
 L111:
     mov ebx, ecx
     jmp L79
@@ -4652,50 +4665,6 @@ LHOTE20:
     align 16
 doom_register_song:
     jmp doom_read_mus
-    align 16
-doom_convert_row:
-    cmp dword [rel doom_scale], 2
-    mov eax, dword [rel doom_simd]
-    je L156
-    test eax, eax
-    jne L149
-    movsx rcx, edx
-    xor eax, eax
-    test edx, edx
-    jle L157
-L151:
-    movzx edx, byte [rsi+rax]
-    mov edx, dword [doom_palette+rdx*4]
-    mov dword [rdi+rax*4], edx
-    add rax, 1
-    cmp rcx, rax
-    jne L151
-    ret
-L149:
-    mov ecx, doom_palette
-    jmp doom_palette_row
-L156:
-    test eax, eax
-    jne L144
-    movsx rcx, edx
-    xor eax, eax
-    test edx, edx
-    jle L158
-L147:
-    movzx edx, byte [rsi+rax]
-    mov rdx, qword [doom_palette2+rdx*8]
-    mov qword [rdi+rax*8], rdx
-    add rax, 1
-    cmp rcx, rax
-    jne L147
-    ret
-L144:
-    mov ecx, doom_palette2
-    jmp doom_palette_row2
-L157:
-    ret
-L158:
-    ret
     section .rodata
 LC21:
     db `%s`, 0
@@ -4732,11 +4701,11 @@ doom_overlay_line:
     mov rdi, r13
     call strcmp
     test eax, eax
-    jne L160
+    jne L143
     mov eax, dword [rsp+8]
     cmp dword [doom_overlay_colours+rbp*4], eax
-    je L161
-L160:
+    je L144
+L143:
     lea rdi, [rsp+16]
     call gfx_save
     mov ecx, 640
@@ -4772,7 +4741,7 @@ L160:
     call snprintf
     mov eax, dword [rsp+8]
     mov dword [doom_overlay_colours+rbp*4], eax
-L161:
+L144:
     mov eax, r15d
     mov r9d, dword [rel doom_client_h]
     mov ecx, dword [rsp+12]
@@ -4787,10 +4756,10 @@ L161:
     cmovg r8d, ebx
     sub r9d, ecx
     test r8d, r8d
-    jle L163
+    jle L146
     test r9d, r9d
-    jg L171
-L163:
+    jg L154
+L146:
     mov eax, dword [rsp+12]
     add eax, 14
     sub eax, dword [rel doom_view+4]
@@ -4802,7 +4771,7 @@ L163:
     pop r14
     pop r15
     ret
-L171:
+L154:
     mov edx, 13
     lea rsi, [0+rax*4]
     movsx r10, r15d
@@ -4818,7 +4787,7 @@ L171:
     lea rdi, [rdx+rax*4]
     mov rdx, r12
     call copy_rect32
-    jmp L163
+    jmp L146
     section .rodata
 LC22:
     db `DOOM`, 0
@@ -4839,35 +4808,35 @@ doom_running_already:
     cmovle r12d, eax
     call os_getpid
     test ebx, ebx
-    jle L176
+    jle L159
     mov r13d, eax
     lea rbx, [rsp+4]
     xor ebp, ebp
-L175:
+L158:
     cmp dword [rbx-4], r13d
-    jge L174
+    jge L157
     mov esi, LC22
     mov rdi, rbx
     call strcmp
     test eax, eax
-    je L177
-L174:
+    je L160
+L157:
     add ebp, 1
     add rbx, 64
     cmp r12d, ebp
-    jg L175
-L176:
+    jg L158
+L159:
     xor eax, eax
-L172:
+L155:
     add rsp, 2056
     pop rbx
     pop rbp
     pop r12
     pop r13
     ret
-L177:
+L160:
     mov eax, 1
-    jmp L172
+    jmp L155
     align 16
 doom_layout:
     sub rsp, 8
@@ -4878,20 +4847,20 @@ doom_layout:
     mov qword [rel doom_pixels], rax
     mov eax, dword [rel doom_client_w]
     cmp eax, 623
-    jle L182
+    jle L165
     cmp eax, 639
-    jle L185
+    jle L168
     mov ecx, 2
     mov edi, 640
     mov esi, 480
     xor edx, edx
-    jmp L181
-L182:
+    jmp L164
+L165:
     mov ecx, 1
     mov edi, 320
     mov esi, 240
     xor edx, edx
-L181:
+L164:
     mov dword [rel doom_crop], edx
     mov edx, dword [rel doom_client_h]
     movd xmm1, edi
@@ -4927,7 +4896,7 @@ L181:
     mov rdi, qword [rel doom_window]
     add rsp, 8
     jmp os_window_update_all
-L185:
+L168:
     mov edx, 643
     mov edi, 160
     mov ecx, 2
@@ -4936,15 +4905,15 @@ L185:
     sar edx, 2
     sub edi, edx
     sal edi, 2
-    jmp L181
+    jmp L164
     align 16
 doom_sound_shutdown:
     mov eax, dword [rel doom_pcm_open]
     test eax, eax
-    jne L192
+    jne L175
     mov dword [rel doom_pcm_open], 0
     ret
-L192:
+L175:
     sub rsp, 8
     call os_pcm_close
     mov dword [rel doom_pcm_open], 0
@@ -4960,14 +4929,14 @@ doom_sound_init:
     sete cl
     movzx ecx, cl
     mov dword [rel doom_pcm_open], ecx
-    je L198
+    je L181
     xor eax, eax
     xor edx, edx
     mov dword [rel doom_pcm_capacity], eax
     mov eax, edx
     add rsp, 8
     ret
-L198:
+L181:
     call os_pcm_space
     mov edx, dword [rel doom_pcm_open]
     mov dword [rel doom_pcm_capacity], eax
@@ -4978,14 +4947,58 @@ L198:
 doom_resume_music:
     mov eax, dword [rel doom_paused]
     test eax, eax
-    jne L205
+    jne L188
     ret
-L205:
+L188:
     sub rsp, 8
     mov dword [rel doom_paused], 0
     call os_now_ms
     add qword [rel doom_song_start], rax
     add rsp, 8
+    ret
+    align 16
+doom_convert_row:
+    mov ecx, dword [rel doom_simd]
+    mov eax, dword [rel doom_scale]
+    test ecx, ecx
+    jne L201
+    cmp eax, 2
+    je L192
+    movsx rcx, edx
+    xor eax, eax
+    test edx, edx
+    jle L202
+L197:
+    movzx edx, byte [rsi+rax]
+    mov edx, dword [doom_palette+rdx*4]
+    mov dword [rdi+rax*4], edx
+    add rax, 1
+    cmp rcx, rax
+    jne L197
+L189:
+    ret
+L192:
+    test edx, edx
+    jle L189
+    movsx rdx, edx
+    xor eax, eax
+L196:
+    movzx ecx, byte [rsi+rax]
+    mov rcx, qword [doom_palette2+rcx*8]
+    mov qword [rdi+rax*8], rcx
+    add rax, 1
+    cmp rdx, rax
+    jne L196
+    ret
+L201:
+    cmp eax, 2
+    je L203
+    mov ecx, doom_palette
+    jmp doom_palette_row
+L203:
+    mov ecx, doom_palette2
+    jmp doom_palette_row2
+L202:
     ret
     align 16
 doom_pump_music.part.0:
@@ -4996,54 +5009,54 @@ doom_pump_music.part.0:
     movsx rdx, dword [rel doom_queued_count]
     mov r12, qword [rel doom_now_ms]
     test edx, edx
-    jle L217
+    jle L215
     mov eax, doom_queued
     lea rsi, [doom_queued+rdx*8]
     xor ecx, ecx
-L209:
+L207:
     mov rdx, qword [rax]
     cmp r12, rdx
-    jge L208
+    jge L206
     movsx rdi, ecx
     add ecx, 1
     mov qword [doom_queued+rdi*8], rdx
-L208:
+L206:
     add rax, 8
     cmp rsi, rax
-    jne L209
-L207:
+    jne L207
+L205:
     mov rdi, qword [rel doom_song]
     mov dword [rel doom_queued_count], ecx
     mov eax, dword [rel doom_next]
     mov r8d, dword [rdi+8]
-    jmp L216
-L222:
+    jmp L214
+L220:
     cmp dword [rel doom_queued_count], 178
-    jg L206
+    jg L204
     movzx ecx, byte [rbx+10]
     imul ecx, dword [rel doom_music_volume]
     cmp ecx, 126
-    jg L221
-L214:
+    jg L219
+L212:
     add eax, 1
     mov dword [rel doom_next], eax
-L216:
+L214:
     cmp eax, r8d
-    je L210
+    je L208
     movsx rdx, eax
     mov rcx, qword [rel doom_song_start]
     lea rbx, [rdx+rdx*2]
     sal rbx, 2
-L211:
+L209:
     add rbx, qword [rdi]
     movsx rdx, dword [rbx]
     add rdx, rcx
     lea rcx, [r12+700]
     cmp rdx, rcx
-    jg L206
+    jg L204
     mov esi, dword [rbx+4]
     test esi, esi
-    jns L222
+    jns L220
     movzx eax, word [rbx+8]
     cmp esi, -2
     lea rdi, [rsp+12]
@@ -5057,21 +5070,21 @@ L211:
     mov rdi, qword [rel doom_song]
     mov eax, dword [rel doom_next]
     mov r8d, dword [rdi+8]
-    jmp L214
-L210:
+    jmp L212
+L208:
     mov eax, dword [rel doom_looping]
     test eax, eax
-    je L206
+    je L204
     movsx rcx, dword [rdi+12]
     test ecx, ecx
-    jle L206
+    jle L204
     add rcx, qword [rel doom_song_start]
     xor ebx, ebx
     xor eax, eax
     mov dword [rel doom_next], 0
     mov qword [rel doom_song_start], rcx
-    jmp L211
-L221:
+    jmp L209
+L219:
     sub edx, r12d
     mov ebp, 0
     movzx eax, byte [rbx+9]
@@ -5105,37 +5118,37 @@ L221:
     mov r8d, dword [rdi+8]
     mov qword [doom_queued+rax*8], rdx
     mov eax, dword [rel doom_next]
-    jmp L214
-L206:
+    jmp L212
+L204:
     add rsp, 16
     pop rbx
     pop rbp
     pop r12
     ret
-L217:
+L215:
     xor ecx, ecx
-    jmp L207
+    jmp L205
     align 16
 doom_pump_music:
     mov rax, qword [rel doom_song]
     test rax, rax
-    je L223
+    je L221
     mov edx, dword [rel doom_paused]
     test edx, edx
-    jne L223
+    jne L221
     mov eax, dword [rax+8]
     test eax, eax
-    je L223
+    je L221
     jmp doom_pump_music.part.0
-L223:
+L221:
     ret
     align 16
 doom_pause_music:
     mov esi, dword [rel doom_paused]
     test esi, esi
-    jne L233
+    jne L231
     cmp qword [rel doom_song], 0
-    je L233
+    je L231
     push rbp
     push rbx
     xor ebx, ebx
@@ -5144,7 +5157,7 @@ doom_pause_music:
     call os_now_ms
     sub qword [rel doom_song_start], rax
     lea rbp, [rsp+10]
-L230:
+L228:
     mov eax, ebx
     mov edx, 123
     mov ecx, 64
@@ -5158,12 +5171,12 @@ L230:
     mov word [rsp+14], cx
     call os_midi_send
     cmp ebx, 16
-    jne L230
+    jne L228
     add rsp, 24
     pop rbx
     pop rbp
     ret
-L233:
+L231:
     ret
     align 16
 ST_refreshBackground.part.0:
@@ -5176,8 +5189,8 @@ ST_refreshBackground.part.0:
     call V_DrawPatch
     mov eax, dword [rel netgame]
     test eax, eax
-    jne L239
-L237:
+    jne L237
+L235:
     call V_RestoreBuffer
     sub rsp, 8
     xor r9d, r9d
@@ -5190,45 +5203,45 @@ L237:
     call V_CopyRect
     add rsp, 24
     ret
-L239:
+L237:
     mov rdx, qword [rel faceback]
     xor esi, esi
     mov edi, 143
     call V_DrawPatch
-    jmp L237
+    jmp L235
     align 16
 WI_initAnimatedBack.part.0:
     mov rcx, qword [rel wbs]
     movsx rdx, dword [rcx]
     mov eax, dword [NUMANIMS+rdx*4]
     test eax, eax
-    jle L248
+    jle L246
     push r12
     push rbp
     push rbx
     xor ebx, ebx
-    jmp L245
-L242:
+    jmp L243
+L240:
     cmp eax, 1
-    je L251
+    je L249
     cmp eax, 2
-    jne L243
+    jne L241
     mov eax, dword [rel bcnt]
     add eax, 1
     mov dword [rbp+56], eax
-L243:
+L241:
     movsx rdx, dword [rcx]
     add rbx, 1
     cmp dword [NUMANIMS+rdx*4], ebx
-    jle L252
-L245:
+    jle L250
+L243:
     mov rdx, qword [anims+rdx*8]
     lea rax, [rbx+rbx*8]
     lea rbp, [rdx+rax*8]
     mov eax, dword [rbp+0]
     mov dword [rbp+64], -1
     test eax, eax
-    jne L242
+    jne L240
     mov eax, dword [rel bcnt]
     add rbx, 1
     lea r12d, [rax+1]
@@ -5240,13 +5253,13 @@ L245:
     mov dword [rbp+56], edx
     movsx rdx, dword [rcx]
     cmp dword [NUMANIMS+rdx*4], ebx
-    jg L245
-L252:
+    jg L243
+L250:
     pop rbx
     pop rbp
     pop r12
     ret
-L251:
+L249:
     mov edx, dword [rel bcnt]
     mov eax, dword [rbp+24]
     lea r12d, [rdx+1+rax]
@@ -5256,8 +5269,8 @@ L251:
     idiv dword [rbp+20]
     add edx, r12d
     mov dword [rbp+56], edx
-    jmp L243
-L248:
+    jmp L241
+L246:
     ret
     align 16
 WI_updateAnimatedBack.part.0:
@@ -5265,70 +5278,70 @@ WI_updateAnimatedBack.part.0:
     movsx rdx, dword [rcx]
     mov esi, dword [NUMANIMS+rdx*4]
     test esi, esi
-    jle L269
+    jle L267
     push r12
     push rbp
     push rbx
     xor ebx, ebx
-    jmp L262
-L255:
+    jmp L260
+L253:
     movsx rdx, dword [rcx]
     add rbx, 1
     cmp dword [NUMANIMS+rdx*4], ebx
-    jle L274
-L262:
+    jle L272
+L260:
     mov rdx, qword [anims+rdx*8]
     lea rax, [rbx+rbx*8]
     lea rbp, [rdx+rax*8]
     mov eax, dword [rel bcnt]
     cmp dword [rbp+56], eax
-    jne L255
+    jne L253
     mov edx, dword [rbp+0]
     cmp edx, 1
-    je L256
+    je L254
     cmp edx, 2
-    je L257
+    je L255
     test edx, edx
-    jne L255
+    jne L253
     mov edi, dword [rbp+64]
     lea edx, [rdi+1]
     cmp edx, dword [rbp+8]
-    jge L275
-L272:
+    jge L273
+L270:
     mov dword [rbp+64], edx
-L273:
+L271:
     movsx rdx, dword [rcx]
     add eax, dword [rbp+4]
     add rbx, 1
     mov dword [rbp+56], eax
     cmp dword [NUMANIMS+rdx*4], ebx
-    jg L262
-L274:
+    jg L260
+L272:
     pop rbx
     pop rbp
     pop r12
     ret
-L257:
+L255:
     mov edx, dword [rel state]
     test edx, edx
-    jne L263
+    jne L261
     cmp rbx, 7
-    je L255
-L263:
+    je L253
+L261:
     mov edi, dword [rbp+20]
     cmp dword [rcx+12], edi
-    jne L255
+    jne L253
     mov esi, dword [rbp+64]
     lea edx, [rsi+1]
     cmp edx, dword [rbp+8]
     cmove edx, esi
-    jmp L272
-L256:
+    jmp L270
+L254:
     mov esi, dword [rbp+64]
     lea edx, [rsi+1]
     mov dword [rbp+64], edx
     cmp edx, dword [rbp+8]
-    jne L273
+    jne L271
     mov dword [rbp+64], -1
     add eax, dword [rbp+24]
     mov r12d, eax
@@ -5338,11 +5351,11 @@ L256:
     idiv dword [rbp+20]
     add edx, r12d
     mov dword [rbp+56], edx
-    jmp L255
-L275:
+    jmp L253
+L273:
     xor edx, edx
-    jmp L272
-L269:
+    jmp L270
+L267:
     ret
     align 16
 doom_pump_effects.part.0:
@@ -5351,37 +5364,37 @@ doom_pump_effects.part.0:
     push r12
     push rbp
     push rbx
-L299:
+L297:
     mov ebp, doom_voices
     xor eax, eax
     mov rdx, rbp
-L277:
+L275:
     add eax, 1
     mov rcx, qword [rdx]
     add rdx, 24
     cmp eax, 16
-    je L305
+    je L303
     test rcx, rcx
-    je L277
-L279:
+    je L275
+L277:
     call os_pcm_space
     mov r13d, eax
     cmp eax, 4096
-    jg L300
+    jg L298
     test eax, eax
-    jle L276
-L281:
+    jle L274
+L279:
     mov edi, dword [rel doom_simd]
     xor eax, eax
-    jmp L292
-L282:
+    jmp L290
+L280:
     add rbp, 24
     cmp rbp, doom_voices+384
-    je L320
-L292:
+    je L318
+L290:
     mov rsi, qword [rbp+0]
     test rsi, rsi
-    je L282
+    je L280
     mov r14d, dword [rbp+8]
     mov eax, dword [rbp+20]
     mov r8d, dword [rbp+16]
@@ -5390,55 +5403,55 @@ L292:
     lea ecx, [rax+rax*2]
     sal r12d, 16
     cmp r8d, 65536
-    jne L321
+    jne L319
     mov edx, ebx
     shr edx, 16
     sub r14d, edx
     cmp r14d, r13d
     cmova r14d, r13d
     test edi, edi
-    je L322
+    je L320
     add rsi, rdx
     mov edi, mix.2
     mov edx, r14d
     call doom_mix_add
     mov edi, dword [rel doom_simd]
-L289:
+L287:
     sal r14d, 16
     add ebx, r14d
-L291:
+L289:
     mov dword [rbp+12], ebx
     mov eax, 1
     cmp ebx, r12d
-    jb L282
-L285:
+    jb L280
+L283:
     mov qword [rbp+0], 0
     add rbp, 24
     mov eax, 1
     cmp rbp, doom_voices+384
-    jne L292
-L320:
+    jne L290
+L318:
     test eax, eax
-    je L293
+    je L291
     mov eax, dword [rel doom_pcm_capacity]
     mov dword [rel doom_silence_owed], eax
     test edi, edi
-    je L295
-L323:
+    je L293
+L321:
     mov edx, r13d
     mov esi, mix.2
     mov edi, out.1
     call doom_mix_out
-L296:
+L294:
     mov esi, r13d
     mov edi, out.1
     call os_pcm_write
-    jmp L299
-L321:
+    jmp L297
+L319:
     mov edx, 1
     cmp ebx, r12d
-    jnb L285
-L284:
+    jnb L283
+L282:
     mov eax, ebx
     add ebx, r8d
     shr eax, 16
@@ -5452,118 +5465,118 @@ L284:
     setb al
     add rdx, 1
     test r9b, al
-    jne L284
-    jmp L291
-L322:
+    jne L282
+    jmp L289
+L320:
     mov r8d, r14d
     xor eax, eax
     add rsi, rdx
     test r14d, r14d
-    je L289
-L290:
+    je L287
+L288:
     movzx edx, byte [rsi+rax]
     add edx, -128
     imul edx, ecx
     add dword [mix.2+rax*4], edx
     add rax, 1
     cmp r8, rax
-    jne L290
-    jmp L289
-L305:
+    jne L288
+    jmp L287
+L303:
     test rcx, rcx
-    jne L279
+    jne L277
     mov eax, dword [rel doom_silence_owed]
     test eax, eax
-    jg L279
-L276:
+    jg L277
+L274:
     pop rbx
     pop rbp
     pop r12
     pop r13
     pop r14
     ret
-L293:
+L291:
     mov eax, dword [rel doom_silence_owed]
     sub eax, r13d
     mov dword [rel doom_silence_owed], eax
     test edi, edi
-    jne L323
-L295:
+    jne L321
+L293:
     movsx rsi, r13d
     xor eax, eax
     mov edi, -32768
-L298:
+L296:
     mov edx, dword [mix.2+rax*4]
     mov ecx, 32767
     cmp edx, 32767
-    jg L297
+    jg L295
     cmp edx, -32768
     mov ecx, edx
     cmovl ecx, edi
-L297:
+L295:
     mov word [out.1+rax+rax], cx
     mov dword [mix.2+rax*4], 0
     add rax, 1
     cmp rsi, rax
-    jne L298
-    jmp L296
-L300:
+    jne L296
+    jmp L294
+L298:
     mov r13d, 4096
-    jmp L281
+    jmp L279
     align 16
 doom_clean_path.constprop.0:
-    jmp L350
-L352:
-    cmp byte [rsi+1], 47
-    jne L351
-    add rsi, 2
+    jmp L348
 L350:
+    cmp byte [rsi+1], 47
+    jne L349
+    add rsi, 2
+L348:
     movzx eax, byte [rsi]
     cmp al, 46
-    je L352
-L326:
+    je L350
+L324:
     test al, al
-    je L328
+    je L326
     mov edx, 1
     xor ecx, ecx
-    jmp L333
-L329:
+    jmp L331
+L327:
     add rsi, 1
     mov byte [rdi+rcx], al
     movzx eax, byte [rsi]
     test al, al
-    je L336
+    je L334
     lea r8, [rdx+1]
     cmp rdx, 127
-    je L332
-L334:
+    je L330
+L332:
     mov rcx, rdx
     mov rdx, r8
-L333:
+L331:
     test rcx, rcx
-    je L329
+    je L327
     cmp al, 47
-    jne L329
+    jne L327
     cmp byte [rdi-1+rcx], 47
-    jne L329
+    jne L327
     movzx eax, byte [rsi+1]
     add rsi, 1
     test al, al
-    je L353
+    je L351
     lea r8, [rcx+1]
     mov rdx, rcx
-    jmp L334
-L332:
+    jmp L332
+L330:
     add rdi, 127
-L328:
+L326:
     mov byte [rdi], 0
     ret
-L351:
+L349:
     movzx eax, byte [rsi]
-    jmp L326
-L353:
+    jmp L324
+L351:
     mov rdx, rcx
-L336:
+L334:
     add rdi, rdx
     mov byte [rdi], 0
     ret
@@ -5596,11 +5609,11 @@ S_AdjustSoundParams.isra.0:
     sar eax, 1
     sub r13d, eax
     cmp dword [rel gamemap], 8
-    je L361
+    je L359
     xor eax, eax
     cmp r13d, 78643200
-    jg L354
-L361:
+    jg L352
+L359:
     mov edx, esi
     mov ecx, r9d
     mov esi, r8d
@@ -5620,23 +5633,23 @@ L361:
     mov eax, dword [rel snd_SfxVolume]
     mov dword [rbp+0], edx
     cmp r13d, 13107199
-    jg L366
-L358:
+    jg L364
+L356:
     test eax, eax
     mov dword [rbx], eax
     setg al
     movzx eax, al
-L354:
+L352:
     add rsp, 8
     pop rbx
     pop rbp
     pop r12
     pop r13
     ret
-L366:
+L364:
     cmp dword [rel gamemap], 8
     mov edx, 78643200
-    je L367
+    je L365
     sub edx, r13d
     sar edx, 16
     imul edx, eax
@@ -5645,8 +5658,8 @@ L366:
     imul rax, rax, 274877907
     sar rax, 38
     sub eax, edx
-    jmp L358
-L367:
+    jmp L356
+L365:
     cmp r13d, edx
     mov ecx, edx
     cmovle ecx, r13d
@@ -5660,7 +5673,7 @@ L367:
     sar rax, 38
     sub eax, edx
     add eax, 15
-    jmp L358
+    jmp L356
     align 16
 doom_release_keys:
     push rbp
@@ -5668,12 +5681,12 @@ doom_release_keys:
     xor ebx, ebx
     sub rsp, 40
     mov rbp, rsp
-L370:
+L368:
     mov eax, dword [doom_held+rbx*4]
     test eax, eax
-    je L369
+    je L367
     test rbx, rbx
-    je L369
+    je L367
     mov rdi, rbp
     mov dword [rsp], 1
     mov qword [rsp+12], 0
@@ -5681,10 +5694,10 @@ L370:
     mov dword [rsp+8], 0
     mov dword [doom_held+rbx*4], 0
     call D_PostEvent
-L369:
+L367:
     add rbx, 1
     cmp rbx, 256
-    jne L370
+    jne L368
     mov edx, doom_pressed
     mov ecx, 32
     xor eax, eax
@@ -5737,25 +5750,25 @@ doom_times_lines:
     cmovle ebp, eax
     call os_getpid
     test r12d, r12d
-    jle L380
+    jle L378
     lea rcx, [rsp+240]
     xor esi, esi
     xor r8d, r8d
     xor r12d, r12d
-L377:
+L375:
     mov edi, dword [rcx-48]
     cmp eax, edi
-    jne L375
+    jne L373
     mov r12, qword [rcx]
-L375:
+L373:
     test edi, edi
-    jne L376
+    jne L374
     mov r8, qword [rcx]
-L376:
+L374:
     add esi, 1
     add rcx, 64
     cmp ebp, esi
-    jg L377
+    jg L375
     movabs rcx, 3777893186295716171
     mov rax, r8
     mov r9, r8
@@ -5808,7 +5821,7 @@ L376:
     sar r12, 18
     sub r12, r8
     mov qword [rsp+24], r12
-L374:
+L372:
     lea rsi, [rsp+40]
     lea rdi, [rsp+36]
     mov qword [rsp+8], r10
@@ -5999,7 +6012,7 @@ L374:
     mov r8d, dword [rel doom_last_tics]
     add rsp, 80
     test r8d, r8d
-    je L378
+    je L376
     mov eax, dword [rel doom_last_tenths]
     mov ecx, 3435973837
     mov esi, 160
@@ -6019,7 +6032,7 @@ L374:
     call snprintf
     pop rax
     pop rdx
-L373:
+L371:
     add rsp, 2248
     pop rbx
     pop rbp
@@ -6028,41 +6041,41 @@ L373:
     pop r14
     pop r15
     ret
-L378:
+L376:
     movdqa xmm0, oword [rel LC28]
     movabs rax, 32762668207334756
     movaps oword [rel doom_times_text+480], xmm0
     mov qword [rel doom_times_text+493], rax
-    jmp L373
-L380:
+    jmp L371
+L378:
     mov qword [rsp+24], 0
     xor ebp, ebp
     xor r10d, r10d
     mov qword [rsp+16], 0
-    jmp L374
+    jmp L372
     align 16
     global S_Shutdown
 S_Shutdown:
     mov rax, qword [rel sound_module]
     test rax, rax
-    je L390
+    je L388
     sub rsp, 8
     call qword [rax+24]
     mov rax, qword [rel music_module]
     test rax, rax
-    je L383
+    je L381
     mov rax, qword [rax+24]
     add rsp, 8
     jmp rax
-L383:
+L381:
     add rsp, 8
     ret
-L390:
+L388:
     mov rax, qword [rel music_module]
     test rax, rax
-    je L392
+    je L390
     jmp qword [rax+24]
-L392:
+L390:
     ret
     align 16
 doom_music_shutdown:
@@ -6072,7 +6085,7 @@ doom_music_shutdown:
     sub rsp, 24
     mov qword [rel doom_song], 0
     lea rbp, [rsp+10]
-L396:
+L394:
     mov eax, ebx
     mov edx, 123
     mov ecx, 64
@@ -6086,7 +6099,7 @@ L396:
     mov word [rsp+14], cx
     call os_midi_send
     cmp ebx, 16
-    jne L396
+    jne L394
     add rsp, 24
     pop rbx
     pop rbp
@@ -6099,7 +6112,7 @@ doom_stop_song:
     sub rsp, 24
     mov qword [rel doom_song], 0
     lea rbp, [rsp+10]
-L400:
+L398:
     mov eax, ebx
     mov edx, 123
     mov ecx, 64
@@ -6113,7 +6126,7 @@ L400:
     mov word [rsp+14], cx
     call os_midi_send
     cmp ebx, 16
-    jne L400
+    jne L398
     add rsp, 24
     pop rbx
     pop rbp
@@ -6126,43 +6139,43 @@ I_SoundPump:
     mov rcx, rax
     sub rcx, rdx
     cmp rcx, 19
-    jg L404
+    jg L402
     cmp rax, rdx
-    jge L418
-L404:
+    jge L416
+L402:
     mov edi, dword [rel doom_pcm_open]
     mov qword [rel last.0], rax
     test edi, edi
-    je L419
+    je L417
     sub rsp, 8
     call doom_pump_effects.part.0
     mov rax, qword [rel doom_song]
     test rax, rax
-    je L403
+    je L401
     mov esi, dword [rel doom_paused]
     test esi, esi
-    jne L403
+    jne L401
     mov ecx, dword [rax+8]
     test ecx, ecx
-    je L403
+    je L401
     add rsp, 8
     jmp doom_pump_music.part.0
-L419:
+L417:
     mov rax, qword [rel doom_song]
     test rax, rax
-    je L418
+    je L416
     mov edx, dword [rel doom_paused]
     test edx, edx
-    je L425
-L418:
+    je L423
+L416:
     ret
-L403:
+L401:
     add rsp, 8
     ret
-L425:
+L423:
     mov eax, dword [rax+8]
     test eax, eax
-    je L418
+    je L416
     jmp doom_pump_music.part.0
     align 16
 doom_play_song:
@@ -6175,7 +6188,7 @@ doom_play_song:
     xor ebx, ebx
     sub rsp, 24
     lea rbp, [rsp+10]
-L427:
+L425:
     mov eax, ebx
     mov esi, 123
     mov edi, 64
@@ -6189,7 +6202,7 @@ L427:
     mov byte [rsp+13], al
     call os_midi_send
     cmp ebx, 16
-    jne L427
+    jne L425
     mov qword [rel doom_song], r13
     xor ebx, ebx
     mov dword [rel doom_next], 0
@@ -6198,7 +6211,7 @@ L427:
     call os_now_ms
     add rax, 50
     mov qword [rel doom_song_start], rax
-L428:
+L426:
     mov eax, ebx
     mov ecx, 121
     mov esi, 3
@@ -6209,23 +6222,23 @@ L428:
     mov byte [rsp+10], al
     call os_midi_send
     cmp ebx, 16
-    jne L428
+    jne L426
     mov rax, qword [rel doom_song]
     test rax, rax
-    je L426
+    je L424
     mov edx, dword [rel doom_paused]
     test edx, edx
-    jne L426
+    jne L424
     mov eax, dword [rax+8]
     test eax, eax
-    je L426
+    je L424
     add rsp, 24
     pop rbx
     pop rbp
     pop r12
     pop r13
     jmp doom_pump_music.part.0
-L426:
+L424:
     add rsp, 24
     pop rbx
     pop rbp
@@ -6238,63 +6251,63 @@ S_StopSound:
     mov edx, dword [rel snd_channels]
     mov rcx, rdi
     test edx, edx
-    jle L436
+    jle L434
     mov rax, qword [rel channels]
     xor edi, edi
-L439:
+L437:
     cmp qword [rax], 0
-    je L438
+    je L436
     cmp qword [rax+8], rcx
-    je L441
-L438:
+    je L439
+L436:
     add edi, 1
     add rax, 24
     cmp edi, edx
-    jne L439
-L436:
+    jne L437
+L434:
     ret
-L441:
+L439:
     jmp S_StopChannel
     align 16
     global S_PauseSound
 S_PauseSound:
     cmp qword [rel mus_playing], 0
-    je L449
+    je L447
     mov eax, dword [rel mus_paused]
     test eax, eax
-    jne L449
+    jne L447
     mov rax, qword [rel music_module]
     test rax, rax
-    je L450
+    je L448
     sub rsp, 8
     call qword [rax+40]
     mov dword [rel mus_paused], 1
     add rsp, 8
     ret
-L449:
+L447:
     ret
-L450:
+L448:
     mov dword [rel mus_paused], 1
     ret
     align 16
     global S_ResumeSound
 S_ResumeSound:
     cmp qword [rel mus_playing], 0
-    je L460
+    je L458
     mov eax, dword [rel mus_paused]
     test eax, eax
-    je L460
+    je L458
     mov rax, qword [rel music_module]
     test rax, rax
-    je L461
+    je L459
     sub rsp, 8
     call qword [rax+48]
     mov dword [rel mus_paused], 0
     add rsp, 8
     ret
-L460:
+L458:
     ret
-L461:
+L459:
     mov dword [rel mus_paused], 0
     ret
     align 16
@@ -6302,9 +6315,9 @@ L461:
 S_MusicPlaying:
     mov rax, qword [rel music_module]
     test rax, rax
-    je L465
+    je L463
     jmp qword [rax+88]
-L465:
+L463:
     xor eax, eax
     ret
     align 16
@@ -6335,7 +6348,7 @@ HUlib_addCharToTextLine:
     movsx rax, dword [rdi+104]
     xor edx, edx
     cmp eax, 80
-    je L469
+    je L467
     lea edx, [rax+1]
     mov dword [rdi+104], edx
     movsx rdx, edx
@@ -6343,7 +6356,7 @@ HUlib_addCharToTextLine:
     mov byte [rdi+20+rdx], 0
     mov edx, 1
     mov dword [rdi+108], 4
-L469:
+L467:
     mov eax, edx
     ret
     align 16
@@ -6352,14 +6365,14 @@ HUlib_delCharFromTextLine:
     mov eax, dword [rdi+104]
     xor edx, edx
     test eax, eax
-    je L473
+    je L471
     sub eax, 1
     mov edx, 1
     mov dword [rdi+104], eax
     cdqe
     mov byte [rdi+20+rax], 0
     mov dword [rdi+108], 4
-L473:
+L471:
     mov eax, edx
     ret
     align 16
@@ -6375,27 +6388,27 @@ HUlib_drawTextLine:
     mov eax, dword [rdi+104]
     mov r12d, dword [rdi]
     test eax, eax
-    jle L478
+    jle L476
     xor ebx, ebx
-    jmp L481
-L479:
+    jmp L479
+L477:
     add r12d, 4
     cmp r12d, 319
-    jg L478
+    jg L476
     add rbx, 1
     cmp dword [rbp+104], ebx
-    jle L478
-L481:
+    jle L476
+L479:
     movsx edi, byte [rbp+20+rbx]
     call toupper
     cmp al, 32
-    je L479
+    je L477
     mov ecx, dword [rbp+16]
     movzx edx, al
     cmp al, 95
-    ja L479
+    ja L477
     cmp ecx, edx
-    jg L479
+    jg L477
     mov rax, qword [rbp+8]
     sub edx, ecx
     movsx rdx, edx
@@ -6403,17 +6416,17 @@ L481:
     movsx r14d, word [rdx]
     add r14d, r12d
     cmp r14d, 320
-    jg L478
+    jg L476
     mov esi, dword [rbp+4]
     mov edi, r12d
     add rbx, 1
     mov r12d, r14d
     call V_DrawPatchDirect
     cmp dword [rbp+104], ebx
-    jg L481
-L478:
+    jg L479
+L476:
     test r13d, r13d
-    je L477
+    je L475
     mov rdx, qword [rbp+8]
     mov eax, 95
     sub eax, dword [rbp+16]
@@ -6422,15 +6435,15 @@ L478:
     movsx eax, word [rdx]
     add eax, r12d
     cmp eax, 320
-    jle L494
-L477:
+    jle L492
+L475:
     pop rbx
     pop rbp
     pop r12
     pop r13
     pop r14
     ret
-L494:
+L492:
     mov esi, dword [rbp+4]
     pop rbx
     mov edi, r12d
@@ -6450,13 +6463,13 @@ HUlib_eraseTextLine:
     sub rsp, 8
     mov edx, dword [rel automapactive]
     test edx, edx
-    jne L499
+    jne L497
     mov eax, dword [rel viewwindowx]
     test eax, eax
-    je L499
+    je L497
     mov eax, dword [rdi+108]
     test eax, eax
-    je L495
+    je L493
     mov rdx, qword [rdi+8]
     mov ebp, dword [rdi+4]
     mov rdx, qword [rdx]
@@ -6465,26 +6478,26 @@ HUlib_eraseTextLine:
     movsx r12d, word [rdx+2]
     add r12d, 1
     test r12d, r12d
-    jg L505
-    jmp L497
-L502:
+    jg L503
+    jmp L495
+L500:
     mov esi, 320
     mov edi, r13d
     call R_VideoErase
-L504:
+L502:
     mov eax, dword [rbx+4]
     add ebp, 1
     add r13d, 320
     add eax, r12d
     cmp eax, ebp
-    jle L499
-L505:
+    jle L497
+L503:
     mov eax, dword [rel viewwindowy]
     cmp eax, ebp
-    jg L502
+    jg L500
     add eax, dword [rel viewheight]
     cmp eax, ebp
-    jle L502
+    jle L500
     mov esi, dword [rel viewwindowx]
     mov edi, r13d
     call R_VideoErase
@@ -6492,15 +6505,15 @@ L505:
     lea edi, [rsi+r13]
     add edi, dword [rel viewwidth]
     call R_VideoErase
-    jmp L504
-L499:
+    jmp L502
+L497:
     mov eax, dword [rbx+108]
     test eax, eax
-    je L495
-L497:
+    je L493
+L495:
     sub eax, 1
     mov dword [rbx+108], eax
-L495:
+L493:
     add rsp, 8
     pop rbx
     pop rbp
@@ -6517,7 +6530,7 @@ HUlib_initSText:
     mov qword [rax+456], rdi
     mov dword [rax+452], 0
     test ecx, ecx
-    jle L508
+    jle L506
     movsx r10, ecx
     mov rdi, qword [r8]
     lea rcx, [0+r10*8]
@@ -6527,7 +6540,7 @@ HUlib_initSText:
     sal rcx, 4
     not edi
     add rcx, rax
-L510:
+L508:
     mov dword [rax+4], edx
     add rax, 112
     add edx, edi
@@ -6537,8 +6550,8 @@ L510:
     mov byte [rax-92], 0
     mov qword [rax-8], r10
     cmp rax, rcx
-    jne L510
-L508:
+    jne L508
+L506:
     ret
     align 16
     global HUlib_addLineToSText
@@ -6559,17 +6572,17 @@ HUlib_addLineToSText:
     mov byte [rdi+20+rax], 0
     mov qword [rdi+104+rax], rdx
     test ecx, ecx
-    jle L512
+    jle L510
     lea rax, [0+rcx*8]
     sub rax, rcx
     sal rax, 4
     add rax, rdi
-L515:
+L513:
     mov dword [rdi+108], 4
     add rdi, 112
     cmp rdi, rax
-    jne L515
-L512:
+    jne L513
+L510:
     ret
     align 16
     global HUlib_addMessageToSText
@@ -6592,67 +6605,67 @@ HUlib_addMessageToSText:
     mov byte [rax+20+rdx], 0
     mov qword [rax+104+rdx], r8
     test esi, esi
-    jle L519
+    jle L517
     movsx r8, esi
     mov rdx, rax
     lea rsi, [0+r8*8]
     sub rsi, r8
     sal rsi, 4
     add rsi, rax
-L520:
+L518:
     mov dword [rdx+108], 4
     add rdx, 112
     cmp rdx, rsi
-    jne L520
-L519:
+    jne L518
+L517:
     test rdi, rdi
-    je L521
+    je L519
     movzx r9d, byte [rdi]
     test r9b, r9b
-    je L521
+    je L519
     lea rsi, [0+r10*8]
     sub rsi, r10
     sal rsi, 4
     add rsi, rax
-L523:
+L521:
     movsx rdx, dword [rsi+104]
     add rdi, 1
     cmp edx, 80
-    je L522
+    je L520
     lea r8d, [rdx+1]
     mov dword [rsi+104], r8d
     movsx r8, r8d
     mov byte [rsi+20+rdx], r9b
     mov byte [rsi+20+r8], 0
     mov dword [rsi+108], 4
-L522:
+L520:
     movzx r9d, byte [rdi]
     test r9b, r9b
-    jne L523
-L521:
+    jne L521
+L519:
     movzx edi, byte [rcx]
     test dil, dil
-    je L517
+    je L515
     lea rdx, [0+r10*8]
     sub rdx, r10
     sal rdx, 4
     add rax, rdx
-L526:
+L524:
     movsx rdx, dword [rax+104]
     add rcx, 1
     cmp edx, 80
-    je L525
+    je L523
     lea esi, [rdx+1]
     mov dword [rax+104], esi
     movsx rsi, esi
     mov byte [rax+20+rdx], dil
     mov byte [rax+20+rsi], 0
     mov dword [rax+108], 4
-L525:
+L523:
     movzx edi, byte [rcx]
     test dil, dil
-    jne L526
-L517:
+    jne L524
+L515:
     ret
     align 16
     global HUlib_drawSText
@@ -6660,16 +6673,16 @@ HUlib_drawSText:
     mov rax, qword [rdi+456]
     mov eax, dword [rax]
     test eax, eax
-    je L551
+    je L549
     push rbp
     mov rbp, rdi
     push rbx
     sub rsp, 8
     mov edx, dword [rdi+448]
     test edx, edx
-    jle L545
+    jle L543
     xor ebx, ebx
-L548:
+L546:
     mov eax, dword [rbp+452]
     sub eax, ebx
     add edx, eax
@@ -6685,13 +6698,13 @@ L548:
     call HUlib_drawTextLine
     mov edx, dword [rbp+448]
     cmp edx, ebx
-    jg L548
-L545:
+    jg L546
+L543:
     add rsp, 8
     pop rbx
     pop rbp
     ret
-L551:
+L549:
     ret
     align 16
     global HUlib_eraseSText
@@ -6702,26 +6715,26 @@ HUlib_eraseSText:
     mov ecx, dword [rdi+448]
     mov rbx, rdi
     test ecx, ecx
-    jle L555
+    jle L553
     mov rbp, rdi
     xor r12d, r12d
-L557:
+L555:
     mov edx, dword [rbx+464]
     test edx, edx
-    je L556
+    je L554
     mov rax, qword [rbx+456]
     mov eax, dword [rax]
     test eax, eax
-    jne L556
+    jne L554
     mov dword [rbp+108], 4
-L556:
+L554:
     mov rdi, rbp
     add r12d, 1
     add rbp, 112
     call HUlib_eraseTextLine
     cmp dword [rbx+448], r12d
-    jg L557
-L555:
+    jg L555
+L553:
     mov rax, qword [rbx+456]
     mov eax, dword [rax]
     mov dword [rbx+464], eax
@@ -6748,12 +6761,12 @@ HUlib_initIText:
 HUlib_delCharFromIText:
     mov eax, dword [rdi+104]
     cmp dword [rdi+112], eax
-    je L561
+    je L559
     test eax, eax
-    jne L563
-L561:
+    jne L561
+L559:
     ret
-L563:
+L561:
     sub eax, 1
     mov dword [rdi+104], eax
     cdqe
@@ -6765,20 +6778,20 @@ L563:
 HUlib_eraseLineFromIText:
     mov edx, dword [rdi+112]
     movsx rax, dword [rdi+104]
-L566:
+L564:
     cmp edx, eax
-    je L569
-L567:
+    je L567
+L565:
     test eax, eax
-    je L566
+    je L564
     lea ecx, [rax-1]
     mov dword [rdi+104], ecx
     mov byte [rdi+19+rax], 0
     sub rax, 1
     mov dword [rdi+108], 4
     cmp edx, eax
-    jne L567
-L569:
+    jne L565
+L567:
     ret
     align 16
     global HUlib_resetIText
@@ -6794,11 +6807,11 @@ HUlib_addPrefixToIText:
     movzx edx, byte [rsi]
     movsx rax, dword [rdi+104]
     test dl, dl
-    je L572
-L574:
+    je L570
+L572:
     add rsi, 1
     cmp eax, 80
-    je L573
+    je L571
     lea ecx, [rax+1]
     mov dword [rdi+104], ecx
     mov byte [rdi+20+rax], dl
@@ -6806,11 +6819,11 @@ L574:
     mov byte [rdi+20+rax], 0
     movsx rax, ecx
     mov dword [rdi+108], 4
-L573:
+L571:
     movzx edx, byte [rsi]
     test dl, dl
-    jne L574
-L572:
+    jne L572
+L570:
     mov dword [rdi+112], eax
     ret
     align 16
@@ -6822,48 +6835,48 @@ HUlib_keyInIText:
     call toupper
     lea edx, [rax-32]
     cmp dl, 63
-    ja L583
+    ja L581
     movsx rdx, dword [rbx+104]
     cmp edx, 80
-    je L584
+    je L582
     lea ecx, [rdx+1]
     mov dword [rbx+104], ecx
     movsx rcx, ecx
     mov byte [rbx+20+rdx], al
     mov byte [rbx+20+rcx], 0
     mov dword [rbx+108], 4
-L584:
-    mov edx, 1
 L582:
+    mov edx, 1
+L580:
     mov eax, edx
     pop rbx
     ret
-L583:
+L581:
     xor edx, edx
     cmp eax, 13
     sete dl
     cmp eax, 127
-    jne L582
+    jne L580
     mov eax, dword [rbx+104]
     cmp dword [rbx+112], eax
-    je L584
+    je L582
     test eax, eax
-    je L584
+    je L582
     sub eax, 1
     mov dword [rbx+104], eax
     cdqe
     mov byte [rbx+20+rax], 0
     mov dword [rbx+108], 4
-    jmp L584
+    jmp L582
     align 16
     global HUlib_drawIText
 HUlib_drawIText:
     mov rax, qword [rdi+120]
     mov eax, dword [rax]
     test eax, eax
-    jne L593
+    jne L591
     ret
-L593:
+L591:
     mov esi, 1
     jmp HUlib_drawTextLine
     align 16
@@ -6873,13 +6886,13 @@ HUlib_eraseIText:
     mov edx, dword [rdi+128]
     mov rbx, rdi
     test edx, edx
-    je L595
+    je L593
     mov rax, qword [rdi+120]
     mov eax, dword [rax]
     test eax, eax
-    jne L595
+    jne L593
     mov dword [rdi+108], 4
-L595:
+L593:
     mov rdi, rbx
     call HUlib_eraseTextLine
     mov rax, qword [rbx+120]
@@ -6901,9 +6914,9 @@ LC30:
 HU_Start:
     mov eax, dword [rel headsupactive]
     test eax, eax
-    je L599
+    je L597
     mov dword [rel headsupactive], 0
-L599:
+L597:
     movsx rax, dword [rel consoleplayer]
     mov rdi, qword [rel LC29]
     mov dword [rel message_on], 0
@@ -6934,49 +6947,49 @@ L599:
     mov byte [rel w_title+20], 0
     mov qword [rel w_title+104], rdi
     cmp eax, 4
-    je L600
+    je L598
     cmp eax, 5
-    je L601
+    je L599
     cmp eax, 2
-    je L602
-    ja L603
-    test eax, eax
     je L600
-L601:
+    ja L601
+    test eax, eax
+    je L598
+L599:
     mov eax, dword [rel gamemap]
     sub eax, 1
     cdqe
     mov rcx, qword [mapnames_commercial+rax*8]
-L605:
+L603:
     cmp dword [rel gameversion], 9
-    jne L606
+    jne L604
     mov eax, dword [rel gamemap]
     sub eax, 1
     cdqe
     mov rcx, qword [mapnames+rax*8]
-L606:
+L604:
     movzx esi, byte [rcx]
     test sil, sil
-    je L607
+    je L605
     xor eax, eax
-    jmp L609
-L630:
+    jmp L607
+L628:
     movsx rax, dword [rel w_title+104]
-L609:
+L607:
     add rcx, 1
     cmp eax, 80
-    je L608
+    je L606
     lea edx, [rax+1]
     mov byte [w_title+rax+20], sil
     mov dword [rel w_title+104], edx
     movsx rdx, edx
     mov byte [w_title+rdx+20], 0
     mov dword [rel w_title+108], 4
-L608:
+L606:
     movzx esi, byte [rcx]
     test sil, sil
-    jne L630
-L607:
+    jne L628
+L605:
     add r8d, 1
     mov eax, w_inputbuffer
     mov dword [rel w_chat+112], 0
@@ -6988,7 +7001,7 @@ L607:
     mov dword [rel w_chat+16], 33
     mov byte [rel w_chat+20], 0
     mov qword [rel w_chat+104], rdi
-L610:
+L608:
     mov dword [rax+112], 0
     add rax, 136
     mov qword [rax-16], always_off
@@ -6999,32 +7012,32 @@ L610:
     mov byte [rax-116], 0
     mov qword [rax-32], rdi
     cmp rax, w_inputbuffer+544
-    jne L610
+    jne L608
     mov dword [rel headsupactive], 1
     ret
-L600:
+L598:
     mov eax, dword [rel gameepisode]
     lea eax, [rax-9+rax*8]
     add eax, dword [rel gamemap]
     sub eax, 1
     cdqe
     mov rcx, qword [mapnames+rax*8]
-    jmp L605
-L603:
+    jmp L603
+L601:
     mov ecx, LC30
     cmp eax, 3
-    jne L605
+    jne L603
     mov eax, dword [rel gamemap]
     add eax, 31
     cdqe
     mov rcx, qword [mapnames_commercial+rax*8]
-    jmp L605
-L602:
+    jmp L603
+L600:
     mov eax, dword [rel gamemap]
     add eax, 63
     cdqe
     mov rcx, qword [mapnames_commercial+rax*8]
-    jmp L605
+    jmp L603
     align 16
     global HU_Drawer
 HU_Drawer:
@@ -7032,12 +7045,12 @@ HU_Drawer:
     push rbx
     mov ecx, dword [rax]
     test ecx, ecx
-    je L632
+    je L630
     mov edx, dword [rel w_message+448]
     test edx, edx
-    jle L632
+    jle L630
     xor ebx, ebx
-L634:
+L632:
     mov eax, dword [rel w_message+452]
     sub eax, ebx
     add edx, eax
@@ -7053,22 +7066,22 @@ L634:
     call HUlib_drawTextLine
     mov edx, dword [rel w_message+448]
     cmp edx, ebx
-    jg L634
-L632:
+    jg L632
+L630:
     mov rax, qword [rel w_chat+120]
     mov edx, dword [rax]
     test edx, edx
-    je L635
+    je L633
     mov esi, 1
     mov edi, w_chat
     call HUlib_drawTextLine
-L635:
+L633:
     mov eax, dword [rel automapactive]
     test eax, eax
-    jne L639
+    jne L637
     pop rbx
     ret
-L639:
+L637:
     xor esi, esi
     mov edi, w_title
     pop rbx
@@ -7081,38 +7094,38 @@ HU_Erase:
     sub rsp, 8
     mov edi, dword [rel w_message+448]
     test edi, edi
-    jle L641
+    jle L639
     mov ebx, w_message
     xor ebp, ebp
-L643:
+L641:
     mov esi, dword [rel w_message+464]
     test esi, esi
-    je L642
+    je L640
     mov rax, qword [rel w_message+456]
     mov ecx, dword [rax]
     test ecx, ecx
-    jne L642
+    jne L640
     mov dword [rbx+108], 4
-L642:
+L640:
     mov rdi, rbx
     add ebp, 1
     add rbx, 112
     call HUlib_eraseTextLine
     cmp ebp, dword [rel w_message+448]
-    jl L643
-L641:
+    jl L641
+L639:
     mov rax, qword [rel w_message+456]
     mov edx, dword [rel w_chat+128]
     mov eax, dword [rax]
     mov dword [rel w_message+464], eax
     test edx, edx
-    je L644
+    je L642
     mov rax, qword [rel w_chat+120]
     mov eax, dword [rax]
     test eax, eax
-    jne L644
+    jne L642
     mov dword [rel w_chat+108], 4
-L644:
+L642:
     mov edi, w_chat
     call HUlib_eraseTextLine
     mov rax, qword [rel w_chat+120]
@@ -7134,11 +7147,11 @@ HU_queueChatChar:
     lea eax, [rdx+1]
     and eax, 127
     cmp eax, dword [rel tail]
-    je L650
+    je L648
     mov byte [chatchars+rdx], dil
     mov dword [rel head], eax
     ret
-L650:
+L648:
     mov rax, qword [rel plr]
     mov qword [rax+232], LC32
     ret
@@ -7148,13 +7161,13 @@ HU_dequeueChatChar:
     mov eax, dword [rel tail]
     xor edx, edx
     cmp dword [rel head], eax
-    je L651
+    je L649
     movsx rdx, eax
     add eax, 1
     and eax, 127
     movzx edx, byte [chatchars+rdx]
     mov dword [rel tail], eax
-L651:
+L649:
     mov eax, edx
     ret
     section .rodata
@@ -7177,23 +7190,23 @@ HU_Responder:
     sub rsp, 8
     mov eax, dword [rdi+4]
     cmp eax, 182
-    je L656
+    je L654
     mov edx, dword [rdi]
     cmp eax, 184
-    je L697
+    je L695
     test edx, edx
-    jne L656
+    jne L654
     mov r9d, dword [rel chat_on]
     test r9d, r9d
-    jne L660
+    jne L658
     cmp eax, dword [rel key_message_refresh]
-    je L698
+    je L696
     mov r8d, dword [rel netgame]
     test r8d, r8d
-    je L656
+    je L654
     mov edx, dword [rdi+8]
     cmp edx, dword [rel key_multi_msg]
-    je L699
+    je L697
     movdqu xmm0, oword [rel playeringame]
     movdqa xmm1, xmm0
     psrldq xmm1, 8
@@ -7203,31 +7216,31 @@ HU_Responder:
     paddd xmm0, xmm1
     movd eax, xmm0
     cmp eax, 2
-    jle L656
+    jle L654
     mov ecx, dword [rel consoleplayer]
     xor eax, eax
-L673:
+L671:
     cmp edx, dword [key_multi_msgplayer+rax*4]
-    je L700
-L665:
+    je L698
+L663:
     add rax, 1
     cmp rax, 4
-    jne L673
-L656:
-    xor ebx, ebx
+    jne L671
 L654:
+    xor ebx, ebx
+L652:
     add rsp, 8
     mov eax, ebx
     pop rbx
     pop rbp
     ret
-L660:
+L658:
     mov edx, dword [rel altdown.23]
     test edx, edx
-    je L674
+    je L672
     sub eax, 48
     cmp al, 9
-    ja L656
+    ja L654
     movsx r10, dword [rel head]
     mov edi, dword [rel tail]
     movzx eax, al
@@ -7235,78 +7248,78 @@ L660:
     lea r8d, [r10+1]
     and r8d, 127
     cmp r8d, edi
-    je L701
+    je L699
     movzx esi, byte [rbx]
     lea eax, [r8+1]
     mov byte [chatchars+r10], 13
     mov dword [rel head], r8d
     and eax, 127
     test sil, sil
-    je L688
+    je L686
     mov r11, qword [rel plr]
     mov r10d, r8d
     mov r8d, eax
-L676:
+L674:
     movsx rdx, r10d
     mov rcx, rbx
     xor r9d, r9d
-    jmp L681
-L679:
+    jmp L679
+L677:
     mov byte [chatchars+rdx], sil
     mov r9d, 1
     movsx rdx, eax
-L680:
+L678:
     movzx esi, byte [rcx]
     test sil, sil
-    je L702
-L681:
+    je L700
+L679:
     lea eax, [rdx+1]
     add rcx, 1
     and eax, 127
     cmp edi, eax
-    jne L679
+    jne L677
     mov qword [r11+232], LC32
-    jmp L680
-L698:
+    jmp L678
+L696:
     mov dword [rel message_on], 1
     mov dword [rel message_counter], 140
-L662:
+L660:
     mov ebx, 1
     add rsp, 8
     mov eax, ebx
     pop rbx
     pop rbp
     ret
-L674:
+L672:
     mov ebp, dword [rdi+8]
     mov edi, w_chat
     movzx esi, bpl
     call HUlib_keyInIText
     mov ebx, eax
     test eax, eax
-    jne L703
-L684:
+    jne L701
+L682:
     cmp bpl, 13
-    je L704
+    je L702
     cmp bpl, 27
-    jne L654
+    jne L652
     mov dword [rel chat_on], 0
-    jmp L654
-L697:
+    jmp L652
+L695:
     xor eax, eax
     test edx, edx
     sete al
     mov dword [rel altdown.23], eax
-    jmp L656
-L701:
+    jmp L654
+L699:
     mov r11, qword [rel plr]
     mov qword [r11+232], LC32
     movzx esi, byte [rbx]
     test sil, sil
-    jne L676
-L677:
+    jne L674
+L675:
     mov qword [r11+232], LC32
-L683:
+L681:
     mov edx, 81
     mov rsi, rbx
     mov edi, lastmessage.21
@@ -7314,66 +7327,66 @@ L683:
     call M_StringCopy
     mov rax, qword [rel plr]
     mov qword [rax+232], lastmessage.21
-    jmp L662
-L704:
+    jmp L660
+L702:
     mov dword [rel chat_on], 0
     mov eax, dword [rel w_chat+104]
     test eax, eax
-    je L654
+    je L652
     mov edx, 81
     mov esi, w_chat+20
     mov edi, lastmessage.21
     call M_StringCopy
     mov rax, qword [rel plr]
     mov qword [rax+232], lastmessage.21
-    jmp L654
-L703:
+    jmp L652
+L701:
     movsx rdx, dword [rel head]
     lea eax, [rdx+1]
     and eax, 127
     cmp eax, dword [rel tail]
-    je L705
+    je L703
     mov byte [chatchars+rdx], bpl
     mov dword [rel head], eax
-    jmp L684
-L702:
+    jmp L682
+L700:
     test r9b, r9b
-    je L689
+    je L687
     mov dword [rel head], edx
     lea r8d, [rdx+1]
     and r8d, 127
-L678:
+L676:
     cmp edi, r8d
-    je L706
+    je L704
     mov byte [chatchars+rdx], 13
     mov dword [rel head], r8d
-    jmp L683
-L700:
+    jmp L681
+L698:
     mov esi, dword [playeringame+rax*4]
     test esi, esi
-    je L666
+    je L664
     cmp ecx, eax
-    jne L707
-L667:
+    jne L705
+L665:
     mov esi, dword [rel num_nobrainers.22]
     mov rdi, qword [rel plr]
     add esi, 1
     mov dword [rel num_nobrainers.22], esi
     cmp esi, 2
-    jg L669
+    jg L667
     mov qword [rdi+232], LC33
-    jmp L665
-L666:
+    jmp L663
+L664:
     cmp ecx, eax
-    jne L665
-    jmp L667
-L706:
+    jne L663
+    jmp L665
+L704:
     mov r11, qword [rel plr]
-    jmp L677
-L689:
+    jmp L675
+L687:
     movsx rdx, r10d
-    jmp L678
-L699:
+    jmp L676
+L697:
     mov rax, qword [rel LC29]
     movsx rdx, dword [rel head]
     mov dword [rel chat_on], 1
@@ -7383,40 +7396,40 @@ L699:
     and eax, 127
     cmp eax, dword [rel tail]
     mov byte [rel w_chat+20], 0
-    je L696
+    je L694
     mov byte [chatchars+rdx], 5
     mov dword [rel head], eax
-    jmp L662
-L705:
+    jmp L660
+L703:
     mov rax, qword [rel plr]
     mov qword [rax+232], LC32
-    jmp L684
-L669:
+    jmp L682
+L667:
     cmp esi, 5
-    jg L670
+    jg L668
     mov qword [rdi+232], LC34
-    jmp L665
-L688:
+    jmp L663
+L686:
     movsx rdx, r8d
     mov r8d, eax
-    jmp L678
-L696:
+    jmp L676
+L694:
     mov rax, qword [rel plr]
     mov qword [rax+232], LC32
-    jmp L662
-L670:
+    jmp L660
+L668:
     cmp esi, 8
-    jg L671
+    jg L669
     mov qword [rdi+232], LC35
-    jmp L665
-L671:
+    jmp L663
+L669:
     cmp esi, 31
     mov r8d, LC36
     mov esi, LC37
     cmovle rsi, r8
     mov qword [rdi+232], rsi
-    jmp L665
-L707:
+    jmp L663
+L705:
     mov rdx, qword [rel LC29]
     movsx rcx, dword [rel head]
     mov dword [rel chat_on], 1
@@ -7426,11 +7439,11 @@ L707:
     and edx, 127
     cmp edx, dword [rel tail]
     mov byte [rel w_chat+20], 0
-    je L696
+    je L694
     add eax, 1
     mov dword [rel head], edx
     mov byte [chatchars+rcx], al
-    jmp L662
+    jmp L660
     align 16
     global STlib_initNum
 STlib_initNum:
@@ -7480,9 +7493,9 @@ STlib_initBinIcon:
 ST_refreshBackground:
     mov eax, dword [rel st_statusbaron]
     test eax, eax
-    jne L714
+    jne L712
     ret
-L714:
+L712:
     jmp ST_refreshBackground.part.0
     align 16
     global ST_calcPainOffset
@@ -7493,7 +7506,7 @@ ST_calcPainOffset:
     cmp edx, eax
     cmovg edx, eax
     cmp dword [rel oldhealth.19], edx
-    je L718
+    je L716
     mov eax, 100
     mov dword [rel oldhealth.19], edx
     sub eax, edx
@@ -7506,7 +7519,7 @@ ST_calcPainOffset:
     sal eax, 3
     mov dword [rel lastcalc.18], eax
     ret
-L718:
+L716:
     mov eax, dword [rel lastcalc.18]
     ret
     align 16
@@ -7515,59 +7528,59 @@ ST_updateFaceWidget:
     sub rsp, 8
     mov esi, dword [rel priority.17]
     cmp esi, 9
-    jg L720
+    jg L718
     mov rdx, qword [rel plyr]
     mov edi, dword [rdx+44]
     test edi, edi
-    jne L721
+    jne L719
     mov dword [rel priority.17], 9
     mov eax, 1
     mov dword [rel st_faceindex], 41
-L729:
+L727:
     sub eax, 1
     mov dword [rel st_facecount], eax
     add rsp, 8
     ret
-L721:
+L719:
     cmp esi, 9
-    je L720
+    je L718
     mov r10d, dword [rdx+244]
     test r10d, r10d
-    je L724
+    je L722
     xor eax, eax
     xor r8d, r8d
-L726:
+L724:
     mov ecx, dword [rdx+132+rax]
     cmp dword [oldweaponsowned+rax], ecx
-    je L725
+    je L723
     mov dword [oldweaponsowned+rax], ecx
     mov r8d, 1
-L725:
+L723:
     add rax, 4
     cmp rax, 36
-    jne L726
+    jne L724
     test r8d, r8d
-    jne L783
-L724:
+    jne L781
+L722:
     cmp esi, 8
-    je L720
+    je L718
     mov r9d, dword [rdx+240]
     test r9d, r9d
-    jne L784
+    jne L782
     cmp esi, 7
-    je L720
-L744:
+    je L718
+L742:
     cmp esi, 6
-    je L720
+    je L718
     mov ecx, dword [rdx+200]
     test ecx, ecx
-    je L751
+    je L749
     mov eax, dword [rel lastattackdown.16]
     cmp eax, -1
-    je L785
+    je L783
     sub eax, 1
     mov dword [rel lastattackdown.16], eax
-    jne L753
+    jne L751
     mov edx, dword [rdx+44]
     mov eax, 100
     mov dword [rel priority.17], 5
@@ -7575,7 +7588,7 @@ L744:
     cmovg edx, eax
     cmp edx, dword [rel oldhealth.19]
     mov eax, dword [rel lastcalc.18]
-    je L755
+    je L753
     mov eax, 100
     mov dword [rel oldhealth.19], edx
     sub eax, edx
@@ -7587,26 +7600,26 @@ L744:
     sub eax, ecx
     sal eax, 3
     mov dword [rel lastcalc.18], eax
-L755:
+L753:
     mov dword [rel lastattackdown.16], 1
     add eax, 7
     mov dword [rel st_faceindex], eax
     mov eax, 1
-    jmp L729
-L751:
+    jmp L727
+L749:
     mov dword [rel lastattackdown.16], -1
-L753:
+L751:
     cmp esi, 5
-    je L720
+    je L718
     test byte [rdx+208], 2
-    jne L757
+    jne L755
     mov eax, dword [rdx+56]
     test eax, eax
-    jne L757
-L720:
+    jne L755
+L718:
     mov eax, dword [rel st_facecount]
     test eax, eax
-    jne L729
+    jne L727
     mov rax, qword [rel plyr]
     mov edx, 100
     mov ecx, dword [rel lastcalc.18]
@@ -7614,7 +7627,7 @@ L720:
     cmp eax, edx
     cmovg eax, edx
     cmp eax, dword [rel oldhealth.19]
-    je L762
+    je L760
     mov edx, 100
     mov dword [rel oldhealth.19], eax
     sub edx, eax
@@ -7626,7 +7639,7 @@ L720:
     sub ecx, edx
     sal ecx, 3
     mov dword [rel lastcalc.18], ecx
-L762:
+L760:
     movsx rax, dword [rel st_randomnumber]
     mov dword [rel priority.17], 0
     mov rdx, rax
@@ -7643,24 +7656,24 @@ L762:
     mov dword [rel st_faceindex], edx
     add rsp, 8
     ret
-L784:
+L782:
     mov rax, qword [rdx+248]
     test rax, rax
-    je L732
+    je L730
     mov rdx, qword [rdx]
     cmp rax, rdx
-    je L732
+    je L730
     mov dword [rel priority.17], 7
     mov ecx, edi
     sub ecx, dword [rel st_oldhealth]
     cmp ecx, 20
-    jle L733
+    jle L731
     mov edx, 100
     mov eax, dword [rel lastcalc.18]
     cmp edi, edx
     cmovle edx, edi
     cmp edx, dword [rel oldhealth.19]
-    je L735
+    je L733
     mov eax, 100
     mov dword [rel oldhealth.19], edx
     sub eax, edx
@@ -7672,28 +7685,28 @@ L784:
     sub eax, ecx
     sal eax, 3
     mov dword [rel lastcalc.18], eax
-L735:
+L733:
     add eax, 5
     mov dword [rel st_faceindex], eax
-    jmp L763
-L757:
+    jmp L761
+L755:
     mov dword [rel priority.17], 4
     xor eax, eax
     mov dword [rel st_faceindex], 40
     mov dword [rel st_facecount], eax
     add rsp, 8
     ret
-L785:
-    mov dword [rel lastattackdown.16], 70
-    jmp L753
 L783:
+    mov dword [rel lastattackdown.16], 70
+    jmp L751
+L781:
     mov edx, 100
     mov eax, dword [rel lastcalc.18]
     mov dword [rel priority.17], 8
     cmp edi, edx
     cmovle edx, edi
     cmp edx, dword [rel oldhealth.19]
-    je L728
+    je L726
     mov eax, 100
     mov dword [rel oldhealth.19], edx
     sub eax, edx
@@ -7705,25 +7718,46 @@ L783:
     sub eax, ecx
     sal eax, 3
     mov dword [rel lastcalc.18], eax
-L728:
+L726:
     add eax, 6
     mov dword [rel st_faceindex], eax
     mov eax, 70
-    jmp L729
-L732:
+    jmp L727
+L730:
     cmp esi, 7
-    je L720
+    je L718
     mov eax, 100
     cmp edi, eax
     cmovle eax, edi
-L766:
+L764:
     sub edi, dword [rel st_oldhealth]
     mov edx, dword [rel oldhealth.19]
     cmp edi, 20
-    jle L745
+    jle L743
     mov dword [rel priority.17], 7
     cmp eax, edx
-    je L786
+    je L784
+    mov edx, 100
+    mov dword [rel oldhealth.19], eax
+    sub edx, eax
+    lea ecx, [rdx+rdx*4]
+    movsx rdx, ecx
+    sar ecx, 31
+    imul rdx, rdx, 680390859
+    sar rdx, 36
+    sub edx, ecx
+    sal edx, 3
+    mov dword [rel lastcalc.18], edx
+L745:
+    add edx, 5
+    mov dword [rel st_faceindex], edx
+L761:
+    mov eax, 35
+    jmp L727
+L743:
+    mov dword [rel priority.17], 6
+    cmp eax, edx
+    je L785
     mov edx, 100
     mov dword [rel oldhealth.19], eax
     sub edx, eax
@@ -7736,31 +7770,10 @@ L766:
     sal edx, 3
     mov dword [rel lastcalc.18], edx
 L747:
-    add edx, 5
-    mov dword [rel st_faceindex], edx
-L763:
-    mov eax, 35
-    jmp L729
-L745:
-    mov dword [rel priority.17], 6
-    cmp eax, edx
-    je L787
-    mov edx, 100
-    mov dword [rel oldhealth.19], eax
-    sub edx, eax
-    lea ecx, [rdx+rdx*4]
-    movsx rdx, ecx
-    sar ecx, 31
-    imul rdx, rdx, 680390859
-    sar rdx, 36
-    sub edx, ecx
-    sal edx, 3
-    mov dword [rel lastcalc.18], edx
-L749:
     add edx, 7
     mov dword [rel st_faceindex], edx
-    jmp L763
-L733:
+    jmp L761
+L731:
     mov ecx, dword [rax+28]
     mov eax, dword [rax+24]
     mov esi, dword [rdx+28]
@@ -7771,13 +7784,13 @@ L733:
     mov rcx, qword [rdx]
     mov ecx, dword [rcx+56]
     cmp ecx, eax
-    jb L788
+    jb L786
     sub ecx, eax
     xor esi, esi
     cmp ecx, -2147483648
     mov r9d, ecx
     setbe sil
-L737:
+L735:
     mov edi, dword [rdx+44]
     mov eax, 100
     mov dword [rel st_facecount], 35
@@ -7785,7 +7798,7 @@ L737:
     cmp edi, eax
     cmovle eax, edi
     cmp eax, dword [rel oldhealth.19]
-    je L739
+    je L737
     mov ecx, 100
     mov dword [rel oldhealth.19], eax
     sub ecx, eax
@@ -7797,36 +7810,36 @@ L737:
     sub ecx, r8d
     sal ecx, 3
     mov dword [rel lastcalc.18], ecx
-L739:
+L737:
     cmp r9d, 536870911
-    ja L740
+    ja L738
     lea esi, [rcx+7]
-L741:
+L739:
     mov dword [rel st_faceindex], esi
     mov esi, dword [rel priority.17]
     cmp esi, 6
-    jg L763
+    jg L761
     mov r8d, dword [rdx+240]
     test r8d, r8d
-    jne L766
-    jmp L744
-L788:
+    jne L764
+    jmp L742
+L786:
     sub eax, ecx
     xor esi, esi
     cmp eax, -2147483648
     mov r9d, eax
     seta sil
-    jmp L737
-L786:
+    jmp L735
+L784:
+    mov edx, dword [rel lastcalc.18]
+    jmp L745
+L785:
     mov edx, dword [rel lastcalc.18]
     jmp L747
-L787:
-    mov edx, dword [rel lastcalc.18]
-    jmp L749
-L740:
+L738:
     xor esi, 1
     lea esi, [rsi+3+rcx]
-    jmp L741
+    jmp L739
     align 16
     global ST_updateWidgets
 ST_updateWidgets:
@@ -7838,26 +7851,26 @@ ST_updateWidgets:
     lea rax, [rax+rax*2]
     mov eax, dword [weaponinfo+rax*8]
     cmp eax, 5
-    je L790
+    je L788
     lea rsi, [rcx+168+rax*4]
-L790:
+L788:
     mov qword [rel w_ready+16], rsi
     xor eax, eax
     mov dword [rel w_ready+40], edx
-L793:
+L791:
     mov esi, dword [rcx+80+rax*4]
     mov edi, dword [rcx+92+rax*4]
     mov edx, -1
     test esi, esi
     cmovne edx, eax
     test edi, edi
-    je L792
+    je L790
     lea edx, [rax+3]
-L792:
+L790:
     mov dword [keyboxes+rax*4], edx
     add rax, 1
     cmp rax, 3
-    jne L793
+    jne L791
     call ST_updateFaceWidget
     mov edx, dword [rel deathmatch]
     xor eax, eax
@@ -7867,18 +7880,18 @@ L792:
     mov dword [rel st_notdeathmatch], eax
     mov eax, dword [rel st_statusbaron]
     test eax, eax
-    je L794
+    je L792
     mov eax, 1
     test edx, edx
-    je L808
-L794:
+    je L806
+L792:
     mov dword [rel st_armson], ecx
     mov r8d, dword [rel consoleplayer]
     xor edx, edx
     mov rdi, qword [rel plyr]
     mov dword [rel st_fragson], eax
     xor eax, eax
-L797:
+L795:
     mov ecx, dword [rdi+108+rdx*4]
     lea esi, [rax+rcx]
     sub eax, ecx
@@ -7886,15 +7899,15 @@ L797:
     cmovne eax, esi
     add rdx, 1
     cmp rdx, 4
-    jne L797
+    jne L795
     sub dword [rel st_msgcounter], 1
     mov dword [rel st_fragscount], eax
     add rsp, 8
     ret
-L808:
+L806:
     mov ecx, 1
     xor eax, eax
-    jmp L794
+    jmp L792
     align 16
     global ST_Ticker
 ST_Ticker:
@@ -7968,7 +7981,7 @@ ST_createWidgets:
     movq qword [rel w_ready+24], xmm0
     movq qword [rel w_health+24], xmm0
     movaps oword [rel w_armsbg+16], xmm5
-L815:
+L813:
     movsx rax, esi
     add esi, 1
     mov qword [rdx+16], r8
@@ -7994,7 +8007,7 @@ L815:
     mov dword [rdx-44], eax
     mov dword [rdx-48], ecx
     cmp esi, 6
-    jne L815
+    jne L813
     mov rax, qword [rel LC45]
     movdqa xmm0, oword [rel LC44]
     mov qword [rel w_frags+32], tallnum
@@ -8097,10 +8110,10 @@ WI_drawLF:
     mov rax, qword [rel wbs]
     cmp dword [rel gamemode], 2
     movsx rax, dword [rax+8]
-    jne L820
+    jne L818
     cmp dword [rel NUMCMAPS], eax
-    jle L821
-L820:
+    jle L819
+L818:
     mov rdx, qword [rel lnames]
     mov ebx, 320
     mov esi, 2
@@ -8134,12 +8147,12 @@ L820:
     pop rbx
     sar edi, 1
     jmp V_DrawPatch
-L821:
-    jne L824
+L819:
+    jne L822
     add rsp, 48
     pop rbx
     ret
-L824:
+L822:
     mov rax, qword [rel LC65]
     pxor xmm0, xmm0
     mov rdx, rsp
@@ -8190,58 +8203,58 @@ WI_drawEL:
     global WI_initAnimatedBack
 WI_initAnimatedBack:
     cmp dword [rel gamemode], 2
-    je L827
+    je L825
     mov rax, qword [rel wbs]
     cmp dword [rax], 2
-    jg L827
+    jg L825
     jmp WI_initAnimatedBack.part.0
-L827:
+L825:
     ret
     align 16
     global WI_updateAnimatedBack
 WI_updateAnimatedBack:
     cmp dword [rel gamemode], 2
-    je L829
+    je L827
     mov rax, qword [rel wbs]
     cmp dword [rax], 2
-    jg L829
+    jg L827
     jmp WI_updateAnimatedBack.part.0
-L829:
+L827:
     ret
     align 16
     global WI_drawAnimatedBack
 WI_drawAnimatedBack:
     cmp dword [rel gamemode], 2
-    je L837
+    je L835
     mov rcx, qword [rel wbs]
     movsx rdx, dword [rcx]
     cmp edx, 2
-    jg L837
+    jg L835
     mov eax, dword [NUMANIMS+rdx*4]
     test eax, eax
-    jle L837
+    jle L835
     push rbx
     xor ebx, ebx
-L834:
+L832:
     mov rdx, qword [anims+rdx*8]
     lea rax, [rbx+rbx*8]
     lea rax, [rdx+rax*8]
     movsx rdx, dword [rax+64]
     test edx, edx
-    js L833
+    js L831
     mov rdx, qword [rax+32+rdx*8]
     mov esi, dword [rax+16]
     mov edi, dword [rax+12]
     call V_DrawPatch
     mov rcx, qword [rel wbs]
-L833:
+L831:
     movsx rdx, dword [rcx]
     add rbx, 1
     cmp dword [NUMANIMS+rdx*4], ebx
-    jg L834
+    jg L832
     pop rbx
     ret
-L837:
+L835:
     ret
     align 16
     global WI_drawNum
@@ -8258,20 +8271,20 @@ WI_drawNum:
     mov dword [rsp+12], edi
     mov dword [rsp+8], edx
     test ecx, ecx
-    js L861
+    js L859
     mov eax, dword [rsp+8]
     mov edx, eax
     neg edx
     cmovs edx, eax
     xor ebx, ebx
     cmp edx, 1994
-    je L840
+    je L838
     lea eax, [rcx-1]
     mov ebx, dword [rsp+12]
     mov dword [rsp+4], eax
     test ecx, ecx
-    je L845
-L844:
+    je L843
+L842:
     mov r14d, edx
     mov ecx, 3435973837
     imul rcx, r14
@@ -8281,14 +8294,14 @@ L844:
     sub edx, ecx
     movsx rdx, edx
     mov rdx, qword [num+rdx*8]
-L842:
+L840:
     mov eax, dword [rsp+4]
     movsx r12d, word [rsi]
     mov ebx, 3435973837
     mov r15d, dword [rsp+12]
     lea r13d, [rax-1]
-    jmp L850
-L849:
+    jmp L848
+L847:
     mov esi, eax
     sub r13d, 1
     mov rdx, rsi
@@ -8300,7 +8313,7 @@ L849:
     sub eax, edx
     cdqe
     mov rdx, qword [num+rax*8]
-L850:
+L848:
     sub r15d, r12d
     mov esi, ebp
     mov edi, r15d
@@ -8309,22 +8322,22 @@ L850:
     imul rax, rbx
     shr rax, 35
     cmp r13d, -1
-    jne L849
+    jne L847
     mov r14d, dword [rsp+4]
     mov ebx, dword [rsp+12]
     imul r14d, r12d
     sub ebx, r12d
     sub ebx, r14d
-L845:
+L843:
     mov eax, dword [rsp+8]
     test eax, eax
-    jns L840
+    jns L838
     sub ebx, 8
     mov rdx, qword [rel wiminus]
     mov esi, ebp
     mov edi, ebx
     call V_DrawPatch
-L840:
+L838:
     add rsp, 24
     mov eax, ebx
     pop rbx
@@ -8334,12 +8347,12 @@ L840:
     pop r14
     pop r15
     ret
-L861:
+L859:
     test edx, edx
-    je L851
+    je L849
     mov ebx, edx
     xor ecx, ecx
-L843:
+L841:
     movsx rax, ebx
     sar ebx, 31
     mov dword [rsp+4], ecx
@@ -8348,24 +8361,24 @@ L843:
     sar rax, 34
     sub eax, ebx
     mov ebx, eax
-    jne L843
+    jne L841
     mov eax, dword [rsp+8]
     mov edx, eax
     neg edx
     cmovs edx, eax
     cmp edx, 1994
-    jne L844
-    jmp L840
-L851:
+    jne L842
+    jmp L838
+L849:
     mov dword [rsp+4], 0
     mov rdx, rsi
     xor r14d, r14d
-    jmp L842
+    jmp L840
     align 16
     global WI_drawPercent
 WI_drawPercent:
     test edx, edx
-    js L862
+    js L860
     push r12
     mov r12d, esi
     push rbp
@@ -8382,13 +8395,13 @@ WI_drawPercent:
     pop rbp
     pop r12
     jmp WI_drawNum
-L862:
+L860:
     ret
     align 16
     global WI_drawTime
 WI_drawTime:
     test edx, edx
-    js L877
+    js L875
     push r15
     push r14
     mov r14d, edi
@@ -8400,10 +8413,10 @@ WI_drawTime:
     mov ebx, edx
     sub rsp, 8
     cmp edx, 3599
-    jg L870
+    jg L868
     mov r13d, 1
     lea r12d, [rdx+59]
-L874:
+L872:
     mov eax, ebx
     imul r15d, r13d, 60
     mov edi, r14d
@@ -8427,13 +8440,13 @@ L874:
     movsx eax, word [rcx]
     sub r14d, eax
     cmp r13d, 1
-    je L871
+    je L869
     mov eax, ebx
     cdq
     idiv r15d
     test eax, eax
-    jne L872
-L867:
+    jne L870
+L865:
     add rsp, 8
     pop rbx
     pop rbp
@@ -8442,7 +8455,7 @@ L867:
     pop r14
     pop r15
     ret
-L870:
+L868:
     mov rdx, qword [rel sucks]
     movsx eax, word [rdx]
     add rsp, 8
@@ -8454,23 +8467,23 @@ L870:
     pop r14
     pop r15
     jmp V_DrawPatch
-L871:
+L869:
     mov rdx, rcx
     mov esi, ebp
     mov edi, r14d
     call V_DrawPatch
     cmp r12d, 118
-    jbe L867
-L875:
+    jbe L865
+L873:
     mov r13d, r15d
-    jmp L874
-L872:
+    jmp L872
+L870:
     mov rdx, rcx
     mov esi, ebp
     mov edi, r14d
     call V_DrawPatch
-    jmp L875
-L877:
+    jmp L873
+L875:
     ret
     align 16
     global WI_initNoState
@@ -8484,17 +8497,17 @@ WI_initNoState:
 WI_updateNoState:
     sub rsp, 8
     cmp dword [rel gamemode], 2
-    je L882
+    je L880
     mov rax, qword [rel wbs]
     cmp dword [rax], 2
-    jg L882
+    jg L880
     call WI_updateAnimatedBack.part.0
-L882:
+L880:
     sub dword [rel cnt], 1
-    je L885
+    je L883
     add rsp, 8
     ret
-L885:
+L883:
     add rsp, 8
     jmp G_WorldDone
     align 16
@@ -8504,38 +8517,38 @@ WI_initShowNextLoc:
     mov dword [rel state], 1
     mov dword [rel acceleratestage], 0
     mov dword [rel cnt], 140
-    je L886
+    je L884
     mov rax, qword [rel wbs]
     cmp dword [rax], 2
-    jg L886
+    jg L884
     jmp WI_initAnimatedBack.part.0
-L886:
+L884:
     ret
     align 16
     global WI_updateShowNextLoc
 WI_updateShowNextLoc:
     sub rsp, 8
     cmp dword [rel gamemode], 2
-    je L889
+    je L887
     mov rax, qword [rel wbs]
     cmp dword [rax], 2
-    jg L889
+    jg L887
     call WI_updateAnimatedBack.part.0
-L889:
+L887:
     mov eax, dword [rel cnt]
     sub eax, 1
     mov dword [rel cnt], eax
-    je L890
+    je L888
     mov edx, dword [rel acceleratestage]
     test edx, edx
-    je L891
-L890:
+    je L889
+L888:
     mov dword [rel state], -1
     mov dword [rel acceleratestage], 0
     mov dword [rel cnt], 10
     add rsp, 8
     ret
-L891:
+L889:
     and eax, 31
     cmp eax, 19
     setle al
@@ -8552,17 +8565,17 @@ WI_fragSum:
     lea rsi, [rax+rdx*8]
     xor edx, edx
     xor eax, eax
-L899:
+L897:
     mov r8d, dword [playeringame+rdx*4]
     test r8d, r8d
-    je L898
+    je L896
     cmp edi, edx
-    je L898
+    je L896
     add eax, dword [rsi+20+rdx*4]
-L898:
+L896:
     add rdx, 1
     cmp rdx, 4
-    jne L899
+    jne L897
     sub eax, dword [rsi+20+rcx*4]
     ret
     align 16
@@ -8573,35 +8586,35 @@ WI_initDeathmatchStats:
     mov dword [rel acceleratestage], 0
     mov dword [rel dm_state], 1
     mov dword [rel cnt_pause], 35
-L911:
+L909:
     mov edi, dword [playeringame+rdx]
     test edi, edi
-    jne L915
-L908:
+    jne L913
+L906:
     add rdx, 4
     cmp rdx, 16
-    jne L911
+    jne L909
     cmp dword [rel gamemode], 2
-    je L907
+    je L905
     mov rax, qword [rel wbs]
     cmp dword [rax], 2
-    jg L907
+    jg L905
     jmp WI_initAnimatedBack.part.0
-L915:
+L913:
     lea rcx, [0+rdx*4]
     xor eax, eax
-L910:
+L908:
     mov esi, dword [playeringame+rax]
     test esi, esi
-    je L909
+    je L907
     mov dword [dm_frags+rcx+rax], 0
-L909:
+L907:
     add rax, 4
     cmp rax, 16
-    jne L910
+    jne L908
     mov dword [dm_totals+rdx], 0
-    jmp L908
-L907:
+    jmp L906
+L905:
     ret
     align 16
     global WI_drawDeathmatchStats
@@ -8641,30 +8654,30 @@ WI_drawDeathmatchStats:
     mov edi, 5
     mov rdx, qword [rel victims]
     call V_DrawPatch
-L920:
+L918:
     mov ecx, dword [playeringame+rbx*4]
     test ecx, ecx
-    jne L929
-L918:
+    jne L927
+L916:
     add ebp, 40
     add rbx, 1
     cmp ebp, 242
-    jne L920
+    jne L918
     mov rax, qword [rel num]
     xor r12d, r12d
     mov ebp, 78
     movsx r14d, word [rax]
     lea eax, [r14+269]
     mov dword [rsp+12], eax
-L924:
+L922:
     mov edx, dword [playeringame+r12]
     test edx, edx
-    jne L930
-L921:
+    jne L928
+L919:
     add ebp, 33
     add r12, 4
     cmp ebp, 210
-    jne L924
+    jne L922
     add rsp, 24
     pop rbx
     pop rbp
@@ -8673,7 +8686,7 @@ L921:
     pop r14
     pop r15
     ret
-L929:
+L927:
     mov rdx, qword [p+rbx*8]
     mov eax, ebx
     mov edi, ebp
@@ -8700,7 +8713,7 @@ L929:
     sub edi, eax
     call V_DrawPatch
     cmp dword [rel me], ebx
-    jne L918
+    jne L916
     mov rax, qword [p+rbx*8]
     mov edi, ebp
     mov esi, 35
@@ -8725,33 +8738,33 @@ L929:
     cwde
     sub edi, eax
     call V_DrawPatch
-    jmp L918
-L930:
+    jmp L916
+L928:
     lea r13d, [r14+82]
     lea r15, [0+r12*4]
     xor ebx, ebx
-L923:
+L921:
     mov eax, dword [playeringame+rbx*4]
     test eax, eax
-    jne L931
-L922:
+    jne L929
+L920:
     add rbx, 1
     add r13d, 40
     cmp rbx, 4
-    jne L923
+    jne L921
     mov edx, dword [dm_totals+r12]
     mov edi, dword [rsp+12]
     mov ecx, 2
     mov esi, ebp
     call WI_drawNum
-    jmp L921
-L931:
+    jmp L919
+L929:
     mov edx, dword [dm_frags+r15+rbx*4]
     mov ecx, 2
     mov esi, ebp
     mov edi, r13d
     call WI_drawNum
-    jmp L922
+    jmp L920
     align 16
     global WI_initNetgameStats
 WI_initNetgameStats:
@@ -8762,10 +8775,10 @@ WI_initNetgameStats:
     mov dword [rel acceleratestage], 0
     mov dword [rel ng_state], 1
     mov dword [rel cnt_pause], 35
-L934:
+L932:
     mov eax, dword [playeringame+r9*4]
     test eax, eax
-    je L933
+    je L931
     mov dword [cnt_frags+r9*4], 0
     mov edi, r9d
     mov dword [cnt_secret+r9*4], 0
@@ -8774,22 +8787,22 @@ L934:
     call WI_fragSum
     add r10d, eax
     mov dword [rel dofrags], r10d
-L933:
+L931:
     add r9, 1
     cmp r9, 4
-    jne L934
+    jne L932
     xor eax, eax
     test r10d, r10d
     setne al
     cmp dword [rel gamemode], 2
     mov dword [rel dofrags], eax
-    je L932
+    je L930
     mov rax, qword [rel wbs]
     cmp dword [rax], 2
-    jg L932
+    jg L930
     add rsp, 8
     jmp WI_initAnimatedBack.part.0
-L932:
+L930:
     add rsp, 8
     ret
     align 16
@@ -8872,16 +8885,16 @@ WI_drawNetgameStats:
     call V_DrawPatch
     mov r9d, dword [rel dofrags]
     test r9d, r9d
-    jne L949
-L939:
+    jne L947
+L937:
     mov rax, qword [rel kills]
     xor r13d, r13d
     movsx ebp, word [rax+2]
     add ebp, 50
-L946:
+L944:
     mov ecx, dword [playeringame+r13*4]
     test ecx, ecx
-    je L940
+    je L938
     mov rax, qword [rel star]
     mov edx, dword [rel dofrags]
     mov esi, ebp
@@ -8903,13 +8916,13 @@ L946:
     sub edi, eax
     call V_DrawPatch
     cmp dword [rel me], r13d
-    je L950
-L941:
+    je L948
+L939:
     mov eax, dword [cnt_kills+r13*4]
     lea r14d, [rbp+10]
     test eax, eax
     mov dword [rsp+12], eax
-    js L942
+    js L940
     lea r15d, [rbx+64]
     mov rdx, qword [rel percent]
     mov esi, r14d
@@ -8921,11 +8934,11 @@ L941:
     mov edi, r15d
     mov ecx, -1
     call WI_drawNum
-L942:
+L940:
     mov eax, dword [cnt_items+r13*4]
     test eax, eax
     mov dword [rsp+12], eax
-    js L943
+    js L941
     lea r15d, [rbx+128]
     mov rdx, qword [rel percent]
     mov esi, r14d
@@ -8937,11 +8950,11 @@ L942:
     mov edi, r15d
     mov ecx, -1
     call WI_drawNum
-L943:
+L941:
     mov eax, dword [cnt_secret+r13*4]
     test eax, eax
     mov dword [rsp+12], eax
-    js L944
+    js L942
     lea r15d, [rbx+192]
     mov rdx, qword [rel percent]
     mov esi, r14d
@@ -8953,16 +8966,16 @@ L943:
     mov edi, r15d
     mov ecx, -1
     call WI_drawNum
-L944:
+L942:
     mov eax, dword [rel dofrags]
     test eax, eax
-    jne L951
-L945:
+    jne L949
+L943:
     add ebp, 33
-L940:
+L938:
     add r13, 1
     cmp r13, 4
-    jne L946
+    jne L944
     add rsp, 24
     pop rbx
     pop rbp
@@ -8971,14 +8984,14 @@ L940:
     pop r14
     pop r15
     ret
-L951:
+L949:
     mov edx, dword [cnt_frags+r13*4]
     lea edi, [rbx+256]
     mov ecx, -1
     mov esi, r14d
     call WI_drawNum
-    jmp L945
-L950:
+    jmp L943
+L948:
     mov rax, qword [p+r13*8]
     mov edi, ebx
     mov rdx, qword [rel star]
@@ -8986,8 +8999,8 @@ L950:
     movsx eax, word [rax]
     sub edi, eax
     call V_DrawPatch
-    jmp L941
-L949:
+    jmp L939
+L947:
     mov rax, qword [rel star]
     mov rdx, qword [rel frags]
     mov esi, 50
@@ -9001,7 +9014,7 @@ L949:
     movsx edi, di
     sub edi, eax
     call V_DrawPatch
-    jmp L939
+    jmp L937
     align 16
     global WI_initStats
 WI_initStats:
@@ -9015,12 +9028,12 @@ WI_initStats:
     mov dword [rel cnt_par], -1
     mov dword [rel cnt_time], -1
     mov dword [rel cnt_pause], 35
-    je L952
+    je L950
     mov rax, qword [rel wbs]
     cmp dword [rax], 2
-    jg L952
+    jg L950
     jmp WI_initAnimatedBack.part.0
-L952:
+L950:
     ret
     align 16
     global WI_drawStats
@@ -9047,7 +9060,7 @@ WI_drawStats:
     call V_DrawPatch
     mov ebp, dword [rel cnt_kills]
     test ebp, ebp
-    js L955
+    js L953
     mov rdx, qword [rel percent]
     mov esi, 50
     mov edi, 270
@@ -9057,7 +9070,7 @@ WI_drawStats:
     mov esi, 50
     mov edi, 270
     call WI_drawNum
-L955:
+L953:
     mov rdx, qword [rel items]
     lea ebp, [rbx+50]
     mov edi, 50
@@ -9065,7 +9078,7 @@ L955:
     call V_DrawPatch
     mov r12d, dword [rel cnt_items]
     test r12d, r12d
-    js L956
+    js L954
     mov rdx, qword [rel percent]
     mov esi, ebp
     mov edi, 270
@@ -9075,7 +9088,7 @@ L955:
     mov esi, ebp
     mov edi, 270
     call WI_drawNum
-L956:
+L954:
     mov rdx, qword [rel sp_secret]
     lea ebx, [rbx+50+rbx]
     mov edi, 50
@@ -9083,7 +9096,7 @@ L956:
     call V_DrawPatch
     mov ebp, dword [rel cnt_secret]
     test ebp, ebp
-    js L957
+    js L955
     mov rdx, qword [rel percent]
     mov esi, ebx
     mov edi, 270
@@ -9093,7 +9106,7 @@ L956:
     mov esi, ebx
     mov edi, 270
     call WI_drawNum
-L957:
+L955:
     mov rdx, qword [rel timepatch]
     mov esi, 168
     mov edi, 16
@@ -9104,12 +9117,12 @@ L957:
     call WI_drawTime
     mov rax, qword [rel wbs]
     cmp dword [rax], 2
-    jle L960
+    jle L958
     pop rbx
     pop rbp
     pop r12
     ret
-L960:
+L958:
     mov rdx, qword [rel par]
     mov esi, 168
     mov edi, 176
@@ -9126,43 +9139,43 @@ L960:
 WI_checkForAccelerate:
     mov edx, playeringame
     mov eax, players
-L967:
+L965:
     mov edi, dword [rdx]
     test edi, edi
-    je L962
+    je L960
     movzx ecx, byte [rax+17]
     xor esi, esi
     test cl, 1
-    je L963
+    je L961
     mov esi, dword [rax+200]
     test esi, esi
-    je L971
-L964:
+    je L969
+L962:
     mov esi, 1
-L963:
+L961:
     and ecx, 2
     mov dword [rax+200], esi
-    je L965
+    je L963
     mov ecx, dword [rax+204]
     test ecx, ecx
-    je L972
-L966:
+    je L970
+L964:
     mov dword [rax+204], 1
-L962:
+L960:
     add rax, 328
     add rdx, 4
     cmp rax, players+1312
-    jne L967
+    jne L965
     ret
-L965:
+L963:
     mov dword [rax+204], 0
-    jmp L962
-L972:
-    mov dword [rel acceleratestage], 1
-    jmp L966
-L971:
+    jmp L960
+L970:
     mov dword [rel acceleratestage], 1
     jmp L964
+L969:
+    mov dword [rel acceleratestage], 1
+    jmp L962
     align 16
     global WI_initVariables
 WI_initVariables:
@@ -9176,33 +9189,33 @@ WI_initVariables:
     mov dword [rel cnt], 0
     mov qword [rel plrs], rax
     test ecx, ecx
-    jne L974
+    jne L972
     mov dword [rdi+16], 1
-L974:
+L972:
     mov edx, dword [rdi+20]
     test edx, edx
-    jne L975
+    jne L973
     mov dword [rdi+20], 1
-L975:
+L973:
     mov eax, dword [rdi+24]
     test eax, eax
-    jne L976
+    jne L974
     mov dword [rdi+24], 1
-L976:
+L974:
     cmp dword [rel gamemode], 3
-    je L973
+    je L971
     mov eax, dword [rdi]
     cmp eax, 2
-    jle L973
+    jle L971
     sub eax, 3
     mov dword [rdi], eax
-L973:
+L971:
     ret
     align 16
     global F_CastPrint
 F_CastPrint:
     test rdi, rdi
-    je L997
+    je L995
     push r13
     push r12
     push rbp
@@ -9211,12 +9224,12 @@ F_CastPrint:
     sub rsp, 8
     movsx r12d, byte [rdi]
     test r12d, r12d
-    je L978
+    je L976
     mov edi, r12d
     mov r13, rbx
     xor ebp, ebp
-    jmp L983
-L980:
+    jmp L981
+L978:
     cdqe
     movsx edi, byte [r13+0]
     add r13, 1
@@ -9224,37 +9237,37 @@ L980:
     movsx eax, word [rax]
     add ebp, eax
     test edi, edi
-    je L1000
-L983:
+    je L998
+L981:
     call toupper
     sub eax, 33
     cmp eax, 63
-    jbe L980
+    jbe L978
     movsx edi, byte [r13+0]
     add r13, 1
     add ebp, 4
     test edi, edi
-    jne L983
-L1000:
+    jne L981
+L998:
     mov eax, ebp
     shr eax, 31
     add ebp, eax
     sar ebp, 1
     neg ebp
     add ebp, 160
-    jmp L986
-L1001:
+    jmp L984
+L999:
     movsx r12d, byte [rbx]
     add rbx, 1
     add ebp, 4
     test r12d, r12d
-    je L978
-L986:
+    je L976
+L984:
     mov edi, r12d
     call toupper
     sub eax, 33
     cmp eax, 63
-    ja L1001
+    ja L999
     cdqe
     mov edi, ebp
     mov esi, 180
@@ -9265,15 +9278,15 @@ L986:
     add ebp, r12d
     movsx r12d, byte [rbx-1]
     test r12d, r12d
-    jne L986
-L978:
+    jne L984
+L976:
     add rsp, 8
     pop rbx
     pop rbp
     pop r12
     pop r13
     ret
-L997:
+L995:
     ret
     align 16
     global F_DrawPatchCol
@@ -9285,8 +9298,8 @@ F_DrawPatchCol:
     lea rdi, [rax+rsi]
     movzx edx, byte [rdi]
     cmp dl, -1
-    je L1002
-L1003:
+    je L1000
+L1001:
     lea edx, [rdx+rdx*4]
     movzx ecx, byte [rdi+1]
     lea rax, [rdi+3]
@@ -9295,22 +9308,22 @@ L1003:
     add rdx, r8
     add rdx, r9
     test cl, cl
-    je L1004
+    je L1002
     lea rsi, [rdi+3+rcx]
-L1005:
+L1003:
     movzx ecx, byte [rax]
     add rax, 1
     add rdx, 320
     mov byte [rdx-320], cl
     cmp rsi, rax
-    jne L1005
+    jne L1003
     movzx ecx, byte [rdi+1]
-L1004:
+L1002:
     lea rdi, [rdi+4+rcx]
     movzx edx, byte [rdi]
     cmp dl, -1
-    jne L1003
-L1002:
+    jne L1001
+L1000:
     ret
     align 16
     global W_LumpNameHash
@@ -9321,10 +9334,10 @@ W_LumpNameHash:
     mov rbp, rdi
     push rbx
     mov ebx, 5381
-L1014:
+L1012:
     movsx edi, byte [rbp+0]
     test dil, dil
-    je L1013
+    je L1011
     mov edx, ebx
     add rbp, 1
     sal edx, 5
@@ -9332,8 +9345,8 @@ L1014:
     call toupper
     xor ebx, eax
     cmp rbp, r12
-    jne L1014
-L1013:
+    jne L1012
+L1011:
     mov eax, ebx
     pop rbx
     pop rbp
@@ -9358,14 +9371,14 @@ W_CheckNumForName:
     mov r14, qword [rel lumphash]
     mov r12d, dword [rel numlumps]
     test r14, r14
-    je L1020
+    je L1018
     mov r15, rdi
     lea rbp, [rdi+8]
     mov ebx, 5381
-L1021:
+L1019:
     movsx edi, byte [r15]
     test dil, dil
-    je L1022
+    je L1020
     mov edx, ebx
     add r15, 1
     sal edx, 5
@@ -9373,35 +9386,35 @@ L1021:
     call toupper
     xor ebx, eax
     cmp r15, rbp
-    jne L1021
-L1022:
+    jne L1019
+L1020:
     mov eax, ebx
     xor edx, edx
     div r12d
     movsx rdx, edx
     mov r12, qword [r14+rdx*8]
     test r12, r12
-    je L1037
-L1030:
+    je L1035
+L1028:
     xor ebp, ebp
-L1029:
+L1027:
     movzx edi, byte [r12+rbp]
     call tolower
     movzx edi, byte [r13+0+rbp]
     mov ebx, eax
     call tolower
     cmp ebx, eax
-    jne L1044
+    jne L1042
     test ebx, ebx
-    je L1048
+    je L1046
     add rbp, 1
     cmp rbp, 8
-    jne L1029
-L1027:
+    jne L1027
+L1025:
     sub r12, qword [rel lumpinfo]
     sar r12, 3
     imul r12d, r12d, -858993459
-L1019:
+L1017:
     add rsp, 8
     mov eax, r12d
     pop rbx
@@ -9411,53 +9424,53 @@ L1019:
     pop r14
     pop r15
     ret
-L1048:
+L1046:
     cmp ebx, eax
-    je L1027
-L1044:
+    je L1025
+L1042:
     mov r12, qword [r12+32]
     test r12, r12
-    jne L1030
-L1037:
+    jne L1028
+L1035:
     mov r12d, -1
-    jmp L1019
-L1020:
+    jmp L1017
+L1018:
     sub r12d, 1
-    js L1037
+    js L1035
     mov eax, r12d
     lea rdx, [rax+rax*4]
     mov rax, qword [rel lumpinfo]
     lea r14, [rax+rdx*8]
-L1035:
+L1033:
     xor ebp, ebp
-    jmp L1034
-L1050:
+    jmp L1032
+L1048:
     test ebx, ebx
-    je L1049
+    je L1047
     add rbp, 1
     cmp rbp, 8
-    je L1019
-L1034:
+    je L1017
+L1032:
     movzx edi, byte [r14+rbp]
     call tolower
     movzx edi, byte [r13+0+rbp]
     mov ebx, eax
     call tolower
     cmp ebx, eax
-    je L1050
+    je L1048
     sub r12d, 1
     sub r14, 40
     cmp r12d, -1
-    jne L1035
-    jmp L1019
-L1049:
+    jne L1033
+    jmp L1017
+L1047:
     cmp ebx, eax
-    je L1019
+    je L1017
     sub r12d, 1
     sub r14, 40
     cmp r12d, -1
-    jne L1035
-    jmp L1019
+    jne L1033
+    jmp L1017
     section .rodata
 LC67:
     db `WIMINUS`, 0
@@ -9529,8 +9542,8 @@ WI_loadUnloadData:
     sub rsp, 40
     cmp dword [rel gamemode], 2
     lea rbx, [rsp+23]
-    je L1086
-L1052:
+    je L1084
+L1050:
     mov r8d, r12d
     mov edx, LC69
     mov esi, 9
@@ -9545,7 +9558,7 @@ L1052:
     add r12, 1
     call rbp
     cmp r12, 9
-    jne L1052
+    jne L1050
     mov esi, yah
     mov edi, LC70
     call rbp
@@ -9558,31 +9571,31 @@ L1052:
     mov rax, qword [rel wbs]
     mov ecx, dword [rax]
     cmp ecx, 2
-    jg L1055
+    jg L1053
     movsx rdx, ecx
     mov edi, dword [NUMANIMS+rdx*4]
     test edi, edi
-    jle L1055
+    jle L1053
     xor r15d, r15d
-L1060:
+L1058:
     mov rsi, qword [anims+rdx*8]
     lea rax, [r15+r15*8]
     mov dword [rsp+8], r15d
     lea r14, [rsi+rax*8]
     mov esi, dword [r14+8]
     test esi, esi
-    jle L1056
+    jle L1054
     cmp r15, 8
     lea r13, [r14+32]
     setne byte [rsp+15]
     xor r12d, r12d
-L1059:
+L1057:
     mov r9d, r12d
     cmp ecx, 1
-    jne L1070
+    jne L1068
     cmp byte [rsp+15], 0
-    je L1057
-L1070:
+    je L1055
+L1068:
     mov r8d, dword [rsp+8]
     mov edx, LC73
     mov rdi, rbx
@@ -9597,18 +9610,18 @@ L1070:
     mov rax, qword [rel wbs]
     mov ecx, dword [rax]
     cmp dword [r14+8], r12d
-    jg L1059
+    jg L1057
     movsx rdx, ecx
-L1056:
+L1054:
     add r15, 1
     cmp dword [NUMANIMS+rdx*4], r15d
-    jg L1060
-L1055:
+    jg L1058
+L1053:
     mov esi, wiminus
     mov edi, LC67
     xor r12d, r12d
     call rbp
-L1054:
+L1052:
     mov ecx, r12d
     mov edx, LC74
     mov esi, 9
@@ -9620,7 +9633,7 @@ L1054:
     add r12, 1
     call rbp
     cmp r12, 10
-    jne L1054
+    jne L1052
     mov esi, percent
     mov edi, LC75
     call rbp
@@ -9642,15 +9655,15 @@ L1054:
     mov edi, LC81
     call W_CheckNumForName
     test eax, eax
-    js L1061
+    js L1059
     mov edx, dword [rel netgame]
     test edx, edx
-    jne L1087
-L1061:
+    jne L1085
+L1059:
     mov esi, items
     mov edi, LC82
     call rbp
-L1062:
+L1060:
     mov esi, frags
     mov edi, LC83
     xor r12d, r12d
@@ -9676,7 +9689,7 @@ L1062:
     mov esi, total
     mov edi, LC90
     call rbp
-L1063:
+L1061:
     mov ecx, r12d
     mov edx, LC91
     mov esi, 9
@@ -9698,23 +9711,23 @@ L1063:
     mov rdi, rbx
     call rbp
     cmp r12, 4
-    jne L1063
+    jne L1061
     mov eax, dword [rel gamemode]
     cmp eax, 2
-    je L1067
+    je L1065
     mov rdx, qword [rel wbs]
     mov ecx, dword [rdx]
     cmp eax, 3
-    jne L1066
+    jne L1064
     cmp ecx, 3
-    je L1067
-L1066:
+    je L1065
+L1064:
     mov edx, LC94
     mov esi, 9
     mov rdi, rbx
     xor eax, eax
     call snprintf
-L1065:
+L1063:
     mov rdi, rbx
     mov esi, background
     call rbp
@@ -9726,35 +9739,35 @@ L1065:
     pop r14
     pop r15
     ret
-L1057:
+L1055:
     mov rax, qword [epsd1animinfo+320+r12*8]
     add r13, 8
     add r12, 1
     mov qword [r13-8], rax
     cmp dword [r14+8], r12d
-    jg L1057
+    jg L1055
     mov ecx, 1
     mov edx, 1
-    jmp L1056
-L1087:
+    jmp L1054
+L1085:
     mov eax, dword [rel deathmatch]
     test eax, eax
-    jne L1061
+    jne L1059
     mov esi, items
     mov edi, LC81
     call rbp
-    jmp L1062
-L1067:
+    jmp L1060
+L1065:
     mov edx, 9
     mov esi, LC93
     mov rdi, rbx
     call M_StringCopy
-    jmp L1065
-L1086:
+    jmp L1063
+L1084:
     mov r8d, dword [rel NUMCMAPS]
     test r8d, r8d
-    jle L1055
-L1053:
+    jle L1053
+L1051:
     mov ecx, r12d
     mov edx, LC68
     mov esi, 9
@@ -9767,8 +9780,8 @@ L1053:
     add r12, 1
     call rbp
     cmp dword [rel NUMCMAPS], r12d
-    jg L1053
-    jmp L1055
+    jg L1051
+    jmp L1053
     align 16
     global WI_End
 WI_End:
@@ -9852,15 +9865,15 @@ SHA1_Update:
     movsx rax, dword [rdi+88]
     mov rbx, rdi
     cmp eax, 64
-    je L1132
+    je L1130
     test rsi, rsi
-    je L1100
+    je L1098
     test eax, eax
-    je L1102
+    je L1100
     test rdx, rdx
-    jne L1104
-    jmp L1100
-L1109:
+    jne L1102
+    jmp L1098
+L1107:
     lea edx, [rax+1]
     add rbp, 1
     mov dword [rbx+88], edx
@@ -9868,32 +9881,32 @@ L1109:
     mov byte [rbx+24+rax], cl
     add rax, 1
     sub r13, 1
-    je L1108
-L1104:
+    je L1106
+L1102:
     cmp eax, 63
-    jle L1109
+    jle L1107
     cmp eax, 64
-    je L1133
-L1111:
+    je L1131
+L1109:
     mov rcx, r13
     cmp r13, 63
-    ja L1105
-    jmp L1106
-L1132:
+    ja L1103
+    jmp L1104
+L1130:
     lea rsi, [rdi+24]
     call Transform
     add dword [rbx+20], 1
     mov dword [rbx+88], 0
     test rbp, rbp
-    je L1100
-L1102:
+    je L1098
+L1100:
     mov rcx, r13
     cmp r13, 63
-    jbe L1107
-L1105:
+    jbe L1105
+L1103:
     mov r12, rbp
     lea r14, [r13+0+rbp]
-L1112:
+L1110:
     mov rsi, r12
     mov rdi, rbx
     add r12, 64
@@ -9903,53 +9916,53 @@ L1112:
     sub rax, r12
     mov dword [rbx+88], 0
     cmp rax, 63
-    ja L1112
+    ja L1110
     mov rcx, r13
     and r13, -64
     and ecx, 63
     add rbp, r13
-L1107:
+L1105:
     test rcx, rcx
-    je L1100
-L1106:
+    je L1098
+L1104:
     movsx rax, dword [rbx+88]
     add rcx, rax
     sub rbp, rax
-    jmp L1113
-L1114:
+    jmp L1111
+L1112:
     lea edx, [rax+1]
     mov dword [rbx+88], edx
     movzx edx, byte [rbp+0+rax]
     mov byte [rbx+24+rax], dl
     add rax, 1
     cmp rax, rcx
-    je L1100
-L1113:
+    je L1098
+L1111:
     cmp eax, 63
-    jle L1114
-L1100:
+    jle L1112
+L1098:
     pop rbx
     pop rbp
     pop r12
     pop r13
     pop r14
     ret
-L1108:
+L1106:
     cmp edx, 64
-    jne L1100
+    jne L1098
     lea rsi, [rbx+24]
     mov rdi, rbx
     call Transform
     add dword [rbx+20], 1
     mov dword [rbx+88], 0
-    jmp L1100
-L1133:
+    jmp L1098
+L1131:
     lea rsi, [rbx+24]
     mov rdi, rbx
     call Transform
     add dword [rbx+20], 1
     mov dword [rbx+88], 0
-    jmp L1111
+    jmp L1109
     align 16
     global SHA1_Final
 SHA1_Final:
@@ -9964,7 +9977,7 @@ SHA1_Final:
     sub rsp, 24
     movsx rax, dword [rsi+88]
     cmp eax, 64
-    je L1159
+    je L1157
     mov r15d, dword [rsi+20]
     xor esi, esi
     lea ecx, [rax+1]
@@ -9981,22 +9994,22 @@ SHA1_Final:
     sbb edx, -1
     shrd r13d, edx, 29
     cmp eax, 55
-    jle L1160
+    jle L1158
     cmp ecx, 63
-    jg L1143
+    jg L1141
     movsx rdx, ecx
     mov eax, 64
     lea rsi, [rbx+24+rdx]
     sub eax, ecx
-    je L1146
+    je L1144
     xor edx, edx
-L1144:
+L1142:
     mov ecx, edx
     add edx, 1
     mov byte [rsi+rcx], 0
     cmp edx, eax
-    jb L1144
-L1146:
+    jb L1142
+L1144:
     lea r12, [rbx+24]
     mov rdi, rbx
     mov rsi, r12
@@ -10004,18 +10017,18 @@ L1146:
     lea eax, [r15+1]
     mov dword [rbx+88], 0
     mov dword [rbx+20], eax
-L1147:
+L1145:
     pxor xmm0, xmm0
     movups oword [rbx+24], xmm0
     mov qword [r12+48], 0
     movups oword [r12+16], xmm0
     movups oword [r12+32], xmm0
-    jmp L1142
-L1160:
+    jmp L1140
+L1158:
     lea r12, [rbx+24]
     cmp ecx, 56
-    je L1142
-L1136:
+    je L1140
+L1134:
     lea edi, [rcx+24]
     mov edx, 56
     xor esi, esi
@@ -10024,7 +10037,7 @@ L1136:
     add rdi, rbx
     call memset
     mov dword [rbx+88], 56
-L1142:
+L1140:
     xor eax, eax
     mov edx, r14d
     mov ecx, r13d
@@ -10139,7 +10152,7 @@ L1142:
     pop r14
     pop r15
     ret
-L1159:
+L1157:
     lea r12, [rsi+24]
     mov rdi, rbx
     mov rsi, r12
@@ -10152,12 +10165,12 @@ L1159:
     mov dword [rbx+20], r13d
     shr r13d, 23
     sal r14d, 9
-    jmp L1136
-L1143:
+    jmp L1134
+L1141:
     lea r12, [rbx+24]
     cmp ecx, 64
-    jne L1147
-    jmp L1146
+    jne L1145
+    jmp L1144
     align 16
     global W_Checksum
 W_Checksum:
@@ -10177,13 +10190,13 @@ W_Checksum:
     mov dword [rsp+120], 0
     movaps oword [rsp+32], xmm0
     test eax, eax
-    je L1173
+    je L1171
     xor r15d, r15d
     lea rbp, [rsp+32]
     lea r13, [rsp+23]
     xor r14d, r14d
     lea r12, [rsp+16]
-L1162:
+L1160:
     mov rbx, qword [rel lumpinfo]
     mov edx, 9
     mov rdi, r13
@@ -10200,18 +10213,18 @@ L1162:
     mov rdx, qword [rbx+8]
     mov rdi, qword [rel open_wadfiles]
     test esi, esi
-    jle L1163
+    jle L1161
     movsx rcx, esi
     xor eax, eax
-    jmp L1166
-L1174:
+    jmp L1164
+L1172:
     add rax, 1
     cmp rax, rcx
-    je L1163
-L1166:
+    je L1161
+L1164:
     cmp rdx, qword [rdi+rax*8]
-    jne L1174
-L1165:
+    jne L1172
+L1163:
     mov rsi, r12
     mov rdi, rbp
     bswap eax
@@ -10235,8 +10248,8 @@ L1165:
     mov dword [rsp+16], eax
     call SHA1_Update
     cmp r14d, dword [rel numlumps]
-    jb L1162
-L1167:
+    jb L1160
+L1165:
     mov rdi, qword [rsp+8]
     mov rsi, rbp
     call SHA1_Final
@@ -10248,7 +10261,7 @@ L1167:
     pop r14
     pop r15
     ret
-L1163:
+L1161:
     add esi, 1
     mov eax, 1
     mov qword [rsp], rdx
@@ -10264,10 +10277,10 @@ L1163:
     lea edx, [rsi+1]
     mov rax, rsi
     mov dword [rel num_open_wadfiles], edx
-    jmp L1165
-L1173:
+    jmp L1163
+L1171:
     lea rbp, [rsp+32]
-    jmp L1167
+    jmp L1165
     align 16
     global SHA1_UpdateInt32
 SHA1_UpdateInt32:
@@ -10323,24 +10336,24 @@ Z_FreeMemory:
     mov rax, qword [rcx+32]
     add rcx, 8
     cmp rax, rcx
-    jne L1184
-    jmp L1180
-L1182:
+    jne L1182
+    jmp L1178
+L1180:
     mov rax, qword [rax+24]
     cmp rcx, rax
-    je L1180
-L1184:
+    je L1178
+L1182:
     mov edx, dword [rax+16]
     cmp edx, 4
-    je L1186
+    je L1184
     cmp edx, 6
-    jle L1182
-L1186:
+    jle L1180
+L1184:
     add esi, dword [rax]
     mov rax, qword [rax+24]
     cmp rcx, rax
-    jne L1184
-L1180:
+    jne L1182
+L1178:
     mov eax, esi
     ret
     align 16
@@ -10361,14 +10374,14 @@ StatCopy:
     mov edi, LC99
     call M_ParmExists
     test eax, eax
-    je L1192
+    je L1190
     mov edx, dword [rel num_captured_stats]
     cmp edx, 31
-    jle L1198
-L1192:
+    jle L1196
+L1190:
     pop rbx
     ret
-L1198:
+L1196:
     movsx rax, edx
     movdqu xmm0, oword [rbx]
     add edx, 1
@@ -10442,13 +10455,13 @@ I_Quit:
     push rbx
     mov rbx, qword [rel exit_funcs]
     test rbx, rbx
-    je L1205
-L1206:
+    je L1203
+L1204:
     call qword [rbx]
     mov rbx, qword [rbx+16]
     test rbx, rbx
-    jne L1206
-L1205:
+    jne L1204
+L1203:
     xor edi, edi
     call os_exit
     section .rodata
@@ -10497,45 +10510,45 @@ doom_messages:
     push rbx
     sub rsp, 1864
     lea r14, [rsp+64]
-L1213:
+L1211:
     mov rdi, r14
     call os_peek_message
     test eax, eax
-    je L1402
-L1330:
+    je L1426
+L1340:
     cmp dword [rsp+64], 15
-    ja L1214
+    ja L1212
     mov eax, dword [rsp+64]
-    jmp qword [L1216+rax*8]
+    jmp qword [L1214+rax*8]
     section .rodata
     align 8, db 0
     align 4, db 0
-L1216:
-    dq L1214
-    dq L1223
-    dq L1222
-    dq L1214
-    dq L1214
+L1214:
+    dq L1212
     dq L1221
     dq L1220
+    dq L1212
+    dq L1212
     dq L1219
-    dq L1214
     dq L1218
-    dq L1215
-    dq L1214
-    dq L1214
     dq L1217
-    dq L1214
+    dq L1212
+    dq L1216
+    dq L1213
+    dq L1212
+    dq L1212
     dq L1215
+    dq L1212
+    dq L1213
     section .text
-L1214:
+L1212:
     mov rdi, r14
     call os_default_message
     mov rdi, r14
     call os_peek_message
     test eax, eax
-    jne L1330
-L1402:
+    jne L1340
+L1426:
     add rsp, 1864
     pop rbx
     pop rbp
@@ -10544,38 +10557,38 @@ L1402:
     pop r14
     pop r15
     ret
-L1217:
+L1215:
     call doom_release_keys
-    jmp L1213
-L1218:
+    jmp L1211
+L1216:
     call doom_layout
-    jmp L1213
-L1219:
+    jmp L1211
+L1217:
     cmp dword [rsp+116], 10
-    ja L1213
+    ja L1211
     mov eax, dword [rsp+116]
-    jmp qword [L1280+rax*8]
+    jmp qword [L1278+rax*8]
     section .rodata
     align 8, db 0
     align 4, db 0
-L1280:
-    dq L1213
-    dq L1288
-    dq L1287
+L1278:
+    dq L1211
     dq L1286
     dq L1285
     dq L1284
     dq L1283
     dq L1282
-    dq L1215
     dq L1281
+    dq L1280
+    dq L1213
     dq L1279
+    dq L1277
     section .text
-L1220:
+L1218:
     movzx edx, byte [rsp+104]
     movzx eax, byte [doom_pressed+rdx]
     test eax, eax
-    je L1278
+    je L1276
     lea rdi, [rsp+256]
     mov dword [rsp+260], eax
     mov qword [rsp+268], 0
@@ -10584,215 +10597,215 @@ L1220:
     mov dword [doom_held+rax*4], 0
     call D_PostEvent
     movzx edx, byte [rsp+104]
-L1278:
+L1276:
     mov byte [doom_pressed+rdx], 0
-    jmp L1213
-L1221:
+    jmp L1211
+L1219:
     mov ecx, dword [rsp+108]
     mov eax, dword [rsp+104]
     lea esi, [rcx-1]
     mov r8d, esi
     cmp esi, 125
-    ja L1224
+    ja L1222
     mov edx, dword [rel gamestate]
     or edx, dword [rel menuactive]
-    jne L1224
+    jne L1222
     mov edx, ecx
     or edx, 32
     sub edx, 97
     cmp edx, 22
-    ja L1224
-    jmp qword [L1226+rdx*8]
+    ja L1222
+    jmp qword [L1224+rdx*8]
     section .rodata
     align 8, db 0
     align 4, db 0
-L1226:
-    dq L1332
-    dq L1224
-    dq L1224
-    dq L1230
-    dq L1229
+L1224:
+    dq L1342
+    dq L1222
+    dq L1222
     dq L1228
-    dq L1224
-    dq L1224
-    dq L1224
-    dq L1224
-    dq L1224
-    dq L1224
-    dq L1224
-    dq L1224
-    dq L1224
-    dq L1224
-    dq L1224
-    dq L1224
     dq L1227
-    dq L1224
-    dq L1224
-    dq L1224
-    dq L1243
+    dq L1226
+    dq L1222
+    dq L1222
+    dq L1222
+    dq L1222
+    dq L1222
+    dq L1222
+    dq L1222
+    dq L1222
+    dq L1222
+    dq L1222
+    dq L1222
+    dq L1222
+    dq L1225
+    dq L1222
+    dq L1222
+    dq L1222
+    dq L1241
     section .text
-L1222:
+L1220:
     cmp dword [rsp+88], 1
-    jne L1213
+    jne L1211
     mov r10d, dword [rel doom_held+652]
     test r10d, r10d
-    je L1213
+    je L1211
     lea rdi, [rsp+256]
     mov qword [rsp+268], 0
     mov dword [rsp+256], 1
     mov qword [rsp+260], 163
     mov dword [rel doom_held+652], 0
     call D_PostEvent
-    jmp L1213
-L1223:
+    jmp L1211
+L1221:
     cmp dword [rsp+88], 1
-    jne L1213
+    jne L1211
     mov eax, dword [rel gamestate]
     or eax, dword [rel menuactive]
     or eax, dword [rel demoplayback]
-    jne L1213
+    jne L1211
     lea rdi, [rsp+256]
     mov qword [rsp+268], 0
     mov dword [rsp+256], 0
     mov qword [rsp+260], 163
     mov dword [rel doom_held+652], 1
     call D_PostEvent
-    jmp L1213
-L1228:
+    jmp L1211
+L1226:
     mov r11d, dword [rel automapactive]
     test r11d, r11d
-    je L1333
-L1224:
+    je L1343
+L1222:
     cmp eax, 119
-    ja L1232
+    ja L1230
     mov edx, eax
-    jmp qword [L1234+rdx*8]
+    jmp qword [L1232+rdx*8]
     section .rodata
     align 8, db 0
     align 4, db 0
-L1234:
-    dq L1232
-    dq L1263
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1253
-    dq L1251
-    dq L1262
-    dq L1334
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1248
-    dq L1333
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1259
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1332
+L1232:
     dq L1230
-    dq L1232
-    dq L1259
-    dq L1258
-    dq L1245
+    dq L1261
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1251
+    dq L1249
+    dq L1260
+    dq L1344
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1246
+    dq L1343
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1257
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1342
+    dq L1228
+    dq L1230
     dq L1257
     dq L1256
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
+    dq L1243
     dq L1255
     dq L1254
-    dq L1244
-    dq L1243
-    dq L1242
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
     dq L1253
-    dq L1241
     dq L1252
+    dq L1242
+    dq L1241
     dq L1240
     dq L1251
     dq L1239
-    dq L1227
-    dq L1237
-    dq L1236
-    dq L1235
-    dq L1232
-    dq L1232
-    dq L1232
     dq L1250
+    dq L1238
     dq L1249
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
+    dq L1237
+    dq L1225
+    dq L1235
+    dq L1234
+    dq L1233
+    dq L1230
+    dq L1230
+    dq L1230
     dq L1248
-    dq L1333
+    dq L1247
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
     dq L1246
-    dq L1232
-    dq L1245
-    dq L1232
+    dq L1343
     dq L1244
+    dq L1230
     dq L1243
+    dq L1230
     dq L1242
     dq L1241
     dq L1240
     dq L1239
-    dq L1227
+    dq L1238
     dq L1237
-    dq L1236
+    dq L1225
     dq L1235
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
-    dq L1232
+    dq L1234
     dq L1233
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1230
+    dq L1231
     section .text
-L1279:
+L1277:
     call doom_release_keys
     xor r8d, r8d
     xor ecx, ecx
@@ -10800,8 +10813,8 @@ L1279:
     mov rdi, qword [rel doom_window]
     mov esi, LC113
     call os_message_box
-    jmp L1213
-L1281:
+    jmp L1211
+L1279:
     call doom_release_keys
     xor r8d, r8d
     xor ecx, ecx
@@ -10809,8 +10822,8 @@ L1281:
     mov rdi, qword [rel doom_window]
     mov esi, LC111
     call os_message_box
-    jmp L1213
-L1282:
+    jmp L1211
+L1280:
     call doom_release_keys
     mov r13d, kinds.7
     movdqa xmm0, oword [rel LC114]
@@ -10828,10 +10841,10 @@ L1282:
     movdqa xmm0, oword [rel LC117]
     movaps oword [rsp+304], xmm0
     mov qword [rsp+319], rax
-L1329:
+L1339:
     mov rbp, qword [r13+8]
     mov ebx, 100
-L1320:
+L1330:
     call os_now_ms
     mov esi, buf.6
     mov rdi, rbx
@@ -10841,35 +10854,48 @@ L1320:
     sub rax, r15
     mov rcx, rax
     cmp rax, 199
-    jg L1321
+    jg L1331
     cmp rbx, r12
-    jg L1321
+    jg L1331
     cmp rax, 9
-    jg L1322
+    jg L1332
     sal rbx, 4
-    jmp L1320
-L1283:
+    jmp L1330
+L1281:
     mov ebx, dword [rel doom_show_profile]
-    xor eax, eax
+    xor edx, edx
+    mov eax, doom_game_menu
     test ebx, ebx
-    sete al
-    mov dword [rel doom_show_profile], eax
-    jne L1403
-    mov dword [rel doom_game_menu+172], 2
+    sete dl
+    mov dword [rel doom_show_profile], edx
+    add edx, edx
+    cmp qword [rel doom_game_menu], 0
+    je L1300
+L1296:
+    cmp dword [rax+8], 6
+    jne L1299
+    mov dword [rax+12], edx
+L1299:
+    add rax, 32
+    cmp qword [rax], 0
+    jne L1296
+L1300:
+    test ebx, ebx
+    jne L1427
     mov eax, doom_profile_text
     mov edx, doom_profile_text+768
-L1291:
+L1301:
     mov byte [rax], 0
     sub rax, -128
     mov byte [rax-64], 0
     cmp rdx, rax
-    jne L1291
+    jne L1301
     mov r13, qword [rel doom_profile_hits]
     test r13, r13
-    je L1404
+    je L1428
     movsx rdx, dword [rel doom_symbol_count]
     sal rdx, 2
-L1319:
+L1329:
     mov rdi, r13
     xor esi, esi
     call memset
@@ -10878,65 +10904,98 @@ L1319:
     mov qword [rel doom_profile_before], 0
     mov qword [rel doom_profile_text], rax
     movabs rax, 12998625767352684
-    mov qword [rel doom_profile_text+5], rax
     mov qword [rel doom_profile_total], 0
+    mov qword [rel doom_profile_text+5], rax
     call os_profile
-    jmp L1290
-L1284:
-    xor edi, edi
-    call M_ChangeDetail
-    jmp L1213
-L1285:
+L1424:
+    mov dword [rel doom_previous_valid], 0
+    jmp L1211
+L1283:
     mov esi, dword [rel doom_simd]
-    xor eax, eax
+    xor edx, edx
     test esi, esi
-    sete al
-    mov dword [rel doom_simd], eax
-    add eax, eax
-    mov dword [rel doom_game_menu+108], eax
-    jmp L1213
-L1286:
+    sete dl
+    cmp qword [rel doom_game_menu], 0
+    mov dword [rel doom_simd], edx
+    je L1211
+    mov eax, doom_game_menu
+    add edx, edx
+L1295:
+    cmp dword [rax+8], 4
+    jne L1294
+    mov dword [rax+12], edx
+L1294:
+    add rax, 32
+    cmp qword [rax], 0
+    jne L1295
+    jmp L1211
+L1284:
     mov edi, dword [rel doom_show_times]
-    xor eax, eax
-    mov byte [rel doom_times_text+160], 0
-    mov byte [rel doom_times_text+320], 0
+    xor edx, edx
+    mov eax, doom_game_menu
     test edi, edi
-    mov byte [rel doom_times_text+480], 0
-    sete al
-    mov dword [rel doom_show_times], eax
-    add eax, eax
-    mov dword [rel doom_game_menu+76], eax
+    sete dl
+    mov dword [rel doom_show_times], edx
+    add edx, edx
+    cmp qword [rel doom_game_menu], 0
+    je L1293
+L1291:
+    cmp dword [rax+8], 3
+    jne L1292
+    mov dword [rax+12], edx
+L1292:
+    add rax, 32
+    cmp qword [rax], 0
+    jne L1291
+L1293:
     movabs rax, 7956016065499194733
+    mov byte [rel doom_times_text+160], 0
     mov qword [rel doom_times_text], rax
     movabs rax, 12998625767352690
     mov qword [rel doom_times_text+5], rax
+    mov byte [rel doom_times_text+320], 0
+    mov byte [rel doom_times_text+480], 0
     call doom_reset_counts
     mov dword [rel doom_previous_valid], 0
-    jmp L1213
-L1287:
+    jmp L1211
+L1285:
     mov r8d, dword [rel doom_show_fps]
-    xor eax, eax
-    mov dword [rel doom_previous_valid], 0
+    xor edx, edx
+    mov eax, doom_game_menu
     test r8d, r8d
-    sete al
-    mov dword [rel doom_show_fps], eax
-    add eax, eax
-    mov dword [rel doom_game_menu+44], eax
-    jmp L1213
-L1288:
+    sete dl
+    mov dword [rel doom_show_fps], edx
+    add edx, edx
+    cmp qword [rel doom_game_menu], 0
+    je L1424
+L1287:
+    cmp dword [rax+8], 2
+    jne L1289
+    mov dword [rax+12], edx
+L1289:
+    add rax, 32
+    cmp qword [rax], 0
+    jne L1287
+    mov dword [rel doom_previous_valid], 0
+    jmp L1211
+L1286:
     mov r9d, dword [rel menuactive]
     test r9d, r9d
-    jne L1213
+    jne L1211
     call M_StartControlPanel
-    jmp L1213
-L1322:
+    jmp L1211
+L1282:
+    xor edi, edi
+    call M_ChangeDetail
+    jmp L1211
+L1332:
     imul rbx, rbx, 220
     mov rax, rbx
     cqo
     idiv rcx
     mov rbx, rax
-    jmp L1320
-L1321:
+    jmp L1330
+L1331:
     imul rax, rcx, 1000000
     movsx rdi, dword [rsp+16]
     mov ecx, dword [r13+16]
@@ -10954,7 +11013,7 @@ L1321:
     mov eax, LC100
     cmovne r9, rax
     test ecx, ecx
-    je L1324
+    je L1334
     mov eax, 5120000
     mov rcx, qword [r13+0]
     mov esi, 1600
@@ -10969,15 +11028,15 @@ L1321:
     call snprintf
     add ebx, eax
     mov dword [rsp+16], ebx
-L1326:
+L1336:
     cmp dword [rsp+16], 1599
-    jg L1328
+    jg L1338
     add dword [rsp+8], 1
     mov eax, dword [rsp+8]
     add r13, 24
     cmp eax, 16
-    jne L1329
-L1328:
+    jne L1339
+L1338:
     mov rdi, qword [rsp+24]
     xor r8d, r8d
     xor ecx, ecx
@@ -10986,8 +11045,8 @@ L1328:
     mov rdx, rdi
     mov rdi, qword [rel doom_window]
     call os_message_box
-    jmp L1213
-L1324:
+    jmp L1211
+L1334:
     mov rax, qword [rsp+24]
     mov rcx, qword [r13+0]
     mov esi, 1600
@@ -10998,28 +11057,28 @@ L1324:
     call snprintf
     add ebx, eax
     mov dword [rsp+16], ebx
-    jmp L1326
-L1232:
+    jmp L1336
+L1230:
     lea ebx, [rax+128]
     lea edx, [rax-59]
     mov ebp, ebx
     cmp edx, 9
-    jbe L1231
+    jbe L1229
     lea ebx, [rcx+32]
     lea edx, [rcx-65]
     mov ebp, ebx
     cmp edx, 25
-    jbe L1231
+    jbe L1229
     lea edx, [rcx-33]
     cmp edx, 93
-    jbe L1405
+    jbe L1429
     movzx eax, al
     movzx edx, byte [doom_pressed+rax]
     test dl, dl
-    je L1213
+    je L1211
     xor ebp, ebp
     xor ebx, ebx
-L1271:
+L1269:
     lea rdi, [rsp+256]
     mov dword [rsp+260], edx
     movsx rdx, edx
@@ -11034,186 +11093,184 @@ L1271:
     mov ecx, dword [rsp+108]
     mov rdi, qword [rsp+8]
     mov byte [doom_pressed+rax], bpl
-    je L1213
+    je L1211
     lea r8d, [rcx-1]
-    jmp L1276
-L1403:
-    mov dword [rel doom_game_menu+172], 0
+    jmp L1274
+L1427:
     xor edi, edi
     call os_profile
-L1290:
     mov dword [rel doom_previous_valid], 0
-    jmp L1213
-L1252:
+    jmp L1211
+L1250:
     mov ebp, 53
     mov ebx, 53
-L1231:
+L1229:
     movzx esi, al
     movzx edx, byte [doom_pressed+rsi]
     mov rax, rsi
     test dl, dl
-    je L1406
-L1272:
+    je L1430
+L1270:
     cmp edx, ebx
-    jne L1271
+    jne L1269
     cdqe
     lea rdi, [rsp+256]
     mov byte [doom_pressed+rax], bpl
-L1276:
+L1274:
     mov qword [rsp+268], 0
     mov dword [rsp+256], 0
     mov dword [rsp+260], ebx
     cmp r8d, 125
-    jbe L1274
+    jbe L1272
     xor ecx, ecx
     cmp ebx, 127
-    jg L1274
+    jg L1272
     mov ecx, ebx
-L1274:
+L1272:
     movsx rbx, ebx
     mov dword [rsp+264], ecx
     mov dword [doom_held+rbx*4], 1
     call D_PostEvent
-    jmp L1213
-L1235:
-    mov ebp, -45
-    mov ebx, 211
-    jmp L1231
-L1242:
-    mov ebp, -55
-    mov ebx, 201
-    jmp L1231
-L1253:
+    jmp L1211
+L1251:
     mov ebp, 45
     mov ebx, 45
-    jmp L1231
-L1251:
+    jmp L1229
+L1249:
     mov ebp, 61
     mov ebx, 61
-    jmp L1231
-L1241:
+    jmp L1229
+L1239:
     mov ebp, -84
     mov ebx, 172
-    jmp L1231
-L1240:
+    jmp L1229
+L1238:
     mov ebp, -82
     mov ebx, 174
-    jmp L1231
-L1239:
+    jmp L1229
+L1237:
     mov ebp, -49
     mov ebx, 207
-    jmp L1231
-L1237:
+    jmp L1229
+L1235:
     mov ebp, -47
     mov ebx, 209
-    jmp L1231
-L1236:
+    jmp L1229
+L1234:
     mov ebp, -46
     mov ebx, 210
-    jmp L1231
-L1259:
+    jmp L1229
+L1233:
+    mov ebp, -45
+    mov ebx, 211
+    jmp L1229
+L1257:
     mov ebp, -74
     mov ebx, 182
-    jmp L1231
-L1245:
+    jmp L1229
+L1243:
     mov ebp, -72
     mov ebx, 184
-    jmp L1231
-L1244:
+    jmp L1229
+L1242:
     mov ebp, -57
     mov ebx, 199
-    jmp L1231
-L1333:
+    jmp L1229
+L1240:
+    mov ebp, -55
+    mov ebx, 201
+    jmp L1229
+L1343:
     mov ebp, -93
     mov ebx, 163
-    jmp L1231
-L1262:
-    mov ebp, 127
-    mov ebx, 127
-    jmp L1231
-L1258:
-    mov ebp, 42
-    mov ebx, 42
-    jmp L1231
-L1257:
-    mov ebp, -94
-    mov ebx, 162
-    jmp L1231
-L1254:
-    mov ebp, -58
-    mov ebx, 198
-    jmp L1231
-L1256:
-    mov ebp, -70
-    mov ebx, 186
-    jmp L1231
-L1255:
-    mov ebp, -59
-    mov ebx, 197
-    jmp L1231
-L1250:
+    jmp L1229
+L1248:
     mov ebp, -41
     mov ebx, 215
-    jmp L1231
-L1249:
+    jmp L1229
+L1247:
     mov ebp, -40
     mov ebx, 216
-    jmp L1231
-L1246:
+    jmp L1229
+L1244:
     mov ebp, 47
     mov ebx, 47
-    jmp L1231
-L1233:
+    jmp L1229
+L1231:
     mov ebp, -1
     mov ebx, 255
-    jmp L1231
-L1406:
+    jmp L1229
+L1255:
+    mov ebp, -94
+    mov ebx, 162
+    jmp L1229
+L1260:
+    mov ebp, 127
+    mov ebx, 127
+    jmp L1229
+L1252:
+    mov ebp, -58
+    mov ebx, 198
+    jmp L1229
+L1254:
+    mov ebp, -70
+    mov ebx, 186
+    jmp L1229
+L1253:
+    mov ebp, -59
+    mov ebx, 197
+    jmp L1229
+L1256:
+    mov ebp, 42
+    mov ebx, 42
+    jmp L1229
+L1430:
     mov byte [doom_pressed+rsi], bpl
     lea rdi, [rsp+256]
-    jmp L1276
-L1215:
+    jmp L1274
+L1213:
     call I_Quit
-L1243:
-    mov ebp, -83
-    mov ebx, 173
-    jmp L1231
-L1227:
+L1225:
     mov ebp, -81
     mov ebx, 175
-    jmp L1231
-L1248:
+    jmp L1229
+L1241:
+    mov ebp, -83
+    mov ebx, 173
+    jmp L1229
+L1246:
     mov ebp, 13
     mov ebx, 13
-    jmp L1231
-L1332:
+    jmp L1229
+L1342:
     mov ebp, -96
     mov ebx, 160
-    jmp L1231
-L1230:
+    jmp L1229
+L1228:
     mov ebp, -95
     mov ebx, 161
-    jmp L1231
-L1229:
+    jmp L1229
+L1227:
     movzx eax, al
     movzx esi, byte [doom_pressed+rax]
     test sil, sil
-    jne L1275
+    jne L1273
     mov byte [doom_pressed+rax], -94
-L1399:
+L1422:
     movabs rax, 695784701952
     mov ebx, 162
     mov qword [rsp+268], 0
     lea rdi, [rsp+256]
     mov qword [rsp+256], rax
-    jmp L1274
-L1334:
+    jmp L1272
+L1344:
     mov ebp, 9
     mov ebx, 9
-    jmp L1231
-L1263:
+    jmp L1229
+L1261:
     movzx edx, byte [rel doom_pressed+1]
     test dl, dl
-    jne L1335
+    jne L1345
     movabs rax, 115964116992
     mov byte [rel doom_pressed+1], 27
     mov ebx, 27
@@ -11221,16 +11278,16 @@ L1263:
     mov qword [rsp+268], 0
     mov qword [rsp+256], rax
     cmp esi, 125
-    jbe L1274
+    jbe L1272
     mov ecx, ebx
-    jmp L1274
-L1405:
+    jmp L1272
+L1429:
     movzx eax, al
     mov ebp, ecx
     movzx edx, byte [doom_pressed+rax]
     test dl, dl
-    jne L1407
-L1394:
+    jne L1431
+L1414:
     mov byte [doom_pressed+rax], cl
     xor edx, edx
     xor eax, eax
@@ -11239,37 +11296,37 @@ L1394:
     lea rdi, [rsp+256]
     mov dword [rsp+256], edx
     mov dword [rsp+260], ecx
-    jmp L1274
-L1404:
+    jmp L1272
+L1428:
     lea rdi, [rsp+256]
     mov rsi, rdi
     mov edi, LC103
     call os_read_file
     mov rbp, rax
     test rax, rax
-    je L1293
+    je L1303
     mov r8, qword [rsp+256]
     cmp r8, 63
-    jle L1341
+    jle L1354
     cmp dword [rax], 1179403647
-    jne L1341
+    jne L1354
     mov rsi, qword [rax+40]
     xor edx, edx
     xor r15d, r15d
     cmp word [rax+58], 64
     movzx r12d, word [rax+60]
     lea rcx, [rax+rsi]
-    je L1408
-L1294:
+    je L1432
+L1304:
     mov rdi, qword [rel doom_symbols]
     test rdi, rdi
-    je L1300
+    je L1310
     cmp qword [rel doom_profile_hits], 0
-    je L1300
+    je L1310
     mov dword [rel doom_symbol_count], 0
     mov r13, qword [r13+24]
     test edx, edx
-    jle L1345
+    jle L1358
     add r13, rbp
     xor r8d, r8d
     lea rax, [rdx+rdx*2]
@@ -11277,29 +11334,29 @@ L1294:
     mov dword [rsp+60], ebx
     mov ebp, r8d
     lea rdx, [r13+0+rax*8]
-    mov rbx, rdi
     mov r8, r15
-L1313:
+    mov rbx, rdi
+L1323:
     movzx eax, word [r13+6]
     test ax, ax
-    je L1303
+    je L1313
     cmp ax, r12w
-    jnb L1303
+    jnb L1313
     sal rax, 6
     test byte [rcx+8+rax], 4
-    je L1303
+    je L1313
     mov eax, dword [r13+0]
     cmp rax, qword [r8+32]
-    jnb L1303
+    jnb L1313
     mov rsi, qword [rsp+48]
     add rax, qword [r8+24]
     lea r15, [rsi+rax]
     movzx eax, byte [r15]
     test al, al
-    je L1303
+    je L1313
     cmp al, 76
-    je L1409
-L1304:
+    je L1433
+L1314:
     mov esi, 46
     mov rdi, r15
     mov qword [rsp+24], r8
@@ -11310,66 +11367,67 @@ L1304:
     mov rcx, qword [rsp+16]
     test rax, rax
     mov r8, qword [rsp+24]
-    je L1306
-    mov qword [rsp+16], r13
+    je L1316
+    mov dword [rsp+8], ebp
+    mov qword [rsp+16], rdx
     mov qword [rsp+24], rcx
     mov qword [rsp+32], r8
     mov qword [rsp+40], rbx
-    mov dword [rsp+56], ebp
-L1312:
-    lea r13, [rax+1]
+    mov word [rsp+58], r12w
+L1322:
+    lea rbp, [rax+1]
     mov esi, LC104
-    mov rdi, r13
+    mov rdi, rbp
     call strcspn
-    mov rbp, rax
+    mov r12, rax
     test rax, rax
-    je L1346
+    je L1359
     mov esi, LC105
-    mov rdi, r13
+    mov rdi, rbp
     call strspn
-    cmp rbp, rax
-    je L1308
+    cmp r12, rax
+    je L1318
     mov eax, 4
     xor ebx, ebx
-    jmp L1311
-L1410:
+    jmp L1321
+L1434:
     test dl, dl
-    je L1310
+    je L1320
     mov rdi, qword [gcc.8+rbx*8]
     call strlen
-L1311:
+L1321:
     xor esi, esi
     mov edx, 1
-    cmp rbp, rax
-    jne L1309
+    cmp rax, r12
+    jne L1319
     mov rsi, qword [gcc.8+rbx*8]
-    mov rdx, rbp
-    mov rdi, r13
+    mov rdx, r12
+    mov rdi, rbp
     call strncmp
     xor esi, esi
     test eax, eax
     sete sil
     setne dl
-L1309:
+L1319:
     add rbx, 1
     cmp rbx, 6
-    jne L1410
-L1310:
+    jne L1434
+L1320:
     test esi, esi
-    je L1397
-L1308:
+    je L1420
+L1318:
     mov esi, 46
-    mov rdi, r13
+    mov rdi, rbp
     call strchr
     test rax, rax
-    jne L1312
-    mov rdx, qword [rsp+8]
-    mov r13, qword [rsp+16]
+    jne L1322
+    mov ebp, dword [rsp+8]
+    mov rdx, qword [rsp+16]
     mov rcx, qword [rsp+24]
     mov r8, qword [rsp+32]
     mov rbx, qword [rsp+40]
-    mov ebp, dword [rsp+56]
-L1306:
+    movzx r12d, word [rsp+58]
+L1316:
     movsx rax, ebp
     mov rdi, qword [r13+8]
     lea esi, [rbp+1]
@@ -11379,60 +11437,60 @@ L1306:
     add rax, rbx
     mov qword [rax], rdi
     mov qword [rax+8], r15
-L1303:
+L1313:
     add r13, 24
     cmp rdx, r13
-    jne L1313
+    jne L1323
     mov rdi, rbx
     mov ebx, dword [rsp+60]
     movsx rsi, ebp
-L1302:
+L1312:
     mov edx, 16
     mov ecx, doom_symbol_order
     call qsort
     mov edx, dword [rel doom_symbol_count]
     test edx, edx
-    jle L1348
+    jle L1361
     mov rdi, qword [rel doom_symbols]
     movsx rsi, edx
     xor ecx, ecx
     sal rsi, 4
     mov rax, rdi
     add rsi, rdi
-L1315:
+L1325:
     movdqu xmm0, oword [rax]
     add ebx, 1
     add rax, 16
     movsx rdx, ebx
     movups oword [rdi+rcx], xmm0
     cmp rax, rsi
-    je L1317
-L1400:
+    je L1327
+L1423:
     mov rcx, rdx
     sal rcx, 4
     mov r10, qword [rdi-16+rcx]
     cmp qword [rax], r10
-    jne L1315
+    jne L1325
     add rax, 16
     cmp rax, rsi
-    jne L1400
-L1317:
+    jne L1423
+L1327:
     sal rdx, 2
-L1314:
+L1324:
     mov dword [rel doom_symbol_count], ebx
     mov r13, qword [rel doom_profile_hits]
-    jmp L1319
-L1346:
+    jmp L1329
+L1359:
     xor ebx, ebx
     mov eax, 4
-    jmp L1311
-L1341:
+    jmp L1321
+L1354:
     mov rcx, rbp
     xor edx, edx
     xor r15d, r15d
     xor r12d, r12d
-    jmp L1294
-L1300:
+    jmp L1304
+L1310:
     call os_free
     mov rdi, qword [rel doom_profile_hits]
     call os_free
@@ -11440,66 +11498,66 @@ L1300:
     mov qword [rel doom_symbols], 0
     mov qword [rel doom_profile_hits], 0
     call os_free
-L1293:
+L1303:
     mov ecx, LC103
     mov edx, LC106
     mov esi, 64
     xor eax, eax
     mov edi, doom_profile_text
     call snprintf
-    jmp L1290
-L1397:
-    mov rdx, qword [rsp+8]
-    mov r13, qword [rsp+16]
+    jmp L1424
+L1420:
+    mov ebp, dword [rsp+8]
+    mov rdx, qword [rsp+16]
     mov rcx, qword [rsp+24]
     mov r8, qword [rsp+32]
     mov rbx, qword [rsp+40]
-    mov ebp, dword [rsp+56]
-    jmp L1303
-L1409:
+    movzx r12d, word [rsp+58]
+    jmp L1313
+L1433:
     movzx eax, byte [r15+1]
     test al, al
-    je L1304
+    je L1314
     sub eax, 48
     lea rsi, [r15+1]
     cmp al, 9
-    ja L1304
-L1305:
+    ja L1314
+L1315:
     movzx eax, byte [rsi+1]
     add rsi, 1
     lea edi, [rax-48]
     cmp dil, 9
-    jbe L1305
+    jbe L1315
     test al, al
-    jne L1304
-    jmp L1303
-L1345:
+    jne L1314
+    jmp L1313
+L1358:
     xor esi, esi
-    jmp L1302
-L1408:
+    jmp L1312
+L1432:
     movzx eax, r12w
     sal rax, 6
     add rax, rsi
     cmp r8, rax
-    jb L1294
+    jb L1304
     movzx edi, r12w
     test edi, edi
-    je L1294
+    je L1304
     lea eax, [rdi-1]
     mov rsi, rcx
     sal rax, 6
     lea rdx, [rcx+64+rax]
-    jmp L1298
-L1295:
+    jmp L1308
+L1305:
     add rsi, 64
-    cmp rdx, rsi
-    je L1411
-L1298:
+    cmp rsi, rdx
+    je L1435
+L1308:
     cmp dword [rsi+4], 2
-    jne L1295
+    jne L1305
     mov eax, dword [rsi+40]
     cmp eax, edi
-    jnb L1295
+    jnb L1305
     mov r9, qword [rsi+32]
     mov r15d, eax
     movabs rax, -6148914691236517205
@@ -11511,18 +11569,18 @@ L1298:
     mov rdi, rdx
     movsx rdx, edx
     cmp r8, r9
-    jb L1297
+    jb L1307
     movdqu xmm0, oword [r15+24]
     movdqa xmm1, xmm0
     psrldq xmm1, 8
     paddq xmm0, xmm1
     movq rax, xmm0
     cmp r8, rax
-    jnb L1299
-L1297:
+    jnb L1309
+L1307:
     mov r13, rsi
-    jmp L1294
-L1299:
+    jmp L1304
+L1309:
     movsx r13, edi
     mov eax, 1
     mov dword [rsp+24], edx
@@ -11542,30 +11600,30 @@ L1299:
     mov rcx, qword [rsp+16]
     mov qword [rel doom_profile_hits], rax
     movsx rdx, dword [rsp+24]
-    jmp L1297
-L1348:
+    jmp L1307
+L1361:
     xor edx, edx
-    jmp L1314
-L1411:
+    jmp L1324
+L1435:
     xor edx, edx
     xor r15d, r15d
-    jmp L1294
-L1275:
+    jmp L1304
+L1273:
     movzx edx, sil
     cmp sil, -94
-    je L1399
+    je L1422
     mov ebp, -94
     mov ebx, 162
-    jmp L1271
-L1335:
+    jmp L1269
+L1345:
     mov ebp, 27
     mov ebx, 27
-    jmp L1272
-L1407:
+    jmp L1270
+L1431:
     cmp ecx, edx
-    je L1394
+    je L1414
     mov ebx, ecx
-    jmp L1271
+    jmp L1269
     section .rodata
 LC118:
     db `-setmem`, 0
@@ -11591,21 +11649,21 @@ I_GetMemoryValue:
     sub rsp, 40
     mov eax, dword [rel firsttime.13]
     test eax, eax
-    jne L1445
-L1413:
+    jne L1469
+L1437:
     cmp ebp, 2
-    je L1430
+    je L1454
     cmp ebp, 4
-    je L1431
+    je L1455
     xor eax, eax
     cmp ebp, 1
-    jne L1412
+    jne L1436
     mov rax, qword [rel dos_mem_dump]
     movzx eax, byte [rax+rbx]
     mov byte [r13+0], al
-L1433:
+L1457:
     mov eax, 1
-L1412:
+L1436:
     add rsp, 40
     pop rbx
     pop rbp
@@ -11614,7 +11672,7 @@ L1412:
     pop r14
     pop r15
     ret
-L1431:
+L1455:
     mov rdx, qword [rel dos_mem_dump]
     lea eax, [rbx+1]
     lea ecx, [rbx+2]
@@ -11631,15 +11689,15 @@ L1431:
     sal edx, 24
     or eax, edx
     mov dword [r13+0], eax
-    jmp L1433
-L1445:
+    jmp L1457
+L1469:
     mov esi, 1
     mov edi, LC118
     mov dword [rel firsttime.13], 0
     call M_CheckParmWithArgs
     mov dword [rsp+4], eax
     test eax, eax
-    jle L1413
+    jle L1437
     cdqe
     mov rdx, qword [rel myargv]
     xor r15d, r15d
@@ -11647,40 +11705,40 @@ L1445:
     lea rcx, [0+rax*8]
     mov r12, qword [rdx+rax*8]
     mov qword [rsp+8], rcx
-L1419:
+L1443:
     movzx edi, byte [r12+r15]
     call tolower
     movzx edi, byte [LC119+r15]
     mov r14d, eax
     call tolower
     cmp r14d, eax
-    jne L1418
+    jne L1442
     test r14d, r14d
-    je L1446
+    je L1470
     add r15, 1
     cmp r15, -1
-    jne L1419
-L1417:
+    jne L1443
+L1441:
     mov qword [rel dos_mem_dump], mem_dump_dos622
-L1418:
+L1442:
     xor r15d, r15d
-L1424:
+L1448:
     movzx edi, byte [r12+r15]
     call tolower
     movzx edi, byte [LC120+r15]
     mov r14d, eax
     call tolower
     cmp r14d, eax
-    jne L1442
+    jne L1466
     test r14d, r14d
-    je L1447
+    je L1471
     add r15, 1
     cmp r15, -1
-    jne L1424
-L1422:
+    jne L1448
+L1446:
     mov qword [rel dos_mem_dump], mem_dump_win98
-    jmp L1413
-L1430:
+    jmp L1437
+L1454:
     mov rdx, qword [rel dos_mem_dump]
     lea eax, [rbx+1]
     movzx eax, byte [rdx+rax]
@@ -11688,48 +11746,48 @@ L1430:
     sal eax, 8
     or eax, edx
     mov word [r13+0], ax
-    jmp L1433
-L1447:
+    jmp L1457
+L1471:
     cmp r14d, eax
-    je L1422
-L1442:
+    je L1446
+L1466:
     xor r14d, r14d
-L1423:
+L1447:
     movzx edi, byte [r12+r14]
     call tolower
     movzx edi, byte [LC121+r14]
     mov r15d, eax
     call tolower
     cmp r15d, eax
-    jne L1443
+    jne L1467
     test r15d, r15d
-    je L1448
+    je L1472
     add r14, 1
     cmp r14, -1
-    jne L1423
-L1427:
+    jne L1447
+L1451:
     mov qword [rel dos_mem_dump], mem_dump_dosbox
-    jmp L1413
-L1446:
+    jmp L1437
+L1470:
     cmp r14d, eax
-    jne L1418
-    jmp L1417
-L1448:
+    jne L1442
+    jmp L1441
+L1472:
     cmp r15d, eax
-    je L1427
-L1443:
+    je L1451
+L1467:
     xor r12d, r12d
     lea r14, [rsp+28]
-L1428:
+L1452:
     add dword [rsp+4], 1
     mov eax, dword [rsp+4]
     cmp dword [rel myargc], eax
-    jle L1429
+    jle L1453
     mov rax, qword [rel myargv]
     mov r15, qword [rsp+8]
     mov rdi, qword [rax+r15]
     cmp byte [rdi], 45
-    je L1429
+    je L1453
     mov rsi, r14
     add r15, 8
     add r12, 2
@@ -11738,10 +11796,10 @@ L1428:
     mov qword [rsp+8], r15
     mov byte [mem_dump_custom+r12-2], al
     cmp r12, 10
-    jne L1428
-L1429:
+    jne L1452
+L1453:
     mov qword [rel dos_mem_dump], mem_dump_custom
-    jmp L1413
+    jmp L1437
     section .rodata
 LC122:
     db `-nosound`, 0
@@ -11768,80 +11826,80 @@ I_InitSound:
     mov r13d, eax
     call M_CheckParm
     test ebx, ebx
-    jle L1461
-L1449:
+    jle L1485
+L1473:
     add rsp, 8
     pop rbx
     pop rbp
     pop r12
     pop r13
     ret
-L1461:
+L1485:
     mov edx, dword [rel screensaver_mode]
     test edx, edx
-    jne L1449
+    jne L1473
     mov r12d, eax
     test r13d, r13d
-    jle L1462
-L1457:
+    jle L1486
+L1481:
     test r12d, r12d
-    jg L1449
+    jg L1473
     mov qword [rel music_module], asmos_music_module
-    jmp L1449
-L1462:
+    jmp L1473
+L1486:
     movsx rax, dword [rel asmos_sound_module+8]
     mov rdx, qword [rel asmos_sound_module]
     mov qword [rel sound_module], 0
     mov ecx, dword [rel snd_sfxdevice]
     test eax, eax
-    jle L1457
+    jle L1481
     lea rsi, [rdx+rax*4]
-    jmp L1456
-L1463:
+    jmp L1480
+L1487:
     add rdx, 4
     cmp rdx, rsi
-    je L1457
-L1456:
+    je L1481
+L1480:
     cmp ecx, dword [rdx]
-    jne L1463
+    jne L1487
     mov edi, ebp
     call qword [rel asmos_sound_module+16]
     test eax, eax
-    je L1457
+    je L1481
     mov qword [rel sound_module], asmos_sound_module
-    jmp L1457
+    jmp L1481
     align 16
     global I_ShutdownSound
 I_ShutdownSound:
     mov rax, qword [rel sound_module]
     test rax, rax
-    je L1471
+    je L1495
     sub rsp, 8
     call qword [rax+24]
     mov rax, qword [rel music_module]
     test rax, rax
-    je L1464
+    je L1488
     mov rax, qword [rax+24]
     add rsp, 8
     jmp rax
-L1464:
+L1488:
     add rsp, 8
     ret
-L1471:
+L1495:
     mov rax, qword [rel music_module]
     test rax, rax
-    je L1473
+    je L1497
     jmp qword [rax+24]
-L1473:
+L1497:
     ret
     align 16
     global I_GetSfxLumpNum
 I_GetSfxLumpNum:
     mov rax, qword [rel sound_module]
     test rax, rax
-    je L1477
+    je L1501
     jmp qword [rax+32]
-L1477:
+L1501:
     xor eax, eax
     ret
     align 16
@@ -11849,36 +11907,36 @@ L1477:
 I_UpdateSound:
     mov rax, qword [rel sound_module]
     test rax, rax
-    je L1491
+    je L1515
     sub rsp, 8
     call qword [rax+40]
     mov rax, qword [rel music_module]
     test rax, rax
-    je L1478
+    je L1502
     mov rax, qword [rax+96]
     test rax, rax
-    je L1478
+    je L1502
     add rsp, 8
     jmp rax
-L1478:
+L1502:
     add rsp, 8
     ret
-L1491:
+L1515:
     mov rax, qword [rel music_module]
     test rax, rax
-    je L1493
+    je L1517
     mov rax, qword [rax+96]
     test rax, rax
-    je L1493
+    je L1517
     jmp rax
-L1493:
+L1517:
     ret
     align 16
     global I_UpdateSoundParams
 I_UpdateSoundParams:
     mov rax, qword [rel sound_module]
     test rax, rax
-    je L1497
+    je L1521
     mov ecx, 254
     cmp edx, ecx
     cmovg edx, ecx
@@ -11892,7 +11950,7 @@ I_UpdateSoundParams:
     test esi, esi
     cmovs esi, ecx
     jmp qword [rax+48]
-L1497:
+L1521:
     ret
     align 16
     global S_UpdateSounds
@@ -11907,42 +11965,42 @@ S_UpdateSounds:
     call I_UpdateSound
     mov eax, dword [rel snd_channels]
     test eax, eax
-    jle L1499
+    jle L1523
     xor ebx, ebx
-L1510:
+L1534:
     mov rdx, qword [rel channels]
     lea rax, [rbx+rbx*2]
     lea rbp, [rdx+rax*8]
     mov r12, qword [rbp+0]
     test r12, r12
-    je L1502
+    je L1526
     mov rax, qword [rel sound_module]
     mov r14d, ebx
     test rax, rax
-    je L1503
+    je L1527
     mov edi, dword [rbp+16]
     call qword [rax+72]
     test eax, eax
-    je L1503
+    je L1527
     mov eax, dword [rel snd_SfxVolume]
     cmp qword [r12+24], 0
     mov dword [rsp+12], 128
     mov dword [rsp+8], eax
-    je L1505
+    je L1529
     mov edx, dword [r12+36]
     add edx, eax
     mov dword [rsp+8], edx
     test edx, edx
-    jle L1503
+    jle L1527
     cmp eax, edx
-    jge L1505
+    jge L1529
     mov dword [rsp+8], eax
-L1505:
+L1529:
     mov rax, qword [rbp+8]
     cmp rax, r13
-    je L1502
+    je L1526
     test rax, rax
-    je L1502
+    je L1526
     mov edx, dword [rax+28]
     mov esi, dword [rax+24]
     lea rcx, [rsp+8]
@@ -11950,15 +12008,15 @@ L1505:
     mov rdi, r13
     call S_AdjustSoundParams.isra.0
     test eax, eax
-    jne L1509
-L1503:
+    jne L1533
+L1527:
     mov edi, r14d
     call S_StopChannel
-L1502:
+L1526:
     add rbx, 1
     cmp dword [rel snd_channels], ebx
-    jg L1510
-L1499:
+    jg L1534
+L1523:
     add rsp, 16
     pop rbx
     pop rbp
@@ -11966,18 +12024,18 @@ L1499:
     pop r13
     pop r14
     ret
-L1509:
+L1533:
     mov edi, dword [rbp+16]
     mov edx, dword [rsp+12]
     mov esi, dword [rsp+8]
     call I_UpdateSoundParams
-    jmp L1502
+    jmp L1526
     align 16
     global I_StartSound
 I_StartSound:
     mov rax, qword [rel sound_module]
     test rax, rax
-    je L1526
+    je L1550
     mov r8d, 254
     cmp ecx, r8d
     cmovg ecx, r8d
@@ -11991,7 +12049,7 @@ I_StartSound:
     test edx, edx
     cmovs edx, r8d
     jmp qword [rax+56]
-L1526:
+L1550:
     xor eax, eax
     ret
     align 16
@@ -11999,18 +12057,18 @@ L1526:
 I_StopSound:
     mov rax, qword [rel sound_module]
     test rax, rax
-    je L1527
+    je L1551
     jmp qword [rax+64]
-L1527:
+L1551:
     ret
     align 16
     global I_SoundIsPlaying
 I_SoundIsPlaying:
     mov rax, qword [rel sound_module]
     test rax, rax
-    je L1530
+    je L1554
     jmp qword [rax+72]
-L1530:
+L1554:
     xor eax, eax
     ret
     align 16
@@ -12018,21 +12076,21 @@ L1530:
 I_PrecacheSounds:
     mov rax, qword [rel sound_module]
     test rax, rax
-    je L1531
+    je L1555
     mov rax, qword [rax+80]
     test rax, rax
-    je L1531
+    je L1555
     jmp rax
-L1531:
+L1555:
     ret
     align 16
     global I_InitMusic
 I_InitMusic:
     mov rax, qword [rel music_module]
     test rax, rax
-    je L1539
+    je L1563
     jmp qword [rax+16]
-L1539:
+L1563:
     ret
     align 16
     global I_ShutdownMusic
@@ -12043,36 +12101,36 @@ I_ShutdownMusic:
 I_SetMusicVolume:
     mov rax, qword [rel music_module]
     test rax, rax
-    je L1542
+    je L1566
     jmp qword [rax+32]
-L1542:
+L1566:
     ret
     align 16
     global I_PauseSong
 I_PauseSong:
     mov rax, qword [rel music_module]
     test rax, rax
-    je L1544
+    je L1568
     jmp qword [rax+40]
-L1544:
+L1568:
     ret
     align 16
     global I_ResumeSong
 I_ResumeSong:
     mov rax, qword [rel music_module]
     test rax, rax
-    je L1546
+    je L1570
     jmp qword [rax+48]
-L1546:
+L1570:
     ret
     align 16
     global I_RegisterSong
 I_RegisterSong:
     mov rax, qword [rel music_module]
     test rax, rax
-    je L1548
+    je L1572
     jmp qword [rax+56]
-L1548:
+L1572:
     xor eax, eax
     ret
     align 16
@@ -12080,36 +12138,36 @@ L1548:
 I_UnRegisterSong:
     mov rax, qword [rel music_module]
     test rax, rax
-    je L1550
+    je L1574
     jmp qword [rax+64]
-L1550:
+L1574:
     ret
     align 16
     global I_PlaySong
 I_PlaySong:
     mov rax, qword [rel music_module]
     test rax, rax
-    je L1552
+    je L1576
     jmp qword [rax+72]
-L1552:
+L1576:
     ret
     align 16
     global I_StopSong
 I_StopSong:
     mov rax, qword [rel music_module]
     test rax, rax
-    je L1554
+    je L1578
     jmp qword [rax+80]
-L1554:
+L1578:
     ret
     align 16
     global I_MusicIsPlaying
 I_MusicIsPlaying:
     mov rax, qword [rel music_module]
     test rax, rax
-    je L1557
+    je L1581
     jmp qword [rax+88]
-L1557:
+L1581:
     xor eax, eax
     ret
     section .rodata
@@ -12284,7 +12342,7 @@ I_BindJoystickVariables:
     mov esi, joystick_strafe_invert
     mov edi, LC142
     call M_BindVariable
-L1574:
+L1598:
     mov ecx, ebx
     mov edx, LC143
     mov esi, 32
@@ -12297,7 +12355,7 @@ L1574:
     add rbp, 4
     call M_BindVariable
     cmp ebx, 10
-    jne L1574
+    jne L1598
     add rsp, 32
     pop rbx
     pop rbp
@@ -12360,13 +12418,13 @@ doom_strdup:
     call os_alloc
     mov rcx, rax
     test rax, rax
-    je L1584
+    je L1608
     mov rdx, rbp
     mov rsi, rbx
     mov rdi, rax
     call memcpy
     mov rcx, rax
-L1584:
+L1608:
     add rsp, 8
     mov rax, rcx
     pop rbx
@@ -12381,25 +12439,25 @@ doom_strncasecmp:
     push rbx
     sub rsp, 8
     test rdx, rdx
-    je L1595
+    je L1619
     mov rbp, rdi
     mov r12, rsi
     lea r13, [rdi+rdx]
-L1594:
+L1618:
     movzx edi, byte [rbp+0]
     call tolower
     movzx edi, byte [r12]
     mov ebx, eax
     call tolower
     cmp ebx, eax
-    jne L1596
+    jne L1620
     test ebx, ebx
-    je L1596
+    je L1620
     add rbp, 1
     add r12, 1
     cmp rbp, r13
-    jne L1594
-L1595:
+    jne L1618
+L1619:
     add rsp, 8
     xor ebx, ebx
     mov eax, ebx
@@ -12408,7 +12466,7 @@ L1595:
     pop r12
     pop r13
     ret
-L1596:
+L1620:
     add rsp, 8
     sub ebx, eax
     mov eax, ebx
@@ -12428,19 +12486,19 @@ doom_strcasecmp:
     xor ebp, ebp
     push rbx
     sub rsp, 8
-L1603:
+L1627:
     movzx edi, byte [r13+0+rbp]
     call tolower
     movzx edi, byte [r12+rbp]
     mov ebx, eax
     call tolower
     cmp ebx, eax
-    jne L1604
+    jne L1628
     test ebx, ebx
-    je L1604
+    je L1628
     add rbp, 1
     cmp rbp, -1
-    jne L1603
+    jne L1627
     add rsp, 8
     xor ebx, ebx
     mov eax, ebx
@@ -12449,7 +12507,7 @@ L1603:
     pop r12
     pop r13
     ret
-L1604:
+L1628:
     add rsp, 8
     sub ebx, eax
     mov eax, ebx
@@ -12479,59 +12537,59 @@ doom_fopen:
     push rbx
     call os_alloc
     test rax, rax
-    je L1610
+    je L1634
     lea r9, [rax+44]
     mov rsi, r12
     mov rbx, rax
     mov rdi, r9
     call doom_clean_path.constprop.0
     cmp byte [rbp+0], 114
-    je L1624
+    je L1648
     mov dword [rbx+32], 1
     cmp byte [rbp+0], 97
-    je L1625
+    je L1649
     mov rax, rbx
     pop rbx
     pop rbp
     pop r12
     ret
-L1624:
+L1648:
     lea rsi, [rbx+8]
     mov rdi, r9
     call os_read_file
     mov qword [rbx], rax
     test rax, rax
-    je L1626
+    je L1650
     mov rax, qword [rbx+8]
     mov qword [rbx+16], rax
     movzx edx, byte [rbp+1]
     mov eax, 1
     cmp dl, 43
-    je L1614
+    je L1638
     xor eax, eax
     test dl, dl
-    je L1614
+    je L1638
     xor eax, eax
     cmp byte [rbp+2], 43
     sete al
-L1614:
+L1638:
     mov dword [rbx+32], eax
     mov rax, rbx
     pop rbx
     pop rbp
     pop r12
     ret
-L1626:
+L1650:
     mov rdi, rbx
     call os_free
-L1610:
+L1634:
     xor ebx, ebx
     mov rax, rbx
     pop rbx
     pop rbp
     pop r12
     ret
-L1625:
+L1649:
     lea rsi, [rbx+8]
     mov rdi, r9
     call os_read_file
@@ -12555,27 +12613,27 @@ doom_fclose:
     push rbx
     sub rsp, 8
     test rdi, rdi
-    je L1631
+    je L1655
     mov eax, dword [rdi+36]
     mov rbx, rdi
     xor ebp, ebp
     test eax, eax
-    jne L1627
+    jne L1651
     mov ebp, dword [rdi+32]
     test ebp, ebp
-    jne L1637
-L1629:
+    jne L1661
+L1653:
     mov rdi, qword [rbx]
     call os_free
     mov rdi, rbx
     call os_free
-L1627:
+L1651:
     add rsp, 8
     mov eax, ebp
     pop rbx
     pop rbp
     ret
-L1637:
+L1661:
     mov rsi, qword [rdi]
     mov eax, LC144
     mov rdx, qword [rdi+8]
@@ -12584,8 +12642,8 @@ L1637:
     cmove rsi, rax
     call os_write_file
     mov ebp, eax
-    jmp L1629
-L1631:
+    jmp L1653
+L1655:
     xor ebp, ebp
     add rsp, 8
     mov eax, ebp
@@ -12600,26 +12658,26 @@ doom_fread:
     push rbp
     push rbx
     test rsi, rsi
-    je L1638
+    je L1662
     mov eax, dword [rcx+36]
     mov rbp, rcx
     test eax, eax
-    jne L1638
+    jne L1662
     mov rcx, qword [rcx+24]
     mov rax, qword [rbp+8]
     mov r8, rdi
     mov rdi, rdx
     sub rax, rcx
     test rax, rax
-    jle L1640
+    jle L1664
     xor edx, edx
     div rsi
     mov r12, rax
-L1640:
+L1664:
     cmp r12, rdi
-    jnb L1645
+    jnb L1669
     mov dword [rbp+40], 1
-L1641:
+L1665:
     mov rbx, rsi
     add rcx, qword [rbp+0]
     mov rdi, r8
@@ -12629,15 +12687,15 @@ L1641:
     call memcpy
     add qword [rbp+24], rbx
     call os_yield_point
-L1638:
+L1662:
     mov rax, r12
     pop rbx
     pop rbp
     pop r12
     ret
-L1645:
+L1669:
     mov r12, rdi
-    jmp L1641
+    jmp L1665
     align 16
     global doom_fwrite
 doom_fwrite:
@@ -12652,12 +12710,12 @@ doom_fwrite:
     push rbx
     mov edx, dword [rcx+36]
     test edx, edx
-    jne L1679
+    jne L1703
     mov eax, dword [rcx+32]
     mov rbp, rcx
     test eax, eax
-    jne L1659
-L1665:
+    jne L1683
+L1689:
     pop rbx
     xor eax, eax
     pop rbp
@@ -12665,29 +12723,29 @@ L1665:
     pop r13
     pop r14
     ret
-L1659:
+L1683:
     mov rax, qword [rcx+24]
     mov rbx, qword [rbp+16]
     mov rdi, qword [rbp+0]
     lea rcx, [rsi+rax]
     cmp rcx, rbx
-    jle L1661
+    jle L1685
     test rbx, rbx
-    je L1680
-L1664:
+    je L1704
+L1688:
     add rbx, rbx
     cmp rcx, rbx
-    jg L1664
-L1663:
+    jg L1688
+L1687:
     mov rsi, rbx
     call os_realloc
     mov rdi, rax
     test rax, rax
-    je L1665
+    je L1689
     mov qword [rbp+16], rbx
     mov qword [rbp+0], rax
     mov rax, qword [rbp+24]
-L1661:
+L1685:
     mov rdx, r14
     add rdi, rax
     mov rsi, r13
@@ -12696,58 +12754,58 @@ L1661:
     add rdx, r14
     mov qword [rbp+24], rdx
     cmp rdx, qword [rbp+8]
-    jle L1658
+    jle L1682
     mov qword [rbp+8], rdx
-L1658:
+L1682:
     mov rax, r12
-L1683:
+L1707:
     pop rbx
     pop rbp
     pop r12
     pop r13
     pop r14
     ret
-L1679:
+L1703:
     mov eax, dword [rel doom_console_length]
     cmp rsi, 2047
-    jg L1681
+    jg L1705
     movsx rsi, eax
     lea rdx, [rsi+r14]
     cmp rdx, 2047
-    jg L1653
+    jg L1677
     lea rbx, [doom_console+rsi]
     lea ebp, [rax+r14]
-L1652:
+L1676:
     cmp r14, 8
-    jnb L1654
+    jnb L1678
     test r14b, 4
-    jne L1682
+    jne L1706
     test r14, r14
-    je L1655
+    je L1679
     movzx eax, byte [r13+0]
     mov byte [rbx], al
     test r14b, 2
-    je L1655
+    je L1679
     movzx eax, word [r13-2+r14]
     mov word [rbx-2+r14], ax
-    jmp L1655
-L1680:
+    jmp L1679
+L1704:
     mov ebx, 256
     cmp rcx, 256
-    jle L1663
+    jle L1687
     add rbx, rbx
     cmp rcx, rbx
-    jg L1664
-    jmp L1663
-L1681:
+    jg L1688
+    jmp L1687
+L1705:
     lea r13, [rdi-2047+rsi]
     test eax, eax
-    jg L1666
+    jg L1690
     movsx rbx, eax
     lea ebp, [rax+2047]
     mov r14d, 2047
     add rbx, doom_console
-L1654:
+L1678:
     mov rax, qword [r13+0]
     lea rdi, [rbx+8]
     mov rsi, r13
@@ -12760,39 +12818,39 @@ L1654:
     sub rsi, rbx
     shr rcx, 3
     rep movsq
-L1655:
+L1679:
     mov dword [rel doom_console_length], ebp
     movsx rbp, ebp
     mov rax, r12
     mov byte [doom_console+rbp], 0
-    jmp L1683
-L1666:
+    jmp L1707
+L1690:
     mov ebp, 2047
     mov ebx, doom_console
     xor edx, edx
     movsx rsi, eax
     mov r14d, 2047
-L1651:
+L1675:
     sub rsi, rdx
     mov edi, doom_console
     add rsi, doom_console
     call memmove
-    jmp L1652
-L1653:
+    jmp L1676
+L1677:
     mov ecx, 2047
     mov ebp, 2047
     sub ecx, r14d
     mov edx, ecx
     lea rbx, [doom_console+rdx]
     cmp ecx, eax
-    jge L1652
-    jmp L1651
-L1682:
+    jge L1676
+    jmp L1675
+L1706:
     mov eax, dword [r13+0]
     mov dword [rbx], eax
     mov eax, dword [r13-4+r14]
     mov dword [rbx-4+r14], eax
-    jmp L1655
+    jmp L1679
     align 16
     global I_PrintDivider
 I_PrintDivider:
@@ -12801,7 +12859,7 @@ I_PrintDivider:
     mov ebx, 75
     sub rsp, 24
     lea rbp, [rsp+15]
-L1685:
+L1709:
     mov rcx, qword [rel doom_stdout]
     mov edx, 1
     mov esi, 1
@@ -12809,7 +12867,7 @@ L1685:
     mov byte [rsp+15], 61
     call doom_fwrite
     sub ebx, 1
-    jne L1685
+    jne L1709
     mov rcx, qword [rel doom_stdout]
     mov rdi, rbp
     mov edx, 1
@@ -12836,10 +12894,10 @@ I_PrintBanner:
     shr rax, 1
     sub ebp, eax
     test ebp, ebp
-    jle L1689
+    jle L1713
     xor ebx, ebx
     lea r12, [rsp+15]
-L1690:
+L1714:
     mov edx, 1
     mov esi, 1
     mov rdi, r12
@@ -12848,11 +12906,11 @@ L1690:
     mov byte [rsp+15], 32
     call doom_fwrite
     cmp ebp, ebx
-    jne L1690
+    jne L1714
     mov rdi, r13
     call strlen
     mov rdx, rax
-L1689:
+L1713:
     mov rcx, qword [rel doom_stdout]
     mov rdi, r13
     mov esi, 1
@@ -12873,23 +12931,23 @@ L1689:
     global doom_fseek
 doom_fseek:
     cmp edx, 1
-    je L1700
+    je L1724
     cmp edx, 2
-    je L1701
-L1697:
+    je L1725
+L1721:
     test rsi, rsi
-    js L1699
+    js L1723
     mov qword [rdi+24], rsi
     xor eax, eax
     mov dword [rdi+40], 0
     ret
-L1701:
+L1725:
     add rsi, qword [rdi+8]
-    jmp L1697
-L1700:
+    jmp L1721
+L1724:
     add rsi, qword [rdi+24]
-    jmp L1697
-L1699:
+    jmp L1721
+L1723:
     mov eax, -1
     ret
     align 16
@@ -12907,16 +12965,16 @@ doom_feof:
 doom_fgetc:
     mov eax, dword [rdi+36]
     test eax, eax
-    jne L1705
+    jne L1729
     mov rax, qword [rdi+24]
     cmp rax, qword [rdi+8]
-    jge L1705
+    jge L1729
     mov rdx, qword [rdi]
     lea rcx, [rax+1]
     mov qword [rdi+24], rcx
     movzx eax, byte [rdx+rax]
     ret
-L1705:
+L1729:
     mov dword [rdi+40], 1
     mov eax, -1
     ret
@@ -12925,14 +12983,14 @@ L1705:
 doom_fgets:
     mov r10, rdi
     xor ecx, ecx
-    jmp L1709
-L1714:
+    jmp L1733
+L1738:
     mov eax, dword [rdx+36]
     test eax, eax
-    jne L1712
+    jne L1736
     mov rax, qword [rdx+24]
     cmp rax, qword [rdx+8]
-    jge L1712
+    jge L1736
     mov r8, qword [rdx]
     lea r9, [rax+1]
     add rdi, 1
@@ -12940,31 +12998,31 @@ L1714:
     movzx eax, byte [r8+rax]
     mov byte [rdi-1], al
     cmp al, 10
-    je L1716
-L1709:
+    je L1740
+L1733:
     movsx r8, ecx
     lea ecx, [r8+1]
     cmp ecx, esi
-    jl L1714
+    jl L1738
     xor eax, eax
     test r8d, r8d
-    je L1719
-L1713:
+    je L1743
+L1737:
     mov byte [r10+r8], 0
     mov rax, r10
     ret
-L1716:
+L1740:
     movsx r8, ecx
     mov rax, r10
     mov byte [r10+r8], 0
     ret
-L1719:
+L1743:
     ret
-L1712:
+L1736:
     mov dword [rdx+40], 1
     xor eax, eax
     test r8d, r8d
-    jne L1713
+    jne L1737
     ret
     align 16
     global doom_fputc
@@ -12977,14 +13035,14 @@ doom_fputc:
     lea rdi, [rsp+15]
     call doom_fwrite
     test rax, rax
-    je L1722
+    je L1746
     movzx eax, byte [rsp+15]
-L1720:
+L1744:
     add rsp, 24
     ret
-L1722:
+L1746:
     mov eax, -1
-    jmp L1720
+    jmp L1744
     align 16
     global doom_fputs
 doom_fputs:
@@ -13028,7 +13086,7 @@ doom_vfprintf:
     call vsnprintf
     mov ebx, eax
     test eax, eax
-    js L1727
+    js L1751
     mov eax, 1023
     mov rcx, rbp
     mov esi, 1
@@ -13037,7 +13095,7 @@ doom_vfprintf:
     cmovg ebx, eax
     movsx rdx, ebx
     call doom_fwrite
-L1727:
+L1751:
     add rsp, 1024
     mov eax, ebx
     pop rbx
@@ -13053,7 +13111,7 @@ doom_fprintf:
     mov qword [rsp+64], r8
     mov qword [rsp+72], r9
     test al, al
-    je L1732
+    je L1756
     movaps oword [rsp+80], xmm0
     movaps oword [rsp+96], xmm1
     movaps oword [rsp+112], xmm2
@@ -13062,7 +13120,7 @@ doom_fprintf:
     movaps oword [rsp+160], xmm5
     movaps oword [rsp+176], xmm6
     movaps oword [rsp+192], xmm7
-L1732:
+L1756:
     lea rax, [rsp+224]
     lea rdx, [rsp+8]
     mov dword [rsp+8], 16
@@ -13105,10 +13163,10 @@ Z_FileDumpHeap:
     mov rax, qword [rel mainzone]
     mov rbx, qword [rax+32]
     mov r9d, dword [rbx+16]
-    jmp L1739
-L1738:
+    jmp L1763
+L1762:
     mov rbx, rax
-L1739:
+L1763:
     mov ecx, dword [rbx]
     mov r8, qword [rbx+8]
     mov rdx, rbx
@@ -13120,38 +13178,38 @@ L1739:
     mov rdx, qword [rbx+24]
     add rax, 8
     cmp rdx, rax
-    je L1734
+    je L1758
     movsx rax, dword [rbx]
     add rax, rbx
     cmp rdx, rax
-    je L1736
+    je L1760
     mov esi, LC147
     mov rdi, rbp
     xor eax, eax
     call doom_fprintf
     mov rax, qword [rbx+24]
-L1736:
+L1760:
     cmp qword [rax+32], rbx
-    je L1737
+    je L1761
     mov esi, LC148
     mov rdi, rbp
     xor eax, eax
     call doom_fprintf
     mov rax, qword [rbx+24]
-L1737:
+L1761:
     cmp dword [rbx+16], 4
     mov r9d, dword [rax+16]
-    jne L1738
+    jne L1762
     cmp r9d, 4
-    jne L1738
+    jne L1762
     mov esi, LC149
     mov rdi, rbp
     xor eax, eax
     call doom_fprintf
     mov rax, qword [rbx+24]
     mov r9d, dword [rax+16]
-    jmp L1738
-L1734:
+    jmp L1762
+L1758:
     add rsp, 8
     pop rbx
     pop rbp
@@ -13166,7 +13224,7 @@ doom_printf:
     mov qword [rsp+64], r8
     mov qword [rsp+72], r9
     test al, al
-    je L1743
+    je L1767
     movaps oword [rsp+80], xmm0
     movaps oword [rsp+96], xmm1
     movaps oword [rsp+112], xmm2
@@ -13175,7 +13233,7 @@ doom_printf:
     movaps oword [rsp+160], xmm5
     movaps oword [rsp+176], xmm6
     movaps oword [rsp+192], xmm7
-L1743:
+L1767:
     lea rax, [rsp+224]
     mov rsi, rdi
     mov rdi, qword [rel doom_stdout]
@@ -13212,42 +13270,42 @@ WI_drawOnLnode:
     movsx eax, word [r8]
     add eax, r9d
     cmp eax, 319
-    jg L1746
+    jg L1770
     movsx eax, word [r8+6]
     mov r10d, esi
     sub r10d, eax
     movsx eax, word [r8+2]
     add eax, r10d
     cmp eax, 199
-    jg L1746
+    jg L1770
     xor eax, eax
     or r10d, r9d
-    jns L1747
-L1746:
+    jns L1771
+L1770:
     mov rax, qword [rdx+8]
     test rax, rax
-    je L1749
+    je L1773
     movsx r8d, word [rax+4]
     mov r9d, edi
     sub r9d, r8d
     movsx r8d, word [rax]
     add r8d, r9d
     cmp r8d, 319
-    jg L1749
+    jg L1773
     movsx r10d, word [rax+6]
     mov r8d, esi
     movsx eax, word [rax+2]
     sub r8d, r10d
     add eax, r8d
     cmp eax, 199
-    jg L1749
+    jg L1773
     or r8d, r9d
-    js L1749
+    js L1773
     mov eax, 1
-L1747:
+L1771:
     mov rdx, qword [rdx+rax*8]
     jmp V_DrawPatch
-L1749:
+L1773:
     lea esi, [rcx+1]
     mov edi, LC150
     xor eax, eax
@@ -13264,69 +13322,69 @@ WI_drawShowNextLoc:
     call V_DrawPatch
     call WI_drawAnimatedBack
     cmp dword [rel gamemode], 2
-    je L1770
+    je L1794
     mov rax, qword [rel wbs]
     cmp dword [rax], 2
-    jg L1771
+    jg L1795
     mov ebp, dword [rax+8]
     cmp ebp, 8
-    je L1775
+    je L1799
     test ebp, ebp
-    js L1766
-L1778:
+    js L1790
+L1802:
     xor ebx, ebx
-L1767:
+L1791:
     mov edi, ebx
     mov esi, splat
     add ebx, 1
     call WI_drawOnLnode
     cmp ebp, ebx
-    jge L1767
+    jge L1791
     mov rax, qword [rel wbs]
-L1766:
+L1790:
     mov edx, dword [rax+4]
     test edx, edx
-    jne L1776
+    jne L1800
     mov eax, dword [rel snl_pointeron]
     test eax, eax
-    jne L1777
-L1769:
+    jne L1801
+L1793:
     cmp dword [rel gamemode], 2
-    je L1770
-L1771:
+    je L1794
+L1795:
     add rsp, 8
     pop rbx
     pop rbp
     jmp WI_drawEL
-L1770:
+L1794:
     mov rax, qword [rel wbs]
     cmp dword [rax+12], 30
-    jne L1771
+    jne L1795
     add rsp, 8
     pop rbx
     pop rbp
     ret
-L1775:
+L1799:
     mov ecx, dword [rax+12]
     lea ebp, [rcx-1]
     test ebp, ebp
-    jns L1778
-    jmp L1766
-L1776:
+    jns L1802
+    jmp L1790
+L1800:
     mov esi, splat
     mov edi, 8
     call WI_drawOnLnode
     mov eax, dword [rel snl_pointeron]
     test eax, eax
-    je L1769
-L1777:
+    je L1793
+L1801:
     mov rax, qword [rel wbs]
     mov esi, yah
     mov edi, dword [rax+12]
     call WI_drawOnLnode
     cmp dword [rel gamemode], 2
-    jne L1771
-    jmp L1770
+    jne L1795
+    jmp L1794
     align 16
     global WI_drawNoState
 WI_drawNoState:
@@ -13337,27 +13395,27 @@ WI_drawNoState:
 WI_Drawer:
     mov eax, dword [rel state]
     test eax, eax
-    je L1781
+    je L1805
     cmp eax, 1
-    je L1788
+    je L1812
     cmp eax, -1
-    je L1783
+    je L1807
     ret
-L1783:
+L1807:
     mov dword [rel snl_pointeron], 1
-L1788:
+L1812:
     jmp WI_drawShowNextLoc
-L1781:
+L1805:
     mov edx, dword [rel deathmatch]
     test edx, edx
-    jne L1789
+    jne L1813
     mov eax, dword [rel netgame]
     test eax, eax
-    je L1786
+    je L1810
     jmp WI_drawNetgameStats
-L1789:
+L1813:
     jmp WI_drawDeathmatchStats
-L1786:
+L1810:
     jmp WI_drawStats
     section .rodata
 LC151:
@@ -13384,56 +13442,56 @@ Z_DumpHeap:
     mov rax, qword [rel mainzone]
     mov rbx, qword [rax+32]
     mov r8d, dword [rbx+16]
-    jmp L1796
-L1795:
+    jmp L1820
+L1819:
     mov rbx, rax
-L1796:
+L1820:
     cmp ebp, r8d
-    jl L1791
+    jl L1815
     cmp r12d, r8d
-    jle L1804
-L1791:
+    jle L1828
+L1815:
     mov rax, qword [rel mainzone]
     mov rdx, qword [rbx+24]
     add rax, 8
     cmp rdx, rax
-    je L1790
+    je L1814
     movsx rax, dword [rbx]
     add rax, rbx
     cmp rdx, rax
-    je L1793
+    je L1817
     mov edi, LC147
     xor eax, eax
     call doom_printf
     mov rax, qword [rbx+24]
-L1793:
+L1817:
     cmp qword [rax+32], rbx
-    je L1794
+    je L1818
     mov edi, LC148
     xor eax, eax
     call doom_printf
     mov rax, qword [rbx+24]
-L1794:
+L1818:
     cmp dword [rbx+16], 4
     mov r8d, dword [rax+16]
-    jne L1795
+    jne L1819
     cmp r8d, 4
-    jne L1795
+    jne L1819
     mov edi, LC149
     xor eax, eax
     call doom_printf
     mov rax, qword [rbx+24]
     mov r8d, dword [rax+16]
-    jmp L1795
-L1804:
+    jmp L1819
+L1828:
     mov rcx, qword [rbx+8]
     mov edx, dword [rbx]
     mov rsi, rbx
     mov edi, LC146
     xor eax, eax
     call doom_printf
-    jmp L1791
-L1790:
+    jmp L1815
+L1814:
     pop rbx
     pop rbp
     pop r12
@@ -13450,7 +13508,7 @@ mem_fread:
     push rbp
     push rbx
     test eax, eax
-    jne L1811
+    jne L1835
     mov rax, qword [rcx+8]
     mov r12, rsi
     mov rbx, rdx
@@ -13459,8 +13517,8 @@ mem_fread:
     mov esi, dword [rcx+24]
     sub rax, rsi
     cmp rax, rdx
-    jb L1812
-L1808:
+    jb L1836
+L1832:
     add rsi, qword [rbp+0]
     imul r12d, ebx
     call memcpy
@@ -13470,14 +13528,14 @@ L1808:
     pop rbp
     pop r12
     ret
-L1812:
+L1836:
     xor edx, edx
     div r12
     mov rdx, r12
     imul rdx, rax
     mov rbx, rax
-    jmp L1808
-L1811:
+    jmp L1832
+L1835:
     mov rbx, -1
     mov edi, LC152
     xor eax, eax
@@ -13495,29 +13553,29 @@ LC153:
     global mem_fseek
 mem_fseek:
     cmp edx, 1
-    je L1814
+    je L1838
     cmp edx, 2
-    je L1815
+    je L1839
     test edx, edx
-    je L1824
+    je L1848
     mov eax, -1
     ret
-L1815:
+L1839:
     mov rax, qword [rdi+8]
     add esi, eax
-L1817:
+L1841:
     mov edx, esi
     cmp rdx, rax
-    jnb L1818
+    jnb L1842
     mov dword [rdi+24], esi
     xor eax, eax
     ret
-L1814:
+L1838:
     add esi, dword [rdi+24]
-L1824:
+L1848:
     mov rax, qword [rdi+8]
-    jmp L1817
-L1818:
+    jmp L1841
+L1842:
     sub rsp, 8
     mov edi, LC153
     xor eax, eax
@@ -13564,15 +13622,15 @@ doom_puts:
     mov byte [rsp+15], 10
     call doom_fwrite
     test rax, rax
-    je L1829
+    je L1853
     movzx eax, byte [rsp+15]
-L1827:
+L1851:
     add rsp, 16
     pop rbx
     ret
-L1829:
+L1853:
     mov eax, -1
-    jmp L1827
+    jmp L1851
     align 16
     global doom_putchar
 doom_putchar:
@@ -13584,14 +13642,14 @@ doom_putchar:
     lea rdi, [rsp+15]
     call doom_fwrite
     test rax, rax
-    je L1833
+    je L1857
     movzx eax, byte [rsp+15]
-L1831:
+L1855:
     add rsp, 24
     ret
-L1833:
+L1857:
     mov eax, -1
-    jmp L1831
+    jmp L1855
     align 16
     global doom_fscanf
 doom_fscanf:
@@ -13602,7 +13660,7 @@ doom_fscanf:
     mov qword [rsp+576], r8
     mov qword [rsp+584], r9
     test al, al
-    je L1846
+    je L1870
     movaps oword [rsp+592], xmm0
     movaps oword [rsp+608], xmm1
     movaps oword [rsp+624], xmm2
@@ -13611,20 +13669,20 @@ doom_fscanf:
     movaps oword [rsp+672], xmm5
     movaps oword [rsp+688], xmm6
     movaps oword [rsp+704], xmm7
-L1846:
+L1870:
     mov ecx, dword [rdi+36]
     xor eax, eax
     mov r8d, 1
     test ecx, ecx
-    je L1837
-    jmp L1854
-L1855:
+    je L1861
+    jmp L1878
+L1879:
     lea r8d, [rax+1]
     mov ecx, eax
-L1837:
+L1861:
     mov rdx, qword [rdi+24]
     cmp rdx, qword [rdi+8]
-    jge L1844
+    jge L1868
     mov rcx, qword [rdi]
     lea rsi, [rdx+1]
     mov qword [rdi+24], rsi
@@ -13632,12 +13690,12 @@ L1837:
     lea rcx, [rsp+32]
     mov byte [rsp+32+rax], dl
     cmp dl, 10
-    je L1839
+    je L1863
     add rax, 1
     cmp rax, 511
-    jne L1855
+    jne L1879
     mov r8d, 511
-L1839:
+L1863:
     movsx r8, r8d
     lea rdx, [rsp+8]
     mov rsi, r10
@@ -13652,19 +13710,19 @@ L1839:
     call vsscanf
     add rsp, 728
     ret
-L1854:
+L1878:
     xor r8d, r8d
-L1840:
+L1864:
     mov dword [rdi+40], 1
     mov eax, -1
     lea rcx, [rsp+32]
     test r8d, r8d
-    jne L1839
+    jne L1863
     add rsp, 728
     ret
-L1844:
+L1868:
     mov r8d, ecx
-    jmp L1840
+    jmp L1864
     align 16
     global doom_exists
 doom_exists:
@@ -13726,26 +13784,26 @@ doom_mkdir:
     mov rdi, rsp
     call strlen
     cmp rax, 1
-    jbe L1863
+    jbe L1887
     cmp byte [rsp-1+rax], 47
-    je L1868
-L1863:
+    je L1892
+L1887:
     xor esi, esi
     mov rdi, rbx
     call os_stat
     mov edx, eax
     xor eax, eax
     cmp edx, 2
-    je L1862
+    je L1886
     mov rdi, rbx
     call os_make_dir
-L1862:
+L1886:
     sub rsp, -128
     pop rbx
     ret
-L1868:
+L1892:
     mov byte [rsp-1+rax], 0
-    jmp L1863
+    jmp L1887
     align 16
     global doom_exit
 doom_exit:
@@ -13785,7 +13843,7 @@ I_Error:
     mov qword [rsp+576], r8
     mov qword [rsp+584], r9
     test al, al
-    je L1880
+    je L1904
     movaps oword [rsp+592], xmm0
     movaps oword [rsp+608], xmm1
     movaps oword [rsp+624], xmm2
@@ -13794,12 +13852,12 @@ I_Error:
     movaps oword [rsp+672], xmm5
     movaps oword [rsp+688], xmm6
     movaps oword [rsp+704], xmm7
-L1880:
+L1904:
     mov edx, dword [rel already_quitting]
     test edx, edx
-    jne L1886
+    jne L1910
     mov dword [rel already_quitting], 1
-L1876:
+L1900:
     mov rdi, qword [rel doom_stderr]
     lea r12, [rsp+8]
     mov rsi, rbx
@@ -13833,25 +13891,25 @@ L1876:
     call M_vsnprintf
     mov rbx, qword [rel exit_funcs]
     test rbx, rbx
-    je L1877
-L1879:
+    je L1901
+L1903:
     mov eax, dword [rbx+8]
     test eax, eax
-    je L1878
+    je L1902
     call qword [rbx]
-L1878:
+L1902:
     mov rbx, qword [rbx+16]
     test rbx, rbx
-    jne L1879
-L1877:
+    jne L1903
+L1901:
     mov rdi, rbp
     call doom_fatal
-L1886:
+L1910:
     mov rdi, qword [rel doom_stderr]
     mov esi, LC155
     xor eax, eax
     call doom_fprintf
-    jmp L1876
+    jmp L1900
     section .rodata
 LC157:
     db `Bad sfx #: %d`, 0
@@ -13870,30 +13928,30 @@ S_StartSound:
     mov eax, dword [rel snd_SfxVolume]
     mov dword [rsp+12], eax
     cmp edx, 108
-    ja L1933
+    ja L1957
     movsx r12, esi
     mov rbp, rdi
     mov rdx, r12
     sal rdx, 6
     cmp qword [S_sfx+rdx+24], 0
     lea rcx, [S_sfx+rdx]
-    je L1890
+    je L1914
     mov edx, dword [rcx+36]
     add edx, eax
     mov dword [rsp+12], edx
     test edx, edx
-    jle L1887
+    jle L1911
     cmp eax, edx
-    jl L1934
-L1890:
+    jl L1958
+L1914:
     test rbp, rbp
-    je L1893
+    je L1917
     movsx rax, dword [rel consoleplayer]
     lea rdx, [rax+rax*4]
     lea rax, [rax+rdx*8]
     mov rdi, qword [players+rax*8]
     cmp rdi, rbp
-    je L1893
+    je L1917
     mov edx, dword [rbp+28]
     mov esi, dword [rbp+24]
     lea rcx, [rsp+12]
@@ -13905,12 +13963,12 @@ L1890:
     mov rdx, qword [players+rdx*8]
     mov rsi, qword [rdx+24]
     cmp qword [rbp+24], rsi
-    jne L1894
+    jne L1918
     mov dword [rsp+8], 128
-L1894:
+L1918:
     test eax, eax
-    jne L1895
-L1887:
+    jne L1919
+L1911:
     add rsp, 24
     pop rbx
     pop rbp
@@ -13919,62 +13977,62 @@ L1887:
     pop r14
     pop r15
     ret
-L1893:
+L1917:
     mov dword [rsp+8], 128
-L1895:
+L1919:
     mov edx, dword [rel snd_channels]
     test edx, edx
-    jle L1896
+    jle L1920
     mov rcx, qword [rel channels]
     xor edi, edi
     mov rax, rcx
-L1899:
+L1923:
     cmp qword [rax], 0
-    je L1897
+    je L1921
     cmp rbp, qword [rax+8]
-    je L1935
-L1897:
+    je L1959
+L1921:
     add edi, 1
     add rax, 24
     cmp edx, edi
-    jne L1899
-L1898:
+    jne L1923
+L1922:
     mov rax, rcx
     xor ebx, ebx
-L1905:
+L1929:
     cmp qword [rax], 0
-    je L1900
+    je L1924
     test rbp, rbp
-    jne L1904
+    jne L1928
     add ebx, 1
     add rax, 24
     cmp ebx, edx
-    jne L1905
-L1903:
+    jne L1929
+L1927:
     mov rax, r12
     xor ebx, ebx
     sal rax, 6
     mov esi, dword [S_sfx+rax+20]
     mov rax, rcx
-    jmp L1910
-L1936:
+    jmp L1934
+L1960:
     add ebx, 1
     add rax, 24
     cmp edx, ebx
-    je L1887
-L1910:
+    je L1911
+L1934:
     mov rcx, qword [rax]
     cmp dword [rcx+20], esi
-    jl L1936
+    jl L1960
     cmp edx, ebx
-    je L1887
+    je L1911
     mov edi, ebx
     call S_StopChannel
-L1932:
+L1956:
     movsx rax, ebx
     lea r14, [rax+rax*2]
     sal r14, 3
-L1907:
+L1931:
     mov r13, r12
     mov r15, qword [rel channels]
     xor edx, edx
@@ -13990,8 +14048,8 @@ L1907:
     mov dword [r13+40], eax
     mov eax, dword [r13+44]
     test eax, eax
-    js L1937
-L1911:
+    js L1961
+L1935:
     mov ecx, dword [rsp+8]
     mov edx, dword [rsp+12]
     mov esi, ebx
@@ -14006,56 +14064,56 @@ L1911:
     pop r14
     pop r15
     ret
-L1902:
+L1926:
     add ebx, 1
     add rax, 24
     cmp edx, ebx
-    je L1903
+    je L1927
     cmp qword [rax], 0
-    je L1900
-L1904:
+    je L1924
+L1928:
     cmp rbp, qword [rax+8]
-    jne L1902
+    jne L1926
     mov edi, ebx
     call S_StopChannel
     mov edx, dword [rel snd_channels]
-L1900:
+L1924:
     cmp ebx, edx
-    jne L1932
+    jne L1956
     test edx, edx
-    je L1887
+    je L1911
     mov rcx, qword [rel channels]
-    jmp L1903
-L1934:
+    jmp L1927
+L1958:
     mov dword [rsp+12], eax
-    jmp L1890
-L1935:
+    jmp L1914
+L1959:
     call S_StopChannel
     mov edx, dword [rel snd_channels]
     test edx, edx
-    jle L1896
+    jle L1920
     mov rcx, qword [rel channels]
-    jmp L1898
-L1937:
+    jmp L1922
+L1961:
     mov rdx, qword [rel sound_module]
     xor eax, eax
     test rdx, rdx
-    je L1912
+    je L1936
     mov rdi, r13
     call qword [rdx+32]
     add r14, qword [rel channels]
     mov r15, r14
-L1912:
+L1936:
     sal r12, 6
     mov dword [S_sfx+r12+44], eax
-    jmp L1911
-L1896:
+    jmp L1935
+L1920:
     test edx, edx
-    je L1887
+    je L1911
     xor r14d, r14d
     xor ebx, ebx
-    jmp L1907
-L1933:
+    jmp L1931
+L1957:
     mov edi, LC157
     xor eax, eax
     call I_Error
@@ -14069,64 +14127,64 @@ HU_Ticker:
     push rbp
     push rbx
     test eax, eax
-    je L1940
+    je L1964
     sub eax, 1
     mov dword [rel message_counter], eax
-    je L1977
-L1940:
+    je L2001
+L1964:
     mov eax, dword [rel message_dontfuckwithme]
     mov ecx, eax
     or ecx, dword [rel showMessages]
-    je L1942
+    je L1966
     mov r11, qword [rel plr]
     mov rdx, qword [r11+232]
     test rdx, rdx
-    je L1942
+    je L1966
     mov esi, dword [rel message_nottobefuckedwith]
     test esi, esi
-    je L1943
+    je L1967
     test eax, eax
-    jne L1943
-L1942:
+    jne L1967
+L1966:
     mov ecx, dword [rel netgame]
     test ecx, ecx
-    je L1938
+    je L1962
     mov ebp, players
     mov r12d, w_inputbuffer
     xor ebx, ebx
-L1951:
+L1975:
     mov edx, dword [playeringame+rbx*4]
     test edx, edx
-    je L1945
+    je L1969
     mov r14d, dword [rel consoleplayer]
     cmp r14d, ebx
-    je L1945
+    je L1969
     movzx r13d, byte [rbp+16]
     test r13b, r13b
-    je L1945
+    je L1969
     cmp r13b, 5
-    jg L1946
+    jg L1970
     mov byte [chat_dest+rbx], r13b
-L1947:
+L1971:
     mov byte [rbp+16], 0
-L1945:
+L1969:
     add rbx, 1
     add rbp, 328
     add r12, 136
     cmp rbx, 4
-    jne L1951
-L1938:
+    jne L1975
+L1962:
     pop rbx
     pop rbp
     pop r12
     pop r13
     pop r14
     ret
-L1977:
+L2001:
     mov dword [rel message_on], 0
     mov dword [rel message_nottobefuckedwith], 0
-    jmp L1940
-L1943:
+    jmp L1964
+L1967:
     xor esi, esi
     mov edi, w_message
     call HUlib_addMessageToSText
@@ -14136,25 +14194,25 @@ L1943:
     mov dword [rel message_counter], 140
     mov dword [rel message_nottobefuckedwith], eax
     mov dword [rel message_dontfuckwithme], 0
-    jmp L1942
-L1946:
+    jmp L1966
+L1970:
     movzx esi, r13b
     mov rdi, r12
     call HUlib_keyInIText
     cmp r13b, 13
-    jne L1947
+    jne L1971
     test al, 1
-    je L1947
+    je L1971
     mov eax, dword [r12+104]
     test eax, eax
-    je L1948
+    je L1972
     movsx edx, byte [chat_dest+rbx]
     add r14d, 1
     cmp r14d, edx
-    je L1953
+    je L1977
     cmp dl, 5
-    jne L1948
-L1953:
+    jne L1972
+L1977:
     mov rsi, qword [player_names+rbx*8]
     lea rdx, [r12+20]
     mov edi, w_message
@@ -14163,111 +14221,111 @@ L1953:
     mov dword [rel message_nottobefuckedwith], 1
     mov dword [rel message_on], 1
     mov dword [rel message_counter], 140
-    je L1978
+    je L2002
     mov esi, 87
     xor edi, edi
     call S_StartSound
-L1948:
+L1972:
     mov rax, qword [rel LC29]
     mov byte [r12+20], 0
     mov dword [r12+112], 0
     mov qword [r12+104], rax
-    jmp L1947
-L1978:
+    jmp L1971
+L2002:
     mov esi, 108
     xor edi, edi
     call S_StartSound
-    jmp L1948
+    jmp L1972
     align 16
     global WI_updateDeathmatchStats
 WI_updateDeathmatchStats:
     sub rsp, 8
     cmp dword [rel gamemode], 2
-    je L1980
+    je L2004
     mov rax, qword [rel wbs]
     cmp dword [rax], 2
-    jg L1980
+    jg L2004
     call WI_updateAnimatedBack.part.0
-L1980:
+L2004:
     mov r8d, dword [rel acceleratestage]
     mov eax, dword [rel dm_state]
     test r8d, r8d
-    je L1981
+    je L2005
     cmp eax, 4
-    je L1982
+    je L2006
     mov dword [rel acceleratestage], 0
     mov r10, qword [rel plrs]
     xor r9d, r9d
-L1986:
+L2010:
     mov edi, dword [playeringame+r9*4]
     test edi, edi
-    jne L2019
-L1983:
+    jne L2043
+L2007:
     add r9, 1
     add r10, 40
     cmp r9, 4
-    jne L1986
+    jne L2010
     mov esi, 82
     xor edi, edi
     call S_StartSound
     mov ecx, dword [rel acceleratestage]
     mov dword [rel dm_state], 4
     test ecx, ecx
-    jne L1982
-L1979:
+    jne L2006
+L2003:
     add rsp, 8
     ret
-L1981:
+L2005:
     cmp eax, 2
-    je L1988
+    je L2012
     cmp eax, 4
-    je L1979
+    je L2003
     test al, 1
-    je L1979
+    je L2003
     sub dword [rel cnt_pause], 1
-    jne L1979
+    jne L2003
     mov dword [rel cnt_pause], 35
     add eax, 1
     mov dword [rel dm_state], eax
     add rsp, 8
     ret
-L1988:
+L2012:
     test byte [rel bcnt], 3
-    je L2020
-L1990:
+    je L2044
+L2014:
     mov r10, qword [rel plrs]
     xor r9d, r9d
     xor r11d, r11d
-L1999:
+L2023:
     mov edx, dword [playeringame+r9*4]
     test edx, edx
-    jne L2021
-L1991:
+    jne L2045
+L2015:
     add r9, 1
     add r10, 40
     cmp r9, 4
-    jne L1999
+    jne L2023
     test r11d, r11d
-    jne L1979
+    jne L2003
     mov esi, 82
     xor edi, edi
     call S_StartSound
     add dword [rel dm_state], 1
     add rsp, 8
     ret
-L2021:
+L2045:
     mov rcx, r9
     xor edx, edx
     sal rcx, 4
     add rcx, dm_frags
-L1995:
+L2019:
     mov eax, dword [playeringame+rdx]
     test eax, eax
-    je L1992
+    je L2016
     mov eax, dword [rcx]
     mov esi, dword [r10+20+rdx]
     cmp eax, esi
-    je L1992
+    je L2016
     lea edi, [rax-1]
     add eax, 1
     test esi, esi
@@ -14280,64 +14338,64 @@ L1995:
     cmp eax, esi
     cmovg eax, esi
     mov dword [rcx], eax
-L1992:
+L2016:
     add rdx, 4
     add rcx, 4
     cmp rdx, 16
-    jne L1995
+    jne L2019
     mov edi, r9d
     call WI_fragSum
     cmp eax, 99
-    jle L2022
+    jle L2046
     mov eax, 99
-L1996:
+L2020:
     mov dword [dm_totals+r9*4], eax
-    jmp L1991
-L2019:
+    jmp L2015
+L2043:
     mov rcx, r9
     xor eax, eax
     sal rcx, 4
-L1985:
+L2009:
     mov esi, dword [playeringame+rax]
     test esi, esi
-    je L1984
+    je L2008
     mov edx, dword [r10+20+rax]
     mov dword [dm_frags+rcx+rax], edx
-L1984:
+L2008:
     add rax, 4
     cmp rax, 16
-    jne L1985
+    jne L2009
     mov edi, r9d
     call WI_fragSum
     mov dword [dm_totals+r9*4], eax
-    jmp L1983
-L2022:
+    jmp L2007
+L2046:
     cmp eax, -99
-    jge L1996
+    jge L2020
     mov dword [dm_totals+r9*4], -99
-    jmp L1991
-L1982:
+    jmp L2015
+L2006:
     xor edi, edi
     mov esi, 31
     call S_StartSound
     cmp dword [rel gamemode], 2
-    jne L2002
+    jne L2026
     mov dword [rel state], -1
     mov dword [rel acceleratestage], 0
     mov dword [rel cnt], 10
-    jmp L1979
-L2020:
+    jmp L2003
+L2044:
     mov esi, 1
     xor edi, edi
     call S_StartSound
-    jmp L1990
-L2002:
+    jmp L2014
+L2026:
     mov rax, qword [rel wbs]
     mov dword [rel state], 1
     mov dword [rel acceleratestage], 0
     mov dword [rel cnt], 140
     cmp dword [rax], 2
-    jg L1979
+    jg L2003
     add rsp, 8
     jmp WI_initAnimatedBack.part.0
     align 16
@@ -14345,28 +14403,28 @@ L2002:
 WI_updateNetgameStats:
     cmp dword [rel gamemode], 2
     push rbx
-    je L2024
+    je L2048
     mov rax, qword [rel wbs]
     cmp dword [rax], 2
-    jg L2024
+    jg L2048
     call WI_updateAnimatedBack.part.0
-L2024:
+L2048:
     mov edx, dword [rel acceleratestage]
     mov eax, dword [rel ng_state]
     test edx, edx
-    je L2025
+    je L2049
     cmp eax, 10
-    je L2026
+    je L2050
     mov rax, qword [rel plrs]
     mov r11, qword [rel wbs]
     xor r9d, r9d
     mov dword [rel acceleratestage], 0
     mov ebx, dword [rel dofrags]
     lea r10, [rax+4]
-L2030:
+L2054:
     mov eax, dword [playeringame+r9*4]
     test eax, eax
-    je L2028
+    je L2052
     imul eax, dword [r10], 100
     cdq
     idiv dword [r11+16]
@@ -14380,110 +14438,110 @@ L2030:
     idiv dword [r11+24]
     mov dword [cnt_secret+r9*4], eax
     test ebx, ebx
-    je L2028
+    je L2052
     mov edi, r9d
     call WI_fragSum
     mov dword [cnt_frags+r9*4], eax
-L2028:
+L2052:
     add r9, 1
     add r10, 40
     cmp r9, 4
-    jne L2030
+    jne L2054
     mov esi, 82
     xor edi, edi
     call S_StartSound
     mov ebx, dword [rel acceleratestage]
     mov dword [rel ng_state], 10
     test ebx, ebx
-    jne L2026
-L2023:
+    jne L2050
+L2047:
     pop rbx
     ret
-L2025:
+L2049:
     cmp eax, 10
-    ja L2056
+    ja L2080
     mov edx, eax
-    jmp qword [L2057+rdx*8]
+    jmp qword [L2081+rdx*8]
     section .rodata
     align 8, db 0
     align 4, db 0
-L2057:
+L2081:
+    dq L2080
+    dq L2080
     dq L2056
-    dq L2056
-    dq L2032
-    dq L2056
-    dq L2039
-    dq L2056
-    dq L2044
-    dq L2056
-    dq L2050
-    dq L2056
-    dq L2023
+    dq L2080
+    dq L2063
+    dq L2080
+    dq L2068
+    dq L2080
+    dq L2074
+    dq L2080
+    dq L2047
     section .text
-L2026:
+L2050:
     xor edi, edi
     mov esi, 3
     call S_StartSound
     cmp dword [rel gamemode], 2
-    jne L2055
+    jne L2079
     mov dword [rel state], -1
     pop rbx
     mov dword [rel acceleratestage], 0
     mov dword [rel cnt], 10
     ret
-L2056:
+L2080:
     test al, 1
-    je L2023
+    je L2047
     sub dword [rel cnt_pause], 1
-    jne L2023
+    jne L2047
     mov dword [rel cnt_pause], 35
     add eax, 1
     pop rbx
     mov dword [rel ng_state], eax
     ret
-L2050:
+L2074:
     test byte [rel bcnt], 3
-    je L2081
-L2051:
+    je L2105
+L2075:
     xor r9d, r9d
     xor r11d, r11d
-L2054:
+L2078:
     mov eax, dword [playeringame+r9*4]
     test eax, eax
-    je L2053
+    je L2077
     mov eax, dword [cnt_frags+r9*4]
     mov edi, r9d
     lea r10d, [rax+1]
     mov dword [cnt_frags+r9*4], r10d
     call WI_fragSum
     cmp r10d, eax
-    jl L2062
+    jl L2086
     mov dword [cnt_frags+r9*4], eax
-L2053:
+L2077:
     add r9, 1
     cmp r9, 4
-    jne L2054
+    jne L2078
     test r11d, r11d
-    jne L2023
+    jne L2047
     mov esi, 57
     xor edi, edi
     call S_StartSound
     add dword [rel ng_state], 1
     pop rbx
     ret
-L2044:
+L2068:
     test byte [rel bcnt], 3
-    je L2082
-L2045:
+    je L2106
+L2069:
     mov rax, qword [rel plrs]
     mov r8, qword [rel wbs]
     xor ecx, ecx
     xor r9d, r9d
     lea rsi, [rax+12]
-L2048:
+L2072:
     mov edi, dword [playeringame+rcx]
     test edi, edi
-    je L2047
+    je L2071
     mov eax, dword [cnt_secret+rcx]
     lea edi, [rax+2]
     imul eax, dword [rsi], 100
@@ -14491,15 +14549,15 @@ L2048:
     cdq
     idiv dword [r8+24]
     cmp edi, eax
-    jl L2060
+    jl L2084
     mov dword [cnt_secret+rcx], eax
-L2047:
+L2071:
     add rcx, 4
     add rsi, 40
     cmp rcx, 16
-    jne L2048
+    jne L2072
     test r9d, r9d
-    jne L2023
+    jne L2047
     xor edi, edi
     mov esi, 82
     call S_StartSound
@@ -14511,19 +14569,19 @@ L2047:
     cmove eax, edx
     add dword [rel ng_state], eax
     ret
-L2039:
+L2063:
     test byte [rel bcnt], 3
-    je L2083
-L2040:
+    je L2107
+L2064:
     mov rax, qword [rel plrs]
     mov r8, qword [rel wbs]
     xor ecx, ecx
     xor r9d, r9d
     lea rsi, [rax+8]
-L2043:
+L2067:
     mov r10d, dword [playeringame+rcx]
     test r10d, r10d
-    je L2042
+    je L2066
     mov eax, dword [cnt_items+rcx]
     lea edi, [rax+2]
     imul eax, dword [rsi], 100
@@ -14531,35 +14589,35 @@ L2043:
     cdq
     idiv dword [r8+20]
     cmp edi, eax
-    jl L2059
+    jl L2083
     mov dword [cnt_items+rcx], eax
-L2042:
+L2066:
     add rcx, 4
     add rsi, 40
     cmp rcx, 16
-    jne L2043
-L2080:
+    jne L2067
+L2104:
     test r9d, r9d
-    jne L2023
+    jne L2047
     mov esi, 82
     xor edi, edi
     call S_StartSound
     add dword [rel ng_state], 1
     pop rbx
     ret
-L2032:
+L2056:
     test byte [rel bcnt], 3
-    je L2084
-L2033:
+    je L2108
+L2057:
     mov rax, qword [rel plrs]
     mov r8, qword [rel wbs]
     xor ecx, ecx
     xor r9d, r9d
     lea rsi, [rax+4]
-L2036:
+L2060:
     mov r11d, dword [playeringame+rcx]
     test r11d, r11d
-    je L2035
+    je L2059
     mov eax, dword [cnt_kills+rcx]
     lea edi, [rax+2]
     imul eax, dword [rsi], 100
@@ -14567,53 +14625,53 @@ L2036:
     cdq
     idiv dword [r8+16]
     cmp edi, eax
-    jl L2058
+    jl L2082
     mov dword [cnt_kills+rcx], eax
-L2035:
+L2059:
     add rcx, 4
     add rsi, 40
     cmp rcx, 16
-    jne L2036
-    jmp L2080
-L2058:
-    mov r9d, 1
-    jmp L2035
-L2059:
-    mov r9d, 1
-    jmp L2042
-L2062:
-    mov r11d, 1
-    jmp L2053
-L2060:
-    mov r9d, 1
-    jmp L2047
-L2083:
-    mov esi, 1
-    xor edi, edi
-    call S_StartSound
-    jmp L2040
+    jne L2060
+    jmp L2104
 L2082:
-    mov esi, 1
-    xor edi, edi
-    call S_StartSound
-    jmp L2045
+    mov r9d, 1
+    jmp L2059
+L2083:
+    mov r9d, 1
+    jmp L2066
+L2086:
+    mov r11d, 1
+    jmp L2077
 L2084:
+    mov r9d, 1
+    jmp L2071
+L2107:
     mov esi, 1
     xor edi, edi
     call S_StartSound
-    jmp L2033
-L2081:
+    jmp L2064
+L2106:
     mov esi, 1
     xor edi, edi
     call S_StartSound
-    jmp L2051
-L2055:
+    jmp L2069
+L2108:
+    mov esi, 1
+    xor edi, edi
+    call S_StartSound
+    jmp L2057
+L2105:
+    mov esi, 1
+    xor edi, edi
+    call S_StartSound
+    jmp L2075
+L2079:
     mov rax, qword [rel wbs]
     mov dword [rel state], 1
     mov dword [rel acceleratestage], 0
     mov dword [rel cnt], 140
     cmp dword [rax], 2
-    jg L2023
+    jg L2047
     pop rbx
     jmp WI_initAnimatedBack.part.0
     align 16
@@ -14621,52 +14679,52 @@ L2055:
 WI_updateStats:
     sub rsp, 8
     cmp dword [rel gamemode], 2
-    je L2086
+    je L2110
     mov rax, qword [rel wbs]
     cmp dword [rax], 2
-    jg L2086
+    jg L2110
     call WI_updateAnimatedBack.part.0
-L2086:
+L2110:
     mov r10d, dword [rel acceleratestage]
     mov eax, dword [rel sp_state]
     test r10d, r10d
-    je L2087
+    je L2111
     cmp eax, 10
-    jne L2112
-L2088:
+    jne L2136
+L2112:
     xor edi, edi
     mov esi, 3
     call S_StartSound
     cmp dword [rel gamemode], 2
-    jne L2103
+    jne L2127
     mov dword [rel state], -1
     mov dword [rel acceleratestage], 0
     mov dword [rel cnt], 10
-L2085:
+L2109:
     add rsp, 8
     ret
-L2087:
+L2111:
     cmp eax, 10
-    ja L2090
+    ja L2114
     mov edx, eax
-    jmp qword [L2091+rdx*8]
+    jmp qword [L2115+rdx*8]
     section .rodata
     align 8, db 0
     align 4, db 0
-L2091:
-    dq L2090
-    dq L2090
-    dq L2095
-    dq L2090
-    dq L2094
-    dq L2090
-    dq L2093
-    dq L2090
-    dq L2092
-    dq L2090
-    dq L2085
+L2115:
+    dq L2114
+    dq L2114
+    dq L2119
+    dq L2114
+    dq L2118
+    dq L2114
+    dq L2117
+    dq L2114
+    dq L2116
+    dq L2114
+    dq L2109
     section .text
-L2112:
+L2136:
     movsx rax, dword [rel me]
     xor edi, edi
     mov rcx, qword [rel wbs]
@@ -14709,25 +14767,25 @@ L2112:
     mov r9d, dword [rel acceleratestage]
     mov dword [rel sp_state], 10
     test r9d, r9d
-    jne L2088
+    jne L2112
     add rsp, 8
     ret
-L2090:
+L2114:
     test al, 1
-    je L2085
+    je L2109
     sub dword [rel cnt_pause], 1
-    jne L2085
+    jne L2109
     mov dword [rel cnt_pause], 35
     add eax, 1
     mov dword [rel sp_state], eax
-    jmp L2085
-L2094:
+    jmp L2109
+L2118:
     mov eax, dword [rel cnt_items]
     lea ecx, [rax+2]
     mov dword [rel cnt_items], ecx
     test byte [rel bcnt], 3
-    je L2113
-L2099:
+    je L2137
+L2123:
     movsx rax, dword [rel me]
     mov rdi, qword [rel plrs]
     lea rax, [rax+rax*4]
@@ -14737,17 +14795,17 @@ L2099:
     cdq
     idiv dword [rdi+20]
     cmp eax, ecx
-    jg L2085
+    jg L2109
     mov esi, 82
     xor edi, edi
     mov dword [rel cnt_items], eax
     call S_StartSound
     add dword [rel sp_state], 1
-    jmp L2085
-L2092:
+    jmp L2109
+L2116:
     test byte [rel bcnt], 3
-    je L2114
-L2101:
+    je L2138
+L2125:
     mov eax, dword [rel cnt_time]
     mov rcx, qword [rel plrs]
     mov edi, dword [rel cnt_par]
@@ -14778,22 +14836,22 @@ L2101:
     sar edx, 5
     sub edx, ecx
     cmp esi, edx
-    jl L2085
+    jl L2109
     cmp eax, dword [rel cnt_time]
     mov dword [rel cnt_par], edx
-    jg L2085
+    jg L2109
     mov esi, 82
     xor edi, edi
     call S_StartSound
     add dword [rel sp_state], 1
-    jmp L2085
-L2093:
+    jmp L2109
+L2117:
     mov eax, dword [rel cnt_secret]
     lea ecx, [rax+2]
     mov dword [rel cnt_secret], ecx
     test byte [rel bcnt], 3
-    je L2115
-L2100:
+    je L2139
+L2124:
     movsx rax, dword [rel me]
     mov rsi, qword [rel plrs]
     mov rdi, qword [rel wbs]
@@ -14803,20 +14861,20 @@ L2100:
     cdq
     idiv dword [rdi+24]
     cmp eax, ecx
-    jg L2085
+    jg L2109
     mov esi, 82
     xor edi, edi
     mov dword [rel cnt_secret], eax
     call S_StartSound
     add dword [rel sp_state], 1
-    jmp L2085
-L2095:
+    jmp L2109
+L2119:
     mov eax, dword [rel cnt_kills]
     lea ecx, [rax+2]
     mov dword [rel cnt_kills], ecx
     test byte [rel bcnt], 3
-    je L2116
-L2096:
+    je L2140
+L2120:
     movsx rax, dword [rel me]
     mov r8, qword [rel plrs]
     mov rdi, qword [rel wbs]
@@ -14826,43 +14884,43 @@ L2096:
     cdq
     idiv dword [rdi+16]
     cmp eax, ecx
-    jg L2085
+    jg L2109
     mov esi, 82
     xor edi, edi
     mov dword [rel cnt_kills], eax
     call S_StartSound
     add dword [rel sp_state], 1
-    jmp L2085
-L2113:
+    jmp L2109
+L2137:
     mov esi, 1
     xor edi, edi
     call S_StartSound
     mov ecx, dword [rel cnt_items]
-    jmp L2099
-L2116:
+    jmp L2123
+L2140:
     mov esi, 1
     xor edi, edi
     call S_StartSound
     mov ecx, dword [rel cnt_kills]
-    jmp L2096
-L2114:
+    jmp L2120
+L2138:
     mov esi, 1
     xor edi, edi
     call S_StartSound
-    jmp L2101
-L2115:
+    jmp L2125
+L2139:
     mov esi, 1
     xor edi, edi
     call S_StartSound
     mov ecx, dword [rel cnt_secret]
-    jmp L2100
-L2103:
+    jmp L2124
+L2127:
     mov rax, qword [rel wbs]
     mov dword [rel state], 1
     mov dword [rel acceleratestage], 0
     mov dword [rel cnt], 140
     cmp dword [rax], 2
-    jg L2085
+    jg L2109
     add rsp, 8
     jmp WI_initAnimatedBack.part.0
     align 16
@@ -14870,12 +14928,12 @@ F_CastTicker.part.0:
     sub rsp, 8
     mov rax, qword [rel caststate]
     cmp dword [rax+8], -1
-    je L2118
+    je L2142
     mov edx, dword [rax+24]
     test edx, edx
-    je L2118
+    je L2142
     cmp rax, states+6160
-    je L2178
+    je L2202
     movsx rax, edx
     lea rax, [rax+rax*4]
     lea rax, [states+rax*8]
@@ -14884,20 +14942,20 @@ F_CastTicker.part.0:
     add eax, 1
     mov dword [rel castframes], eax
     cmp edx, 383
-    ja L2126
+    ja L2150
     cmp edx, 335
-    ja L2127
+    ja L2151
     cmp edx, 185
-    je L2150
-    jbe L2179
+    je L2174
+    jbe L2203
     cmp edx, 218
-    je L2153
+    je L2177
     mov esi, 54
     cmp edx, 256
-    je L2128
-L2130:
+    je L2152
+L2154:
     cmp eax, 12
-    jne L2140
+    jne L2164
     movsx rax, dword [rel castnum]
     mov ecx, dword [rel castonmelee]
     mov dword [rel castattacking], 1
@@ -14905,7 +14963,7 @@ L2130:
     mov edx, dword [castorder+rax+8]
     imul rax, rdx, 92
     test ecx, ecx
-    je L2141
+    je L2165
     lea r8, [mobjinfo+rax]
     movsx rax, dword [mobjinfo+rax+40]
     mov edi, ecx
@@ -14916,20 +14974,20 @@ L2130:
     lea rax, [states+rsi]
     mov qword [rel caststate], rax
     test rsi, rsi
-    je L2180
-L2143:
+    je L2204
+L2167:
     imul rdx, rdx, 92
     movsx rdx, dword [mobjinfo+rdx+12]
     lea rdx, [rdx+rdx*4]
     lea rdx, [states+rdx*8]
     cmp rax, rdx
-    jne L2148
-L2125:
+    jne L2172
+L2149:
     mov dword [rel castattacking], 0
     mov dword [rel castframes], 0
     mov qword [rel caststate], rax
-    jmp L2148
-L2118:
+    jmp L2172
+L2142:
     mov dword [rel castdeath], 0
     mov eax, dword [rel castnum]
     add eax, 1
@@ -14938,15 +14996,15 @@ L2118:
     mov rdx, rax
     sal rdx, 4
     cmp qword [castorder+rdx], 0
-    je L2181
-L2120:
+    je L2205
+L2144:
     sal rax, 4
     mov eax, dword [castorder+rax+8]
     imul rdx, rax, 92
     mov esi, dword [mobjinfo+rdx+16]
     test esi, esi
-    jne L2182
-L2121:
+    jne L2206
+L2145:
     mov dword [rel castframes], 0
     imul rax, rax, 92
     movsx rax, dword [mobjinfo+rax+12]
@@ -14955,10 +15013,10 @@ L2121:
     mov qword [rel caststate], rax
     mov eax, dword [rel castattacking]
     test eax, eax
-    jne L2183
-L2123:
+    jne L2207
+L2147:
     mov rax, qword [rel caststate]
-L2148:
+L2172:
     mov eax, dword [rax+8]
     mov edx, 15
     cmp eax, -1
@@ -14966,100 +15024,100 @@ L2148:
     mov dword [rel casttics], eax
     add rsp, 8
     ret
-L2183:
+L2207:
     movsx rax, dword [rel castnum]
     sal rax, 4
     mov edx, dword [castorder+rax+8]
-L2146:
+L2170:
     mov rax, qword [rel caststate]
-    jmp L2143
-L2182:
+    jmp L2167
+L2206:
     xor edi, edi
     call S_StartSound
     movsx rax, dword [rel castnum]
     sal rax, 4
     mov eax, dword [castorder+rax+8]
-    jmp L2121
-L2181:
+    jmp L2145
+L2205:
     mov dword [rel castnum], 0
     xor eax, eax
-    jmp L2120
-L2126:
+    jmp L2144
+L2150:
     cmp edx, 590
-    je L2155
-    ja L2135
+    je L2179
+    ja L2159
     cmp edx, 486
-    je L2156
-    ja L2136
+    je L2180
+    ja L2160
     cmp edx, 419
-    jbe L2184
+    jbe L2208
     mov esi, 55
     cmp edx, 454
-    jne L2130
-L2128:
+    jne L2154
+L2152:
     xor edi, edi
     call S_StartSound
     mov eax, dword [rel castframes]
-    jmp L2130
-L2127:
+    jmp L2154
+L2151:
     sub edx, 336
     cmp edx, 47
-    ja L2130
-    jmp qword [L2132+rdx*8]
+    ja L2154
+    jmp qword [L2156+rdx*8]
     section .rodata
     align 8, db 0
     align 4, db 0
-L2132:
-    dq L2134
-    dq L2130
-    dq L2152
-    dq L2130
-    dq L2133
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
-    dq L2130
+L2156:
+    dq L2158
+    dq L2154
     dq L2176
-    dq L2130
-    dq L2130
-    dq L2176
-    dq L2130
-    dq L2130
-    dq L2176
+    dq L2154
+    dq L2157
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2154
+    dq L2200
+    dq L2154
+    dq L2154
+    dq L2200
+    dq L2154
+    dq L2154
+    dq L2200
     section .text
-L2141:
+L2165:
     lea rsi, [mobjinfo+rax]
     movsx rax, dword [mobjinfo+rax+44]
     mov dword [rel castonmelee], 1
@@ -15067,14 +15125,14 @@ L2141:
     sal rcx, 3
     lea rax, [states+rcx]
     mov qword [rel caststate], rax
-    jne L2143
+    jne L2167
     movsx rax, dword [rsi+40]
     lea rax, [rax+rax*4]
     lea rax, [states+rax*8]
-L2177:
+L2201:
     mov qword [rel caststate], rax
-    jmp L2143
-L2178:
+    jmp L2167
+L2202:
     movsx rax, dword [rel castnum]
     sal rax, 4
     mov eax, dword [castorder+rax+8]
@@ -15082,97 +15140,97 @@ L2178:
     movsx rax, dword [mobjinfo+rax+12]
     lea rax, [rax+rax*4]
     lea rax, [states+rax*8]
-    jmp L2125
-L2135:
+    jmp L2149
+L2159:
     cmp edx, 685
-    je L2162
-    ja L2138
+    je L2186
+    ja L2162
     cmp edx, 617
-    jbe L2185
+    jbe L2209
     mov esi, 8
     cmp edx, 648
-    je L2128
-    jmp L2130
-L2180:
+    je L2152
+    jmp L2154
+L2204:
     mov eax, states
     cmp ecx, 1
-    jne L2177
+    jne L2201
     movsx rax, dword [r8+44]
     lea rax, [rax+rax*4]
     lea rax, [states+rax*8]
-    jmp L2177
-L2138:
+    jmp L2201
+L2162:
     cmp edx, 689
-    je L2162
+    je L2186
     mov esi, 51
     cmp edx, 710
-    je L2128
+    je L2152
     mov esi, 14
     cmp edx, 687
-    je L2128
-    jmp L2130
-L2179:
+    je L2152
+    jmp L2154
+L2203:
     mov esi, 4
     cmp edx, 154
-    je L2128
-    jmp L2130
-L2156:
+    je L2152
+    jmp L2154
+L2180:
     mov esi, 52
-    jmp L2128
-L2136:
+    jmp L2152
+L2160:
     sub edx, 505
     cmp edx, 62
-    ja L2130
+    ja L2154
     movabs rcx, -4611686027017322498
     bt rcx, rdx
-    jc L2130
-L2176:
+    jc L2154
+L2200:
     mov esi, 16
-    jmp L2128
-L2134:
+    jmp L2152
+L2158:
     mov esi, 56
-    jmp L2128
-L2152:
+    jmp L2152
+L2176:
     mov esi, 53
-    jmp L2128
-L2133:
+    jmp L2152
+L2157:
     mov esi, 107
-    jmp L2128
-L2150:
+    jmp L2152
+L2174:
     mov esi, 1
-    jmp L2128
-L2162:
+    jmp L2152
+L2186:
     mov esi, 14
-    jmp L2128
-L2155:
+    jmp L2152
+L2179:
     mov esi, 51
-    jmp L2128
-L2185:
+    jmp L2152
+L2209:
     mov esi, 2
     cmp edx, 615
-    ja L2128
-    jmp L2130
-L2184:
+    ja L2152
+    jmp L2154
+L2208:
     mov esi, 2
     cmp edx, 416
-    ja L2128
-    jmp L2130
-L2153:
+    ja L2152
+    jmp L2154
+L2177:
     mov esi, 2
-    jmp L2128
-L2140:
+    jmp L2152
+L2164:
     cmp dword [rel castattacking], 0
-    je L2123
+    je L2147
     movsx rdx, dword [rel castnum]
     sal rdx, 4
     mov edx, dword [castorder+rdx+8]
     cmp eax, 24
-    jne L2146
+    jne L2170
     imul rdx, rdx, 92
     movsx rax, dword [mobjinfo+rdx+12]
     lea rax, [rax+rax*4]
     lea rax, [states+rax*8]
-    jmp L2125
+    jmp L2149
     align 16
     global F_CastTicker
 F_CastTicker:
@@ -15180,25 +15238,25 @@ F_CastTicker:
     sub eax, 1
     mov dword [rel casttics], eax
     test eax, eax
-    jg L2186
+    jg L2210
     jmp F_CastTicker.part.0
-L2186:
+L2210:
     ret
     align 16
     global F_Responder
 F_Responder:
     xor eax, eax
     cmp dword [rel finalestage], 2
-    je L2203
-L2199:
+    je L2227
+L2223:
     ret
-L2203:
+L2227:
     mov edx, dword [rdi]
     test edx, edx
-    jne L2199
+    jne L2223
     mov eax, dword [rel castdeath]
     test eax, eax
-    jne L2200
+    jne L2224
     movsx rax, dword [rel castnum]
     mov dword [rel castdeath], 1
     mov dword [rel castframes], 0
@@ -15214,11 +15272,11 @@ L2203:
     mov edx, dword [rdx+8]
     mov dword [rel casttics], edx
     test esi, esi
-    jne L2204
-L2200:
+    jne L2228
+L2224:
     mov eax, 1
     ret
-L2204:
+L2228:
     sub rsp, 8
     xor edi, edi
     call S_StartSound
@@ -15230,10 +15288,10 @@ L2204:
 F_CastResponder:
     mov edx, dword [rdi]
     test edx, edx
-    jne L2214
+    jne L2238
     mov eax, dword [rel castdeath]
     test eax, eax
-    jne L2216
+    jne L2240
     movsx rax, dword [rel castnum]
     mov dword [rel castdeath], 1
     mov dword [rel castframes], 0
@@ -15249,14 +15307,14 @@ F_CastResponder:
     mov edx, dword [rdx+8]
     mov dword [rel casttics], edx
     test esi, esi
-    jne L2220
-L2216:
+    jne L2244
+L2240:
     mov eax, 1
     ret
-L2214:
+L2238:
     xor eax, eax
     ret
-L2220:
+L2244:
     sub rsp, 8
     xor edi, edi
     call S_StartSound
@@ -15272,14 +15330,14 @@ LC158:
     global S_SetMusicVolume
 S_SetMusicVolume:
     cmp edi, 127
-    ja L2227
+    ja L2251
     mov rax, qword [rel music_module]
     test rax, rax
-    je L2221
+    je L2245
     jmp qword [rax+32]
-L2221:
+L2245:
     ret
-L2227:
+L2251:
     push rax
     mov esi, edi
     xor eax, eax
@@ -15311,15 +15369,15 @@ STlib_drawNum:
     movsx r8d, word [rax+2]
     mov dword [rdi+12], ecx
     test ecx, ecx
-    js L2256
-L2229:
+    js L2280
+L2253:
     mov ecx, r15d
     mov edi, dword [r14]
     mov eax, dword [r14+4]
     imul ecx, ebp
     sub edi, ecx
     cmp eax, 167
-    jle L2257
+    jle L2281
     sub rsp, 8
     mov rdx, qword [rel st_backing_screen]
     lea esi, [rax-168]
@@ -15329,13 +15387,13 @@ L2229:
     pop rdx
     pop rcx
     cmp r13d, 1994
-    je L2228
+    je L2252
     mov r12d, dword [r14]
     sub r15d, 1
     test r13d, r13d
-    jne L2237
-    jmp L2258
-L2239:
+    jne L2261
+    jmp L2282
+L2263:
     movsx rbx, r13d
     mov edx, r13d
     mov esi, dword [r14+4]
@@ -15355,15 +15413,15 @@ L2239:
     mov r13d, ebx
     call V_DrawPatch
     test ebx, ebx
-    je L2238
-L2237:
+    je L2262
+L2261:
     cmp r15d, -1
-    jne L2239
-L2238:
+    jne L2263
+L2262:
     mov eax, dword [rsp+12]
     test eax, eax
-    js L2259
-L2228:
+    js L2283
+L2252:
     add rsp, 24
     pop rbx
     pop rbp
@@ -15372,23 +15430,23 @@ L2228:
     pop r14
     pop r15
     ret
-L2256:
+L2280:
     cmp r15d, 2
-    jne L2244
+    jne L2268
     mov r13d, 9
     cmp ecx, -9
-    jl L2229
-L2244:
+    jl L2253
+L2268:
     cmp r15d, 3
-    jne L2245
+    jne L2269
     cmp dword [rsp+12], -99
     mov r13d, 99
-    jl L2229
-L2245:
+    jl L2253
+L2269:
     mov r13d, dword [rsp+12]
     neg r13d
-    jmp L2229
-L2258:
+    jmp L2253
+L2282:
     mov rdx, qword [r14+32]
     mov esi, dword [r14+4]
     mov edi, r12d
@@ -15397,8 +15455,8 @@ L2258:
     call V_DrawPatch
     mov eax, dword [rsp+12]
     test eax, eax
-    jns L2228
-L2259:
+    jns L2252
+L2283:
     mov esi, dword [r14+4]
     mov rdx, qword [rel sttminus]
     add rsp, 24
@@ -15410,7 +15468,7 @@ L2259:
     pop r14
     pop r15
     jmp V_DrawPatch
-L2257:
+L2281:
     mov edi, LC159
     xor eax, eax
     call I_Error
@@ -15420,9 +15478,9 @@ STlib_updateNum:
     mov rax, qword [rdi+24]
     mov eax, dword [rax]
     test eax, eax
-    jne L2262
+    jne L2286
     ret
-L2262:
+L2286:
     jmp STlib_drawNum
     align 16
     global STlib_updatePercent
@@ -15433,26 +15491,26 @@ STlib_updatePercent:
     mov rbx, rdi
     sub rsp, 8
     test esi, esi
-    je L2264
+    je L2288
     mov rax, qword [rdi+24]
     mov edx, dword [rax]
     test edx, edx
-    jne L2272
-L2263:
+    jne L2296
+L2287:
     add rsp, 8
     pop rbx
     pop rbp
     ret
-L2272:
+L2296:
     mov rdx, qword [rdi+48]
     mov esi, dword [rdi+4]
     mov edi, dword [rdi]
     call V_DrawPatch
-L2264:
+L2288:
     mov rax, qword [rbx+24]
     mov eax, dword [rax]
     test eax, eax
-    je L2263
+    je L2287
     add rsp, 8
     mov esi, ebp
     mov rdi, rbx
@@ -15471,14 +15529,14 @@ STlib_updateMultIcon.part.0:
     movsx rdx, dword [rdi+8]
     movsx rax, dword [rax]
     test esi, esi
-    jne L2278
+    jne L2302
     cmp edx, eax
-    je L2273
-L2278:
+    je L2297
+L2302:
     cmp eax, -1
-    je L2273
+    je L2297
     cmp edx, -1
-    je L2276
+    je L2300
     mov rax, qword [rbx+32]
     mov edi, dword [rbx]
     mov rdx, qword [rax+rdx*8]
@@ -15490,7 +15548,7 @@ L2278:
     sub eax, ecx
     movsx ecx, word [rdx]
     cmp eax, 167
-    jle L2289
+    jle L2313
     sub rsp, 8
     mov rdx, qword [rel st_backing_screen]
     lea esi, [rax-168]
@@ -15501,7 +15559,7 @@ L2278:
     pop rdx
     pop rcx
     movsx rax, dword [rax]
-L2276:
+L2300:
     mov rdx, qword [rbx+32]
     mov esi, dword [rbx+4]
     mov edi, dword [rbx]
@@ -15510,10 +15568,10 @@ L2276:
     mov rax, qword [rbx+16]
     mov eax, dword [rax]
     mov dword [rbx+8], eax
-L2273:
+L2297:
     pop rbx
     ret
-L2289:
+L2313:
     mov edi, LC160
     xor eax, eax
     call I_Error
@@ -15523,9 +15581,9 @@ STlib_updateMultIcon:
     mov rax, qword [rdi+24]
     mov eax, dword [rax]
     test eax, eax
-    je L2290
+    je L2314
     jmp STlib_updateMultIcon.part.0
-L2290:
+L2314:
     ret
     section .rodata
 LC161:
@@ -15537,16 +15595,16 @@ STlib_updateBinIcon:
     mov rax, qword [rdi+24]
     mov ecx, dword [rax]
     test ecx, ecx
-    je L2303
+    je L2327
     push rbx
     mov rax, qword [rdi+16]
     mov rbx, rdi
     mov eax, dword [rax]
     cmp dword [rdi+8], eax
-    jne L2298
+    jne L2322
     test esi, esi
-    je L2292
-L2298:
+    je L2316
+L2322:
     mov rdx, qword [rbx+32]
     mov esi, dword [rbx+4]
     mov edi, dword [rbx]
@@ -15554,20 +15612,20 @@ L2298:
     mov ecx, esi
     sub ecx, r8d
     cmp ecx, 167
-    jle L2306
+    jle L2330
     test eax, eax
-    je L2296
+    je L2320
     call V_DrawPatch
-L2297:
+L2321:
     mov rax, qword [rbx+16]
     mov eax, dword [rax]
     mov dword [rbx+8], eax
-L2292:
+L2316:
     pop rbx
     ret
-L2303:
+L2327:
     ret
-L2296:
+L2320:
     movsx eax, word [rdx+4]
     sub rsp, 8
     movsx r8d, word [rdx+2]
@@ -15581,8 +15639,8 @@ L2296:
     call V_CopyRect
     pop rax
     pop rdx
-    jmp L2297
-L2306:
+    jmp L2321
+L2330:
     mov edi, LC161
     xor eax, eax
     call I_Error
@@ -15596,34 +15654,34 @@ ST_drawWidgets:
     mov ebp, edi
     push rbx
     test eax, eax
-    je L2308
+    je L2332
     mov r10d, dword [rel deathmatch]
     mov eax, 1
     test r10d, r10d
-    je L2330
-L2308:
+    je L2354
+L2332:
     mov dword [rel st_fragson], eax
     mov rax, qword [rel w_ready+24]
     mov dword [rel st_armson], edx
     mov r9d, dword [rax]
     test r9d, r9d
-    jne L2331
-L2309:
+    jne L2355
+L2333:
     xor ebx, ebx
-L2312:
+L2336:
     mov rax, qword [w_ammo+rbx+24]
     mov r8d, dword [rax]
     test r8d, r8d
-    jne L2332
-L2310:
+    jne L2356
+L2334:
     mov rax, qword [w_maxammo+rbx+24]
     mov edi, dword [rax]
     test edi, edi
-    jne L2333
-L2311:
+    jne L2357
+L2335:
     add rbx, 48
     cmp rbx, 192
-    jne L2312
+    jne L2336
     mov esi, ebp
     mov edi, w_health
     mov ebx, w_arms
@@ -15635,68 +15693,68 @@ L2311:
     mov esi, ebp
     mov edi, w_armsbg
     call STlib_updateBinIcon
-L2315:
+L2339:
     mov rax, qword [rbx+24]
     mov esi, dword [rax]
     test esi, esi
-    je L2314
+    je L2338
     mov esi, ebp
     mov rdi, rbx
     call STlib_updateMultIcon.part.0
-L2314:
+L2338:
     add rbx, 48
     cmp r12, rbx
-    jne L2315
+    jne L2339
     mov rax, qword [rel w_faces+24]
     mov ecx, dword [rax]
     test ecx, ecx
-    je L2316
+    je L2340
     mov esi, ebp
     mov edi, w_faces
     call STlib_updateMultIcon.part.0
-L2316:
+L2340:
     mov ebx, w_keyboxes
     mov r12d, w_keyboxes+144
-L2318:
+L2342:
     mov rax, qword [rbx+24]
     mov edx, dword [rax]
     test edx, edx
-    je L2317
+    je L2341
     mov esi, ebp
     mov rdi, rbx
     call STlib_updateMultIcon.part.0
-L2317:
+L2341:
     add rbx, 48
     cmp r12, rbx
-    jne L2318
+    jne L2342
     mov rax, qword [rel w_frags+24]
     mov eax, dword [rax]
     test eax, eax
-    jne L2334
+    jne L2358
     pop rbx
     pop rbp
     pop r12
     ret
-L2333:
+L2357:
     lea rdi, [w_maxammo+rbx]
     mov esi, ebp
     call STlib_drawNum
-    jmp L2311
-L2332:
+    jmp L2335
+L2356:
     lea rdi, [w_ammo+rbx]
     mov esi, ebp
     call STlib_drawNum
-    jmp L2310
-L2331:
+    jmp L2334
+L2355:
     mov esi, ebp
     mov edi, w_ready
     call STlib_drawNum
-    jmp L2309
-L2330:
+    jmp L2333
+L2354:
     mov edx, 1
     xor eax, eax
-    jmp L2308
-L2334:
+    jmp L2332
+L2358:
     pop rbx
     mov esi, ebp
     mov edi, w_frags
@@ -15709,10 +15767,10 @@ ST_doRefresh:
     mov dword [rel st_firsttime], 0
     mov eax, dword [rel st_statusbaron]
     test eax, eax
-    jne L2341
+    jne L2365
     mov edi, 1
     jmp ST_drawWidgets
-L2341:
+L2365:
     sub rsp, 8
     call ST_refreshBackground.part.0
     mov edi, 1
@@ -15735,10 +15793,10 @@ W_GetNumForName:
     mov rbx, rdi
     call W_CheckNumForName
     test eax, eax
-    js L2346
+    js L2370
     pop rbx
     ret
-L2346:
+L2370:
     mov rsi, rbx
     mov edi, LC162
     xor eax, eax
@@ -15751,14 +15809,14 @@ LC163:
     global W_LumpLength
 W_LumpLength:
     cmp edi, dword [rel numlumps]
-    jnb L2352
+    jnb L2376
     mov rdx, qword [rel lumpinfo]
     mov edi, edi
     lea rax, [rdi+rdi*4]
     lea rax, [rdx+rax*8]
     mov eax, dword [rax+20]
     ret
-L2352:
+L2376:
     push rcx
     mov esi, edi
     xor eax, eax
@@ -15781,24 +15839,24 @@ W_CheckCorrectIWAD:
     push rbx
     mov ebx, unique_lumps
     sub rsp, 16
-L2355:
+L2379:
     mov ebp, dword [rbx]
     cmp ebp, r12d
-    je L2354
+    je L2378
     mov rdi, qword [rbx+8]
     call W_CheckNumForName
     test eax, eax
-    jns L2358
-L2354:
+    jns L2382
+L2378:
     add rbx, 16
     cmp rbx, unique_lumps+64
-    jne L2355
+    jne L2379
     add rsp, 16
     pop rbx
     pop rbp
     pop r12
     ret
-L2358:
+L2382:
     mov edi, ebp
     call D_GameMissionString
     mov edi, r12d
@@ -15825,27 +15883,27 @@ LC166:
     global Z_Free
 Z_Free:
     cmp dword [rdi-20], 1919505
-    jne L2375
+    jne L2399
     cmp dword [rdi-24], 4
     lea rcx, [rdi-40]
-    je L2361
+    je L2385
     mov rax, qword [rdi-32]
     test rax, rax
-    je L2361
+    je L2385
     mov qword [rax], 0
-L2361:
+L2385:
     mov rdx, qword [rdi-8]
     mov qword [rdi-24], 4
     mov qword [rdi-32], 0
     cmp dword [rdx+16], 4
-    je L2362
+    je L2386
     mov rax, qword [rdi-16]
-L2363:
+L2387:
     cmp dword [rax+16], 4
-    je L2376
-L2359:
+    je L2400
+L2383:
     ret
-L2376:
+L2400:
     mov edx, dword [rax]
     add dword [rcx], edx
     mov rdx, qword [rax+24]
@@ -15853,10 +15911,10 @@ L2376:
     mov qword [rdx+32], rcx
     mov rdx, qword [rel mainzone]
     cmp qword [rdx+48], rax
-    jne L2359
+    jne L2383
     mov qword [rdx+48], rcx
     ret
-L2362:
+L2386:
     mov eax, dword [rdi-40]
     mov rsi, qword [rel mainzone]
     add dword [rdx], eax
@@ -15864,14 +15922,14 @@ L2362:
     mov qword [rdx+24], rax
     mov qword [rax+32], rdx
     cmp qword [rsi+48], rcx
-    je L2364
-L2365:
+    je L2388
+L2389:
     mov rcx, rdx
-    jmp L2363
-L2364:
+    jmp L2387
+L2388:
     mov qword [rsi+48], rdx
-    jmp L2365
-L2375:
+    jmp L2389
+L2399:
     push rax
     mov edi, LC166
     xor eax, eax
@@ -15886,15 +15944,15 @@ Z_FreeTags:
     mov rbx, qword [r8+32]
     lea rax, [r8+8]
     cmp rbx, rax
-    je L2377
+    je L2401
     mov ebp, edi
     mov r12d, esi
-    jmp L2380
-L2379:
+    jmp L2404
+L2403:
     lea rax, [r8+8]
     cmp rbx, rax
-    je L2377
-L2380:
+    je L2401
+L2404:
     mov rdi, rbx
     mov rbx, qword [rbx+24]
     mov eax, dword [rdi+16]
@@ -15903,16 +15961,16 @@ L2380:
     cmp eax, 4
     setne dl
     test cl, dl
-    je L2379
+    je L2403
     cmp eax, r12d
-    jg L2379
+    jg L2403
     add rdi, 40
     call Z_Free
     mov r8, qword [rel mainzone]
     lea rax, [r8+8]
     cmp rbx, rax
-    jne L2380
-L2377:
+    jne L2404
+L2401:
     pop rbx
     pop rbp
     pop r12
@@ -15923,11 +15981,11 @@ mem_fclose:
     push rbx
     cmp dword [rdi+28], 1
     mov rbx, rdi
-    je L2392
+    je L2416
     mov rdi, rbx
     pop rbx
     jmp Z_Free
-L2392:
+L2416:
     mov rdi, qword [rdi]
     call Z_Free
     mov rdi, rbx
@@ -15967,39 +16025,39 @@ Z_Malloc:
     mov rdi, qword [rax+48]
     mov r13, qword [rdi+32]
     cmp dword [r13+16], 4
-    jne L2396
+    jne L2420
     mov rdi, r13
     mov r13, qword [r13+32]
-L2396:
+L2420:
     cmp rdi, r13
-    je L2398
+    je L2422
     mov rdx, rdi
-    jmp L2397
-L2418:
+    jmp L2421
+L2442:
     cmp eax, 6
-    jg L2400
+    jg L2424
     mov rdi, qword [rdi+24]
     mov rdx, rdi
-L2401:
+L2425:
     cmp dword [rdx+16], 4
-    je L2417
-L2402:
+    je L2441
+L2426:
     cmp rdi, r13
-    je L2398
-L2397:
+    je L2422
+L2421:
     mov eax, dword [rdi+16]
     cmp eax, 4
-    jne L2418
+    jne L2442
     cmp dword [rdx+16], 4
     mov rdi, qword [rdi+24]
-    jne L2402
-L2417:
+    jne L2426
+L2441:
     mov eax, dword [rdx]
     cmp eax, ebx
-    jl L2402
+    jl L2426
     sub eax, ebx
     cmp eax, 64
-    jle L2403
+    jle L2427
     movsx rcx, ebx
     movq xmm1, rdx
     add rcx, rdx
@@ -16013,19 +16071,19 @@ L2417:
     mov qword [rax+32], rcx
     mov qword [rdx+24], rcx
     mov dword [rdx], ebx
-L2403:
+L2427:
     test rbp, rbp
-    jne L2404
+    jne L2428
     cmp r12d, 6
-    jg L2419
-L2404:
+    jg L2443
+L2428:
     mov qword [rdx+8], rbp
     lea rax, [rdx+40]
     mov dword [rdx+16], r12d
     test rbp, rbp
-    je L2405
+    je L2429
     mov qword [rbp+0], rax
-L2405:
+L2429:
     mov rsi, qword [rdx+24]
     mov rcx, qword [rel mainzone]
     mov qword [rcx+48], rsi
@@ -16036,19 +16094,19 @@ L2405:
     pop r13
     pop r14
     ret
-L2400:
+L2424:
     mov r14, qword [rdx+32]
     add rdi, 40
     call Z_Free
     mov rdx, qword [r14+24]
     mov rdi, qword [rdx+24]
-    jmp L2401
-L2398:
+    jmp L2425
+L2422:
     mov esi, ebx
     mov edi, LC168
     xor eax, eax
     call I_Error
-L2419:
+L2443:
     mov edi, LC169
     xor eax, eax
     call I_Error
@@ -16064,13 +16122,13 @@ W_GenerateHashTable:
     sub rsp, 24
     mov rdi, qword [rel lumphash]
     test rdi, rdi
-    je L2421
+    je L2445
     call Z_Free
-L2421:
+L2445:
     mov edi, dword [rel numlumps]
     test edi, edi
-    jne L2438
-L2420:
+    jne L2462
+L2444:
     add rsp, 24
     pop rbx
     pop rbp
@@ -16079,7 +16137,7 @@ L2420:
     pop r14
     pop r15
     ret
-L2438:
+L2462:
     sal edi, 3
     xor edx, edx
     mov esi, 1
@@ -16094,21 +16152,21 @@ L2438:
     mov eax, dword [rel numlumps]
     mov dword [rsp+4], eax
     test eax, eax
-    je L2420
+    je L2444
     lea rax, [rax+rax*4]
     xor r13d, r13d
     sal rax, 3
     mov qword [rsp+8], rax
-L2426:
+L2450:
     mov r12, qword [rel lumpinfo]
     mov ebx, 5381
     add r12, r13
     mov r14, r12
     lea rbp, [r12+8]
-L2423:
+L2447:
     movsx edi, byte [r14]
     test dil, dil
-    je L2424
+    je L2448
     mov eax, ebx
     add r14, 1
     sal eax, 5
@@ -16116,8 +16174,8 @@ L2423:
     call toupper
     xor ebx, eax
     cmp rbp, r14
-    jne L2423
-L2424:
+    jne L2447
+L2448:
     mov eax, ebx
     xor edx, edx
     add r13, 40
@@ -16127,7 +16185,7 @@ L2424:
     mov qword [r12+32], rdx
     mov qword [rax], r12
     cmp qword [rsp+8], r13
-    jne L2426
+    jne L2450
     add rsp, 24
     pop rbx
     pop rbp
@@ -16195,8 +16253,8 @@ mem_fwrite.part.0:
     mov rdx, rbx
     sub rdx, rax
     cmp rdx, rsi
-    jnb L2444
-L2445:
+    jnb L2468
+L2469:
     lea edi, [rbx+rbx]
     xor edx, edx
     mov esi, 1
@@ -16216,8 +16274,8 @@ L2445:
     mov qword [rbp+16], rbx
     sub rdx, rax
     cmp rdx, r13
-    jb L2445
-L2446:
+    jb L2469
+L2470:
     mov rdx, r13
     lea rdi, [r12+rax]
     mov rsi, r15
@@ -16225,9 +16283,9 @@ L2446:
     add r13d, dword [rbp+24]
     mov dword [rbp+24], r13d
     cmp qword [rbp+8], r13
-    jnb L2447
+    jnb L2471
     mov qword [rbp+8], r13
-L2447:
+L2471:
     add rsp, 8
     mov rax, r14
     pop rbx
@@ -16237,16 +16295,16 @@ L2447:
     pop r14
     pop r15
     ret
-L2444:
+L2468:
     mov r12, qword [rcx]
-    jmp L2446
+    jmp L2470
     align 16
     global mem_fwrite
 mem_fwrite:
     cmp dword [rcx+28], 1
-    jne L2451
+    jne L2475
     jmp mem_fwrite.part.0
-L2451:
+L2475:
     mov rax, -1
     ret
     align 16
@@ -16259,47 +16317,47 @@ WriteTime:
     and ebx, 127
     sub rsp, 16
     shr edi, 7
-    je L2453
-L2454:
+    je L2477
+L2478:
     sal ebx, 8
     movzx eax, dil
     or eax, ebx
     or al, -128
     shr edi, 7
     mov ebx, eax
-    jne L2454
-L2453:
+    jne L2478
+L2477:
     cmp dword [rbp+28], 1
     mov byte [rsp+15], bl
     lea r12, [rsp+15]
-    jne L2457
-L2455:
+    jne L2481
+L2479:
     mov rcx, rbp
     mov edx, 1
     mov esi, 1
     mov rdi, r12
     call mem_fwrite.part.0
     cmp rax, 1
-    jne L2457
+    jne L2481
     mov eax, ebx
     add dword [rel tracksize], 1
     and eax, 128
-    je L2458
+    je L2482
     shr ebx, 8
     cmp dword [rbp+28], 1
     mov byte [rsp+15], bl
-    je L2455
-L2457:
+    je L2479
+L2481:
     mov eax, 1
-L2452:
+L2476:
     add rsp, 16
     pop rbx
     pop rbp
     pop r12
     ret
-L2458:
+L2482:
     mov dword [rel queuedtime], 0
-    jmp L2452
+    jmp L2476
     align 16
 WriteChangeController_Valued:
     push r14
@@ -16317,9 +16375,9 @@ WriteChangeController_Valued:
     mov edi, dword [rel queuedtime]
     call WriteTime
     test eax, eax
-    jne L2469
+    jne L2493
     cmp dword [rbp+28], 1
-    jne L2469
+    jne L2493
     lea r14, [rsp+15]
     mov rcx, rbp
     mov edx, 1
@@ -16328,36 +16386,36 @@ WriteChangeController_Valued:
     mov rdi, r14
     call mem_fwrite.part.0
     cmp rax, 1
-    jne L2469
+    jne L2493
     and r12d, 127
     cmp dword [rbp+28], 1
     mov byte [rsp+15], r12b
-    jne L2469
+    jne L2493
     mov rcx, rbp
     mov edx, 1
     mov esi, 1
     mov rdi, r14
     call mem_fwrite.part.0
     cmp rax, 1
-    jne L2469
+    jne L2493
     mov eax, 127
     cmp r13b, al
     cmova r13d, eax
     cmp dword [rbp+28], 1
     mov byte [rsp+15], r13b
-    jne L2469
+    jne L2493
     mov rcx, rbp
     mov edx, 1
     mov esi, 1
     mov rdi, r14
     call mem_fwrite.part.0
     cmp rax, 1
-    jne L2469
+    jne L2493
     add dword [rel tracksize], 3
-    jmp L2466
-L2469:
+    jmp L2490
+L2493:
     mov ebx, 1
-L2466:
+L2490:
     add rsp, 16
     mov eax, ebx
     pop rbx
@@ -16383,7 +16441,7 @@ mus2mid:
     movaps oword [rel channel_map+48], xmm0
     mov r9d, dword [rdi+28]
     test r9d, r9d
-    jne L2489
+    jne L2513
     mov r9, qword [rdi+8]
     mov edx, dword [rdi+24]
     mov rbp, rsi
@@ -16399,23 +16457,23 @@ mus2mid:
     add rdx, r10
     mov r12d, eax
     test eax, eax
-    je L2475
+    je L2499
     xor ecx, ecx
-L2474:
+L2498:
     mov edi, ecx
     add ecx, 1
     movzx r13d, byte [rdx+rdi]
     mov byte [r11+rdi], r13b
     cmp ecx, r12d
-    jb L2474
-L2475:
+    jb L2498
+L2499:
     add r8d, eax
     mov dword [rbx+24], r8d
     cmp rsi, 3
-    ja L2595
-L2473:
+    ja L2619
+L2497:
     mov eax, 1
-L2471:
+L2495:
     add rsp, 56
     pop rbx
     pop rbp
@@ -16424,7 +16482,7 @@ L2471:
     pop r14
     pop r15
     ret
-L2595:
+L2619:
     mov edx, r8d
     mov rdi, r9
     lea r11, [rsp+38]
@@ -16436,21 +16494,21 @@ L2595:
     add rax, rax
     mov r12d, eax
     test eax, eax
-    je L2478
+    je L2502
     xor eax, eax
-L2477:
+L2501:
     mov esi, eax
     add eax, 1
     movzx r13d, byte [rdx+rsi]
     mov byte [r11+rsi], r13b
     cmp eax, r12d
-    jb L2477
-L2478:
+    jb L2501
+L2502:
     movzx ecx, cl
     lea esi, [r8+rcx*2]
     mov dword [rbx+24], esi
     cmp rdi, 1
-    jbe L2473
+    jbe L2497
     mov eax, esi
     mov r8, r9
     lea r11, [rsp+40]
@@ -16462,21 +16520,21 @@ L2478:
     add rcx, rcx
     mov r12d, ecx
     test ecx, ecx
-    je L2481
+    je L2505
     xor eax, eax
-L2480:
+L2504:
     mov ecx, eax
     add eax, 1
     movzx r13d, byte [rdx+rcx]
     mov byte [r11+rcx], r13b
     cmp eax, r12d
-    jb L2480
-L2481:
+    jb L2504
+L2505:
     movzx edi, dil
     lea edi, [rsi+rdi*2]
     mov dword [rbx+24], edi
     cmp r8, 1
-    jbe L2473
+    jbe L2497
     mov edx, edi
     mov r8, r9
     lea r11, [rsp+42]
@@ -16488,21 +16546,21 @@ L2481:
     add rsi, rsi
     mov r12d, esi
     test esi, esi
-    je L2483
+    je L2507
     xor edx, edx
-L2482:
+L2506:
     mov esi, edx
     add edx, 1
     movzx r13d, byte [rcx+rsi]
     mov byte [r11+rsi], r13b
     cmp edx, r12d
-    jb L2482
-L2483:
+    jb L2506
+L2507:
     movzx eax, al
     lea esi, [rdi+rax*2]
     mov dword [rbx+24], esi
     cmp r8, 1
-    jbe L2473
+    jbe L2497
     mov eax, esi
     lea r8, [rsp+44]
     sub r9, rax
@@ -16513,54 +16571,54 @@ L2483:
     add rcx, rcx
     mov r10d, ecx
     test ecx, ecx
-    je L2485
+    je L2509
     xor ecx, ecx
-L2484:
+L2508:
     mov edi, ecx
     add ecx, 1
     movzx r11d, byte [rax+rdi]
     mov byte [r8+rdi], r11b
     cmp ecx, r10d
-    jb L2484
-L2485:
+    jb L2508
+L2509:
     movzx edx, dl
     lea eax, [rsi+rdx*2]
     mov dword [rbx+24], eax
     cmp r9, 1
-    jbe L2473
+    jbe L2497
     lea rdi, [rsp+46]
     mov rcx, rbx
     mov edx, 1
     mov esi, 2
     call mem_fread
     sub rax, 1
-    jne L2473
+    jne L2497
     cmp word [rsp+34], 21837
-    jne L2473
+    jne L2497
     cmp word [rsp+36], 6739
-    jne L2473
+    jne L2497
     movzx esi, word [rsp+40]
     cmp rsi, qword [rbx+8]
-    jnb L2589
+    jnb L2613
     cmp dword [rbp+28], 1
     mov dword [rbx+24], esi
-    jne L2487
+    jne L2511
     mov rcx, rbp
     mov edx, 22
     mov esi, 1
     mov edi, midiheader
     call mem_fwrite.part.0
-L2487:
+L2511:
     mov dword [rel tracksize], 0
     mov eax, dword [rbx+28]
-L2536:
+L2560:
     test eax, eax
-    jne L2489
-L2584:
+    jne L2513
+L2608:
     mov rdx, qword [rbx+8]
     mov rax, qword [rbx]
     lea r14, [rsp+23]
-L2523:
+L2547:
     mov esi, dword [rbx+24]
     mov r8, rdx
     mov rdi, rax
@@ -16572,21 +16630,21 @@ L2523:
     movzx ecx, cl
     mov r13d, ecx
     test ecx, ecx
-    je L2491
+    je L2515
     xor ecx, ecx
-L2490:
+L2514:
     mov r9d, ecx
     add ecx, 1
     movzx r15d, byte [r12+r9]
     mov byte [r14+r9], r15b
     cmp ecx, r13d
-    jb L2490
-L2491:
+    jb L2514
+L2515:
     movzx r9d, r10b
     add r9d, r11d
     mov dword [rbx+24], r9d
     cmp rdx, rsi
-    je L2473
+    je L2497
     movzx r12d, byte [rsp+23]
     mov esi, r12d
     mov ecx, r12d
@@ -16595,26 +16653,26 @@ L2491:
     and ecx, 15
     and r15d, 112
     and esi, 15
-    je L2492
+    je L2516
     mov r13d, dword [channel_map+rcx*4]
     cmp r13d, -1
-    je L2596
-L2493:
+    je L2620
+L2517:
     cmp r15b, 32
-    je L2496
-    jbe L2597
+    je L2520
+    jbe L2621
     cmp r15b, 64
-    je L2500
+    je L2524
     cmp r15b, 96
-    je L2501
+    je L2525
     cmp r15b, 48
-    jne L2473
+    jne L2497
     mov edx, dword [rbx+28]
     test edx, edx
-    jne L2489
+    jne L2513
     mov rdx, qword [rbx+8]
     mov rax, qword [rbx]
-L2543:
+L2567:
     mov esi, dword [rbx+24]
     lea r10, [rsp+25]
     cmp rdx, rsi
@@ -16624,45 +16682,45 @@ L2543:
     movzx ecx, dil
     mov r11d, ecx
     test ecx, ecx
-    je L2528
+    je L2552
     xor ecx, ecx
-L2527:
+L2551:
     mov r8d, ecx
     add ecx, 1
     movzx r14d, byte [rax+r8]
     mov byte [r10+r8], r14b
     cmp ecx, r11d
-    jb L2527
-L2528:
+    jb L2551
+L2552:
     movzx eax, dil
     add eax, r9d
     mov dword [rbx+24], eax
     cmp rdx, rsi
-    je L2473
+    je L2497
     movzx eax, byte [rsp+25]
     lea edx, [rax-10]
     cmp dl, 4
-    ja L2473
+    ja L2497
     movzx esi, byte [controller_map+rax]
     xor edx, edx
     movzx edi, r13b
     mov rcx, rbp
     call WriteChangeController_Valued
     test eax, eax
-    jne L2473
-L2591:
+    jne L2497
+L2615:
     mov eax, dword [rbx+28]
-L2509:
+L2533:
     test r12b, r12b
-    jns L2536
+    jns L2560
     test eax, eax
-    jne L2489
+    jne L2513
     mov rdx, qword [rbx+8]
     mov rax, qword [rbx]
-L2557:
+L2581:
     xor esi, esi
     lea r11, [rsp+27]
-L2541:
+L2565:
     mov edi, dword [rbx+24]
     cmp rdx, rdi
     mov r9, rdi
@@ -16672,45 +16730,45 @@ L2541:
     movzx ecx, cl
     mov r13d, ecx
     test ecx, ecx
-    je L2540
+    je L2564
     xor ecx, ecx
-L2539:
+L2563:
     mov r8d, ecx
     add ecx, 1
     movzx r14d, byte [r12+r8]
     mov byte [r11+r8], r14b
     cmp ecx, r13d
-    jb L2539
-L2540:
+    jb L2563
+L2564:
     movzx ecx, r10b
     add ecx, r9d
     mov dword [rbx+24], ecx
     cmp rdx, rdi
-    je L2473
+    je L2497
     movzx ecx, byte [rsp+27]
     sal esi, 7
     mov edi, ecx
     and edi, 127
     add esi, edi
     test cl, cl
-    js L2541
+    js L2565
     add dword [rel queuedtime], esi
-    jmp L2584
-L2489:
+    jmp L2608
+L2513:
     mov edi, LC152
     xor eax, eax
     call doom_printf
-    jmp L2473
-L2597:
+    jmp L2497
+L2621:
     test r15b, r15b
-    je L2598
+    je L2622
     mov esi, dword [rbx+28]
     test esi, esi
-    jne L2489
+    jne L2513
     mov r8, qword [rbx+8]
     mov r9d, dword [rbx+24]
     mov rdi, qword [rbx]
-L2545:
+L2569:
     mov ecx, r9d
     lea r10, [rsp+24]
     cmp r8, rcx
@@ -16719,36 +16777,36 @@ L2545:
     movzx eax, dl
     mov r14d, eax
     test eax, eax
-    je L2511
+    je L2535
     xor eax, eax
-L2510:
+L2534:
     mov esi, eax
     add eax, 1
     movzx r15d, byte [r11+rsi]
     mov byte [r10+rsi], r15b
     cmp eax, r14d
-    jb L2510
-L2511:
+    jb L2534
+L2535:
     movzx eax, dl
     add eax, r9d
     mov dword [rbx+24], eax
     cmp r8, rcx
-    je L2473
+    je L2497
     movzx r14d, byte [rsp+24]
     test r14b, r14b
-    js L2512
+    js L2536
     movsx rax, r13d
     movzx r15d, byte [channelvelocities+rax]
-L2513:
+L2537:
     mov edi, dword [rel queuedtime]
     or r13d, -112
     mov rsi, rbp
     mov byte [rsp+28], r13b
     call WriteTime
     test eax, eax
-    jne L2473
+    jne L2497
     cmp dword [rbp+28], 1
-    jne L2473
+    jne L2497
     lea r13, [rsp+28]
     mov rcx, rbp
     mov edx, 1
@@ -16756,46 +16814,46 @@ L2513:
     mov rdi, r13
     call mem_fwrite.part.0
     cmp rax, 1
-    jne L2473
+    jne L2497
     and r14d, 127
     cmp dword [rbp+28], 1
     mov byte [rsp+28], r14b
-    jne L2473
+    jne L2497
     mov rcx, rbp
     mov edx, 1
     mov esi, 1
     mov rdi, r13
     call mem_fwrite.part.0
     cmp rax, 1
-    jne L2473
+    jne L2497
     and r15d, 127
     cmp dword [rbp+28], 1
     mov byte [rsp+28], r15b
-    jne L2473
-L2594:
+    jne L2497
+L2618:
     mov rcx, rbp
     mov edx, 1
     mov esi, 1
     mov rdi, r13
     call mem_fwrite.part.0
     cmp rax, 1
-    jne L2473
-L2592:
+    jne L2497
+L2616:
     add dword [rel tracksize], 3
     mov eax, dword [rbx+28]
-    jmp L2509
-L2492:
+    jmp L2533
+L2516:
     cmp r15b, 48
-    je L2550
-    ja L2544
+    je L2574
+    ja L2568
     cmp r15b, 16
-    je L2551
+    je L2575
     cmp r15b, 32
-    je L2552
+    je L2576
     test r15b, r15b
-    jne L2473
+    jne L2497
     mov r13d, 9
-L2546:
+L2570:
     mov esi, dword [rbx+24]
     lea r10, [rsp+24]
     cmp rdx, rsi
@@ -16805,21 +16863,21 @@ L2546:
     movzx ecx, dil
     mov r11d, ecx
     test ecx, ecx
-    je L2506
+    je L2530
     xor ecx, ecx
-L2505:
+L2529:
     mov r8d, ecx
     add ecx, 1
     movzx r14d, byte [rax+r8]
     mov byte [r10+r8], r14b
     cmp ecx, r11d
-    jb L2505
-L2506:
+    jb L2529
+L2530:
     movzx eax, dil
     add eax, r9d
     mov dword [rbx+24], eax
     cmp rdx, rsi
-    je L2473
+    je L2497
     mov edi, dword [rel queuedtime]
     or r13d, -128
     mov rsi, rbp
@@ -16827,9 +16885,9 @@ L2506:
     mov byte [rsp+28], r13b
     call WriteTime
     test eax, eax
-    jne L2473
+    jne L2497
     cmp dword [rbp+28], 1
-    jne L2473
+    jne L2497
     lea r13, [rsp+28]
     mov rcx, rbp
     mov edx, 1
@@ -16837,27 +16895,27 @@ L2506:
     mov rdi, r13
     call mem_fwrite.part.0
     cmp rax, 1
-    jne L2473
+    jne L2497
     and r14d, 127
     cmp dword [rbp+28], 1
     mov byte [rsp+28], r14b
-    jne L2473
+    jne L2497
     mov rcx, rbp
     mov edx, 1
     mov esi, 1
     mov rdi, r13
     call mem_fwrite.part.0
     cmp rax, 1
-    jne L2473
+    jne L2497
     cmp dword [rbp+28], 1
     mov byte [rsp+28], 0
-    je L2594
-    jmp L2473
-L2596:
+    je L2618
+    jmp L2497
+L2620:
     mov eax, channel_map
     mov edx, channel_map+64
     pcmpeqd xmm0, xmm0
-L2494:
+L2518:
     movdqa xmm2, oword [rax]
     movdqa xmm1, xmm0
     add rax, 16
@@ -16866,7 +16924,7 @@ L2494:
     pandn xmm1, xmm2
     por xmm0, xmm1
     cmp rdx, rax
-    jne L2494
+    jne L2518
     movdqa xmm2, xmm0
     psrldq xmm2, 8
     movdqa xmm1, xmm2
@@ -16885,20 +16943,20 @@ L2494:
     lea r13d, [rax+1]
     movzx edi, r13b
     cmp eax, 8
-    je L2599
-L2495:
+    je L2623
+L2519:
     mov dword [channel_map+rcx*4], r13d
     xor edx, edx
     mov rcx, rbp
     mov esi, 123
     call WriteChangeController_Valued
-    jmp L2493
-L2544:
+    jmp L2517
+L2568:
     cmp r15b, 64
-    je L2554
+    je L2578
     cmp r15b, 96
-    jne L2473
-L2501:
+    jne L2497
+L2525:
     mov edi, dword [rel queuedtime]
     mov r8d, 12287
     mov rsi, rbp
@@ -16906,9 +16964,9 @@ L2501:
     mov word [rsp+28], r8w
     call WriteTime
     test eax, eax
-    jne L2473
+    jne L2497
     cmp dword [rbp+28], 1
-    jne L2473
+    jne L2497
     lea rbx, [rsp+28]
     mov rcx, rbp
     mov edx, 3
@@ -16916,17 +16974,17 @@ L2501:
     mov rdi, rbx
     call mem_fwrite.part.0
     cmp rax, 3
-    jne L2473
+    jne L2497
     mov eax, dword [rel tracksize]
     add eax, 3
     cmp qword [rbp+8], 18
     mov dword [rel tracksize], eax
-    jbe L2600
+    jbe L2624
     cmp dword [rbp+28], 1
     bswap eax
     mov dword [rbp+24], 18
     mov dword [rsp+28], eax
-    jne L2473
+    jne L2497
     mov rcx, rbp
     mov edx, 4
     mov esi, 1
@@ -16935,14 +16993,14 @@ L2501:
     cmp rax, 4
     setne al
     movzx eax, al
-    jmp L2471
-L2496:
+    jmp L2495
+L2520:
     mov ecx, dword [rbx+28]
     test ecx, ecx
-    jne L2582
+    jne L2606
     mov rdx, qword [rbx+8]
     mov rax, qword [rbx]
-L2518:
+L2542:
     mov esi, dword [rbx+24]
     lea r10, [rsp+24]
     cmp rdx, rsi
@@ -16952,40 +17010,40 @@ L2518:
     movzx ecx, dil
     mov r15d, ecx
     test ecx, ecx
-    je L2520
+    je L2544
     mov qword [rsp+8], rax
     xor ecx, ecx
-L2519:
+L2543:
     mov r8d, ecx
     add ecx, 1
     movzx eax, byte [r11+r8]
     mov byte [r10+r8], al
     cmp ecx, r15d
-    jb L2519
+    jb L2543
     mov rax, qword [rsp+8]
-L2520:
+L2544:
     movzx ecx, dil
     add ecx, r9d
     mov dword [rbx+24], ecx
     cmp rdx, rsi
-    jne L2521
+    jne L2545
     test r12b, r12b
-    jns L2523
-    jmp L2557
-L2598:
+    jns L2547
+    jmp L2581
+L2622:
     mov edi, dword [rbx+28]
     test edi, edi
-    jne L2489
+    jne L2513
     mov rdx, qword [rbx+8]
     mov rax, qword [rbx]
-    jmp L2546
-L2500:
+    jmp L2570
+L2524:
     mov eax, dword [rbx+28]
     test eax, eax
-    jne L2489
+    jne L2513
     mov rdx, qword [rbx+8]
     mov rax, qword [rbx]
-L2548:
+L2572:
     mov esi, dword [rbx+24]
     lea r10, [rsp+25]
     cmp rdx, rsi
@@ -16995,21 +17053,21 @@ L2548:
     movzx ecx, r8b
     mov r14d, ecx
     test ecx, ecx
-    je L2530
+    je L2554
     xor ecx, ecx
-L2529:
+L2553:
     mov edi, ecx
     add ecx, 1
     movzx r15d, byte [r11+rdi]
     mov byte [r10+rdi], r15b
     cmp ecx, r14d
-    jb L2529
-L2530:
+    jb L2553
+L2554:
     movzx r8d, r8b
     add r9d, r8d
     mov dword [rbx+24], r9d
     cmp rdx, rsi
-    je L2473
+    je L2497
     mov esi, r9d
     lea r10, [rsp+26]
     cmp rdx, rsi
@@ -17018,36 +17076,36 @@ L2530:
     movzx ecx, dil
     mov r11d, ecx
     test ecx, ecx
-    je L2532
+    je L2556
     xor ecx, ecx
-L2531:
+L2555:
     mov r8d, ecx
     add ecx, 1
     movzx r14d, byte [rax+r8]
     mov byte [r10+r8], r14b
     cmp ecx, r11d
-    jb L2531
-L2532:
+    jb L2555
+L2556:
     movzx eax, dil
     add eax, r9d
     mov dword [rbx+24], eax
     cmp rdx, rsi
-    je L2473
+    je L2497
     movzx eax, byte [rsp+25]
     test al, al
-    je L2601
+    je L2625
     lea edx, [rax-1]
     cmp dl, 8
-    ja L2473
+    ja L2497
     movzx edx, byte [rsp+26]
     movzx esi, byte [controller_map+rax]
     movzx edi, r13b
     mov rcx, rbp
     call WriteChangeController_Valued
     test eax, eax
-    je L2591
-    jmp L2473
-L2512:
+    je L2615
+    jmp L2497
+L2536:
     cmp r8, rax
     movsx rcx, r13d
     setne sil
@@ -17056,25 +17114,25 @@ L2512:
     movzx edx, sil
     mov r11d, edx
     test edx, edx
-    je L2515
+    je L2539
     xor edx, edx
-L2514:
+L2538:
     mov r9d, edx
     add edx, 1
     movzx r15d, byte [rdi+r9]
     mov byte [r10+r9], r15b
     cmp edx, r11d
-    jb L2514
-L2515:
+    jb L2538
+L2539:
     movzx esi, sil
     add dword [rbx+24], esi
     cmp r8, rax
-    je L2473
+    je L2497
     movzx r15d, byte [channelvelocities+rcx]
     and r15d, 127
     mov byte [channelvelocities+rcx], r15b
-    jmp L2513
-L2601:
+    jmp L2537
+L2625:
     mov edi, dword [rel queuedtime]
     or r13d, -64
     mov rsi, rbp
@@ -17082,9 +17140,9 @@ L2601:
     mov byte [rsp+28], r13b
     call WriteTime
     test eax, eax
-    jne L2473
+    jne L2497
     cmp dword [rbp+28], 1
-    jne L2473
+    jne L2497
     lea r13, [rsp+28]
     mov rcx, rbp
     mov edx, 1
@@ -17092,38 +17150,38 @@ L2601:
     mov rdi, r13
     call mem_fwrite.part.0
     cmp rax, 1
-    jne L2473
+    jne L2497
     and r14d, 127
     cmp dword [rbp+28], 1
     mov byte [rsp+28], r14b
-    jne L2473
+    jne L2497
     mov rcx, rbp
     mov edx, 1
     mov esi, 1
     mov rdi, r13
     call mem_fwrite.part.0
     cmp rax, 1
-    jne L2473
+    jne L2497
     add dword [rel tracksize], 2
     mov eax, dword [rbx+28]
-    jmp L2509
-L2599:
+    jmp L2533
+L2623:
     mov edi, 10
     mov r13d, 10
-    jmp L2495
-L2551:
+    jmp L2519
+L2575:
     mov r13d, 9
-    jmp L2545
-L2550:
+    jmp L2569
+L2574:
     mov r13d, 9
-    jmp L2543
-L2552:
+    jmp L2567
+L2576:
     mov r13d, 9
-    jmp L2518
-L2554:
+    jmp L2542
+L2578:
     mov r13d, 9
-    jmp L2548
-L2521:
+    jmp L2572
+L2545:
     mov edi, dword [rel queuedtime]
     or r13d, -32
     mov rsi, rbp
@@ -17131,9 +17189,9 @@ L2521:
     mov byte [rsp+28], r13b
     call WriteTime
     test eax, eax
-    jne L2473
+    jne L2497
     cmp dword [rbp+28], 1
-    jne L2473
+    jne L2497
     lea r15, [rsp+28]
     mov rcx, rbp
     mov edx, 1
@@ -17141,46 +17199,46 @@ L2521:
     mov rdi, r15
     call mem_fwrite.part.0
     cmp rax, 1
-    jne L2473
+    jne L2497
     movzx r13d, r14b
     sal r13d, 6
     mov eax, r13d
     and eax, 127
     cmp dword [rbp+28], 1
     mov byte [rsp+28], al
-    jne L2473
+    jne L2497
     mov rcx, rbp
     mov edx, 1
     mov esi, 1
     mov rdi, r15
     call mem_fwrite.part.0
     cmp rax, 1
-    jne L2473
+    jne L2497
     sar r13w, 7
     cmp dword [rbp+28], 1
     mov byte [rsp+28], r13b
-    jne L2473
+    jne L2497
     mov rcx, rbp
     mov edx, 1
     mov esi, 1
     mov rdi, r15
     call mem_fwrite.part.0
     sub rax, 1
-    jne L2473
-    jmp L2592
-L2582:
+    jne L2497
+    jmp L2616
+L2606:
     mov edi, LC152
     xor eax, eax
     call doom_printf
     mov eax, dword [rbx+28]
-    jmp L2509
-L2600:
+    jmp L2533
+L2624:
     mov esi, 18
-L2589:
+L2613:
     mov edi, LC153
     xor eax, eax
     call doom_printf
-    jmp L2473
+    jmp L2497
     align 16
 doom_wad_open:
     push rbx
@@ -17188,7 +17246,7 @@ doom_wad_open:
     lea rsi, [rsp+8]
     call os_read_file
     test rax, rax
-    je L2604
+    je L2628
     xor edx, edx
     mov esi, 1
     mov edi, 24
@@ -17201,7 +17259,7 @@ doom_wad_open:
     add rsp, 16
     pop rbx
     ret
-L2604:
+L2628:
     add rsp, 16
     xor eax, eax
     pop rbx
@@ -17225,39 +17283,39 @@ Z_CheckHeap:
     add rsi, 8
     mov rax, qword [rdx+24]
     cmp rsi, rax
-    je L2615
+    je L2639
     sub rsp, 8
-    jmp L2608
-L2611:
+    jmp L2632
+L2635:
     mov rcx, qword [rax+24]
     mov rdx, rax
     cmp rcx, rsi
-    je L2606
+    je L2630
     mov rax, rcx
-L2608:
+L2632:
     movsx rcx, dword [rdx]
     add rcx, rdx
     cmp rax, rcx
-    jne L2616
+    jne L2640
     cmp qword [rax+32], rdx
-    jne L2617
+    jne L2641
     cmp dword [rdx+16], 4
-    jne L2611
+    jne L2635
     cmp dword [rax+16], 4
-    jne L2611
+    jne L2635
     mov edi, LC172
     xor eax, eax
     call I_Error
-L2606:
+L2630:
     add rsp, 8
     ret
-L2615:
+L2639:
     ret
-L2617:
+L2641:
     mov edi, LC171
     xor eax, eax
     call I_Error
-L2616:
+L2640:
     mov edi, LC170
     xor eax, eax
     call I_Error
@@ -17276,21 +17334,21 @@ Z_ChangeTag2:
     cmp dword [rdi-20], 1919505
     mov eax, esi
     mov rsi, rdx
-    jne L2622
+    jne L2646
     cmp eax, 6
-    jle L2620
+    jle L2644
     cmp qword [rdi-32], 0
-    je L2623
-L2620:
+    je L2647
+L2644:
     mov dword [rdi-24], eax
     add rsp, 8
     ret
-L2623:
+L2647:
     mov edx, ecx
     mov edi, LC174
     xor eax, eax
     call I_Error
-L2622:
+L2646:
     mov edx, ecx
     mov edi, LC173
     xor eax, eax
@@ -17330,26 +17388,26 @@ W_AddFile:
     call W_OpenFile
     mov rbx, rax
     test rax, rax
-    je L2662
+    je L2686
     mov rdi, r12
     mov r13d, dword [rel numlumps]
     xor r15d, r15d
     call strlen
     lea r14, [r12-3+rax]
-L2631:
+L2655:
     movzx edi, byte [r14+r15]
     call tolower
     movzx edi, byte [LC176+r15]
     mov ebp, eax
     call tolower
     cmp ebp, eax
-    jne L2629
+    jne L2653
     test ebp, ebp
-    je L2663
+    je L2687
     add r15, 1
     cmp r15, -1
-    jne L2631
-L2630:
+    jne L2655
+L2654:
     mov rax, qword [rbx]
     lea rbp, [rsp+4]
     xor esi, esi
@@ -17362,14 +17420,14 @@ L2630:
     mov rdi, rbp
     call strncmp
     test eax, eax
-    je L2633
+    je L2657
     mov edx, 4
     mov esi, LC178
     mov rdi, rbp
     call strncmp
     test eax, eax
-    jne L2664
-L2633:
+    jne L2688
+L2657:
     mov r12d, dword [rsp+8]
     xor edx, edx
     mov esi, 1
@@ -17385,7 +17443,7 @@ L2633:
     mov rdx, rbp
     call qword [rax+16]
     add r13d, dword [rsp+8]
-L2632:
+L2656:
     movsx rax, r13d
     mov r12d, dword [rel numlumps]
     lea rdi, [rax+rax*4]
@@ -17395,16 +17453,16 @@ L2632:
     call os_alloc
     mov r14, rax
     test rax, rax
-    je L2634
+    je L2658
     mov eax, dword [rel numlumps]
     mov rdi, qword [rel lumpinfo]
     test eax, eax
-    je L2635
+    je L2659
     movabs rsi, -3689348814741910323
     mov rax, r14
     xor ecx, ecx
-    jmp L2636
-L2640:
+    jmp L2660
+L2664:
     mov r8, rax
     sub r8, r14
     lea rdx, [rdi+r8]
@@ -17416,17 +17474,17 @@ L2640:
     mov qword [rax+32], rdx
     mov rdx, qword [rax+24]
     test rdx, rdx
-    je L2637
+    je L2661
     cmp dword [rdx-20], 1919505
     lea rdi, [rax+24]
-    jne L2665
+    jne L2689
     mov qword [rdx-32], rdi
     mov qword [rax+24], rdx
-L2637:
+L2661:
     mov rdi, qword [rel lumpinfo]
     mov rdx, qword [rdi+32+r8]
     test rdx, rdx
-    je L2639
+    je L2663
     sub rdx, rdi
     sar rdx, 3
     imul rdx, rsi
@@ -17434,15 +17492,15 @@ L2637:
     lea rdx, [rdx+rdx*4]
     lea rdx, [r14+rdx*8]
     mov qword [rax+32], rdx
-L2639:
+L2663:
     add ecx, 1
     add rax, 40
     cmp ecx, dword [rel numlumps]
-    jnb L2635
-L2636:
+    jnb L2659
+L2660:
     cmp ecx, r13d
-    jne L2640
-L2635:
+    jne L2664
+L2659:
     call os_free
     movsx rax, r12d
     mov qword [rel lumpinfo], r14
@@ -17451,8 +17509,8 @@ L2635:
     lea rcx, [r14+rax*8]
     lea r14, [rbp+8]
     cmp r12d, r13d
-    jnb L2644
-L2643:
+    jnb L2668
+L2667:
     mov rax, qword [r14-8]
     mov qword [rcx+8], rbx
     mov rsi, r14
@@ -17466,16 +17524,16 @@ L2643:
     mov rcx, rax
     add rcx, 40
     cmp r12d, dword [rel numlumps]
-    jb L2643
-L2644:
+    jb L2667
+L2668:
     mov rdi, rbp
     call Z_Free
     mov rdi, qword [rel lumphash]
     test rdi, rdi
-    je L2624
+    je L2648
     call Z_Free
     mov qword [rel lumphash], 0
-L2624:
+L2648:
     add rsp, 24
     mov rax, rbx
     pop rbx
@@ -17485,10 +17543,10 @@ L2624:
     pop r14
     pop r15
     ret
-L2663:
+L2687:
     cmp ebp, eax
-    je L2630
-L2629:
+    je L2654
+L2653:
     xor edx, edx
     mov esi, 1
     mov edi, 16
@@ -17501,22 +17559,22 @@ L2629:
     lea rsi, [rbp+8]
     mov dword [rbp+4], eax
     call M_ExtractFileBase
-    jmp L2632
-L2662:
+    jmp L2656
+L2686:
     mov rsi, r12
     mov edi, LC175
     xor eax, eax
     call doom_printf
-    jmp L2624
-L2665:
+    jmp L2648
+L2689:
     mov edi, LC181
     xor eax, eax
     call I_Error
-L2634:
+L2658:
     mov edi, LC180
     xor eax, eax
     call I_Error
-L2664:
+L2688:
     mov rsi, r12
     mov edi, LC179
     xor eax, eax
@@ -17538,21 +17596,21 @@ W_ParseCommandLine:
     call M_CheckParmWithArgs
     xor edx, edx
     test eax, eax
-    je L2666
+    je L2690
     lea ebp, [rax+1]
     movsx r12, ebp
     sal r12, 3
     cmp ebp, dword [rel myargc]
-    jne L2669
-L2670:
+    jne L2693
+L2694:
     mov edx, 1
-L2666:
+L2690:
     pop rbx
     mov eax, edx
     pop rbp
     pop r12
     ret
-L2671:
+L2695:
     call D_TryFindWADByName
     mov edi, LC183
     add ebp, 1
@@ -17564,13 +17622,13 @@ L2671:
     mov rdi, rbx
     call W_AddFile
     cmp dword [rel myargc], ebp
-    je L2670
-L2669:
+    je L2694
+L2693:
     mov rax, qword [rel myargv]
     mov rdi, qword [rax+r12]
     cmp byte [rdi], 45
-    jne L2671
-    jmp L2670
+    jne L2695
+    jmp L2694
     section .rodata
 LC184:
     db `-mb`, 0
@@ -17593,21 +17651,21 @@ I_ZoneBase:
     push rbx
     call M_CheckParmWithArgs
     test eax, eax
-    jg L2684
+    jg L2708
     mov edi, 6291456
     mov eax, 6291456
     mov ebx, 6
-L2678:
+L2702:
     mov dword [r12], eax
     call os_alloc
     mov rbp, rax
     test rax, rax
-    jne L2682
+    jne L2706
     lea esi, [rbx-1]
     mov edi, LC186
     xor eax, eax
     call I_Error
-L2682:
+L2706:
     mov edx, dword [r12]
     mov rsi, rax
     mov edi, LC185
@@ -17618,7 +17676,7 @@ L2682:
     pop rbp
     pop r12
     ret
-L2684:
+L2708:
     mov rdx, qword [rel myargv]
     cdqe
     mov rdi, qword [rdx+8+rax*8]
@@ -17629,7 +17687,7 @@ L2684:
     movsx rdi, eax
     test rdi, rdi
     cmove rdi, rdx
-    jmp L2678
+    jmp L2702
     align 16
     global Z_Init
 Z_Init:
@@ -17671,7 +17729,7 @@ W_ReadLump:
     mov ebx, edi
     sub rsp, 8
     cmp edi, dword [rel numlumps]
-    jnb L2691
+    jnb L2715
     mov eax, edi
     mov rdx, rsi
     lea rcx, [rax+rax*4]
@@ -17685,17 +17743,17 @@ W_ReadLump:
     mov edx, dword [rbp+20]
     mov esi, eax
     cmp edx, eax
-    jg L2692
+    jg L2716
     add rsp, 8
     pop rbx
     pop rbp
     ret
-L2691:
+L2715:
     mov esi, edi
     xor eax, eax
     mov edi, LC187
     call I_Error
-L2692:
+L2716:
     mov ecx, ebx
     mov edi, LC188
     xor eax, eax
@@ -17709,10 +17767,10 @@ LC189:
     global S_SetSfxVolume
 S_SetSfxVolume:
     cmp edi, 127
-    ja L2698
+    ja L2722
     mov dword [rel snd_SfxVolume], edi
     ret
-L2698:
+L2722:
     push rax
     mov esi, edi
     xor eax, eax
@@ -17722,11 +17780,11 @@ L2698:
     global Z_ChangeUser
 Z_ChangeUser:
     cmp dword [rdi-20], 1919505
-    jne L2704
+    jne L2728
     mov qword [rdi-32], rsi
     mov qword [rsi], rdi
     ret
-L2704:
+L2728:
     push rax
     mov edi, LC181
     xor eax, eax
@@ -17742,12 +17800,12 @@ ST_loadData:
     mov edi, LC190
     call W_CheckNumForName
     test eax, eax
-    js L2708
+    js L2732
     mov dword [rel lu_palette], eax
     mov edi, ST_loadCallback
     add rsp, 8
     jmp ST_loadUnloadGraphics
-L2708:
+L2732:
     mov esi, LC190
     mov edi, LC162
     xor eax, eax
@@ -17759,7 +17817,7 @@ ST_Init:
     mov edi, LC190
     call W_CheckNumForName
     test eax, eax
-    js L2712
+    js L2736
     mov edi, ST_loadCallback
     mov dword [rel lu_palette], eax
     call ST_loadUnloadGraphics
@@ -17770,7 +17828,7 @@ ST_Init:
     mov qword [rel st_backing_screen], rax
     add rsp, 8
     ret
-L2712:
+L2736:
     mov esi, LC190
     mov edi, LC162
     xor eax, eax
@@ -17785,25 +17843,25 @@ S_Init:
     sub rsp, 8
     mov rax, qword [rel sound_module]
     test rax, rax
-    je L2714
+    je L2738
     mov rax, qword [rax+80]
     test rax, rax
-    je L2714
+    je L2738
     mov esi, 109
     mov edi, S_sfx
     call rax
-L2714:
+L2738:
     cmp ebx, 127
-    ja L2738
+    ja L2762
     mov dword [rel snd_SfxVolume], ebx
     cmp ebp, 127
-    ja L2739
+    ja L2763
     mov rax, qword [rel music_module]
     test rax, rax
-    je L2717
+    je L2741
     mov edi, ebp
     call qword [rax+32]
-L2717:
+L2741:
     mov eax, dword [rel snd_channels]
     xor edx, edx
     mov esi, 1
@@ -17813,31 +17871,31 @@ L2717:
     movsx rdx, dword [rel snd_channels]
     mov qword [rel channels], rax
     test edx, edx
-    jle L2718
+    jle L2742
     lea rcx, [rdx+rdx*2]
     lea rdx, [rax+rcx*8]
     and ecx, 1
-    je L2719
+    je L2743
     mov qword [rax], 0
     add rax, 24
     cmp rax, rdx
-    je L2718
-L2719:
+    je L2742
+L2743:
     mov qword [rax], 0
     add rax, 48
     mov qword [rax-24], 0
     cmp rax, rdx
-    jne L2719
-L2718:
+    jne L2743
+L2742:
     mov dword [rel mus_paused], 0
     mov eax, S_sfx+104
     mov edx, S_sfx+7016
-L2720:
+L2744:
     mov qword [rax], -1
     sub rax, -128
     mov qword [rax-64], -1
     cmp rdx, rax
-    jne L2720
+    jne L2744
     mov edi, 24
     call os_alloc
     mov rdx, qword [rel exit_funcs]
@@ -17849,12 +17907,12 @@ L2720:
     pop rbx
     pop rbp
     ret
-L2739:
+L2763:
     mov esi, ebp
     mov edi, LC158
     xor eax, eax
     call I_Error
-L2738:
+L2762:
     mov esi, ebx
     mov edi, LC189
     xor eax, eax
@@ -17872,37 +17930,37 @@ LC192:
 W_ReleaseLumpNum:
     sub rsp, 8
     cmp edi, dword [rel numlumps]
-    jnb L2746
+    jnb L2770
     mov rax, qword [rel lumpinfo]
     movsx rdi, edi
     lea rdx, [rdi+rdi*4]
     lea rax, [rax+rdx*8]
     mov rdx, qword [rax+8]
     cmp qword [rdx+8], 0
-    je L2747
+    je L2771
     add rsp, 8
     ret
-L2747:
+L2771:
     mov rax, qword [rax+24]
     cmp dword [rax-20], 1919505
-    jne L2748
+    jne L2772
     cmp qword [rax-32], 0
-    je L2749
+    je L2773
     mov dword [rax-24], 8
     add rsp, 8
     ret
-L2746:
+L2770:
     mov esi, edi
     xor eax, eax
     mov edi, LC191
     call I_Error
-L2749:
+L2773:
     mov edx, 461
     mov esi, LC192
     mov edi, LC174
     xor eax, eax
     call I_Error
-L2748:
+L2772:
     mov edx, 461
     mov esi, LC192
     mov edi, LC173
@@ -17914,33 +17972,33 @@ S_StopMusic:
     push rbx
     mov rbx, qword [rel mus_playing]
     test rbx, rbx
-    je L2750
+    je L2774
     mov eax, dword [rel mus_paused]
     test eax, eax
-    je L2752
+    je L2776
     mov rax, qword [rel music_module]
     test rax, rax
-    je L2755
+    je L2779
     call qword [rax+48]
-L2752:
+L2776:
     mov rax, qword [rel music_module]
     test rax, rax
-    je L2766
+    je L2790
     call qword [rax+80]
     mov rbx, qword [rel mus_playing]
     mov rax, qword [rel music_module]
     mov rdi, qword [rbx+24]
     test rax, rax
-    je L2755
+    je L2779
     call qword [rax+64]
-L2766:
+L2790:
     mov rbx, qword [rel mus_playing]
-L2755:
+L2779:
     mov edi, dword [rbx+8]
     call W_ReleaseLumpNum
     mov qword [rbx+16], 0
     mov qword [rel mus_playing], 0
-L2750:
+L2774:
     pop rbx
     ret
     align 16
@@ -17948,116 +18006,6 @@ L2750:
 W_ReleaseLumpName:
     push rbx
     mov rbx, rdi
-    call W_CheckNumForName
-    test eax, eax
-    js L2774
-    cmp eax, dword [rel numlumps]
-    jnb L2775
-    cdqe
-    lea rdx, [rax+rax*4]
-    mov rax, qword [rel lumpinfo]
-    lea rax, [rax+rdx*8]
-    mov rdx, qword [rax+8]
-    cmp qword [rdx+8], 0
-    je L2776
-    pop rbx
-    ret
-L2776:
-    mov rax, qword [rax+24]
-    cmp dword [rax-20], 1919505
-    jne L2777
-    cmp qword [rax-32], 0
-    je L2778
-    mov dword [rax-24], 8
-    pop rbx
-    ret
-L2774:
-    mov rsi, rbx
-    mov edi, LC162
-    xor eax, eax
-    call I_Error
-L2775:
-    mov esi, eax
-    mov edi, LC191
-    xor eax, eax
-    call I_Error
-L2778:
-    mov edx, 461
-    mov esi, LC192
-    mov edi, LC174
-    xor eax, eax
-    call I_Error
-L2777:
-    mov edx, 461
-    mov esi, LC192
-    mov edi, LC173
-    xor eax, eax
-    call I_Error
-    align 16
-ST_unloadCallback:
-    push rbp
-    mov rbp, rsi
-    push rbx
-    mov rbx, rdi
-    sub rsp, 8
-    call W_CheckNumForName
-    test eax, eax
-    js L2786
-    cmp eax, dword [rel numlumps]
-    jnb L2787
-    cdqe
-    lea rdx, [rax+rax*4]
-    mov rax, qword [rel lumpinfo]
-    lea rax, [rax+rdx*8]
-    mov rdx, qword [rax+8]
-    cmp qword [rdx+8], 0
-    je L2788
-    mov qword [rbp+0], 0
-    add rsp, 8
-    pop rbx
-    pop rbp
-    ret
-L2788:
-    mov rax, qword [rax+24]
-    cmp dword [rax-20], 1919505
-    jne L2789
-    cmp qword [rax-32], 0
-    je L2790
-    mov dword [rax-24], 8
-    mov qword [rbp+0], 0
-    add rsp, 8
-    pop rbx
-    pop rbp
-    ret
-L2786:
-    mov rsi, rbx
-    mov edi, LC162
-    xor eax, eax
-    call I_Error
-L2787:
-    mov esi, eax
-    mov edi, LC191
-    xor eax, eax
-    call I_Error
-L2790:
-    mov edx, 461
-    mov esi, LC192
-    mov edi, LC174
-    xor eax, eax
-    call I_Error
-L2789:
-    mov edx, 461
-    mov esi, LC192
-    mov edi, LC173
-    xor eax, eax
-    call I_Error
-    align 16
-WI_unloadCallback:
-    push rbp
-    mov rbp, rsi
-    push rbx
-    mov rbx, rdi
-    sub rsp, 8
     call W_CheckNumForName
     test eax, eax
     js L2798
@@ -18070,10 +18018,7 @@ WI_unloadCallback:
     mov rdx, qword [rax+8]
     cmp qword [rdx+8], 0
     je L2800
-    mov qword [rbp+0], 0
-    add rsp, 8
     pop rbx
-    pop rbp
     ret
 L2800:
     mov rax, qword [rax+24]
@@ -18082,10 +18027,7 @@ L2800:
     cmp qword [rax-32], 0
     je L2802
     mov dword [rax-24], 8
-    mov qword [rbp+0], 0
-    add rsp, 8
     pop rbx
-    pop rbp
     ret
 L2798:
     mov rsi, rbx
@@ -18109,6 +18051,122 @@ L2801:
     mov edi, LC173
     xor eax, eax
     call I_Error
+    align 16
+ST_unloadCallback:
+    push rbp
+    mov rbp, rsi
+    push rbx
+    mov rbx, rdi
+    sub rsp, 8
+    call W_CheckNumForName
+    test eax, eax
+    js L2810
+    cmp eax, dword [rel numlumps]
+    jnb L2811
+    cdqe
+    lea rdx, [rax+rax*4]
+    mov rax, qword [rel lumpinfo]
+    lea rax, [rax+rdx*8]
+    mov rdx, qword [rax+8]
+    cmp qword [rdx+8], 0
+    je L2812
+    mov qword [rbp+0], 0
+    add rsp, 8
+    pop rbx
+    pop rbp
+    ret
+L2812:
+    mov rax, qword [rax+24]
+    cmp dword [rax-20], 1919505
+    jne L2813
+    cmp qword [rax-32], 0
+    je L2814
+    mov dword [rax-24], 8
+    mov qword [rbp+0], 0
+    add rsp, 8
+    pop rbx
+    pop rbp
+    ret
+L2810:
+    mov rsi, rbx
+    mov edi, LC162
+    xor eax, eax
+    call I_Error
+L2811:
+    mov esi, eax
+    mov edi, LC191
+    xor eax, eax
+    call I_Error
+L2814:
+    mov edx, 461
+    mov esi, LC192
+    mov edi, LC174
+    xor eax, eax
+    call I_Error
+L2813:
+    mov edx, 461
+    mov esi, LC192
+    mov edi, LC173
+    xor eax, eax
+    call I_Error
+    align 16
+WI_unloadCallback:
+    push rbp
+    mov rbp, rsi
+    push rbx
+    mov rbx, rdi
+    sub rsp, 8
+    call W_CheckNumForName
+    test eax, eax
+    js L2822
+    cmp eax, dword [rel numlumps]
+    jnb L2823
+    cdqe
+    lea rdx, [rax+rax*4]
+    mov rax, qword [rel lumpinfo]
+    lea rax, [rax+rdx*8]
+    mov rdx, qword [rax+8]
+    cmp qword [rdx+8], 0
+    je L2824
+    mov qword [rbp+0], 0
+    add rsp, 8
+    pop rbx
+    pop rbp
+    ret
+L2824:
+    mov rax, qword [rax+24]
+    cmp dword [rax-20], 1919505
+    jne L2825
+    cmp qword [rax-32], 0
+    je L2826
+    mov dword [rax-24], 8
+    mov qword [rbp+0], 0
+    add rsp, 8
+    pop rbx
+    pop rbp
+    ret
+L2822:
+    mov rsi, rbx
+    mov edi, LC162
+    xor eax, eax
+    call I_Error
+L2823:
+    mov esi, eax
+    mov edi, LC191
+    xor eax, eax
+    call I_Error
+L2826:
+    mov edx, 461
+    mov esi, LC192
+    mov edi, LC174
+    xor eax, eax
+    call I_Error
+L2825:
+    mov edx, 461
+    mov esi, LC192
+    mov edi, LC173
+    xor eax, eax
+    call I_Error
     section .rodata
     align 8, db 0
 LC193:
@@ -18122,7 +18180,7 @@ W_CacheLumpNum:
     mov ebx, edi
     sub rsp, 8
     cmp edi, dword [rel numlumps]
-    jnb L2811
+    jnb L2835
     mov rdx, qword [rel lumpinfo]
     movsx rax, edi
     lea rax, [rax+rax*4]
@@ -18130,31 +18188,31 @@ W_CacheLumpNum:
     mov rax, qword [rbp+8]
     mov rax, qword [rax+8]
     test rax, rax
-    je L2805
+    je L2829
     movsx rdx, dword [rbp+16]
     add rax, rdx
-L2803:
+L2827:
     add rsp, 8
     pop rbx
     pop rbp
     ret
-L2805:
+L2829:
     mov rax, qword [rbp+24]
     test rax, rax
-    je L2807
+    je L2831
     cmp dword [rax-20], 1919505
-    jne L2812
+    jne L2836
     cmp esi, 6
-    jle L2809
+    jle L2833
     cmp qword [rax-32], 0
-    je L2813
-L2809:
+    je L2837
+L2833:
     mov dword [rax-24], esi
     add rsp, 8
     pop rbx
     pop rbp
     ret
-L2807:
+L2831:
     mov eax, edi
     lea rcx, [rbp+24]
     lea rax, [rax+rax*4]
@@ -18166,19 +18224,19 @@ L2807:
     mov rsi, rax
     call W_ReadLump
     mov rax, qword [rbp+24]
-    jmp L2803
-L2811:
+    jmp L2827
+L2835:
     mov esi, edi
     xor eax, eax
     mov edi, LC193
     call I_Error
-L2812:
+L2836:
     mov edx, 410
     mov esi, LC192
     mov edi, LC173
     xor eax, eax
     call I_Error
-L2813:
+L2837:
     mov edx, 410
     mov esi, LC192
     mov edi, LC174
@@ -18202,24 +18260,24 @@ S_ChangeMusic:
     movsx rbx, edi
     sub rsp, 16
     cmp ebx, 29
-    je L2829
+    je L2853
     lea eax, [rbx-1]
     cmp eax, 66
-    ja L2818
+    ja L2842
     movsx rbp, ebx
     sal rbp, 5
-L2817:
+L2841:
     add rbp, S_music
     cmp qword [rel mus_playing], rbp
-    je L2814
+    je L2838
     call S_StopMusic
     mov rax, rbx
     sal rax, 5
     lea r14, [S_music+rax]
     mov edi, dword [r14+8]
     test edi, edi
-    je L2830
-L2820:
+    je L2854
+L2844:
     sal rbx, 5
     mov esi, 1
     call W_CacheLumpNum
@@ -18228,25 +18286,25 @@ L2820:
     cmp esi, dword [rel numlumps]
     mov qword [rbx+16], rax
     mov rdi, rax
-    jnb L2831
+    jnb L2855
     mov rax, qword [rel lumpinfo]
     lea rdx, [rsi+rsi*4]
     lea rdx, [rax+rdx*8]
     mov rax, qword [rel music_module]
     mov esi, dword [rdx+20]
     test rax, rax
-    je L2832
+    je L2856
     call qword [rax+56]
     mov rdi, rax
     mov rax, qword [rel music_module]
     mov qword [rbx+24], rdi
     test rax, rax
-    je L2824
+    je L2848
     mov esi, r12d
     call qword [rax+72]
-L2824:
+L2848:
     mov qword [rel mus_playing], rbp
-L2814:
+L2838:
     add rsp, 16
     pop rbx
     pop rbp
@@ -18254,7 +18312,7 @@ L2814:
     pop r13
     pop r14
     ret
-L2830:
+L2854:
     lea r13, [rsp+7]
     mov edx, LC195
     mov esi, 9
@@ -18266,31 +18324,31 @@ L2830:
     call W_CheckNumForName
     mov edi, eax
     test eax, eax
-    js L2833
+    js L2857
     mov dword [r14+8], eax
-    jmp L2820
-L2829:
+    jmp L2844
+L2853:
     mov eax, dword [rel snd_musicdevice]
     mov ebp, 928
     sub eax, 2
     cmp eax, 1
-    ja L2817
+    ja L2841
     mov ebp, 1024
     mov ebx, 32
-    jmp L2817
-L2832:
+    jmp L2841
+L2856:
     mov qword [rbx+24], 0
-    jmp L2824
-L2818:
+    jmp L2848
+L2842:
     mov esi, ebx
     mov edi, LC194
     xor eax, eax
     call I_Error
-L2831:
+L2855:
     mov edi, LC163
     xor eax, eax
     call I_Error
-L2833:
+L2857:
     mov rsi, r13
     mov edi, LC162
     xor eax, eax
@@ -18305,24 +18363,24 @@ S_Start:
     sub rsp, 56
     mov eax, dword [rel snd_channels]
     test eax, eax
-    jle L2839
-L2835:
+    jle L2863
+L2859:
     mov rax, qword [rel channels]
     cmp qword [rax+rbp], 0
-    je L2838
+    je L2862
     mov edi, ebx
     call S_StopChannel
-L2838:
+L2862:
     add ebx, 1
     add rbp, 24
     cmp dword [rel snd_channels], ebx
-    jg L2835
-L2839:
+    jg L2859
+L2863:
     mov eax, dword [rel gamemap]
     cmp dword [rel gamemode], 2
     mov dword [rel mus_paused], 0
     lea edi, [rax+32]
-    je L2840
+    je L2864
     movdqa xmm0, oword [rel LC196]
     mov edx, dword [rel gameepisode]
     mov dword [rsp+32], 9
@@ -18330,16 +18388,16 @@ L2839:
     movdqa xmm0, oword [rel LC197]
     movaps oword [rsp+16], xmm0
     cmp edx, 3
-    jg L2841
+    jg L2865
     lea edx, [rdx-8+rdx*8]
     lea edi, [rax-1+rdx]
-L2840:
+L2864:
     add rsp, 56
     mov esi, 1
     pop rbx
     pop rbp
     jmp S_ChangeMusic
-L2841:
+L2865:
     sub eax, 1
     mov esi, 1
     cdqe
@@ -18393,90 +18451,90 @@ ST_Responder:
     sub rsp, 24
     mov eax, dword [rdi]
     cmp eax, 1
-    je L2923
+    je L2947
     or eax, dword [rel netgame]
-    jne L2854
+    jne L2878
     cmp dword [rel gameskill], 4
-    jne L2856
-L2888:
+    jne L2880
+L2912:
     movsx esi, byte [rbx+8]
     mov edi, cheat_clev
     call cht_CheckCheat
     test eax, eax
-    jne L2924
-L2854:
+    jne L2948
+L2878:
     add rsp, 24
     xor eax, eax
     pop rbx
     pop rbp
     ret
-L2923:
+L2947:
     mov eax, dword [rdi+4]
     mov edx, eax
     xor dx, dx
     cmp edx, 1634533376
-    jne L2854
+    jne L2878
     cmp eax, 1634559232
-    jne L2854
+    jne L2878
     mov dword [rel st_firsttime], 1
-    jmp L2854
-L2856:
+    jmp L2878
+L2880:
     movsx esi, byte [rdi+8]
     mov edi, cheat_god
     call cht_CheckCheat
     test eax, eax
-    je L2858
+    je L2882
     mov rax, qword [rel plyr]
     mov edx, dword [rax+208]
     xor edx, 2
     mov dword [rax+208], edx
     and edx, 2
-    je L2859
+    je L2883
     mov rdx, qword [rax]
     test rdx, rdx
-    je L2860
+    je L2884
     mov dword [rdx+164], 100
-L2860:
+L2884:
     mov dword [rax+44], 100
     mov qword [rax+232], LC198
-L2861:
+L2885:
     xor ebp, ebp
-L2864:
+L2888:
     lea rax, [rbp+0+rbp*8]
     movsx esi, byte [rbx+8]
     lea rdi, [cheat_powerup+rax*8]
     call cht_CheckCheat
     test eax, eax
-    je L2880
+    je L2904
     mov rdi, qword [rel plyr]
     movsx rax, ebp
     mov esi, ebp
     lea rdx, [rax+12]
     mov ecx, dword [rdi+56+rax*4]
     test ecx, ecx
-    je L2925
+    je L2949
     cmp rbp, 1
-    je L2883
+    je L2907
     mov dword [rdi+8+rdx*4], 1
-L2882:
+L2906:
     mov qword [rdi+232], LC209
-L2880:
+L2904:
     add rbp, 1
     cmp rbp, 6
-    jne L2864
+    jne L2888
     movsx esi, byte [rbx+8]
     mov edi, cheat_powerup+432
     call cht_CheckCheat
     test eax, eax
-    je L2885
+    je L2909
     mov rax, qword [rel plyr]
     mov qword [rax+232], LC210
-L2886:
+L2910:
     mov eax, dword [rel netgame]
     test eax, eax
-    jne L2854
-    jmp L2888
-L2924:
+    jne L2878
+    jmp L2912
+L2948:
     lea rsi, [rsp+13]
     mov edi, cheat_clev
     call cht_GetParam
@@ -18487,102 +18545,102 @@ L2924:
     mov ecx, esi
     sub esi, 48
     cmp eax, 2
-    je L2926
+    je L2950
     sub edx, 48
     cmp edi, 9
-    je L2897
+    je L2921
     cmp cl, 48
-    jle L2854
-L2893:
+    jle L2878
+L2917:
     test edx, edx
-    jle L2854
+    jle L2878
     cmp eax, 3
-    je L2927
+    je L2951
     cmp eax, 1
-    jne L2896
+    jne L2920
     cmp esi, 3
-    jg L2854
-L2921:
+    jg L2878
+L2945:
     cmp edx, 9
-    jg L2854
-L2895:
+    jg L2878
+L2919:
     mov rax, qword [rel plyr]
     mov edi, dword [rel gameskill]
     mov qword [rax+232], LC213
     call G_DeferedInitNew
-    jmp L2854
-L2859:
+    jmp L2878
+L2883:
     mov qword [rax+232], LC199
-    jmp L2861
-L2925:
+    jmp L2885
+L2949:
     call P_GivePower
     mov rdi, qword [rel plyr]
-    jmp L2882
-L2883:
+    jmp L2906
+L2907:
     mov dword [rdi+60], 0
     mov ebp, 2
     mov qword [rdi+232], LC209
-    jmp L2864
-L2858:
+    jmp L2888
+L2882:
     movsx esi, byte [rbx+8]
     mov edi, cheat_ammonokey
     call cht_CheckCheat
     test eax, eax
-    je L2862
+    je L2886
     mov rdx, qword [rel plyr]
     mov rax, qword [rel LC200]
     lea rcx, [rdx+168]
     mov qword [rdx+48], rax
     lea rax, [rdx+132]
-L2863:
+L2887:
     mov dword [rax], 1
     add rax, 12
     mov dword [rax-8], 1
     mov dword [rax-4], 1
     cmp rcx, rax
-    jne L2863
+    jne L2887
     movdqu xmm0, oword [rdx+184]
     mov qword [rdx+232], LC201
     movups oword [rdx+168], xmm0
-    jmp L2861
-L2885:
+    jmp L2885
+L2909:
     movsx esi, byte [rbx+8]
     mov edi, cheat_choppers
     call cht_CheckCheat
     test eax, eax
-    je L2887
+    je L2911
     mov rax, qword [rel plyr]
     mov dword [rax+160], 1
     mov dword [rax+56], 1
     mov qword [rax+232], LC211
-    jmp L2886
-L2926:
+    jmp L2910
+L2950:
     lea eax, [rsi+rsi*4]
     lea edx, [rdx-48+rax*2]
     test edx, edx
-    jle L2854
+    jle L2878
     cmp edx, 40
-    jg L2854
+    jg L2878
     mov esi, 1
-    jmp L2895
-L2862:
+    jmp L2919
+L2886:
     movsx esi, byte [rbx+8]
     mov edi, cheat_ammo
     call cht_CheckCheat
     test eax, eax
-    je L2865
+    je L2889
     mov rdx, qword [rel plyr]
     mov rax, qword [rel LC200]
     lea rcx, [rdx+168]
     mov qword [rdx+48], rax
     lea rax, [rdx+132]
-L2866:
+L2890:
     mov dword [rax], 1
     add rax, 12
     mov dword [rax-8], 1
     mov dword [rax-4], 1
     cmp rcx, rax
-    jne L2866
+    jne L2890
     movdqu xmm0, oword [rdx+184]
     mov eax, 1
     mov qword [rdx+232], LC204
@@ -18592,13 +18650,13 @@ L2866:
     pshufd xmm0, xmm0, 0
     movups oword [rdx+80], xmm0
     mov qword [rdx+96], rax
-    jmp L2861
-L2887:
+    jmp L2885
+L2911:
     movsx esi, byte [rbx+8]
     mov edi, cheat_mypos
     call cht_CheckCheat
     test eax, eax
-    je L2886
+    je L2910
     movsx rax, dword [rel consoleplayer]
     mov esi, 52
     mov edi, buf.20
@@ -18613,44 +18671,44 @@ L2887:
     call M_snprintf
     mov rax, qword [rel plyr]
     mov qword [rax+232], buf.20
-    jmp L2886
-L2897:
+    jmp L2910
+L2921:
     mov esi, 1
-    jmp L2893
-L2927:
+    jmp L2917
+L2951:
     cmp esi, 4
-    jle L2921
-    jmp L2854
-L2865:
+    jle L2945
+    jmp L2878
+L2889:
     movsx esi, byte [rbx+8]
     mov edi, cheat_mus
     call cht_CheckCheat
     test eax, eax
-    jne L2928
+    jne L2952
     test dword [rel gamemission], -5
-    je L2873
-L2879:
+    je L2897
+L2903:
     movsx esi, byte [rbx+8]
     mov edi, cheat_commercial_noclip
     call cht_CheckCheat
     test eax, eax
-    je L2861
-L2874:
+    je L2885
+L2898:
     mov rax, qword [rel plyr]
     mov edx, dword [rax+208]
     xor edx, 1
     mov dword [rax+208], edx
     and dl, 1
-    je L2929
+    je L2953
     mov qword [rax+232], LC207
-    jmp L2861
-L2896:
+    jmp L2885
+L2920:
     test eax, eax
-    jne L2895
+    jne L2919
     cmp esi, 1
-    je L2921
-    jmp L2854
-L2928:
+    je L2945
+    jmp L2878
+L2952:
     mov rax, qword [rel plyr]
     lea rsi, [rsp+13]
     mov edi, cheat_mus
@@ -18659,45 +18717,45 @@ L2928:
     movsx eax, byte [rsp+13]
     movsx edx, byte [rsp+14]
     cmp dword [rel gamemode], 2
-    je L2868
+    je L2892
     cmp dword [rel gameversion], 5
-    jbe L2868
+    jbe L2892
     sub eax, 49
     lea eax, [rax+rax*8]
     lea ecx, [rax+rdx]
     cmp ecx, 80
-    jle L2872
-L2918:
+    jle L2896
+L2942:
     mov rax, qword [rel plyr]
     mov qword [rax+232], LC206
-    jmp L2861
-L2873:
+    jmp L2885
+L2897:
     movsx esi, byte [rbx+8]
     mov edi, cheat_noclip
     call cht_CheckCheat
     test eax, eax
-    jne L2874
+    jne L2898
     test dword [rel gamemission], -5
-    je L2861
-    jmp L2879
-L2868:
+    je L2885
+    jmp L2903
+L2892:
     sub eax, 48
     imul eax, eax, 10
     lea ecx, [rax+rdx]
     cmp ecx, 83
-    jg L2918
+    jg L2942
     lea edi, [rax-16+rdx]
     mov esi, 1
     call S_ChangeMusic
-    jmp L2861
-L2929:
+    jmp L2885
+L2953:
     mov qword [rax+232], LC208
-    jmp L2861
-L2872:
+    jmp L2885
+L2896:
     lea edi, [rax-48+rdx]
     mov esi, 1
     call S_ChangeMusic
-    jmp L2861
+    jmp L2885
     align 16
     global WI_Ticker
 WI_Ticker:
@@ -18706,62 +18764,62 @@ WI_Ticker:
     add eax, 1
     mov dword [rel bcnt], eax
     cmp eax, 1
-    je L2941
-L2931:
+    je L2965
+L2955:
     call WI_checkForAccelerate
     mov eax, dword [rel state]
     test eax, eax
-    je L2933
-L2944:
+    je L2957
+L2968:
     cmp eax, 1
-    je L2934
+    je L2958
     cmp eax, -1
-    jne L2930
+    jne L2954
     cmp dword [rel gamemode], 2
-    je L2939
+    je L2963
     mov rax, qword [rel wbs]
     cmp dword [rax], 2
-    jg L2939
+    jg L2963
     call WI_updateAnimatedBack.part.0
-L2939:
+L2963:
     sub dword [rel cnt], 1
-    je L2942
-L2930:
+    je L2966
+L2954:
     add rsp, 8
     ret
-L2934:
+L2958:
     add rsp, 8
     jmp WI_updateShowNextLoc
-L2941:
+L2965:
     cmp dword [rel gamemode], 2
     mov esi, 1
-    je L2943
+    je L2967
     mov edi, 28
     call S_ChangeMusic
     call WI_checkForAccelerate
     mov eax, dword [rel state]
     test eax, eax
-    jne L2944
-L2933:
+    jne L2968
+L2957:
     mov edx, dword [rel deathmatch]
     test edx, edx
-    jne L2945
+    jne L2969
     mov eax, dword [rel netgame]
     test eax, eax
-    je L2938
+    je L2962
     add rsp, 8
     jmp WI_updateNetgameStats
-L2945:
+L2969:
     add rsp, 8
     jmp WI_updateDeathmatchStats
-L2942:
+L2966:
     add rsp, 8
     jmp G_WorldDone
-L2943:
+L2967:
     mov edi, 67
     call S_ChangeMusic
-    jmp L2931
-L2938:
+    jmp L2955
+L2962:
     add rsp, 8
     jmp WI_updateStats
     align 16
@@ -18776,10 +18834,10 @@ F_StartFinale:
     mov dword [rel viewactive], 0
     mov dword [rel automapactive], 0
     test dword [rel gamemission], -5
-    jne L2947
+    jne L2971
     mov edi, 31
     call S_ChangeMusic
-L2949:
+L2973:
     mov esi, dword [rel gameversion]
     mov edx, dword [rel gamemission]
     mov eax, textscreens
@@ -18787,106 +18845,106 @@ L2949:
     mov r8d, dword [rel gameepisode]
     mov edi, dword [rel gamemap]
     xor r9d, r9d
-L2948:
+L2972:
     cmp esi, 9
-    je L2957
+    je L2981
     cmp edx, 4
-    je L2970
-L2960:
+    je L2994
+L2984:
     cmp edx, 5
-    je L2969
-L2959:
+    je L2993
+L2983:
     cmp edx, dword [rax]
-    je L2967
+    je L2991
     add rax, 32
     cmp rcx, rax
-    je L2955
+    je L2979
     cmp esi, 9
-    jne L2959
-L2957:
+    jne L2983
+L2981:
     mov r10d, dword [rax]
     test r10d, r10d
-    je L2972
+    je L2996
     cmp edx, 4
-    jne L2960
-L2973:
+    jne L2984
+L2997:
     add rax, 32
     cmp rax, textscreens+704
-    je L2955
+    je L2979
     mov r10d, dword [rax]
     test r10d, r10d
-    jne L2973
-L2972:
+    jne L2997
+L2996:
     mov dword [rax+8], 5
     cmp edx, 4
-    je L2961
+    je L2985
     cmp edx, 5
-    je L3000
+    je L3024
     cmp edx, dword [rax]
-    je L2967
-L3000:
+    je L2991
+L3024:
     add rax, 32
     cmp rcx, rax
-    jne L2957
-L2955:
+    jne L2981
+L2979:
     test r9b, r9b
-    je L2971
+    je L2995
     mov qword [rel finaleflat], rbp
     mov qword [rel finaletext], rbx
-L2971:
+L2995:
     mov dword [rel finalestage], 0
     mov dword [rel finalecount], 0
     add rsp, 8
     pop rbx
     pop rbp
     ret
-L2967:
+L2991:
     test edx, edx
-    je L2961
-L2954:
+    je L2985
+L2978:
     cmp dword [rax+8], edi
-    jne L2966
+    jne L2990
     mov rbx, qword [rax+24]
     mov rbp, qword [rax+16]
     mov r9d, 1
-L2966:
+L2990:
     add rax, 32
     cmp rcx, rax
-    jne L2948
-    jmp L2955
-L2969:
+    jne L2972
+    jmp L2979
+L2993:
     cmp dword [rax], 1
-    je L2954
+    je L2978
     add rax, 32
     cmp rcx, rax
-    je L2955
+    je L2979
     cmp esi, 9
-    jne L2969
-    jmp L2957
-L2961:
+    jne L2993
+    jmp L2981
+L2985:
     cmp dword [rax+4], r8d
-    je L2954
+    je L2978
     add rax, 32
     cmp rcx, rax
-    je L2955
+    je L2979
     cmp esi, 9
-    je L2957
+    je L2981
     cmp edx, 4
-    jne L2959
-L2970:
+    jne L2983
+L2994:
     mov r11d, dword [rax]
     test r11d, r11d
-    je L2961
+    je L2985
     add rax, 32
     cmp rcx, rax
-    je L2955
+    je L2979
     cmp esi, 9
-    jne L2970
-    jmp L2957
-L2947:
+    jne L2994
+    jmp L2981
+L2971:
     mov edi, 65
     call S_ChangeMusic
-    jmp L2949
+    jmp L2973
     align 16
     global F_StartCast
 F_StartCast:
@@ -18914,67 +18972,67 @@ F_Ticker:
     cmp dword [rel gamemode], 2
     mov eax, dword [rel finalecount]
     push rbx
-    je L3024
-L3005:
+    je L3048
+L3029:
     lea ebx, [rax+1]
     mov eax, dword [rel finalestage]
     mov dword [rel finalecount], ebx
     cmp eax, 2
-    je L3025
+    je L3049
     cmp dword [rel gamemode], 2
-    je L3003
+    je L3027
     test eax, eax
-    jne L3003
+    jne L3027
     mov rdi, qword [rel finaletext]
     call strlen
     mov rdx, rax
     mov eax, ebx
     lea rdx, [rdx+250+rdx*2]
     cmp rdx, rax
-    jnb L3003
+    jnb L3027
     cmp dword [rel gameepisode], 3
     mov dword [rel finalecount], 0
     mov dword [rel finalestage], 1
     mov dword [rel wipegamestate], -1
-    je L3026
-L3003:
+    je L3050
+L3027:
     pop rbx
     ret
-L3024:
+L3048:
     cmp eax, 50
-    jbe L3005
+    jbe L3029
     mov edx, players
     xor ecx, ecx
-L3008:
+L3032:
     cmp byte [rdx+17], 0
-    jne L3007
+    jne L3031
     add rcx, 1
     add rdx, 328
     cmp rcx, 4
-    jne L3008
-    jmp L3005
-L3025:
+    jne L3032
+    jmp L3029
+L3049:
     mov eax, dword [rel casttics]
     sub eax, 1
     mov dword [rel casttics], eax
     test eax, eax
-    jg L3003
+    jg L3027
     pop rbx
     jmp F_CastTicker.part.0
-L3007:
+L3031:
     cmp dword [rel gamemap], 30
-    je L3027
+    je L3051
     mov dword [rel gameaction], 8
-    jmp L3005
-L3026:
+    jmp L3029
+L3050:
     xor esi, esi
     mov edi, 30
     pop rbx
     jmp S_ChangeMusic
-L3027:
+L3051:
     call F_StartCast
     mov eax, dword [rel finalecount]
-    jmp L3005
+    jmp L3029
     align 16
     global W_CacheLumpName
 W_CacheLumpName:
@@ -18985,14 +19043,14 @@ W_CacheLumpName:
     sub rsp, 8
     call W_CheckNumForName
     test eax, eax
-    js L3031
+    js L3055
     add rsp, 8
     mov esi, ebp
     mov edi, eax
     pop rbx
     pop rbp
     jmp W_CacheLumpNum
-L3031:
+L3055:
     mov rsi, rbx
     mov edi, LC162
     xor eax, eax
@@ -19001,18 +19059,18 @@ L3031:
 doom_start_sound:
     mov ecx, dword [rel doom_pcm_open]
     test ecx, ecx
-    je L3045
+    je L3069
     push r12
     push rbp
     push rbx
     mov ebx, esi
     cmp esi, 15
-    ja L3035
+    ja L3059
     mov edi, dword [rdi+44]
     test edi, edi
-    js L3035
+    js L3059
     cmp edi, dword [rel numlumps]
-    jnb L3046
+    jnb L3070
     mov ebp, edx
     movsx rax, edi
     mov rdx, qword [rel lumpinfo]
@@ -19022,22 +19080,22 @@ doom_start_sound:
     mov r12d, dword [rax+20]
     call W_CacheLumpNum
     cmp r12d, 7
-    jle L3035
+    jle L3059
     cmp byte [rax], 3
-    jne L3035
+    jne L3059
     cmp byte [rax+1], 0
-    jne L3035
+    jne L3059
     mov esi, dword [rax+4]
     sub r12d, 8
     cmp r12d, esi
-    jb L3035
+    jb L3059
     cmp esi, 48
-    jbe L3035
+    jbe L3059
     movzx edx, word [rax+2]
     sub esi, 32
     add rax, 24
     test dx, dx
-    je L3035
+    je L3059
     movsx rcx, ebx
     sal rdx, 16
     lea rcx, [rcx+rcx*2]
@@ -19052,24 +19110,24 @@ doom_start_sound:
     shr rdx, 10
     mov dword [doom_voices+rcx+16], edx
     test eax, eax
-    je L3038
+    je L3062
     call doom_pump_effects.part.0
-L3038:
+L3062:
     mov eax, ebx
     pop rbx
     pop rbp
     pop r12
     ret
-L3035:
+L3059:
     pop rbx
     mov eax, -1
     pop rbp
     pop r12
     ret
-L3045:
+L3069:
     mov eax, -1
     ret
-L3046:
+L3070:
     mov esi, edi
     xor eax, eax
     mov edi, LC163
@@ -19086,7 +19144,7 @@ HU_Init:
     xor ebx, ebx
     sub rsp, 24
     lea rbp, [rsp+7]
-L3049:
+L3073:
     lea ecx, [rbx+33]
     mov edx, LC219
     mov esi, 9
@@ -19097,18 +19155,18 @@ L3049:
     call W_CheckNumForName
     mov edi, eax
     test eax, eax
-    js L3052
+    js L3076
     mov esi, 1
     call W_CacheLumpNum
     mov qword [hu_font+rbx*8], rax
     add rbx, 1
     cmp rbx, 63
-    jne L3049
+    jne L3073
     add rsp, 24
     pop rbx
     pop rbp
     ret
-L3052:
+L3076:
     mov rsi, rbp
     mov edi, LC162
     xor eax, eax
@@ -19124,14 +19182,14 @@ STlib_init:
     mov edi, LC220
     call W_CheckNumForName
     test eax, eax
-    js L3056
+    js L3080
     mov edi, eax
     mov esi, 1
     call W_CacheLumpNum
     mov qword [rel sttminus], rax
     add rsp, 8
     ret
-L3056:
+L3080:
     mov esi, LC220
     mov edi, LC162
     xor eax, eax
@@ -19145,7 +19203,7 @@ ST_loadCallback:
     sub rsp, 8
     call W_CheckNumForName
     test eax, eax
-    js L3060
+    js L3084
     mov edi, eax
     mov esi, 1
     call W_CacheLumpNum
@@ -19154,7 +19212,7 @@ ST_loadCallback:
     pop rbx
     pop rbp
     ret
-L3060:
+L3084:
     mov rsi, rbx
     mov edi, LC162
     xor eax, eax
@@ -19168,7 +19226,7 @@ WI_loadCallback:
     sub rsp, 8
     call W_CheckNumForName
     test eax, eax
-    js L3064
+    js L3088
     mov edi, eax
     mov esi, 1
     call W_CacheLumpNum
@@ -19177,7 +19235,7 @@ WI_loadCallback:
     pop rbx
     pop rbp
     ret
-L3064:
+L3088:
     mov rsi, rbx
     mov edi, LC162
     xor eax, eax
@@ -19210,14 +19268,14 @@ ST_initData:
     mov dword [rel keyboxes+8], -1
     call W_CheckNumForName
     test eax, eax
-    js L3068
+    js L3092
     mov edi, eax
     mov esi, 1
     call W_CacheLumpNum
     mov qword [rel sttminus], rax
     add rsp, 8
     ret
-L3068:
+L3092:
     mov esi, LC220
     mov edi, LC162
     xor eax, eax
@@ -19231,12 +19289,12 @@ LC222:
 WI_loadData:
     sub rsp, 8
     cmp dword [rel gamemode], 2
-    je L3075
+    je L3099
     xor edx, edx
     mov esi, 1
     mov edi, 72
     call Z_Malloc
-L3071:
+L3095:
     mov edi, WI_loadCallback
     mov qword [rel lnames], rax
     call WI_loadUnloadData
@@ -19244,7 +19302,7 @@ L3071:
     call W_CheckNumForName
     mov edi, eax
     test eax, eax
-    js L3076
+    js L3100
     mov esi, 1
     call W_CacheLumpNum
     mov edi, LC17
@@ -19252,25 +19310,25 @@ L3071:
     call W_CheckNumForName
     mov edi, eax
     test eax, eax
-    js L3077
+    js L3101
     mov esi, 1
     call W_CacheLumpNum
     mov qword [rel bstar], rax
     add rsp, 8
     ret
-L3075:
+L3099:
     xor edx, edx
     mov esi, 1
     mov edi, 256
     mov dword [rel NUMCMAPS], 32
     call Z_Malloc
-    jmp L3071
-L3077:
+    jmp L3095
+L3101:
     mov esi, LC17
     mov edi, LC162
     xor eax, eax
     call I_Error
-L3076:
+L3100:
     mov esi, LC222
     mov edi, LC162
     xor eax, eax
@@ -19283,10 +19341,10 @@ WI_Start:
     call WI_loadData
     mov edx, dword [rel deathmatch]
     test edx, edx
-    jne L3083
+    jne L3107
     mov eax, dword [rel netgame]
     test eax, eax
-    jne L3084
+    jne L3108
     cmp dword [rel gamemode], 2
     mov dword [rel state], 0
     mov dword [rel acceleratestage], 0
@@ -19297,19 +19355,19 @@ WI_Start:
     mov dword [rel cnt_par], -1
     mov dword [rel cnt_time], -1
     mov dword [rel cnt_pause], 35
-    je L3078
+    je L3102
     mov rax, qword [rel wbs]
     cmp dword [rax], 2
-    jg L3078
+    jg L3102
     add rsp, 8
     jmp WI_initAnimatedBack.part.0
-L3084:
+L3108:
     add rsp, 8
     jmp WI_initNetgameStats
-L3083:
+L3107:
     add rsp, 8
     jmp WI_initDeathmatchStats
-L3078:
+L3102:
     add rsp, 8
     ret
     section .rodata
@@ -19323,7 +19381,7 @@ F_CastDrawer:
     mov edi, LC223
     call W_CheckNumForName
     test eax, eax
-    js L3089
+    js L3113
     mov edi, eax
     mov esi, 8
     call W_CacheLumpNum
@@ -19354,13 +19412,13 @@ F_CastDrawer:
     mov edi, 160
     mov rdx, rax
     test bl, bl
-    je L3087
+    je L3111
     pop rbx
     jmp V_DrawPatchFlipped
-L3087:
+L3111:
     pop rbx
     jmp V_DrawPatch
-L3089:
+L3113:
     mov esi, LC223
     mov edi, LC162
     xor eax, eax
@@ -19377,7 +19435,7 @@ F_TextWrite:
     mov rdi, rbx
     call W_CheckNumForName
     test eax, eax
-    js L3110
+    js L3134
     mov edi, eax
     mov esi, 8
     call W_CacheLumpNum
@@ -19385,12 +19443,12 @@ F_TextWrite:
     mov rdi, rax
     mov rax, qword [rel I_VideoBuffer]
     lea rcx, [rax+320]
-L3092:
+L3116:
     mov edx, esi
     lea rax, [rcx-320]
     and edx, 4032
     add rdx, rdi
-L3093:
+L3117:
     movdqu xmm0, oword [rdx]
     add rax, 64
     movups oword [rax-64], xmm0
@@ -19401,11 +19459,11 @@ L3093:
     movdqu xmm0, oword [rdx+48]
     movups oword [rax-16], xmm0
     cmp rax, rcx
-    jne L3093
+    jne L3117
     add esi, 64
     lea rcx, [rax+320]
     cmp esi, 12800
-    jne L3092
+    jne L3116
     mov edx, 320
     mov ecx, 200
     xor esi, esi
@@ -19413,7 +19471,7 @@ L3093:
     call V_MarkRect
     mov edx, dword [rel finalecount]
     cmp edx, 7
-    jle L3090
+    jle L3114
     sub edx, 10
     movsx rax, edx
     sar edx, 31
@@ -19421,53 +19479,53 @@ L3093:
     shr rax, 32
     mov ebp, eax
     sub ebp, edx
-    je L3090
+    je L3114
     mov rbx, qword [rel finaletext]
     mov ebp, ebp
     mov r12d, 10
     mov r14d, 10
     add rbp, rbx
-    jmp L3100
-L3099:
+    jmp L3124
+L3123:
     cdqe
     mov rdx, qword [hu_font+rax*8]
     movsx r13d, word [rdx]
     add r13d, r14d
     cmp r13d, 320
-    jg L3090
+    jg L3114
     mov edi, r14d
     mov esi, r12d
     mov r14d, r13d
     call V_DrawPatch
-L3098:
+L3122:
     cmp rbp, rbx
-    je L3090
-L3100:
+    je L3114
+L3124:
     movsx edi, byte [rbx]
     add rbx, 1
     test edi, edi
-    je L3090
+    je L3114
     cmp edi, 10
-    je L3111
+    je L3135
     call toupper
     sub eax, 33
     cmp eax, 63
-    jbe L3099
+    jbe L3123
     add r14d, 4
     cmp rbp, rbx
-    jne L3100
-L3090:
+    jne L3124
+L3114:
     pop rbx
     pop rbp
     pop r12
     pop r13
     pop r14
     ret
-L3111:
+L3135:
     add r12d, 11
     mov r14d, 10
-    jmp L3098
-L3110:
+    jmp L3122
+L3134:
     mov rsi, rbx
     mov edi, LC162
     xor eax, eax
@@ -19491,7 +19549,7 @@ F_BunnyScroll:
     sub rsp, 40
     call W_CheckNumForName
     test eax, eax
-    js L3126
+    js L3150
     mov edi, eax
     mov esi, 5
     call W_CacheLumpNum
@@ -19500,7 +19558,7 @@ F_BunnyScroll:
     call W_CheckNumForName
     mov edi, eax
     test eax, eax
-    js L3127
+    js L3151
     mov esi, 5
     call W_CacheLumpNum
     xor esi, esi
@@ -19523,31 +19581,31 @@ F_BunnyScroll:
     cmp r10d, eax
     cmovg r10d, eax
     xor r11d, r11d
-    jmp L3117
-L3129:
+    jmp L3141
+L3153:
     mov edx, r10d
     mov rsi, rbp
     mov edi, r11d
     call F_DrawPatchCol
-L3116:
+L3140:
     add r11d, 1
     add r10d, 1
     cmp r11d, 320
-    je L3128
-L3117:
+    je L3152
+L3141:
     cmp r10d, 319
-    jle L3129
+    jle L3153
     lea edx, [r10-320]
     mov rsi, rbx
     mov edi, r11d
     call F_DrawPatchCol
-    jmp L3116
-L3128:
+    jmp L3140
+L3152:
     mov eax, dword [rel finalecount]
     cmp eax, 1129
-    jbe L3112
+    jbe L3136
     cmp eax, 1179
-    jbe L3130
+    jbe L3154
     mov ecx, eax
     mov eax, 3435973837
     imul rcx, rax
@@ -19557,8 +19615,8 @@ L3128:
     cmp ecx, eax
     cmova ecx, eax
     cmp dword [rel laststage.14], ecx
-    jl L3131
-L3121:
+    jl L3155
+L3145:
     lea rbx, [rsp+22]
     mov edx, LC227
     mov esi, 10
@@ -19569,32 +19627,32 @@ L3121:
     call W_CheckNumForName
     mov edi, eax
     test eax, eax
-    js L3132
+    js L3156
     mov esi, 8
     call W_CacheLumpNum
     mov esi, 68
     mov edi, 108
     mov rdx, rax
     call V_DrawPatch
-L3112:
+L3136:
     add rsp, 40
     pop rbx
     pop rbp
     ret
-L3131:
+L3155:
     mov esi, 1
     xor edi, edi
     mov dword [rsp+12], ecx
     call S_StartSound
     mov ecx, dword [rsp+12]
     mov dword [rel laststage.14], ecx
-    jmp L3121
-L3130:
+    jmp L3145
+L3154:
     mov edi, LC226
     call W_CheckNumForName
     mov edi, eax
     test eax, eax
-    js L3133
+    js L3157
     mov esi, 8
     call W_CacheLumpNum
     mov esi, 68
@@ -19606,22 +19664,22 @@ L3130:
     pop rbx
     pop rbp
     ret
-L3133:
+L3157:
     mov esi, LC226
     mov edi, LC162
     xor eax, eax
     call I_Error
-L3126:
+L3150:
     mov esi, LC224
     mov edi, LC162
     xor eax, eax
     call I_Error
-L3132:
+L3156:
     mov rsi, rbx
     mov edi, LC162
     xor eax, eax
     call I_Error
-L3127:
+L3151:
     mov esi, LC225
     mov edi, LC162
     xor eax, eax
@@ -19641,35 +19699,35 @@ LC231:
 F_Drawer:
     mov eax, dword [rel finalestage]
     cmp eax, 1
-    je L3135
+    je L3159
     cmp eax, 2
-    je L3136
+    je L3160
     test eax, eax
-    je L3137
+    je L3161
     ret
-L3136:
+L3160:
     jmp F_CastDrawer
-L3135:
+L3159:
     mov eax, dword [rel gameepisode]
     cmp eax, 3
-    je L3148
+    je L3172
     push rbx
     cmp eax, 2
-    je L3142
+    je L3166
     cmp eax, 4
-    je L3143
+    je L3167
     cmp eax, 1
-    jne L3134
+    jne L3158
     mov ebx, LC230
     cmp dword [rel gamemode], 3
     mov eax, LC229
     cmove rbx, rax
-L3140:
+L3164:
     mov rdi, rbx
     call W_CheckNumForName
     mov edi, eax
     test eax, eax
-    js L3149
+    js L3173
     mov esi, 8
     call W_CacheLumpNum
     xor esi, esi
@@ -19677,20 +19735,20 @@ L3140:
     pop rbx
     mov rdx, rax
     jmp V_DrawPatch
-L3137:
+L3161:
     jmp F_TextWrite
-L3134:
+L3158:
     pop rbx
     ret
-L3148:
+L3172:
     jmp F_BunnyScroll
-L3143:
+L3167:
     mov ebx, LC231
-    jmp L3140
-L3142:
+    jmp L3164
+L3166:
     mov ebx, LC228
-    jmp L3140
-L3149:
+    jmp L3164
+L3173:
     mov rsi, rbx
     mov edi, LC162
     xor eax, eax
@@ -19764,7 +19822,7 @@ I_SetPalette:
     xor ecx, ecx
     sal rdi, 8
     add rdi, gammatable
-L3162:
+L3186:
     movzx eax, byte [rdx]
     movzx esi, byte [rdx+1]
     add rdx, 3
@@ -19783,7 +19841,7 @@ L3162:
     mov qword [doom_palette2+rcx*8], rax
     add rcx, 1
     cmp rcx, 256
-    jne L3162
+    jne L3186
     mov dword [rel doom_previous_valid], 0
     ret
     align 16
@@ -19794,15 +19852,15 @@ ST_doPaletteStuff:
     mov edx, dword [rax+60]
     mov ebx, dword [rax+240]
     test edx, edx
-    je L3165
+    je L3189
     sar edx, 6
     mov ecx, 12
     sub ecx, edx
     cmp ebx, ecx
     cmovl ebx, ecx
-L3165:
+L3189:
     test ebx, ebx
-    je L3166
+    je L3190
     add ebx, 7
     mov eax, 7
     sar ebx, 3
@@ -19810,17 +19868,17 @@ L3165:
     cmovg ebx, eax
     add ebx, 1
     cmp dword [rel gameversion], 9
-    je L3178
-L3169:
+    je L3202
+L3193:
     cmp dword [rel st_palette], ebx
-    jne L3179
-L3164:
+    jne L3203
+L3188:
     pop rbx
     ret
-L3166:
+L3190:
     mov ebx, dword [rax+244]
     test ebx, ebx
-    je L3168
+    je L3192
     add ebx, 7
     mov eax, 3
     sar ebx, 3
@@ -19828,15 +19886,15 @@ L3166:
     cmovg ebx, eax
     add ebx, 9
     cmp dword [rel gameversion], 9
-    jne L3169
-L3178:
+    jne L3193
+L3202:
     lea eax, [rbx-1]
     cmp eax, 7
     mov eax, 13
     cmovbe ebx, eax
     cmp dword [rel st_palette], ebx
-    je L3164
-L3179:
+    je L3188
+L3203:
     mov edi, dword [rel lu_palette]
     mov esi, 8
     mov dword [rel st_palette], ebx
@@ -19848,29 +19906,29 @@ L3179:
     cdqe
     add rdi, rax
     jmp I_SetPalette
-L3168:
+L3192:
     mov eax, dword [rax+68]
     mov ebx, 13
     cmp eax, 128
-    jg L3169
+    jg L3193
     and eax, 8
     mov ebx, eax
     neg ebx
     sbb ebx, ebx
     and ebx, 13
-    jmp L3169
+    jmp L3193
     align 16
     global ST_Drawer
 ST_Drawer:
     sub rsp, 8
     mov eax, 1
     test edi, edi
-    je L3181
+    je L3205
     mov ecx, dword [rel automapactive]
     xor eax, eax
     test ecx, ecx
     setne al
-L3181:
+L3205:
     mov dword [rel st_statusbaron], eax
     xor eax, eax
     or esi, dword [rel st_firsttime]
@@ -19879,19 +19937,19 @@ L3181:
     call ST_doPaletteStuff
     mov edx, dword [rel st_firsttime]
     test edx, edx
-    je L3182
+    je L3206
     mov dword [rel st_firsttime], 0
     mov eax, dword [rel st_statusbaron]
     test eax, eax
-    jne L3188
+    jne L3212
     mov edi, 1
     add rsp, 8
     jmp ST_drawWidgets
-L3182:
+L3206:
     xor edi, edi
     add rsp, 8
     jmp ST_drawWidgets
-L3188:
+L3212:
     call ST_refreshBackground.part.0
     mov edi, 1
     add rsp, 8
@@ -19902,29 +19960,29 @@ ST_Start:
     sub rsp, 8
     mov eax, dword [rel st_stopped]
     test eax, eax
-    je L3192
-L3190:
+    je L3216
+L3214:
     call ST_initData
     call ST_createWidgets
     mov dword [rel st_stopped], 0
     add rsp, 8
     ret
-L3192:
+L3216:
     mov edi, dword [rel lu_palette]
     mov esi, 8
     call W_CacheLumpNum
     mov rdi, rax
     call I_SetPalette
     mov dword [rel st_stopped], 1
-    jmp L3190
+    jmp L3214
     align 16
     global ST_Stop
 ST_Stop:
     mov eax, dword [rel st_stopped]
     test eax, eax
-    je L3199
+    je L3223
     ret
-L3199:
+L3223:
     sub rsp, 8
     mov edi, dword [rel lu_palette]
     mov esi, 8
@@ -19944,12 +20002,12 @@ I_GetPaletteIndex:
     xor ecx, ecx
     mov esi, 2147483647
     xor edi, edi
-    jmp L3203
-L3209:
+    jmp L3227
+L3233:
     add rcx, 1
     cmp rcx, 256
-    je L3200
-L3203:
+    je L3224
+L3227:
     mov edx, dword [doom_palette+rcx*4]
     mov eax, edx
     movzx ebx, dh
@@ -19969,8 +20027,8 @@ L3203:
     cmovl edi, ecx
     cmovl esi, eax
     test eax, eax
-    jne L3209
-L3200:
+    jne L3233
+L3224:
     mov eax, edi
     pop rbx
     ret
@@ -19983,17 +20041,17 @@ doom_demo_tic:
     mov rdx, qword [players+rax*8]
     mov eax, dword [rel demoplayback]
     test eax, eax
-    je L3210
+    je L3234
     test rdx, rdx
-    je L3210
+    je L3234
     mov ecx, dword [rel doom_demo_tics]
     test ecx, ecx
-    jne L3212
+    jne L3236
     mov rax, qword [rel doom_now_ms]
     add dword [rel doom_demo_number], 1
     mov dword [rel doom_demo_frames], 0
     mov qword [rel doom_demo_since], rax
-L3212:
+L3236:
     mov esi, dword [rdx+28]
     add ecx, 1
     mov dword [rel doom_demo_tics], ecx
@@ -20012,7 +20070,7 @@ L3212:
     sub edx, esi
     add eax, edx
     mov dword [rel doom_demo_sum], eax
-L3210:
+L3234:
     ret
     section .rodata
 LC232:
@@ -20033,379 +20091,404 @@ I_FinishUpdate:
     push r12
     push rbp
     push rbx
-    sub rsp, 168
+    sub rsp, 152
     call os_now_ms
-    mov r9d, dword [rel doom_show_times]
-    mov qword [rsp+104], 0
+    mov edi, dword [rel doom_show_times]
+    mov qword [rsp+88], 0
     mov qword [rsp+72], rax
     mov qword [rel doom_now_ms], rax
-    test r9d, r9d
-    jne L3377
-L3214:
-    mov eax, dword [rel doom_view+8]
-    mov r8d, dword [rel gamestate]
-    mov dword [rsp+8], 0
-    mov ebx, dword [rel doom_view+12]
-    mov dword [rsp+60], eax
-    mov dword [rsp+84], eax
+    test edi, edi
+    jne L3408
+L3238:
     mov eax, 160
     sub eax, dword [rel doom_crop]
+    mov esi, dword [rel gamestate]
+    mov dword [rsp+8], 0
     add eax, eax
+    mov ebp, dword [rel doom_view+8]
+    mov ebx, dword [rel doom_view+12]
     mov dword [rsp+80], eax
     mov eax, dword [rel viewwindowy]
     mov dword [rsp], eax
-    test r8d, r8d
-    jne L3215
+    test esi, esi
+    jne L3239
     add eax, dword [rel viewheight]
     mov dword [rsp+8], eax
-L3215:
+L3239:
     mov eax, dword [rsp]
     cmp dword [rel view_top_before.12], eax
-    je L3378
-L3216:
+    je L3409
+L3240:
     mov dword [rel doom_previous_valid], 0
     mov eax, dword [rsp]
     mov dword [rel view_top_before.12], eax
     mov eax, dword [rsp+8]
     mov dword [rel view_end_before.11], eax
-L3218:
-    mov dword [rsp+56], 200
-L3220:
-    movsx rcx, dword [rel doom_client_w]
-    movsx rsi, dword [rel doom_view]
-    lea rax, [0+rcx*4]
+L3242:
+    mov dword [rsp+60], 200
+L3244:
+    movsx rdx, dword [rel doom_client_w]
+    lea rax, [0+rdx*4]
     mov qword [rsp+64], rax
     movsx rax, dword [rel doom_view+4]
-    mov rdx, rax
-    imul rax, rcx
-    mov rcx, rsi
-    add rax, rsi
-    mov rsi, qword [rel doom_pixels]
-    lea r12, [rsi+rax*4]
+    imul rax, rdx
+    movsx rdx, dword [rel doom_view]
+    add rax, rdx
+    mov rdx, qword [rel doom_pixels]
+    lea rax, [rdx+rax*4]
+    mov qword [rsp+24], rax
     test ebx, ebx
-    jle L3221
-    mov r15d, bands.10
-    lea eax, [rbx-1]
-    xor r14d, r14d
-    xor r9d, r9d
-    mov dword [rsp+20], eax
-    mov r11, qword [rel I_VideoBuffer]
-    mov r13, r15
-    mov qword [rsp+88], r12
-    mov qword [rsp+96], r15
-L3231:
-    imul ecx, r14d, 200
-    mov ebp, dword [rsp+20]
-    lea r15d, [r14+1]
+    jle L3337
+    mov r15, qword [rel I_VideoBuffer]
+    mov dword [rsp+84], ebp
+    xor r8d, r8d
+    mov r14d, bands.10
+    lea r11d, [rbx-1]
+    mov r9, r15
+    mov r15d, r8d
+L3255:
+    imul ecx, r15d, 200
+    mov ebp, r11d
+    lea r12d, [r15+1]
     xor esi, esi
-    sub ebp, r14d
+    sub ebp, r15d
     mov eax, ecx
     add ecx, 200
     cdq
     idiv ebx
-    mov r8d, eax
-    cmp ebx, r15d
-    jg L3224
-    jmp L3379
-L3225:
+    mov r10d, eax
+    cmp ebx, r12d
+    jg L3248
+    jmp L3410
+L3249:
     add ecx, 200
     cmp ebp, esi
-    je L3380
-L3224:
+    je L3411
+L3248:
     mov eax, ecx
     mov edi, esi
     add esi, 1
     cdq
     idiv ebx
-    cmp eax, r8d
-    je L3225
+    cmp eax, r10d
+    je L3249
     mov ebp, edi
-    lea r15d, [r14+rsi]
-L3223:
-    lea r12d, [r8+r8*4]
-    sal r12d, 6
-    movsx r12, r12d
-    cmp dword [rsp], r8d
-    jg L3320
-    cmp dword [rsp+8], r8d
-    jle L3320
-L3226:
+    lea r12d, [r15+rsi]
+L3247:
+    lea r13d, [r10+r10*4]
+    sal r13d, 6
+    movsx r13, r13d
+    cmp dword [rsp], r10d
+    jg L3349
+    cmp dword [rsp+8], r10d
+    jle L3349
+L3250:
     mov edx, 1
-L3229:
+L3253:
     movsx rax, dword [rel doom_crop]
-    mov word [r13+2], bp
-    lea ebp, [r9+1]
-    add r13, 16
-    mov word [r13-16], r14w
-    add rax, r12
-    mov word [r13-12], dx
-    add rax, r11
-    mov qword [r13-8], rax
-    cmp ebx, r15d
-    jle L3381
-    mov r14d, r15d
-    movsx r9, ebp
-    jmp L3231
-L3380:
-    lea r15d, [r14+2+rdi]
-    jmp L3223
-L3320:
-    mov esi, dword [rel doom_simd]
-    cmp dword [rsp+56], r8d
-    lea r10, [doom_previous+r12]
-    lea r8, [r11+r12]
+    mov word [r14], r15w
+    add r8d, 1
+    add r14, 16
+    mov word [r14-14], bp
+    add rax, r13
+    mov word [r14-12], dx
+    add rax, r9
+    mov qword [r14-8], rax
+    cmp ebx, r12d
+    jle L3412
+    mov r15d, r12d
+    jmp L3255
+L3411:
+    lea r12d, [r15+2+rdi]
+    jmp L3247
+L3349:
+    mov edx, dword [rel doom_simd]
+    cmp dword [rsp+60], r10d
+    lea rax, [doom_previous+r13]
+    lea r10, [r9+r13]
+    mov qword [rsp+16], rax
     setg byte [rsp+43]
-    test esi, esi
-    jne L3382
-    mov rsi, r10
-    mov rdi, r8
-    mov edx, 320
-    mov qword [rsp+48], r11
-    mov dword [rsp+44], r9d
-    mov qword [rsp+32], r10
-    mov qword [rsp+24], r8
-    call memcmp
-    mov r8, qword [rsp+24]
-    mov r10, qword [rsp+32]
-    test eax, eax
-    movsx r9, dword [rsp+44]
-    mov r11, qword [rsp+48]
-    jne L3230
-    movzx edx, byte [rsp+43]
-    jmp L3229
-L3381:
-    mov edx, dword [rel detailLevel]
-    xor eax, eax
-    mov ecx, dword [rel doom_show_times]
-    mov dword [rel doom_previous_valid], 1
-    mov r12, qword [rsp+88]
-    mov r15, qword [rsp+96]
     test edx, edx
-    setne al
-    add eax, eax
-    mov dword [rel doom_game_menu+140], eax
-    test ecx, ecx
-    jne L3232
-    sal r9, 4
-    mov r14d, dword [rsp+80]
-    lea r13, [bands.10+r9+16]
-    jmp L3234
-L3233:
-    add r15, 16
-    cmp r13, r15
-    je L3383
-L3234:
-    cmp word [r15+4], 0
-    je L3233
-    movsx rax, word [r15]
-    movsx rdx, dword [rel doom_client_w]
-    add r15, 16
-    mov rsi, qword [r15-8]
-    imul rax, rdx
-    mov edx, r14d
-    lea rdi, [r12+rax*4]
-    call doom_convert_row
-    cmp r13, r15
-    jne L3234
-L3383:
+    jne L3413
+    mov rsi, qword [rsp+16]
+    mov rdi, r10
+    mov edx, 320
+    mov dword [rsp+56], r11d
+    mov qword [rsp+48], r9
+    mov dword [rsp+44], r8d
+    mov qword [rsp+32], r10
+    call memcmp
+    mov r10, qword [rsp+32]
+    mov r8d, dword [rsp+44]
+    test eax, eax
+    mov r9, qword [rsp+48]
+    mov r11d, dword [rsp+56]
+    jne L3254
+    movzx edx, byte [rsp+43]
+    jmp L3253
+L3412:
+    mov ebp, dword [rsp+84]
+    mov r12d, r8d
+L3245:
+    cmp qword [rel doom_game_menu], 0
+    mov eax, dword [rel detailLevel]
+    mov dword [rel doom_previous_valid], 1
+    je L3261
+    xor edx, edx
+    test eax, eax
+    mov eax, doom_game_menu
+    setne dl
+    add edx, edx
+L3260:
+    cmp dword [rax+8], 5
+    jne L3259
+    mov dword [rax+12], edx
+L3259:
+    add rax, 32
+    cmp qword [rax], 0
+    jne L3260
+L3261:
     mov eax, dword [rel doom_show_times]
     test eax, eax
-    jne L3384
-L3304:
-    movsx r15, ebp
+    jne L3414
+    test r12d, r12d
+    je L3272
+    movsx rdx, r12d
+    mov r13d, bands.10
+    mov r14, rdx
+    mov r15, r13
+    sal r14, 4
+    add r14, r13
+    mov r13, r14
+    mov r14, rdx
+    jmp L3264
+L3263:
+    add r15, 16
+    cmp r15, r13
+    je L3415
+L3264:
+    cmp word [r15+4], 0
+    je L3263
+    movsx rdx, word [r15]
+    movsx rdi, dword [rel doom_client_w]
+    add r15, 16
+    mov rax, qword [rsp+24]
+    mov rsi, qword [r15-8]
+    imul rdx, rdi
+    lea rdi, [rax+rdx*4]
+    mov edx, dword [rsp+80]
+    call doom_convert_row
+    cmp r15, r13
+    jne L3264
+L3415:
+    mov eax, dword [rel doom_show_times]
+    mov rdx, r14
+    test eax, eax
+    jne L3416
+L3333:
+    movsx r13, ebp
     mov r14d, bands.10
-    movsx r13, dword [rsp+60]
-    sal r15, 4
-    add r15, r14
-    jmp L3243
-L3242:
+    sal rdx, 4
+    lea r15, [rdx+r14]
+    mov rax, r13
+    mov r13, r15
+    mov r15, rax
+    jmp L3274
+L3273:
     add r14, 16
-    cmp r14, r15
-    je L3244
-L3243:
+    cmp r13, r14
+    je L3275
+L3274:
     cmp word [r14+4], 0
-    je L3242
+    je L3273
     movsx r9, word [r14+2]
     test r9w, r9w
-    je L3242
+    je L3273
     movsx rax, dword [rel doom_client_w]
     movsx rdx, word [r14]
-    mov r8, r13
+    mov r8, r15
     xor ecx, ecx
+    mov rdi, qword [rsp+24]
     mov rsi, qword [rsp+64]
     add r14, 16
     sal rax, 2
     imul rdx, rax
-    add rdx, r12
+    add rdx, rdi
     lea rdi, [rdx+rax]
     call copy_rect32
-    cmp r14, r15
-    jne L3243
-L3244:
-    mov r15d, dword [rel doom_show_fps]
-    test r15d, r15d
-    jne L3385
-    mov eax, dword [rel doom_show_times]
-    test eax, eax
-    jne L3250
-    mov r15d, dword [rel doom_show_profile]
-    test r15d, r15d
-    je L3252
-    xor r15d, r15d
-    jmp L3251
-L3230:
+    cmp r13, r14
+    jne L3274
+L3275:
+    mov edx, dword [rel doom_show_fps]
+    test edx, edx
+    jne L3280
+    mov r14d, dword [rel doom_show_times]
+    test r14d, r14d
+    jne L3281
+    mov r13d, dword [rel doom_show_profile]
+    test r13d, r13d
+    je L3282
+L3332:
+    xor edx, edx
+    jmp L3283
+L3254:
+    mov rdi, qword [rsp+16]
     mov ecx, 40
-    mov rdi, r10
-    mov rsi, r8
-    rep movsq
-    jmp L3226
-L3382:
-    mov edx, 320
     mov rsi, r10
-    mov rdi, r8
-    mov dword [rsp+24], r9d
+    rep movsq
+    jmp L3250
+L3413:
+    mov edx, 320
+    mov rsi, rax
+    mov rdi, r10
+    mov dword [rsp+44], r11d
+    mov dword [rsp+32], r8d
     call doom_row_changed
-    mov r11, qword [rel I_VideoBuffer]
-    movsx r9, dword [rsp+24]
+    mov r8d, dword [rsp+32]
+    mov r11d, dword [rsp+44]
     test eax, eax
+    mov r9, qword [rel I_VideoBuffer]
     setne al
     or al, byte [rsp+43]
     movzx edx, al
-    jmp L3229
-L3385:
-    mov eax, dword [rel doom_view+8]
-    mov edx, dword [rel doom_view+4]
-    mov ecx, dword [rel doom_view]
-    mov dword [rsp+60], eax
-L3249:
-    mov eax, dword [rsp+60]
+    jmp L3253
+L3280:
+    mov eax, dword [rel doom_view+4]
     mov esi, 2
-    add edx, 2
-    xor edi, edi
     mov r8d, 16777215
-    add ecx, eax
-    sub esi, ecx
+    xor edi, edi
     mov ecx, doom_fps_text
+    lea edx, [rax+2]
+    mov eax, dword [rel doom_view+8]
+    add eax, dword [rel doom_view]
+    sub esi, eax
     call doom_overlay_line
-    mov r15d, eax
-    mov eax, dword [rel doom_show_times]
-    test eax, eax
-    je L3253
-L3250:
-    mov r13d, doom_times_text
-    xor r12d, r12d
-L3254:
+    mov r11d, dword [rel doom_show_times]
+    mov edx, eax
+    test r11d, r11d
+    je L3285
+L3281:
+    mov r14d, doom_times_text
+    xor r13d, r13d
+    mov r15d, edx
+L3286:
     mov edx, dword [rel doom_view+4]
-    lea eax, [r12+r12*2]
-    mov rcx, r13
+    lea eax, [r13+0+r13*2]
+    mov rcx, r14
     mov r8d, 4259648
-    lea eax, [r12+rax*4]
-    add r12d, 1
-    add r13, 160
+    lea eax, [r13+0+rax*4]
+    add r13d, 1
+    add r14, 160
     lea edx, [rdx+2+rax]
     mov eax, dword [rel doom_view]
-    mov edi, r12d
+    mov edi, r13d
     lea esi, [rax+2]
     call doom_overlay_line
-    cmp r12d, 4
-    jne L3254
+    cmp r13d, 4
+    jne L3286
+    mov edx, r15d
     cmp r15d, eax
-    cmovl r15d, eax
-L3253:
-    mov r14d, dword [rel doom_show_profile]
-    test r14d, r14d
-    je L3255
-L3251:
-    mov r13d, dword [rel doom_show_times]
-    xor edx, edx
-    mov r12d, doom_profile_text
-    mov r14d, 5
-    test r13d, r13d
-    setne dl
-    lea eax, [0+rdx*4]
-    lea edx, [rax+rdx*8]
-    lea r13d, [rax+rdx*4]
+    cmovl edx, eax
+L3285:
+    mov r10d, dword [rel doom_show_profile]
+    test r10d, r10d
+    je L3287
+L3283:
+    mov r9d, dword [rel doom_show_times]
+    xor ecx, ecx
+    mov r15d, 5
+    mov dword [rsp], ebx
+    mov r13d, doom_profile_text
+    mov ebx, r15d
+    test r9d, r9d
+    setne cl
+    lea eax, [0+rcx*4]
+    lea ecx, [rax+rcx*8]
+    lea r14d, [rax+rcx*4]
     xor eax, eax
-L3256:
-    cmp byte [r12], 0
-    je L3257
+    mov r15d, r14d
+    mov r14d, edx
+L3288:
+    cmp byte [r13+0], 0
+    je L3289
     mov eax, dword [rel doom_view+4]
-    mov rcx, r12
-    mov edi, r14d
+    mov rcx, r13
+    mov edi, ebx
     mov r8d, 16777024
-    add r12, 64
-    add r14d, 1
-    lea edx, [r13+2+rax]
+    add r13, 64
+    add ebx, 1
+    lea edx, [r15+2+rax]
     mov eax, dword [rel doom_view]
-    add r13d, 13
+    add r15d, 13
     lea esi, [rax+2]
     call doom_overlay_line
-    cmp r12, doom_profile_text+768
-    jne L3256
-L3257:
-    cmp r15d, eax
-    cmovl r15d, eax
-L3255:
-    test r15d, r15d
-    je L3252
-    imul eax, r15d, 200
+    cmp r13, doom_profile_text+768
+    jne L3288
+L3289:
+    mov edx, r14d
+    cmp r14d, eax
+    mov ebx, dword [rsp]
+    cmovl edx, eax
+L3287:
+    test edx, edx
+    je L3282
+    imul eax, edx, 200
     cdq
     idiv ebx
-    lea r15d, [rax+2]
-L3252:
-    mov dword [rel doom_overlay_rows], r15d
-    mov r13d, dword [rsp+84]
-    xor r12d, r12d
-    test ebp, ebp
-    jne L3259
-    jmp L3267
-L3386:
-    add r12d, 1
-    cmp r12d, ebp
-    jge L3267
-L3259:
-    movsx rax, r12d
+    add eax, 2
+L3284:
+    mov dword [rel doom_overlay_rows], eax
+    xor r13d, r13d
+    test r12d, r12d
+    jne L3291
+    jmp L3299
+L3417:
+    add r13d, 1
+    cmp r13d, r12d
+    jge L3299
+L3291:
+    movsx rax, r13d
     sal rax, 4
     cmp word [bands.10+rax+4], 0
-    je L3386
+    je L3417
     movsx edx, word [bands.10+rax]
-    cmp ebp, r12d
-    jle L3313
+    cmp r12d, r13d
+    jle L3342
     add rax, bands.10+4
-    jmp L3265
-L3266:
-    add r12d, 1
+    jmp L3297
+L3298:
+    add r13d, 1
     add rax, 16
-    cmp r12d, ebp
-    je L3313
-L3265:
+    cmp r13d, r12d
+    je L3342
+L3297:
     cmp word [rax], 0
-    jne L3266
-    cmp ebp, r12d
-    jle L3313
-    movsx rax, r12d
+    jne L3298
+    cmp r12d, r13d
+    jle L3342
+    movsx rax, r13d
     sal rax, 4
     movsx r8d, word [bands.10+rax]
-L3264:
+L3296:
     mov eax, dword [rel doom_view+4]
     mov esi, dword [rel doom_view]
     sub r8d, edx
-    mov ecx, r13d
+    mov ecx, ebp
     mov rdi, qword [rel doom_window]
     add eax, edx
     mov edx, eax
     call os_window_update
-    cmp r12d, ebp
-    jl L3259
-L3267:
+    cmp r13d, r12d
+    jl L3291
+L3299:
     call os_now_ms
     mov rdi, qword [rsp+72]
-    mov r12d, dword [rel doom_show_times]
+    mov r8d, dword [rel doom_show_times]
     sub rax, rdi
     add qword [rel doom_ms_show], rax
-    test r12d, r12d
-    jne L3387
-L3261:
+    test r8d, r8d
+    jne L3418
+L3293:
     call os_now_ms
     sub rax, qword [rel doom_fps_since]
     mov esi, dword [rel doom_demo_tics]
@@ -20415,16 +20498,16 @@ L3261:
     mov eax, dword [rel demoplayback]
     mov dword [rel doom_frames], ecx
     test eax, eax
-    je L3268
+    je L3300
     test esi, esi
-    je L3269
+    je L3301
     add dword [rel doom_demo_frames], 1
-L3269:
+L3301:
     cmp rbx, 999
-    jle L3271
+    jle L3303
     movsx rax, ecx
-    mov esi, 24
     mov edi, doom_fps_text
+    mov esi, 24
     imul rax, rax, 10000
     cqo
     idiv rbx
@@ -20433,26 +20516,27 @@ L3269:
     imul rdx
     mov rax, r8
     sar rax, 63
-    sar rdx, 2
     mov rcx, rdx
     mov edx, LC233
+    sar rcx, 2
     sub rcx, rax
     lea rax, [rcx+rcx*4]
     add rax, rax
     sub r8, rax
     xor eax, eax
     call snprintf
-    mov ebp, dword [rel doom_show_times]
-    test ebp, ebp
-    jne L3388
-    mov r11d, dword [rel doom_show_profile]
-    test r11d, r11d
-    jne L3389
-L3273:
+    mov edi, dword [rel doom_show_times]
+    test edi, edi
+    jne L3419
+L3304:
+    mov esi, dword [rel doom_show_profile]
+    test esi, esi
+    jne L3420
+L3305:
     call doom_reset_counts
-L3271:
+L3303:
     call I_SoundPump
-    add rsp, 168
+    add rsp, 152
     pop rbx
     pop rbp
     pop r12
@@ -20460,21 +20544,24 @@ L3271:
     pop r14
     pop r15
     jmp os_yield_point
-L3313:
+L3282:
+    xor eax, eax
+    jmp L3284
+L3342:
     mov r8d, ebx
-    jmp L3264
-L3268:
+    jmp L3296
+L3300:
     test esi, esi
-    je L3269
+    je L3301
     mov rdi, qword [rel doom_now_ms]
     sub rdi, qword [rel doom_demo_since]
     test rdi, rdi
-    jle L3270
+    jle L3302
     mov eax, dword [rel doom_demo_frames]
     imul rax, rax, 10000
     cqo
     idiv rdi
-L3270:
+L3302:
     mov dword [rel doom_last_tenths], eax
     mov eax, dword [rel doom_demo_sum]
     mov dword [rel doom_last_tics], esi
@@ -20483,122 +20570,123 @@ L3270:
     mov dword [rel doom_demo_tics], 0
     mov dword [rel doom_last_number], eax
     mov dword [rel doom_demo_sum], 0
-    jmp L3269
-L3379:
+    jmp L3301
+L3410:
     xor ebp, ebp
-    jmp L3223
-L3378:
+    jmp L3247
+L3409:
     mov eax, dword [rsp+8]
     cmp dword [rel view_end_before.11], eax
-    jne L3216
-    mov edi, dword [rel doom_previous_valid]
-    test edi, edi
-    je L3218
+    jne L3240
+    mov ecx, dword [rel doom_previous_valid]
+    test ecx, ecx
+    je L3242
     mov eax, dword [rel doom_overlay_rows]
-    mov dword [rsp+56], eax
-    jmp L3220
-L3377:
+    mov dword [rsp+60], eax
+    jmp L3244
+L3408:
     call os_instructions
-    mov qword [rsp+104], rax
-    jmp L3214
-L3387:
+    mov qword [rsp+88], rax
+    jmp L3238
+L3418:
     call os_instructions
-    mov rdi, qword [rsp+104]
+    mov rdi, qword [rsp+88]
     mov rdx, rax
     mov rax, qword [rel doom_in_show]
     sub rax, rdi
     add rax, rdx
     mov qword [rel doom_in_show], rax
-    jmp L3261
-L3232:
+    jmp L3293
+L3414:
     call os_now_ms
-    mov r14, rax
-    call os_instructions
     mov qword [rsp], rax
-    movsx rax, ebp
-    sal rax, 4
-    lea r13, [bands.10+rax]
-    jmp L3237
-L3240:
-    add r15, 16
-    cmp r13, r15
-    je L3236
-L3237:
-    cmp word [r15+4], 0
-    je L3240
-    movsx rax, word [r15]
-    movsx rdx, dword [rel doom_client_w]
-    add r15, 16
-    mov rsi, qword [r15-8]
-    imul rax, rdx
+    call os_instructions
+    mov r15, rax
+    test r12d, r12d
+    je L3271
+    movsx rdx, r12d
+    mov r14d, bands.10
+    sal rdx, 4
+    lea r13, [rdx+r14]
+    mov rax, r13
+    mov r13, r14
+    mov r14, rax
+    jmp L3270
+L3269:
+    add r13, 16
+    cmp r13, r14
+    je L3271
+L3270:
+    cmp word [r13+4], 0
+    je L3269
+    movsx rdx, word [r13+0]
+    movsx rdi, dword [rel doom_client_w]
+    add r13, 16
+    mov rax, qword [rsp+24]
+    mov rsi, qword [r13-8]
+    imul rdx, rdi
+    lea rdi, [rax+rdx*4]
     mov edx, dword [rsp+80]
-    lea rdi, [r12+rax*4]
     call doom_convert_row
-    cmp r13, r15
-    jne L3237
-L3236:
+    cmp r13, r14
+    jne L3270
+L3271:
     call os_now_ms
-    sub rax, r14
+    mov rdi, qword [rsp]
+    sub rax, rdi
     add qword [rel doom_prof+64], rax
     call os_instructions
-    mov rdi, qword [rsp]
     mov rdx, rax
     mov rax, qword [rel doom_prof_instructions+64]
-    sub rax, rdi
+    sub rax, r15
+    mov r15d, dword [rel doom_show_times]
     add rax, rdx
     mov qword [rel doom_prof_instructions+64], rax
-    mov eax, dword [rel doom_show_times]
-    test eax, eax
-    jne L3390
-    test ebp, ebp
-    jne L3304
-    mov r10d, dword [rel doom_show_fps]
-    test r10d, r10d
-    je L3370
-    mov eax, dword [rel doom_view+8]
-    mov edx, dword [rel doom_view+4]
-    mov ecx, dword [rel doom_view]
-    mov dword [rsp+60], eax
-L3300:
-    xor ebp, ebp
-    jmp L3249
-L3384:
+    test r15d, r15d
+    jne L3421
+    test r12d, r12d
+    je L3272
+    movsx rdx, r12d
+    jmp L3333
+L3416:
+    mov qword [rsp], rdx
     call os_now_ms
     mov r14, rax
     call os_instructions
+    mov rdx, qword [rsp]
     mov qword [rsp+8], rax
-L3245:
-    movsx rax, dword [rsp+60]
-    movsx r10, ebp
+L3276:
     mov r13d, bands.10
-    sal r10, 4
+    sal rdx, 4
+    movsx rax, ebp
     mov qword [rsp], rax
-    lea r15, [r10+r13]
-    jmp L3247
-L3246:
+    lea r15, [rdx+r13]
+    jmp L3278
+L3277:
     add r13, 16
     cmp r15, r13
-    je L3248
-L3247:
+    je L3279
+L3278:
     cmp word [r13+4], 0
-    je L3246
+    je L3277
     movsx r9, word [r13+2]
     test r9w, r9w
-    je L3246
+    je L3277
     movsx rdx, word [r13+0]
-    mov r8, qword [rsp]
+    mov rdi, qword [rsp+24]
     xor ecx, ecx
     add r13, 16
     movsx rax, dword [rel doom_client_w]
+    mov r8, qword [rsp]
     mov rsi, qword [rsp+64]
     sal rax, 2
     imul rdx, rax
-    add rdx, r12
+    add rdx, rdi
     lea rdi, [rdx+rax]
     call copy_rect32
     cmp r15, r13
-    jne L3247
-L3248:
+    jne L3278
+L3279:
     call os_now_ms
     sub rax, r14
     add qword [rel doom_prof+72], rax
@@ -20609,23 +20697,26 @@ L3248:
     sub rax, rdi
     add rax, rdx
     mov qword [rel doom_prof_instructions+72], rax
-    jmp L3244
-L3388:
-    mov rdi, rbx
-    call doom_times_lines
-    mov r11d, dword [rel doom_show_profile]
-    test r11d, r11d
-    je L3273
-L3389:
+    jmp L3275
+L3272:
+    mov ecx, dword [rel doom_show_fps]
+    test ecx, ecx
+    jne L3280
+    mov edx, dword [rel doom_show_profile]
+    test edx, edx
+    jne L3332
+    mov dword [rel doom_overlay_rows], 0
+    jmp L3299
+L3420:
     cmp qword [rel doom_profile_hits], 0
-    je L3273
+    je L3305
     mov esi, 4096
     mov edi, samples.9
     call os_profile_take
     mov rcx, qword [rel doom_profile_total]
     mov esi, eax
     test eax, eax
-    jle L3275
+    jle L3307
     mov eax, dword [rel doom_symbol_count]
     mov r10d, samples.9
     xor r13d, r13d
@@ -20635,24 +20726,24 @@ L3389:
     lea r11d, [rax-1]
     movsx rax, esi
     lea rbp, [samples.9+rax*8]
-L3284:
+L3316:
     test r11d, r11d
-    jns L3276
+    jns L3308
     add r10, 8
     add r12, 1
     mov r13d, 1
     cmp r10, rbp
-    jne L3284
-L3283:
+    jne L3316
+L3315:
     lea eax, [rsi-1]
     lea rcx, [rcx+1+rax]
     mov qword [rel doom_profile_total], rcx
     test r13b, r13b
-    je L3275
+    je L3307
     mov qword [rel doom_profile_before], r12
-L3275:
+L3307:
     test rcx, rcx
-    je L3273
+    je L3305
     mov eax, LC144
     mov r8d, LC232
     mov edx, LC234
@@ -20664,48 +20755,48 @@ L3275:
     call snprintf
     movsx r10, dword [rel doom_symbol_count]
     test r10d, r10d
-    jle L3316
+    jle L3345
     mov r8, qword [rel doom_profile_hits]
     xor r9d, r9d
     xor ebp, ebp
-L3296:
+L3328:
     mov edi, dword [r8+r9*4]
     test edi, edi
-    je L3289
+    je L3321
     mov r11d, r9d
     cmp ebp, 11
-    jne L3290
-    movsx rax, dword [rsp+152]
-L3292:
+    jne L3322
+    movsx rax, dword [rsp+136]
+L3324:
     cmp dword [r8+rax*4], edi
-    jl L3318
+    jl L3347
     add r9, 1
-    cmp r9, r10
-    je L3288
+    cmp r10, r9
+    je L3320
     mov edi, dword [r8+r9*4]
     mov r11d, r9d
     test edi, edi
-    jne L3292
-L3289:
+    jne L3324
+L3321:
     add r9, 1
     cmp r9, r10
-    jne L3296
-L3288:
+    jne L3328
+L3320:
     movabs r12, 7378697629483820647
     mov ebx, 1
-    jmp L3299
-L3391:
+    jmp L3331
+L3422:
     mov rax, rbx
     sal rax, 6
     mov byte [doom_profile_text+rax], 0
-L3298:
+L3330:
     add rbx, 1
     cmp rbx, 12
-    je L3273
-L3299:
+    je L3305
+L3331:
     cmp ebp, ebx
-    jl L3391
-    movsx rcx, dword [rsp+108+rbx*4]
+    jl L3422
+    movsx rcx, dword [rsp+92+rbx*4]
     mov rax, qword [rel doom_profile_hits]
     mov rdi, rbx
     sal rdi, 6
@@ -20723,36 +20814,36 @@ L3299:
     imul r12
     mov rax, r8
     sar rax, 63
-    sar rdx, 2
     mov rcx, rdx
     mov edx, LC235
+    sar rcx, 2
     sub rcx, rax
     lea rax, [rcx+rcx*4]
     add rax, rax
     sub r8, rax
     xor eax, eax
     call snprintf
-    jmp L3298
-L3393:
+    jmp L3330
+L3424:
     test r15d, r15d
-    js L3392
+    js L3423
     add r10, 8
     add dword [rbx+r15*4], 1
-    cmp rbp, r10
-    je L3283
-L3276:
+    cmp r10, rbp
+    je L3315
+L3308:
     mov r14, qword [r10]
     mov r9d, r11d
     mov r15, -1
     xor edi, edi
-    jmp L3280
-L3394:
+    jmp L3312
+L3425:
     lea edi, [rax+1]
     movsx r15, eax
-L3279:
+L3311:
     cmp r9d, edi
-    jl L3393
-L3280:
+    jl L3424
+L3312:
     lea edx, [r9+rdi]
     mov eax, edx
     shr eax, 31
@@ -20761,91 +20852,68 @@ L3280:
     movsx rdx, eax
     sal rdx, 4
     cmp r14, qword [r8+rdx]
-    jnb L3394
+    jnb L3425
     lea r9d, [rax-1]
-    jmp L3279
-L3392:
+    jmp L3311
+L3423:
     add r10, 8
     add r12, 1
     mov r13d, 1
     cmp r10, rbp
-    jne L3276
-    jmp L3283
-L3290:
+    jne L3308
+    jmp L3315
+L3322:
     cmp ebp, 10
-    jg L3318
+    jg L3347
     lea edx, [rbp+1]
     test ebp, ebp
-    je L3319
+    je L3348
     movsx rax, ebp
     mov ebp, edx
-L3291:
-    lea rcx, [rsp+112]
-    jmp L3294
-L3295:
+L3323:
+    lea rcx, [rsp+96]
+    jmp L3326
+L3327:
     mov dword [rcx+rax*4], edx
     sub rax, 1
     movsx rdx, eax
     test eax, eax
-    je L3293
-L3294:
+    je L3325
+L3326:
     movsx rsi, dword [rcx-4+rax*4]
     mov rdx, rsi
     cmp dword [r8+rsi*4], edi
-    jl L3295
+    jl L3327
     movsx rdx, eax
-L3293:
-    mov dword [rsp+112+rdx*4], r11d
-    jmp L3289
-L3318:
+L3325:
+    mov dword [rsp+96+rdx*4], r11d
+    jmp L3321
+L3419:
+    mov rdi, rbx
+    call doom_times_lines
+    jmp L3304
+L3347:
     mov eax, 10
-    jmp L3291
-L3221:
-    mov edi, dword [rel detailLevel]
-    xor eax, eax
-    mov r8d, dword [rel doom_show_times]
-    mov dword [rel doom_previous_valid], 1
-    test edi, edi
-    setne al
-    add eax, eax
-    mov dword [rel doom_game_menu+140], eax
-    test r8d, r8d
-    jne L3302
-    mov esi, dword [rel doom_show_fps]
-    test esi, esi
-    jne L3300
-L3370:
-    mov r9d, dword [rel doom_show_profile]
-    test r9d, r9d
-    je L3376
-    xor ebp, ebp
-    xor r15d, r15d
-    jmp L3251
-L3390:
+    jmp L3323
+L3337:
+    xor r12d, r12d
+    jmp L3245
+L3421:
     call os_now_ms
     mov r14, rax
     call os_instructions
+    movsx rdx, r12d
     mov qword [rsp+8], rax
-    test ebp, ebp
-    jne L3245
-    jmp L3248
-L3302:
-    call os_now_ms
-    xor ebp, ebp
-    mov r14, rax
-    call os_instructions
-    mov qword [rsp], rax
-    jmp L3236
-L3376:
-    mov dword [rel doom_overlay_rows], 0
-    jmp L3267
-L3319:
+    test r12d, r12d
+    jne L3276
+    jmp L3279
+L3348:
     xor edx, edx
     mov ebp, 1
-    jmp L3293
-L3316:
+    jmp L3325
+L3345:
     xor ebp, ebp
-    jmp L3288
+    jmp L3320
     align 16
     global I_UpdateNoBlit
 I_UpdateNoBlit:
@@ -20912,7 +20980,7 @@ I_StartTic:
     sub rsp, 8
     mov eax, dword [rel doom_show_times]
     test eax, eax
-    je L3412
+    je L3443
     call os_now_ms
     mov rbp, rax
     call os_instructions
@@ -20929,7 +20997,7 @@ I_StartTic:
     pop rbx
     pop rbp
     ret
-L3412:
+L3443:
     call doom_messages
     add rsp, 8
     pop rbx
@@ -20964,7 +21032,7 @@ doom_main:
     mov rbx, rdi
     call doom_running_already
     test eax, eax
-    je L3415
+    je L3446
     xor edi, edi
     xor r8d, r8d
     xor ecx, ecx
@@ -20973,15 +21041,15 @@ doom_main:
     call os_message_box
     xor edi, edi
     call os_exit
-L3415:
+L3446:
     call doom_fresh
     test rbx, rbx
-    je L3418
+    je L3449
     cmp byte [rbx], 0
-    jne L3437
-L3418:
+    jne L3468
+L3449:
     xor ebx, ebx
-L3417:
+L3448:
     mov rcx, qword [names.3+rbx*8]
     mov esi, 128
     mov edi, iwad.5
@@ -20992,32 +21060,32 @@ L3417:
     mov edi, iwad.5
     call os_stat
     cmp eax, 1
-    je L3419
+    je L3450
     add rbx, 1
     cmp rbx, 9
-    jne L3417
+    jne L3448
     mov r8d, 1
     xor ecx, ecx
     mov edx, LC239
     xor edi, edi
     mov esi, LC22
     call os_message_box
-L3436:
+L3467:
     mov edi, 1
     call os_exit
-L3437:
+L3468:
     xor esi, esi
     mov rdi, rbx
     call os_stat
     sub eax, 1
-    jne L3418
+    jne L3449
     mov rcx, rbx
     mov edx, LC21
     mov esi, 128
     xor eax, eax
     mov edi, iwad.5
     call snprintf
-L3419:
+L3450:
     mov r8d, 5
     mov ecx, 240
     mov edx, 320
@@ -21026,7 +21094,7 @@ L3419:
     call os_window_create
     mov qword [rel doom_window], rax
     test rax, rax
-    je L3436
+    je L3467
     mov rdi, rax
     mov esi, doom_menus
     mov r12d, 2
@@ -21067,19 +21135,19 @@ L3419:
     mov qword [rel myargv], args.4
     call M_FindResponseFile
     call D_DoomMain
-L3422:
+L3453:
     call doom_messages
     mov ebp, dword [rel doom_show_times]
     call os_now_ms
     mov r14, rax
     test ebp, ebp
-    jne L3438
+    jne L3469
     call TryRunTics
     xor r13d, r13d
     xor r12d, r12d
     call os_now_ms
     mov rbx, rax
-L3424:
+L3455:
     movsx rax, dword [rel consoleplayer]
     lea rdx, [rax+rax*4]
     lea rax, [rax+rdx*8]
@@ -21087,8 +21155,8 @@ L3424:
     call S_UpdateSounds
     mov edx, dword [rel screenvisible]
     test edx, edx
-    jne L3439
-L3425:
+    jne L3470
+L3456:
     mov rax, rbx
     sub rax, r14
     add qword [rel doom_ms_logic], rax
@@ -21096,10 +21164,10 @@ L3425:
     sub rax, rbx
     add qword [rel doom_ms_draw], rax
     test ebp, ebp
-    je L3422
+    je L3453
     mov eax, dword [rel doom_show_times]
     test eax, eax
-    je L3422
+    je L3453
     mov rax, r12
     sub rax, r13
     add qword [rel doom_in_logic], rax
@@ -21109,11 +21177,11 @@ L3425:
     sub rax, r12
     add rax, rdx
     mov qword [rel doom_in_draw], rax
-    jmp L3422
-L3439:
+    jmp L3453
+L3470:
     call D_Display
-    jmp L3425
-L3438:
+    jmp L3456
+L3469:
     call os_instructions
     mov r13, rax
     call TryRunTics
@@ -21121,7 +21189,7 @@ L3438:
     mov rbx, rax
     call os_instructions
     mov r12, rax
-    jmp L3424
+    jmp L3455
     section .bss align=32
     alignb 8
 last.0: resb 8

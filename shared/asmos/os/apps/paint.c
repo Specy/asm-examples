@@ -14,8 +14,8 @@
 enum { PAINT_NEW_W = 400, PAINT_NEW_H = 260, PAINT_MAX_W = 1024, PAINT_MAX_H = 768 };
 enum { PAINT_TOOLBOX_W = 58, PAINT_PALETTE_H = 40, PAINT_STATUS_H = 20, PAINT_MARGIN = 4, PAINT_BAR = 16,
        PAINT_STEP = 8, PAINT_SWATCH = 14, PAINT_COLOURS = 28 };
-/* each level of Undo is a copy of the picture: a machine of a few megabytes keeps two */
-enum { PAINT_UNDO_LEVELS = PLATFORM_SMALL_MEMORY ? 2 : 5 };
+/* each level of Undo is a copy of the picture */
+enum { PAINT_UNDO_LEVELS = 5 };
 enum { PAINT_BACKGROUND = 0x808080 };
 enum { PAINT_SELECT, PAINT_PICK, PAINT_PENCIL, PAINT_BRUSH, PAINT_ERASER, PAINT_FILL, PAINT_LINE, PAINT_SPRAY,
        PAINT_RECT, PAINT_ELLIPSE, PAINT_TOOL_COUNT };

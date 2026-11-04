@@ -8,7 +8,7 @@
 // And a column of a wall goes straight to doom_column (doom_simd.asm), with R_DrawColumn's own
 // arithmetic, rather than through colfunc and R_DrawColumn's globals, while the drawer is the
 // ordinary one and Game > Fast Drawing is on (or to doom_column2 for R_DrawColumnLow, in low
-// detail); otherwise through colfunc, as ever.
+// detail); otherwise, and on a machine other than x86, through colfunc, as ever.
 //
 // R_GetColumn of a column drawn from a patch calls W_CacheLumpNum, which finds the lump and sets
 // its zone tag again: the same lump for every column of a wall the patch covers. R_SegGetColumn
@@ -16,11 +16,14 @@
 // R_GenerateComposite does here.
 //
 
+#include "asmos_x86.h"
+
 // One tier of a wall's column, yl to yh, as colfunc () would draw it. direct is 1 for doom_column,
 // 2 for doom_column2, 0 for colfunc.
 static void R_SegColumn (int direct, int x, int yl, int yh, fixed_t texturemid,
                          fixed_t iscale, lighttable_t *colormap, byte *source)
 {
+#if DOOM_X86
     if (direct)
     {
         int count = yh - yl;
@@ -34,6 +37,9 @@ static void R_SegColumn (int direct, int x, int yl, int yh, fixed_t texturemid,
                          texturemid + (yl - centery) * iscale, iscale, source, colormap);
         return;
     }
+#else
+    (void)direct;               // always 0: there is no doom_column
+#endif
     dc_x = x;
     dc_yl = yl;
     dc_yh = yh;
@@ -107,8 +113,12 @@ void R_RenderSegLoop (void)
     lighttable_t**	const lights = walllights;
     visplane_t*		const ceiling = ceilingplane;
     visplane_t*		const floorpl = floorplane;
+#if DOOM_X86
     const int		direct = !doom_simd ? 0 : colfunc == R_DrawColumn ? 1
 			       : colfunc == R_DrawColumnLow ? 2 : 0;
+#else
+    const int		direct = 0;
+#endif
     SegLump		tiers[3] = { { 0, NULL }, { 0, NULL }, { 0, NULL } };
 
     for ( ; x < stopx ; x++)

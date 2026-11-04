@@ -183,12 +183,15 @@ int main(void) {
         wm_render();
         if (shutting_down && (!applications_running() || now >= shutdown_deadline)) break;
         int ready = applications_ready();
-        timer_set(ready);
         long timeout = ready ? 0 : sooner(due, second - now);
         long before = os_now_ms();
         input_wait((int)timeout);
         if (!ready) idle_ms += os_now_ms() - before;
-        if (applications_ready()) yield();
+        /* the timer runs while an application is ready, one the input just woke included, so that
+         * its turn ends even if it never gives the processor up */
+        ready = applications_ready();
+        timer_set(ready);
+        if (ready) yield();
     }
     timer_set(0);
     for (int i = 1; i < MAX_PROCESSES; i++)

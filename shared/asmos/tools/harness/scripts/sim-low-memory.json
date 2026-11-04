@@ -1,0 +1,2 @@
+[{"until":"Click the Screen","timeout":120000},{"wait":6000},{"stats":"booted"},{"shot":"sim-lowmem-1-video"},
+ {"key":"Enter"},{"wait":1500},{"dblclick":[300,29]},{"wait":2500},{"shot":"sim-lowmem-2-maximized"},{"stats":"end"}]

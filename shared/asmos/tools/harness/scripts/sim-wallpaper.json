@@ -1,0 +1,2 @@
+[{"wait":6000},{"click":[234,123]},{"wait":2000},{"shot":"sim-wallpaper-1-chosen"},{"click":[313,399]},{"wait":4000},{"shot":"sim-wallpaper-2-desktop"},{"stats":"wallpaper"},
+ {"dblclick":[48,22]},{"wait":3500},{"drag":[200,30,330,120]},{"wait":2500},{"shot":"sim-wallpaper-3-window"},{"stats":"end"}]

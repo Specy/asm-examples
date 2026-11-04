@@ -155,6 +155,9 @@ export async function buildExample(example, { capture = false } = {}) {
     const packed = []
     const captured = []
     const usedRecords = new Set()
+    //a shared example's ports are all packed before its problems are reported, so that one port's
+    //problems never hide the next one's
+    const portProblems = []
     const pack = ({
         target: name,
         variant,
@@ -187,17 +190,25 @@ export async function buildExample(example, { capture = false } = {}) {
         if (draft) return
         const portName = rest.name ?? meta.name
         const portDescription = rest.description ?? meta.description
-        const port = packPort({
-            id: example.id,
-            target,
-            files: portFiles,
-            name: portName,
-            description: portDescription,
-            project,
-            compilations: compilations[target.folder] ?? [],
-            buildOutputs,
-            variant
-        })
+        let port
+        try {
+            port = packPort({
+                id: example.id,
+                target,
+                files: portFiles,
+                name: portName,
+                description: portDescription,
+                project,
+                compilations: compilations[target.folder] ?? [],
+                buildOutputs,
+                variant
+            })
+        } catch (error) {
+            if (!(error instanceof ExampleError) || example.target) throw error
+            const where = `${target.folder}${variant ? ` ${variant}` : ''}`
+            portProblems.push(...error.problems.map((problem) => `${where}: ${problem}`))
+            return
+        }
         if (packed.some((other) => other.archivePath === port.archivePath))
             throw new ExampleError([`two archives are ${port.archivePath}: give one a variant`])
         //a port named or described apart from its example says so in the index too
@@ -207,18 +218,30 @@ export async function buildExample(example, { capture = false } = {}) {
         return port
     }
 
-    if (existsSync(join(example.folder, BUILD_FILE))) {
-        const module = await import(pathToFileURL(join(example.folder, BUILD_FILE)).href)
-        if (typeof module.default !== 'function')
-            throw new ExampleError([`${BUILD_FILE} has no default export function`])
-        await module.default({ id: example.id, folder: example.folder, example: meta, files, pack })
-        if (!packed.length && !captured.length)
-            throw new ExampleError([`${BUILD_FILE} packed nothing`])
-    } else if (example.target) {
-        pack({ target: example.target.folder, files: files(), project: meta.project })
-    } else {
-        defaultSharedBuild(example, meta, files, pack)
+    try {
+        if (existsSync(join(example.folder, BUILD_FILE))) {
+            const module = await import(pathToFileURL(join(example.folder, BUILD_FILE)).href)
+            if (typeof module.default !== 'function')
+                throw new ExampleError([`${BUILD_FILE} has no default export function`])
+            await module.default({
+                id: example.id,
+                folder: example.folder,
+                example: meta,
+                files,
+                pack
+            })
+            if (!packed.length && !captured.length && !portProblems.length)
+                throw new ExampleError([`${BUILD_FILE} packed nothing`])
+        } else if (example.target) {
+            pack({ target: example.target.folder, files: files(), project: meta.project })
+        } else {
+            defaultSharedBuild(example, meta, files, pack)
+        }
+    } catch (error) {
+        if (!(error instanceof ExampleError) || !portProblems.length) throw error
+        throw new ExampleError([...error.problems, ...portProblems])
     }
+    if (portProblems.length) throw new ExampleError(portProblems)
     if (capture) return { meta, compilations, captured }
 
     const unused = Object.keys(compilations).filter((folder) => !usedRecords.has(folder))

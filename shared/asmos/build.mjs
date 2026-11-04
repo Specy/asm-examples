@@ -1,7 +1,7 @@
 // asmOS packs one archive for each machine it runs on, from one tree: the shared os/ with the
 // machine's own folders of os/platform/, and the disk (Desktop, games, music, pictures, videos,
 // code), without tools/. A machine's archive leaves out the other machines' platform folders and
-// their Generated assembly, and whatever it has no room for.
+// their Generated assembly, on RISC-V and MIPS x86's NASM assembly, and whatever it has no room for.
 import { readdirSync } from 'node:fs'
 import { join } from 'node:path'
 
@@ -19,13 +19,10 @@ function project(entry, settings, display) {
     }
 }
 
-/** What MIPS and RISC-V have no room for in their 4 MB of static data and heap. */
-const TOO_LARGE = ['os/doom/', 'games/doom/', 'os/apps/video.c', 'os/apps/video/', 'videos/']
-
 /**
  * The machines asmOS runs on: the Target, its folders in os/platform/, its Project, what else it
- * leaves out, the Build outputs it carries, and its own description where example.json's, which
- * is x86's, does not fit.
+ * leaves out, the Build outputs it carries, and its own description where example.json's, which is
+ * x86's, does not fit.
  */
 const MACHINES = [
     {
@@ -40,28 +37,31 @@ const MACHINES = [
         target: 'RISC-V',
         platforms: ['riscv', 'sim'],
         description:
-            'A small operating system with processes, a window manager and sixteen applications, Pac-Man and an Assembly Editor among them, in C and RISC-V assembly, on RARS.',
+            'A small operating system with processes, a window manager and eighteen applications, Pac-Man, DOOM, a Video Player and an Assembly Editor among them, in C and RISC-V assembly, on RARS.',
         //keeping the history of every instruction makes drawing half as fast
         project: project(
             'os/main.c.riscv',
             { undoEnabled: false },
             { unitWidth: 1, unitHeight: 1, width: 640, height: 480 }
         ),
-        exclude: TOO_LARGE,
-        //x86's NASM assembly, which a RISC-V Build would not take
+        //x86's NASM assembly, which a RISC-V Build would not take: DOOM's, doom_simd.asm,
+        //asmos_bench.asm, asmos_fresh.asm and the .part.asm around each of its parts, which DOOM
+        //goes without here (os/doom/asmos_x86.h)
         withoutX86Assembly: true
     },
     {
         target: 'MIPS',
         platforms: ['mips', 'sim'],
         description:
-            'A small operating system with processes, a window manager and sixteen applications, Pac-Man and an Assembly Editor that runs RISC-V programs among them, in C and MIPS assembly, on MARS.',
+            'A small operating system with processes, a window manager and eighteen applications, Pac-Man, DOOM, a Video Player and an Assembly Editor that runs RISC-V programs among them, in C and MIPS assembly, on MARS.',
         project: project(
             'os/main.c.mips',
             { undoEnabled: false },
             { unitWidth: 1, unitHeight: 1, width: 640, height: 480 }
         ),
-        exclude: TOO_LARGE,
+        //Bad Apple!!'s video, for now: with DOOM, MIPS's Generated assembly, the largest of the
+        //three, would take the Project past the 16 MiB of Files a Project may hold
+        exclude: ['videos/'],
         withoutX86Assembly: true
     }
 ]

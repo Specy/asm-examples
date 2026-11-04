@@ -45,7 +45,7 @@ static Window *dialog_create(int pid, const char *title, int w, int h, void (*pa
     win->paint = paint;
     win->on_mouse = on_mouse;
     win->on_key = on_key;
-    win->data = system_alloc(sizeof(Dialog));
+    win->data = heap_alloc(sizeof(Dialog));
     if (!win->data) {
         window_destroy(win);
         return NULL;

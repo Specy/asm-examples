@@ -238,7 +238,7 @@ describe.skipIf(!DIR || !SCRIPT)('asmOS harness', () => {
             }
 
             //what /dev/dsp played: the samples each stats line reports since the last
-            const audio = emulator.peripherals.audio.x86
+            const audio = emulator.peripherals.audio.timeline
             const pcmOf = audio.pcm.bind(audio)
             let pcmFrames = 0
             let pcmRate = 0

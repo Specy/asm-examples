@@ -1,0 +1,223 @@
+# The exception handler of asmOS on MIPS, where processes are switched.
+#
+# MIPS enters it at 0x80000180, the start of .ktext, for every interrupt and every exception of
+# the program:
+#
+#   - the timer's interrupt, Cause bit 15, when Count reaches Compare, every 10 ms of real time
+#     while applications are ready: the kernel then takes the processor from the process that has
+#     had its turn, which is preemption;
+#   - the trap of the `teq` in platform_trap below, which a process runs when it gives the
+#     processor up: `syscall` would not come here, it asks MARS for a service;
+#   - any other exception, such as a load from a misaligned address or compiled C's check for a
+#     division by zero (another `teq`), which ends asmOS with a report.
+#
+# The processor gets here between two instructions of whatever was running, with EPC saying where:
+# for an interrupt, the instruction there has not run yet, and `eret` goes back to it. So the
+# handler first keeps every register the stopped code may be using in a frame on that code's own
+# stack. Then it asks the kernel, in C (switch.c), which process goes on: the C answers a frame,
+# the one it was given, or the one another process was stopped with. The handler takes that
+# frame's stack, loads the registers back from it, and its `eret` resumes that process where it
+# stopped, as if it had never been stopped. A process that has not run yet has a frame made to look
+# the same, whose pc is where it starts (platform_context_init).
+#
+# $k0 and $k1 are the handler's: MIPS keeps them for it, so no process has anything in them. $gp
+# is the same in every process, and the handler leaves it alone. While it runs, Status's EXL is
+# set, as the processor left it, and nothing interrupts it.
+#
+# The floating-point condition code compiled C's compares set, cc0, is kept too: a process stopped
+# between a `c.olt.d` and its `bc1t` must find it as it left it. MARS's GNU syntax has no `cfc1`
+# of FCSR, so the handler reads it with `movt` and sets it back with a compare that is true or false.
+#
+# Below the handler are the three coprocessor 0 instructions switch.c needs, as functions: the C
+# compiler writes `mfc0` with a third operand, a select field, that MARS does not take.
+#
+# This is GNU assembly, the syntax the C beside it compiles to. The Build links this File because
+# the kernel calls the functions it defines, platform_trap and the three below the handler, and the
+# handler in .ktext, which no program calls by name, comes with them. It then takes what the
+# handler needs: platform_interrupt and platform_fault from the kernel. MARS runs without delayed
+# branching, so no jump here has a delay slot.
+
+# The handler keeps $at ($1) for the program, which it may have stopped between two instructions
+# that use it: nothing here may expand into instructions through $at.
+        .set    noat
+
+# void platform_trap(void): gives the processor up. The handler knows this trap by its address,
+# and the process goes on after it, at the `jr`, when it is switched back to.
+        .text
+        .globl  platform_trap
+        .p2align 2
+platform_trap:
+platform_trap_teq:
+        teq     $zero, $zero        # always equal, so always a trap
+        jr      $ra
+
+# unsigned mips_count(void): Count, $9, which goes up once every two instructions.
+        .globl  mips_count
+        .p2align 2
+mips_count:
+        mfc0    $v0, $9
+        jr      $ra
+
+# void mips_set_compare(unsigned when): Compare, $11, which also withdraws a tick that is due.
+        .globl  mips_set_compare
+        .p2align 2
+mips_set_compare:
+        mtc0    $a0, $11
+        jr      $ra
+
+# void mips_timer_enable(int on): Status bit 15, which lets the timer's interrupt through or not.
+        .globl  mips_timer_enable
+        .p2align 2
+mips_timer_enable:
+        mfc0    $t0, $12
+        li      $t1, 0x8000
+        or      $t0, $t0, $t1
+        bnez    $a0, 1f
+        xor     $t0, $t0, $t1
+1:      mtc0    $t0, $12
+        jr      $ra
+
+# The frame, 288 bytes: 16 for the arguments of the C it calls, as o32 has a caller keep them;
+# the pc at 16, in the slot of $0, which needs no keeping; $1 to $31 at 16 plus 4 times their
+# number; hi at 144, lo at 148 and cc0 at 152; and $f0 to $f31 as 16 doubles from 160. switch.c
+# makes a new process's frame the same way.
+        .ktext
+exception:
+        addiu   $sp, $sp, -288
+        sw      $at, 20($sp)
+        sw      $v0, 24($sp)
+        sw      $v1, 28($sp)
+        sw      $a0, 32($sp)
+        sw      $a1, 36($sp)
+        sw      $a2, 40($sp)
+        sw      $a3, 44($sp)
+        sw      $t0, 48($sp)
+        sw      $t1, 52($sp)
+        sw      $t2, 56($sp)
+        sw      $t3, 60($sp)
+        sw      $t4, 64($sp)
+        sw      $t5, 68($sp)
+        sw      $t6, 72($sp)
+        sw      $t7, 76($sp)
+        sw      $s0, 80($sp)
+        sw      $s1, 84($sp)
+        sw      $s2, 88($sp)
+        sw      $s3, 92($sp)
+        sw      $s4, 96($sp)
+        sw      $s5, 100($sp)
+        sw      $s6, 104($sp)
+        sw      $s7, 108($sp)
+        sw      $t8, 112($sp)
+        sw      $t9, 116($sp)
+        sw      $fp, 136($sp)
+        sw      $ra, 140($sp)
+        mfhi    $k0
+        sw      $k0, 144($sp)
+        mflo    $k0
+        sw      $k0, 148($sp)
+        move    $t0, $zero          # cc0: 1 when it is set
+        li      $t1, 1
+        movt    $t0, $t1, $fcc0
+        sw      $t0, 152($sp)
+        sdc1    $f0, 160($sp)
+        sdc1    $f2, 168($sp)
+        sdc1    $f4, 176($sp)
+        sdc1    $f6, 184($sp)
+        sdc1    $f8, 192($sp)
+        sdc1    $f10, 200($sp)
+        sdc1    $f12, 208($sp)
+        sdc1    $f14, 216($sp)
+        sdc1    $f16, 224($sp)
+        sdc1    $f18, 232($sp)
+        sdc1    $f20, 240($sp)
+        sdc1    $f22, 248($sp)
+        sdc1    $f24, 256($sp)
+        sdc1    $f26, 264($sp)
+        sdc1    $f28, 272($sp)
+        sdc1    $f30, 280($sp)
+        mfc0    $k0, $14            # EPC: where the process was stopped
+        sw      $k0, 16($sp)
+
+        mfc0    $a0, $13            # Cause
+        andi    $k0, $a0, 0x7c      # its exception code, 4 times over: 0 for an interrupt
+        beqz    $k0, switch
+        li      $k1, 52             # 13, a trap
+        bne     $k0, $k1, fault
+        lw      $k0, 16($sp)
+        la      $k1, platform_trap_teq
+        bne     $k0, $k1, fault     # a trap, but not platform_trap's
+        addiu   $k0, $k0, 4         # platform_trap's process goes on after its teq
+        sw      $k0, 16($sp)
+
+switch:
+        lw      $a1, 16($sp)
+        move    $a2, $sp
+        la      $t9, platform_interrupt
+        jalr    $t9                 # void *platform_interrupt(cause, pc, frame), switch.c, in
+                                    # the user's text, which a jal cannot reach from .ktext
+        move    $sp, $v0            # the frame of the process that goes on, on its own stack
+
+        lw      $k0, 16($sp)
+        mtc0    $k0, $14
+        lw      $k0, 144($sp)
+        mthi    $k0
+        lw      $k0, 148($sp)
+        mtlo    $k0
+        lw      $k0, 152($sp)
+        mtc1    $zero, $f0          # cc0 as it was, from comparing 0 with itself
+        beqz    $k0, 1f
+        c.eq.s  $f0, $f0
+        b       2f
+1:      c.lt.s  $f0, $f0
+2:      ldc1    $f0, 160($sp)
+        ldc1    $f2, 168($sp)
+        ldc1    $f4, 176($sp)
+        ldc1    $f6, 184($sp)
+        ldc1    $f8, 192($sp)
+        ldc1    $f10, 200($sp)
+        ldc1    $f12, 208($sp)
+        ldc1    $f14, 216($sp)
+        ldc1    $f16, 224($sp)
+        ldc1    $f18, 232($sp)
+        ldc1    $f20, 240($sp)
+        ldc1    $f22, 248($sp)
+        ldc1    $f24, 256($sp)
+        ldc1    $f26, 264($sp)
+        ldc1    $f28, 272($sp)
+        ldc1    $f30, 280($sp)
+        lw      $at, 20($sp)
+        lw      $v0, 24($sp)
+        lw      $v1, 28($sp)
+        lw      $a0, 32($sp)
+        lw      $a1, 36($sp)
+        lw      $a2, 40($sp)
+        lw      $a3, 44($sp)
+        lw      $t0, 48($sp)
+        lw      $t1, 52($sp)
+        lw      $t2, 56($sp)
+        lw      $t3, 60($sp)
+        lw      $t4, 64($sp)
+        lw      $t5, 68($sp)
+        lw      $t6, 72($sp)
+        lw      $t7, 76($sp)
+        lw      $s0, 80($sp)
+        lw      $s1, 84($sp)
+        lw      $s2, 88($sp)
+        lw      $s3, 92($sp)
+        lw      $s4, 96($sp)
+        lw      $s5, 100($sp)
+        lw      $s6, 104($sp)
+        lw      $s7, 108($sp)
+        lw      $t8, 112($sp)
+        lw      $t9, 116($sp)
+        lw      $fp, 136($sp)
+        lw      $ra, 140($sp)
+        addiu   $sp, $sp, 288
+        eret                        # to EPC, with EXL clear again
+
+# Any other exception: what it was, where, and the address it concerns, for the report.
+fault:
+        lw      $a1, 16($sp)
+        mfc0    $a2, $8             # BadVAddr, the address of an address error
+        la      $t9, platform_fault
+        jalr    $t9                 # void platform_fault(cause, pc, address), switch.c: never returns

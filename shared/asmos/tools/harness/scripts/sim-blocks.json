@@ -1,0 +1,1 @@
+[{"wait":6000},{"key":"Space"},{"wait":2500},{"key":"ArrowLeft"},{"key":"ArrowUp"},{"wait":1500},{"key":"Space"},{"wait":2500},{"shot":"sim-blocks-1"},{"stats":"blocks"},{"audio":"playing"}]
