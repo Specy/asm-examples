@@ -59,7 +59,7 @@ npm ci
 npm run build
 ```
 
-`dist/<target>/<example>.asmproj` is one archive for each version of each example. `dist/index.json` lists every example with its archives (`examples`), and the examples of every Target (`targets`). The build also rewrites the table above. It fails, writing nothing, when something is wrong: a missing File, a Project over the editor's limits (16 MiB, 4,096 Files), a text File that is not UTF-8, or Generated assembly that is no longer what its C source compiles to. `npm run check` is the build that CI runs: it also fails when the table is out of date. `npm test` tests the build itself.
+`dist/<target>/<example>.asmproj` is one archive for each version of each example. `dist/index.json` lists every example with its archives (`examples`), and the examples of every Target (`targets`). The build also rewrites the table above. It fails, writing nothing, when something is wrong: a missing File, a Project over the editor's limits (64 MiB, 4,096 Files), a text File that is not UTF-8, or Generated assembly that is no longer what its C source compiles to. `npm run check` is the build that CI runs: it also fails when the table is out of date. `npm test` tests the build itself.
 
 ## Adding an example
 

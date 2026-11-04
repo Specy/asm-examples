@@ -23,8 +23,7 @@
  *   OS_AUTOSTART  "app arg;app arg", an autostart.txt only this run sees
  *   OS_ANNOTATIONS  0: compile without the source annotations, as the examples' recompile task
  *               does, rather than with them, as the editor's Compile does by default
- *   OS_LEAVE_OUT  "videos/,games/doom/": Files and folders the run's file system leaves out, so that
- *               the rest fits the editor's 16 MiB a Project may hold
+ *   OS_LEAVE_OUT  "videos/,games/doom/": Files and folders the run's file system leaves out
  *   OS_TRACE    1: print the Terminal as it goes
  */
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'

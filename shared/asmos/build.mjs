@@ -53,15 +53,12 @@ const MACHINES = [
         target: 'MIPS',
         platforms: ['mips', 'sim'],
         description:
-            'A desktop with a process scheduler and window manager, written in C and MIPS assembly. Includes Pac-Man, DOOM and a RISC-V assembly editor. No video is bundled.',
+            'A desktop with a process scheduler and window manager, written in C and MIPS assembly. Includes Pac-Man, DOOM and a RISC-V assembly editor.',
         project: project(
             'os/main.c.mips',
             { undoEnabled: false },
             { unitWidth: 1, unitHeight: 1, width: 640, height: 480 }
         ),
-        //Bad Apple!!'s video, for now: with DOOM, MIPS's Generated assembly, the largest of the
-        //three, would take the Project past the 16 MiB of Files a Project may hold
-        exclude: ['videos/'],
         withoutX86Assembly: true
     }
 ]

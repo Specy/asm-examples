@@ -64,7 +64,7 @@ it.skipIf(!ARCHIVE)('adds the Build output to the asmOS archive', async () => {
 it.skipIf(!process.env.OS_CHECK)('imports the archive with an up-to-date Build output', async () => {
     const { makeProjectFromArchive } = await import('#lib/projectArchive.ts')
     const { buildRecordAt } = await import('#lib/buildOutput.ts')
-    const project = makeProjectFromArchive(readFileSync(process.env.OS_CHECK!)).project
+    const project = (await makeProjectFromArchive(readFileSync(process.env.OS_CHECK!))).project
     const record = buildRecordAt(project.builds, 'os/main')
     expect(record).toBeDefined()
     expect(isUntouchedBuildOutput(record!, project.files['os/main'])).toBe(true)

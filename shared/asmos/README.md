@@ -10,7 +10,7 @@ asmOS opens a desktop on the Screen, with a Start menu, windows and eighteen app
 
 The generated assembly is already included. You can Build and Run without compiling the C source first.
 
-All three targets include the applications, with two differences to know before playing: the MIPS project omits `videos/`, so the Video Player has no bundled Bad Apple!! video; on RISC-V and MIPS, restart asmOS before reopening DOOM. See [On RISC-V and MIPS](#on-risc-v-and-mips) for the other platform differences.
+All three targets include the applications, with one difference to know before playing: on RISC-V and MIPS, restart asmOS before reopening DOOM. See [On RISC-V and MIPS](#on-risc-v-and-mips) for the other platform differences.
 
 The Screen is 640 × 480. On x86 the `@screen` comment at the top of `os/main.c` sets its size; on RISC-V and MIPS, `SIM_SCREEN` in `os/platform/sim/screen.c` does. To start applications automatically, list them in `autostart.txt`, one command per line, such as `notepad welcome.txt`.
 
@@ -79,7 +79,7 @@ The editor inside asmOS implements a subset of the web editor's RISC-V target: R
 
 ## Bad Apple!!
 
-On x86 and RISC-V, the Video Player opens `videos/bad-apple.vid` when it starts: 3 minutes 39 seconds of 480 × 360 black-and-white video at 30 frames per second, with its song, in 2.4 MB. The MIPS project omits the video, but includes the player.
+The Video Player opens `videos/bad-apple.vid` when it starts: 3 minutes 39 seconds of 480 × 360 black-and-white video at 30 frames per second, with its song, in 2.4 MB.
 
 Space or a click on the picture pauses it. The bar underneath seeks, Left and Right jump five seconds, and S toggles sound. Resize or maximize the window to scale the picture to fit.
 
@@ -102,7 +102,6 @@ These versions run as one program on the editor's RARS and MARS cores. They shar
 - **The clock** is syscall 30 and sleep syscall 32; the count of instructions run, which Task Manager shows, is RISC-V's `instret` counter, and on MIPS the editor's syscall 1101.
 - **The files** use the C library's POSIX calls, implemented through MARS's and RARS's file and folder services. `os/platform/files.c` is shared with x86.
 - **Sound** uses two devices the editor adds to MARS and RARS (`sim/sound.c`). The MIDI port at 0xFFFF0340 plays Music Player, Blocks and system chimes through the General MIDI synthesizer. The sampled-audio output at 0xFFFF0350 queues the samples produced by Pac-Man, DOOM and the Video Player. These replace x86's MIDI port and `/dev/dsp`; the original MARS and RARS have neither device.
-- **Bad Apple!! is not in the MIPS project.** The archive leaves out `videos/` to fit the project size limit alongside DOOM and the generated MIPS assembly. The Video Player is included and starts with nothing to play.
 - **DOOM** uses C loops for drawing, colour conversion and sound mixing. Expect a few frames per second and a game world that can move slower than normal. Sound uses the sampled-audio output and music uses the MIDI port. Game > Fast Drawing, Profile and Benchmark CPU are x86-only features, excluded by `os/doom/asmos_x86.h`. After closing DOOM, restart asmOS before opening it again.
 - **Speed.** Drawing can be slow: C loops fill pixels and copy them from the back buffer to the screen. These projects have **Undo enabled** off to reduce the cost of recording instructions. Opening and dragging windows may still feel delayed, especially while a game or video is drawing. Timer interrupts let other applications run even when one is busy computing.
 
@@ -204,4 +203,3 @@ On x86, `os/main.c` and `os/apps/apps.c` use **-O1**. The Assembly Editor and DO
 
 On RISC-V and MIPS, Clang compiles the same seven units to `.c.riscv` or `.c.mips` files. `os/main.c` and `os/ide/ide.c` use **-O2**; `os/apps/apps.c` and DOOM's four parts use **-Os** to keep the generated assembly smaller. Build links them directly, without the x86 `.part.asm` wrappers, along with the processor's assembly trap handler.
 
-Before recompiling on RISC-V or MIPS, turn **Include source annotations when compiling** off in the editor's Settings. The bundled generated assembly omits them to stay within the project size limit.

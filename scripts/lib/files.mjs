@@ -2,7 +2,7 @@ import { readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 
 /** What the editor accepts in one Project (`projectFiles.ts`, `projectArchive.ts`). */
-export const FILE_BYTE_LIMIT = 16 * 1024 * 1024
+export const FILE_BYTE_LIMIT = 64 * 1024 * 1024
 export const FILE_COUNT_LIMIT = 4096
 export const PATH_BYTE_LIMIT = 1024
 export const MANIFEST_BYTE_LIMIT = 1024 * 1024

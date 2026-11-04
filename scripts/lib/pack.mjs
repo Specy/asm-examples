@@ -73,7 +73,10 @@ export function packPort({
     const paths = Object.keys(projectFiles)
     check(paths.length > 0, 'it has no Files')
     check(paths.length <= FILE_COUNT_LIMIT, `${paths.length} Files, over ${FILE_COUNT_LIMIT}`)
-    check(bytes <= FILE_BYTE_LIMIT, `${bytes} bytes of Files, over 16 MiB`)
+    check(
+        bytes <= FILE_BYTE_LIMIT,
+        `${bytes} bytes of Files, over ${FILE_BYTE_LIMIT / (1024 * 1024)} MiB`
+    )
     const isFile = (path) => typeof path === 'string' && path in projectFiles
 
     let programs = project.programs

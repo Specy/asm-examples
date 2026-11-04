@@ -1,7 +1,6 @@
 #!/bin/sh
 # sim-all.sh <RISC-V|MIPS> <shots dir>: compiles once, then plays every sim- script from that build
-# but DOOM's. Without source annotations: with them the Generated assembly of the seven units takes
-# the Project over the 16 MiB the editor's file system holds.
+# but DOOM's. Without source annotations.
 P=$(cd "$(dirname "$0")" && pwd)
 export OS_ANNOTATIONS=0
 $P/sim.sh $1 boot $2 | grep "^\[\|built\|FAIL\|error"
