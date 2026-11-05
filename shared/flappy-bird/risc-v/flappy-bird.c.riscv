@@ -1,1225 +1,1921 @@
         .attribute      4, 16
         .attribute      5, "rv32i2p1_m2p0_f2p2_d2p2_zicsr2p0_zmmul1p0"
-        # @screen width=256 height=256 unit=4 base=display
+        # @screen width=384 height=512 unit=2 base=display
         .text
-        .globl  main                            # -- Begin function main
+        .globl  main
         .p2align        2
         .type   main,@function
-main:                                   # @main
+main:
 .Lfunc_begin0:
-# %bb.0:                                # %entry
-        addi    sp, sp, -16
-        sw      ra, 12(sp)                      # 4-byte Folded Spill
-        sw      s0, 8(sp)                       # 4-byte Folded Spill
-        addi    s0, sp, 16
+        addi    sp, sp, -128
+        sw      ra, 124(sp)
+        sw      s0, 120(sp)
+        sw      s1, 116(sp)
+        sw      s2, 112(sp)
+        sw      s3, 108(sp)
+        sw      s4, 104(sp)
+        sw      s5, 100(sp)
+        sw      s6, 96(sp)
+        sw      s7, 92(sp)
+        sw      s8, 88(sp)
+        sw      s9, 84(sp)
+        sw      s10, 80(sp)
+        sw      s11, 76(sp)
         li      a0, 0
-        sw      a0, -12(s0)
+        lui     a1, %hi(backdrop)
+        addi    a1, a1, %lo(backdrop)
+        lui     a2, %hi(cloud_rise)
+        addi    a2, a2, %lo(cloud_rise)
+        li      a3, 150
+        lui     a4, %hi(towers)
+        addi    a4, a4, %lo(towers)
+        li      a5, 204
+        lui     a6, %hi(bush_rise)
+        addi    a6, a6, %lo(bush_rise)
+        li      a7, 206
+        lui     t4, 3744
+        lui     t5, 1260
+        lui     t6, 2702
+        li      t0, 5
+        li      t1, 2
+        lui     s0, 3375
+        li      t2, 216
+        li      t3, 192
+        lui     s1, 1518
+        lui     s2, 1148
+        addi    t4, t4, -807
+        addi    t5, t5, 202
+        addi    t6, t6, -75
+        addi    s0, s0, 988
+        addi    s1, s1, 624
+        addi    s2, s2, -166
+        j       .LBB0_2
+.LBB0_1:
 .Ltmp0:
-        call    new_game
-        j       .LBB0_1
-.LBB0_1:                                # %for.cond
-        call    read_flap
-        call    update
-        call    draw_bird
-        li      a0, 80
-        call    sim_sleep
-        j       .LBB0_1
+        addi    a0, a0, 1
+        addi    a1, a1, 4
+        beq     a0, t3, .LBB0_15
+.LBB0_2:
+        li      s3, 0
+        andi    s4, a0, 63
+        srli    s5, a0, 3
+        sltiu   s6, a0, 96
+        andi    s7, a0, 31
+        add     s4, a2, s4
+        addi    s6, s6, -1
+        add     s5, a4, s5
+        add     s7, a6, s7
+        lbu     s8, 0(s4)
+        andi    s4, s6, -12
+        lbu     s6, 0(s7)
+        add     s4, s5, s4
+        lbu     s9, 0(s4)
+        andi    s4, a0, 7
+        sub     s5, a3, s8
+        sub     s6, a5, s6
+        sub     s7, a5, s9
+        sub     s8, a7, s9
+        mv      s9, a1
+        j       .LBB0_4
+.LBB0_3:
+        sw      s10, 0(s9)
+        addi    s3, s3, 1
+        addi    s9, s9, 768
+        beq     s3, t2, .LBB0_1
+.LBB0_4:
+        bge     s3, s6, .LBB0_8
+        bge     s3, s7, .LBB0_10
+        mv      s10, t5
+        blt     s3, s5, .LBB0_3
+        mv      s10, t4
+        j       .LBB0_3
+.LBB0_8:
+        mv      s10, s2
+        beq     s6, s3, .LBB0_3
+        mv      s10, s1
+        j       .LBB0_3
+.LBB0_10:
+        beq     s4, t0, .LBB0_12
+        mv      s10, t6
+        bne     s4, t1, .LBB0_3
+.LBB0_12:
+        andi    s11, s3, 3
+        mv      s10, t6
+        bne     s11, t1, .LBB0_3
+        mv      s10, s0
+        blt     s8, s3, .LBB0_3
 .Ltmp1:
-.Lfunc_end0:
-        .size   main, .Lfunc_end0-main
-        .p2align        2                               # -- Begin function new_game
-        .type   new_game,@function
-new_game:                               # @new_game
-.Lfunc_begin1:
-# %bb.0:                                # %entry
-        addi    sp, sp, -16
-        sw      ra, 12(sp)                      # 4-byte Folded Spill
-        sw      s0, 8(sp)                       # 4-byte Folded Spill
-        addi    s0, sp, 16
+        mv      s10, t6
+        j       .LBB0_3
+.LBB0_15:
+        lui     s0, 1
+        addi    a0, s0, -832
+        sw      a0, 32(sp)
+        call    new_game
 .Ltmp2:
-        lui     a1, %hi(bird_y)
-        li      a0, 320
-        sw      a0, %lo(bird_y)(a1)
-        lui     a1, %hi(velocity)
-        li      a0, 0
-        sw      a0, %lo(velocity)(a1)
-        lui     a1, %hi(state)
-        sw      a0, %lo(state)(a1)
-        lui     a1, %hi(score)
-        sw      a0, %lo(score)(a1)
-        call    new_pipes
-        call    paint_grid
-        lw      ra, 12(sp)                      # 4-byte Folded Reload
-        lw      s0, 8(sp)                       # 4-byte Folded Reload
-        addi    sp, sp, 16
-        ret
+        lui     a4, %hi(.L_MergedGlobals)
+        li      a0, -1
 .Ltmp3:
-.Lfunc_end1:
-        .size   new_game, .Lfunc_end1-new_game
-        .p2align        2                               # -- Begin function update
-        .type   update,@function
-update:                                 # @update
-.Lfunc_begin2:
-# %bb.0:                                # %entry
-        addi    sp, sp, -32
-        sw      ra, 28(sp)                      # 4-byte Folded Spill
-        sw      s0, 24(sp)                      # 4-byte Folded Spill
-        addi    s0, sp, 32
-        sw      a0, -12(s0)
+        li      a7, 30
+        lui     s11, %hi(.L_MergedGlobals)
+        addi    s11, s11, %lo(.L_MergedGlobals)
+        addi    a1, s0, -831
+        sw      a1, 16(sp)
+        li      s1, 46
+        li      s7, 17
+        li      s10, 12
+        lui     a2, 419430
+        addi    s6, sp, 68
+        lui     a3, 838861
+        lui     s5, %hi(palette)
+        addi    s5, s5, %lo(palette)
+        lui     s9, %hi(palette_keys)
+        addi    s9, s9, %lo(palette_keys)
 .Ltmp4:
-        lui     a0, %hi(state)
-        lw      a0, %lo(state)(a0)
-        sw      a0, -16(s0)                     # 4-byte Folded Spill
-        beqz    a0, .LBB2_3
-        j       .LBB2_1
-.LBB2_1:                                # %entry
-        lw      a0, -16(s0)                     # 4-byte Folded Reload
-        li      a1, 1
-        beq     a0, a1, .LBB2_8
-        j       .LBB2_2
-.LBB2_2:                                # %entry
-        lw      a0, -16(s0)                     # 4-byte Folded Reload
-        li      a1, 2
-        beq     a0, a1, .LBB2_17
-        j       .LBB2_23
-.LBB2_3:                                # %sw.bb
-        lw      a0, -12(s0)
-        beqz    a0, .LBB2_7
-        j       .LBB2_4
-.LBB2_4:                                # %if.then
-        call    sim_time
-        sw      a0, -20(s0)                     # 4-byte Folded Spill
-        lw      a1, -20(s0)                     # 4-byte Folded Reload
-        lui     a0, %hi(seed)
-        sw      a1, %lo(seed)(a0)
-        lw      a0, %lo(seed)(a0)
-        bnez    a0, .LBB2_6
-        j       .LBB2_5
-.LBB2_5:                                # %if.then2
-        lui     a1, %hi(seed)
+        lw      a1, %lo(.L_MergedGlobals)(a4)
+        lui     s8, %hi(display)
+        addi    s8, s8, %lo(display)
+        addi    a6, a4, %lo(.L_MergedGlobals)
+        srai    a1, a1, 4
+        sw      a1, 4(a6)
+        lui     a4, 17190
+        sw      a0, 8(a6)
+        lui     a5, 1348
+.Ltmp5:
+        ecall
+        sw      a6, 36(sp)
+.Ltmp6:
+        sw      a0, 12(a6)
         lui     a0, 127268
+        addi    a1, a2, 1639
+        sw      a1, 28(sp)
+        lui     a2, 1048560
+        addi    a1, a3, -819
+        sw      a1, 24(sp)
+        addi    a1, a4, -940
+        sw      a1, 40(sp)
+        addi    a1, a5, -1977
+        sw      a1, 52(sp)
         addi    a0, a0, -1099
-        sw      a0, %lo(seed)(a1)
-        j       .LBB2_6
-.LBB2_6:                                # %if.end
-        call    new_pipes
-        call    paint_grid
-        lui     a1, %hi(state)
+        sw      a0, 12(sp)
+        lui     a0, %hi(body_shade)
+        addi    a0, a0, %lo(body_shade)
+        addi    s0, s5, -4
+        addi    a0, a0, 4
+        sw      a0, 48(sp)
+        j       .LBB0_17
+.LBB0_16:
+.Ltmp7:
+        addi    a0, a0, 20
+        sw      a0, 12(s11)
+.Ltmp8:
+        li      a7, 32
+        mv      a0, a1
+        ecall
+        lui     a2, 1048560
+.Ltmp9:
+.LBB0_17:
+        lw      a0, 0(a2)
+        andi    a1, a0, 1
         li      a0, 1
-        sw      a0, %lo(state)(a1)
-        lui     a1, %hi(velocity)
-        li      a0, -26
-        sw      a0, %lo(velocity)(a1)
-        j       .LBB2_7
-.LBB2_7:                                # %if.end3
-        j       .LBB2_23
-.LBB2_8:                                # %sw.bb4
-        lw      a0, -12(s0)
-        beqz    a0, .LBB2_10
-        j       .LBB2_9
-.LBB2_9:                                # %if.then6
-        lui     a1, %hi(velocity)
-        li      a0, -26
-        sw      a0, %lo(velocity)(a1)
-        j       .LBB2_10
-.LBB2_10:                               # %if.end7
-        call    fall
-        lui     a0, %hi(bird_y)
-        lw      a0, %lo(bird_y)(a0)
-        bgez    a0, .LBB2_12
-        j       .LBB2_11
-.LBB2_11:                               # %if.then10
-        lui     a1, %hi(bird_y)
+.Ltmp10:
+        beqz    a1, .LBB0_25
         li      a0, 0
-        sw      a0, %lo(bird_y)(a1)
-        lui     a1, %hi(velocity)
-        sw      a0, %lo(velocity)(a1)
-        j       .LBB2_12
-.LBB2_12:                               # %if.end11
-        call    move_pipes
-        call    hit_test
-        beqz    a0, .LBB2_16
-        j       .LBB2_13
-.LBB2_13:                               # %if.then14
-        lui     a1, %hi(state)
-        li      a0, 2
-        sw      a0, %lo(state)(a1)
-        call    paint_dead_ground
-        lui     a0, %hi(score)
-        lw      a1, %lo(score)(a0)
-        lui     a0, %hi(best)
-        lw      a0, %lo(best)(a0)
-        bge     a0, a1, .LBB2_15
-        j       .LBB2_14
-.LBB2_14:                               # %if.then17
-        lui     a0, %hi(score)
-        lw      a0, %lo(score)(a0)
-        lui     a1, %hi(best)
-        sw      a0, %lo(best)(a1)
-        j       .LBB2_15
-.LBB2_15:                               # %if.end18
+        j       .LBB0_21
+.LBB0_19:
+        li      a0, 1
+.LBB0_20:
+.Ltmp11:
+        lw      a1, 0(a2)
+.Ltmp12:
+        andi    a1, a1, 1
+        beqz    a1, .LBB0_24
+.LBB0_21:
+.Ltmp13:
+        lw      a1, 4(a2)
+.Ltmp14:
+        zext.b  a1, a1
+        li      a3, 10
+        beq     a1, a3, .LBB0_19
+        li      a3, 119
+        beq     a1, a3, .LBB0_19
+        li      a3, 32
+        beq     a1, a3, .LBB0_19
+        j       .LBB0_20
+.Ltmp15:
+.LBB0_24:
+        seqz    a0, a0
+.LBB0_25:
+        lw      a1, 16(s11)
+        li      a2, 2
+        beq     a1, a2, .LBB0_31
+        li      a2, 1
+        bne     a1, a2, .LBB0_36
+        lw      a1, 36(sp)
+        lw      a1, 24(a1)
+        li      a2, 114
+.Ltmp16:
+        blt     a1, a2, .LBB0_29
+.Ltmp17:
+        li      a1, 114
+.LBB0_29:
+        bnez    a0, .LBB0_40
+        li      a0, -82
+        j       .LBB0_41
+.LBB0_31:
+        beqz    a0, .LBB0_59
+        lw      a0, 36(sp)
+.Ltmp18:
+        lw      a0, 24(a0)
+        li      a1, 114
+        blt     a0, a1, .LBB0_34
+.Ltmp19:
+        li      a0, 114
+.LBB0_34:
+        lui     a2, %hi(.L_MergedGlobals)
+.Ltmp20:
+        lw      a1, %lo(.L_MergedGlobals)(a2)
+        addi    a0, a0, 6
+        lw      a3, 36(sp)
+        sw      a0, 24(a3)
+        add     a0, a1, a0
+        sw      a0, %lo(.L_MergedGlobals)(a2)
+        lw      a1, 16(sp)
+.Ltmp21:
+        blt     a0, a1, .LBB0_72
+        lw      a0, 32(sp)
+        lui     a1, %hi(.L_MergedGlobals)
+        sw      a0, %lo(.L_MergedGlobals)(a1)
+        lw      a0, 36(sp)
+        sw      zero, 24(a0)
+        j       .LBB0_72
+.LBB0_36:
+        beqz    a0, .LBB0_60
+        lw      a0, 36(sp)
+        lw      a0, 20(a0)
+        srai    a1, a0, 31
+        srli    a1, a1, 27
+        add     a1, a0, a1
+        andi    a1, a1, -32
+        sub     a0, a0, a1
+        li      a1, 15
+        bge     a1, a0, .LBB0_39
+        li      a1, 31
+        sub     a0, a1, a0
+.LBB0_39:
+        slli    a0, a0, 2
+        addi    a0, a0, 1600
+        lui     a1, %hi(.L_MergedGlobals)
+        sw      a0, %lo(.L_MergedGlobals)(a1)
+        j       .LBB0_72
+.LBB0_40:
+        addi    a0, a1, 6
+.Ltmp22:
+.LBB0_41:
+        lui     a2, %hi(.L_MergedGlobals)
+.Ltmp23:
+        lw      a1, %lo(.L_MergedGlobals)(a2)
+        lw      a3, 36(sp)
+        sw      a0, 24(a3)
+        add     a1, a0, a1
+        sw      a1, %lo(.L_MergedGlobals)(a2)
+.Ltmp24:
+        bgez    a1, .LBB0_43
+        li      a1, 0
+        lui     a0, %hi(.L_MergedGlobals)
+        sw      zero, %lo(.L_MergedGlobals)(a0)
+        lw      a0, 36(sp)
+        sw      zero, 24(a0)
+.LBB0_43:
+        sw      a1, 20(sp)
+        lui     a0, %hi(seed)
+        lw      a0, %lo(seed)(a0)
+        sw      a0, 56(sp)
+        lw      a0, 28(s11)
+        sw      a0, 44(sp)
+        li      a4, 0
+        j       .LBB0_45
+.LBB0_44:
+        lw      s2, 60(sp)
+.Ltmp25:
+        addi    s2, s2, 30
+        mv      a0, s2
+        li      a1, 0
+        mv      a2, s3
+        call    world_column
+.Ltmp26:
+        li      a2, 216
+        mv      a0, s2
+        mv      a1, s4
+        call    world_column
+.Ltmp27:
+        lw      a4, 64(sp)
+        addi    a4, a4, 1
+        lui     s11, %hi(.L_MergedGlobals)
+        addi    s11, s11, %lo(.L_MergedGlobals)
+        li      s7, 17
+        addi    s6, sp, 68
+        lui     s5, %hi(palette)
+        addi    s5, s5, %lo(palette)
+        li      a0, 3
+        beq     a4, a0, .LBB0_55
+.LBB0_45:
+        slli    a0, a4, 2
+        slli    a1, a4, 4
+        sub     a0, a1, a0
+        add     a0, s11, a0
+        lw      a1, 36(a0)
+        addi    s5, a1, -1
+        sw      s5, 36(a0)
+        li      a2, -30
+        sw      a4, 64(sp)
+        blt     a2, a1, .LBB0_47
+        addi    s5, a1, 311
+        lw      a2, 56(sp)
+.Ltmp28:
+        slli    a1, a2, 13
+        xor     a1, a1, a2
+        srli    a2, a1, 17
+        xor     a1, a2, a1
+        slli    a2, a1, 5
+        xor     a2, a2, a1
+        lui     a1, %hi(seed)
+        sw      a2, %lo(seed)(a1)
+        sw      a2, 56(sp)
+        srli    a1, a2, 8
+        lw      a2, 40(sp)
+        mulhu   a2, a1, a2
+        li      a3, 61
+        mul     a2, a2, a3
+        sub     a1, a1, a2
+        addi    a1, a1, 86
+.Ltmp29:
+        sw      s5, 36(a0)
+        sw      a1, 40(a0)
+        sw      zero, 44(a0)
+        j       .LBB0_48
+.LBB0_47:
+        lw      a1, 44(a0)
+        bnez    a1, .LBB0_50
+.LBB0_48:
+        blt     s7, s5, .LBB0_50
+        lw      a1, 44(sp)
+        addi    a1, a1, 1
+        sw      a1, 44(sp)
+        sw      a1, 28(s11)
+        li      a1, 1
+        sw      a1, 44(a0)
+.LBB0_50:
+        lw      s2, 40(a0)
+        addi    s3, s2, -34
+        mv      a0, s5
+        li      a1, 0
+        mv      a2, s3
+        call    world_column
+.Ltmp30:
+        addi    s4, s2, 34
+        li      a2, 216
+        mv      a0, s5
+        mv      a1, s4
+        call    world_column
+.Ltmp31:
+        li      s7, 0
+        sw      s5, 60(sp)
+        addi    s5, s5, 1
+        lui     s6, %hi(cap_shade+4)
+        addi    s6, s6, %lo(cap_shade+4)
+        lw      s11, 48(sp)
+        lw      a0, 52(sp)
+        j       .LBB0_53
+.LBB0_51:
+        mv      a0, s5
+        li      a1, 0
+        mv      a2, s3
+        call    world_column
+.Ltmp32:
+        li      a2, 216
+        mv      a0, s5
+        mv      a1, s4
+        call    world_column
+.Ltmp33:
+.LBB0_52:
+        addi    s5, s5, 1
+        addi    s11, s11, 4
+        lui     a0, %hi(body_shade)
+        addi    a0, a0, %lo(body_shade)
+        addi    a1, a0, 120
+        addi    s6, s6, 4
+        mv      a0, s2
+        beq     s11, a1, .LBB0_44
+.LBB0_53:
+.Ltmp34:
+        mv      a1, s7
+        lw      s7, 0(s11)
+        lw      s2, 0(s6)
+.Ltmp35:
+        bne     s7, a1, .LBB0_51
+        beq     s2, a0, .LBB0_52
+        j       .LBB0_51
+.Ltmp36:
+.LBB0_55:
+        lw      a0, 20(sp)
+.Ltmp37:
+        srli    a0, a0, 4
+        li      a1, 204
+        bgeu    a1, a0, .LBB0_63
+.Ltmp38:
+.LBB0_56:
+        lw      a0, 32(s11)
+        li      a1, 2
+        sw      a1, 16(s11)
+        lw      a1, 44(sp)
+        bge     a0, a1, .LBB0_58
+        sw      a1, 32(s11)
+.LBB0_58:
+.Ltmp39:
         lui     a0, %hi(.L.str)
         addi    a0, a0, %lo(.L.str)
-        call    sim_print_string
-        lui     a0, %hi(score)
-        lw      a0, %lo(score)(a0)
-        call    sim_print_int
+        li      a7, 4
+        ecall
+.Ltmp40:
+        lw      a0, 28(s11)
+.Ltmp41:
+        li      a7, 1
+        ecall
+.Ltmp42:
+        li      a7, 4
         lui     a0, %hi(.L.str.1)
         addi    a0, a0, %lo(.L.str.1)
-        call    sim_print_string
-        lui     a0, %hi(best)
-        lw      a0, %lo(best)(a0)
-        call    sim_print_int
-        li      a0, 10
-        call    sim_print_char
-        j       .LBB2_16
-.LBB2_16:                               # %if.end19
-        j       .LBB2_23
-.LBB2_17:                               # %sw.bb20
-        lw      a0, -12(s0)
-        beqz    a0, .LBB2_19
-        j       .LBB2_18
-.LBB2_18:                               # %if.then22
-        call    new_game
-        j       .LBB2_22
-.LBB2_19:                               # %if.else
-        call    fall
-        lui     a0, %hi(bird_y)
-        lw      a0, %lo(bird_y)(a0)
-        li      a1, 817
-        blt     a0, a1, .LBB2_21
-        j       .LBB2_20
-.LBB2_20:                               # %if.then25
-        lui     a1, %hi(bird_y)
-        li      a0, 816
-        sw      a0, %lo(bird_y)(a1)
-        lui     a1, %hi(velocity)
-        li      a0, 0
-        sw      a0, %lo(velocity)(a1)
-        j       .LBB2_21
-.LBB2_21:                               # %if.end26
-        j       .LBB2_22
-.LBB2_22:                               # %if.end27
-        j       .LBB2_23
-.LBB2_23:                               # %sw.epilog
-        lw      ra, 28(sp)                      # 4-byte Folded Reload
-        lw      s0, 24(sp)                      # 4-byte Folded Reload
-        addi    sp, sp, 32
-        ret
-.Ltmp5:
-.Lfunc_end2:
-        .size   update, .Lfunc_end2-update
-        .p2align        2                               # -- Begin function read_flap
-        .type   read_flap,@function
-read_flap:                              # @read_flap
-.Lfunc_begin3:
-# %bb.0:                                # %entry
-        addi    sp, sp, -16
-        sw      ra, 12(sp)                      # 4-byte Folded Spill
-        sw      s0, 8(sp)                       # 4-byte Folded Spill
-        addi    s0, sp, 16
-        li      a0, 0
-.Ltmp6:
-        sw      a0, -12(s0)
-        j       .LBB3_1
-.LBB3_1:                                # %while.cond
-        call    sim_keyboard_ready
-        beqz    a0, .LBB3_7
-        j       .LBB3_2
-.LBB3_2:                                # %while.body
-        call    sim_keyboard_read
-        zext.b  a0, a0
-        sw      a0, -16(s0)
-        lw      a0, -16(s0)
-        li      a1, 32
-        beq     a0, a1, .LBB3_5
-        j       .LBB3_3
-.LBB3_3:                                # %lor.lhs.false
-        lw      a0, -16(s0)
-        li      a1, 119
-        beq     a0, a1, .LBB3_5
-        j       .LBB3_4
-.LBB3_4:                                # %lor.lhs.false3
-        lw      a0, -16(s0)
-        li      a1, 10
-        bne     a0, a1, .LBB3_6
-        j       .LBB3_5
-.LBB3_5:                                # %if.then
-        li      a0, 1
-        sw      a0, -12(s0)
-        j       .LBB3_6
-.LBB3_6:                                # %if.end
-        j       .LBB3_1
-.LBB3_7:                                # %while.end
-        lw      a0, -12(s0)
-        lw      ra, 12(sp)                      # 4-byte Folded Reload
-        lw      s0, 8(sp)                       # 4-byte Folded Reload
-        addi    sp, sp, 16
-        ret
-.Ltmp7:
-.Lfunc_end3:
-        .size   read_flap, .Lfunc_end3-read_flap
-        .p2align        2                               # -- Begin function draw_bird
-        .type   draw_bird,@function
-draw_bird:                              # @draw_bird
-.Lfunc_begin4:
-# %bb.0:                                # %entry
-        addi    sp, sp, -32
-        sw      ra, 28(sp)                      # 4-byte Folded Spill
-        sw      s0, 24(sp)                      # 4-byte Folded Spill
-        addi    s0, sp, 32
-.Ltmp8:
-        lui     a0, %hi(bird_y)
-        lw      a0, %lo(bird_y)(a0)
-        srai    a0, a0, 4
-        sw      a0, -12(s0)
-        li      a0, 12
-        sw      a0, -16(s0)
-        j       .LBB4_1
-.LBB4_1:                                # %for.cond
-        lw      a1, -16(s0)
-        li      a0, 17
-        blt     a0, a1, .LBB4_4
-        j       .LBB4_2
-.LBB4_2:                                # %for.body
-        lw      a0, -16(s0)
-        lw      a2, -12(s0)
-        li      a1, 0
-        sw      a1, -24(s0)                     # 4-byte Folded Spill
-        call    world_column
-        lw      a4, -24(s0)                     # 4-byte Folded Reload
-        lw      a0, -16(s0)
-        lw      a1, -12(s0)
-        addi    a2, a1, 5
-        lui     a3, 4013
-        addi    a3, a3, -450
-        li      a5, 64
-        sw      a5, -20(s0)                     # 4-byte Folded Spill
-        call    fill_span
-        lw      a2, -20(s0)                     # 4-byte Folded Reload
-        lw      a0, -16(s0)
-        lw      a1, -12(s0)
-        addi    a1, a1, 5
-        call    world_column
-        j       .LBB4_3
-.LBB4_3:                                # %for.inc
-        lw      a0, -16(s0)
-        addi    a0, a0, 1
-        sw      a0, -16(s0)
-        j       .LBB4_1
-.LBB4_4:                                # %for.end
-        lw      a0, -12(s0)
-        addi    a1, a0, 1
-        addi    a2, a0, 2
-        lui     a0, 514
-        addi    a3, a0, -2032
-        li      a0, 16
-        li      a4, 0
-        sw      a4, -32(s0)                     # 4-byte Folded Spill
-        li      a5, 64
-        sw      a5, -28(s0)                     # 4-byte Folded Spill
-        call    fill_span
-        lw      a4, -32(s0)                     # 4-byte Folded Reload
-        lw      a5, -28(s0)                     # 4-byte Folded Reload
-        lw      a0, -12(s0)
-        addi    a1, a0, 2
-        addi    a2, a0, 4
-        lui     a0, 3848
-        addi    a3, a0, 552
-        li      a0, 17
-        call    fill_span
-        lw      ra, 28(sp)                      # 4-byte Folded Reload
-        lw      s0, 24(sp)                      # 4-byte Folded Reload
-        addi    sp, sp, 32
-        ret
-.Ltmp9:
-.Lfunc_end4:
-        .size   draw_bird, .Lfunc_end4-draw_bird
-        .p2align        2                               # -- Begin function sim_sleep
-        .type   sim_sleep,@function
-sim_sleep:                              # @sim_sleep
-.Lfunc_begin5:
-# %bb.0:                                # %entry
-        addi    sp, sp, -32
-        sw      ra, 28(sp)                      # 4-byte Folded Spill
-        sw      s0, 24(sp)                      # 4-byte Folded Spill
-        addi    s0, sp, 32
-        sw      a0, -12(s0)
-        li      a0, 32
-.Ltmp10:
-        sw      a0, -16(s0)
-        lw      a0, -12(s0)
-        sw      a0, -20(s0)
-        lw      a7, -16(s0)
-        lw      a0, -20(s0)
         ecall
-        lw      ra, 28(sp)                      # 4-byte Folded Reload
-        lw      s0, 24(sp)                      # 4-byte Folded Reload
-        addi    sp, sp, 32
-        ret
-.Ltmp11:
-.Lfunc_end5:
-        .size   sim_sleep, .Lfunc_end5-sim_sleep
-        .p2align        2                               # -- Begin function new_pipes
-        .type   new_pipes,@function
-new_pipes:                              # @new_pipes
-.Lfunc_begin6:
-# %bb.0:                                # %entry
-        addi    sp, sp, -16
-        sw      ra, 12(sp)                      # 4-byte Folded Spill
-        sw      s0, 8(sp)                       # 4-byte Folded Spill
-        addi    s0, sp, 16
-        li      a0, 0
-.Ltmp12:
-        sw      a0, -12(s0)
-        j       .LBB6_1
-.LBB6_1:                                # %for.cond
-        lw      a1, -12(s0)
-        li      a0, 2
-        blt     a0, a1, .LBB6_4
-        j       .LBB6_2
-.LBB6_2:                                # %for.body
-        lw      a1, -12(s0)
-        slli    a2, a1, 3
-        slli    a0, a1, 5
-        sub     a0, a0, a2
-        addi    a0, a0, 62
-        slli    a2, a1, 2
-        slli    a1, a1, 4
-        sub     a2, a1, a2
-        lui     a1, %hi(pipes)
-        addi    a1, a1, %lo(pipes)
-        sw      a1, -16(s0)                     # 4-byte Folded Spill
-        add     a1, a1, a2
-        sw      a0, 0(a1)
-        call    random_gap
-        mv      a1, a0
-        lw      a0, -16(s0)                     # 4-byte Folded Reload
-        lw      a2, -12(s0)
-        slli    a3, a2, 2
-        slli    a2, a2, 4
-        sub     a2, a2, a3
-        add     a2, a0, a2
-        sw      a1, 4(a2)
-        lw      a1, -12(s0)
-        slli    a2, a1, 2
-        slli    a1, a1, 4
+.Ltmp43:
+        lw      a0, 32(s11)
+.Ltmp44:
+        li      a7, 1
+        ecall
+.Ltmp45:
+        li      a7, 11
+        li      a0, 10
+        ecall
+.Ltmp46:
+        j       .LBB0_72
+.LBB0_59:
+        call    new_game
+.Ltmp47:
+        j       .LBB0_72
+.LBB0_60:
+.Ltmp48:
+        li      a7, 30
+        ecall
+.Ltmp49:
+        bnez    a0, .LBB0_62
+        lw      a0, 12(sp)
+.LBB0_62:
+.Ltmp50:
+        slli    a1, a0, 13
+        xor     a0, a1, a0
+        srli    a1, a0, 17
+        xor     a0, a1, a0
+        slli    a1, a0, 5
+        xor     a0, a1, a0
+        srli    a1, a0, 8
+        slli    a2, a0, 13
+        xor     a0, a2, a0
+        lw      a4, 40(sp)
+        mulhu   a2, a1, a4
+        li      a3, 61
+        mul     a2, a2, a3
         sub     a1, a1, a2
-        add     a1, a0, a1
-        li      a0, 0
-        sw      a0, 8(a1)
-        j       .LBB6_3
-.LBB6_3:                                # %for.inc
-        lw      a0, -12(s0)
-        addi    a0, a0, 1
-        sw      a0, -12(s0)
-        j       .LBB6_1
-.LBB6_4:                                # %for.end
-        lw      ra, 12(sp)                      # 4-byte Folded Reload
-        lw      s0, 8(sp)                       # 4-byte Folded Reload
-        addi    sp, sp, 16
-        ret
-.Ltmp13:
-.Lfunc_end6:
-        .size   new_pipes, .Lfunc_end6-new_pipes
-        .p2align        2                               # -- Begin function paint_grid
-        .type   paint_grid,@function
-paint_grid:                             # @paint_grid
-.Lfunc_begin7:
-# %bb.0:                                # %entry
-        addi    sp, sp, -16
-        sw      ra, 12(sp)                      # 4-byte Folded Spill
-        sw      s0, 8(sp)                       # 4-byte Folded Spill
-        addi    s0, sp, 16
-        li      a0, 0
-.Ltmp14:
-        sw      a0, -12(s0)
-        j       .LBB7_1
-.LBB7_1:                                # %for.cond
-        lw      a1, -12(s0)
-        li      a0, 63
-        blt     a0, a1, .LBB7_4
-        j       .LBB7_2
-.LBB7_2:                                # %for.body
-        lw      a0, -12(s0)
-        li      a1, 0
-        li      a2, 64
-        call    world_column
-        j       .LBB7_3
-.LBB7_3:                                # %for.inc
-        lw      a0, -12(s0)
-        addi    a0, a0, 1
-        sw      a0, -12(s0)
-        j       .LBB7_1
-.LBB7_4:                                # %for.end
-        lw      ra, 12(sp)                      # 4-byte Folded Reload
-        lw      s0, 8(sp)                       # 4-byte Folded Reload
-        addi    sp, sp, 16
-        ret
-.Ltmp15:
-.Lfunc_end7:
-        .size   paint_grid, .Lfunc_end7-paint_grid
-        .p2align        2                               # -- Begin function random_gap
-        .type   random_gap,@function
-random_gap:                             # @random_gap
-.Lfunc_begin8:
-# %bb.0:                                # %entry
-        addi    sp, sp, -16
-        sw      ra, 12(sp)                      # 4-byte Folded Spill
-        sw      s0, 8(sp)                       # 4-byte Folded Spill
-        addi    s0, sp, 16
-.Ltmp16:
-        lui     a0, %hi(seed)
-        lw      a1, %lo(seed)(a0)
-        slli    a2, a1, 13
-        xor     a1, a1, a2
-        sw      a1, %lo(seed)(a0)
-        lw      a1, %lo(seed)(a0)
-        srli    a2, a1, 17
-        xor     a1, a1, a2
-        sw      a1, %lo(seed)(a0)
-        lw      a1, %lo(seed)(a0)
-        slli    a2, a1, 5
-        xor     a1, a1, a2
-        sw      a1, %lo(seed)(a0)
-        lw      a0, %lo(seed)(a0)
-        srli    a0, a0, 8
-        lui     a1, 40330
-        addi    a1, a1, -630
-        mulhu   a1, a0, a1
-        li      a2, 26
-        mul     a1, a1, a2
-        sub     a0, a0, a1
-        addi    a0, a0, 13
-        lw      ra, 12(sp)                      # 4-byte Folded Reload
-        lw      s0, 8(sp)                       # 4-byte Folded Reload
-        addi    sp, sp, 16
-        ret
-.Ltmp17:
-.Lfunc_end8:
-        .size   random_gap, .Lfunc_end8-random_gap
-        .p2align        2                               # -- Begin function world_column
-        .type   world_column,@function
-world_column:                           # @world_column
-.Lfunc_begin9:
-# %bb.0:                                # %entry
-        addi    sp, sp, -80
-        sw      ra, 76(sp)                      # 4-byte Folded Spill
-        sw      s0, 72(sp)                      # 4-byte Folded Spill
-        addi    s0, sp, 80
-        sw      a0, -12(s0)
-        sw      a1, -16(s0)
-        sw      a2, -20(s0)
-.Ltmp18:
-        lw      a0, -12(s0)
-        bltz    a0, .LBB9_2
-        j       .LBB9_1
-.LBB9_1:                                # %lor.lhs.false
-        lw      a0, -12(s0)
-        li      a1, 64
-        blt     a0, a1, .LBB9_3
-        j       .LBB9_2
-.LBB9_2:                                # %if.then
-        j       .LBB9_18
-.LBB9_3:                                # %if.end
-        li      a0, -1
-        sw      a0, -24(s0)
-        li      a0, 0
-        sw      a0, -28(s0)
-        j       .LBB9_4
-.LBB9_4:                                # %for.cond
-        lw      a1, -28(s0)
-        li      a0, 2
-        blt     a0, a1, .LBB9_10
-        j       .LBB9_5
-.LBB9_5:                                # %for.body
-        lw      a0, -12(s0)
-        lw      a1, -28(s0)
-        slli    a2, a1, 2
-        slli    a1, a1, 4
-        sub     a2, a1, a2
-        lui     a1, %hi(pipes)
-        addi    a1, a1, %lo(pipes)
-        add     a1, a1, a2
-        lw      a1, 0(a1)
-        blt     a0, a1, .LBB9_8
-        j       .LBB9_6
-.LBB9_6:                                # %land.lhs.true
-        lw      a0, -12(s0)
-        lw      a1, -28(s0)
-        slli    a2, a1, 2
-        slli    a1, a1, 4
-        sub     a2, a1, a2
-        lui     a1, %hi(pipes)
-        addi    a1, a1, %lo(pipes)
-        add     a1, a1, a2
-        lw      a1, 0(a1)
-        addi    a1, a1, 8
-        bge     a0, a1, .LBB9_8
-        j       .LBB9_7
-.LBB9_7:                                # %if.then8
-        lw      a0, -28(s0)
-        slli    a1, a0, 2
-        slli    a0, a0, 4
-        sub     a1, a0, a1
-        lui     a0, %hi(pipes)
-        addi    a0, a0, %lo(pipes)
-        add     a0, a0, a1
-        lw      a0, 4(a0)
-        sw      a0, -24(s0)
-        j       .LBB9_8
-.LBB9_8:                                # %if.end11
-        j       .LBB9_9
-.LBB9_9:                                # %for.inc
-        lw      a0, -28(s0)
-        addi    a0, a0, 1
-        sw      a0, -28(s0)
-        j       .LBB9_4
-.LBB9_10:                               # %for.end
-        lw      a0, -24(s0)
-        bgez    a0, .LBB9_12
-        j       .LBB9_11
-.LBB9_11:                               # %if.then13
-        lw      a0, -12(s0)
-        lw      a4, -16(s0)
-        lw      a5, -20(s0)
-        lui     a1, 1260
-        addi    a3, a1, 232
-        li      a1, 0
-        li      a2, 56
-        call    fill_span
-        j       .LBB9_13
-.LBB9_12:                               # %if.else
-        lw      a0, -12(s0)
-        lw      a1, -24(s0)
-        addi    a2, a1, -9
-        lw      a4, -16(s0)
-        lw      a5, -20(s0)
-        lui     a1, 1420
-        addi    a3, a1, -1223
-        sw      a3, -32(s0)                     # 4-byte Folded Spill
-        li      a1, 0
-        call    fill_span
-        lw      a0, -12(s0)
-        lw      a2, -24(s0)
-        addi    a1, a2, -9
-        addi    a2, a2, 9
-        lw      a4, -16(s0)
-        lw      a5, -20(s0)
-        lui     a3, 1260
-        addi    a3, a3, 232
-        call    fill_span
-        lw      a3, -32(s0)                     # 4-byte Folded Reload
-        lw      a0, -12(s0)
-        lw      a1, -24(s0)
-        addi    a1, a1, 9
-        lw      a4, -16(s0)
-        lw      a5, -20(s0)
-        li      a2, 56
-        call    fill_span
-        j       .LBB9_13
-.LBB9_13:                               # %if.end17
-        lw      a0, -12(s0)
-        sw      a0, -56(s0)                     # 4-byte Folded Spill
-        lui     a0, %hi(state)
-        sw      a0, -52(s0)                     # 4-byte Folded Spill
-        lw      a0, %lo(state)(a0)
-        lui     a1, 1868
-        addi    a1, a1, 1112
-        sw      a1, -48(s0)                     # 4-byte Folded Spill
-        lui     a1, 2819
-        addi    a2, a1, 40
-        sw      a2, -44(s0)                     # 4-byte Folded Spill
+        srli    a2, a0, 17
+        xor     a0, a2, a0
+        addi    a1, a1, 86
+        slli    a2, a0, 5
+.Ltmp51:
+        li      a5, 1
+        sw      a5, 16(s11)
+        li      a5, -88
+        sw      a5, 24(s11)
+.Ltmp52:
+        li      a5, 216
+        sw      a5, 36(s11)
+        sw      a1, 40(s11)
+.Ltmp53:
+        xor     a0, a2, a0
+        srli    a1, a0, 8
+        slli    a2, a0, 13
+        xor     a0, a2, a0
+        mulhu   a2, a1, a4
+        mul     a2, a2, a3
+        sub     a1, a1, a2
+        srli    a2, a0, 17
+        xor     a0, a2, a0
+        addi    a1, a1, 86
+        slli    a2, a0, 5
+.Ltmp54:
+        sw      zero, 44(s11)
+        li      a5, 320
+        sw      a5, 48(s11)
+        sw      a1, 52(s11)
+        sw      zero, 56(s11)
+.Ltmp55:
+        xor     a0, a2, a0
+        srli    a1, a0, 8
+        mulhu   a2, a1, a4
+        mul     a2, a2, a3
+        sub     a1, a1, a2
+        addi    a1, a1, 86
+.Ltmp56:
+        li      a2, 424
+        sw      a2, 60(s11)
+        sw      a1, 64(s11)
+        sw      zero, 68(s11)
+.Ltmp57:
+        lui     a1, %hi(seed)
+        sw      a0, %lo(seed)(a1)
+        j       .LBB0_74
+.Ltmp58:
+.LBB0_63:
+        lw      a2, 36(s11)
+        addi    a1, a0, 34
+        addi    a2, a2, -65
+        addi    a0, a0, -22
+        li      a3, -46
+        bltu    a2, a3, .LBB0_66
+        lw      a2, 40(s11)
+        blt     a1, a2, .LBB0_56
+        blt     a2, a0, .LBB0_56
+.LBB0_66:
+        lw      a2, 48(s11)
+        addi    a2, a2, -65
+        li      a3, -46
+        bltu    a2, a3, .LBB0_69
+        lw      a2, 52(s11)
+        blt     a1, a2, .LBB0_56
+        blt     a2, a0, .LBB0_56
+.LBB0_69:
+        lw      a2, 60(s11)
+        addi    a2, a2, -65
+        li      a3, -46
+        bltu    a2, a3, .LBB0_72
+        lw      a2, 64(s11)
+        blt     a1, a2, .LBB0_56
+        blt     a2, a0, .LBB0_56
+.Ltmp59:
+.LBB0_72:
+        lw      a0, 16(s11)
         li      a1, 2
-        sw      a1, -40(s0)                     # 4-byte Folded Spill
-        sw      a2, -36(s0)                     # 4-byte Folded Spill
-        beq     a0, a1, .LBB9_15
-# %bb.14:                               # %if.end17
-        lw      a0, -48(s0)                     # 4-byte Folded Reload
-        sw      a0, -36(s0)                     # 4-byte Folded Spill
-.LBB9_15:                               # %if.end17
-        lw      a0, -56(s0)                     # 4-byte Folded Reload
-        lw      a3, -36(s0)                     # 4-byte Folded Reload
-        lw      a4, -16(s0)
-        lw      a5, -20(s0)
-        li      a1, 56
-        li      a2, 58
-        sw      a2, -72(s0)                     # 4-byte Folded Spill
-        call    fill_span
-        lw      a0, -52(s0)                     # 4-byte Folded Reload
-        lw      a2, -44(s0)                     # 4-byte Folded Reload
-        lw      a1, -40(s0)                     # 4-byte Folded Reload
-        lw      a3, -12(s0)
-        sw      a3, -68(s0)                     # 4-byte Folded Spill
-        lw      a0, %lo(state)(a0)
-        lui     a3, 3566
-        addi    a3, a3, -1899
-        sw      a3, -64(s0)                     # 4-byte Folded Spill
-        sw      a2, -60(s0)                     # 4-byte Folded Spill
-        beq     a0, a1, .LBB9_17
-# %bb.16:                               # %if.end17
-        lw      a0, -64(s0)                     # 4-byte Folded Reload
-        sw      a0, -60(s0)                     # 4-byte Folded Spill
-.LBB9_17:                               # %if.end17
-        lw      a1, -72(s0)                     # 4-byte Folded Reload
-        lw      a0, -68(s0)                     # 4-byte Folded Reload
-        lw      a3, -60(s0)                     # 4-byte Folded Reload
-        lw      a4, -16(s0)
-        lw      a5, -20(s0)
-        li      a2, 64
-        call    fill_span
-        j       .LBB9_18
-.LBB9_18:                               # %return
-        lw      ra, 76(sp)                      # 4-byte Folded Reload
-        lw      s0, 72(sp)                      # 4-byte Folded Reload
-        addi    sp, sp, 80
-        ret
-.Ltmp19:
-.Lfunc_end9:
-        .size   world_column, .Lfunc_end9-world_column
-        .p2align        2                               # -- Begin function fill_span
-        .type   fill_span,@function
-fill_span:                              # @fill_span
-.Lfunc_begin10:
-# %bb.0:                                # %entry
-        addi    sp, sp, -48
-        sw      ra, 44(sp)                      # 4-byte Folded Spill
-        sw      s0, 40(sp)                      # 4-byte Folded Spill
-        addi    s0, sp, 48
-        sw      a0, -12(s0)
-        sw      a1, -16(s0)
-        sw      a2, -20(s0)
-        sw      a3, -24(s0)
-        sw      a4, -28(s0)
-        sw      a5, -32(s0)
-.Ltmp20:
-        lw      a0, -16(s0)
-        lw      a1, -28(s0)
-        bge     a0, a1, .LBB10_2
-        j       .LBB10_1
-.LBB10_1:                               # %if.then
-        lw      a0, -28(s0)
-        sw      a0, -16(s0)
-        j       .LBB10_2
-.LBB10_2:                               # %if.end
-        lw      a1, -20(s0)
-        lw      a0, -32(s0)
-        bge     a0, a1, .LBB10_4
-        j       .LBB10_3
-.LBB10_3:                               # %if.then2
-        lw      a0, -32(s0)
-        sw      a0, -20(s0)
-        j       .LBB10_4
-.LBB10_4:                               # %if.end3
-        lw      a0, -16(s0)
-        sw      a0, -36(s0)
-        j       .LBB10_5
-.LBB10_5:                               # %for.cond
-        lw      a0, -36(s0)
-        lw      a1, -20(s0)
-        bge     a0, a1, .LBB10_8
-        j       .LBB10_6
-.LBB10_6:                               # %for.body
-        lw      a0, -24(s0)
-        lw      a1, -36(s0)
-        slli    a1, a1, 6
-        lw      a2, -12(s0)
+        bne     a0, a1, .LBB0_74
+        li      s4, 1
+        j       .LBB0_75
+.LBB0_74:
+        li      s4, 0
+        lw      a0, 20(s11)
+        addi    a0, a0, 1
+        sw      a0, 20(s11)
+.LBB0_75:
+        lw      s2, 4(s11)
+        addi    s3, s2, 12
+.Ltmp60:
+        li      a0, 48
+        mv      a1, s2
+        mv      a2, s3
+        call    world_column
+.Ltmp61:
+        li      a0, 49
+        mv      a1, s2
+        mv      a2, s3
+        call    world_column
+.Ltmp62:
+        li      a0, 50
+        mv      a1, s2
+        mv      a2, s3
+        call    world_column
+.Ltmp63:
+        li      a0, 51
+        mv      a1, s2
+        mv      a2, s3
+        call    world_column
+.Ltmp64:
+        li      a0, 52
+        mv      a1, s2
+        mv      a2, s3
+        call    world_column
+.Ltmp65:
+        li      a0, 53
+        mv      a1, s2
+        mv      a2, s3
+        call    world_column
+.Ltmp66:
+        li      a0, 54
+        mv      a1, s2
+        mv      a2, s3
+        call    world_column
+.Ltmp67:
+        li      a0, 55
+        mv      a1, s2
+        mv      a2, s3
+        call    world_column
+.Ltmp68:
+        li      a0, 56
+        mv      a1, s2
+        mv      a2, s3
+        call    world_column
+.Ltmp69:
+        li      a0, 57
+        mv      a1, s2
+        mv      a2, s3
+        call    world_column
+.Ltmp70:
+        li      a0, 58
+        mv      a1, s2
+        mv      a2, s3
+        call    world_column
+.Ltmp71:
+        li      a0, 59
+        mv      a1, s2
+        mv      a2, s3
+        call    world_column
+.Ltmp72:
+        li      a0, 60
+        mv      a1, s2
+        mv      a2, s3
+        call    world_column
+.Ltmp73:
+        li      a0, 61
+        mv      a1, s2
+        mv      a2, s3
+        call    world_column
+.Ltmp74:
+        li      a0, 62
+        mv      a1, s2
+        mv      a2, s3
+        call    world_column
+.Ltmp75:
+        li      a0, 63
+        mv      a1, s2
+        mv      a2, s3
+        call    world_column
+.Ltmp76:
+        li      a0, 64
+        mv      a1, s2
+        mv      a2, s3
+        call    world_column
+.Ltmp77:
+        beqz    s4, .LBB0_77
+        li      a1, 1
+        lw      t2, 24(sp)
+        j       .LBB0_79
+.LBB0_77:
+        call    paint_stripes
+.Ltmp78:
+        lw      a0, 20(s11)
+        srai    a1, a0, 31
+        srli    a1, a1, 30
+        add     a0, a0, a1
+        srai    a0, a0, 2
+        srli    a1, a0, 30
+        add     a1, a0, a1
+        andi    a1, a1, -4
+        sub     a1, a0, a1
+        lw      t2, 24(sp)
+        li      a0, 3
+        bne     a1, a0, .LBB0_79
+        li      a1, 1
+.LBB0_79:
+        li      a0, 0
+        lui     a2, %hi(.L_MergedGlobals)
+        lw      a2, %lo(.L_MergedGlobals)(a2)
+        li      a3, 205
+        mul     a3, a1, a3
+        srai    a1, a2, 4
+        lw      a2, 36(sp)
+        sw      a1, 4(a2)
+        lui     a2, %hi(bird_art)
+        addi    a2, a2, %lo(bird_art)
+        add     a2, a2, a3
+        j       .LBB0_81
+.LBB0_80:
+.Ltmp79:
+        addi    a0, a0, 1
+        beq     a0, s10, .LBB0_88
+.LBB0_81:
+        li      a3, 0
+        add     a4, a0, a1
+        slli    a5, a4, 6
+        slli    a4, a4, 8
+        sub     a4, a4, a5
+        slli    a5, a0, 4
+        add     a5, a5, a0
+        add     a5, a2, a5
+        j       .LBB0_83
+.LBB0_82:
+        addi    a3, a3, 1
+        beq     a3, s7, .LBB0_80
+.LBB0_83:
+        add     a6, a5, a3
+        lbu     a6, 0(a6)
+        beq     a6, s1, .LBB0_82
+        addi    a7, s5, -4
+        mv      t0, s9
+.LBB0_85:
+        lbu     t1, 0(t0)
+        addi    a7, a7, 4
+        addi    t0, t0, 1
+        bne     t1, a6, .LBB0_85
+        lw      a6, 0(a7)
+.Ltmp80:
+        add     a7, a4, a3
+        slli    a7, a7, 2
+        add     a7, s8, a7
+        lw      t0, 192(a7)
+        beq     t0, a6, .LBB0_82
+        sw      a6, 192(a7)
+        j       .LBB0_82
+.Ltmp81:
+.LBB0_88:
+        li      a0, 0
+.Ltmp82:
+        lw      s5, 28(s11)
+        li      a1, 1
+        mv      a2, s5
+        li      a4, 9
+        lw      a5, 28(sp)
+.LBB0_89:
+        mv      s3, a0
+        mv      a3, a2
+        mv      s4, a1
+        mulh    a1, a2, a5
+        addi    a0, a0, 1
+        srli    a2, a1, 31
+        srai    a1, a1, 2
         add     a1, a1, a2
-        slli    a2, a1, 2
+        slli    a2, a1, 1
+        slli    a1, a1, 3
+        add     a1, a1, a2
+        add     a2, s6, s3
+        sub     a1, a3, a1
+        sb      a1, 0(a2)
+        mulhu   a2, a3, t2
+        srli    a2, a2, 3
+        addi    a1, s4, 1
+        blt     a4, a3, .LBB0_89
+        lw      a1, 8(s11)
+        li      a2, -12
+        mul     a0, a0, a2
+        addi    a0, a0, 192
+        srai    s6, a0, 1
+        beq     s5, a1, .LBB0_95
+        slli    a0, s3, 2
+        slli    a1, s3, 4
+        sub     a1, a1, a0
+        addi    s7, a1, 24
+        li      a0, -11
+        blt     s7, a0, .LBB0_94
+        add     s7, s6, s7
+        addi    s2, s6, -12
+.LBB0_93:
+        li      a1, 20
+        li      a2, 36
+        mv      a0, s2
+        call    world_column
+.Ltmp83:
+        addi    s2, s2, 1
+        blt     s2, s7, .LBB0_93
+.LBB0_94:
+        sw      s5, 8(s11)
+        li      s7, 17
+.LBB0_95:
+        li      a0, 0
+        lw      a1, 32(sp)
+        add     s6, a1, s6
+        addi    a1, s6, 576
+        addi    s6, sp, 68
+        li      t4, 193
+        lui     t5, %hi(digit_art)
+        addi    t5, t5, %lo(digit_art)
+        li      t6, 16
+        lui     s5, %hi(palette)
+        addi    s5, s5, %lo(palette)
+        j       .LBB0_97
+.LBB0_96:
+        addi    a0, a0, 1
+        beq     s4, a0, .LBB0_106
+.LBB0_97:
+        li      a2, 0
+        sub     a3, s3, a0
+        add     a3, s6, a3
+        lbu     a3, 0(a3)
+        slli    a4, a0, 2
+        slli    a5, a0, 4
+        sub     a4, a5, a4
+        mul     a3, a3, t4
+        add     a3, t5, a3
+.Ltmp84:
+        add     a4, a1, a4
+        j       .LBB0_99
+.LBB0_98:
+        addi    a2, a2, 1
+        beq     a2, t6, .LBB0_96
+.LBB0_99:
+        li      a5, 0
+        slli    a6, a2, 2
+        slli    a7, a2, 4
+        slli    t0, a2, 6
+        sub     a6, a7, a6
+        slli    a7, a2, 8
+        sub     a7, a7, t0
+        add     a6, a3, a6
+        add     a7, a4, a7
+        j       .LBB0_101
+.LBB0_100:
+        addi    a5, a5, 1
+        beq     a5, s10, .LBB0_98
+.LBB0_101:
+        add     t0, a6, a5
+        lbu     t0, 0(t0)
+        beq     t0, s1, .LBB0_100
+        mv      t2, s9
+        mv      t1, s0
+.LBB0_103:
+        lbu     t3, 0(t2)
+        addi    t1, t1, 4
+        addi    t2, t2, 1
+        bne     t3, t0, .LBB0_103
+        lw      t0, 0(t1)
+.Ltmp85:
+        add     t1, a7, a5
+        slli    t1, t1, 2
+        add     t1, s8, t1
+        lw      t2, 0(t1)
+        beq     t2, t0, .LBB0_100
+        sw      t0, 0(t1)
+        j       .LBB0_100
+.Ltmp86:
+.LBB0_106:
+        li      a7, 30
+        ecall
+.Ltmp87:
+        lw      a2, 12(s11)
+        sub     a1, a2, a0
+        blez    a1, .LBB0_108
+        mv      a0, a2
+.LBB0_108:
+        bgtz    a1, .LBB0_16
+.Ltmp88:
+        li      a1, 1
+        j       .LBB0_16
+.Lfunc_end0:
+        .size   main, .Lfunc_end0-main
+        .p2align        2
+        .type   new_game,@function
+new_game:
+.Lfunc_begin1:
+        addi    sp, sp, -16
+        sw      ra, 12(sp)
+        sw      s0, 8(sp)
+        sw      s1, 4(sp)
+        li      s0, 0
+.Ltmp89:
+        lui     a1, %hi(.L_MergedGlobals)
+        li      a3, 1600
+        lui     a0, %hi(seed)
+        li      a4, 216
+        lui     a5, 17190
+        li      a2, 61
+        sw      a3, %lo(.L_MergedGlobals)(a1)
+        addi    a1, a1, %lo(.L_MergedGlobals)
+        lw      a6, %lo(seed)(a0)
+        addi    a3, a5, -940
+        sw      zero, 16(a1)
+        sw      zero, 24(a1)
+        sw      zero, 28(a1)
+.Ltmp90:
+        sw      a4, 36(a1)
+.Ltmp91:
+        slli    a4, a6, 13
+        xor     a4, a4, a6
+        srli    a5, a4, 17
+        xor     a4, a5, a4
+        slli    a5, a4, 5
+        xor     a4, a5, a4
+        srli    a5, a4, 8
+        slli    a6, a4, 13
+        mulhu   a7, a5, a3
+        xor     a4, a6, a4
+        mul     a6, a7, a2
+        srli    a7, a4, 17
+        sub     a5, a5, a6
+        xor     a4, a7, a4
+        slli    a6, a4, 5
+        xor     a4, a6, a4
+        srli    a6, a4, 8
+        slli    a7, a4, 13
+        xor     a4, a7, a4
+        mulhu   a7, a6, a3
+        mul     a7, a7, a2
+        sub     a6, a6, a7
+        srli    a7, a4, 17
+        xor     a4, a7, a4
+        li      a7, 320
+        addi    a5, a5, 86
+        addi    a6, a6, 86
+.Ltmp92:
+        sw      a5, 40(a1)
+        sw      zero, 44(a1)
+        sw      a7, 48(a1)
+        sw      a6, 52(a1)
+.Ltmp93:
+        slli    a5, a4, 5
+        xor     a4, a5, a4
+        li      a5, 424
+        sw      a4, %lo(seed)(a0)
+        srli    a4, a4, 8
+        mulhu   a0, a4, a3
+        mul     a0, a0, a2
+        sub     a4, a4, a0
+        addi    a0, a4, 86
+.Ltmp94:
+        sw      zero, 56(a1)
+        sw      a5, 60(a1)
+        sw      a0, 64(a1)
+        sw      zero, 68(a1)
+        li      s1, 192
+.Ltmp95:
+.LBB1_1:
+        li      a2, 216
+        mv      a0, s0
+        li      a1, 0
+        call    world_column
+.Ltmp96:
+        addi    s0, s0, 1
+        bne     s0, s1, .LBB1_1
+        li      a0, 0
         lui     a1, %hi(display)
         addi    a1, a1, %lo(display)
-        add     a1, a1, a2
-        sw      a0, 0(a1)
-        j       .LBB10_7
-.LBB10_7:                               # %for.inc
-        lw      a0, -36(s0)
+        lui     a3, 43
+        lui     a4, 10
+        lui     a2, 48
+        lui     a5, 1348
+        lui     a6, 3664
+        lui     a7, 1368
+        lui     t0, 3566
+        addi    t1, a3, -1792
+        addi    a3, a4, 512
+        addi    a4, a5, -1977
+        addi    a5, a6, -629
+        addi    a6, a7, 34
+        addi    a7, t0, -1899
+        add     t0, a1, t1
+        li      t1, 192
+        j       .LBB1_4
+.LBB1_3:
+.Ltmp97:
         addi    a0, a0, 1
-        sw      a0, -36(s0)
-        j       .LBB10_5
-.LBB10_8:                               # %for.end
-        lw      ra, 44(sp)                      # 4-byte Folded Reload
-        lw      s0, 40(sp)                      # 4-byte Folded Reload
-        addi    sp, sp, 48
-        ret
-.Ltmp21:
-.Lfunc_end10:
-        .size   fill_span, .Lfunc_end10-fill_span
-        .p2align        2                               # -- Begin function sim_time
-        .type   sim_time,@function
-sim_time:                               # @sim_time
-.Lfunc_begin11:
-# %bb.0:                                # %entry
-        addi    sp, sp, -32
-        sw      ra, 28(sp)                      # 4-byte Folded Spill
-        sw      s0, 24(sp)                      # 4-byte Folded Spill
-        addi    s0, sp, 32
-        li      a0, 30
-.Ltmp22:
-        sw      a0, -12(s0)
-        lw      a7, -12(s0)
-        ecall
-        sw      a0, -16(s0)
-        sw      a1, -20(s0)
-        lw      a1, -20(s0)
-        lw      a0, -16(s0)
-        lw      ra, 28(sp)                      # 4-byte Folded Reload
-        lw      s0, 24(sp)                      # 4-byte Folded Reload
-        addi    sp, sp, 32
-        ret
-.Ltmp23:
-.Lfunc_end11:
-        .size   sim_time, .Lfunc_end11-sim_time
-        .p2align        2                               # -- Begin function fall
-        .type   fall,@function
-fall:                                   # @fall
-.Lfunc_begin12:
-# %bb.0:                                # %entry
-        addi    sp, sp, -16
-        sw      ra, 12(sp)                      # 4-byte Folded Spill
-        sw      s0, 8(sp)                       # 4-byte Folded Spill
-        addi    s0, sp, 16
-.Ltmp24:
-        lui     a0, %hi(velocity)
-        lw      a1, %lo(velocity)(a0)
-        addi    a1, a1, 3
-        sw      a1, %lo(velocity)(a0)
-        lw      a0, %lo(velocity)(a0)
-        li      a1, 27
-        blt     a0, a1, .LBB12_2
-        j       .LBB12_1
-.LBB12_1:                               # %if.then
-        lui     a1, %hi(velocity)
-        li      a0, 26
-        sw      a0, %lo(velocity)(a1)
-        j       .LBB12_2
-.LBB12_2:                               # %if.end
-        lui     a0, %hi(velocity)
-        lw      a2, %lo(velocity)(a0)
-        lui     a1, %hi(bird_y)
-        lw      a0, %lo(bird_y)(a1)
-        add     a0, a0, a2
-        sw      a0, %lo(bird_y)(a1)
-        lw      ra, 12(sp)                      # 4-byte Folded Reload
-        lw      s0, 8(sp)                       # 4-byte Folded Reload
+        addi    t0, t0, 4
+        beq     a0, t1, .LBB1_14
+.LBB1_4:
+.Ltmp98:
+        or      t2, a0, a3
+        slli    t2, t2, 2
+        add     t2, a1, t2
+        lw      t3, 0(t2)
+        beq     t3, a4, .LBB1_6
+        sw      a4, 0(t2)
+.Ltmp99:
+.LBB1_6:
+        add     t2, a3, a0
+        slli    t3, t2, 2
+        add     t3, t3, a1
+        lw      t4, 768(t3)
+        beq     t4, a5, .LBB1_8
+        sw      a5, 768(t3)
+.Ltmp100:
+.LBB1_8:
+        addi    t2, t2, 1920
+        slli    t2, t2, 2
+        add     t2, a1, t2
+        lw      t3, 0(t2)
+        beq     t3, a6, .LBB1_10
+        sw      a6, 0(t2)
+.Ltmp101:
+.LBB1_10:
+        slli    t2, a0, 2
+        add     t2, t2, a1
+        add     t2, t2, a2
+        mv      t3, t0
+        j       .LBB1_12
+.LBB1_11:
+.Ltmp102:
+        addi    t3, t3, 768
+        beq     t3, t2, .LBB1_3
+.LBB1_12:
+.Ltmp103:
+        lw      t4, 0(t3)
+        beq     t4, a7, .LBB1_11
+        sw      a7, 0(t3)
+        j       .LBB1_11
+.Ltmp104:
+.LBB1_14:
+        lw      ra, 12(sp)
+        lw      s0, 8(sp)
+        lw      s1, 4(sp)
         addi    sp, sp, 16
+.Ltmp105:
+        tail    paint_stripes
+.Ltmp106:
+.Lfunc_end1:
+        .size   new_game, .Lfunc_end1-new_game
+        .p2align        2
+        .type   paint_stripes,@function
+paint_stripes:
+.Lfunc_begin2:
+        lui     a1, %hi(.L_MergedGlobals+20)
+        lui     a0, %hi(display)
+        addi    a0, a0, %lo(display)
+        lui     a4, 41
+        lui     a2, 1852
+        lui     a3, 2510
+        lw      a1, %lo(.L_MergedGlobals+20)(a1)
+        addi    a5, a4, -512
+        addi    a2, a2, -210
+        addi    a3, a3, 1625
+        addi    a6, a4, 256
+        add     a4, a0, a5
+.Ltmp107:
+        addi    a5, a1, 2
+        add     a6, a0, a6
+        j       .LBB2_2
+.LBB2_1:
+        addi    a4, a4, 4
+        addi    a5, a5, 1
+        beq     a4, a6, .LBB2_6
+.LBB2_2:
+        andi    t0, a5, 4
+        mv      a7, a3
+        beqz    t0, .LBB2_4
+        mv      a7, a2
+.LBB2_4:
+.Ltmp108:
+        lw      t0, 0(a4)
+        beq     t0, a7, .LBB2_1
+        sw      a7, 0(a4)
+        j       .LBB2_1
+.Ltmp109:
+.LBB2_6:
+        lui     a5, 41
+        addi    a2, a1, 3
+        lui     a3, 1852
+        lui     a4, 2510
+        addi    a6, a5, 256
+        addi    a3, a3, -210
+        addi    a4, a4, 1625
+        addi    a7, a5, 1024
+        add     a5, a0, a6
+        add     a6, a0, a7
+        j       .LBB2_8
+.LBB2_7:
+        addi    a5, a5, 4
+        addi    a2, a2, 1
+        beq     a5, a6, .LBB2_12
+.LBB2_8:
+        andi    t0, a2, 4
+        mv      a7, a4
+        beqz    t0, .LBB2_10
+        mv      a7, a3
+.LBB2_10:
+.Ltmp110:
+        lw      t0, 0(a5)
+        beq     t0, a7, .LBB2_7
+        sw      a7, 0(a5)
+        j       .LBB2_7
+.Ltmp111:
+.LBB2_12:
+        lui     a5, 41
+        xori    a2, a1, 4
+        lui     a3, 1852
+        lui     a4, 2510
+        addi    a6, a5, 1024
+        addi    a3, a3, -210
+        addi    a4, a4, 1625
+        addi    a7, a5, 1792
+        add     a5, a0, a6
+        add     a6, a0, a7
+        j       .LBB2_14
+.LBB2_13:
+        addi    a5, a5, 4
+        addi    a2, a2, 1
+        beq     a5, a6, .LBB2_18
+.LBB2_14:
+        andi    t0, a2, 4
+        mv      a7, a4
+        beqz    t0, .LBB2_16
+        mv      a7, a3
+.LBB2_16:
+.Ltmp112:
+        lw      t0, 0(a5)
+        beq     t0, a7, .LBB2_13
+        sw      a7, 0(a5)
+        j       .LBB2_13
+.Ltmp113:
+.LBB2_18:
+        lui     a3, 41
+        addi    a2, a1, 5
+        lui     a4, 1852
+        lui     a5, 2510
+        lui     a6, 42
+        addi    a7, a3, 1792
+        addi    a3, a4, -210
+        addi    a4, a5, 1625
+        addi    a6, a6, -1536
+        add     a5, a0, a7
+        add     a6, a0, a6
+        j       .LBB2_20
+.LBB2_19:
+        addi    a5, a5, 4
+        addi    a2, a2, 1
+        beq     a5, a6, .LBB2_24
+.LBB2_20:
+        andi    t0, a2, 4
+        mv      a7, a4
+        beqz    t0, .LBB2_22
+        mv      a7, a3
+.LBB2_22:
+.Ltmp114:
+        lw      t0, 0(a5)
+        beq     t0, a7, .LBB2_19
+        sw      a7, 0(a5)
+        j       .LBB2_19
+.Ltmp115:
+.LBB2_24:
+        lui     a5, 42
+        addi    a2, a1, 6
+        lui     a3, 1852
+        lui     a4, 2510
+        addi    a6, a5, -1536
+        addi    a3, a3, -210
+        addi    a4, a4, 1625
+        addi    a7, a5, -768
+        add     a5, a0, a6
+        add     a6, a0, a7
+        j       .LBB2_26
+.LBB2_25:
+        addi    a5, a5, 4
+        addi    a2, a2, 1
+        beq     a5, a6, .LBB2_30
+.LBB2_26:
+        andi    t0, a2, 4
+        mv      a7, a4
+        beqz    t0, .LBB2_28
+        mv      a7, a3
+.LBB2_28:
+.Ltmp116:
+        lw      t0, 0(a5)
+        beq     t0, a7, .LBB2_25
+        sw      a7, 0(a5)
+        j       .LBB2_25
+.Ltmp117:
+.LBB2_30:
+        lui     a6, 42
+        addi    a2, a1, 7
+        lui     a3, 1852
+        lui     a4, 2510
+        addi    a5, a6, -768
+        addi    a3, a3, -210
+        addi    a4, a4, 1625
+        add     a5, a0, a5
+        add     a6, a0, a6
+        j       .LBB2_32
+.LBB2_31:
+        addi    a5, a5, 4
+        addi    a2, a2, 1
+        beq     a5, a6, .LBB2_36
+.LBB2_32:
+        andi    t0, a2, 4
+        mv      a7, a4
+        beqz    t0, .LBB2_34
+        mv      a7, a3
+.LBB2_34:
+.Ltmp118:
+        lw      t0, 0(a5)
+        beq     t0, a7, .LBB2_31
+        sw      a7, 0(a5)
+        j       .LBB2_31
+.Ltmp119:
+.LBB2_36:
+        lui     a5, 42
+        lui     a3, 1852
+        lui     a4, 2510
+        add     a2, a0, a5
+        addi    a3, a3, -210
+        addi    a4, a4, 1625
+        addi    a5, a5, 768
+        add     a5, a0, a5
+        mv      a6, a1
+        j       .LBB2_38
+.LBB2_37:
+        addi    a2, a2, 4
+        addi    a6, a6, 1
+        beq     a2, a5, .LBB2_42
+.LBB2_38:
+        andi    t0, a6, 4
+        mv      a7, a4
+        beqz    t0, .LBB2_40
+        mv      a7, a3
+.LBB2_40:
+.Ltmp120:
+        lw      t0, 0(a2)
+        beq     t0, a7, .LBB2_37
+        sw      a7, 0(a2)
+        j       .LBB2_37
+.Ltmp121:
+.LBB2_42:
+        lui     a4, 42
+        addi    a1, a1, 1
+        lui     a2, 1852
+        lui     a3, 2510
+        addi    a5, a4, 768
+        addi    a2, a2, -210
+        addi    a3, a3, 1625
+        addi    a6, a4, 1536
+        add     a4, a0, a5
+        add     a0, a0, a6
+        j       .LBB2_44
+.LBB2_43:
+        addi    a4, a4, 4
+        addi    a1, a1, 1
+        beq     a4, a0, .LBB2_48
+.LBB2_44:
+        andi    a6, a1, 4
+        mv      a5, a3
+        beqz    a6, .LBB2_46
+        mv      a5, a2
+.LBB2_46:
+.Ltmp122:
+        lw      a6, 0(a4)
+        beq     a6, a5, .LBB2_43
+        sw      a5, 0(a4)
+        j       .LBB2_43
+.Ltmp123:
+.LBB2_48:
         ret
-.Ltmp25:
-.Lfunc_end12:
-        .size   fall, .Lfunc_end12-fall
-        .p2align        2                               # -- Begin function move_pipes
-        .type   move_pipes,@function
-move_pipes:                             # @move_pipes
-.Lfunc_begin13:
-# %bb.0:                                # %entry
-        addi    sp, sp, -32
-        sw      ra, 28(sp)                      # 4-byte Folded Spill
-        sw      s0, 24(sp)                      # 4-byte Folded Spill
-        addi    s0, sp, 32
-        li      a0, 0
-.Ltmp26:
-        sw      a0, -12(s0)
-        j       .LBB13_1
-.LBB13_1:                               # %for.cond
-        lw      a1, -12(s0)
-        li      a0, 2
-        blt     a0, a1, .LBB13_9
-        j       .LBB13_2
-.LBB13_2:                               # %for.body
-        lw      a0, -12(s0)
-        slli    a1, a0, 2
-        slli    a0, a0, 4
-        sub     a1, a0, a1
-        lui     a0, %hi(pipes)
-        addi    a0, a0, %lo(pipes)
-        add     a0, a0, a1
-        sw      a0, -16(s0)
-        lw      a1, -16(s0)
-        lw      a0, 0(a1)
-        addi    a0, a0, -1
-        sw      a0, 0(a1)
-        lw      a0, -16(s0)
+.Ltmp124:
+.Lfunc_end2:
+        .size   paint_stripes, .Lfunc_end2-paint_stripes
+        .p2align        2
+        .type   world_column,@function
+world_column:
+.Lfunc_begin3:
+        li      a3, 191
+.Ltmp125:
+        bgeu    a3, a0, .LBB3_2
+.LBB3_1:
+        ret
+.LBB3_2:
+        lui     a3, %hi(.L_MergedGlobals)
+        addi    a3, a3, %lo(.L_MergedGlobals)
+        lw      a4, 36(a3)
+        sub     a4, a0, a4
+        li      a5, 30
+        bltu    a4, a5, .LBB3_12
+        lw      a4, 48(a3)
+        sub     a4, a0, a4
+        bltu    a4, a5, .LBB3_13
+        lw      a4, 60(a3)
+        sub     a4, a0, a4
+        li      a5, 30
+        bltu    a4, a5, .LBB3_14
+.Ltmp126:
+        sgtz    a3, a1
+        neg     a3, a3
+        li      a4, 216
+        and     a1, a3, a1
+        blt     a2, a4, .LBB3_7
+        li      a2, 216
+.LBB3_7:
+        bge     a1, a2, .LBB3_1
+        slli    a3, a1, 8
+        slli    a1, a1, 10
+        slli    a0, a0, 2
+        lui     a4, %hi(display)
+        addi    a4, a4, %lo(display)
+        lui     a5, %hi(backdrop)
+        addi    a5, a5, %lo(backdrop)
+        sub     a1, a1, a3
+        slli    a3, a2, 8
+        slli    a2, a2, 10
+        sub     a2, a2, a3
+        add     a3, a4, a0
+        add     a1, a1, a0
+        add     a0, a4, a1
+        add     a1, a5, a1
+        add     a2, a3, a2
+        j       .LBB3_10
+.LBB3_9:
+        addi    a0, a0, 768
+        addi    a1, a1, 768
+        beq     a0, a2, .LBB3_1
+.LBB3_10:
+        lw      a3, 0(a1)
+.Ltmp127:
+        lw      a4, 0(a0)
+        beq     a4, a3, .LBB3_9
+        sw      a3, 0(a0)
+        j       .LBB3_9
+.Ltmp128:
+.LBB3_12:
+        addi    a3, a3, 36
+        j       .LBB3_15
+.LBB3_13:
+        addi    a3, a3, 48
+        j       .LBB3_15
+.LBB3_14:
+        addi    a3, a3, 60
+.LBB3_15:
+        lw      a5, 4(a3)
+        slli    a7, a4, 2
+        lui     a3, %hi(body_shade)
+        addi    a3, a3, %lo(body_shade)
+.Ltmp129:
+        addi    a4, a4, -28
+.Ltmp130:
+        add     a3, a3, a7
+        addi    t0, a5, -46
+.Ltmp131:
+        sgtz    a6, a1
+        neg     t1, a6
+        mv      a6, t0
+        blt     t0, a2, .LBB3_17
+        mv      a6, a2
+.LBB3_17:
+        lw      a3, 0(a3)
+        li      t2, -27
+        and     t1, t1, a1
+        bltu    t2, a4, .LBB3_23
+        bge     t1, a6, .LBB3_28
+.Ltmp132:
+        slli    t2, t1, 8
+        slli    t1, t1, 10
+        slli    t3, a0, 2
+        lui     t4, %hi(display)
+        addi    t4, t4, %lo(display)
+        lui     t5, %hi(backdrop)
+        addi    t5, t5, %lo(backdrop)
+        sub     t1, t1, t2
+        slli    t2, a6, 8
+        slli    a6, a6, 10
+        sub     t2, a6, t2
+        add     t6, t4, t3
+        add     t1, t1, t3
+        add     a6, t4, t1
+        add     t1, t5, t1
+        add     t2, t6, t2
+        j       .LBB3_21
+.LBB3_20:
+        addi    a6, a6, 768
+        addi    t1, t1, 768
+        beq     a6, t2, .LBB3_28
+.LBB3_21:
+        lw      t3, 0(t1)
+.Ltmp133:
+        lw      t4, 0(a6)
+        beq     t4, t3, .LBB3_20
+        sw      t3, 0(a6)
+        j       .LBB3_20
+.Ltmp134:
+.LBB3_23:
+        bge     t1, a6, .LBB3_28
+        slli    t2, t1, 8
+        slli    t1, t1, 10
+        slli    t3, a0, 2
+        lui     t4, %hi(display)
+        addi    t4, t4, %lo(display)
+        sub     t1, t1, t2
+        slli    t2, a6, 8
+        slli    a6, a6, 10
+        sub     t2, a6, t2
+        add     a6, t4, t3
+        add     t3, t4, t3
+        add     a6, a6, t1
+        add     t1, t3, t2
+        j       .LBB3_26
+.LBB3_25:
+        addi    a6, a6, 768
+        beq     a6, t1, .LBB3_28
+.LBB3_26:
+.Ltmp135:
+        lw      t2, 0(a6)
+        beq     t2, a3, .LBB3_25
+        sw      a3, 0(a6)
+        j       .LBB3_25
+.Ltmp136:
+.LBB3_28:
+        addi    t1, a5, -45
+.Ltmp137:
+        blt     a1, t0, .LBB3_30
+        mv      t0, a1
+.LBB3_30:
+        lui     a6, 1348
+        mv      t2, t1
+        blt     t1, a2, .LBB3_32
+        mv      t2, a2
+.LBB3_32:
+        addi    a6, a6, -1977
+        bge     t0, t2, .LBB3_37
+        sub     t2, t2, t0
+        slli    t3, t0, 8
+        slli    t0, t0, 10
+        slli    t4, a0, 2
+        sub     t0, t0, t3
+        lui     t3, %hi(display)
+        addi    t3, t3, %lo(display)
+        add     t3, t3, t4
+        lui     t4, 1348
+        add     t0, t3, t0
+        addi    t3, t4, -1977
+        j       .LBB3_35
+.LBB3_34:
+        addi    t2, t2, -1
+        addi    t0, t0, 768
+        beqz    t2, .LBB3_37
+.LBB3_35:
+.Ltmp138:
+        lw      t4, 0(t0)
+        beq     t4, t3, .LBB3_34
+        sw      a6, 0(t0)
+        j       .LBB3_34
+.Ltmp139:
+.LBB3_37:
+        lui     t2, %hi(cap_shade)
+        addi    t2, t2, %lo(cap_shade)
+        addi    t0, a5, -35
+.Ltmp140:
+        blt     a1, t1, .LBB3_39
+        mv      t1, a1
+.LBB3_39:
+        add     a7, t2, a7
+        mv      t2, t0
+        blt     t0, a2, .LBB3_41
+.Ltmp141:
+        mv      t2, a2
+.LBB3_41:
+        lw      a7, 0(a7)
+.Ltmp142:
+        bge     t1, t2, .LBB3_46
+        sub     t2, t2, t1
+        slli    t3, t1, 8
+        slli    t1, t1, 10
+        slli    t4, a0, 2
+        sub     t1, t1, t3
+        lui     t3, %hi(display)
+        addi    t3, t3, %lo(display)
+        add     t3, t3, t4
+        add     t1, t3, t1
+        j       .LBB3_44
+.LBB3_43:
+        addi    t2, t2, -1
+        addi    t1, t1, 768
+        beqz    t2, .LBB3_46
+.LBB3_44:
+.Ltmp143:
+        lw      t3, 0(t1)
+        beq     t3, a7, .LBB3_43
+        sw      a7, 0(t1)
+        j       .LBB3_43
+.Ltmp144:
+.LBB3_46:
+        addi    t1, a5, -34
+.Ltmp145:
+        bge     a1, t0, .LBB3_49
+        mv      t2, t1
+        bge     t1, a2, .LBB3_50
+.LBB3_48:
+        blt     t0, t2, .LBB3_51
+        j       .LBB3_55
+.LBB3_49:
+        mv      t0, a1
+        mv      t2, t1
+        blt     t1, a2, .LBB3_48
+.LBB3_50:
+        mv      t2, a2
+        bge     t0, a2, .LBB3_55
+.LBB3_51:
+        sub     t2, t2, t0
+        slli    t3, t0, 8
+        slli    t0, t0, 10
+        slli    t4, a0, 2
+        sub     t0, t0, t3
+        lui     t3, %hi(display)
+        addi    t3, t3, %lo(display)
+        add     t3, t3, t4
+        lui     t4, 1348
+        add     t0, t3, t0
+        addi    t3, t4, -1977
+        j       .LBB3_53
+.LBB3_52:
+        addi    t2, t2, -1
+        addi    t0, t0, 768
+        beqz    t2, .LBB3_55
+.LBB3_53:
+.Ltmp146:
+        lw      t4, 0(t0)
+        beq     t4, t3, .LBB3_52
+        sw      a6, 0(t0)
+        j       .LBB3_52
+.Ltmp147:
+.LBB3_55:
+        addi    t0, a5, 34
+.Ltmp148:
+        bge     a1, t1, .LBB3_58
+        mv      t2, t0
+        bge     t0, a2, .LBB3_59
+.LBB3_57:
+        blt     t1, t2, .LBB3_60
+        j       .LBB3_64
+.LBB3_58:
+        mv      t1, a1
+        mv      t2, t0
+        blt     t0, a2, .LBB3_57
+.LBB3_59:
+        mv      t2, a2
+        bge     t1, a2, .LBB3_64
+.LBB3_60:
+        sub     t2, t2, t1
+        slli    t3, t1, 8
+        slli    t1, t1, 10
+        slli    t4, a0, 2
+        sub     t1, t1, t3
+        lui     t3, %hi(display)
+        addi    t3, t3, %lo(display)
+        add     t4, t1, t4
+        lui     t5, %hi(backdrop)
+        addi    t5, t5, %lo(backdrop)
+        add     t1, t3, t4
+        add     t3, t5, t4
+        j       .LBB3_62
+.LBB3_61:
+        addi    t2, t2, -1
+        addi    t1, t1, 768
+        addi    t3, t3, 768
+        beqz    t2, .LBB3_64
+.LBB3_62:
+        lw      t4, 0(t3)
+.Ltmp149:
+        lw      t5, 0(t1)
+        beq     t5, t4, .LBB3_61
+        sw      t4, 0(t1)
+        j       .LBB3_61
+.Ltmp150:
+.LBB3_64:
+        addi    t1, a5, 35
+.Ltmp151:
+        bge     a1, t0, .LBB3_67
+        mv      t2, t1
+        bge     t1, a2, .LBB3_68
+.LBB3_66:
+        blt     t0, t2, .LBB3_69
+        j       .LBB3_73
+.LBB3_67:
+        mv      t0, a1
+        mv      t2, t1
+        blt     t1, a2, .LBB3_66
+.LBB3_68:
+        mv      t2, a2
+        bge     t0, a2, .LBB3_73
+.LBB3_69:
+        sub     t2, t2, t0
+        slli    t3, t0, 8
+        slli    t0, t0, 10
+        slli    t4, a0, 2
+        sub     t0, t0, t3
+        lui     t3, %hi(display)
+        addi    t3, t3, %lo(display)
+        add     t3, t3, t4
+        lui     t4, 1348
+        add     t0, t3, t0
+        addi    t3, t4, -1977
+        j       .LBB3_71
+.LBB3_70:
+        addi    t2, t2, -1
+        addi    t0, t0, 768
+        beqz    t2, .LBB3_73
+.LBB3_71:
+.Ltmp152:
+        lw      t4, 0(t0)
+        beq     t4, t3, .LBB3_70
+        sw      a6, 0(t0)
+        j       .LBB3_70
+.Ltmp153:
+.LBB3_73:
+        addi    t0, a5, 45
+.Ltmp154:
+        bge     a1, t1, .LBB3_76
+        mv      t2, t0
+        bge     t0, a2, .LBB3_77
+.LBB3_75:
+        blt     t1, t2, .LBB3_78
+        j       .LBB3_82
+.LBB3_76:
+        mv      t1, a1
+        mv      t2, t0
+        blt     t0, a2, .LBB3_75
+.LBB3_77:
+        mv      t2, a2
+        bge     t1, a2, .LBB3_82
+.LBB3_78:
+        sub     t2, t2, t1
+        slli    t3, t1, 8
+        slli    t1, t1, 10
+        slli    t4, a0, 2
+        sub     t1, t1, t3
+        lui     t3, %hi(display)
+        addi    t3, t3, %lo(display)
+        add     t3, t3, t4
+        add     t1, t3, t1
+        j       .LBB3_80
+.LBB3_79:
+        addi    t2, t2, -1
+        addi    t1, t1, 768
+        beqz    t2, .LBB3_82
+.LBB3_80:
+.Ltmp155:
+        lw      t3, 0(t1)
+        beq     t3, a7, .LBB3_79
+        sw      a7, 0(t1)
+        j       .LBB3_79
+.Ltmp156:
+.LBB3_82:
+        addi    a5, a5, 46
+.Ltmp157:
+        bge     a1, t0, .LBB3_85
+        mv      a7, a5
+        bge     a5, a2, .LBB3_86
+.LBB3_84:
+        blt     t0, a7, .LBB3_87
+        j       .LBB3_91
+.LBB3_85:
+        mv      t0, a1
+        mv      a7, a5
+        blt     a5, a2, .LBB3_84
+.LBB3_86:
+        mv      a7, a2
+        bge     t0, a2, .LBB3_91
+.LBB3_87:
+        sub     a7, a7, t0
+        slli    t1, t0, 8
+        slli    t0, t0, 10
+        slli    t2, a0, 2
+        sub     t0, t0, t1
+        lui     t1, %hi(display)
+        addi    t1, t1, %lo(display)
+        add     t1, t1, t2
+        lui     t2, 1348
+        add     t0, t1, t0
+        addi    t1, t2, -1977
+        j       .LBB3_89
+.LBB3_88:
+        addi    a7, a7, -1
+        addi    t0, t0, 768
+        beqz    a7, .LBB3_91
+.LBB3_89:
+.Ltmp158:
+        lw      t2, 0(t0)
+        beq     t2, t1, .LBB3_88
+        sw      a6, 0(t0)
+        j       .LBB3_88
+.Ltmp159:
+.LBB3_91:
+        bge     a1, a5, .LBB3_99
+        li      a1, 216
+        bge     a2, a1, .LBB3_100
+.LBB3_93:
+        li      a1, -27
+        bltu    a1, a4, .LBB3_101
+.LBB3_94:
+.Ltmp160:
+        bge     a5, a2, .LBB3_1
+        sub     a2, a2, a5
+        slli    a1, a5, 8
+        slli    a5, a5, 10
+        slli    a0, a0, 2
+        sub     a5, a5, a1
+        lui     a1, %hi(display)
+        addi    a1, a1, %lo(display)
+        add     a5, a5, a0
+        lui     a3, %hi(backdrop)
+        addi    a3, a3, %lo(backdrop)
+        add     a0, a1, a5
+        add     a1, a3, a5
+        j       .LBB3_97
+.LBB3_96:
+        addi    a2, a2, -1
+        addi    a0, a0, 768
+        addi    a1, a1, 768
+        beqz    a2, .LBB3_1
+.LBB3_97:
+        lw      a3, 0(a1)
+.Ltmp161:
+        lw      a4, 0(a0)
+        beq     a4, a3, .LBB3_96
+        sw      a3, 0(a0)
+        j       .LBB3_96
+.Ltmp162:
+.LBB3_99:
+        mv      a5, a1
+        li      a1, 216
+        blt     a2, a1, .LBB3_93
+.LBB3_100:
+        li      a2, 216
+        li      a1, -27
+        bgeu    a1, a4, .LBB3_94
+.LBB3_101:
+.Ltmp163:
+        bge     a5, a2, .LBB3_1
+        sub     a2, a2, a5
+        slli    a1, a5, 8
+        slli    a5, a5, 10
+        slli    a0, a0, 2
+        sub     a5, a5, a1
+        lui     a1, %hi(display)
+        addi    a1, a1, %lo(display)
+        add     a0, a1, a0
+        add     a0, a0, a5
+        j       .LBB3_104
+.LBB3_103:
+        addi    a2, a2, -1
+        addi    a0, a0, 768
+        beqz    a2, .LBB3_1
+.LBB3_104:
+.Ltmp164:
         lw      a1, 0(a0)
-        li      a0, -9
-        blt     a0, a1, .LBB13_4
-        j       .LBB13_3
-.LBB13_3:                               # %if.then
-        lw      a1, -16(s0)
-        lw      a0, 0(a1)
-        addi    a0, a0, 72
-        sw      a0, 0(a1)
-        call    random_gap
-        lw      a1, -16(s0)
-        sw      a0, 4(a1)
-        lw      a1, -16(s0)
-        li      a0, 0
-        sw      a0, 8(a1)
-        j       .LBB13_4
-.LBB13_4:                               # %if.end
-        lw      a0, -16(s0)
-        lw      a0, 8(a0)
-        bnez    a0, .LBB13_7
-        j       .LBB13_5
-.LBB13_5:                               # %land.lhs.true
-        lw      a0, -16(s0)
-        lw      a0, 0(a0)
-        addi    a1, a0, 8
-        li      a0, 11
-        blt     a0, a1, .LBB13_7
-        j       .LBB13_6
-.LBB13_6:                               # %if.then8
-        lw      a1, -16(s0)
-        li      a0, 1
-        sw      a0, 8(a1)
-        lui     a1, %hi(score)
-        lw      a0, %lo(score)(a1)
-        addi    a0, a0, 1
-        sw      a0, %lo(score)(a1)
-        call    print_score
-        j       .LBB13_7
-.LBB13_7:                               # %if.end10
-        lw      a0, -16(s0)
-        lw      a0, 0(a0)
-        li      a1, 0
-        sw      a1, -24(s0)                     # 4-byte Folded Spill
-        li      a2, 64
-        sw      a2, -20(s0)                     # 4-byte Folded Spill
-        call    world_column
-        lw      a1, -24(s0)                     # 4-byte Folded Reload
-        lw      a2, -20(s0)                     # 4-byte Folded Reload
-        lw      a0, -16(s0)
-        lw      a0, 0(a0)
-        addi    a0, a0, 8
-        call    world_column
-        j       .LBB13_8
-.LBB13_8:                               # %for.inc
-        lw      a0, -12(s0)
-        addi    a0, a0, 1
-        sw      a0, -12(s0)
-        j       .LBB13_1
-.LBB13_9:                               # %for.end
-        lw      ra, 28(sp)                      # 4-byte Folded Reload
-        lw      s0, 24(sp)                      # 4-byte Folded Reload
-        addi    sp, sp, 32
-        ret
-.Ltmp27:
-.Lfunc_end13:
-        .size   move_pipes, .Lfunc_end13-move_pipes
-        .p2align        2                               # -- Begin function hit_test
-        .type   hit_test,@function
-hit_test:                               # @hit_test
-.Lfunc_begin14:
-# %bb.0:                                # %entry
-        addi    sp, sp, -32
-        sw      ra, 28(sp)                      # 4-byte Folded Spill
-        sw      s0, 24(sp)                      # 4-byte Folded Spill
-        addi    s0, sp, 32
-.Ltmp28:
-        lui     a0, %hi(bird_y)
-        lw      a0, %lo(bird_y)(a0)
-        srai    a0, a0, 4
-        sw      a0, -16(s0)
-        lw      a0, -16(s0)
-        addi    a0, a0, 5
-        sw      a0, -20(s0)
-        lw      a0, -20(s0)
-        li      a1, 57
-        blt     a0, a1, .LBB14_2
-        j       .LBB14_1
-.LBB14_1:                               # %if.then
-        li      a0, 1
-        sw      a0, -12(s0)
-        j       .LBB14_13
-.LBB14_2:                               # %if.end
-        li      a0, 0
-        sw      a0, -24(s0)
-        j       .LBB14_3
-.LBB14_3:                               # %for.cond
-        lw      a1, -24(s0)
-        li      a0, 2
-        blt     a0, a1, .LBB14_12
-        j       .LBB14_4
-.LBB14_4:                               # %for.body
-        lw      a0, -24(s0)
-        slli    a1, a0, 2
-        slli    a0, a0, 4
-        sub     a1, a0, a1
-        lui     a0, %hi(pipes)
-        addi    a0, a0, %lo(pipes)
-        add     a0, a0, a1
-        sw      a0, -28(s0)
-        lw      a0, -28(s0)
-        lw      a1, 0(a0)
-        li      a0, 17
-        blt     a0, a1, .LBB14_6
-        j       .LBB14_5
-.LBB14_5:                               # %lor.lhs.false
-        lw      a0, -28(s0)
-        lw      a0, 0(a0)
-        addi    a1, a0, 8
-        li      a0, 12
-        blt     a0, a1, .LBB14_7
-        j       .LBB14_6
-.LBB14_6:                               # %if.then6
-        j       .LBB14_11
-.LBB14_7:                               # %if.end7
-        lw      a0, -16(s0)
-        lw      a1, -28(s0)
-        lw      a1, 4(a1)
-        addi    a1, a1, -9
-        blt     a0, a1, .LBB14_9
-        j       .LBB14_8
-.LBB14_8:                               # %lor.lhs.false9
-        lw      a1, -20(s0)
-        lw      a0, -28(s0)
-        lw      a0, 4(a0)
-        addi    a0, a0, 9
-        bge     a0, a1, .LBB14_10
-        j       .LBB14_9
-.LBB14_9:                               # %if.then13
-        li      a0, 1
-        sw      a0, -12(s0)
-        j       .LBB14_13
-.LBB14_10:                              # %if.end14
-        j       .LBB14_11
-.LBB14_11:                              # %for.inc
-        lw      a0, -24(s0)
-        addi    a0, a0, 1
-        sw      a0, -24(s0)
-        j       .LBB14_3
-.LBB14_12:                              # %for.end
-        li      a0, 0
-        sw      a0, -12(s0)
-        j       .LBB14_13
-.LBB14_13:                              # %return
-        lw      a0, -12(s0)
-        lw      ra, 28(sp)                      # 4-byte Folded Reload
-        lw      s0, 24(sp)                      # 4-byte Folded Reload
-        addi    sp, sp, 32
-        ret
-.Ltmp29:
-.Lfunc_end14:
-        .size   hit_test, .Lfunc_end14-hit_test
-        .p2align        2                               # -- Begin function paint_dead_ground
-        .type   paint_dead_ground,@function
-paint_dead_ground:                      # @paint_dead_ground
-.Lfunc_begin15:
-# %bb.0:                                # %entry
-        addi    sp, sp, -16
-        sw      ra, 12(sp)                      # 4-byte Folded Spill
-        sw      s0, 8(sp)                       # 4-byte Folded Spill
-        addi    s0, sp, 16
-        li      a0, 0
-.Ltmp30:
-        sw      a0, -12(s0)
-        j       .LBB15_1
-.LBB15_1:                               # %for.cond
-        lw      a1, -12(s0)
-        li      a0, 63
-        blt     a0, a1, .LBB15_4
-        j       .LBB15_2
-.LBB15_2:                               # %for.body
-        lw      a0, -12(s0)
-        lui     a1, 2819
-        addi    a3, a1, 40
-        li      a1, 56
-        li      a4, 0
-        li      a5, 64
-        mv      a2, a5
-        call    fill_span
-        j       .LBB15_3
-.LBB15_3:                               # %for.inc
-        lw      a0, -12(s0)
-        addi    a0, a0, 1
-        sw      a0, -12(s0)
-        j       .LBB15_1
-.LBB15_4:                               # %for.end
-        lw      ra, 12(sp)                      # 4-byte Folded Reload
-        lw      s0, 8(sp)                       # 4-byte Folded Reload
-        addi    sp, sp, 16
-        ret
-.Ltmp31:
-.Lfunc_end15:
-        .size   paint_dead_ground, .Lfunc_end15-paint_dead_ground
-        .p2align        2                               # -- Begin function sim_print_string
-        .type   sim_print_string,@function
-sim_print_string:                       # @sim_print_string
-.Lfunc_begin16:
-# %bb.0:                                # %entry
-        addi    sp, sp, -32
-        sw      ra, 28(sp)                      # 4-byte Folded Spill
-        sw      s0, 24(sp)                      # 4-byte Folded Spill
-        addi    s0, sp, 32
-        sw      a0, -12(s0)
-        li      a0, 4
-.Ltmp32:
-        sw      a0, -16(s0)
-        lw      a0, -12(s0)
-        sw      a0, -20(s0)
-        lw      a7, -16(s0)
-        lw      a0, -20(s0)
-        ecall
-        lw      ra, 28(sp)                      # 4-byte Folded Reload
-        lw      s0, 24(sp)                      # 4-byte Folded Reload
-        addi    sp, sp, 32
-        ret
-.Ltmp33:
-.Lfunc_end16:
-        .size   sim_print_string, .Lfunc_end16-sim_print_string
-        .p2align        2                               # -- Begin function sim_print_int
-        .type   sim_print_int,@function
-sim_print_int:                          # @sim_print_int
-.Lfunc_begin17:
-# %bb.0:                                # %entry
-        addi    sp, sp, -32
-        sw      ra, 28(sp)                      # 4-byte Folded Spill
-        sw      s0, 24(sp)                      # 4-byte Folded Spill
-        addi    s0, sp, 32
-        sw      a0, -12(s0)
-        li      a0, 1
-.Ltmp34:
-        sw      a0, -16(s0)
-        lw      a0, -12(s0)
-        sw      a0, -20(s0)
-        lw      a7, -16(s0)
-        lw      a0, -20(s0)
-        ecall
-        lw      ra, 28(sp)                      # 4-byte Folded Reload
-        lw      s0, 24(sp)                      # 4-byte Folded Reload
-        addi    sp, sp, 32
-        ret
-.Ltmp35:
-.Lfunc_end17:
-        .size   sim_print_int, .Lfunc_end17-sim_print_int
-        .p2align        2                               # -- Begin function sim_print_char
-        .type   sim_print_char,@function
-sim_print_char:                         # @sim_print_char
-.Lfunc_begin18:
-# %bb.0:                                # %entry
-        addi    sp, sp, -32
-        sw      ra, 28(sp)                      # 4-byte Folded Spill
-        sw      s0, 24(sp)                      # 4-byte Folded Spill
-        addi    s0, sp, 32
-        sw      a0, -12(s0)
-        li      a0, 11
-.Ltmp36:
-        sw      a0, -16(s0)
-        lw      a0, -12(s0)
-        sw      a0, -20(s0)
-        lw      a7, -16(s0)
-        lw      a0, -20(s0)
-        ecall
-        lw      ra, 28(sp)                      # 4-byte Folded Reload
-        lw      s0, 24(sp)                      # 4-byte Folded Reload
-        addi    sp, sp, 32
-        ret
-.Ltmp37:
-.Lfunc_end18:
-        .size   sim_print_char, .Lfunc_end18-sim_print_char
-        .p2align        2                               # -- Begin function print_score
-        .type   print_score,@function
-print_score:                            # @print_score
-.Lfunc_begin19:
-# %bb.0:                                # %entry
-        addi    sp, sp, -16
-        sw      ra, 12(sp)                      # 4-byte Folded Spill
-        sw      s0, 8(sp)                       # 4-byte Folded Spill
-        addi    s0, sp, 16
-.Ltmp38:
-        lui     a0, %hi(.L.str.2)
-        addi    a0, a0, %lo(.L.str.2)
-        call    sim_print_string
-        lui     a0, %hi(score)
-        lw      a0, %lo(score)(a0)
-        call    sim_print_int
-        li      a0, 10
-        call    sim_print_char
-        lw      ra, 12(sp)                      # 4-byte Folded Reload
-        lw      s0, 8(sp)                       # 4-byte Folded Reload
-        addi    sp, sp, 16
-        ret
-.Ltmp39:
-.Lfunc_end19:
-        .size   print_score, .Lfunc_end19-print_score
-        .p2align        2                               # -- Begin function sim_keyboard_ready
-        .type   sim_keyboard_ready,@function
-sim_keyboard_ready:                     # @sim_keyboard_ready
-.Lfunc_begin20:
-# %bb.0:                                # %entry
-        addi    sp, sp, -16
-        sw      ra, 12(sp)                      # 4-byte Folded Spill
-        sw      s0, 8(sp)                       # 4-byte Folded Spill
-        addi    s0, sp, 16
-        lui     a0, 1048560
-.Ltmp40:
-        lw      a0, 0(a0)
-        andi    a0, a0, 1
-        lw      ra, 12(sp)                      # 4-byte Folded Reload
-        lw      s0, 8(sp)                       # 4-byte Folded Reload
-        addi    sp, sp, 16
-        ret
-.Ltmp41:
-.Lfunc_end20:
-        .size   sim_keyboard_ready, .Lfunc_end20-sim_keyboard_ready
-        .p2align        2                               # -- Begin function sim_keyboard_read
-        .type   sim_keyboard_read,@function
-sim_keyboard_read:                      # @sim_keyboard_read
-.Lfunc_begin21:
-# %bb.0:                                # %entry
-        addi    sp, sp, -16
-        sw      ra, 12(sp)                      # 4-byte Folded Spill
-        sw      s0, 8(sp)                       # 4-byte Folded Spill
-        addi    s0, sp, 16
-        lui     a0, 1048560
-.Ltmp42:
-        lw      a0, 4(a0)
-        lw      ra, 12(sp)                      # 4-byte Folded Reload
-        lw      s0, 8(sp)                       # 4-byte Folded Reload
-        addi    sp, sp, 16
-        ret
-.Ltmp43:
-.Lfunc_end21:
-        .size   sim_keyboard_read, .Lfunc_end21-sim_keyboard_read
-        .type   display,@object                 # @display
+        beq     a1, a3, .LBB3_103
+        sw      a3, 0(a0)
+        j       .LBB3_103
+.Ltmp165:
+.Lfunc_end3:
+        .size   world_column, .Lfunc_end3-world_column
+        .type   display,@object
         .bss
         .globl  display
         .p2align        2, 0x0
 display:
-        .zero   16384
-        .size   display, 16384
-        .type   bird_y,@object                  # @bird_y
-        .local  bird_y
-        .comm   bird_y,4,4
-        .type   velocity,@object                # @velocity
-        .local  velocity
-        .comm   velocity,4,4
-        .type   state,@object                   # @state
-        .local  state
-        .comm   state,4,4
-        .type   score,@object                   # @score
-        .local  score
-        .comm   score,4,4
-        .type   pipes,@object                   # @pipes
-        .local  pipes
-        .comm   pipes,36,4
-        .type   seed,@object                    # @seed
+        .zero   196608
+        .size   display, 196608
+        .type   cloud_rise,@object
+        .section        .rodata,"a",@progbits
+cloud_rise:
+        .ascii  "\005\005\006\006\007\007\007\007\007\007\007\b\b\t\t\n\n\n\n\n\n\n\n\n\n\n\t\t\b\b\007\006\006\006\006\006\006\006\007\007\b\b\b\t\t\t\t\t\b\b\b\007\007\006\005\005\006\006\006\005\005\005\004\003"
+        .size   cloud_rise, 64
+        .type   towers,@object
+towers:
+        .ascii  "\032( 0\026$,\0364\034&\030"
+        .size   towers, 12
+        .type   bush_rise,@object
+        .section        .rodata.str1.1,"aMS",@progbits,1
+bush_rise:
+        .asciz  "\003\004\004\005\005\005\005\005\004\004\005\006\006\006\006\006\006\006\006\006\005\004\004\005\005\005\005\005\004\004\003"
+        .size   bush_rise, 32
+        .type   backdrop,@object
+        .local  backdrop
+        .comm   backdrop,165888,4
+        .type   seed,@object
         .data
         .p2align        2, 0x0
 seed:
-        .word   521288629                       # 0x1f123bb5
+        .word   521288629
         .size   seed, 4
-        .type   best,@object                    # @best
-        .local  best
-        .comm   best,4,4
-        .type   .L.str,@object                  # @.str
+        .type   body_shade,@object
+        .section        .rodata,"a",@progbits
+        .p2align        2, 0x0
+body_shade:
+        .word   0
+        .word   0
+        .word   5519431
+        .word   10282585
+        .word   15007115
+        .word   15007115
+        .word   10282585
+        .word   10282585
+        .word   7585582
+        .word   7585582
+        .word   7585582
+        .word   7585582
+        .word   7585582
+        .word   7585582
+        .word   7585582
+        .word   7585582
+        .word   7585582
+        .word   7585582
+        .word   5603362
+        .word   7585582
+        .word   5603362
+        .word   5603362
+        .word   5603362
+        .word   5603362
+        .word   5603362
+        .word   5603362
+        .word   5603362
+        .word   5519431
+        .word   0
+        .word   0
+        .size   body_shade, 120
+        .type   cap_shade,@object
+        .p2align        2, 0x0
+cap_shade:
+        .word   5519431
+        .word   10282585
+        .word   10282585
+        .word   15007115
+        .word   15007115
+        .word   15007115
+        .word   10282585
+        .word   10282585
+        .word   10282585
+        .word   7585582
+        .word   7585582
+        .word   7585582
+        .word   7585582
+        .word   7585582
+        .word   7585582
+        .word   7585582
+        .word   7585582
+        .word   7585582
+        .word   7585582
+        .word   7585582
+        .word   5603362
+        .word   7585582
+        .word   5603362
+        .word   5603362
+        .word   5603362
+        .word   5603362
+        .word   5603362
+        .word   5603362
+        .word   5603362
+        .word   5519431
+        .size   cap_shade, 120
+        .type   .L.str,@object
         .section        .rodata.str1.1,"aMS",@progbits,1
 .L.str:
         .asciz  "Game over. Score: "
         .size   .L.str, 19
-        .type   .L.str.1,@object                # @.str.1
+        .type   .L.str.1,@object
 .L.str.1:
         .asciz  ", best: "
         .size   .L.str.1, 9
-        .type   .L.str.2,@object                # @.str.2
-.L.str.2:
-        .asciz  "Score: "
-        .size   .L.str.2, 8
+        .type   bird_art,@object
+        .section        .rodata,"a",@progbits
+bird_art:
+        .asciz  "......XXXXXX.........XXyyyXwwX.......XyyyyXwwwwX....XXXyyyyXwwwXwX..XlllXyyyXwwwXwX..XllllXyyyXwwwwX..XllllXyyyyXXXXXX..XXXXyyyyXrrrrrX...XooooooXrXXXXX...XoooooooXrrrrX....XXoooooXXXXX.......XXXXX......."
+        .asciz  "......XXXXXX.........XXyyyXwwX.......XyyyyXwwwwX....XXXXyyyXwwwXwX..XllllXyyXwwwXwX..XlllllXyyXwwwwX..XylllyXyyyXXXXXX..XyyyXyyyyXrrrrrX..XXXooooXrXXXXX...XoooooooXrrrrX....XXoooooXXXXX.......XXXXX......."
+        .asciz  "......XXXXXX.........XXyyyXwwX.......XyyyyXwwwwX.....XyyyyyXwwwXwX...XyyyyyyXwwwXwX...XXXXXyyyXwwwwX..XlllllXyyyXXXXXX.XlllllXyyXrrrrrX..XllllXooXrXXXXX...XXXXooooXrrrrX....XXoooooXXXXX.......XXXXX......."
+        .size   bird_art, 615
+        .type   palette_keys,@object
+        .section        .rodata.str1.1,"aMS",@progbits,1
+palette_keys:
+        .asciz  "Xywrol"
+        .size   palette_keys, 7
+        .type   palette,@object
+        .section        .rodata,"a",@progbits
+        .p2align        2, 0x0
+palette:
+        .word   5519431
+        .word   16304170
+        .word   16777215
+        .word   15883324
+        .word   15768108
+        .word   16445084
+        .size   palette, 24
+        .type   digit_art,@object
+digit_art:
+        .asciz  "..XXXXXXXX....XwwwwwwX..XXXwwwwwwXXXXwwXXXXXXwwXXwwX....XwwXXwwX....XwwXXwwX....XwwXXwwX....XwwXXwwX....XwwXXwwX....XwwXXwwX....XwwXXwwX....XwwXXwwXXXXXXwwXXXXwwwwwwXXX..XwwwwwwX....XXXXXXXX.."
+        .asciz  "....XXXX........XwwX......XXXwwX......XwwwwX......XwwwwX......XXXwwX........XwwX........XwwX........XwwX........XwwX........XwwX........XwwX......XXXwwXXX....XwwwwwwX....XwwwwwwX....XXXXXXXX.."
+        .asciz  "..XXXXXXXX....XwwwwwwX..XXXwwwwwwXXXXwwXXXXXXwwXXwwX....XwwXXXXX....XwwX......XXXwwX......XwwXXX....XXXwwX......XwwXXX....XXXwwX......XwwXXX....XXXwwXXXXXXXXwwwwwwwwwwXXwwwwwwwwwwXXXXXXXXXXXXX"
+        .asciz  "XXXXXXXXXXXXXwwwwwwwwwwXXwwwwwwwwwwXXXXXXXXwwXXX....XXXwwX......XwwXXX......XwwXXX......XXXwwX........XwwXXX......XXXwwXXXXX....XwwXXwwX....XwwXXwwXXXXXXwwXXXXwwwwwwXXX..XwwwwwwX....XXXXXXXX.."
+        .asciz  "......XXXX........XwwX......XXXwwX......XwwwwX....XXXwwwwX....XwwXXwwX..XXXwwXXwwX..XwwXXXXwwX..XwwXXXXwwXXXXwwwwwwwwwwXXwwwwwwwwwwXXXXXXXXwwXXX......XwwX........XwwX........XwwX........XXXX.."
+        .asciz  "XXXXXXXXXXXXXwwwwwwwwwwXXwwwwwwwwwwXXwwXXXXXXXXXXwwXXXXXXX..XwwwwwwwwX..XwwwwwwwwXXXXXXXXXXXXwwX........XwwX........XwwXXXXX....XwwXXwwX....XwwXXwwXXXXXXwwXXXXwwwwwwXXX..XwwwwwwX....XXXXXXXX.."
+        .asciz  "....XXXXXX......XwwwwX....XXXwwwwX....XwwXXXXX..XXXwwX......XwwXXX......XwwXXXXXXX..XwwwwwwwwX..XwwwwwwwwXXXXwwXXXXXXwwXXwwX....XwwXXwwX....XwwXXwwXXXXXXwwXXXXwwwwwwXXX..XwwwwwwX....XXXXXXXX.."
+        .asciz  "XXXXXXXXXXXXXwwwwwwwwwwXXwwwwwwwwwwXXXXXXXXXXwwX......XXXwwX......XwwXXX....XXXwwX......XwwXXX....XXXwwX......XwwXXX......XwwX........XwwX........XwwX........XwwX........XwwX........XXXX......"
+        .asciz  "..XXXXXXXX....XwwwwwwX..XXXwwwwwwXXXXwwXXXXXXwwXXwwX....XwwXXwwX....XwwXXwwXXXXXXwwXXXXwwwwwwXXXXXXwwwwwwXXXXwwXXXXXXwwXXwwX....XwwXXwwX....XwwXXwwXXXXXXwwXXXXwwwwwwXXX..XwwwwwwX....XXXXXXXX.."
+        .asciz  "..XXXXXXXX....XwwwwwwX..XXXwwwwwwXXXXwwXXXXXXwwXXwwX....XwwXXwwX....XwwXXwwXXXXXXwwXXXXwwwwwwwwX..XwwwwwwwwX..XXXXXXXwwX......XXXwwX......XwwXXX..XXXXXwwX....XwwwwXXX....XwwwwX......XXXXXX...."
+        .size   digit_art, 1930
+        .type   .L_MergedGlobals,@object
+        .local  .L_MergedGlobals
+        .comm   .L_MergedGlobals,72,4
+bird_y = .L_MergedGlobals
+        .size   bird_y, 4
+shown_y = .L_MergedGlobals+4
+        .size   shown_y, 4
+shown_score = .L_MergedGlobals+8
+        .size   shown_score, 4
+next_frame = .L_MergedGlobals+12
+        .size   next_frame, 4
+state = .L_MergedGlobals+16
+        .size   state, 4
+tick = .L_MergedGlobals+20
+        .size   tick, 4
+velocity = .L_MergedGlobals+24
+        .size   velocity, 4
+score = .L_MergedGlobals+28
+        .size   score, 4
+best = .L_MergedGlobals+32
+        .size   best, 4
+pipes = .L_MergedGlobals+36
+        .size   pipes, 36

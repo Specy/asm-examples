@@ -1,6 +1,6 @@
 {
     "name": "Factorial and Fibonacci",
-    "description": "Two subroutines that call themselves: factorial(8) and fib(10).",
+    "description": "Computes factorials and Fibonacci numbers with subroutines that call themselves.",
     "tags": [
         "basics"
     ]

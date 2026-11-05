@@ -1,5 +1,5 @@
 {
     "name": "Branches and loops",
-    "description": "An if/else that picks the larger of two numbers, then a loop that counts from 1 to 10 into memory.",
+    "description": "Compares two numbers with if/else, then writes the numbers 1 to 10 into an array.",
     "tags": ["basics"]
 }

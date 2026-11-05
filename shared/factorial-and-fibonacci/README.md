@@ -1,6 +1,8 @@
 # Factorial and Fibonacci
 
-Computes `factorial(8)` = 40320 and `fib(10)` = 55 with subroutines that call themselves. Each call saves on the stack what it still needs, so it can wait while the call it made works. Factorial makes a chain of calls; Fibonacci splits each one into two. Build, then Run.
+Computes `factorial(8)` = 40320 and `fib(10)` = 55, except on X86 where the factorial is `factorial(10)` = 3628800. Build, then Run, and inspect the answers below.
+
+Both subroutines call themselves. Each call saves the values it needs when the nested call returns. Factorial makes one recursive call at a time. Fibonacci makes two.
 
 | Target | Where the answers are                   |
 | ------ | --------------------------------------- |

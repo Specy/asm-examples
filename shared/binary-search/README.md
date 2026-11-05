@@ -1,6 +1,6 @@
 # Binary search
 
-Looks for 91 in a sorted array of twelve numbers. Each comparison with the middle element rules out half of what is left, so it checks four elements where a search from the left would check ten. It leaves the index it found, or -1 when the value is absent. Build, then Run.
+Looks for 91 in a sorted array of twelve numbers, or 23 in six numbers on X86. Each comparison with the middle element rules out half of the remaining range. Build, then Run. The result is an index counting from 0: 9, or 4 on X86. An absent value returns -1, represented as `0xFF` (255 unsigned) in Z80's `e`.
 
 | Target | Where the index is |
 | ------ | ------------------ |

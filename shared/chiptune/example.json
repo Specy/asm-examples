@@ -1,5 +1,5 @@
 {
     "name": "Chiptune",
-    "description": "A short tune on three voices at once, a melody, a bass and drums, the way a game console's music was made.",
+    "description": "Plays a melody, bass line and drums on three sound channels.",
     "tags": ["sound"]
 }

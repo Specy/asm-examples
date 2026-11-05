@@ -8,11 +8,11 @@
             "target": "RISC-V",
             "language": "c",
             "compilerId": "rv32-cclang2110",
-            "optimization": "0",
+            "optimization": "2",
             "inputs": {
-                "flappy-bird.c": "30c5f1802182e9345f2147a64e665f12"
+                "flappy-bird.c": "a830ca9c0feab125510f7114f6d50aad"
             },
-            "outputFingerprint": "5712e0de421c6f053fffbeb22af13169"
+            "outputFingerprint": "b90fa01de737ddf16ffaa40231c2d9ee"
         }
     ]
 }

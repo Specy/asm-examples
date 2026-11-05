@@ -1,6 +1,6 @@
 # Bouncing ball
 
-Build, then Run to watch a ball bounce around the Screen. It runs until you press Stop.
+Build, then Run to watch a ball bounce around the Screen. X86 ends after 600 frames. On the other targets, press Stop to end the animation.
 
 Each version draws the ball and waits before drawing again. The wait sets the intended frame rate, though a slower computer may take longer to draw a frame. M68K and Z80 draw off screen and present the finished frame. MIPS and RISC-V update the bitmap display directly.
 

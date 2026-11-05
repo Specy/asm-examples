@@ -1,6 +1,6 @@
 # Hello world
 
-Prints a greeting and a number to the console. Build, then Run, and read the console. It is the shape to start a new program from: put the text in memory, then ask the system to print it.
+Prints a greeting and a number to the console. Build, then Run, and read the console. You can use it as a starting point for a new program: put the text in memory, then ask the system to print it.
 
 | Target | How it prints                                                                                |
 | ------ | -------------------------------------------------------------------------------------------- |

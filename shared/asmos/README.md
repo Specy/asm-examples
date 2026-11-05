@@ -26,7 +26,7 @@ Every application is a process of its own: open two Notepads and both keep runni
 | Clock | An analog clock that scales with its window, a digital view and a stopwatch with laps, in UTC. |
 | Image Viewer | Shows `.bmp` pictures: fit, actual size, zoom, the previous and next picture of the folder. |
 | Music Player | Plays the Standard MIDI files in `music` on the General MIDI synthesizer. |
-| Video Player | Plays black-and-white `.vid` videos with sound. `videos/bad-apple.vid` is included on x86 and RISC-V. See below. |
+| Video Player | Plays black-and-white `.vid` videos with sound. Includes `videos/bad-apple.vid` on all three targets. See below. |
 | Hex Viewer | A file's bytes in hex and as characters, with Go To. |
 | Assembly Editor | Writes, builds, runs and debugs RISC-V programs, with breakpoints, Step back, the registers, the memory, a console and a bitmap display: see below. |
 | Pac-Man | The arcade game, ported from the RISC-V example, its sound mixed in C and played through `/dev/dsp`, or the sampled-audio output on RISC-V and MIPS. |

@@ -1,6 +1,6 @@
 {
     "name": "Reverse a string",
-    "description": "Reverses a zero-terminated string in place, with two pointers walking towards each other.",
+    "description": "Reverses a zero-terminated string in place using two pointers.",
     "tags": [
         "basics"
     ]

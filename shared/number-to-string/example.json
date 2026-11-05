@@ -1,6 +1,6 @@
 {
     "name": "Number to string",
-    "description": "Prints a number in hexadecimal, decimal and binary, making the digits itself.",
+    "description": "Converts a number to hexadecimal, decimal and binary text, then prints it.",
     "tags": [
         "basics"
     ]

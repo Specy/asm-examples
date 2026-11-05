@@ -1,8 +1,8 @@
 # Branches and loops
 
-The two ways a program leaves a straight line, one after the other. Build, then step through it and watch which instructions run.
+Compares two numbers with if/else, then fills an array with a loop. Build, then step through it and watch which instructions run.
 
-First an if/else compares two numbers and keeps the larger. Only one of its two paths runs. Then a loop writes the numbers 1 to 10 into memory, one a pass: a store, a counter, and a jump back while there is more to do. Its result is in the memory panel.
+First an if/else compares two numbers and keeps the larger. Only one of its two paths runs. Then a loop writes the numbers 1 to 10 into memory, one a pass: a store, a counter, and a jump back while there is more to do. Look at `numbers` in the memory panel to see the loop's result on every target.
 
 | Target | Where the if/else leaves its answer                                 |
 | ------ | ------------------------------------------------------------------- |

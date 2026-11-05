@@ -18,8 +18,7 @@ Things to try:
  - Open the Terminal and type help.
  - Open pictures/sunset.bmp in Paint, draw on it and Save.
  - Play a piece in the Music Player.
- - On x86 or RISC-V, watch Bad Apple!! in the Video Player.
-   The MIPS project includes the player but omits the video.
+ - Watch Bad Apple!! in the Video Player.
  - Play DOOM. On RISC-V and MIPS, restart asmOS before reopening it.
  - Write RISC-V assembly in the Assembly Editor: File > Examples,
    then Build and Run, Step and Step back.
