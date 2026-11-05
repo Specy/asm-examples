@@ -1,5 +1,6 @@
 {
     "name": "asmOS",
     "description": "A desktop with a process scheduler and window manager, written in C and x86 assembly. Includes Pac-Man, DOOM and a RISC-V assembly editor.",
+    "startup": { "buildAndRun": true, "fullscreenDisplay": true },
     "license": "GPL-2.0-or-later"
 }

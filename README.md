@@ -94,6 +94,14 @@ That is enough for an example of one assembly File. It becomes the Entry of the 
 
 A shared example's `ports.<target>` can also give that version its own `name` and `description`. `example.json`, `compilations.json` and `build.mjs` are never packed.
 
+`startup` says what opening the example does, as the flags a link to it can carry: `build` builds it, `buildAndRun` builds and runs it, and `fullscreenDisplay` opens its Screen in the floating window. A game starts running on a display that fills the page with:
+
+```json
+"startup": { "buildAndRun": true, "fullscreenDisplay": true }
+```
+
+The editor's Examples page opens the example with these flags, and so does its Open in editor link; a link to the Examples page that sets any of these flags decides them instead. A link straight to the example in the editor starts it only as its own flags say. A version's own `startup`, in `ports.<target>` or as an option of `pack()`, replaces the example's, and `{}` opens that version with none.
+
 ### Changing an example in the editor
 
 Open its archive from `dist/`, change it, export it as an `.asmproj`, then bring it back:
@@ -124,7 +132,7 @@ export default async function build({ files, pack }) {
 ```
 
 - **`files({ from, include, exclude })`** returns the example's Files, or those of its `from` subfolder. Each is listed as its path in the archive, mapped to the file it is read from. An entry ending in `/` is a folder.
-- **`pack({ target, files, project, name, description, variant, buildOutputs, draft })`** packs one archive. A `variant` tells two archives for one Target apart: `<example>-<variant>.asmproj`. Set `draft: true` while a port is unfinished. Its sources and Compilation records stay available to compilation tools, and the build leaves it out of the archives and index.
+- **`pack({ target, files, project, name, description, variant, buildOutputs, startup, draft })`** packs one archive. A `variant` tells two archives for one Target apart: `<example>-<variant>.asmproj`. Set `draft: true` while a port is unfinished. Its sources and Compilation records stay available to compilation tools, and the build leaves it out of the archives and index.
 - **`buildOutputs`** lists the Programs whose linked program the archive should carry. The editor adds it when it builds the examples, because only its Core can link one, and only x86 saves one.
 
 ## License

@@ -1,5 +1,6 @@
 {
     "name": "Snake",
     "description": "Steer the snake to the food to grow it, without hitting a wall or its own body.",
+    "startup": { "buildAndRun": true, "fullscreenDisplay": true },
     "tags": ["game", "screen", "keyboard"]
 }

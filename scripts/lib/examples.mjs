@@ -8,8 +8,13 @@ import { SHARED_FOLDER, TARGETS, findTarget, targetByFolder } from './targets.mj
 /** Folders at the repository's root that hold no examples. */
 const OTHER_FOLDERS = new Set(['scripts', 'node_modules', 'dist'])
 const ID = VARIANT
-const EXAMPLE_FIELDS = ['name', 'description', 'tags', 'license', 'project', 'ports']
-const PORT_FIELDS = ['name', 'description', 'project']
+const EXAMPLE_FIELDS = ['name', 'description', 'tags', 'license', 'project', 'ports', 'startup']
+const PORT_FIELDS = ['name', 'description', 'project', 'startup']
+/**
+ * What opening the example does, as the flags of a link to it: Build, Build and Run, and the
+ * Screen in its floating window. A link that gives its own flags decides instead.
+ */
+const STARTUP_FLAGS = ['build', 'buildAndRun', 'fullscreenDisplay']
 const DEFAULT_LICENSE = 'MIT'
 const LICENSE_FILES = ['LICENSE', 'LICENSE.md', 'LICENSE.txt', 'COPYING']
 
@@ -86,6 +91,7 @@ export function readExampleFile(example) {
             LICENSE_FILES.some((name) => existsSync(join(example.folder, name))),
             `its license is ${license}, not the repository's ${DEFAULT_LICENSE}, so it needs a LICENSE File`
         )
+    for (const problem of startupProblems(meta.startup, 'startup')) check(false, problem)
     if (example.target) {
         check(meta.ports === undefined, `ports is for ${SHARED_FOLDER}/ examples; use project`)
     } else {
@@ -99,10 +105,24 @@ export function readExampleFile(example) {
                 if (!check(isRecord(port), `ports.${folder} is not an object`)) continue
                 for (const field of Object.keys(port))
                     check(PORT_FIELDS.includes(field), `unknown field ${field} in ports.${folder}`)
+                for (const problem of startupProblems(port.startup, `ports.${folder}.startup`))
+                    check(false, problem)
             }
     }
     if (problems.length) throw new ExampleError(problems)
     return { ...meta, tags: meta.tags ?? [], license }
+}
+
+/** What is wrong with a `startup`, called `where`: nothing when it is left out. */
+function startupProblems(startup, where) {
+    if (startup === undefined) return []
+    if (!isRecord(startup)) return [`${where} is not an object`]
+    return Object.entries(startup).flatMap(([flag, value]) => [
+        ...(STARTUP_FLAGS.includes(flag)
+            ? []
+            : [`${where}.${flag} is no startup flag (${STARTUP_FLAGS.join(', ')})`]),
+        ...(typeof value === 'boolean' ? [] : [`${where}.${flag} is not true or false`])
+    ])
 }
 
 /** The example's `compilations.json`: its Compilation records by Target folder. */
@@ -165,10 +185,15 @@ export async function buildExample(example, { capture = false } = {}) {
         project,
         buildOutputs,
         draft = false,
+        startup,
         ...rest
     } = {}) => {
         const unknown = Object.keys(rest).filter((key) => key !== 'name' && key !== 'description')
         if (unknown.length) throw new ExampleError([`pack(): unknown option ${unknown.join(', ')}`])
+        const startupWrong = startupProblems(startup, 'pack(): startup')
+        if (startupWrong.length) throw new ExampleError(startupWrong)
+        //a port starts as its example does, unless it says otherwise; `{}` opens it without
+        const portStartup = startup ?? meta.startup
         const target = findTarget(name)
         if (!target) throw new ExampleError([`pack(): ${name} is no Target`])
         if (!isRecord(portFiles)) throw new ExampleError(['pack(): files is not an object'])
@@ -214,6 +239,7 @@ export async function buildExample(example, { capture = false } = {}) {
         //a port named or described apart from its example says so in the index too
         if (portName !== meta.name) port.port.name = portName
         if (portDescription !== meta.description) port.port.description = portDescription
+        if (portStartup && Object.keys(portStartup).length) port.port.startup = portStartup
         packed.push(port)
         return port
     }
@@ -301,7 +327,8 @@ function defaultSharedBuild(example, meta, files, pack) {
                 files: { ...common, ...own },
                 name: port.name,
                 description: port.description,
-                project: port.project
+                project: port.project,
+                startup: port.startup
             })
         } catch (error) {
             if (!(error instanceof ExampleError)) throw error

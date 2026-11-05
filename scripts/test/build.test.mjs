@@ -193,6 +193,58 @@ describe('a shared example', () => {
         })
     })
 
+    it('starts each port as its example says, unless the port says otherwise', () => {
+        const repo = fixture({
+            'shared/snake/example.json': example('Snake', {
+                startup: { buildAndRun: true, fullscreenDisplay: true },
+                ports: { z80: { startup: { build: true } }, mips: { startup: {} } }
+            }),
+            'shared/snake/m68k/snake.x68': 'nop\n',
+            'shared/snake/mips/snake.asm': 'nop\n',
+            'shared/snake/z80/snake.z80': 'halt\n',
+            'risc-v/ball/example.json': example('Ball', { startup: { fullscreenDisplay: true } }),
+            'risc-v/ball/ball.s': 'nop\n',
+            'risc-v/hello/example.json': example('Hello'),
+            'risc-v/hello/hello.s': 'nop\n'
+        })
+        const { status, output } = repo.run('build.mjs')
+        assert.equal(status, 0, output)
+        const { examples } = repo.index()
+        assert.deepEqual(
+            examples.snake.ports.map(({ target, startup }) => ({ target, startup })),
+            [
+                { target: 'M68K', startup: { buildAndRun: true, fullscreenDisplay: true } },
+                //an empty startup opens the port without any
+                { target: 'MIPS', startup: undefined },
+                { target: 'Z80', startup: { build: true } }
+            ]
+        )
+        assert.deepEqual(examples.ball.ports[0].startup, { fullscreenDisplay: true })
+        assert.equal(examples.hello.ports[0].startup, undefined)
+        //it is the editor's to act on, never part of the Project
+        assert.equal(repo.archive('m68k/snake.asmproj').manifest.project.startup, undefined)
+    })
+
+    it('fails on a startup that is not the flags of a link', () => {
+        const repo = fixture({
+            'mips/run/example.json': example('Run', { startup: { run: true, build: 'yes' } }),
+            'mips/run/run.asm': 'nop\n',
+            'shared/list/example.json': example('List', { ports: { z80: { startup: [] } } }),
+            'shared/list/z80/list.z80': 'halt\n',
+            'shared/packed/example.json': example('Packed'),
+            'shared/packed/a.asm': 'ret\n',
+            'shared/packed/build.mjs': `export default ({ files, pack }) => {
+                pack({ target: 'X86', files: files(), startup: { buildAndRun: 1 } })
+            }`
+        })
+        const { status, output } = repo.run('build.mjs')
+        assert.equal(status, 1)
+        assert.match(output, /mips\/run: startup\.run is no startup flag/)
+        assert.match(output, /mips\/run: startup\.build is not true or false/)
+        assert.match(output, /shared\/list: ports\.z80\.startup is not an object/)
+        assert.match(output, /shared\/packed: pack\(\): startup\.buildAndRun is not true or false/)
+    })
+
     it('fails when a port’s File and a shared one have the same path', () => {
         const repo = fixture({
             'shared/ball/example.json': example('Ball'),
