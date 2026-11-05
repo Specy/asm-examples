@@ -1,8 +1,8 @@
 # Graphics tour
 
-Build, then Run. The program demonstrates the M68K screen's drawing tasks in one picture: pen and fill colours, a pixel and reading it back, lines, filled and outlined rectangles and ellipses, flood fill, the pen's width, drawing modes and text at a pixel position. It then demonstrates the standard player's sound tasks with WAV files the program writes itself.
+This program shows every drawing task of the M68K screen in one picture: pen and fill colours, setting and reading a pixel, lines, filled and outlined rectangles and ellipses, flood fill, pen width, drawing modes, and text at a pixel position. Then it plays sounds with the sound tasks, from WAV files it writes itself.
 
-It is a port of `graphicSound.X68`, one of the example programs that come with [EASy68K](http://www.easy68k.com), by Chuck Kelly. This editor supports drawing modes 2, 4, 16 and 17, so the port omits the original's loop over the other modes. The remaining drawing demonstrations work as they do in EASy68K.
+It is a port of `graphicSound.X68`, an example program by Chuck Kelly that comes with [EASy68K](http://www.easy68k.com). The editor supports only drawing modes 2, 4, 16 and 17, so the port leaves out the original's loop over the other modes. Everything else works as it does in EASy68K.
 
 ## License
 

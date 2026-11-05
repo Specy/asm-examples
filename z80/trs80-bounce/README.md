@@ -1,5 +1,5 @@
 # TRS-80 bounce
 
-Build, Run, then click the Screen. Use the arrow keys to steer the block as it bounces around the TRS-80's display. It runs until you press Stop.
+This program bounces a block around the TRS-80's display. Click the Screen, then steer the block with the arrow keys. Press Stop to end it.
 
-Each frame is drawn in ordinary memory, then copied into video memory with one `ldir` of 1,024 bytes. The screen shows the completed frame without a double-buffering command. The program reads the arrow keys from the keyboard matrix at `0x3800`.
+The program uses double buffering by hand, because the TRS-80 has no command for it: it draws each frame in ordinary memory, then copies it into video memory with one `ldir` of 1,024 bytes. The arrow keys are read from the keyboard matrix at `0x3800`.

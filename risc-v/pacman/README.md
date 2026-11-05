@@ -1,13 +1,16 @@
 # Pac-Man
 
-1. Choose the version in the program picker at the right of the bottom panel's tabs: `main.s` is the assembly version and `pacman.c` is the C version.
-2. **Build**, then **Run**.
-3. Click the Screen so it receives the keyboard, then press space.
-4. Move with **W A S D**, or **Z Q S D**, or **8 4 5 6** on the number pad. **P** pauses.
+This game is the arcade game Pac-Man, with its sound, written twice: once in RISC-V assembly and once in C.
+
+## Playing
+
+1. Pick a version in the program picker, at the right of the bottom panel's tabs: `main.s` is the assembly version and `pacman.c` is the C version.
+2. Click the Screen so it gets the keyboard, then press Space.
+3. Move with **W A S D**, **Z Q S D**, or **8 4 5 6** on the number pad. **P** pauses.
 
 ## The pictures
 
-`assets/` holds the pictures both versions read when they start: `sprites.bmp`, `tiles.bmp` and `maze.bmp`, 24-bit BMPs, and `maze.txt`. Open a picture and choose **Pixels** under the editor to redraw it; the next **Run** reads what you drew. Black is transparent in `sprites.bmp`.
+Both versions read their pictures from `assets/` when they start: `sprites.bmp`, `tiles.bmp` and `maze.bmp`, which are 24-bit BMPs, and the maze layout in `maze.txt`. To redraw a picture, open it and choose **Pixels** under the editor. The next run uses what you drew. Black is transparent in `sprites.bmp`.
 
 ## The assembly version
 

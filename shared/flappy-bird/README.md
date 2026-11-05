@@ -1,23 +1,29 @@
 # Flappy Bird
 
-Fly between the pipes: every tap flaps, and gravity does the rest. Build, Run, click the Screen so that it has the keyboard, then tap Space to start and to flap.
+This game is Flappy Bird: fly between the pipes. Each tap flaps, and gravity does the rest. Click the Screen so it gets the keyboard, then press Space to start and to flap.
 
-All versions also accept Enter. MIPS and both RISC-V versions accept lowercase `w`. M68K and Z80 also accept the W key, the up arrow and the left mouse button. After a crash, tap once to reset and again to start. MIPS and RISC-V print the score and the session's best to the console at each game over.
+Every version also accepts Enter. MIPS and both RISC-V versions also accept lowercase `w`. M68K and Z80 also accept the W key, the up arrow and the left mouse button. After a crash, tap once to reset and again to start. MIPS and RISC-V print the score and the session's best score to the console when the game ends.
 
 | Target | Written in | How it works |
 | ------ | ---------- | ------------ |
 | M68K | Assembly | Draws off screen and shows each frame with task 94. Task 23 waits, task 19 reads the keys, task 61 reads the mouse and task 95 draws the score. |
-| RISC-V | C | Uses `<sim.h>`. `SIM_SCREEN(display, 384, 512, 2)` makes a grid of 192 × 256 cells, each 2 pixels square, with the same picture as the assembly version. |
-| MIPS | Assembly | A grid of 192 × 256 cells, one word of the bitmap display each: clouds, buildings and bushes worked out once, shaded pipes, and the bird and score drawn from sprites. Each frame paints only the pixels that change, each one once. |
-| RISC-V | Assembly | As on MIPS, beside the C version in the same Project. |
-| Z80 | Assembly | Pipes with gaps from a clock-seeded sequence. |
+| MIPS | Assembly | Draws on a grid of 192 × 256 cells, one word of the bitmap display per cell. The clouds, buildings and bushes are computed once at the start; the pipes are shaded, and the bird and the score are drawn from sprites. Each frame paints only the pixels that change, and each of them only once. |
+| RISC-V | Assembly | Same as MIPS, in the same Project as the C version. |
+| RISC-V | C | Uses `<sim.h>`. `SIM_SCREEN(display, 384, 512, 2)` makes a grid of 192 × 256 cells, each 2 pixels square. It draws the same picture as the assembly version. |
+| Z80 | Assembly | Places the gaps in the pipes from a sequence seeded by the clock. |
 
-For RISC-V, `flappy-bird.s` is the program that opens. To run the C version, select the generated assembly, `flappy-bird.c.riscv`, as the program. It is already compiled at `-O2`. After changing `flappy-bird.c`, choose `-O2` and Compile it again before Build and Run. This enables compiler optimizations to help the game keep its intended 20 millisecond frame interval.
+## The C version on RISC-V
 
-The bird and the score's digits are the sprites in `assets/bird.bmp` (the wing up, level and down, one above the other) and `assets/digits.bmp` (0 to 9). MIPS and RISC-V read them when the program starts; edit them in the Pixels view, then Build and Run again. Keep them 32-bit BMPs of the same size. Black is see-through.
+The RISC-V Project opens with the assembly version, `flappy-bird.s`. To play the C version, pick `flappy-bird.c.riscv` in the program picker: it is `flappy-bird.c` already compiled with `-O2`. If you change `flappy-bird.c`, compile it again with `-O2`. The optimizations help the game keep up with its 20 ms frames.
 
-Undo is off for the MIPS and RISC-V programs, which keeps the game running at full speed. Turn it on in the Program's settings to step back through a game.
+## The sprites
 
-On M68K, the editor's instruction execution limit may eventually stop a long game. Set **Instruction execution limit** to 0 in Settings to play without that limit.
+The bird and the score's digits are sprites, in `assets/bird.bmp` (the wing up, level and down, one above the other) and `assets/digits.bmp` (0 to 9). MIPS and RISC-V read them when the program starts. To change them, open them in the Pixels view, then run the program again. Keep them 32-bit BMPs of the same size. Black is transparent.
 
-The editor's courses go through both: [Flappy bird](https://asm-editor.specy.app/learn/courses/m68k/examples/flappy-bird) in M68K assembly, and [Flappy bird in C](https://asm-editor.specy.app/learn/courses/risc-v/examples/flappy-bird-in-c) for RISC-V.
+## Speed
+
+Undo is off for the MIPS and RISC-V programs, so the game runs at full speed. To step back through a game, turn Undo on in the Program's settings.
+
+On M68K, the editor's instruction execution limit can stop a long game. To play without the limit, set **Instruction execution limit** to 0 in Settings.
+
+Go to the course's lecture to read how the game is built: [Flappy Bird](https://asm-editor.specy.app/learn/courses/m68k/examples/flappy-bird) in M68K assembly, or [Flappy Bird in C](https://asm-editor.specy.app/learn/courses/risc-v/examples/flappy-bird-in-c) for RISC-V.
