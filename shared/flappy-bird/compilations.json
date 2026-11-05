@@ -10,9 +10,9 @@
             "compilerId": "rv32-cclang2110",
             "optimization": "2",
             "inputs": {
-                "flappy-bird.c": "a830ca9c0feab125510f7114f6d50aad"
+                "flappy-bird.c": "4db02c14b67cad12b48ff7684f43766e"
             },
-            "outputFingerprint": "b90fa01de737ddf16ffaa40231c2d9ee"
+            "outputFingerprint": "2eac54464293a5a7d62f1afaba10eb1b"
         }
     ]
 }

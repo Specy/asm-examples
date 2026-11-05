@@ -18,28 +18,33 @@
 .eqv BIRDW 17
 .eqv BIRDH 12
 .eqv BIRDR 65               # BIRDX + BIRDW, the column after the bird
-.eqv BIRDBYTES 204          # BIRDW * BIRDH, one picture of it
+.eqv HITX 50                # the box the pipes test, 2 inside the picture:
+.eqv HITR 63                # its columns [HITX, HITR)
+.eqv HITIN 2                # and its rows, HITIN inside the picture's
+.eqv BIRDSTRIDE 68          # BIRDW * 4, from one row of its sprite to the next
+.eqv BIRDBYTES 816          # BIRDW * BIRDH * 4, one picture of it
 # Pipes and gaps
 .eqv PIPEW 30               # the cap's width; the body is 2 narrower each side
 .eqv CAPH 12
 .eqv CAPLAST 11             # CAPH - 1, the cap's bottom edge row
-.eqv HALFGAP 34
+.eqv HALFGAP 40
 .eqv SPACING 104            # between one pipe and the next
 .eqv CYCLE 312              # SPACING * 3, what a recycled pipe jumps by
 .eqv FIRSTX 216             # WIDTH + 24, just off the right edge
-.eqv GAPMIN 86              # the highest the middle of a gap goes
-.eqv GAPSPAN 61             # and how far below that it can be
+.eqv GAPMIN 92              # the highest the middle of a gap goes
+.eqv GAPSPAN 49             # and how far below that it can be
 # Physics and timing
-.eqv GRAV 6                 # sixteenths of a row, per frame, per frame
-.eqv FLAPV -88              # the speed one flap gives, upwards
-.eqv MAXFALL 120
+.eqv GRAV 5                 # sixteenths of a row, per frame, per frame
+.eqv FLAPV -80              # the speed one flap gives, upwards
+.eqv MAXFALL 112
 .eqv STARTY 1600            # 100 * 16, where the bird waits
 .eqv RESTY 3264             # (GROUNDY - BIRDH) * 16, where a dead bird lands
 .eqv FRAME 20               # milliseconds a frame
 # The score
 .eqv DIGITW 12
 .eqv DIGITH 16
-.eqv DIGITBYTES 192         # DIGITW * DIGITH
+.eqv DIGITSTRIDE 48         # DIGITW * 4
+.eqv DIGITBYTES 768         # DIGITW * DIGITH * 4, one digit
 .eqv SCOREY 20
 .eqv SCOREEND 36            # SCOREY + DIGITH
 # Game states
@@ -47,14 +52,14 @@
 .eqv PLAYING 1
 .eqv DEAD 2
 # Colours
-.eqv NONE 0                 # in a pipe's shading: no body in this column
+.eqv NONE 0                 # no body in a pipe column; see-through in a sprite
 .eqv SKY 0x004EC0CA
 .eqv CLOUD 0x00E9FCD9
 .eqv CITY 0x00A8DFB5
 .eqv WINDOW 0x00D2F3DC
 .eqv BUSH 0x005EE270
 .eqv BUSHEDGE 0x0047BF5A
-.eqv EDGE 0x00543847        # the dark outline of pipes, ground and pictures
+.eqv EDGE 0x00543847        # the dark outline of pipes and ground
 .eqv PIPEHI 0x00E4FD8B
 .eqv PIPELIGHT 0x009CE659
 .eqv PIPEMID 0x0073BF2E
@@ -68,13 +73,29 @@ pipes:    .word 0, 0, 0     # three records: cap's left x, gap middle, counted
           .word 0, 0, 0
           .word 0, 0, 0
 pipes_end:
-seed:        .word 0x1F123BB5
-shown_y:     .word 100      # the bird's top row on the Screen
-shown_score: .word -1       # and the score shown, -1 for none yet
-next_frame:  .word 0        # the time the next frame starts at
-digit_buf:   .space 12      # the score's digits, lowest first
+seed:          .word 0x1F123BB5
+next_frame:    .word 0      # the time the next frame starts at
+pipes_moved:   .word 0      # this frame, so their changed columns need painting
+shown_y:       .word 100    # the bird's top row on the Screen
+shown_score:   .word -1     # the score on the Screen, -1 for none yet
+score_left:    .word 0      # the columns the score takes this frame
+score_right:   .word 0
+score_covered: .word 0      # a pipe column went around the score this frame
+digit_buf:     .space 12    # the score's digits, highest first, then 255
 over:    .asciiz "Game over. Score: "
 bestmsg: .asciiz ", best: "
+bird_name:   .asciiz "assets/bird.bmp"
+digits_name: .asciiz "assets/digits.bmp"
+error:       .asciiz "flappy-bird: "
+cannot_open: .asciiz ": cannot open it. It has to be a File of this Project.\n"
+wrong_bmp:   .asciiz ": it must be a 32-bit BMP of the size the game expects.\n"
+          .align 2
+# The sprites, read from the BMP files when the program starts: three pictures
+# of the bird, its wing up, level and down, one above the other, and the ten
+# digits, one 0x00RRGGBB word a pixel. Black (0) is see-through.
+bird_sprites:  .space 2448  # BIRDBYTES * 3
+digit_sprites: .space 7680  # DIGITBYTES * 10
+file_buffer:   .space 8192
 
 .text
 .globl main
@@ -82,6 +103,16 @@ main:
     la $s1, display
     li $s6, 0               # the best score of the session
     li $s7, 0               # frames since the program started
+    la $a0, bird_name
+    la $a1, bird_sprites
+    li $a2, BIRDW
+    li $a3, 36              # BIRDH * 3
+    jal load_sprite
+    la $a0, digits_name
+    la $a1, digit_sprites
+    li $a2, DIGITW
+    li $a3, 160             # DIGITH * 10
+    jal load_sprite
     jal make_backdrop
     jal new_game
     li $v0, 30              # service 30: milliseconds since the run started
@@ -89,6 +120,7 @@ main:
     sw $a0, next_frame      # the first frame starts now
 
 frame:
+    sw $zero, pipes_moved
 # --- every character typed since the last frame, and only the flaps count ----
     li $t7, MMIO
     li $t8, 0
@@ -183,16 +215,19 @@ dcapped:
     li $s2, RESTY
     li $s3, 0
 
-# --- the frame: everything that moved, drawn over what was there -------------
+# --- the frame: everything that changed, each word painted once --------------
 draw:
-    beq $s4, DEAD, still    # a dead bird's world stands still
+    beq $s4, DEAD, counted  # a dead bird's world stands still
     addi $s7, $s7, 1
-    jal erase_bird
-    jal paint_stripes
-    j drawn
-still:
-    jal erase_bird
-drawn:
+counted:
+    jal place_score
+    lw $t0, pipes_moved
+    beqz $t0, pipes_painted
+    jal repaint_pipes
+pipes_painted:
+    beq $s4, DEAD, ground_painted
+    jal slide_stripes
+ground_painted:
     jal draw_bird
     jal draw_score
     jal wait_frame
@@ -237,18 +272,10 @@ np_next:
 
 # move_pipes(): everything scrolls one column to the left. A pipe that has left
 # the grid jumps a whole cycle to the right with a new gap, which is why three
-# pipes are an endless course.
-#
-# Moving a pipe one column changes a column of the Screen only where the
-# pipe's shading changes from one column to the next, plus the column just
-# past its right edge, which goes back to backdrop. Those few columns are the
-# ones repainted, and in each only the rows above and below the gap: the gap
-# shows the backdrop before and after the move. The column within the pipe
-# lives in the stack frame, at 4($sp), since world_column changes every
-# temporary register.
+# pipes are an endless course. The Screen catches up later, in repaint_pipes.
 move_pipes:
-    addi $sp, $sp, -12
-    sw $ra, 8($sp)
+    addi $sp, $sp, -8
+    sw $ra, 4($sp)
     sw $s0, 0($sp)
     la $s0, pipes
 mp_next:
@@ -261,7 +288,6 @@ mp_next:
     sw $zero, 8($s0)
 mp_moved:
     sw $t7, 0($s0)
-
     lw $t6, 8($s0)          # already counted?
     bnez $t6, mp_counted
     addi $t6, $t7, PIPEW
@@ -270,47 +296,19 @@ mp_moved:
     sw $t6, 8($s0)
     addi $s5, $s5, 1        # its right edge has passed the bird
 mp_counted:
-    sw $zero, 4($sp)        # the column within the pipe, 0 to PIPEW
-mp_column:
-    lw $t1, 4($sp)
-    sll $t1, $t1, 2
-    la $t0, body_shade
-    add $t0, $t0, $t1
-    lw $t2, 0($t0)          # this column's body colour
-    lw $t0, -4($t0)         # and the one left of it
-    bne $t2, $t0, mp_paint
-    la $t0, cap_shade
-    add $t0, $t0, $t1
-    lw $t2, 0($t0)          # the same for the cap
-    lw $t0, -4($t0)
-    beq $t2, $t0, mp_same
-mp_paint:
-    lw $a0, 0($s0)
-    lw $t0, 4($sp)
-    add $a0, $a0, $t0       # the Screen column
-    lw $t1, 4($s0)
-    li $t8, 0
-    addi $t9, $t1, -HALFGAP
-    jal world_column        # above the gap, which leaves $a0 alone
-    lw $t1, 4($s0)
-    addi $t8, $t1, HALFGAP
-    li $t9, GROUNDY
-    jal world_column        # and below it
-mp_same:
-    lw $t0, 4($sp)
-    addi $t0, $t0, 1
-    sw $t0, 4($sp)
-    ble $t0, PIPEW, mp_column
-
     addi $s0, $s0, 12
     la $t7, pipes_end
     blt $s0, $t7, mp_next
+    li $t0, 1
+    sw $t0, pipes_moved
     lw $s0, 0($sp)
-    lw $ra, 8($sp)
-    addi $sp, $sp, 12
+    lw $ra, 4($sp)
+    addi $sp, $sp, 8
     jr $ra
 
-# hit_test(): 1 in $v0 when the bird is touching a pipe or the ground
+# hit_test(): 1 in $v0 when the bird is touching a pipe or the ground. The
+# ground stops the bird's picture; the pipes stop a box 2 pixels inside it,
+# which leaves out its see-through corners and forgives a near miss.
 hit_test:
     sra $t0, $s2, 4         # the bird's top row
     addi $t1, $t0, BIRDH    # and one past its bottom one
@@ -318,13 +316,15 @@ hit_test:
     li $v0, 1
     jr $ra
 ht_sky:
+    addi $t0, $t0, HITIN    # the box's top row
+    addi $t1, $t1, -HITIN   # and one past its bottom one
     la $t2, pipes
     li $t3, 3
 ht_next:
     lw $t4, 0($t2)
-    bge $t4, BIRDR, ht_skip # this pipe is still to the right of the bird
+    bge $t4, HITR, ht_skip  # this pipe is still to the right of the bird
     addi $t5, $t4, PIPEW
-    ble $t5, BIRDX, ht_skip # and this one is already behind it
+    ble $t5, HITX, ht_skip  # and this one is already behind it
     lw $t6, 4($t2)
     addi $t7, $t6, -HALFGAP
     blt $t0, $t7, ht_hit    # above the gap
@@ -378,8 +378,125 @@ wf_sleep:
     jr $ra
 
 #-----------------------------------------------------------------------------
-# Drawing. Every routine stores a word only when its colour changes: the
-# Screen's work, and so most of a frame's, is in the stores.
+# The sprites
+#-----------------------------------------------------------------------------
+# load_sprite(File name, words, width, height): a 32-bit BMP of exactly that
+# size, from the Project's Files, into one 0x00RRGGBB word a pixel. Its rows
+# are stored bottom-up, or top-down when its height is negative. The program
+# stops with a message when the File will not do.
+load_sprite:
+    addi $sp, $sp, -8
+    sw $ra, 4($sp)
+    sw $a0, 0($sp)
+    move $t5, $a1
+    move $t6, $a2
+    move $t7, $a3
+    li $a1, 0               # read only
+    li $a2, 0
+    li $v0, 13              # service 13: open a File
+    syscall
+    bltz $v0, ls_cannot_open
+    move $a0, $v0
+    move $t4, $v0
+    la $a1, file_buffer
+    li $a2, 8192
+    li $v0, 14              # service 14: read from it, $v0 = bytes read
+    syscall
+    move $t8, $v0
+    move $a0, $t4
+    li $v0, 16              # service 16: close it
+    syscall
+    blt $t8, 54, ls_wrong   # not even a BMP header
+    lbu $t0, file_buffer
+    bne $t0, 'B', ls_wrong
+    lbu $t0, file_buffer+1
+    bne $t0, 'M', ls_wrong
+    lbu $t0, file_buffer+28
+    bne $t0, 32, ls_wrong   # 32 bits a pixel
+    la $a1, file_buffer+18
+    jal read_u32
+    bne $v0, $t6, ls_wrong  # the width
+    la $a1, file_buffer+22
+    jal read_u32            # the height, negative for rows stored top-down
+    li $a3, 1               # $a3 = 1 for top-down
+    bltz $v0, ls_height
+    li $a3, 0
+    sub $v0, $zero, $v0
+ls_height:
+    add $v0, $v0, $t7
+    bnez $v0, ls_wrong      # either way, its size is the height asked for
+    la $a1, file_buffer+10
+    jal read_u32            # where its pixels start
+    mul $t0, $t6, $t7
+    sll $t0, $t0, 2
+    add $t0, $t0, $v0
+    bgt $t0, $t8, ls_wrong  # and they all are in the File
+    la $a0, file_buffer
+    add $a0, $a0, $v0       # $a0 = the first stored row
+    sll $a2, $t6, 2         # $a2 = bytes a row
+    bnez $a3, ls_down       # top-down: the first stored row is the top one
+    addi $t0, $t7, -1
+    mul $t0, $t0, $a2
+    add $a0, $a0, $t0       # bottom-up: start from the last stored row
+    sub $a2, $zero, $a2     # and go backwards
+ls_down:
+    li $t0, 0               # the row
+ls_row:
+    move $t1, $a0
+    move $t2, $t6           # the pixels left in the row
+ls_pixel:
+    lbu $t3, 0($t1)         # blue, green and red bytes, then a spare one
+    lbu $t4, 1($t1)
+    sll $t4, $t4, 8
+    or $t3, $t3, $t4
+    lbu $t4, 2($t1)
+    sll $t4, $t4, 16
+    or $t3, $t3, $t4
+    sw $t3, 0($t5)
+    addi $t1, $t1, 4
+    addi $t5, $t5, 4
+    addi $t2, $t2, -1
+    bnez $t2, ls_pixel
+    add $a0, $a0, $a2
+    addi $t0, $t0, 1
+    blt $t0, $t7, ls_row
+    lw $ra, 4($sp)
+    addi $sp, $sp, 8
+    jr $ra
+ls_cannot_open:
+    la $t0, cannot_open
+    j ls_fail
+ls_wrong:
+    la $t0, wrong_bmp
+ls_fail:
+    li $v0, 4
+    la $a0, error
+    syscall
+    lw $a0, 0($sp)          # the File's name
+    syscall
+    move $a0, $t0
+    syscall
+    li $v0, 10              # service 10: exit
+    syscall
+
+# read_u32(-, address): the little-endian word there, in $v0, read a byte at a
+# time since BMP header fields are not word aligned. It changes $t0 and $t1.
+read_u32:
+    lbu $v0, 3($a1)
+    li $t0, 2
+ru_byte:
+    sll $v0, $v0, 8
+    add $t1, $a1, $t0
+    lbu $t1, 0($t1)
+    or $v0, $v0, $t1
+    addi $t0, $t0, -1
+    bgez $t0, ru_byte
+    jr $ra
+
+#-----------------------------------------------------------------------------
+# Drawing. Every routine stores a word only when its colour changes, and each
+# frame paints every word at most once, with the colour it ends the frame in:
+# a frame shown before it is finished never shows a bird or a score missing.
 #-----------------------------------------------------------------------------
 # make_backdrop(): the scenery, into backdrop: sky, clouds, buildings with
 # windows and bushes, from the top of each column down to the ground.
@@ -447,20 +564,22 @@ fs_top:
     ble $a2, $t9, fs_rows
     move $a2, $t9
 fs_rows:
-    sub $t1, $a2, $a1
-    blez $t1, fs_done       # a span the window has closed draws nothing
+    bge $a1, $a2, fs_done   # a span the window has closed draws nothing
+    mul $t1, $a2, WIDTH
     mul $t0, $a1, WIDTH     # row * WIDTH
     add $t0, $t0, $a0       # + col
     sll $t0, $t0, 2         # four bytes a word
     add $t0, $t0, $s1
+    add $t1, $t1, $a0
+    sll $t1, $t1, 2
+    add $t1, $t1, $s1       # and the word just past the last row
 fs_next:
     lw $t2, 0($t0)
     beq $t2, $a3, fs_same   # already that colour: no store
     sw $a3, 0($t0)
 fs_same:
     addi $t0, $t0, ROWBYTES # straight down to the next row
-    addi $t1, $t1, -1
-    bnez $t1, fs_next
+    bne $t0, $t1, fs_next
 fs_done:
     jr $ra
 
@@ -501,12 +620,17 @@ bs_done:
     jr $ra
 
 # cap_span(col, first row, -, colour in $v1): a cap's column, an edge row,
-# ten shaded rows and another edge row. It changes $a1 to $a3, $t0 to $t2
-# and $t5.
+# ten shaded rows and another edge row, or the backdrop for a NONE colour,
+# just past the pipe's right edge. It changes $a1 to $a3 and $t0 to $t5.
 cap_span:
     addi $sp, $sp, -4
     sw $ra, 0($sp)
     move $t5, $a1
+    bnez $v1, cs_cap
+    addi $a2, $t5, CAPH
+    jal backdrop_span
+    j cs_done
+cs_cap:
     li $a3, EDGE
     addi $a2, $t5, 1
     jal fill_span
@@ -518,15 +642,18 @@ cap_span:
     addi $a1, $t5, CAPLAST
     addi $a2, $t5, CAPH
     jal fill_span
+cs_done:
     lw $ra, 0($sp)
     addi $sp, $sp, 4
     jr $ra
 
 # world_column(col): the backdrop and any pipe standing in this column, above
 # the ground, in as much of the column as the window in $t8 and $t9 allows. A
-# column off either side of the grid draws nothing. It changes $a1 to $a3,
-# $v0, $v1 and $t0 to $t7, and leaves $a0, $t8 and $t9 alone.
+# column off either side of the grid, or an empty window, draws nothing. It
+# changes $a1 to $a3, $v0, $v1 and $t0 to $t7, and leaves $a0, $t8 and $t9
+# alone.
 world_column:
+    bge $t8, $t9, wc_done
     bltz $a0, wc_done
     bge $a0, WIDTH, wc_done
     addi $sp, $sp, -4
@@ -576,7 +703,7 @@ wc_done:
     jr $ra
 
 # paint_world(): every column, then the ground, which is the one full repaint
-# a game has
+# a game has. The score has to be drawn again after it.
 paint_world:
     addi $sp, $sp, -8
     sw $ra, 4($sp)
@@ -614,13 +741,15 @@ pw_ground:
     addi $s0, $s0, 1
     blt $s0, WIDTH, pw_ground
     jal paint_stripes       # and the grass between them
+    li $t0, -1
+    sw $t0, shown_score
     lw $s0, 0($sp)
     lw $ra, 4($sp)
     addi $sp, $sp, 8
     jr $ra
 
-# paint_stripes(): the grass, diagonal stripes four columns wide, which slide
-# one column to the left each frame along with the pipes
+# paint_stripes(): the grass, diagonal stripes four columns wide: bit 2 of
+# x + row + frames picks the light or the dark green
 paint_stripes:
     li $t1, STRIPEY         # the row
 ps_row:
@@ -645,62 +774,221 @@ ps_same:
     blt $t1, STRIPEEND, ps_row
     jr $ra
 
-# draw_art(x, y, width, height, picture in $v1): a picture's opaque
-# characters, row by row. It changes $a1, $a3, $v1, $t0 to $t2 and $t4 to $t6.
-draw_art:
-da_row:
-    mul $t0, $a1, WIDTH
-    add $t0, $t0, $a0
-    sll $t0, $t0, 2
-    add $t0, $t0, $s1       # the row's first word
-    move $t1, $a2           # the characters left in the row
-da_char:
-    lbu $t5, 0($v1)
-    addi $v1, $v1, 1
-    beq $t5, '.', da_same   # see-through
-    la $t4, palette_keys
-    la $t6, palette
-da_find:
-    lbu $t2, 0($t4)
-    beq $t2, $t5, da_found
-    addi $t4, $t4, 1        # the next key,
-    addi $t6, $t6, 4        # and its colour
-    j da_find
-da_found:
-    lw $t6, 0($t6)
-    lw $t2, 0($t0)
-    beq $t2, $t6, da_same
-    sw $t6, 0($t0)
-da_same:
-    addi $t0, $t0, 4
-    addi $t1, $t1, -1
-    bnez $t1, da_char
-    addi $a1, $a1, 1
-    addi $a3, $a3, -1
-    bnez $a3, da_row
+# slide_stripes(): one frame later, a stripe's colour has changed only in every
+# fourth column, where x + row + frames is a multiple of 4: the light green
+# becomes dark there, and the dark green light. Only those words are stored.
+slide_stripes:
+    li $t1, STRIPEY         # the row
+ss_row:
+    add $t2, $t1, $s7
+    sub $t2, $zero, $t2
+    andi $t2, $t2, 3        # the first such column
+    mul $t3, $t1, WIDTH
+    add $t3, $t3, $t2
+    sll $t3, $t3, 2
+    add $t3, $t3, $s1       # its word
+    mul $t4, $t1, ROWBYTES
+    add $t4, $t4, $s1
+    addi $t4, $t4, ROWBYTES # the end of the row
+    add $t5, $t1, $s7
+    add $t5, $t5, $t2       # x + row + frames there
+ss_word:
+    andi $t2, $t5, 4
+    li $a3, PIPELIGHT
+    beqz $t2, ss_put
+    li $a3, PIPEMID
+ss_put:
+    sw $a3, 0($t3)
+    addi $t3, $t3, 16       # four columns on
+    addi $t5, $t5, 4
+    blt $t3, $t4, ss_word
+    addi $t1, $t1, 1
+    blt $t1, STRIPEEND, ss_row
     jr $ra
 
-# erase_bird(): the world where the bird was last drawn
-erase_bird:
+# repaint_pipes(): the columns the pipes' move changed. A pipe moved one column
+# left changes its column k only where its shading differs from column k - 1:
+# the body rows where body_shade does, the cap rows where cap_shade does. The
+# NONE words around the tables are the columns just outside the pipe, so k
+# runs from 0 to PIPEW, the column just past its right edge. The rows the
+# bird or the score takes this frame are left for draw_bird and draw_score.
+# k lives in the stack frame, at 4($sp), since pipe_rows changes most
+# temporary registers.
+repaint_pipes:
+    addi $sp, $sp, -16
+    sw $ra, 12($sp)
+    sw $s0, 0($sp)
+    la $s0, pipes
+rp_pipe:
+    sw $zero, 4($sp)        # the column within the pipe, 0 to PIPEW
+rp_column:
+    lw $t0, 4($sp)
+    lw $a0, 0($s0)
+    add $a0, $a0, $t0       # the Screen column
+    bltz $a0, rp_next
+    bge $a0, WIDTH, rp_next
+    sll $t1, $t0, 2
+    la $t0, body_shade
+    add $t0, $t0, $t1
+    lw $t2, 0($t0)
+    lw $t0, -4($t0)
+    bne $t2, $t0, rp_changed # the body's colour changed
+    la $t0, cap_shade
+    add $t0, $t0, $t1
+    lw $t2, 0($t0)
+    lw $t0, -4($t0)
+    beq $t2, $t0, rp_next   # and neither did the caps'
+rp_changed:
+    li $t8, GROUNDY         # $t8 to $t9: the rows to leave alone, none so far
+    li $t9, GROUNDY
+    blt $a0, BIRDX, rp_score
+    bge $a0, BIRDR, rp_score
+    sra $t8, $s2, 4         # the bird's rows
+    addi $t9, $t8, BIRDH
+    j rp_paint
+rp_score:
+    lw $t0, score_left
+    blt $a0, $t0, rp_paint
+    lw $t0, score_right
+    bge $a0, $t0, rp_paint
+    li $t8, SCOREY          # the score's rows
+    li $t9, SCOREEND
+    li $t0, 1
+    sw $t0, score_covered
+rp_paint:
+    sw $t9, 8($sp)
+    move $t9, $t8
+    li $t8, 0
+    lw $a1, 4($sp)
+    jal pipe_rows           # above the rows left alone
+    lw $t8, 8($sp)
+    li $t9, GROUNDY
+    bge $t8, $t9, rp_next
+    lw $a1, 4($sp)
+    jal pipe_rows           # and below them
+rp_next:
+    lw $t0, 4($sp)
+    addi $t0, $t0, 1
+    sw $t0, 4($sp)
+    ble $t0, PIPEW, rp_column
+    addi $s0, $s0, 12
+    la $t0, pipes_end
+    blt $s0, $t0, rp_pipe
+    lw $s0, 0($sp)
+    lw $ra, 12($sp)
+    addi $sp, $sp, 16
+    jr $ra
+
+# pipe_rows(col, k): the rows of the column that changed when the pipe at $s0
+# moved, k being the column within the pipe, within the window $t8 to $t9. It
+# leaves $a0, $t8 and $t9 alone.
+pipe_rows:
     addi $sp, $sp, -8
     sw $ra, 4($sp)
-    sw $s0, 0($sp)
-    lw $t8, shown_y
-    addi $t9, $t8, BIRDH
-    li $s0, BIRDX
-eb_next:
-    move $a0, $s0
-    jal world_column        # which leaves $t8 and $t9 alone
-    addi $s0, $s0, 1
-    blt $s0, BIRDR, eb_next
-    lw $s0, 0($sp)
+    sw $a1, 0($sp)
+    lw $t0, 4($s0)
+    addi $t6, $t0, -HALFGAP # $t6 = the gap's top row
+    addi $t7, $t0, HALFGAP  # $t7 = one past its bottom row
+    sll $t1, $a1, 2
+    la $t0, body_shade
+    add $t0, $t0, $t1
+    lw $v0, 0($t0)          # $v0 = the body's colour in this column
+    lw $t0, -4($t0)
+    beq $v0, $t0, pr_caps
+    li $a1, 0
+    addi $a2, $t6, -CAPH
+    move $a3, $v0
+    jal body_span           # above the upper cap
+    addi $a1, $t7, CAPH
+    li $a2, GROUNDY
+    move $a3, $v0
+    jal body_span           # below the lower cap
+pr_caps:
+    lw $t1, 0($sp)
+    sll $t1, $t1, 2
+    la $t0, cap_shade
+    add $t0, $t0, $t1
+    lw $v1, 0($t0)          # $v1 = the caps' colour in this column
+    lw $t0, -4($t0)
+    beq $v1, $t0, pr_done
+    addi $a1, $t6, -CAPH
+    jal cap_span
+    move $a1, $t7
+    jal cap_span
+pr_done:
     lw $ra, 4($sp)
     addi $sp, $sp, 8
     jr $ra
 
-# draw_bird(): the bird at its row, its wing beating while it is alive: up,
-# level, down, level, four frames each
+# sprite_column(col, from, to, sprite): rows from to to-1 of the column, the
+# sprite's colour where it is drawn and not see-through, the world everywhere
+# else. $a3 is the sprite's word for this column in its top row, $t5 the
+# sprite's top row, $t6 its height and $t7 the bytes in a row of it. It leaves
+# $a0 alone. The stack frame keeps the arguments, and at 8($sp) the first row
+# the world still has to be painted from.
+sprite_column:
+    addi $sp, $sp, -36
+    sw $ra, 0($sp)
+    sw $s0, 4($sp)
+    sw $a1, 8($sp)
+    sw $a2, 12($sp)
+    sw $a3, 16($sp)
+    sw $t5, 20($sp)
+    sw $t6, 24($sp)
+    sw $t7, 28($sp)
+    move $s0, $a1           # $s0 = the row
+sc_row:
+    lw $t0, 12($sp)
+    bge $s0, $t0, sc_done
+    lw $t1, 20($sp)
+    sub $t1, $s0, $t1       # the row within the sprite
+    bltz $t1, sc_next
+    lw $t0, 24($sp)
+    bge $t1, $t0, sc_next
+    lw $t0, 28($sp)
+    mul $t1, $t1, $t0
+    lw $t0, 16($sp)
+    add $t1, $t1, $t0
+    lw $t2, 0($t1)          # its colour
+    beqz $t2, sc_next       # see-through
+    lw $t8, 8($sp)
+    bge $t8, $s0, sc_put
+    sw $t2, 32($sp)
+    move $t9, $s0
+    jal world_column        # the world above it, down to this row
+    lw $t2, 32($sp)
+sc_put:
+    mul $t0, $s0, WIDTH
+    add $t0, $t0, $a0
+    sll $t0, $t0, 2
+    add $t0, $t0, $s1
+    lw $t1, 0($t0)
+    beq $t1, $t2, sc_same
+    sw $t2, 0($t0)
+sc_same:
+    addi $t0, $s0, 1
+    sw $t0, 8($sp)
+sc_next:
+    addi $s0, $s0, 1
+    j sc_row
+sc_done:
+    lw $t8, 8($sp)
+    lw $t9, 12($sp)
+    jal world_column        # the world below the sprite's last row
+    lw $s0, 4($sp)
+    lw $ra, 0($sp)
+    addi $sp, $sp, 36
+    jr $ra
+
+# draw_bird(): the bird's columns, from the higher of its old and new top rows
+# to the lower of their bottoms: the bird where it is now, with its wing up,
+# level, down, level, four frames each, and the world where it was. The stack
+# frame keeps the picture at 8($sp), its top row at 12($sp), and the rows to
+# paint, from 16($sp) to 20($sp).
 draw_bird:
+    addi $sp, $sp, -24
+    sw $ra, 0($sp)
+    sw $s0, 4($sp)
     li $t0, 1               # the level wing, once it is dead
     beq $s4, DEAD, db_frame
     srl $t0, $s7, 2
@@ -709,73 +997,129 @@ draw_bird:
     li $t0, 1
 db_frame:
     mul $t0, $t0, BIRDBYTES
-    la $v1, bird_art
-    add $v1, $v1, $t0
-    sra $a1, $s2, 4         # sixteenths of a row to rows
-    sw $a1, shown_y
-    li $a0, BIRDX
-    li $a2, BIRDW
-    li $a3, BIRDH
-    j draw_art
-
-# draw_score(): the score in the middle of the top. A pipe column repainted
-# under it paints over it, so it is drawn every frame; when the number
-# changes, the world is repainted under the old one first. The left edge
-# lives at 4($sp) and the right edge of the wipe at 8($sp).
-draw_score:
-    addi $sp, $sp, -16
-    sw $ra, 12($sp)
-    sw $s0, 0($sp)
-    move $t0, $s5
-    li $s0, 0               # $s0 = how many digits
-    li $t2, 10
-ds_split:
-    divu $t0, $t2
-    mfhi $t3
-    sb $t3, digit_buf($s0)  # the lowest digit left
+    la $t1, bird_sprites
+    add $t0, $t0, $t1
+    sw $t0, 8($sp)          # the picture
+    sra $t0, $s2, 4
+    sw $t0, 12($sp)         # its top row now
+    lw $t1, shown_y
+    move $t2, $t0           # from the higher top
+    ble $t0, $t1, db_from
+    move $t2, $t1
+db_from:
+    sw $t2, 16($sp)
+    bge $t0, $t1, db_to     # to the lower bottom
+    move $t0, $t1
+db_to:
+    addi $t0, $t0, BIRDH
+    sw $t0, 20($sp)
+    li $s0, BIRDX
+db_column:
+    move $a0, $s0
+    lw $a1, 16($sp)
+    lw $a2, 20($sp)
+    addi $t0, $s0, -BIRDX
+    sll $t0, $t0, 2
+    lw $a3, 8($sp)
+    add $a3, $a3, $t0
+    lw $t5, 12($sp)
+    li $t6, BIRDH
+    li $t7, BIRDSTRIDE
+    jal sprite_column
     addi $s0, $s0, 1
+    blt $s0, BIRDR, db_column
+    lw $t0, 12($sp)
+    sw $t0, shown_y
+    lw $s0, 4($sp)
+    lw $ra, 0($sp)
+    addi $sp, $sp, 24
+    jr $ra
+
+# place_score(): the score's digits, highest first, into digit_buf, and the
+# columns they take this frame, centred at the top. A score only grows during
+# a game, so it always covers the columns of the one before it.
+place_score:
+    move $t0, $s5
+    li $t2, 10
+    li $t3, 0               # how many digits
+ps_split:
+    divu $t0, $t2
+    mfhi $t4
+    addi $sp, $sp, -4
+    sw $t4, 0($sp)          # lowest first onto the stack,
+    addi $t3, $t3, 1
     mflo $t0
-    bnez $t0, ds_split
-
-    mul $t0, $s0, DIGITW
+    bnez $t0, ps_split
+    la $t1, digit_buf
+    move $t4, $t3
+ps_order:
+    lw $t0, 0($sp)          # and off it highest first
+    addi $sp, $sp, 4
+    sb $t0, 0($t1)
+    addi $t1, $t1, 1
+    addi $t4, $t4, -1
+    bnez $t4, ps_order
+    li $t0, 255
+    sb $t0, 0($t1)          # the end of the digits
+    mul $t0, $t3, DIGITW
     li $t1, WIDTH
-    sub $t0, $t1, $t0
-    sra $t0, $t0, 1
-    sw $t0, 4($sp)          # the left edge, to centre the digits
-
-    lw $t1, shown_score
-    beq $t1, $s5, ds_draw
-    sw $s5, shown_score
-    addi $t1, $s0, 1
-    mul $t1, $t1, DIGITW
+    sub $t1, $t1, $t0
+    sra $t1, $t1, 1
+    sw $t1, score_left
     add $t1, $t1, $t0
-    sw $t1, 8($sp)          # one digit's width past the right edge
-    li $t8, SCOREY
-    li $t9, SCOREEND
-    addi $a0, $t0, -DIGITW  # from one digit's width before the left edge
-ds_wipe:
-    jal world_column        # which leaves $a0, $t8 and $t9 alone
-    addi $a0, $a0, 1
-    lw $t0, 8($sp)
-    blt $a0, $t0, ds_wipe
+    sw $t1, score_right
+    sw $zero, score_covered
+    jr $ra
 
+# draw_score(): the score, when it has changed or a pipe column went around
+# it. The next digit's place in digit_buf lives at 8($sp).
+draw_score:
+    lw $t0, shown_score
+    bne $t0, $s5, ds_draw
+    lw $t0, score_covered
+    bnez $t0, ds_draw
+    jr $ra
 ds_draw:
-    addi $s0, $s0, -1       # the highest digit first
-    lbu $t0, digit_buf($s0)
+    addi $sp, $sp, -16
+    sw $ra, 0($sp)
+    sw $s0, 4($sp)
+    sw $zero, 8($sp)        # the first digit
+    lw $s0, score_left      # $s0 = the column
+ds_column:
+    lw $t1, 8($sp)
+    lbu $t0, digit_buf($t1)
+    beq $t0, 255, ds_done   # past the last digit
     mul $t0, $t0, DIGITBYTES
-    la $v1, digit_art
-    add $v1, $v1, $t0
-    lw $a0, 4($sp)
+    la $t2, digit_sprites
+    add $t0, $t0, $t2       # that digit's picture
+    mul $t1, $t1, DIGITW
+    lw $t2, score_left
+    add $t1, $t1, $t2       # its left column
+    sub $t1, $s0, $t1
+    sll $t1, $t1, 2
+    add $a3, $t0, $t1       # its word for this column
+    move $a0, $s0
     li $a1, SCOREY
-    li $a2, DIGITW
-    li $a3, DIGITH
-    jal draw_art
-    lw $t0, 4($sp)
-    addi $t0, $t0, DIGITW
-    sw $t0, 4($sp)
-    bnez $s0, ds_draw
-    lw $s0, 0($sp)
-    lw $ra, 12($sp)
+    li $a2, SCOREEND
+    li $t5, SCOREY
+    li $t6, DIGITH
+    li $t7, DIGITSTRIDE
+    jal sprite_column
+    addi $s0, $s0, 1
+    lw $t0, score_left
+    sub $t0, $s0, $t0
+    li $t1, DIGITW
+    divu $t0, $t1
+    mfhi $t0
+    bnez $t0, ds_column
+    lw $t1, 8($sp)
+    addi $t1, $t1, 1        # the next digit starts here
+    sw $t1, 8($sp)
+    j ds_column
+ds_done:
+    sw $s5, shown_score
+    lw $s0, 4($sp)
+    lw $ra, 0($sp)
     addi $sp, $sp, 16
     jr $ra
 
@@ -789,15 +1133,15 @@ ds_draw:
 # words around the tables are the columns just left and right of the pipe.
           .word NONE
 body_shade:
-          .word NONE, NONE, EDGE, PIPELIGHT, PIPEHI, PIPEHI, PIPELIGHT, PIPELIGHT
+          .word NONE, NONE, EDGE, PIPELIGHT, PIPELIGHT, PIPELIGHT, PIPELIGHT, PIPEMID
           .word PIPEMID, PIPEMID, PIPEMID, PIPEMID, PIPEMID, PIPEMID, PIPEMID, PIPEMID
-          .word PIPEMID, PIPEMID, PIPEDARK, PIPEMID, PIPEDARK, PIPEDARK, PIPEDARK, PIPEDARK
+          .word PIPEMID, PIPEMID, PIPEMID, PIPEMID, PIPEDARK, PIPEDARK, PIPEDARK, PIPEDARK
           .word PIPEDARK, PIPEDARK, PIPEDARK, EDGE, NONE, NONE
           .word NONE
 cap_shade:
           .word EDGE, PIPELIGHT, PIPELIGHT, PIPEHI, PIPEHI, PIPEHI, PIPELIGHT, PIPELIGHT
           .word PIPELIGHT, PIPEMID, PIPEMID, PIPEMID, PIPEMID, PIPEMID, PIPEMID, PIPEMID
-          .word PIPEMID, PIPEMID, PIPEMID, PIPEMID, PIPEDARK, PIPEMID, PIPEDARK, PIPEDARK
+          .word PIPEMID, PIPEMID, PIPEMID, PIPEMID, PIPEMID, PIPEDARK, PIPEDARK, PIPEDARK
           .word PIPEDARK, PIPEDARK, PIPEDARK, PIPEDARK, PIPEDARK, EDGE
           .word NONE
 
@@ -812,220 +1156,3 @@ bush_rise:
           .byte 3, 4, 4, 5, 5, 5, 5, 5, 4, 4, 5, 6, 6, 6, 6, 6
           .byte 6, 6, 6, 6, 5, 4, 4, 5, 5, 5, 5, 5, 4, 4, 3, 0
 towers:   .byte 26, 40, 32, 48, 22, 36, 44, 30, 52, 28, 38, 24
-
-# Pictures, one character a pixel: '.' shows what is behind, and any other
-# character is the colour at its place in palette_keys.
-palette_keys: .ascii "Xywrol"
-          .align 2
-palette:  .word EDGE, 0x00F8C82A, 0x00FFFFFF, 0x00F25C3C, 0x00F09A2C, 0x00FAEE9C
-bird_art:
-# wing up
-          .ascii "......XXXXXX....."
-          .ascii "....XXyyyXwwX...."
-          .ascii "...XyyyyXwwwwX..."
-          .ascii ".XXXyyyyXwwwXwX.."
-          .ascii "XlllXyyyXwwwXwX.."
-          .ascii "XllllXyyyXwwwwX.."
-          .ascii "XllllXyyyyXXXXXX."
-          .ascii ".XXXXyyyyXrrrrrX."
-          .ascii "..XooooooXrXXXXX."
-          .ascii "..XoooooooXrrrrX."
-          .ascii "...XXoooooXXXXX.."
-          .ascii ".....XXXXX......."
-# wing level
-          .ascii "......XXXXXX....."
-          .ascii "....XXyyyXwwX...."
-          .ascii "...XyyyyXwwwwX..."
-          .ascii ".XXXXyyyXwwwXwX.."
-          .ascii "XllllXyyXwwwXwX.."
-          .ascii "XlllllXyyXwwwwX.."
-          .ascii "XylllyXyyyXXXXXX."
-          .ascii ".XyyyXyyyyXrrrrrX"
-          .ascii "..XXXooooXrXXXXX."
-          .ascii "..XoooooooXrrrrX."
-          .ascii "...XXoooooXXXXX.."
-          .ascii ".....XXXXX......."
-# wing down
-          .ascii "......XXXXXX....."
-          .ascii "....XXyyyXwwX...."
-          .ascii "...XyyyyXwwwwX..."
-          .ascii "..XyyyyyXwwwXwX.."
-          .ascii ".XyyyyyyXwwwXwX.."
-          .ascii ".XXXXXyyyXwwwwX.."
-          .ascii "XlllllXyyyXXXXXX."
-          .ascii "XlllllXyyXrrrrrX."
-          .ascii ".XllllXooXrXXXXX."
-          .ascii "..XXXXooooXrrrrX."
-          .ascii "...XXoooooXXXXX.."
-          .ascii ".....XXXXX......."
-digit_art:
-# 0
-          .ascii "..XXXXXXXX.."
-          .ascii "..XwwwwwwX.."
-          .ascii "XXXwwwwwwXXX"
-          .ascii "XwwXXXXXXwwX"
-          .ascii "XwwX....XwwX"
-          .ascii "XwwX....XwwX"
-          .ascii "XwwX....XwwX"
-          .ascii "XwwX....XwwX"
-          .ascii "XwwX....XwwX"
-          .ascii "XwwX....XwwX"
-          .ascii "XwwX....XwwX"
-          .ascii "XwwX....XwwX"
-          .ascii "XwwXXXXXXwwX"
-          .ascii "XXXwwwwwwXXX"
-          .ascii "..XwwwwwwX.."
-          .ascii "..XXXXXXXX.."
-# 1
-          .ascii "....XXXX...."
-          .ascii "....XwwX...."
-          .ascii "..XXXwwX...."
-          .ascii "..XwwwwX...."
-          .ascii "..XwwwwX...."
-          .ascii "..XXXwwX...."
-          .ascii "....XwwX...."
-          .ascii "....XwwX...."
-          .ascii "....XwwX...."
-          .ascii "....XwwX...."
-          .ascii "....XwwX...."
-          .ascii "....XwwX...."
-          .ascii "..XXXwwXXX.."
-          .ascii "..XwwwwwwX.."
-          .ascii "..XwwwwwwX.."
-          .ascii "..XXXXXXXX.."
-# 2
-          .ascii "..XXXXXXXX.."
-          .ascii "..XwwwwwwX.."
-          .ascii "XXXwwwwwwXXX"
-          .ascii "XwwXXXXXXwwX"
-          .ascii "XwwX....XwwX"
-          .ascii "XXXX....XwwX"
-          .ascii "......XXXwwX"
-          .ascii "......XwwXXX"
-          .ascii "....XXXwwX.."
-          .ascii "....XwwXXX.."
-          .ascii "..XXXwwX...."
-          .ascii "..XwwXXX...."
-          .ascii "XXXwwXXXXXXX"
-          .ascii "XwwwwwwwwwwX"
-          .ascii "XwwwwwwwwwwX"
-          .ascii "XXXXXXXXXXXX"
-# 3
-          .ascii "XXXXXXXXXXXX"
-          .ascii "XwwwwwwwwwwX"
-          .ascii "XwwwwwwwwwwX"
-          .ascii "XXXXXXXwwXXX"
-          .ascii "....XXXwwX.."
-          .ascii "....XwwXXX.."
-          .ascii "....XwwXXX.."
-          .ascii "....XXXwwX.."
-          .ascii "......XwwXXX"
-          .ascii "......XXXwwX"
-          .ascii "XXXX....XwwX"
-          .ascii "XwwX....XwwX"
-          .ascii "XwwXXXXXXwwX"
-          .ascii "XXXwwwwwwXXX"
-          .ascii "..XwwwwwwX.."
-          .ascii "..XXXXXXXX.."
-# 4
-          .ascii "......XXXX.."
-          .ascii "......XwwX.."
-          .ascii "....XXXwwX.."
-          .ascii "....XwwwwX.."
-          .ascii "..XXXwwwwX.."
-          .ascii "..XwwXXwwX.."
-          .ascii "XXXwwXXwwX.."
-          .ascii "XwwXXXXwwX.."
-          .ascii "XwwXXXXwwXXX"
-          .ascii "XwwwwwwwwwwX"
-          .ascii "XwwwwwwwwwwX"
-          .ascii "XXXXXXXwwXXX"
-          .ascii "......XwwX.."
-          .ascii "......XwwX.."
-          .ascii "......XwwX.."
-          .ascii "......XXXX.."
-# 5
-          .ascii "XXXXXXXXXXXX"
-          .ascii "XwwwwwwwwwwX"
-          .ascii "XwwwwwwwwwwX"
-          .ascii "XwwXXXXXXXXX"
-          .ascii "XwwXXXXXXX.."
-          .ascii "XwwwwwwwwX.."
-          .ascii "XwwwwwwwwXXX"
-          .ascii "XXXXXXXXXwwX"
-          .ascii "........XwwX"
-          .ascii "........XwwX"
-          .ascii "XXXX....XwwX"
-          .ascii "XwwX....XwwX"
-          .ascii "XwwXXXXXXwwX"
-          .ascii "XXXwwwwwwXXX"
-          .ascii "..XwwwwwwX.."
-          .ascii "..XXXXXXXX.."
-# 6
-          .ascii "....XXXXXX.."
-          .ascii "....XwwwwX.."
-          .ascii "..XXXwwwwX.."
-          .ascii "..XwwXXXXX.."
-          .ascii "XXXwwX......"
-          .ascii "XwwXXX......"
-          .ascii "XwwXXXXXXX.."
-          .ascii "XwwwwwwwwX.."
-          .ascii "XwwwwwwwwXXX"
-          .ascii "XwwXXXXXXwwX"
-          .ascii "XwwX....XwwX"
-          .ascii "XwwX....XwwX"
-          .ascii "XwwXXXXXXwwX"
-          .ascii "XXXwwwwwwXXX"
-          .ascii "..XwwwwwwX.."
-          .ascii "..XXXXXXXX.."
-# 7
-          .ascii "XXXXXXXXXXXX"
-          .ascii "XwwwwwwwwwwX"
-          .ascii "XwwwwwwwwwwX"
-          .ascii "XXXXXXXXXwwX"
-          .ascii "......XXXwwX"
-          .ascii "......XwwXXX"
-          .ascii "....XXXwwX.."
-          .ascii "....XwwXXX.."
-          .ascii "..XXXwwX...."
-          .ascii "..XwwXXX...."
-          .ascii "..XwwX......"
-          .ascii "..XwwX......"
-          .ascii "..XwwX......"
-          .ascii "..XwwX......"
-          .ascii "..XwwX......"
-          .ascii "..XXXX......"
-# 8
-          .ascii "..XXXXXXXX.."
-          .ascii "..XwwwwwwX.."
-          .ascii "XXXwwwwwwXXX"
-          .ascii "XwwXXXXXXwwX"
-          .ascii "XwwX....XwwX"
-          .ascii "XwwX....XwwX"
-          .ascii "XwwXXXXXXwwX"
-          .ascii "XXXwwwwwwXXX"
-          .ascii "XXXwwwwwwXXX"
-          .ascii "XwwXXXXXXwwX"
-          .ascii "XwwX....XwwX"
-          .ascii "XwwX....XwwX"
-          .ascii "XwwXXXXXXwwX"
-          .ascii "XXXwwwwwwXXX"
-          .ascii "..XwwwwwwX.."
-          .ascii "..XXXXXXXX.."
-# 9
-          .ascii "..XXXXXXXX.."
-          .ascii "..XwwwwwwX.."
-          .ascii "XXXwwwwwwXXX"
-          .ascii "XwwXXXXXXwwX"
-          .ascii "XwwX....XwwX"
-          .ascii "XwwX....XwwX"
-          .ascii "XwwXXXXXXwwX"
-          .ascii "XXXwwwwwwwwX"
-          .ascii "..XwwwwwwwwX"
-          .ascii "..XXXXXXXwwX"
-          .ascii "......XXXwwX"
-          .ascii "......XwwXXX"
-          .ascii "..XXXXXwwX.."
-          .ascii "..XwwwwXXX.."
-          .ascii "..XwwwwX...."
-          .ascii "..XXXXXX...."

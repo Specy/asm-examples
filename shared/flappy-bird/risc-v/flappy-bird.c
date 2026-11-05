@@ -1,3 +1,5 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include <sim.h>
 
 /* 384 x 512 pixels on the Screen, one array cell for each 2 x 2 square: a grid of 192 x 256. */
@@ -6,10 +8,11 @@ SIM_SCREEN(display, 384, 512, 2);
 enum {
     WIDTH = 192, HEIGHT = 256, GROUND_Y = 216,
     BIRD_X = 48, BIRD_WIDTH = 17, BIRD_HEIGHT = 12,
-    PIPE_WIDTH = 30, CAP_HEIGHT = 12, HALF_GAP = 34,
+    PIPE_WIDTH = 30, CAP_HEIGHT = 12, HALF_GAP = 40,
     PIPE_COUNT = 3, SPACING = 104, FIRST_X = WIDTH + 24,
-    GAP_MIN = 86, GAP_SPAN = 61,
-    GRAVITY = 6, FLAP_VELOCITY = -88, MAX_FALL = 120,
+    GAP_MIN = 92, GAP_SPAN = 49,
+    GRAVITY = 5, FLAP_VELOCITY = -80, MAX_FALL = 112,
+    HIT_INSET = 2,
     START_Y = 100 * 16, REST_Y = (GROUND_Y - BIRD_HEIGHT) * 16,
     FRAME_MS = 20,
     DIGIT_WIDTH = 12, DIGIT_HEIGHT = 16, SCORE_Y = 20,
@@ -18,12 +21,11 @@ enum {
 
 /* Colours, as 0x00RRGGBB */
 enum {
-    NONE = 0,
+    NONE = 0,   /* in a pipe's shading, no body in this column; in a sprite, see-through */
     SKY = 0x4ec0ca, CLOUD = 0xe9fcd9, CITY = 0xa8dfb5, WINDOW = 0xd2f3dc,
     BUSH = 0x5ee270, BUSH_EDGE = 0x47bf5a,
     EDGE = 0x543847, PIPE_HI = 0xe4fd8b, PIPE_LIGHT = 0x9ce659,
-    PIPE_MID = 0x73bf2e, PIPE_DARK = 0x558022,
-    STRIPE_LIGHT = 0x9ce659, STRIPE_DARK = 0x73bf2e, SAND = 0xded895
+    PIPE_MID = 0x73bf2e, PIPE_DARK = 0x558022, SAND = 0xded895
 };
 
 enum GameState { READY, PLAYING, DEAD };
@@ -34,18 +36,18 @@ struct Pipe {
     int counted;
 };
 
-/* The pipe's colours, column by column across the cap: the body is two columns narrower on each
+/* The pipe's colours, column by column across the cap. The body is two columns narrower on each
    side, so its table starts and ends with NONE. */
 static const unsigned body_shade[PIPE_WIDTH] = {
-    NONE, NONE, EDGE, PIPE_LIGHT, PIPE_HI, PIPE_HI, PIPE_LIGHT, PIPE_LIGHT,
+    NONE, NONE, EDGE, PIPE_LIGHT, PIPE_LIGHT, PIPE_LIGHT, PIPE_LIGHT, PIPE_MID,
     PIPE_MID, PIPE_MID, PIPE_MID, PIPE_MID, PIPE_MID, PIPE_MID, PIPE_MID, PIPE_MID,
-    PIPE_MID, PIPE_MID, PIPE_DARK, PIPE_MID, PIPE_DARK, PIPE_DARK, PIPE_DARK, PIPE_DARK,
+    PIPE_MID, PIPE_MID, PIPE_MID, PIPE_MID, PIPE_DARK, PIPE_DARK, PIPE_DARK, PIPE_DARK,
     PIPE_DARK, PIPE_DARK, PIPE_DARK, EDGE, NONE, NONE
 };
 static const unsigned cap_shade[PIPE_WIDTH] = {
     EDGE, PIPE_LIGHT, PIPE_LIGHT, PIPE_HI, PIPE_HI, PIPE_HI, PIPE_LIGHT, PIPE_LIGHT,
     PIPE_LIGHT, PIPE_MID, PIPE_MID, PIPE_MID, PIPE_MID, PIPE_MID, PIPE_MID, PIPE_MID,
-    PIPE_MID, PIPE_MID, PIPE_MID, PIPE_MID, PIPE_DARK, PIPE_MID, PIPE_DARK, PIPE_DARK,
+    PIPE_MID, PIPE_MID, PIPE_MID, PIPE_MID, PIPE_MID, PIPE_DARK, PIPE_DARK, PIPE_DARK,
     PIPE_DARK, PIPE_DARK, PIPE_DARK, PIPE_DARK, PIPE_DARK, EDGE
 };
 
@@ -63,233 +65,58 @@ static const unsigned char bush_rise[32] = {
 /* The heights of the buildings, eight columns each. */
 static const unsigned char towers[12] = { 26, 40, 32, 48, 22, 36, 44, 30, 52, 28, 38, 24 };
 
-/* Pictures, one character a pixel: '.' shows what is behind, any other character is a colour. */
-static const char palette_keys[] = "Xywrol";
-static const unsigned palette[] = {
-    0x543847, 0xf8c82a, 0xffffff, 0xf25c3c, 0xf09a2c, 0xfaee9c
-};
-static const char bird_art[3][BIRD_HEIGHT * BIRD_WIDTH + 1] = {
-    { /* wing up */
-      "......XXXXXX....."
-      "....XXyyyXwwX...."
-      "...XyyyyXwwwwX..."
-      ".XXXyyyyXwwwXwX.."
-      "XlllXyyyXwwwXwX.."
-      "XllllXyyyXwwwwX.."
-      "XllllXyyyyXXXXXX."
-      ".XXXXyyyyXrrrrrX."
-      "..XooooooXrXXXXX."
-      "..XoooooooXrrrrX."
-      "...XXoooooXXXXX.."
-      ".....XXXXX......." },
-    { /* wing level */
-      "......XXXXXX....."
-      "....XXyyyXwwX...."
-      "...XyyyyXwwwwX..."
-      ".XXXXyyyXwwwXwX.."
-      "XllllXyyXwwwXwX.."
-      "XlllllXyyXwwwwX.."
-      "XylllyXyyyXXXXXX."
-      ".XyyyXyyyyXrrrrrX"
-      "..XXXooooXrXXXXX."
-      "..XoooooooXrrrrX."
-      "...XXoooooXXXXX.."
-      ".....XXXXX......." },
-    { /* wing down */
-      "......XXXXXX....."
-      "....XXyyyXwwX...."
-      "...XyyyyXwwwwX..."
-      "..XyyyyyXwwwXwX.."
-      ".XyyyyyyXwwwXwX.."
-      ".XXXXXyyyXwwwwX.."
-      "XlllllXyyyXXXXXX."
-      "XlllllXyyXrrrrrX."
-      ".XllllXooXrXXXXX."
-      "..XXXXooooXrrrrX."
-      "...XXoooooXXXXX.."
-      ".....XXXXX......." },
-};
-static const char digit_art[10][DIGIT_HEIGHT * DIGIT_WIDTH + 1] = {
-    {
-      "..XXXXXXXX.."
-      "..XwwwwwwX.."
-      "XXXwwwwwwXXX"
-      "XwwXXXXXXwwX"
-      "XwwX....XwwX"
-      "XwwX....XwwX"
-      "XwwX....XwwX"
-      "XwwX....XwwX"
-      "XwwX....XwwX"
-      "XwwX....XwwX"
-      "XwwX....XwwX"
-      "XwwX....XwwX"
-      "XwwXXXXXXwwX"
-      "XXXwwwwwwXXX"
-      "..XwwwwwwX.."
-      "..XXXXXXXX.." },
-    {
-      "....XXXX...."
-      "....XwwX...."
-      "..XXXwwX...."
-      "..XwwwwX...."
-      "..XwwwwX...."
-      "..XXXwwX...."
-      "....XwwX...."
-      "....XwwX...."
-      "....XwwX...."
-      "....XwwX...."
-      "....XwwX...."
-      "....XwwX...."
-      "..XXXwwXXX.."
-      "..XwwwwwwX.."
-      "..XwwwwwwX.."
-      "..XXXXXXXX.." },
-    {
-      "..XXXXXXXX.."
-      "..XwwwwwwX.."
-      "XXXwwwwwwXXX"
-      "XwwXXXXXXwwX"
-      "XwwX....XwwX"
-      "XXXX....XwwX"
-      "......XXXwwX"
-      "......XwwXXX"
-      "....XXXwwX.."
-      "....XwwXXX.."
-      "..XXXwwX...."
-      "..XwwXXX...."
-      "XXXwwXXXXXXX"
-      "XwwwwwwwwwwX"
-      "XwwwwwwwwwwX"
-      "XXXXXXXXXXXX" },
-    {
-      "XXXXXXXXXXXX"
-      "XwwwwwwwwwwX"
-      "XwwwwwwwwwwX"
-      "XXXXXXXwwXXX"
-      "....XXXwwX.."
-      "....XwwXXX.."
-      "....XwwXXX.."
-      "....XXXwwX.."
-      "......XwwXXX"
-      "......XXXwwX"
-      "XXXX....XwwX"
-      "XwwX....XwwX"
-      "XwwXXXXXXwwX"
-      "XXXwwwwwwXXX"
-      "..XwwwwwwX.."
-      "..XXXXXXXX.." },
-    {
-      "......XXXX.."
-      "......XwwX.."
-      "....XXXwwX.."
-      "....XwwwwX.."
-      "..XXXwwwwX.."
-      "..XwwXXwwX.."
-      "XXXwwXXwwX.."
-      "XwwXXXXwwX.."
-      "XwwXXXXwwXXX"
-      "XwwwwwwwwwwX"
-      "XwwwwwwwwwwX"
-      "XXXXXXXwwXXX"
-      "......XwwX.."
-      "......XwwX.."
-      "......XwwX.."
-      "......XXXX.." },
-    {
-      "XXXXXXXXXXXX"
-      "XwwwwwwwwwwX"
-      "XwwwwwwwwwwX"
-      "XwwXXXXXXXXX"
-      "XwwXXXXXXX.."
-      "XwwwwwwwwX.."
-      "XwwwwwwwwXXX"
-      "XXXXXXXXXwwX"
-      "........XwwX"
-      "........XwwX"
-      "XXXX....XwwX"
-      "XwwX....XwwX"
-      "XwwXXXXXXwwX"
-      "XXXwwwwwwXXX"
-      "..XwwwwwwX.."
-      "..XXXXXXXX.." },
-    {
-      "....XXXXXX.."
-      "....XwwwwX.."
-      "..XXXwwwwX.."
-      "..XwwXXXXX.."
-      "XXXwwX......"
-      "XwwXXX......"
-      "XwwXXXXXXX.."
-      "XwwwwwwwwX.."
-      "XwwwwwwwwXXX"
-      "XwwXXXXXXwwX"
-      "XwwX....XwwX"
-      "XwwX....XwwX"
-      "XwwXXXXXXwwX"
-      "XXXwwwwwwXXX"
-      "..XwwwwwwX.."
-      "..XXXXXXXX.." },
-    {
-      "XXXXXXXXXXXX"
-      "XwwwwwwwwwwX"
-      "XwwwwwwwwwwX"
-      "XXXXXXXXXwwX"
-      "......XXXwwX"
-      "......XwwXXX"
-      "....XXXwwX.."
-      "....XwwXXX.."
-      "..XXXwwX...."
-      "..XwwXXX...."
-      "..XwwX......"
-      "..XwwX......"
-      "..XwwX......"
-      "..XwwX......"
-      "..XwwX......"
-      "..XXXX......" },
-    {
-      "..XXXXXXXX.."
-      "..XwwwwwwX.."
-      "XXXwwwwwwXXX"
-      "XwwXXXXXXwwX"
-      "XwwX....XwwX"
-      "XwwX....XwwX"
-      "XwwXXXXXXwwX"
-      "XXXwwwwwwXXX"
-      "XXXwwwwwwXXX"
-      "XwwXXXXXXwwX"
-      "XwwX....XwwX"
-      "XwwX....XwwX"
-      "XwwXXXXXXwwX"
-      "XXXwwwwwwXXX"
-      "..XwwwwwwX.."
-      "..XXXXXXXX.." },
-    {
-      "..XXXXXXXX.."
-      "..XwwwwwwX.."
-      "XXXwwwwwwXXX"
-      "XwwXXXXXXwwX"
-      "XwwX....XwwX"
-      "XwwX....XwwX"
-      "XwwXXXXXXwwX"
-      "XXXwwwwwwwwX"
-      "..XwwwwwwwwX"
-      "..XXXXXXXwwX"
-      "......XXXwwX"
-      "......XwwXXX"
-      "..XXXXXwwX.."
-      "..XwwwwXXX.."
-      "..XwwwwX...."
-      "..XXXXXX...." },
-};
+/* The sprites, read from the Project's BMP files when the program starts: three pictures of the
+   bird, its wing up, level and down, one above the other in assets/bird.bmp, and the ten digits
+   in assets/digits.bmp. Black (0) is see-through. */
+static unsigned bird_sprites[3][BIRD_HEIGHT * BIRD_WIDTH];
+static unsigned digit_sprites[10][DIGIT_HEIGHT * DIGIT_WIDTH];
+static unsigned char file_buffer[8192];
 
 static unsigned backdrop[GROUND_Y * WIDTH];
 static struct Pipe pipes[PIPE_COUNT];
 static enum GameState state;
 static int bird_y, velocity, score, best;
-static int shown_y, shown_score;    /* where the bird and the score are on the Screen */
 static int tick;                    /* frames since the program started */
 static int next_frame;              /* sim_time() at which the next frame starts */
+static int pipes_moved;             /* this frame, so their changed columns need painting */
+static int shown_y;                 /* the bird's top row on the Screen */
+static int shown_score = -1;        /* the score on the Screen */
+static int score_left, score_right; /* the columns the score takes this frame */
+static int score_covered;           /* a repaint went around the score this frame */
 static unsigned seed = 0x1f123bb5u;
+
+static void fail(const char *name, const char *problem) {
+    printf("flappy-bird: %s: %s\n", name, problem);
+    exit(1);
+}
+
+/* Little-endian fields, a byte at a time: BMP header fields are not word aligned. */
+static unsigned read_u32(const unsigned char *bytes) {
+    return bytes[0] | bytes[1] << 8 | bytes[2] << 16 | (unsigned)bytes[3] << 24;
+}
+
+/* A 32-bit BMP of exactly width x height pixels into target, one 0x00RRGGBB word a pixel. Its
+   rows are stored bottom-up, or top-down when its height is negative. */
+static void load_sprite(const char *name, unsigned *target, int width, int height) {
+    FILE *file = fopen(name, "rb");
+    if (!file) fail(name, "cannot open it. It has to be a File of this Project.");
+    size_t length = fread(file_buffer, 1, sizeof file_buffer, file);
+    fclose(file);
+    const unsigned char *bmp = file_buffer;
+    int file_height = (int)read_u32(bmp + 22);
+    int top_down = file_height < 0;
+    if (top_down) file_height = -file_height;
+    if (length < 54 || bmp[0] != 'B' || bmp[1] != 'M' || (int)read_u32(bmp + 18) != width ||
+        file_height != height || bmp[28] != 32 || read_u32(bmp + 10) + width * height * 4 > length)
+        fail(name, "it must be a 32-bit BMP of the size the game expects.");
+    for (int y = 0; y < height; ++y) {
+        const unsigned char *source =
+            bmp + read_u32(bmp + 10) + (top_down ? y : height - 1 - y) * width * 4;
+        for (int x = 0; x < width; ++x, source += 4) {
+            target[y * width + x] = source[0] | source[1] << 8 | source[2] << 16;
+        }
+    }
+}
 
 static int random_gap(void) {
     seed ^= seed << 13;
@@ -324,8 +151,7 @@ static void make_backdrop(void) {
     }
 }
 
-/* Every drawing routine stores a pixel only when its colour changes: the Screen's work, and so
-   most of a frame's, is in the stores. */
+/* Every drawing routine stores a pixel only when its colour changes. */
 static void put(int x, int y, unsigned colour) {
     unsigned *pixel = &display[y * WIDTH + x];
     if (*pixel != colour) *pixel = colour;
@@ -351,8 +177,13 @@ static void body_span(int x, int from, int to, unsigned colour, int start, int e
     else fill_span(x, from, to, colour, start, end);
 }
 
-/* A cap: an edge row, its shaded rows and another edge row. */
+/* A cap: an edge row, its shaded rows and another edge row, or the backdrop for a NONE colour,
+   just past the pipe's right edge. */
 static void cap_span(int x, int top, unsigned colour, int start, int end) {
+    if (colour == NONE) {
+        backdrop_span(x, top, top + CAP_HEIGHT, start, end);
+        return;
+    }
     fill_span(x, top, top + 1, EDGE, start, end);
     fill_span(x, top + 1, top + CAP_HEIGHT - 1, colour, start, end);
     fill_span(x, top + CAP_HEIGHT - 1, top + CAP_HEIGHT, EDGE, start, end);
@@ -360,7 +191,7 @@ static void cap_span(int x, int top, unsigned colour, int start, int end) {
 
 /* Reconstruct the world above the ground in one column, within the row window [start, end). */
 static void world_column(int x, int start, int end) {
-    if (x < 0 || x >= WIDTH) return;
+    if (x < 0 || x >= WIDTH || start >= end) return;
     for (int i = 0; i < PIPE_COUNT; ++i) {
         int k = x - pipes[i].x;
         if (k < 0 || k >= PIPE_WIDTH) continue;
@@ -376,79 +207,155 @@ static void world_column(int x, int start, int end) {
     backdrop_span(x, 0, GROUND_Y, start, end);
 }
 
-/* The ground's grass is diagonal stripes that slide left with the pipes. */
-static void paint_stripes(void) {
-    for (int y = GROUND_Y + 2; y < GROUND_Y + 10; ++y) {
-        for (int x = 0; x < WIDTH; ++x) {
-            put(x, y, (x + y + tick) & 4 ? STRIPE_DARK : STRIPE_LIGHT);
-        }
+/* Rows [from, to) of column x: the sprite's pixel where the sprite is drawn and not see-through,
+   the world everywhere else. The sprite is width pixels wide with its top-left corner at
+   (left, top). Each pixel is painted once, with the colour it ends the frame in. */
+static void sprite_column(int x, int from, int to, const unsigned *sprite, int width, int height,
+                          int left, int top) {
+    int world_from = from;  /* the first row the world still has to be painted from */
+    for (int y = from; y < to; ++y) {
+        if (y < top || y >= top + height) continue;
+        unsigned colour = sprite[(y - top) * width + x - left];
+        if (colour == NONE) continue;
+        if (world_from < y) world_column(x, world_from, y);
+        put(x, y, colour);
+        world_from = y + 1;
     }
+    world_column(x, world_from, to);
+}
+
+/* The ground's grass is diagonal stripes, four columns wide, that slide left with the pipes. */
+static unsigned stripe(int x, int y) {
+    return (x + y + tick) & 4 ? PIPE_MID : PIPE_LIGHT;
 }
 
 static void paint_ground(void) {
     for (int x = 0; x < WIDTH; ++x) {
         put(x, GROUND_Y, EDGE);
         put(x, GROUND_Y + 1, PIPE_HI);
+        for (int y = GROUND_Y + 2; y < GROUND_Y + 10; ++y) put(x, y, stripe(x, y));
         put(x, GROUND_Y + 10, PIPE_DARK);
         fill_span(x, GROUND_Y + 11, HEIGHT, SAND, 0, HEIGHT);
     }
-    paint_stripes();
+}
+
+/* One frame later, a stripe's colour has changed only in every fourth column: where
+   x + y + tick is a multiple of 4. Those are the only pixels painted. */
+static void slide_stripes(void) {
+    for (int y = GROUND_Y + 2; y < GROUND_Y + 10; ++y) {
+        for (int x = -(y + tick) & 3; x < WIDTH; x += 4) put(x, y, stripe(x, y));
+    }
 }
 
 static void paint_world(void) {
     for (int x = 0; x < WIDTH; ++x) world_column(x, 0, GROUND_Y);
     paint_ground();
+    shown_score = -1;       /* and the score has to be drawn again */
 }
 
-/* A picture of w x h characters at (x, y). */
-static void draw_art(int x, int y, int w, int h, const char *art) {
-    for (int row = 0; row < h; ++row) {
-        for (int col = 0; col < w; ++col) {
-            char key = art[row * w + col];
-            if (key == '.') continue;
-            int i = 0;
-            while (palette_keys[i] != key) ++i;
-            put(x + col, y + row, palette[i]);
+/* A pipe that has moved one column left changes column k of itself only where its shading differs
+   from column k - 1, and the column just past its right edge goes back to the backdrop. Only the
+   body rows change where the body's shading does, and only the cap rows where the cap's does. */
+static unsigned shade(const unsigned *table, int k) {
+    return k >= 0 && k < PIPE_WIDTH ? table[k] : NONE;
+}
+
+/* The changed rows of column k of a pipe, within the row window [start, end). */
+static void pipe_rows(int x, int k, const struct Pipe *pipe, int start, int end) {
+    int top = pipe->gap - HALF_GAP;
+    int bottom = pipe->gap + HALF_GAP;
+    unsigned body = shade(body_shade, k);
+    unsigned cap = shade(cap_shade, k);
+    if (body != shade(body_shade, k - 1)) {
+        body_span(x, 0, top - CAP_HEIGHT, body, start, end);
+        body_span(x, bottom + CAP_HEIGHT, GROUND_Y, body, start, end);
+    }
+    if (cap != shade(cap_shade, k - 1)) {
+        cap_span(x, top - CAP_HEIGHT, cap, start, end);
+        cap_span(x, bottom, cap, start, end);
+    }
+}
+
+/* The changed columns of every pipe, except for the rows the bird or the score takes this frame:
+   draw_bird and draw_score paint those, so that no pixel is painted twice in a frame. */
+static void repaint_pipes(void) {
+    int top = bird_y >> 4;
+    for (int i = 0; i < PIPE_COUNT; ++i) {
+        for (int k = 0; k <= PIPE_WIDTH; ++k) {
+            int x = pipes[i].x + k;
+            if (x < 0 || x >= WIDTH) continue;
+            if (shade(body_shade, k) == shade(body_shade, k - 1) &&
+                shade(cap_shade, k) == shade(cap_shade, k - 1)) continue;
+            int from = GROUND_Y, to = GROUND_Y;     /* the rows left alone */
+            if (x >= BIRD_X && x < BIRD_X + BIRD_WIDTH) {
+                from = top;
+                to = top + BIRD_HEIGHT;
+            } else if (x >= score_left && x < score_right) {
+                from = SCORE_Y;
+                to = SCORE_Y + DIGIT_HEIGHT;
+                score_covered = 1;
+            }
+            pipe_rows(x, k, &pipes[i], 0, from);
+            if (to < GROUND_Y) pipe_rows(x, k, &pipes[i], to, GROUND_Y);
         }
     }
 }
 
-static void erase_bird(void) {
-    for (int x = BIRD_X; x < BIRD_X + BIRD_WIDTH; ++x) {
-        world_column(x, shown_y, shown_y + BIRD_HEIGHT);
-    }
-}
-
+/* The bird's columns, from the higher of its old and new top rows to the lower of their
+   bottoms: the bird where it is now, the world where it was. */
 static void draw_bird(void) {
     int frame = 1;  /* the wing level, once the bird is dead */
     if (state != DEAD) {
         frame = tick / 4 % 4;   /* up, level, down, level */
         if (frame == 3) frame = 1;
     }
-    shown_y = bird_y >> 4;
-    draw_art(BIRD_X, shown_y, BIRD_WIDTH, BIRD_HEIGHT, bird_art[frame]);
+    int top = bird_y >> 4;
+    int from = top < shown_y ? top : shown_y;
+    int to = (top > shown_y ? top : shown_y) + BIRD_HEIGHT;
+    for (int x = BIRD_X; x < BIRD_X + BIRD_WIDTH; ++x) {
+        sprite_column(x, from, to, bird_sprites[frame], BIRD_WIDTH, BIRD_HEIGHT, BIRD_X, top);
+    }
+    shown_y = top;
 }
 
-/* The score, centred at the top: drawn every frame, since a pipe column repainted under it
-   paints over it, and the old digits wiped first when the number changes. */
-static void draw_score(void) {
-    char digits[8];
+/* The digits of the score, highest first, and how many there are. */
+static int score_digits(char digits[8]) {
     int count = 0, n = score;
     do {
         digits[count++] = (char)(n % 10);
         n /= 10;
     } while (n > 0);
-    int left = (WIDTH - count * DIGIT_WIDTH) / 2;
-    if (score != shown_score) {
-        for (int x = left - DIGIT_WIDTH; x < left + (count + 1) * DIGIT_WIDTH; ++x) {
-            world_column(x, SCORE_Y, SCORE_Y + DIGIT_HEIGHT);
-        }
-        shown_score = score;
+    for (int i = 0; i < count / 2; ++i) {
+        char swap = digits[i];
+        digits[i] = digits[count - 1 - i];
+        digits[count - 1 - i] = swap;
     }
+    return count;
+}
+
+/* Where this frame's score goes, centred at the top. A score only grows during a game, so it
+   always covers the columns of the one before it. */
+static void place_score(void) {
+    char digits[8];
+    int count = score_digits(digits);
+    score_left = (WIDTH - count * DIGIT_WIDTH) / 2;
+    score_right = score_left + count * DIGIT_WIDTH;
+    score_covered = 0;
+}
+
+/* The score, when it has changed or a repaint went around it. */
+static void draw_score(void) {
+    if (score == shown_score && !score_covered) return;
+    char digits[8];
+    int count = score_digits(digits);
     for (int i = 0; i < count; ++i) {
-        draw_art(left + i * DIGIT_WIDTH, SCORE_Y, DIGIT_WIDTH, DIGIT_HEIGHT,
-                 digit_art[(int)digits[count - 1 - i]]);
+        int left = score_left + i * DIGIT_WIDTH;
+        for (int x = left; x < left + DIGIT_WIDTH; ++x) {
+            sprite_column(x, SCORE_Y, SCORE_Y + DIGIT_HEIGHT, digit_sprites[(int)digits[i]],
+                          DIGIT_WIDTH, DIGIT_HEIGHT, left, SCORE_Y);
+        }
     }
+    shown_score = score;
 }
 
 static void print_result(void) {
@@ -459,17 +366,8 @@ static void print_result(void) {
     sim_print_char('\n');
 }
 
-/* One column of a pipe changes colour as it moves one pixel left only where its shading changes
-   from one column to the next, and the column just past its right edge goes back to backdrop.
-   The gap rows are backdrop before and after, so only the rows above and below it are painted. */
-static int column_changes(int k) {
-    unsigned body = k < PIPE_WIDTH ? body_shade[k] : NONE;
-    unsigned cap = k < PIPE_WIDTH ? cap_shade[k] : NONE;
-    unsigned left_body = k > 0 ? body_shade[k - 1] : NONE;
-    unsigned left_cap = k > 0 ? cap_shade[k - 1] : NONE;
-    return body != left_body || cap != left_cap;
-}
-
+/* Everything scrolls one column to the left. A pipe that has left the grid jumps a whole cycle
+   to the right with a new gap, which is why three pipes are an endless course. */
 static void move_pipes(void) {
     for (int i = 0; i < PIPE_COUNT; ++i) {
         struct Pipe *pipe = &pipes[i];
@@ -483,21 +381,22 @@ static void move_pipes(void) {
             pipe->counted = 1;
             ++score;
         }
-        for (int k = 0; k <= PIPE_WIDTH; ++k) {
-            if (!column_changes(k)) continue;
-            world_column(pipe->x + k, 0, pipe->gap - HALF_GAP);
-            world_column(pipe->x + k, pipe->gap + HALF_GAP, GROUND_Y);
-        }
     }
+    pipes_moved = 1;
 }
 
+/* The ground stops the bird's picture. The pipes stop a box HIT_INSET pixels inside it, which
+   leaves out the picture's see-through corners and forgives a near miss. */
 static int hit_test(void) {
     int top = bird_y >> 4;
     int bottom = top + BIRD_HEIGHT;
     if (bottom > GROUND_Y) return 1;
+    top += HIT_INSET;
+    bottom -= HIT_INSET;
     for (int i = 0; i < PIPE_COUNT; ++i) {
         const struct Pipe *pipe = &pipes[i];
-        if (pipe->x >= BIRD_X + BIRD_WIDTH || pipe->x + PIPE_WIDTH <= BIRD_X) continue;
+        if (pipe->x >= BIRD_X + BIRD_WIDTH - HIT_INSET ||
+            pipe->x + PIPE_WIDTH <= BIRD_X + HIT_INSET) continue;
         if (top < pipe->gap - HALF_GAP || bottom > pipe->gap + HALF_GAP) return 1;
     }
     return 0;
@@ -586,17 +485,21 @@ static void wait_frame(void) {
     sim_sleep(wait);
 }
 
+/* One frame: the game moves on, then everything that changed is painted, once. */
 int main(void) {
+    load_sprite("assets/bird.bmp", bird_sprites[0], BIRD_WIDTH, 3 * BIRD_HEIGHT);
+    load_sprite("assets/digits.bmp", digit_sprites[0], DIGIT_WIDTH, 10 * DIGIT_HEIGHT);
     make_backdrop();
     new_game();
     shown_y = bird_y >> 4;
-    shown_score = -1;
     next_frame = (int)sim_time();
     for (;;) {
+        pipes_moved = 0;
         update(read_flap());
         if (state != DEAD) ++tick;
-        erase_bird();
-        if (state != DEAD) paint_stripes();
+        place_score();
+        if (pipes_moved) repaint_pipes();
+        if (state != DEAD) slide_stripes();
         draw_bird();
         draw_score();
         wait_frame();

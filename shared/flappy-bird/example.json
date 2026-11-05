@@ -1,13 +1,24 @@
 {
     "name": "Flappy Bird",
     "description": "Fly between the pipes: every tap flaps, and gravity does the rest. In assembly and, for RISC-V, in C as well.",
-    "startup": { "buildAndRun": true, "fullscreenDisplay": true },
+    "startup": {
+        "buildAndRun": true,
+        "fullscreenDisplay": true
+    },
     "ports": {
         "risc-v": {
             "project": {
                 "programs": {
-                    "flappy-bird.s": {},
-                    "flappy-bird.c.riscv": {}
+                    "flappy-bird.s": {
+                        "settings": {
+                            "undoEnabled": false
+                        }
+                    },
+                    "flappy-bird.c.riscv": {
+                        "settings": {
+                            "undoEnabled": false
+                        }
+                    }
                 },
                 "openTabs": [
                     "README.md",
@@ -20,6 +31,17 @@
                     "README.md": "preview"
                 },
                 "selectedProgram": "flappy-bird.s"
+            }
+        },
+        "mips": {
+            "project": {
+                "programs": {
+                    "flappy-bird.asm": {
+                        "settings": {
+                            "undoEnabled": false
+                        }
+                    }
+                }
             }
         }
     }
