@@ -1,0 +1,48 @@
+{
+    "name": "Flappy ASM",
+    "description": "Fly between the pipes: every tap flaps, and gravity does the rest. In assembly and, for RISC-V, in C as well.",
+    "startup": {
+        "buildAndRun": true,
+        "fullscreenDisplay": true
+    },
+    "ports": {
+        "risc-v": {
+            "project": {
+                "programs": {
+                    "flappy-asm.s": {
+                        "settings": {
+                            "undoEnabled": false
+                        }
+                    },
+                    "flappy-asm.c.riscv": {
+                        "settings": {
+                            "undoEnabled": false
+                        }
+                    }
+                },
+                "openTabs": [
+                    "README.md",
+                    "flappy-asm.s",
+                    "flappy-asm.c",
+                    "flappy-asm.c.riscv"
+                ],
+                "activeTab": "flappy-asm.s",
+                "fileViews": {
+                    "README.md": "preview"
+                },
+                "selectedProgram": "flappy-asm.s"
+            }
+        },
+        "mips": {
+            "project": {
+                "programs": {
+                    "flappy-asm.asm": {
+                        "settings": {
+                            "undoEnabled": false
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

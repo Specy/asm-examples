@@ -1,0 +1,27 @@
+{
+    "risc-v": [
+        {
+            "runtimeAbi": "v1",
+            "assemblerProfile": "gnu-compiler-v1",
+            "sourcePath": "c/relay.c",
+            "outputPath": "c/relay.c.riscv",
+            "target": "RISC-V",
+            "language": "c",
+            "compilerId": "rv32-cclang2110",
+            "optimization": "2",
+            "inputs": {
+                "c/relay.c": "dc9183a48aba299f138165e545aacfde",
+                "c/relay.h": "cb684a157a49b7b4c0af0c3a718ef19b",
+                "c/state.c": "21b3a5221439e6d93ced3748096774b3",
+                "c/assets.c": "e6075c5779ac66893cf490b8a35faa66",
+                "c/video.c": "877fe39ec2db9a97028cbb6c4728c265",
+                "c/maze.c": "5fad6fff35af02c0de1bd438b419b907",
+                "c/sound.c": "7f4ac80ee3a45a805fc7b9cdc3292b43",
+                "c/player.c": "8e6f205f80f6e5be9927a9ea97be6c0b",
+                "c/enemies.c": "3b1a7ba8c025a4c28c9fd3ba77a00cd0",
+                "c/game.c": "5854c1e58e707f1c2a24c1aafc007f53"
+            },
+            "outputFingerprint": "c844d08f9339b3b3980efaaec3739992"
+        }
+    ]
+}

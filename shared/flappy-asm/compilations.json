@@ -1,0 +1,18 @@
+{
+    "risc-v": [
+        {
+            "runtimeAbi": "v1",
+            "assemblerProfile": "gnu-compiler-v1",
+            "sourcePath": "flappy-asm.c",
+            "outputPath": "flappy-asm.c.riscv",
+            "target": "RISC-V",
+            "language": "c",
+            "compilerId": "rv32-cclang2110",
+            "optimization": "2",
+            "inputs": {
+                "flappy-asm.c": "ab7c90b1b9e764cb2100dad2339b2ea8"
+            },
+            "outputFingerprint": "aeaf2e019359de267df9a92e400f5909"
+        }
+    ]
+}

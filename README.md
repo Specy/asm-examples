@@ -15,7 +15,7 @@ Example programs for [asm-editor](https://github.com/Specy/asm-editor), the web 
 | [Chiptune](shared/chiptune/) | M68K, MIPS, RISC-V, Z80 | Plays a melody, bass line and drums on three sound channels. | MIT |
 | [Drawing a house](shared/drawing-a-house/) | M68K, MIPS, RISC-V, X86, Z80 | Draws a house, sky and sun on the Screen. | MIT |
 | [Factorial and Fibonacci](shared/factorial-and-fibonacci/) | M68K, MIPS, RISC-V, X86, Z80 | Computes factorials and Fibonacci numbers with subroutines that call themselves. | MIT |
-| [Flappy Bird](shared/flappy-bird/) | M68K, MIPS, RISC-V, Z80 | Fly between the pipes: every tap flaps, and gravity does the rest. In assembly and, for RISC-V, in C as well. | MIT |
+| [Flappy ASM](shared/flappy-asm/) | M68K, MIPS, RISC-V, Z80 | Fly between the pipes: every tap flaps, and gravity does the rest. In assembly and, for RISC-V, in C as well. | MIT |
 | [Graphics tour](m68k/graphics-tour/) | M68K | Every drawing task of the M68K screen on one picture, then the sound tasks, ported from EASy68K's own example. | GPL-2.0-or-later |
 | [Hello world](shared/hello-world/) | M68K, MIPS, RISC-V, X86, Z80 | Prints a greeting and a number to the console. | MIT |
 | [Keyboard and display](shared/keyboard-display/) | MIPS, RISC-V | Echo typed characters through the memory-mapped display registers and paint cells of the bitmap display. | MIT |
@@ -23,10 +23,10 @@ Example programs for [asm-editor](https://github.com/Specy/asm-editor), the web 
 | [Keyboard move](shared/keyboard-move/) | M68K, Z80 | A square that moves while the arrow keys are held, reading which keys are down as a game does. | MIT |
 | [Mouse paint](shared/mouse-paint/) | M68K, X86, Z80 | Painting with the mouse: a brush under the pointer while the left button is held, red with Shift. | MIT |
 | [Number to string](shared/number-to-string/) | M68K, MIPS, RISC-V, X86, Z80 | Converts a number to hexadecimal, decimal and binary text, then prints it. | MIT |
-| [Pac-Man](risc-v/pacman/) | RISC-V | The arcade game with its sound, in RISC-V assembly and in C, reading its pictures from BMP files. | MIT |
 | [PC speaker](x86/pc-speaker/) | X86 | The opening of Für Elise on the PC speaker, one square-wave tone at a time. | MIT |
 | [Play a tune](shared/play-a-tune/) | MIPS, RISC-V, X86, Z80 | The first phrase of Ode to Joy, played from a table of notes. | MIT |
 | [Play sound files](m68k/play-sound-files/) | M68K | Writes a WAV file and a MIDI file with the file tasks, then plays both. | MIT |
+| [Relay Maze](risc-v/relay-maze/) | RISC-V | Clear the dots, dodge four pursuers and turn the tables with power-ups. An arcade maze-chase game in RISC-V assembly and C. | MIT |
 | [Reverse a string](shared/reverse-a-string/) | M68K, MIPS, RISC-V, X86, Z80 | Reverses a zero-terminated string in place using two pointers. | MIT |
 | [Sampled sound](shared/sampled-sound/) | M68K, MIPS, RISC-V, X86 | A sound computed sample by sample, then played as a scale. | MIT |
 | [Snake](shared/snake/) | M68K, MIPS, RISC-V, Z80 | Steer the snake to the food to grow it, without hitting a wall or its own body. | MIT |
@@ -77,15 +77,15 @@ That is enough for an example of one assembly File. It becomes the Entry of the 
 
 ```json
 {
-    "name": "Pac-Man",
-    "description": "The arcade game with its sound, in RISC-V assembly and in C.",
+    "name": "Relay Maze",
+    "description": "Clear the dots, dodge four pursuers and turn the tables with power-ups.",
     "project": {
         "programs": {
             "assembly/main.s": { "display": { "width": 224, "height": 288 } },
-            "c/pacman.c.riscv": {}
+            "c/relay.c.riscv": {}
         },
         "selectedProgram": "assembly/main.s",
-        "openTabs": ["README.md", "assembly/main.s", "c/pacman.c"],
+        "openTabs": ["README.md", "assembly/main.s", "c/relay.c"],
         "activeTab": "assembly/main.s",
         "fileViews": { "README.md": "preview" }
     }
@@ -107,7 +107,7 @@ The editor's Examples page opens the example with these flags, and so does its O
 Open its archive from `dist/`, change it, export it as an `.asmproj`, then bring it back:
 
 ```sh
-npm run sync -- ~/Downloads/Pac-Man.asmproj pacman
+npm run sync -- ~/Downloads/Relay-Maze.asmproj relay-maze
 ```
 
 `sync` writes back the Files that changed or were added; with `--delete` it also removes those the Project no longer has. It never changes `example.json`. Where the exported Programs, tabs or File views differ from what `example.json` gives, it prints the difference, so you can copy what you want to keep. A Project exported for a Target the shared example has no folder for becomes a new version of it.

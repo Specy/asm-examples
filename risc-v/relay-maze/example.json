@@ -1,0 +1,25 @@
+{
+    "name": "Relay Maze",
+    "description": "Clear the dots, dodge four pursuers and turn the tables with power-ups. An arcade maze-chase game in RISC-V assembly and C.",
+    "startup": {
+        "buildAndRun": true,
+        "fullscreenDisplay": true
+    },
+    "project": {
+        "programs": {
+            "assembly/main.s": {},
+            "c/relay.c.riscv": {}
+        },
+        "selectedProgram": "assembly/main.s",
+        "openTabs": [
+            "README.md",
+            "assembly/main.s",
+            "c/relay.c",
+            "assets/sprites.bmp"
+        ],
+        "activeTab": "assembly/main.s",
+        "fileViews": {
+            "README.md": "preview"
+        }
+    }
+}

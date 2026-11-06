@@ -6,7 +6,7 @@
 //
 //   npm run sync -- <archive.asmproj> <example> [--variant <variant>] [--delete]
 //
-// <example> is an example's id or folder (pacman, risc-v/pacman, shared/flappy-bird). The port is
+// <example> is an example's id or folder (pacman, risc-v/pacman, shared/flappy-asm). The port is
 // the archive's Target; a shared example without build.mjs gets a new port folder for a Target it
 // lacks. Open the example's archive from dist/, change it and Compile in the editor, export it,
 // sync, then build.
