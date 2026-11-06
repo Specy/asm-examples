@@ -1,6 +1,6 @@
 # asm-examples
 
-Example programs for [asm-editor](https://github.com/Specy/asm-editor), the web IDE for assembly. An example is written for one Target or for several. Each version of it is one Project, which the build packs into an `.asmproj` archive that the editor opens.
+This repository contains example programs for [asm-editor](https://github.com/Specy/asm-editor), the web IDE for assembly. Each example is written for one or more Targets. The build packs each version as a Project in an `.asmproj` archive that the editor can open.
 
 <!-- examples:start -->
 | Example | Targets | What it is | License |
@@ -48,7 +48,7 @@ shared/
     README.md, assets/  every other File goes into each of them
 ```
 
-An example's folder name is its id, unique in the repository. When an example for one Target is ported to another, it moves from `risc-v/<example>/` to `shared/<example>/risc-v/`.
+An example's folder name is its id, which is unique in the repository. When an example for one Target is ported to another, move it from `risc-v/<example>/` to `shared/<example>/risc-v/`.
 
 The editor identifies each port by `<target-folder>-<id>[-<variant>]`, for example `mips-bouncing-ball`. Keep the id and variant unchanged when changing a display name, since they are part of its shared URLs.
 
@@ -59,7 +59,9 @@ npm ci
 npm run build
 ```
 
-`dist/<target>/<example>.asmproj` is one archive for each version of each example. `dist/index.json` lists every example with its archives (`examples`), and the examples of every Target (`targets`). The build also rewrites the table above. It fails, writing nothing, when something is wrong: a missing File, a Project over the editor's limits (64 MiB, 4,096 Files), a text File that is not UTF-8, or Generated assembly that is no longer what its C source compiles to. `npm run check` is the build that CI runs: it also fails when the table is out of date. `npm test` tests the build itself.
+The build creates a `dist/<target>/<example>.asmproj` archive for each version of each example. It also creates `dist/index.json`, which lists every example with its archives (`examples`) and the examples for every Target (`targets`), and rewrites the table above.
+
+The build fails without writing anything if it finds a problem, such as a missing File, a Project over the editor's limits (64 MiB, 4,096 Files), a text File that is not UTF-8, or Generated assembly whose source has changed since compilation or which was edited after compilation. CI runs `npm run check`, which also fails if the table is out of date. Run `npm test` to test the build itself.
 
 ## Adding an example
 
@@ -73,7 +75,7 @@ Every example folder has an `example.json`:
 }
 ```
 
-That is enough for an example of one assembly File. It becomes the Entry of the Project's one Program and the tab that opens, beside the `README.md` if there is one. Anything else uses the editor's own field names, in `project`, or for a shared example in `ports.<target>.project`:
+This is enough for an example with one assembly File. That File becomes the Entry of the Project's one Program and opens in a tab alongside `README.md`, if there is one. For other Projects, use the editor's field names in `project`, or in `ports.<target>.project` for a shared example:
 
 ```json
 {
@@ -94,13 +96,13 @@ That is enough for an example of one assembly File. It becomes the Entry of the 
 
 A shared example's `ports.<target>` can also give that version its own `name` and `description`. `example.json`, `compilations.json` and `build.mjs` are never packed.
 
-`startup` says what opening the example does, as the flags a link to it can carry: `build` builds it, `buildAndRun` builds and runs it, and `fullscreenDisplay` opens its Screen in the floating window. A game starts running on a display that fills the page with:
+`startup` sets the flags that a link can use when opening the example. `build` builds it, `buildAndRun` builds and runs it, and `fullscreenDisplay` opens its Screen in the floating window. To start a game running on a display that fills the page, use:
 
 ```json
 "startup": { "buildAndRun": true, "fullscreenDisplay": true }
 ```
 
-The editor's Examples page opens the example with these flags, and so does its Open in editor link; a link to the Examples page that sets any of these flags decides them instead. A link straight to the example in the editor starts it only as its own flags say. A version's own `startup`, in `ports.<target>` or as an option of `pack()`, replaces the example's, and `{}` opens that version with none.
+The editor's Examples page and its Open in editor link use these flags. A link to the Examples page can override these defaults. If it sets either `build` or `buildAndRun`, it determines the build action; if it sets `fullscreenDisplay`, it determines whether the Screen opens in the floating window. Any choice the link leaves out uses the example's default. A link straight to the example in the editor uses only its own flags. A version's `startup`, set in `ports.<target>` or as an option of `pack()`, replaces the example's `startup`. Use `{}` to open that version without any flags.
 
 ### Changing an example in the editor
 
@@ -110,15 +112,15 @@ Open its archive from `dist/`, change it, export it as an `.asmproj`, then bring
 npm run sync -- ~/Downloads/Relay-Maze.asmproj relay-maze
 ```
 
-`sync` writes back the Files that changed or were added; with `--delete` it also removes those the Project no longer has. It never changes `example.json`. Where the exported Programs, tabs or File views differ from what `example.json` gives, it prints the difference, so you can copy what you want to keep. A Project exported for a Target the shared example has no folder for becomes a new version of it.
+`sync` writes back Files that changed or were added. With `--delete`, it also removes Files that the Project no longer has. It never changes `example.json`. If the exported Programs, tabs or File views differ from those in `example.json`, `sync` prints the differences so you can copy the changes you want to keep. If a Project was exported for a Target that has no folder in the shared example, `sync` creates a new version for that Target.
 
 ### C and C++
 
-A C example ships its Generated assembly as a File, so it runs without compiling, together with the editor's Compilation record, which says which sources it was compiled from. `sync` keeps the records in `compilations.json`. The build checks them against the Files and fails once a source has changed since it was compiled: Compile again in the editor, export, sync.
+A C example includes its Generated assembly as a File, so it can run without compiling. It also includes the editor's Compilation record, which identifies the sources used to compile it. `sync` keeps these records in `compilations.json`. The build checks the records against the Files and fails if a source has changed since it was compiled. Compile again in the editor, export the Project, and run `sync`.
 
 ### A build of its own
 
-A `build.mjs` in an example folder replaces the default, for an example whose versions share one tree, as asmOS's do:
+Add a `build.mjs` to an example folder to replace the default build. This is useful when the example's versions share one tree, as asmOS's do:
 
 ```js
 export default async function build({ files, pack }) {
@@ -131,9 +133,9 @@ export default async function build({ files, pack }) {
 }
 ```
 
-- **`files({ from, include, exclude })`** returns the example's Files, or those of its `from` subfolder. Each is listed as its path in the archive, mapped to the file it is read from. An entry ending in `/` is a folder.
+- **`files({ from, include, exclude })`** returns the example's Files, or those of its `from` subfolder. It returns a mapping from archive paths to source files. An entry ending in `/` is a folder.
 - **`pack({ target, files, project, name, description, variant, buildOutputs, startup, draft })`** packs one archive. A `variant` tells two archives for one Target apart: `<example>-<variant>.asmproj`. Set `draft: true` while a port is unfinished. Its sources and Compilation records stay available to compilation tools, and the build leaves it out of the archives and index.
-- **`buildOutputs`** lists the Programs whose linked program the archive should carry. The editor adds it when it builds the examples, because only its Core can link one, and only x86 saves one.
+- **`buildOutputs`** lists the Programs whose linked program the archive should carry. The editor adds the linked program when it builds the examples, because only its Core can link one, and only x86 saves one.
 
 ## License
 
